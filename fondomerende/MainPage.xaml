@@ -1,7 +1,47 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:fondomerende" x:Class="fondomerende.MainPage">
-    <StackLayout>
-        <!-- Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms!" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:fondomerende"
+             x:Class="fondomerende.MainPage">
+    <StackLayout
+        HorizontalOptions="CenterAndExpand"
+        VerticalOptions="CenterAndExpand">
+
+        <Image
+            x:Name ="macchinetta_immagine">
+        </Image>
+
+        <Label
+            Grid.Row="0"
+            Grid.Column="0"
+            Text="Macchinetta delle merende!"
+            HorizontalOptions="CenterAndExpand"
+            VerticalOptions="CenterAndExpand">
+        </Label>
+
+        <Entry
+            Grid.Row="1"
+            Grid.Column="0"
+            x:Name="usernameEntry"
+            Placeholder="Username">
+        </Entry>
+
+        <Entry
+            Grid.Row="0"
+            Grid.Column="2"
+            x:Name="passwordEntry"
+            Placeholder="Password"
+            IsPassword="True">
+        </Entry>
+
+        <Button
+            Grid.Row="0"
+            Grid.Column="2"
+            Clicked="Bottone_Clicked"
+            x:Name="bottone"
+            Text="Log in">
+        </Button>
+
+
     </StackLayout>
 </ContentPage>

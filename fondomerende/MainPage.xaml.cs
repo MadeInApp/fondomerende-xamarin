@@ -13,9 +13,25 @@ namespace fondomerende
     [DesignTimeVisible(true)]
     public partial class MainPage : ContentPage
     {
+        private string username, password;
         public MainPage()
         {
             InitializeComponent();
+            macchinetta_immagine.Source = ImageSource.FromResource("fondomerende.image.macchinetta_merende.png");
+        }
+
+        private void Bottone_Clicked(object sender, EventArgs e)
+        {
+            
+            if (!string.IsNullOrEmpty(usernameEntry.Text)&&!string.IsNullOrEmpty(passwordEntry.Text))
+            {
+                username = usernameEntry.Text;
+                password = passwordEntry.Text;
+            }
+            else
+            {
+                DisplayAlert("Fondo Merende", "Username o Password mancanti", "OK");
+            }
         }
     }
 }
