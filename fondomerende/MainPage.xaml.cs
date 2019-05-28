@@ -1,4 +1,5 @@
-﻿using System;
+﻿using fondomerende.Services.RESTServices;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -20,13 +21,16 @@ namespace fondomerende
             macchinetta_immagine.Source = ImageSource.FromResource("fondomerende.image.macchinetta_merende.png");
         }
 
-        private void Bottone_Clicked(object sender, EventArgs e)
+        private async void Bottone_ClickedAsync(object sender, EventArgs e)
         {
             
             if (!string.IsNullOrEmpty(usernameEntry.Text)&&!string.IsNullOrEmpty(passwordEntry.Text))
             {
                 username = usernameEntry.Text;
                 password = passwordEntry.Text;
+                LoginServiceManager loginService= new LoginServiceManager();
+                var response = await loginService.LoginAsync(username, password);
+
             }
             else
             {
