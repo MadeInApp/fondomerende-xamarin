@@ -45,6 +45,10 @@ namespace fondomerende
                 {
                     App.Current.MainPage = new MainPage();
                 }
+                else
+                {
+                    await DisplayAlert("Fondo Merende", "Username o Password Errati", "OK");
+                }
 
             }
             else

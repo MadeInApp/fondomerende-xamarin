@@ -4,9 +4,46 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:fondomerende"
     x:Class="fondomerende.MainPage"
-    BackgroundColor="#FF9900">
-    
-    
-    
-  
+    BackgroundColor="#FF8000">
+
+    <Grid
+        Margin="{OnIdiom Phone=20, Default=100}"
+        HorizontalOptions="Start"
+        VerticalOptions="Start">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+            
+        </Grid.ColumnDefinitions>
+        
+        <Entry
+            Grid.Row="1"
+            Grid.Column="0"
+            Placeholder="Patatine"
+            Margin="3"
+            >
+        </Entry>
+        <Button
+            Grid.Row="1"
+            Grid.Column="1"
+            x:Name="ButtonSearch"
+            Clicked="ButtonSearch_Clicked"
+            Text="Ottieni Informazioni">
+        </Button>
+
+        <Button
+            Grid.Row="2"
+            Grid.Column="0"
+            Text="Ottieni informazioni su tutti gli Snack"
+            Clicked="GetAllSnacksData_Clicked"
+            x:Name="GetAllSnacksData">
+        </Button>
+
+    </Grid>
+
 </ContentPage>

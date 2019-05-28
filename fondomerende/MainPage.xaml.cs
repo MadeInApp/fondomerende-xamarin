@@ -14,6 +14,24 @@ namespace fondomerende
     [DesignTimeVisible(true)]
     public partial class MainPage : ContentPage
     {
-        
+        public MainPage()
+        {
+            InitializeComponent();
+        }
+
+        private void GetSnackData_Clicked(object sender, EventArgs e)
+        {
+         
+        }
+
+        private void GetAllSnacksData_Clicked(object sender, EventArgs e)
+        {
+      
+        }
+
+        private void ButtonSearch_Clicked(object sender, EventArgs e)
+        {
+
+        }
     }
 }
