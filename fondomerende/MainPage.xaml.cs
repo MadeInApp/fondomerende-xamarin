@@ -34,7 +34,7 @@ namespace fondomerende
             }
             else
             {
-                DisplayAlert("Fondo Merende", "Username o Password mancanti", "OK");
+                await DisplayAlert("Fondo Merende", "Username o Password mancanti", "OK");
             }
         }
     }
