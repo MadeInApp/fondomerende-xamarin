@@ -1,6 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Xamarin.Essentials;
 
 namespace fondomerende
 {
@@ -10,7 +11,15 @@ namespace fondomerende
         {
             InitializeComponent();
 
-            MainPage = new LoginPage();
+            if(Preferences.Get("logged", false))
+            {
+                MainPage = new MainPage();
+            }
+            else
+            {
+                MainPage = new LoginPage();
+            }
+
         }
 
         protected override void OnStart()

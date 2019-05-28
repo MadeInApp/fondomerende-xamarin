@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Xamarin.Essentials;
 
 namespace fondomerende
 {
@@ -15,10 +16,18 @@ namespace fondomerende
     public partial class LoginPage : ContentPage
     {
         private string username, password;
+        private bool remember;
         public LoginPage()
         {
             InitializeComponent();
             macchinetta_immagine.Source = ImageSource.FromResource("fondomerende.image.macchinetta_merende.png");
+        }
+
+        private void RememberMeButton_Clicked(object sender, EventArgs e)
+        {
+            remember = !remember;
+
+            CheckBox.BackgroundColor = remember ? Color.Black : Color.White;
         }
 
         private async void Bottone_ClickedAsync(object sender, EventArgs e)
@@ -29,7 +38,11 @@ namespace fondomerende
                 username = usernameEntry.Text;
                 password = passwordEntry.Text;
                 LoginServiceManager loginService = new LoginServiceManager();
-                var response = await loginService.LoginAsync(username, password);
+                var response = await loginService.LoginAsync(username, password, remember);
+                if(response.response.success == true)
+                {
+                    App.Current.MainPage = new MainPage();
+                }
 
             }
             else
