@@ -7,7 +7,6 @@
     BackgroundColor="#FF9900">
 
     <Grid
-        BackgroundColor="{OnIdiom Phone=Pink, Default=Yellow}"
         Margin="{OnIdiom Phone=20, Default=100}"
         HorizontalOptions="FillAndExpand"
         VerticalOptions="CenterAndExpand">
