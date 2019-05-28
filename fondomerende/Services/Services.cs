@@ -17,9 +17,7 @@ namespace fondomerende.Services
 
         public static string Concatenazione()
         {
-            string app;
-            app = protocollo + basePath;
-            return app;
+            return protocollo + basePath;
         }
         public static string LoginUrlRequest()
         {
