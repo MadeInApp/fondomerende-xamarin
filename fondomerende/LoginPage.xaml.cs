@@ -21,7 +21,7 @@ namespace fondomerende
         {
             InitializeComponent();
 
-            macchinetta_immagine.Source = ImageSource.FromResource("fondomerende.image.macchinetta_merende.png");
+            macchinetta_immagine.Source = ImageSource.FromResource("fondomerende.image.Fondo_Merende_logo.png");
         }
 
         private void RememberMeButton_Clicked(object sender, EventArgs e)
