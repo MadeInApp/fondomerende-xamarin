@@ -15,7 +15,7 @@ namespace fondomerende.Services.RESTServices
             var result = await Services.LoginUrlRequest()
                                 .PostUrlEncodedAsync(new { commandName = "login", name = username, password = passwordToLogin })
                                 .ReceiveJson<LoginDTO>();
-            if(result.response.success=true && result.response.status == 201)
+            if (result.response.success = true && result.response.status == 201)
             {
                 UserManager.Instance.token = result.data.token;
             }

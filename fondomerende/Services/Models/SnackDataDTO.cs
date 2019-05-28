@@ -10,6 +10,8 @@ namespace fondomerende.Services.Models
     {
         private int id;
         private string name;
+
+        [JsonProperty("friendly-name")]
         private string friendly_name;
         private double price;
         private int snack_per_box;
