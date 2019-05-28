@@ -9,7 +9,7 @@ namespace fondomerende.Services
 {
     static class Services
     {
-        private readonly static string protocollo = "Http://";
+        private readonly static string protocollo = "http://";
         private readonly static string basePath = "192.168.0.175:8888/fondomerende/public/process-request.php";
         private readonly static string authkey = "metticiquellochetipare";
         private static string token = UserManager.Instance.token;
@@ -26,8 +26,8 @@ namespace fondomerende.Services
             string app = Concatenazione();
             Cookie authKey = new Cookie("auth-key", Services.authkey);
 
-            app.WithCookies(new { authKey })
-               .WithHeader("Content-Type", content);
+            app.WithCookie("auth-key", "metticiquellochetipare")
+               .WithHeader("Content-Type", "application/x-www-form-urlencoded; param=value;charset=UTF-8");
             return app;
         }
 
