@@ -31,7 +31,7 @@
             Grid.Row="0"
             Grid.Column="0"      
             Scale="0.6"
-            x:Name ="macchinetta_immagine"
+            x:Name ="Fondo_Merende_logo"
             Aspect="AspectFit">
         </Image>
 
