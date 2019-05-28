@@ -11,10 +11,10 @@ namespace fondomerende.Services.RESTServices
 
         public async System.Threading.Tasks.Task<LoginDTO> LoginAsync(string username, string passwordToLogin)
         {
-            var result = await "192.168.0.175:8888/fondomerende/public/process-request.php".GetJsonAsync<LoginDTO>();
-                                //.WithHeaders(new { Cookie = "auth-key=metticiquellochetipare" })
-                                //.PostJsonAsync(new { commandName = "login", name = username, password = passwordToLogin })
-                                //.ReceiveJ<LoginDTO>();
+            var result = await "http://192.168.0.175:8888/fondomerende/public/process-request.php"
+                                .WithCookie("Cookie", "auth-key=metticiquellochetipare")
+                                .PostJsonAsync(new { commandName = "login", name = username, password = passwordToLogin })
+                                .ReceiveJson<LoginDTO>();
             return result;
         }
     }

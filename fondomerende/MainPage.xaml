@@ -1,20 +1,38 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:fondomerende"
-             x:Class="fondomerende.MainPage"
-             BackgroundColor="#FF9900">
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:fondomerende"
+    x:Class="fondomerende.MainPage"
+    BackgroundColor="#FF9900">
 
-    <StackLayout
-        HorizontalOptions="CenterAndExpand"
+    <Grid
+        BackgroundColor="{OnIdiom Phone=Pink, Default=Yellow}"
+        Margin="{OnIdiom Phone=20, Default=100}"
+        HorizontalOptions="FillAndExpand"
         VerticalOptions="CenterAndExpand">
 
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
         <Image
-            x:Name ="macchinetta_immagine">
+            Grid.Row="0"
+            Grid.Column="0"            
+            x:Name ="macchinetta_immagine"
+            Aspect="AspectFit">
         </Image>
 
         <Label
-            Grid.Row="0"
+            Grid.Row="1"
             Grid.Column="0"
             Text="Macchinetta delle merende!"
             HorizontalOptions="CenterAndExpand"
@@ -22,28 +40,29 @@
         </Label>
 
         <Entry
-            Grid.Row="1"
+            Grid.Row="2"
             Grid.Column="0"
             x:Name="usernameEntry"
             Placeholder="Username">
         </Entry>
 
         <Entry
-            Grid.Row="0"
-            Grid.Column="2"
+            Grid.Row="3"
+            Grid.Column="0"
             x:Name="passwordEntry"
             Placeholder="Password"
             IsPassword="True">
         </Entry>
 
         <Button
-            Grid.Row="0"
-            Grid.Column="2"
+            Grid.Row="4"
+            Grid.Column="0"
+            Margin="30"
             Clicked="Bottone_ClickedAsync"
             x:Name="bottone"
             Text="Log in">
         </Button>
+    </Grid>
 
 
-    </StackLayout>
 </ContentPage>
