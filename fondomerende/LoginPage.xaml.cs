@@ -20,6 +20,7 @@ namespace fondomerende
         public LoginPage()
         {
             InitializeComponent();
+
             macchinetta_immagine.Source = ImageSource.FromResource("fondomerende.image.macchinetta_merende.png");
         }
 
@@ -32,7 +33,8 @@ namespace fondomerende
 
         private async void Bottone_ClickedAsync(object sender, EventArgs e)
         {
-
+            SnackServiceManager snackService = new SnackServiceManager();
+            var a = await snackService.SnackAsync();
             if (!string.IsNullOrEmpty(usernameEntry.Text) && !string.IsNullOrEmpty(passwordEntry.Text))
             {
                 username = usernameEntry.Text;
