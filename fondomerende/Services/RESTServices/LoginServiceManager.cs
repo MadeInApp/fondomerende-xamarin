@@ -9,12 +9,16 @@ namespace fondomerende.Services.RESTServices
     class LoginServiceManager
     {
 
-        public async System.Threading.Tasks.Task<LoginDTO> LoginAsync(string username, string passwordToLogin)
+        public async System.Threading.Tasks.Task<string> LoginAsync(string username, string passwordToLogin)
         {
             var result = await Services.LoginUrlRequest()
                                 .PostUrlEncodedAsync(new { commandName = "login", name = username, password = passwordToLogin })
                                 .ReceiveJson<LoginDTO>();
+            if(result.response.success=true && result.response.status == 201)
+            {
+                result.data.token;
+            }
             return result;
-        }
+        }  
     }
 }

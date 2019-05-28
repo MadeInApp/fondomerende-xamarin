@@ -3,6 +3,7 @@ using System;
 using System.Net;
 using System.Collections.Generic;
 using System.Text;
+using fondomerende.Manager;
 
 namespace fondomerende.Services
 {
@@ -11,7 +12,7 @@ namespace fondomerende.Services
         private readonly static string protocollo = "Http://";
         private readonly static string basePath = "192.168.0.175:8888/fondomerende/public/process-request.php";
         private readonly static string authkey = "metticiquellochetipare";
-        private static string token = "nomeSingleton.getinstance.token";
+        private static string token = UserManager.Instance.token;
         private readonly static string content = "application/x-www-form-urlencoded; param=value;charset=UTF-8";
 
         public static string Concatenazione()
