@@ -5,7 +5,8 @@ using System.Text;
 namespace fondomerende.Manager
 {
     public sealed class UserManager
-        {
+    {
+        public string token;
     
         private static UserManager _instance;
 
