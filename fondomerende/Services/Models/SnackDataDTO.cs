@@ -5,7 +5,7 @@ using System.Text;
 
 namespace fondomerende.Services.Models
 {
-    [JsonObject("data")]
+    
     public class SnackDataDTO
     {
         public int id { get; set; }
@@ -19,13 +19,11 @@ namespace fondomerende.Services.Models
         [JsonProperty("expiration-in-days")]
         public int expiration_in_days { get; set; }
 
-        
-        
+    }
 
-       
-  
-
-
-
+    [JsonObject("snacks")]
+    public class SnackDataArrayDTO
+    {
+        public List<SnackDataDTO> snacks { get; set; }
     }
 }
