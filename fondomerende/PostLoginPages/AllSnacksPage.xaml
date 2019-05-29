@@ -9,7 +9,6 @@
         <StackLayout>
             <ListView
                 x:Name="ListView"
-                ItemTapped="ListView_ItemTapped"
                 ItemSelected="ListView_ItemSelected">
                 <ListView.ItemTemplate>
                     <DataTemplate>

@@ -17,42 +17,19 @@ namespace fondomerende
     {
         List<SnackDataDTO> AllSnacks = new List<SnackDataDTO>();
 
-        SnackDataDTO Snack;
         public AllSnacksPage()
         {
             InitializeComponent();
             GetSnacksMethod();
 
+
+        }
+        public async void GetSnacksMethod()
+        {
+            SnackServiceManager snackServiceManager = new SnackServiceManager();
+            var result = await snackServiceManager.GetSnacksAsync();
+            AllSnacks = result.data.snacks;
             ListView.ItemsSource = AllSnacks;
-            
-            //ListView listView = new ListView
-            //{
-            //    ItemsSource = GetSnacks,
-
-            //    ItemTemplate = new DataTemplate(() =>
-            //    {
-            //        Label nameLabel = new Label();
-            //        nameLabel.SetBinding(Label.TextProperty, "token");
-            //        return GetSnacks;
-            //    })
-                
-
-            //};
-        }
-        public void GetSnacksMethod()
-        {
-            //   SnackServiceManager snackServiceManager = new SnackServiceManager();
-            // await snackServiceManager.GetSnacksAsync();
-            for (int i = 0; i < 5; i++)
-            {
-                AllSnacks.Add(new SnackDataDTO { id = i, friendly_name = "snack" + i.ToString() });
-            }
-            
-        }
-
-        private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
-        {
-
         }
 
         private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)

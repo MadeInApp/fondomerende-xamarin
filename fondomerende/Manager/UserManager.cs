@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Xamarin.Essentials;
 
 namespace fondomerende.Manager
 {
@@ -11,7 +12,13 @@ namespace fondomerende.Manager
         private static UserManager _instance;
 
     
-        private UserManager() { }
+        private UserManager()
+        {
+            if(Preferences.Get("Logged",false))
+            {
+                token = Preferences.Get("token", null);
+            }
+        }
        
         public static UserManager Instance
         {
