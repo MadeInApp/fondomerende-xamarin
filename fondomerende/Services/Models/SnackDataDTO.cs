@@ -17,5 +17,7 @@ namespace fondomerende.Services.Models
         private int snack_per_box;
         private int expiration_in_days;
 
+        
+        
     }
 }

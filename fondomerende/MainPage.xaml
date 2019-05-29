@@ -26,6 +26,7 @@
             Grid.Column="0"
             Placeholder="Patatine"
             Margin="3"
+            x:Name="EntryGetSnack"
             >
         </Entry>
         <Button
