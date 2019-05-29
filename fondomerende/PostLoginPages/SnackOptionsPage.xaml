@@ -8,12 +8,8 @@
              BackgroundColor="Orange">
     <ContentPage.Content>
         <StackLayout>
-            <Button
-                Text="Mangia"
-                x:Name="Eat"
-                Clicked="Eat_Clicked"
-                HorizontalOptions="Center">
-            </Button>
+           
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

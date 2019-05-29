@@ -4,8 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
+using Xamarin.Essentials;
 using Xamarin.Forms.Xaml;
 using fondomerende.Services.Models;
 
@@ -15,6 +15,7 @@ namespace fondomerende
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AllSnacksPage : ContentPage
     {
+        SnackServiceManager snackServiceManager = new SnackServiceManager();
         List<SnackDataDTO> AllSnacks = new List<SnackDataDTO>();
 
         public AllSnacksPage()
@@ -26,15 +27,17 @@ namespace fondomerende
         }
         public async void GetSnacksMethod()
         {
-            SnackServiceManager snackServiceManager = new SnackServiceManager();
+           
             var result = await snackServiceManager.GetSnacksAsync();
             AllSnacks = result.data.snacks;
             ListView.ItemsSource = AllSnacks;
         }
 
-        private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        private async void ListView_ItemTapped(object sender, SelectedItemChangedEventArgs e)
         {
-            Navigation.PushAsync(new SnackOptionsPage());
+            
+            await snackServiceManager.EatAsync((e.SelectedItem as SnackDataDTO).id, 1);
+            await DisplayAlert("Fondo Merende", (e.SelectedItem as SnackDataDTO).name + " mangiato/i", "ok");
         }
     }
 }
