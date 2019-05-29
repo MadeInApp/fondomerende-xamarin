@@ -72,7 +72,8 @@
                 Margin="30"
                 Clicked="Bottone_ClickedAsync"
                 x:Name="bottone"
-                Text="Log in">
+                Text="Log in"
+                Style="{OnPlatform Android={StaticResource FondomerendeButton}}">
             </Button>
 
 
@@ -80,7 +81,8 @@
                 Margin="30"
                 Clicked="RegisterButton_ClickedAsync"
                 x:Name="Register"
-                Text="Sign up">
+                Text="Sign up"
+                Style="{OnPlatform Android={StaticResource FondomerendeButton}}">
             </Button>
         </StackLayout>
 
@@ -102,7 +104,8 @@
             <Button
                 Clicked="RememberMeButton_Clicked"
                 x:Name="RememberMe_Button"
-                Text="Ricordami">
+                Text="Ricordami"
+                Style="{OnPlatform Android={StaticResource FondomerendeButton}}">
             </Button>
         </StackLayout>
     </Grid>

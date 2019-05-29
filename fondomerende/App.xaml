@@ -1,5 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Application xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="fondomerende.App">
     <Application.Resources>
+
+        <ResourceDictionary>
+
+            <Color x:Key="ColorHeader">#FFFF99</Color>
+
+            <Color x:Key="ColorText">#323639</Color>
+            
+            <!--<OnPlatform
+                x:TypeArguments="x:String" x:Key="OpenSans"
+                iOS="OpenSans"
+                Android="open_sans.ttf#Open Sans">
+            </OnPlatform>-->
+
+            <Style x:Key="FondomerendeButton" TargetType="Button">
+                <!--<Setter Property="FontFamily" Value="{StaticResource OpenSans}" />-->
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="BorderRadius" Value="15" />
+                <Setter Property="BackgroundColor" Value="{StaticResource ColorHeader}"/>
+                <Setter Property="HeightRequest" Value="40" />
+                <Setter Property="FontSize" Value="15" />
+            </Style>
+
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

@@ -35,9 +35,10 @@
             Grid.Column="0"
             FontSize="Medium"
             FontAttributes="Bold"
-            Text="Inserire Username"
+            Text="Username"
             HorizontalOptions="Start"
-            VerticalOptions="Center">
+            VerticalOptions="Center"
+            TextColor="{OnPlatform Android = {StaticResource ColorText}}">
         </Label>
 
         <Entry
@@ -55,7 +56,8 @@
             Margin="0,30,0,0"
             Text="Inserire Friendly name"
             HorizontalOptions="Start"
-            VerticalOptions="Center">
+            VerticalOptions="Center"
+            TextColor="{OnPlatform Android = {StaticResource ColorText}}">
         </Label>
 
         <Entry
@@ -71,9 +73,10 @@
             FontSize="Medium"
             FontAttributes="Bold"
             Margin="0,30,0,0"
-            Text="Inserire Password"
+            Text="Password"
             HorizontalOptions="Start"
-            VerticalOptions="Center">
+            VerticalOptions="Center"
+            TextColor="{OnPlatform Android = {StaticResource ColorText}}">
         </Label>
 
         <Entry
@@ -92,7 +95,8 @@
             Margin="0,30,0,0"
             Text="Conferma Password"
             HorizontalOptions="Start"
-            VerticalOptions="Center">
+            VerticalOptions="Center"
+            TextColor="{OnPlatform Android = {StaticResource ColorText}}">
         </Label>
 
         <Entry
@@ -111,17 +115,20 @@
 
             <Button
                 Margin="30"
-                Clicked="RegisterButton_ClickedAsync"
-                x:Name="Register"
-                Text="Sign up">
+                Clicked="Cancel_Clicked"
+                x:Name="Cancel"
+                Text="Cancel"
+                Style="{OnPlatform Android={StaticResource FondomerendeButton}}">
             </Button>
 
             <Button
                 Margin="30"
-                Clicked="Cancel_Clicked"
-                x:Name="Cancel"
-                Text="Cancel">
+                Clicked="RegisterButton_ClickedAsync"
+                x:Name="Register"
+                Text="Sign up"
+                Style="{OnPlatform Android={StaticResource FondomerendeButton}}">
             </Button>
+            
         </StackLayout>
     </Grid>
 
