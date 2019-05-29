@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
+using Xamarin.Essentials;
 
 namespace fondomerende.Services.RESTServices
 {
@@ -17,7 +18,7 @@ namespace fondomerende.Services.RESTServices
             var result = new SnackDTO();
             try
             {
-                result = await "http://192.168.0.175:8888/fondomerende/public/process-request.php?commandName=get-snacks-data"
+                result = await "http://192.168.0.175:8888/fondomerende/public/process-request.php?commandName=get-to-eat-and-user-funds"
                                 .WithCookie("auth-key", "metticiquellochetipare")
                                 .WithCookie("user-token", token)
                                 .GetJsonAsync<SnackDTO>();
@@ -55,6 +56,20 @@ namespace fondomerende.Services.RESTServices
                                 .ReceiveJson<SnackDTO>();
             return result;
 
+        }
+
+        public async System.Threading.Tasks.Task<EatDTO> EatAsync(int idsnack, int quantity_snack)
+
+        {
+            var result = await "http://192.168.0.175:8888/fondomerende/public/process-request.php"
+            .WithCookie("auth-key", "metticiquellochetipare")
+            .WithCookie("user-token", token)
+            .PostUrlEncodedAsync(new { commandName = "eat", id = idsnack, quantity = quantity_snack })
+            .ReceiveJson<EatDTO>();
+
+
+
+            return result;
         }
     }
 }
