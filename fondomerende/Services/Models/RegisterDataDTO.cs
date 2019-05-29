@@ -6,6 +6,6 @@ namespace fondomerende.Services.Models
 {
     class RegisterDataDTO
     {
-        public string token;
+        public string token { get; set; }
     }
 }

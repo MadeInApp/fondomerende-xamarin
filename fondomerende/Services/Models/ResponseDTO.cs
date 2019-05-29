@@ -9,8 +9,8 @@ namespace fondomerende.Services.Models
     class ResponseDTO
     {
 
-        public bool success;
-        public int status;
-        public string message;
+        public bool success { get; set; }
+        public int status { get; set; }
+        public string message { get; set; }
     }
 }
