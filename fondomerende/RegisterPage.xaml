@@ -3,12 +3,12 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:fondomerende"
-    x:Class="fondomerende.LoginPage"
+    x:Class="fondomerende.RegisterPage"
     BackgroundColor="#FF9900">
 
     <Grid
         Margin="{OnIdiom Phone=20, Default=100}"
-        HorizontalOptions="FillAndExpand"
+        HorizontalOptions="Center"
         VerticalOptions="CenterAndExpand">
 
         <Grid.RowDefinitions>
@@ -25,50 +25,94 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-
-        <Image
-            Grid.Row="0"
-            Grid.Column="0"      
-            Scale="0.6"
-            x:Name ="Fondo_Merende_logo"
-            Aspect="AspectFit">
-        </Image>
-
+        
+        
+        
         <Label
-            Grid.Row="1"
+            Grid.Row="0"
             Grid.Column="0"
-            Text="Fondo Merende"
-            HorizontalOptions="CenterAndExpand"
+            FontSize="Medium"
+            FontAttributes="Bold"
+            Text="Inserire Username"
+            HorizontalOptions="Start"
             VerticalOptions="Center">
         </Label>
 
         <Entry
-            Grid.Row="2"
+            Grid.Row="1"
             Grid.Column="0"
             x:Name="usernameEntry"
             Placeholder="Username">
         </Entry>
 
+        <Label
+            Grid.Row="2"
+            Grid.Column="0"
+            FontSize="Medium"
+            FontAttributes="Bold"
+            Margin="0,30,0,0"
+            Text="Inserire Friendly name"
+            HorizontalOptions="Start"
+            VerticalOptions="Center">
+        </Label>
+
         <Entry
             Grid.Row="3"
             Grid.Column="0"
+            x:Name="friendlyNameEntry"
+            Placeholder="Friendly Name">
+        </Entry>
+
+        <Label
+            Grid.Row="4"
+            Grid.Column="0"
+            FontSize="Medium"
+            FontAttributes="Bold"
+            Margin="0,30,0,0"
+            Text="Inserire Password"
+            HorizontalOptions="Start"
+            VerticalOptions="Center">
+        </Label>
+
+        <Entry
+            Grid.Row="5"
+            Grid.Column="0"
             x:Name="passwordEntry"
             Placeholder="Password"
-            IsPassword="True">
+            IsPassword="true">
+        </Entry>
+
+        <Label
+            Grid.Row="6"
+            Grid.Column="0"
+            FontSize="Medium"
+            FontAttributes="Bold"
+            Margin="0,30,0,0"
+            Text="Conferma Password"
+            HorizontalOptions="Start"
+            VerticalOptions="Center">
+        </Label>
+
+        <Entry
+            Grid.Row="7"
+            Grid.Column="0"
+            x:Name="testPasswordEntry"
+            Placeholder="Password"
+            IsPassword="true">
         </Entry>
 
         <StackLayout
             HorizontalOptions="Center"
             Orientation="Horizontal"
-            Grid.Row="5"
+            Grid.Row="8"
             Grid.Column="0">
 
             <Button
                 Grid.Column="0"
                 Margin="30"
-                Clicked="Bottone_ClickedAsync"
+                Clicked="Cancel_Clicked"
                 x:Name="bottone"
-                Text="Log in">
+                Text="Cancel">
             </Button>
 
 
@@ -77,28 +121,6 @@
                 Clicked="RegisterButton_ClickedAsync"
                 x:Name="Register"
                 Text="Sign up">
-            </Button>
-        </StackLayout>
-
-        <StackLayout
-            HorizontalOptions="Center"
-            Orientation="Horizontal"
-            Grid.Row="7"
-            Grid.Column="0">
-           
-            <StackLayout
-                HorizontalOptions="Center"
-                VerticalOptions="Center"
-                WidthRequest="25"
-                HeightRequest="25"
-                BackgroundColor="White"
-                x:Name="CheckBox">
-            </StackLayout>
-
-            <Button
-                Clicked="RememberMeButton_Clicked"
-                x:Name="RememberMe_Button"
-                Text="Ricordami">
             </Button>
         </StackLayout>
     </Grid>
