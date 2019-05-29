@@ -16,10 +16,17 @@ namespace fondomerende
     public partial class RegisterPage : ContentPage
     {
         private string username, friendly_name, password, testpassword;
+
+        private async void Cancel_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PopAsync(true);
+        }
+
         private bool success = false;
         public RegisterPage()
         {
             InitializeComponent();
+            NavigationPage.SetHasNavigationBar(this, false);
         }
 
         private async void RegisterButton_ClickedAsync(object sender, EventArgs e)

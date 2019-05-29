@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:fondomerende"
+    x:Class="fondomerende.RegisterPage"
+     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true"
+    BackgroundColor="{OnPlatform Android=#FFCC00, iOS=#FF9900, Default=#FF9900}">
+
+    <Grid
+        Margin="{OnIdiom Phone=20, Default=100}"
+        HorizontalOptions="Center"
+        VerticalOptions="CenterAndExpand">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        
+        
+        
+        <Label
+            Grid.Row="0"
+            Grid.Column="0"
+            FontSize="Medium"
+            FontAttributes="Bold"
+            Text="Inserire Username"
+            HorizontalOptions="Start"
+            VerticalOptions="Center">
+        </Label>
+
+        <Entry
+            Grid.Row="1"
+            Grid.Column="0"
+            x:Name="usernameEntry"
+            Placeholder="Username">
+        </Entry>
+
+        <Label
+            Grid.Row="2"
+            Grid.Column="0"
+            FontSize="Medium"
+            FontAttributes="Bold"
+            Margin="0,30,0,0"
+            Text="Inserire Friendly name"
+            HorizontalOptions="Start"
+            VerticalOptions="Center">
+        </Label>
+
+        <Entry
+            Grid.Row="3"
+            Grid.Column="0"
+            x:Name="friendlyNameEntry"
+            Placeholder="Friendly Name">
+        </Entry>
+
+        <Label
+            Grid.Row="4"
+            Grid.Column="0"
+            FontSize="Medium"
+            FontAttributes="Bold"
+            Margin="0,30,0,0"
+            Text="Inserire Password"
+            HorizontalOptions="Start"
+            VerticalOptions="Center">
+        </Label>
+
+        <Entry
+            Grid.Row="5"
+            Grid.Column="0"
+            x:Name="passwordEntry"
+            Placeholder="Password"
+            IsPassword="true">
+        </Entry>
+
+        <Label
+            Grid.Row="6"
+            Grid.Column="0"
+            FontSize="Medium"
+            FontAttributes="Bold"
+            Margin="0,30,0,0"
+            Text="Conferma Password"
+            HorizontalOptions="Start"
+            VerticalOptions="Center">
+        </Label>
+
+        <Entry
+            Grid.Row="7"
+            Grid.Column="0"
+            x:Name="testPasswordEntry"
+            Placeholder="Password"
+            IsPassword="true">
+        </Entry>
+
+        <StackLayout
+            HorizontalOptions="Center"
+            Orientation="Horizontal"
+            Grid.Row="8"
+            Grid.Column="0">
+
+            <Button
+                Margin="30"
+                Clicked="RegisterButton_ClickedAsync"
+                x:Name="Register"
+                Text="Sign up">
+            </Button>
+
+            <Button
+                Margin="30"
+                Clicked="Cancel_Clicked"
+                x:Name="Cancel"
+                Text="Cancel">
+            </Button>
+        </StackLayout>
+    </Grid>
+
+
+</ContentPage>

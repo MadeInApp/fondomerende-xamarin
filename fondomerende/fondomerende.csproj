@@ -36,22 +36,19 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="PagesPostLogin\AllSnacksPage.xaml">
+    <EmbeddedResource Update="PostLoginPages\AllSnacksPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <Compile Update="RegisterPage.xaml.cs">
+    <Compile Update="PreLoginPages\RegisterPage.xaml.cs">
       <DependentUpon>RegisterPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="LoginPage.xaml">
+    <EmbeddedResource Update="PreLoginPages\LoginPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="PagesPostLogin\SnackOptionsPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="PreLoginNavigationPage.xaml">
+    <EmbeddedResource Update="PostLoginPages\SnackOptionsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

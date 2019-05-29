@@ -21,6 +21,7 @@ namespace fondomerende
         {
             InitializeComponent();
             Fondo_Merende_logo.Source = ImageSource.FromResource("fondomerende.image.Fondo_Merende_logo.png");
+            NavigationPage.SetHasNavigationBar(this, false);
         }
 
         private void RememberMeButton_Clicked(object sender, EventArgs e)
