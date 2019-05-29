@@ -39,6 +39,7 @@ namespace fondomerende
                 password = passwordEntry.Text;
                 LoginServiceManager loginService = new LoginServiceManager();
                 var response = await loginService.LoginAsync(username, password, remember);
+
                 if(response.response.success == true)
                 {
                     App.Current.MainPage = new MainPage();
@@ -57,6 +58,7 @@ namespace fondomerende
 
         private async void RegisterButton_ClickedAsync(object sender, EventArgs e)
         {
+            App.Current.MainPage = new RegisterPage();
 
         }
     }

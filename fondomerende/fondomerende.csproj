@@ -11,11 +11,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="image\Fondo_Merende_logo.png" />
     <None Remove="image\macchinetta_merende.png" />
     <None Remove="image\macchinetta_minimalist.jpg" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="image\Fondo_Merende_logo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="image\macchinetta_merende.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -35,6 +39,12 @@
     <EmbeddedResource Update="AllSnacksPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <Compile Update="RegisterPage.xaml.cs">
+      <DependentUpon>RegisterPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
     <EmbeddedResource Update="LoginPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
