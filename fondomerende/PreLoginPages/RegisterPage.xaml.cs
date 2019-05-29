@@ -22,7 +22,6 @@ namespace fondomerende
             await Navigation.PopAsync(true);
         }
 
-        private bool success = false;
         public RegisterPage()
         {
             InitializeComponent();

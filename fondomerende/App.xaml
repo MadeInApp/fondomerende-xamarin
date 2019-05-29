@@ -4,10 +4,10 @@
 
         <ResourceDictionary>
 
-            <Color x:Key="ColorHeader">#FFFF99</Color>
+            <Color x:Key="ColorHeader">#FBB03B</Color>
 
             <Color x:Key="ColorText">#323639</Color>
-            
+
             <!--<OnPlatform
                 x:TypeArguments="x:String" x:Key="OpenSans"
                 iOS="OpenSans"
@@ -16,11 +16,14 @@
 
             <Style x:Key="FondomerendeButton" TargetType="Button">
                 <!--<Setter Property="FontFamily" Value="{StaticResource OpenSans}" />-->
-                <Setter Property="TextColor" Value="Black" />
-                <Setter Property="BorderRadius" Value="15" />
-                <Setter Property="BackgroundColor" Value="{StaticResource ColorHeader}"/>
-                <Setter Property="HeightRequest" Value="40" />
-                <Setter Property="FontSize" Value="15" />
+                <Setter Property="TextColor" Value = "Black" />
+                <Setter Property="BorderRadius" Value = "20" />
+                <Setter Property="BorderColor" Value = "Black" />
+                <Setter Property="BorderWidth" Value = "0.75" />
+                <Setter Property="BackgroundColor" Value = "{StaticResource ColorHeader}"/>
+                <Setter Property="HeightRequest" Value = "40" />
+                <Setter Property="FontSize" Value = "15" />
+                <Setter Property="Opacity" Value= "0.6"/>
             </Style>
 
         </ResourceDictionary>

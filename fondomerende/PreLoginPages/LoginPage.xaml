@@ -8,18 +8,19 @@
              ios:Page.UseSafeArea="true"
     BackgroundColor="{OnPlatform Android=#FFCC00, iOS=#FF9900, Default=#FF9900}">
 
+
     <Grid
         Margin="{OnIdiom Phone=20, Default=100}"
         HorizontalOptions="FillAndExpand"
         VerticalOptions="CenterAndExpand">
-        
+
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
@@ -62,14 +63,15 @@
         </Entry>
 
         <StackLayout
-            HorizontalOptions="Center"
+            HorizontalOptions="CenterAndExpand"
             Orientation="Horizontal"
             Grid.Row="5"
             Grid.Column="0">
 
             <Button
+                HorizontalOptions="FillAndExpand"
                 Grid.Column="0"
-                Margin="30"
+                Margin="5"
                 Clicked="Bottone_ClickedAsync"
                 x:Name="bottone"
                 Text="Log in"
@@ -78,7 +80,8 @@
 
 
             <Button
-                Margin="30"
+                HorizontalOptions="FillAndExpand"
+                Margin="5"
                 Clicked="RegisterButton_ClickedAsync"
                 x:Name="Register"
                 Text="Sign up"
