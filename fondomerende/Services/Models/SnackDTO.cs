@@ -7,6 +7,6 @@ namespace fondomerende.Services.Models
     class SnackDTO
     {
         public ResponseDTO response;
-        public List<SnackDataDTO> data;
+        public List<SnackDataDTO> data { get; set; }
     }
 }
