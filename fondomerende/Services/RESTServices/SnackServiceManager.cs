@@ -22,12 +22,13 @@ namespace fondomerende.Services.RESTServices
         }
 
         // iniziato ma devo aspettare l'input dall'utente
-        public async System.Threading.Tasks.Task<SnackDTO> GetSnackAsync(String nome)
+        public async System.Threading.Tasks.Task<SnackDTO> GetSnackAsync(String GetSnackName)
         {
             var result = await "http://192.168.0.175:8888/fondomerende/public/process-request.php?commandName=get-snack-data&name="
                                 .WithCookie("auth-key", "metticiquellochetipare")
                                 .WithCookie("user-token", token)
-                                .GetJsonAsync<SnackDTO>();
+                                .PostUrlEncodedAsync(new { commandName = "get-snack-data", name = GetSnackName })
+                                .ReceiveJson<SnackDTO>();
             return result;
         
         }
