@@ -14,14 +14,16 @@ namespace fondomerende.Services.Models
         [JsonProperty("friendly-name")]
         public string friendly_name { get; set; }
         public double price { get; set; }
+        [JsonProperty("snack-per-box")]
         public int snack_per_box { get; set; }
+        [JsonProperty("expiration-in-days")]
         public int expiration_in_days { get; set; }
 
-        [JsonProperty("snack-per-box")]
-        private int snack_per_box { get; set; }
+        
+        
 
-        [JsonProperty("expiration-in-days")]
-        private int expiration_in_days { get; set; }
+       
+  
 
 
 

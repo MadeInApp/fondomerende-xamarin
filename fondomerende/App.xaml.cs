@@ -11,7 +11,7 @@ namespace fondomerende
         {
             InitializeComponent();
 
-            if(Preferences.Get("logged", false))
+            if(Preferences.Get("Logged", false))
             {
                 MainPage = new MainPage();
             }
