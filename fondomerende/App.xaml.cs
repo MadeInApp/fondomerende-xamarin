@@ -17,12 +17,7 @@ namespace fondomerende
             }
             else
             {
-                MainPage = new NavigationPage(new LoginPage())
-                {
-                    BarBackgroundColor = Color.Transparent,
-                    
-
-                };
+                MainPage = new NavigationPage(new LoginPage());
             }
 
         }
