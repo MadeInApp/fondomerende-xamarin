@@ -12,7 +12,7 @@ namespace fondomerende.Services.Models
         private string name;
 
         [JsonProperty("friendly-name")]
-        private string friendly_name;
+        private string friendly_name { get; }
         private double price;
         private int snack_per_box;
         private int expiration_in_days;

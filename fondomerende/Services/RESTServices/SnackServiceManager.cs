@@ -3,6 +3,7 @@ using fondomerende.Manager;
 using fondomerende.Services.Models;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 
 namespace fondomerende.Services.RESTServices
@@ -13,11 +14,23 @@ namespace fondomerende.Services.RESTServices
         
         public async System.Threading.Tasks.Task<SnackDTO> GetSnacksAsync()
         {
-            var result = await "http://192.168.0.175:8888/fondomerende/public/process-request.php?commandName=get-snacks-data"
+            var result = new SnackDTO();
+            try
+            {
+                result = await "http://192.168.0.175:8888/fondomerende/public/process-request.php?commandName=get-snacks-data"
                                 .WithCookie("auth-key", "metticiquellochetipare")
                                 .WithCookie("user-token", token)
-                                /*.WithHeader("Content-Type", "application/x-www-form-urlencoded; param=value;charset=UTF-8")*/
                                 .GetJsonAsync<SnackDTO>();
+            }
+            catch (FlurlHttpTimeoutException ex)
+            {
+                Debug.WriteLine(ex);
+            }
+            catch (FlurlHttpException ex)
+            {
+                Debug.WriteLine(ex);
+            }
+            
             return result;
         }
 

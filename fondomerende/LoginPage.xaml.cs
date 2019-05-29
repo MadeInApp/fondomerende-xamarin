@@ -33,8 +33,6 @@ namespace fondomerende
 
         private async void Bottone_ClickedAsync(object sender, EventArgs e)
         {
-            SnackServiceManager snackService = new SnackServiceManager();
-            var a = await snackService.GetSnacksAsync();
             if (!string.IsNullOrEmpty(usernameEntry.Text) && !string.IsNullOrEmpty(passwordEntry.Text))
             {
                 username = usernameEntry.Text;
