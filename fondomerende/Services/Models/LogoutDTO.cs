@@ -4,9 +4,8 @@ using System.Text;
 
 namespace fondomerende.Services.Models
 {
-    class RegisterDTO
+    class LogoutDTO
     {
         public ResponseDTO response { get; set; }
-        public RegisterDataDTO data { get; set; }
     }
 }
