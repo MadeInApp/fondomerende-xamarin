@@ -25,6 +25,7 @@ namespace fondomerende.Services.RESTServices
                 Preferences.Set("username", username);
                 Preferences.Set("password", passwordToLogin);
                 Preferences.Set("Logged", remember);
+                Preferences.Get("Logged", false);
             }
 
             return result;
