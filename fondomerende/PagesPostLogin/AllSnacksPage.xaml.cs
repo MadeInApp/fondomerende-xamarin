@@ -57,7 +57,7 @@ namespace fondomerende
 
         private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-
+            Navigation.PushAsync(new SnackOptionsPage());
         }
     }
 }

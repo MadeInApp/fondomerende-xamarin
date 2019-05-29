@@ -67,10 +67,6 @@ namespace fondomerende
             }
         }
 
-        private async void Cancel_ClickedAsync(object sender, EventArgs e)
-        {
-            App.Current.MainPage = new LoginPage();
-        }
     }
 }
 

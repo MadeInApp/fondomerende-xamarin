@@ -106,16 +106,7 @@
             Orientation="Horizontal"
             Grid.Row="8"
             Grid.Column="0">
-
-            <Button
-                Grid.Column="0"
-                Margin="30"
-                Clicked="Cancel_ClickedAsync"
-                x:Name="bottone"
-                Text="Cancel">
-            </Button>
-
-
+            
             <Button
                 Margin="30"
                 Clicked="RegisterButton_ClickedAsync"

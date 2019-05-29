@@ -57,7 +57,8 @@ namespace fondomerende
 
         private async void RegisterButton_ClickedAsync(object sender, EventArgs e)
         {
-           App.Current.MainPage = new RegisterPage();
+           //App.Current.MainPage = new RegisterPage();
+            await Navigation.PushAsync(new RegisterPage());
         }
     }
 }

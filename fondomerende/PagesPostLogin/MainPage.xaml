@@ -6,7 +6,7 @@
     x:Class="fondomerende.MainPage"
     BackgroundColor="#FF8000">
 
-    <NavigationPage Title="Schedule" IconImageSource="schedule.png">
+    <NavigationPage Title="Snacks">
         <x:Arguments>
             <local:AllSnacksPage />
         </x:Arguments>

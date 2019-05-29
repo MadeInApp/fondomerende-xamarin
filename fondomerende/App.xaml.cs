@@ -17,7 +17,7 @@ namespace fondomerende
             }
             else
             {
-                MainPage = new LoginPage();
+                MainPage = new PreLoginNavigationPage();
             }
 
         }
