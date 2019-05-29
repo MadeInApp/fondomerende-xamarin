@@ -9,6 +9,11 @@
         <StackLayout>
             <ListView
                 x:Name="ListView">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding friendly_name}" Detail="{Binding id}"></TextCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
             </ListView>
         </StackLayout>
     </ContentPage.Content>

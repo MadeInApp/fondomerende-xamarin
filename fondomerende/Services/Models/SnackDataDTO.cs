@@ -6,16 +6,16 @@ using System.Text;
 namespace fondomerende.Services.Models
 {
     [JsonObject("data")]
-    class SnackDataDTO
+    public class SnackDataDTO
     {
-        private int id;
-        private string name;
+        public int id { get; set; }
+        public string name { get; set; }
 
         [JsonProperty("friendly-name")]
-        private string friendly_name { get; }
-        private double price;
-        private int snack_per_box;
-        private int expiration_in_days;
+        public string friendly_name { get; set; }
+        public double price { get; set; }
+        public int snack_per_box { get; set; }
+        public int expiration_in_days { get; set; }
 
         
         

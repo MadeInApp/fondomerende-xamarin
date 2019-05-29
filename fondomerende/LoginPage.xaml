@@ -46,6 +46,7 @@
             Grid.Row="2"
             Grid.Column="0"
             x:Name="usernameEntry"
+            Text="StefanoVe"
             Placeholder="Username">
         </Entry>
 
@@ -54,6 +55,7 @@
             Grid.Column="0"
             x:Name="passwordEntry"
             Placeholder="Password"
+            Text="pw"
             IsPassword="True">
         </Entry>
 
