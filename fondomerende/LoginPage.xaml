@@ -18,6 +18,8 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -25,14 +27,16 @@
         </Grid.ColumnDefinitions>
 
         <Image
+            BackgroundColor="Aqua"
             Grid.Row="0"
             Grid.Column="0"      
-            Scale="0.4"
-            x:Name ="macchinetta_immagine"
+            Scale="0.6"
+            x:Name ="Fondo_Merende_logo"
             Aspect="AspectFit">
         </Image>
 
         <Label
+            BackgroundColor="Bisque"
             Grid.Row="1"
             Grid.Column="0"
             Text="Fondo Merende"
@@ -55,19 +59,34 @@
             IsPassword="True">
         </Entry>
 
-        <Button
-            Grid.Row="4"
-            Grid.Column="0"
-            Margin="30"
-            Clicked="Bottone_ClickedAsync"
-            x:Name="bottone"
-            Text="Log in">
-        </Button>
-        
         <StackLayout
             HorizontalOptions="Center"
             Orientation="Horizontal"
             Grid.Row="5"
+            Grid.Column="0">
+
+            <Button
+                Grid.Row="4"
+                Grid.Column="0"
+                Margin="30"
+                Clicked="Bottone_ClickedAsync"
+                x:Name="bottone"
+                Text="Log in">
+            </Button>
+
+
+            <Button
+                Margin="30"
+                Clicked="RegisterButton_ClickedAsync"
+                x:Name="Register"
+                Text="Registrati">
+            </Button>
+        </StackLayout>
+
+        <StackLayout
+            HorizontalOptions="Center"
+            Orientation="Horizontal"
+            Grid.Row="7"
             Grid.Column="0">
            
             <StackLayout

@@ -21,7 +21,7 @@ namespace fondomerende
         {
             InitializeComponent();
 
-            macchinetta_immagine.Source = ImageSource.FromResource("fondomerende.image.macchinetta_merende.png");
+            macchinetta_immagine.Source = ImageSource.FromResource("fondomerende.image.Fondo_Merende_logo.png");
         }
 
         private void RememberMeButton_Clicked(object sender, EventArgs e)
@@ -34,7 +34,7 @@ namespace fondomerende
         private async void Bottone_ClickedAsync(object sender, EventArgs e)
         {
             SnackServiceManager snackService = new SnackServiceManager();
-            var a = await snackService.SnackAsync();
+            var a = await snackService.GetSnacksAsync();
             if (!string.IsNullOrEmpty(usernameEntry.Text) && !string.IsNullOrEmpty(passwordEntry.Text))
             {
                 username = usernameEntry.Text;
@@ -55,6 +55,11 @@ namespace fondomerende
             {
                 await DisplayAlert("Fondo Merende", "Username o Password mancanti", "OK");
             }
+        }
+
+        private async void RegisterButton_ClickedAsync(object sender, EventArgs e)
+        {
+
         }
     }
 }
