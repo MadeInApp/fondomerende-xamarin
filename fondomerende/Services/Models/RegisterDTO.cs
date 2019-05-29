@@ -7,6 +7,6 @@ namespace fondomerende.Services.Models
     class RegisterDTO
     {
         public ResponseDTO response;
-        public RegisterDataDTO data;
+        public RegisterDataDTO data { get; set; }
     }
 }

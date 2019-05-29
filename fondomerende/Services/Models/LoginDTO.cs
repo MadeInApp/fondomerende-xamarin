@@ -7,6 +7,6 @@ namespace fondomerende.Services.Models
     class LoginDTO
     {
         public ResponseDTO response;
-        public LoginDataDTO data;
+        public LoginDataDTO data { get; set; }
     }
 }

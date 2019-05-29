@@ -37,14 +37,23 @@ namespace fondomerende
                 {
 
                     RegisterServiceManager registerService = new RegisterServiceManager();
-                    var response = await registerService.RegisterAsync(username, friendly_name, password, 0);
-                    if (response.response.success == true)
+                    var response = await registerService.RegisterAsync(username, friendly_name, password);
+                    if (response.response.success == true && response.response.status == 201)
                     {
                         App.Current.MainPage = new MainPage();
                     }
-                    else
+
+                    if (response.response.success == false)
                     {
-                        await DisplayAlert("Fondo Merende", "Registrazione fallita", "OK");
+                    
+                        if(response.response.status == 400)
+                        {
+                            await DisplayAlert("Fondo Merende", response.response.message, "OK");
+                        }
+                        else
+                        {
+                            await DisplayAlert("Fondo Merende", "Registrazione fallita", "OK");
+                        }
                     }
                 }
                 else
@@ -58,7 +67,7 @@ namespace fondomerende
             }
         }
 
-        private void Cancel_Clicked(object sender, EventArgs e)
+        private async void Cancel_ClickedAsync(object sender, EventArgs e)
         {
             App.Current.MainPage = new LoginPage();
         }

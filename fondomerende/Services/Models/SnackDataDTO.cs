@@ -17,7 +17,13 @@ namespace fondomerende.Services.Models
         public int snack_per_box { get; set; }
         public int expiration_in_days { get; set; }
 
-        
-        
+        [JsonProperty("snack-per-box")]
+        private int snack_per_box { get; set; }
+
+        [JsonProperty("expiration-in-days")]
+        private int expiration_in_days { get; set; }
+
+
+
     }
 }

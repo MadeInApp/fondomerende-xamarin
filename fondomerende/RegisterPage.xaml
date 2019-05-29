@@ -110,7 +110,7 @@
             <Button
                 Grid.Column="0"
                 Margin="30"
-                Clicked="Cancel_Clicked"
+                Clicked="Cancel_ClickedAsync"
                 x:Name="bottone"
                 Text="Cancel">
             </Button>
