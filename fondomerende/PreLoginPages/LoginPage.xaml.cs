@@ -17,11 +17,10 @@ namespace fondomerende
     public partial class LoginPage : ContentPage
     {
         private string username, password;
-        private bool remember;
+        private bool remember = false;
         public LoginPage()
         {
             InitializeComponent();
-            BackgroundImageSource = "BackGradientArRos.jpg";
             Fondo_Merende_logo.Source = ImageSource.FromResource("fondomerende.image.Fondo_Merende_logo.png");
             NavigationPage.SetHasNavigationBar(this, false);
         }
