@@ -9,10 +9,16 @@
     
     <ContentPage.Content>
         <StackLayout>
+
+            <Label
+                x:Name="LoggedAs"
+                HorizontalOptions="Center">
+            </Label>
             <Button
+                VerticalOptions="Center"
                 HorizontalOptions="FillAndExpand"
-                Clicked="Bottone_ClickedAsync"
-                x:Name="bottone"
+                Clicked="LogOut_ClickedAsync"
+                x:Name="LogOut_button"
                 Text="Log out"
                 Style="{OnPlatform Android={StaticResource FondomerendeButton}}">
             </Button>

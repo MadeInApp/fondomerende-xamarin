@@ -19,6 +19,9 @@ namespace fondomerende.Services.Models
         [JsonProperty("expiration-in-days")]
         public int expiration_in_days { get; set; }
 
+        [JsonProperty("quantity")]
+        public int quantity { get; set; }
+
     }
 
     [JsonObject("snacks")]

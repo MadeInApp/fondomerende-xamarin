@@ -33,18 +33,10 @@
             <Image
                 Grid.Row="0"
                 Grid.Column="0"      
-                Scale="0.6"
+                Scale="{OnIdiom Phone=0.8, Tablet=1.5}"
                 x:Name ="Fondo_Merende_logo"
                 Aspect="AspectFit">
             </Image>
-
-            <Label
-                Grid.Row="1"
-                Grid.Column="0"
-                Text="Fondo Merende"
-                HorizontalOptions="CenterAndExpand"
-                VerticalOptions="Center">
-            </Label>
 
             <Entry
                 Grid.Row="2"

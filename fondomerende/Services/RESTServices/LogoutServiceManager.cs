@@ -16,12 +16,6 @@ namespace fondomerende.Services.RESTServices
                 .WithCookie("token", token)
                 .PostUrlEncodedAsync(new { commandName = "logout" })
                 .ReceiveJson<LogoutDTO>();
-
-            if (result.response.success = true && result.response.status == 200)
-            {
-                App.Current.MainPage = new LoginPage();
-            }
-
             return result;
         }
     }

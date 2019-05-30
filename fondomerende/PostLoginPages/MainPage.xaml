@@ -6,6 +6,7 @@
     x:Class="fondomerende.PostLoginPages.MainPage"
     SelectedTabColor="White"
     UnselectedTabColor="Gray">
+     BackgroundColor="{StaticResource ColorSnackBackground}">
 
     <NavigationPage        
         Title="Snacks"
@@ -13,6 +14,7 @@
         x:Name="SnacksNavPage">
         <x:Arguments>
             <local:AllSnacksPage />
+
         </x:Arguments>
 
  
