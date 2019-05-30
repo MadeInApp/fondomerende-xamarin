@@ -4,9 +4,9 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:fondomerende.PostLoginPages"
     x:Class="fondomerende.PostLoginPages.MainPage"
-    SelectedTabColor="White"
-    UnselectedTabColor="Gray">
-     BackgroundColor="{StaticResource ColorSnackBackground}">
+    SelectedTabColor="{OnPlatform Android = White}"
+    UnselectedTabColor="{OnPlatform Android = Gray}"
+    BackgroundColor="{StaticResource ColorSnackBackground}">
 
     <NavigationPage        
         Title="Snacks"
