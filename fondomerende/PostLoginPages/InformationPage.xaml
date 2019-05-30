@@ -17,7 +17,7 @@
             <Button
                 VerticalOptions="Center"
                 HorizontalOptions="FillAndExpand"
-                Clicked="LogOut_ClickedAsync"
+                Clicked="LogOut_button_Clicked"
                 x:Name="LogOut_button"
                 Text="Log out"
                 Style="{OnPlatform Android={StaticResource FondomerendeButton}}">

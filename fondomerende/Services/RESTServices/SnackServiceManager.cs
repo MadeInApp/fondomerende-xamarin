@@ -11,6 +11,7 @@ namespace fondomerende.Services.RESTServices
 {
     class SnackServiceManager
     {
+
         private static string token = UserManager.Instance.token;
 
         public async System.Threading.Tasks.Task<SnackDTO> GetSnacksAsync()

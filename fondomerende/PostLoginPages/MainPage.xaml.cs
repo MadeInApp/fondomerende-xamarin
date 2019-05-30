@@ -19,15 +19,22 @@ namespace fondomerende.PostLoginPages
         public string GetSnackName;
         public MainPage()
         {
+            switch (Device.RuntimePlatform)
+            {
+                default:
+                    NavigationPage.SetHasNavigationBar(this, true);
+                    break;
+                case Device.Android:
+                    NavigationPage.SetHasNavigationBar(this, false);
+                    break;
+            }
 
             InitializeComponent();
             SnacksNavPage.IconImageSource = ImageSource.FromResource("fondomerende.image.vm_icon_64x64.png");
             SettingsNavPage.IconImageSource = ImageSource.FromResource("fondomerende.image.settings_icon_64x64.png");
-
-            // vending_machine_logo.source = ImageSource.FromResource("fondomerende.image.vending-machine_icon.png");
         }
 
-            // vending_machine_logo.source = ImageSource.FromResource("fondomerende.image.vending-machine_icon.png");
+
         }
     }
 
