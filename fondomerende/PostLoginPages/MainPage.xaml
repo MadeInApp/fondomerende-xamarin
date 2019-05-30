@@ -5,15 +5,13 @@
     xmlns:local="clr-namespace:fondomerende.PostLoginPages"
     x:Class="fondomerende.PostLoginPages.MainPage">
 
-    <NavigationPage Title="Snacks" IconImageSource="fondomerende.image.vm_icon_51x51.png" x:Name="SnackNavPage"
-            HeightRequest="75">
+    <NavigationPage Title="Snacks" IconImageSource="fondomerende.image.vm_icon_51x51.png" x:Name="SnacksNavPage">
         <x:Arguments>
             <local:AllSnacksPage />
         </x:Arguments>
     </NavigationPage>
 
-    <NavigationPage Title="Impostazioni" IconImageSource="fondomerende.image.roller.png" x:Name="RollerNavPage"
-            HeightRequest="75">
+    <NavigationPage Title="Impostazioni" x:Name="SettingsNavPage">
         <x:Arguments>
             <local:InformationPage />
         </x:Arguments>

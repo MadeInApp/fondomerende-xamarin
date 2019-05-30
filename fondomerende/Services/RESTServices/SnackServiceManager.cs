@@ -12,26 +12,14 @@ namespace fondomerende.Services.RESTServices
     class SnackServiceManager
     {
         private static string token = UserManager.Instance.token;
-        
+
         public async System.Threading.Tasks.Task<SnackDTO> GetSnacksAsync()
         {
-            var result = new SnackDTO();
-            try
-            {
-                result = await "http://192.168.0.175:8888/fondomerende/public/process-request.php?commandName=get-to-eat-and-user-funds"
-                                .WithCookie("auth-key", "metticiquellochetipare")
-                                .WithCookie("user-token", token)
-                                .GetJsonAsync<SnackDTO>();
-            }
-            catch (FlurlHttpTimeoutException ex)
-            {
-                Debug.WriteLine(ex);
-            }
-            catch (FlurlHttpException ex)
-            {
-                Debug.WriteLine(ex);
-            }
-            
+           // var result = new SnackDTO();
+            var result = await "http://192.168.0.175:8888/fondomerende/public/process-request.php?commandName=get-to-eat-and-user-funds"
+                            .WithCookie("auth-key", "metticiquellochetipare")
+                            .WithCookie("user-token", token)
+                            .GetJsonAsync<SnackDTO>();
             return result;
         }
 

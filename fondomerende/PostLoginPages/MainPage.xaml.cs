@@ -19,11 +19,15 @@ namespace fondomerende.PostLoginPages
         public string GetSnackName;
         public MainPage()
         {
+
             InitializeComponent();
-            SnackNavPage.IconImageSource = ImageSource.FromResource("fondomerende.image.vm_icon_51x51.png");
-            RollerNavPage.IconImageSource = ImageSource.FromResource("fondomerende.image.roller.png");
+            SnacksNavPage.IconImageSource = ImageSource.FromResource("fondomerende.image.vm_icon_64x64.png");
+            SettingsNavPage.IconImageSource = ImageSource.FromResource("fondomerende.image.settings_icon_64x64.png");
+
+            // vending_machine_logo.source = ImageSource.FromResource("fondomerende.image.vending-machine_icon.png");
+        }
 
             // vending_machine_logo.source = ImageSource.FromResource("fondomerende.image.vending-machine_icon.png");
         }
     }
-}
+
