@@ -30,17 +30,17 @@ namespace fondomerende.PostLoginPages
 
 
 
-        ListView.RefreshCommand = new Command(() => 
+        ListView.RefreshCommand = new Command(async () => 
         {
-            RefreshData();
+            await RefreshDataAsync();
             ListView.IsRefreshing = false;
         });
 
 
         }
-        public void RefreshData()
+        public async Task RefreshDataAsync()
         {
-            GetSnacksMethod();
+           await GetSnacksMethod();
         }
 
 
@@ -55,18 +55,15 @@ namespace fondomerende.PostLoginPages
 
         private async void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-           var ans =  await DisplayAlert("Fondo Merende", "Vuoi davvero mangiare " + (e.SelectedItem as SnackDataDTO).friendly_name, "Si", "No");
+            var ans =  await DisplayAlert("Fondo Merende", "Vuoi davvero mangiare " + (e.SelectedItem as SnackDataDTO).friendly_name + "?", "Si", "No");
 
             if (ans == true)
             {
-                await snackServiceManager.EatAsync((e.SelectedItem as SnackDataDTO).id, 1);
-                await DisplayAlert("Fondo Merende", (e.SelectedItem as SnackDataDTO).friendly_name + " mangiato/i", "ok");
-            }
-            else
-            {
-                
-            }
-            
+              await snackServiceManager.EatAsync((e.SelectedItem as SnackDataDTO).id, 1);
+              await DisplayAlert("Fondo Merende", (e.SelectedItem as SnackDataDTO).friendly_name + " mangiato/i", "ok");
+              await  GetSnacksMethod();
+
+            } 
         }
     }
 }

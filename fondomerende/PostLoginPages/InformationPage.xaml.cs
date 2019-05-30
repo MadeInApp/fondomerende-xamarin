@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Xamarin.Essentials;
 
 namespace fondomerende.PostLoginPages
 {
@@ -15,20 +16,21 @@ namespace fondomerende.PostLoginPages
         public InformationPage()
         {
             InitializeComponent();
+            LoggedAs.Text = "Loggato Come: " + Preferences.Get("username", null);
         }
 
-        private async void Bottone_ClickedAsync(object sender, EventArgs e)
+        private async void LogOut_ClickedAsync(object sender, EventArgs e)
         {
             LogoutServiceManager loginService = new LogoutServiceManager();
             var response = await loginService.LogoutAsync();
 
             if (response.response.success == true)
             {
-                await Navigation.PopAsync(true);
+                App.Current.MainPage = new LoginPage();
             }
             else
             {
-                await DisplayAlert("Fondo Merende", "Username o Password Errati", "OK");
+                await DisplayAlert("Fondo Merende", "probabilmente il server è off sry", "OK");
             }
         }
     }
