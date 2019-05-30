@@ -5,7 +5,7 @@
     xmlns:local="clr-namespace:fondomerende.PostLoginPages"
     x:Class="fondomerende.PostLoginPages.MainPage">
 
-    <NavigationPage Title="Snacks" IconImageSource="fondomerende.image.vm_icon_51x51.png" x:Name="NavPage">
+    <NavigationPage Title="Snacks" IconImageSource="fondomerende.image.vm_icon_51x51.png" x:Name="SnacksNavPage">
         <x:Arguments>
             <local:AllSnacksPage />
         </x:Arguments>

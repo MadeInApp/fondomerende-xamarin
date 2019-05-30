@@ -30,4 +30,4 @@ namespace fondomerende.PostLoginPages
             // vending_machine_logo.source = ImageSource.FromResource("fondomerende.image.vending-machine_icon.png");
         }
     }
-}
+
