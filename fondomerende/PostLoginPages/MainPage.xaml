@@ -3,12 +3,17 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:fondomerende"
-    x:Class="fondomerende.MainPage"
-    BackgroundColor="#FF8000">
+    x:Class="fondomerende.MainPage">
 
     <NavigationPage Title="Snacks" IconImageSource="image/vending_machine_icon.png">
         <x:Arguments>
             <local:AllSnacksPage />
+        </x:Arguments>
+    </NavigationPage>
+
+    <NavigationPage Title="Impostazioni">
+        <x:Arguments>
+            <local:PostLoginPages.InformationPage />
         </x:Arguments>
     </NavigationPage>
 

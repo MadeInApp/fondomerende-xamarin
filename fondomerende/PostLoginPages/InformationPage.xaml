@@ -4,12 +4,18 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="fondomerende.SnackOptionsPage"
+             x:Class="fondomerende.PostLoginPages.InformationPage"
              BackgroundColor="LemonChiffon">
     
     <ContentPage.Content>
         <StackLayout>
-
+            <Button
+                HorizontalOptions="FillAndExpand"
+                Clicked="Bottone_ClickedAsync"
+                x:Name="bottone"
+                Text="Log out"
+                Style="{OnPlatform Android={StaticResource FondomerendeButton}}">
+            </Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

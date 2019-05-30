@@ -4,12 +4,14 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="fondomerende.AllSnacksPage">
+             x:Class="fondomerende.AllSnacksPage"
+             BackgroundColor="LemonChiffon">
     <ContentPage.Content>
         <StackLayout>
             <ListView
                 x:Name="ListView"
-                ItemTapped="ListView_ItemTapped">
+                ItemTapped="ListView_ItemTapped"
+                BackgroundColor="#F7C877">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <TextCell Text="{Binding friendly_name}" Detail="{Binding id}"

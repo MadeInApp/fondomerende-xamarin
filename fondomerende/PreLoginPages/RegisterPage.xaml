@@ -54,7 +54,7 @@
             FontSize="Medium"
             FontAttributes="Bold"
             Margin="0,30,0,0"
-            Text="Inserire Friendly name"
+            Text="Nome"
             HorizontalOptions="Start"
             VerticalOptions="Center"
             TextColor="{OnPlatform Android = {StaticResource ColorText}}">
@@ -64,7 +64,7 @@
             Grid.Row="3"
             Grid.Column="0"
             x:Name="friendlyNameEntry"
-            Placeholder="Friendly Name">
+            Placeholder="Nome">
         </Entry>
 
         <Label

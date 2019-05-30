@@ -20,6 +20,7 @@ namespace fondomerende
         public LoginPage()
         {
             InitializeComponent();
+            BackgroundImageSource = "BackGradientArRos.jpg";
             Fondo_Merende_logo.Source = ImageSource.FromResource("fondomerende.image.Fondo_Merende_logo.png");
             NavigationPage.SetHasNavigationBar(this, false);
         }
