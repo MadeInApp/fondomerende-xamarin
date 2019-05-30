@@ -23,15 +23,25 @@ namespace fondomerende.PostLoginPages
         SnackServiceManager snackServiceManager = new SnackServiceManager();
         List<SnackDataDTO> AllSnacks = new List<SnackDataDTO>();
 
+
         public AllSnacksPage()
         {
-
             InitializeComponent();
             GetSnacksMethod();
+            switch (Device.RuntimePlatform)
+            {
+                default:
+                    NavigationPage.SetHasNavigationBar(this, true);
+                    break;
+                case Device.Android:
+                    NavigationPage.SetHasNavigationBar(this, false);
+                    break;
+
+            }
 
 
 
-        ListView.RefreshCommand = new Command(async () => 
+            ListView.RefreshCommand = new Command(async () => 
         {
             await RefreshDataAsync();
             ListView.IsRefreshing = false;

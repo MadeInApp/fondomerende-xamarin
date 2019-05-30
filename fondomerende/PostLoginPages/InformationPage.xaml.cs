@@ -13,13 +13,23 @@ namespace fondomerende.PostLoginPages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class InformationPage : ContentPage
     {
+
         public InformationPage()
         {
-
-
+            
             InitializeComponent();
             LoggedAs.Text = "Loggato come: " + Preferences.Get("username", null);
             LoggedAs.Opacity = 0.5;
+            switch (Device.RuntimePlatform)
+            {
+                default:
+                    NavigationPage.SetHasNavigationBar(this, true);
+                    break;
+                case Device.Android:
+                    NavigationPage.SetHasNavigationBar(this, false);
+                    break;
+
+            }
 
 
         }
