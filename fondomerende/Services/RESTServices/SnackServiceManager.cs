@@ -15,7 +15,6 @@ namespace fondomerende.Services.RESTServices
 
         public async System.Threading.Tasks.Task<SnackDTO> GetSnacksAsync()
         {
-           // var result = new SnackDTO();
             var result = await "http://192.168.0.175:8888/fondomerende/public/process-request.php?commandName=get-to-eat-and-user-funds"
                             .WithCookie("auth-key", "metticiquellochetipare")
                             .WithCookie("user-token", token)

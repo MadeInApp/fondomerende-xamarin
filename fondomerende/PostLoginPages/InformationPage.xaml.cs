@@ -16,7 +16,8 @@ namespace fondomerende.PostLoginPages
         public InformationPage()
         {
             InitializeComponent();
-            LoggedAs.Text = "Loggato Come: " + Preferences.Get("username", null);
+            LoggedAs.Text = "Loggato come: " + Preferences.Get("username", null);
+            LoggedAs.Opacity = 0.5;
         }
 
         private async void LogOut_ClickedAsync(object sender, EventArgs e)
@@ -26,11 +27,16 @@ namespace fondomerende.PostLoginPages
 
             if (response.response.success == true)
             {
-                App.Current.MainPage = new LoginPage();
+                Navigation.RemovePage(this);
+                Preferences.Clear("username");
+                Preferences.Clear("password");
+                Preferences.Clear("token");
+                Preferences.Clear("Logged");
+                
             }
             else
             {
-                await DisplayAlert("Fondo Merende", "probabilmente il server è off sry", "OK");
+                await DisplayAlert("Fondo Merende", "Guarda, sarò franco. sta cosa non ha senso", "OK");
             }
         }
     }
