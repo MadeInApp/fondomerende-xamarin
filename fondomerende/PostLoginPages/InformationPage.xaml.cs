@@ -14,7 +14,7 @@ namespace fondomerende.PostLoginPages
     public partial class InformationPage : ContentPage
     {
         public InformationPage()
-        {
+        { 
             NavigationPage.SetHasNavigationBar(this, false);
             InitializeComponent();
             LoggedAs.Text = "Loggato come: " + Preferences.Get("username", null);
