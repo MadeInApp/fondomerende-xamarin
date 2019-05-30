@@ -8,6 +8,8 @@
 
             <Color x:Key="ColorText">#323639</Color>
 
+            <Color x:Key="ColorSnackBackground">#F7F7F7</Color>
+
             <!--<OnPlatform
                 x:TypeArguments="x:String" x:Key="OpenSans"
                 iOS="OpenSans"

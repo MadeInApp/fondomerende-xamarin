@@ -2,10 +2,10 @@
 <TabbedPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:fondomerende"
-    x:Class="fondomerende.MainPage">
+    xmlns:local="clr-namespace:fondomerende.PostLoginPages"
+    x:Class="fondomerende.PostLoginPages.MainPage">
 
-    <NavigationPage Title="Snacks"  x:Name="SnacksNavPage">
+    <NavigationPage Title="Snacks" IconImageSource="fondomerende.image.vm_icon_51x51.png" x:Name="NavPage">
         <x:Arguments>
             <local:AllSnacksPage />
         </x:Arguments>
@@ -13,8 +13,10 @@
 
     <NavigationPage Title="Impostazioni" x:Name="SettingsNavPage">
         <x:Arguments>
-            <local:PostLoginPages.InformationPage />
+            <local:InformationPage />
         </x:Arguments>
     </NavigationPage>
+
+
 
 </TabbedPage>

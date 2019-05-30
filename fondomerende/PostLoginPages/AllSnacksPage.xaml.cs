@@ -9,7 +9,7 @@ using Xamarin.Essentials;
 using Xamarin.Forms.Xaml;
 using fondomerende.Services.Models;
 
-namespace fondomerende
+namespace fondomerende.PostLoginPages
 {
 
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -25,6 +25,7 @@ namespace fondomerende
 
 
         }
+
         public async void GetSnacksMethod()
         {
            

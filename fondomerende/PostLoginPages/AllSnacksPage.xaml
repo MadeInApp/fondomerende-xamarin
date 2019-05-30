@@ -4,8 +4,8 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="fondomerende.AllSnacksPage"
-             BackgroundColor="LemonChiffon">
+             x:Class="fondomerende.PostLoginPages.AllSnacksPage"
+             BackgroundColor="{StaticResource ColorSnackBackground}">
     <ContentPage.Content>
         <StackLayout>
             <ListView
