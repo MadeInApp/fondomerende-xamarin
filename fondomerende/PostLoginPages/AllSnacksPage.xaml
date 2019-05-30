@@ -10,12 +10,14 @@
         <StackLayout>
             <ListView
                 x:Name="ListView"
+                IsPullToRefreshEnabled="True"
+                RefreshCommand="{Binding RefreshCommand}"
                 ItemSelected="ListView_ItemSelected"
-                BackgroundColor="#F7C877">
+                 IsRefreshing="{Binding IsBusy, Mode=OneWay}">
+
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <TextCell Text="{Binding friendly_name}" Detail="{Binding id}"
-                                  x:Name="TextCell_id"></TextCell>
+                        <TextCell Text="{Binding friendly_name}" Detail="{Binding quantity, StringFormat='Rimanenti: {0}'}"></TextCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

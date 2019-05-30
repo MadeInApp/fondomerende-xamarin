@@ -9,12 +9,17 @@ using Xamarin.Essentials;
 using Xamarin.Forms.Xaml;
 using fondomerende.Services.Models;
 
+
+
+
 namespace fondomerende.PostLoginPages
 {
 
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AllSnacksPage : ContentPage
     {
+       
+       
         SnackServiceManager snackServiceManager = new SnackServiceManager();
         List<SnackDataDTO> AllSnacks = new List<SnackDataDTO>();
 
@@ -24,9 +29,23 @@ namespace fondomerende.PostLoginPages
             GetSnacksMethod();
 
 
+
+        ListView.RefreshCommand = new Command(() => 
+        {
+            RefreshData();
+            ListView.IsRefreshing = false;
+        });
+
+
+        }
+        public void RefreshData()
+        {
+            GetSnacksMethod();
         }
 
-        public async void GetSnacksMethod()
+
+
+     public async Task GetSnacksMethod()
         {
            
             var result = await snackServiceManager.GetSnacksAsync();
@@ -36,12 +55,12 @@ namespace fondomerende.PostLoginPages
 
         private async void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-           var ans =  await DisplayAlert("Fondo Merende", "Vuoi davvero mangiare " + (e.SelectedItem as SnackDataDTO).name, "Si", "No");
+           var ans =  await DisplayAlert("Fondo Merende", "Vuoi davvero mangiare " + (e.SelectedItem as SnackDataDTO).friendly_name, "Si", "No");
 
             if (ans == true)
             {
                 await snackServiceManager.EatAsync((e.SelectedItem as SnackDataDTO).id, 1);
-                await DisplayAlert("Fondo Merende", (e.SelectedItem as SnackDataDTO).name + " mangiato/i", "ok");
+                await DisplayAlert("Fondo Merende", (e.SelectedItem as SnackDataDTO).friendly_name + " mangiato/i", "ok");
             }
             else
             {
