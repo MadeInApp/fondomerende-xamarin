@@ -16,6 +16,8 @@
     <None Remove="image\Fondo_Merende_logo.png" />
     <None Remove="image\macchinetta_merende.png" />
     <None Remove="image\macchinetta_minimalist.jpg" />
+    <None Remove="image\vm_icon.png" />
+    <None Remove="image\vm_icon_51x51.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -34,11 +36,14 @@
     <EmbeddedResource Include="image\macchinetta_minimalist.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="image\vm_icon.png" />
+    <EmbeddedResource Include="image\vm_icon_51x51.png" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Flurl" Version="2.8.2" />
     <PackageReference Include="Flurl.Http" Version="2.4.2" />
+    <PackageReference Include="Plugin.ImageCropper" Version="1.0.1" />
     <PackageReference Include="Xamarin.Forms" Version="4.0.0.425677" />
     <PackageReference Include="Xamarin.Essentials" Version="1.0.1" />
   </ItemGroup>
