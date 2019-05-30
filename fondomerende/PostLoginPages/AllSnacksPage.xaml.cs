@@ -35,7 +35,6 @@ namespace fondomerende
 
         private async void ListView_ItemTapped(object sender, SelectedItemChangedEventArgs e)
         {
-            
             await snackServiceManager.EatAsync((e.SelectedItem as SnackDataDTO).id, 1);
             await DisplayAlert("Fondo Merende", (e.SelectedItem as SnackDataDTO).name + " mangiato/i", "ok");
         }
