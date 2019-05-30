@@ -16,6 +16,7 @@
     <None Remove="image\Fondo_Merende_logo.png" />
     <None Remove="image\macchinetta_merende.png" />
     <None Remove="image\macchinetta_minimalist.jpg" />
+    <None Remove="image\roller.png" />
     <None Remove="image\vm_icon.png" />
     <None Remove="image\vm_icon_51x51.png" />
   </ItemGroup>
@@ -36,6 +37,9 @@
     <EmbeddedResource Include="image\macchinetta_minimalist.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="image\roller.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="image\vm_icon.png" />
     <EmbeddedResource Include="image\vm_icon_51x51.png" />
   </ItemGroup>
@@ -53,12 +57,6 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="PostLoginPages\InformationPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Update="PostLoginPages\SnackOptionsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
