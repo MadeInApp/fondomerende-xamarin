@@ -20,10 +20,12 @@ namespace fondomerende
         public string GetSnackName;
         public MainPage()
         {
+
             InitializeComponent();
-            NavPage.IconImageSource = ImageSource.FromResource("fondomerende.image.vm_icon_51x51.png");
-            
-           // vending_machine_logo.source = ImageSource.FromResource("fondomerende.image.vending-machine_icon.png");
+            SnacksNavPage.IconImageSource = ImageSource.FromResource("fondomerende.image.vm_icon_64x64.png");
+            SettingsNavPage.IconImageSource = ImageSource.FromResource("fondomerende.image.settings_icon_64x64.png");
+
+            // vending_machine_logo.source = ImageSource.FromResource("fondomerende.image.vending-machine_icon.png");
         }
 
       

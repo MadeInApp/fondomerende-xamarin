@@ -5,13 +5,13 @@
     xmlns:local="clr-namespace:fondomerende"
     x:Class="fondomerende.MainPage">
 
-    <NavigationPage Title="Snacks" IconImageSource="fondomerende.image.vm_icon_51x51.png" x:Name="NavPage">
+    <NavigationPage Title="Snacks"  x:Name="SnacksNavPage">
         <x:Arguments>
             <local:AllSnacksPage />
         </x:Arguments>
     </NavigationPage>
 
-    <NavigationPage Title="Impostazioni">
+    <NavigationPage Title="Impostazioni" x:Name="SettingsNavPage">
         <x:Arguments>
             <local:PostLoginPages.InformationPage />
         </x:Arguments>
