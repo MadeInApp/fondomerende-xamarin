@@ -22,7 +22,7 @@ namespace fondomerende
         public LoginPage()
         {
             InitializeComponent();
-            Fondo_Merende_logo.Source = ImageSource.FromResource("fondomerende.image.Fondo_Merende_logo.png");
+            Fondo_Merende_logo.Source = ImageSource.FromResource("fondomerende.image.macchinettaNew.png");
             NavigationPage.SetHasNavigationBar(this, false);
         }
 
