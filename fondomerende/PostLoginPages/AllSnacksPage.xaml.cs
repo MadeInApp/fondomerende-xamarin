@@ -20,8 +20,10 @@ namespace fondomerende.PostLoginPages
 
         public AllSnacksPage()
         {
+            NavigationPage.SetHasNavigationBar(this, false);
             InitializeComponent();
             GetSnacksMethod();
+
 
 
         }

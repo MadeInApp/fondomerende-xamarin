@@ -18,6 +18,7 @@ namespace fondomerende
     {
         private string username, password;
         private bool remember = false;
+        private bool wait = false;
         public LoginPage()
         {
             InitializeComponent();
@@ -34,33 +35,46 @@ namespace fondomerende
 
         private async void Bottone_ClickedAsync(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(usernameEntry.Text) && !string.IsNullOrEmpty(passwordEntry.Text))
-            {
-                username = usernameEntry.Text;
-                password = passwordEntry.Text;
-                LoginServiceManager loginService = new LoginServiceManager();
-                var response = await loginService.LoginAsync(username, password, remember);
-
-                if(response.response.success == true)
+            if (!wait)
+            {   //assicura che il tasto login venga premuto una volta
+                if (!string.IsNullOrEmpty(usernameEntry.Text) && !string.IsNullOrEmpty(passwordEntry.Text))
                 {
-                    App.Current.MainPage = new MainPage();
+                    username = usernameEntry.Text;
+                    password = passwordEntry.Text;
+
+                    LoginServiceManager loginService = new LoginServiceManager();
+                    var response = await loginService.LoginAsync(username, password, remember);
+
+                    if (response.response.success == true)
+                    {
+                        var page = new MainPage();
+                        App.Current.MainPage = new MainPage();
+                        wait = true;
+                    }
+                    else
+                    {
+                        await DisplayAlert("Fondo Merende", "Username o Password Errati", "OK");
+                    }
+
                 }
                 else
                 {
-                    await DisplayAlert("Fondo Merende", "Username o Password Errati", "OK");
+                    await DisplayAlert("Fondo Merende", "Username o Password mancanti", "OK");
                 }
-
             }
-            else
-            {
-                await DisplayAlert("Fondo Merende", "Username o Password mancanti", "OK");
-            }
+            wait = !wait;
         }
 
         private async void RegisterButton_ClickedAsync(object sender, EventArgs e)
         {
-           //App.Current.MainPage = new RegisterPage();
-            await Navigation.PushAsync(new RegisterPage());
+            if (!wait)
+            {
+                //App.Current.MainPage = new RegisterPage();
+                wait = true;
+
+                await Navigation.PushAsync(new RegisterPage());
+            }
+            wait = !wait;
         }
     }
 }

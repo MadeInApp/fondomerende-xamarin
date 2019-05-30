@@ -10,8 +10,7 @@
         <StackLayout>
             <ListView
                 x:Name="ListView"
-                ItemSelected="ListView_ItemSelected"
-                BackgroundColor="#F7C877">
+                ItemSelected="ListView_ItemSelected">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <TextCell Text="{Binding friendly_name}" Detail="{Binding id}"

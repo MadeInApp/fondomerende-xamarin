@@ -14,13 +14,14 @@ namespace fondomerende.PostLoginPages
     {
         public InformationPage()
         {
+            NavigationPage.SetHasNavigationBar(this, false);
             InitializeComponent();
         }
 
         private async void Bottone_ClickedAsync(object sender, EventArgs e)
         {
-            LogoutServiceManager loginService = new LogoutServiceManager();
-            var response = await loginService.LogoutAsync();
+            LogoutServiceManager logoutService = new LogoutServiceManager();
+            var response = await logoutService.LogoutAsync();
 
             if (response.response.success == true)
             {

@@ -39,7 +39,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="image\settings_icon_64x64.png" />
-    <EmbeddedResource Include="image\vm_icon.png" />
     <EmbeddedResource Include="image\vm_icon_51x51.png" />
     <EmbeddedResource Include="image\vm_icon_64x64.png" />
   </ItemGroup>

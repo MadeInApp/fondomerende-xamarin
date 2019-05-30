@@ -6,8 +6,9 @@
     x:Class="fondomerende.LoginPage"
          xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
             ios:Page.UseSafeArea="true"
-    BackgroundColor="{OnPlatform Android=#FFCC00, iOS=#FF9900, Default=#FF9900}">
-    
+    BackgroundColor="{OnPlatform Android=#cb3234, iOS=#FF9900, Default=#FF9900}"><!--FFCC00-->
+
+
     <Grid>
         <Grid
             Margin="{OnIdiom Phone=20, Default=100}"
@@ -57,8 +58,8 @@
                 Grid.Row="3"
                 Grid.Column="0"
                 x:Name="passwordEntry"
-                Placeholder="Password"
                 Text="pw"
+                Placeholder="Password"
                 IsPassword="True">
             </Entry>
 

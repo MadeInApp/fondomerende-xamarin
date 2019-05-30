@@ -3,15 +3,24 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:fondomerende.PostLoginPages"
-    x:Class="fondomerende.PostLoginPages.MainPage">
+    x:Class="fondomerende.PostLoginPages.MainPage"
+    SelectedTabColor="White"
+    UnselectedTabColor="Gray">
 
-    <NavigationPage Title="Snacks" IconImageSource="fondomerende.image.vm_icon_51x51.png" x:Name="SnacksNavPage">
+    <NavigationPage        
+        Title="Snacks"
+        IconImageSource="fondomerende.image.vm_icon_51x51.png" 
+        x:Name="SnacksNavPage">
         <x:Arguments>
             <local:AllSnacksPage />
         </x:Arguments>
+
+ 
     </NavigationPage>
 
-    <NavigationPage Title="Impostazioni" x:Name="SettingsNavPage">
+    <NavigationPage 
+        Title="Impostazioni" 
+        x:Name="SettingsNavPage">
         <x:Arguments>
             <local:InformationPage />
         </x:Arguments>
