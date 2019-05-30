@@ -6,7 +6,7 @@
     x:Class="fondomerende.LoginPage"
          xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
             ios:Page.UseSafeArea="true"
-    BackgroundColor="{OnPlatform Android=#cb3234, iOS=#FF9900, Default=#FF9900}"><!--FFCC00-->
+    BackgroundColor="{OnPlatform Android=#cb3234, iOS=#cb3234, Default=#FF9900}"><!--FFCC00-->
 
 
     <Grid>

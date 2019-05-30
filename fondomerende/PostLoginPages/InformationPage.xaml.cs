@@ -46,7 +46,7 @@ namespace fondomerende.PostLoginPages
 
             if (response.response.success == true)
             {
-                Navigation.RemovePage(this);
+                await Navigation.PopAsync();
                 Preferences.Clear("username");
                 Preferences.Clear("password");
                 Preferences.Clear("token");
