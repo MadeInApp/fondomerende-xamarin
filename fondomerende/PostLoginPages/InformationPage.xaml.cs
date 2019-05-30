@@ -15,13 +15,21 @@ namespace fondomerende.PostLoginPages
     {
         public InformationPage()
         {
-            NavigationPage.SetHasNavigationBar(this, false);
+
+
             InitializeComponent();
             LoggedAs.Text = "Loggato come: " + Preferences.Get("username", null);
             LoggedAs.Opacity = 0.5;
+
+
         }
 
-        private async void LogOut_ClickedAsync(object sender, EventArgs e)
+        private bool DevicePlatform(bool v1, bool v2, bool v3)
+        {
+            throw new NotImplementedException();
+        }
+
+        private async void LogOut_button_Clicked(object sender, EventArgs e)
         {
             LogoutServiceManager logoutService = new LogoutServiceManager();
             var response = await logoutService.LogoutAsync();
@@ -33,7 +41,7 @@ namespace fondomerende.PostLoginPages
                 Preferences.Clear("password");
                 Preferences.Clear("token");
                 Preferences.Clear("Logged");
-                
+
             }
             else
             {
