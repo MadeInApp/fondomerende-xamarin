@@ -5,12 +5,32 @@
     xmlns:local="clr-namespace:fondomerende"
     x:Class="fondomerende.LoginPage"
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-    ios:Page.UseSafeArea="true"
-    BackgroundColor="{OnPlatform Android={StaticResource ColorBackground}, iOS={StaticResource ColorBackground}, Default=#FF9900}"><!--FFCC00-->
+    ios:Page.UseSafeArea="true">
+    <!--BackgroundColor="{OnPlatform Android={StaticResource ColorBackground}, iOS={StaticResource ColorBackground}, Default=#FF9900}"--><!--FFCC00-->
 
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Image
+            Source="{local:EmbeddedImage Resource=fondomerende.image.LoginGradiente.png}"
+            Grid.Row="0"
+            Grid.Column="0"      
+            Scale="{OnIdiom Phone=1.8, Tablet=1.5}"
+            x:Name ="BackGradientArRos"
+            Margin="{OnPlatform iOS='0,0,0,80'}"
+            Aspect="AspectFit">
+        </Image>
+        
         <Grid
+            Grid.Row="0"
+            Grid.Column="0"
             Padding="{OnPlatform iOS=25}"
             Margin="{OnIdiom Phone=30, Default=100}"
             HorizontalOptions="FillAndExpand"
@@ -65,7 +85,7 @@
                     Margin="5,20,0,5"
                     Clicked="Bottone_ClickedAsync"
                     x:Name="bottone"
-                    TextColor="{StaticResource ColorBackground}"
+                    TextColor="{OnPlatform iOS={StaticResource ColorBackground}}"
                     Text="Log in"
                     Style="{OnPlatform Android={StaticResource FondomerendeButton}}">
                 <Button.IsVisible>
@@ -92,7 +112,7 @@
                         HorizontalOptions="Center"
                         Clicked="Bottone_ClickedAsync"
                         x:Name="bottone_iOS"
-                        TextColor="White"
+                        TextColor="{OnPlatform iOS={StaticResource ColorBackground}}"
                         Text="Log in">
                     </Button>
 
@@ -122,7 +142,7 @@
                     Clicked="RegisterButton_ClickedAsync"
                     x:Name="Register"
                     Text="Sign up"
-                    TextColor="{StaticResource ColorBackground}"
+                    TextColor="{OnPlatform iOS={StaticResource ColorBackground}}"
                     Style="{OnPlatform Android={StaticResource FondomerendeButton}}">
                 <Button.IsVisible>
                     <OnPlatform x:TypeArguments="x:Boolean"

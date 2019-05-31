@@ -16,6 +16,7 @@
     <None Remove="image\CheckBox_Checked_32x32.png" />
     <None Remove="image\CheckBox_empty_32x32.png" />
     <None Remove="image\Fondo_Merende_logo.png" />
+    <None Remove="image\LoginGradiente.png" />
     <None Remove="image\macchinettaNew.png" />
     <None Remove="image\macchinetta_merende.png" />
     <None Remove="image\macchinetta_minimalist.jpg" />
@@ -35,6 +36,9 @@
     <EmbeddedResource Include="image\CheckBox_Checked_32x32.png" />
     <EmbeddedResource Include="image\CheckBox_empty_32x32.png" />
     <EmbeddedResource Include="image\Fondo_Merende_logo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="image\LoginGradiente.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="image\macchinettaNew.png">
