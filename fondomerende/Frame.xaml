@@ -6,27 +6,6 @@
              mc:Ignorable="d"
              x:Class="fondomerende.Frame">
     <ViewCell.View>
-        <Frame 
-                                        HasShadow="true"
-                                        HeightRequest="65" 
-                                        WidthRequest="65" 
-                                        CornerRadius="37"
-                                        HorizontalOptions="Start" 
-                                        VerticalOptions="Start" 
-                                        Margin="0" 
-                                        Padding="0" 
-                                        BackgroundColor="AntiqueWhite">
-
-            <StackLayout Orientation="Horizontal">
-                <Label
-                                                Text="" 
-                                                FontSize="28"
-                                                TextColor="Black" 
-                                                HorizontalOptions="Center" 
-                                                VerticalOptions="Center" 
-                                                HorizontalTextAlignment="Center" 
-                                                VerticalTextAlignment="Center" />
-            </StackLayout>
-        </Frame>
+     
     </ViewCell.View>
 </ViewCell>

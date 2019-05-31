@@ -13,31 +13,31 @@ namespace fondomerende
     public partial class EditUserViewCell : ViewCell
     {
         public string firstLetterIcon;
-        public string friendly_name;
+        public string friendly_name = Preferences.Get("username", null);
         public EditUserViewCell()
         {
             InitializeComponent();
+            First_letter();
+            friendly_name = InformationFriendlyName();
 
-        InitializeComponent();
-        firstLetterIcon = First_letter();
-        friendly_name = InformationFriendlyName();
-    }
+        }
 
 
-    public string First_letter()        //Grafica
-    {
-            string firstLetter;
-            Preferences.Get("friendly_name", "");
+        public void First_letter()        //Grafica
+        {
+            string firstLetter = "";
+            Preferences.Get("friendly-name", "");
 
-            string[] strSplit = Preferences.Get("friendly_name", "").Split();
+            string[] strSplit = Preferences.Get("friendly-name", "").Split();
 
             foreach (string res in strSplit)
             {
                 firstLetter = (res.Substring(0, 1));
             }
-            return firstLetter;
+            inizialeLabel.Text = firstLetter;
         }
 
-        public string InformationFriendlyName() => Preferences.Get("friendly_name", "");
+        public string InformationFriendlyName() => Preferences.Get("friendly-name", "");
     }
 }
+

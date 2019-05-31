@@ -4,35 +4,41 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             xmlns:local="clr-namespace:fondomerende"
              x:Class="fondomerende.EditUserViewCell">
   <ViewCell.View>
-        <StackLayout Orientation="Horizontal"
-          HorizontalOptions="StartAndExpand"
-            VerticalOptions="StartAndExpand">
+      
+        <StackLayout
+            Orientation="Horizontal"
+            HorizontalOptions="StartAndExpand"
+            VerticalOptions="StartAndExpand">   
             <Frame 
-                                        HasShadow="true"
-                                        HeightRequest="65" 
-                                        WidthRequest="65" 
-                                        CornerRadius="65"
-                                        HorizontalOptions="Start" 
-                                        VerticalOptions="Start" 
-                                        Margin="0" 
-                                        Padding="0" 
-                                        BackgroundColor="AntiqueWhite">
+                HasShadow="true"
+                HeightRequest="65" 
+                WidthRequest="65" 
+                CornerRadius="32.5"
+                HorizontalOptions="Start" 
+                VerticalOptions="Start" 
+                Margin="0" 
+                Padding="0" 
+                BackgroundColor="AntiqueWhite">
 
-                <StackLayout Orientation="Horizontal">
+                <StackLayout 
+                    Orientation="Horizontal"
+                    HorizontalOptions="Center">
                     <Label
-                                                Text="{Binding FirstLetterIcon}" 
-                                                FontSize="28"
-                                                TextColor="Black" 
-                                                HorizontalOptions="Center" 
-                                                VerticalOptions="Center" 
-                                                HorizontalTextAlignment="Center" 
-                                                VerticalTextAlignment="Center" />
+                        x:Name="inizialeLabel"
+                        FontSize="28"
+                        TextColor="Black" 
+                        HorizontalOptions="Center" 
+                        VerticalOptions="Center" 
+                        HorizontalTextAlignment="Center" 
+                        VerticalTextAlignment="Center" />
                 </StackLayout>
             </Frame>
             <Label Text="{Binding .}"
-                   Margin="10,0,0,5">
+                   Margin="10,10,0,5"
+                   FontSize="20">
             </Label>
 
         </StackLayout>

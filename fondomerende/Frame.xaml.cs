@@ -12,7 +12,7 @@ namespace fondomerende
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Frame : ViewCell
     {
-        public string firstLetterIcon = "dd";
+        public string firstLetterIcon;
         public string friendly_name = Preferences.Get("username", null);
         public Frame()
         {
