@@ -7,9 +7,8 @@
              x:Class="fondomerende.PostLoginPages.InformationPage"
              BackgroundColor="{StaticResource ColorSnackBackground}"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-             ios:Page.UseSafeArea="true"
-              Title="{OnPlatform iOS='Impostazioni'}">
-    
+             ios:Page.UseSafeArea="true">
+
     <ContentPage.Content>
         
         <!--Layout utente-->
@@ -22,9 +21,9 @@
                 BackgroundColor="#F4f4f4">
                 
                 <Frame 
-                    HeightRequest="40" 
-                    WidthRequest="40" 
-                    CornerRadius="20" 
+                    HeightRequest="80" 
+                    WidthRequest="80" 
+                    CornerRadius="40" 
                     HorizontalOptions="Start" 
                     VerticalOptions="Start" 
                     Margin="0" 
@@ -43,9 +42,9 @@
                 
 
             </StackLayout>
-
-            <StackLayout>
-
+            
+            <!--<StackLayout>
+                
                 <Label
                         x:Name="LoggedAs"
                         HorizontalOptions="Center">
@@ -60,8 +59,8 @@
                         Style="{OnPlatform Android={StaticResource FondomerendeButton}}">
                 </Button>
 
-            </StackLayout>
-
+            </StackLayout>-->
+            
         </Grid>
             
     </ContentPage.Content>
