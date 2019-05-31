@@ -10,7 +10,7 @@ namespace fondomerende.Services.RESTServices
 {
     class UserServiceManager
     {
-        public string token = Manager.UserManager.Instance.token;
+
 
         //Servizio per ricevere i dati utente
         public async System.Threading.Tasks.Task<UserDTO> GetUserData()
@@ -18,7 +18,7 @@ namespace fondomerende.Services.RESTServices
 
             var response = await "http://192.168.0.175:8888/fondomerende/public/process-request.php?commandName=get-user-data"
                                 .WithCookie("auth-key", "metticiquellochetipare")
-                                .WithCookie("user-token", token)
+                                .WithCookie("user-token", Manager.UserManager.Instance.token)
                                 .GetJsonAsync<UserDTO>();
 
             if (response.response.success == true)

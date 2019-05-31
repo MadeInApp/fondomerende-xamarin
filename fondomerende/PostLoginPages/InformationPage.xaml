@@ -4,6 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             xmlns:local="clr-namespace:fondomerende"
              x:Class="fondomerende.PostLoginPages.InformationPage"
              BackgroundColor="{StaticResource ColorSnackBackground}"
              Title="Impostazioni"
@@ -11,77 +12,18 @@
              ios:Page.UseSafeArea="true">
 
     <ContentPage.Content>
-        
-        <!--Layout utente-->
-        <Grid                                                           
-            HorizontalOptions="StartAndExpand"
-            VerticalOptions="Center">
 
-            <StackLayout
-                Grid.Row="0"
-                BackgroundColor="#F4f4f4">
+        <TableView Intent="Settings">
+            <TableRoot>
+                <TableSection Title="Utente">
+                    <local:EditUserViewCell x:Name="EditUserViewCell">
+                    </local:EditUserViewCell>
+                </TableSection>
+                <TableSection  ios:Cell.DefaultBackgroundColor="Gray">
+                </TableSection>
+            </TableRoot>
 
-                <ListView x:Name="listView">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell Height="300">
-                                <StackLayout>
-                                    <Frame 
-                                        HasShadow="true"
-                                        HeightRequest="65" 
-                                        WidthRequest="65" 
-                                        CornerRadius="37"
-                                        HorizontalOptions="Start" 
-                                        VerticalOptions="Start" 
-                                        Margin="0" 
-                                        Padding="0" 
-                                        BackgroundColor="AntiqueWhite">
+        </TableView>
 
-                                        <StackLayout Orientation="Horizontal">
-                                            <Label
-                                                Text="122" 
-                                                FontSize="28"
-                                                TextColor="Black" 
-                                                HorizontalOptions="Center" 
-                                                VerticalOptions="Center" 
-                                                HorizontalTextAlignment="Center" 
-                                                VerticalTextAlignment="Center" />
-                                        </StackLayout>
-                                    </Frame>
-                                    <Label
-                                        Text="ddeqw" 
-                                        FontSize="28"
-                                        TextColor="Black" 
-                                        HorizontalOptions="Center" 
-                                        VerticalOptions="Center" 
-                                        HorizontalTextAlignment="Start" 
-                                        VerticalTextAlignment="Center" />
-                                </StackLayout>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </StackLayout>
-
-            <!--<StackLayout
-                Grid.Row="1">               
-                    <Label
-                        x:Name="LoggedAs"
-                        HorizontalOptions="Center">
-                    </Label>
-
-                    <Button
-                        VerticalOptions="Center"
-                        HorizontalOptions="FillAndExpand"
-                        Clicked="LogOut_button_Clicked"
-                        x:Name="LogOut_button"
-                        Text="Log out"
-                        Style="{OnPlatform Android={StaticResource FondomerendeButton}}">
-                    </Button>
-
-            </StackLayout>-->
-            
-        </Grid>
-            
     </ContentPage.Content>
 </ContentPage>
