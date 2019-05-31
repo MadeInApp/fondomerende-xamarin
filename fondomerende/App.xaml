@@ -4,7 +4,9 @@
 
         <ResourceDictionary>
 
-            <Color x:Key="ColorHeader">#FBB03B</Color>
+            <Color x:Key="ColorHeader">#FBB03B</Color> cb3234
+
+            <Color x:Key="ColorBackground">#cb3234</Color>
 
             <Color x:Key="ColorText">WhiteSmoke</Color>
 
@@ -18,11 +20,11 @@
 
             <Style x:Key="FondomerendeButton" TargetType="Button">
                 <!--<Setter Property="FontFamily" Value="{StaticResource OpenSans}" />-->
-                <Setter Property="TextColor" Value = "WhiteSmoke" />
+                <Setter Property="TextColor" Value = "{StaticResource ColorBackground}" />
                 <Setter Property="BorderRadius" Value = "20" />
                 <Setter Property="BorderColor" Value = "WhiteSmoke" />
                 <Setter Property="BorderWidth" Value = "0.75" />
-                <Setter Property="BackgroundColor" Value = "Transparent"/>
+                <Setter Property="BackgroundColor" Value = "WhiteSmoke"/>
                 <Setter Property="HeightRequest" Value = "40" />
                 <Setter Property="FontSize" Value = "15" />
             </Style>
