@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Text;
 using Xamarin.Essentials;
 using Xamarin.Forms;
+using System.Threading.Tasks;
+using System.ComponentModel;
 
 namespace fondomerende.Services.RESTServices
 {
@@ -30,7 +32,7 @@ namespace fondomerende.Services.RESTServices
             }
             else
             {
-                await DisplayAlert("Fondo Merende", "Username o Password Errati", "OK");
+                
             }
 
             return result;

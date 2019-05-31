@@ -21,7 +21,7 @@
 	<key>MinimumOSVersion</key>
 	<string>8.0</string>
 	<key>CFBundleDisplayName</key>
-	<string>fondomerende</string>
+	<string>Fondo Merende</string>
 	<key>CFBundleIdentifier</key>
 	<string>net.madeinapp.fondomerende</string>
 	<key>CFBundleVersion</key>
@@ -31,7 +31,7 @@
 	<key>CFBundleName</key>
 	<string>fondomerende</string>
 	<key>XSAppIconAssets</key>
-	<string>Assets.xcassets/AppIcon.appiconset</string>
+	<string>AppIcons.xcassets/AppIcons.appiconset</string>
 	<key>CFBundleDocumentTypes</key>
 	<array>
 		<dict>

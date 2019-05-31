@@ -88,15 +88,12 @@
                 Orientation="Horizontal"
                 Grid.Row="7"
                 Grid.Column="0">
-           
-                <StackLayout
+                <ImageButton    
                     HorizontalOptions="Center"
                     VerticalOptions="Center"
-                    WidthRequest="25"
-                    HeightRequest="25"
-                    BackgroundColor="White"
-                    x:Name="CheckBox">
-                </StackLayout>
+                    x:Name="CheckBox"
+                    Aspect="AspectFit">>
+                </ImageButton>
 
                 <Button
                     Clicked="RememberMeButton_Clicked"

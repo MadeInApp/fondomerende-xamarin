@@ -19,18 +19,29 @@ namespace fondomerende
         private string username, password;
         private bool remember = false;
         private bool wait = false;
+        bool clicked = false;
         public LoginPage()
         {
             InitializeComponent();
             Fondo_Merende_logo.Source = ImageSource.FromResource("fondomerende.image.macchinettaNew.png");
+            CheckBox.Source = ImageSource.FromResource("fondomerende.image.CheckBox_empty_32x32.png");
             NavigationPage.SetHasNavigationBar(this, false);
         }
 
         private void RememberMeButton_Clicked(object sender, EventArgs e) //Ricorda nome utente e pw (da fixare)
         {
             remember = !remember;
+            if (clicked == true)
+            {
+                clicked = false;
+                CheckBox.Source = ImageSource.FromResource("fondomerende.image.CheckBox_empty_32x32.png");
+            }
+            else
+            {
+                clicked = true;
+                CheckBox.Source = ImageSource.FromResource("fondomerende.image.CheckBox_Checked_32x32.png");
+            }
 
-            CheckBox.BackgroundColor = remember ? Color.Black : Color.White;
         }
 
         private async void Bottone_ClickedAsync(object sender, EventArgs e) //Effettua il Log In
