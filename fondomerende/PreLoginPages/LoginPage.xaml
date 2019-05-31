@@ -11,7 +11,8 @@
 
     <Grid>
         <Grid
-            Margin="{OnIdiom Phone=20, Default=100}"
+            Padding="{OnPlatform iOS=25}"
+            Margin="{OnIdiom Phone=30, Default=100}"
             HorizontalOptions="FillAndExpand"
             VerticalOptions="CenterAndExpand">
 
@@ -31,12 +32,13 @@
             </Grid.ColumnDefinitions>
 
             <Image
-                Margin="40"
                 Grid.Row="0"
                 Grid.Column="0"      
                 Scale="{OnIdiom Phone=1.8, Tablet=1.5}"
                 x:Name ="Fondo_Merende_logo"
+                Margin="{OnPlatform iOS='0,0,0,80'}"
                 Aspect="AspectFit">
+
             </Image>
 
             <Entry
@@ -63,19 +65,64 @@
                     Margin="5,20,0,5"
                     Clicked="Bottone_ClickedAsync"
                     x:Name="bottone"
+                    TextColor="White"
                     Text="Log in"
                     Style="{OnPlatform Android={StaticResource FondomerendeButton}}">
+                <Button.IsVisible>
+                    <OnPlatform x:TypeArguments="x:Boolean"
+                      iOS="false"
+                      Android="true"/>
+                </Button.IsVisible> 
             </Button>
+
+
+
+            <StackLayout
+                HorizontalOptions="Center"
+                Orientation="Horizontal"
+                Grid.Row="3"
+                Grid.Column="0">
+                <StackLayout.IsVisible>
+                    <OnPlatform x:TypeArguments="x:Boolean"
+                             iOS="True"
+                             Android="false"/>
+                </StackLayout.IsVisible>
+
+                    <Button
+                        HorizontalOptions="Center"
+                        Clicked="Bottone_ClickedAsync"
+                        x:Name="bottone_iOS"
+                        TextColor="White"
+                        Text="Log in">
+                    </Button>
+
+
+                    <ImageButton 
+                        Margin="30,0,0,0"
+                        x:Name="CheckBox_iOS"
+                        Aspect="AspectFit">
+                    </ImageButton>
+
+                    <Button
+                        Clicked="RememberMeButton_Clicked"
+                        x:Name="RememberMeiOS_Button"
+                        Text="Ricordami"
+                        TextColor="White"
+                        Style="{OnPlatform Android={StaticResource FondomerendeButton}}">
+                    </Button>
+                
+            </StackLayout>
 
 
             <Button
                     HorizontalOptions="FillAndExpand"
-                    Grid.Row="{OnPlatform Android=4, iOS=3}"
+                    Grid.Row="4"
                     Grid.Column="0"
                     Margin="5,0,0,5"
                     Clicked="RegisterButton_ClickedAsync"
                     x:Name="Register"
                     Text="Sign up"
+                    TextColor="White"
                     Style="{OnPlatform Android={StaticResource FondomerendeButton}}">
             </Button>
 
@@ -84,17 +131,24 @@
                 Orientation="Horizontal"
                 Grid.Row="5"
                 Grid.Column="0">
-                <ImageButton    
+                <StackLayout.IsVisible>
+                    <OnPlatform x:TypeArguments="x:Boolean"
+                             iOS="false"
+                             Android="true"/>
+                </StackLayout.IsVisible>
+                
+                    <ImageButton    
                     HorizontalOptions="Center"
                     VerticalOptions="Center"
                     x:Name="CheckBox"
-                    Aspect="AspectFit">>
+                    Aspect="AspectFit">
                 </ImageButton>
 
                 <Button
                     Clicked="RememberMeButton_Clicked"
                     x:Name="RememberMe_Button"
                     Text="Ricordami"
+                    TextColor="White"
                     Style="{OnPlatform Android={StaticResource FondomerendeButton}}">
                 </Button>
             </StackLayout>
@@ -103,3 +157,4 @@
 
 
 </ContentPage>
+
