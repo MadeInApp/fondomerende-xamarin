@@ -63,7 +63,6 @@
                     Margin="5,20,0,5"
                     Clicked="Bottone_ClickedAsync"
                     x:Name="bottone"
-                    TextColor="White"
                     Text="Log in"
                     Style="{OnPlatform Android={StaticResource FondomerendeButton}}">
             </Button>
@@ -71,13 +70,12 @@
 
             <Button
                     HorizontalOptions="FillAndExpand"
-                    Grid.Row="4"
+                    Grid.Row="{OnPlatform Android=4, iOS=3}"
                     Grid.Column="0"
                     Margin="5,0,0,5"
                     Clicked="RegisterButton_ClickedAsync"
                     x:Name="Register"
                     Text="Sign up"
-                    TextColor="White"
                     Style="{OnPlatform Android={StaticResource FondomerendeButton}}">
             </Button>
 
@@ -97,7 +95,6 @@
                     Clicked="RememberMeButton_Clicked"
                     x:Name="RememberMe_Button"
                     Text="Ricordami"
-                    TextColor="White"
                     Style="{OnPlatform Android={StaticResource FondomerendeButton}}">
                 </Button>
             </StackLayout>

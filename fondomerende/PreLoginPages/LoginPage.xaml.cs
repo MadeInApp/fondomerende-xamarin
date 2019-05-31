@@ -60,7 +60,7 @@ namespace fondomerende
                     if (response.response.success == true)
                     {
                         var page = new MainPage();
-                        await Navigation.PushAsync(new MainPage());
+                        App.Current.MainPage = new MainPage();
                         wait = true;
                     }
                     else

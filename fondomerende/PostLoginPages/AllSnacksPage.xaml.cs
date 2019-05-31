@@ -32,13 +32,15 @@ namespace fondomerende.PostLoginPages
             GetSnacksMethod();
 
             switch (Device.RuntimePlatform)                                                     //
-            {                                                                                   //
-                default:                                                                        //
-                    NavigationPage.SetHasNavigationBar(this, true);                             //
-                    break;                                                                      //   Se il dispositivo è Android non mostra la Top Bar della Navigation Page,
+            {                                                                                   //                                    
+                //   Se il dispositivo è Android non mostra la Top Bar della Navigation Page,
                 case Device.Android:                                                            //      Se è iOS invece si (perchè senza è una schifezza)
                     NavigationPage.SetHasNavigationBar(this, false);                            //
-                    break;                                                                      //
+                    break;
+
+                    default:                                                                        //
+                    NavigationPage.SetHasNavigationBar(this, true);                             //
+                    break;                                                           //
             }                                                                                   //
 
     
