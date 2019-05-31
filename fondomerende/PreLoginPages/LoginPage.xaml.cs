@@ -20,6 +20,8 @@ namespace fondomerende
         private bool remember = false;
         private bool wait = false;
         bool clicked = false;
+        UserServiceManager userService;
+
         public LoginPage()
         {
             InitializeComponent();
@@ -59,7 +61,9 @@ namespace fondomerende
 
                     if (response.response.success == true)
                     {
-                        App.Current.MainPage = new MainPage();
+                        userService = new UserServiceManager();
+                        await userService.GetUserData();   //informazioni utente
+                        App.Current.MainPage = new MainPage();                                       
                         wait = true;
                     }
                     else

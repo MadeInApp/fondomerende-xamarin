@@ -26,10 +26,10 @@ namespace fondomerende.PostLoginPages
 
         public AllSnacksPage()
         {
-         
-            
-            InitializeComponent();
+
             GetSnacksMethod();
+            InitializeComponent();
+            
 
             switch (Device.RuntimePlatform)                                                     //
             {                                                                                   //                                    

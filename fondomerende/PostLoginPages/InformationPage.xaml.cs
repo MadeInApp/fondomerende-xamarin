@@ -6,19 +6,23 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using System.ComponentModel;
 using Xamarin.Essentials;
+using fondomerende.Services.Models;
 
 namespace fondomerende.PostLoginPages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class InformationPage : ContentPage
     {
+        public object LoggedAs { get; }
 
         public InformationPage()
         {
             InitializeComponent();
-            LoggedAs.Text = "Loggato come: " + Preferences.Get("username", null);   //semplice testo che ti dice il nome dell'account con cui sei loggato
-            LoggedAs.Opacity = 0.5;
+            firstLetterIcon.Text = First_letter();
+            /*LoggedAs.Text = "Loggato come: " + Preferences.Get("username", null);   //semplice testo che ti dice il nome dell'account con cui sei loggato
+            LoggedAs.Opacity = 0.5;*/
             switch (Device.RuntimePlatform)             //Se il dispositivo è Android non mostra la Top Bar della Navigation Page, se è iOS la mostra
             {
                 default:
@@ -55,15 +59,18 @@ namespace fondomerende.PostLoginPages
             }
         }
 
-        public void First_letter()
+        public string First_letter()        //Grafica
         {
-            string username;
+            string firstLetter="";
+            Preferences.Get("friendly-name", "");
 
-            string[] strSplit = Preferences.Get("username",);
+            string[] strSplit = Preferences.Get("friendly-name", "").Split();
+                
             foreach (string res in strSplit)
             {
-                Console.Write(res.Substring(0, 1));
+                firstLetter = (res.Substring(0, 1));
             }
+            return firstLetter;
         }
     }
 }

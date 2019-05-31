@@ -20,25 +20,26 @@
                 Grid.Row="0"
                 BackgroundColor="#F4f4f4">
                 
-                <Grid
-                    HorizontalOptions="CenterAndExpand"
-                    VerticalOptions="Center">
-
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*" />
-                    </Grid.RowDefinitions>
-
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="0.2*" />
-                        <ColumnDefinition Width="0.8*" />
-                    </Grid.ColumnDefinitions>
+                <Frame 
+                    HeightRequest="40" 
+                    WidthRequest="40" 
+                    CornerRadius="20" 
+                    HorizontalOptions="Start" 
+                    VerticalOptions="Start" 
+                    Margin="0" 
+                    Padding="0" 
+                    BackgroundColor="Maroon">
                     
-                    
-
-
-
-                </Grid>
-
+                    <Label 
+                        x:Name="firstLetterIcon"
+                        Text="{Binding firstLetterIcon}" 
+                        TextColor="Black" 
+                        HorizontalOptions="Center" 
+                        VerticalOptions="Center" 
+                        HorizontalTextAlignment="Center" 
+                        VerticalTextAlignment="Center" />
+                </Frame>
+                
 
             </StackLayout>
             

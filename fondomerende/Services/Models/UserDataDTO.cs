@@ -6,7 +6,8 @@ using System.Text;
 namespace fondomerende.Services.Models
 {
     public class UserDataDTO
-    { 
+    {
+        [JsonProperty("name")]
         public string name { get; set; }
 
         [JsonProperty("friendly-name")]
@@ -14,9 +15,10 @@ namespace fondomerende.Services.Models
 
     }
 
-    [JsonObject("user")]
-    public class UserDataArrayDTO
+    
+    public class UserDataObjectDTO
     {
-        public List<UserDataDTO> user { get; set; }
+        [JsonProperty("user")]
+        public UserDataDTO userList { get; set; }
     }
 }

@@ -8,6 +8,6 @@ namespace fondomerende.Services.Models
     {
         public ResponseDTO response { get; set; }
 
-        public UserDataArrayDTO data { get; set; }
+        public UserDataObjectDTO data { get; set; }
     }
 }

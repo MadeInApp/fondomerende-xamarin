@@ -10,7 +10,7 @@
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     ios:Page.UseSafeArea="true">
 
-        <NavigationPage
+    |<NavigationPage
         Title="Snacks"
         IconImageSource="fondomerende.image.vm_icon_51x51.png" 
         x:Name="SnacksNavPage">
