@@ -14,7 +14,7 @@ namespace fondomerende.Services.RESTServices
 
         private static string token = UserManager.Instance.token;
 
-        public async System.Threading.Tasks.Task<SnackDTO> GetSnacksAsync()
+        public async System.Threading.Tasks.Task<SnackDTO> GetSnacksAsync() //  Servizio per Ottenere informazioni sugli snack mangiabili
         {
             var result = await "http://192.168.0.175:8888/fondomerende/public/process-request.php?commandName=get-to-eat-and-user-funds"
                             .WithCookie("auth-key", "metticiquellochetipare")
@@ -24,7 +24,7 @@ namespace fondomerende.Services.RESTServices
         }
 
         // iniziato ma devo aspettare l'input dall'utente
-        public async System.Threading.Tasks.Task<SnackDTO> GetSnackAsync(String GetSnackName)
+        public async System.Threading.Tasks.Task<SnackDTO> GetSnackAsync(String GetSnackName)  // Servizio per Ottenere informazioni su uno snack in particolare (non usato per ora)
         {
             var result = await "http://192.168.0.175:8888/fondomerende/public/process-request.php?commandName=get-snack-data&name="
                                 .WithCookie("auth-key", "metticiquellochetipare")
@@ -35,7 +35,7 @@ namespace fondomerende.Services.RESTServices
         
         }
 
-        public async System.Threading.Tasks.Task<SnackDTO> AddSnackAsync(String nome, double prezzo, int snackPerBox, int scadenzaGiorni, bool contabile)
+        public async System.Threading.Tasks.Task<SnackDTO> AddSnackAsync(String nome, double prezzo, int snackPerBox, int scadenzaGiorni, bool contabile) //Servizio per aggiungere snacks (non usato per ora)
         {
             var result = await "http://192.168.0.175:8888/fondomerende/public/process-request.php"
                                 .WithCookie("auth-key", "metticiquellochetipare")
@@ -46,7 +46,7 @@ namespace fondomerende.Services.RESTServices
 
         }
 
-        public async System.Threading.Tasks.Task<EatDTO> EatAsync(int idsnack, int quantity_snack)
+        public async System.Threading.Tasks.Task<EatDTO> EatAsync(int idsnack, int quantity_snack) //Servizio per mangiare uno snack
 
         {
             var result = await "http://192.168.0.175:8888/fondomerende/public/process-request.php"

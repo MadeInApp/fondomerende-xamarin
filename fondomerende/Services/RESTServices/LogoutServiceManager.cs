@@ -9,7 +9,7 @@ namespace fondomerende.Services.RESTServices
     class LogoutServiceManager
     {
         public string token = Manager.UserManager.Instance.token;
-        public async System.Threading.Tasks.Task<LogoutDTO> LogoutAsync()
+        public async System.Threading.Tasks.Task<LogoutDTO> LogoutAsync()   //Servizio di Log Out
         {
             var result = await "http://192.168.0.175:8888/fondomerende/public/process-request.php"
                 .WithCookie("auth-key", "metticiquellochetipare")

@@ -10,7 +10,7 @@ namespace fondomerende.Services.RESTServices
 {
     class RegisterServiceManager
     {
-        public async System.Threading.Tasks.Task<RegisterDTO> RegisterAsync(string username, string passwordToLogin, string friendly_name)
+        public async System.Threading.Tasks.Task<RegisterDTO> RegisterAsync(string username, string passwordToLogin, string friendly_name) //Servizio di Registrazione
         {
             var data = new Dictionary<string, string>();
             data.Add("commandName", "add-user");
