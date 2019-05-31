@@ -16,11 +16,17 @@ namespace fondomerende.PostLoginPages
     public partial class InformationPage : ContentPage
     {
         public object LoggedAs { get; }
+        public string firstLetterIcon = "dd";
+        public string friendly_name = "111";
 
         public InformationPage()
         {
             InitializeComponent();
-            firstLetterIcon.Text = First_letter();
+
+            listView.ItemsSource = new List<string> { "" };
+            
+            firstLetterIcon = First_letter();
+            friendly_name = InformationFriendlyName();
             /*LoggedAs.Text = "Loggato come: " + Preferences.Get("username", null);   //semplice testo che ti dice il nome dell'account con cui sei loggato
             LoggedAs.Opacity = 0.5;*/
             switch (Device.RuntimePlatform)             //Se il dispositivo è Android non mostra la Top Bar della Navigation Page, se è iOS la mostra
@@ -72,5 +78,7 @@ namespace fondomerende.PostLoginPages
             }
             return firstLetter;
         }
+
+        public string InformationFriendlyName() => Preferences.Get("friendly-name", "");
     }
 }

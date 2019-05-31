@@ -10,19 +10,16 @@
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     ios:Page.UseSafeArea="true">
 
-        <NavigationPage
-            Title="Snacks"
-            ios:NavigationPage.IsNavigationBarTranslucent="True"
-            IconImageSource="fondomerende.image.vm_icon_51x51.png" 
-            x:Name="SnacksNavPage"
-            BarBackgroundColor="{OnPlatform iOS=OrangeRed}"
-                         ios:NavigationPage.PrefersLargeTitles="True"
-            >
+    <NavigationPage
+        Title="Snacks"
+        ios:NavigationPage.IsNavigationBarTranslucent="True"
+        IconImageSource="fondomerende.image.vm_icon_51x51.png" 
+        x:Name="SnacksNavPage"
+        BarBackgroundColor="{OnPlatform iOS=OrangeRed}"
+        ios:NavigationPage.PrefersLargeTitles="True">
         <x:Arguments>
             <local:AllSnacksPage />
         </x:Arguments>
-    
- 
     </NavigationPage>
 
     <NavigationPage 

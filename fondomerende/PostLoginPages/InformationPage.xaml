@@ -20,50 +20,54 @@
                 Grid.Row="0"
                 BackgroundColor="#F4f4f4">
 
-                <Grid
-                    HorizontalOptions="CenterAndExpand"
-                    VerticalOptions="Center">
+                <ListView x:Name="listView">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell Height="300">
+                                <StackLayout>
+                                    <Frame 
+                                        HasShadow="true"
+                                        HeightRequest="65" 
+                                        WidthRequest="65" 
+                                        CornerRadius="37"
+                                        HorizontalOptions="Start" 
+                                        VerticalOptions="Start" 
+                                        Margin="0" 
+                                        Padding="0" 
+                                        BackgroundColor="AntiqueWhite">
 
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*" />
-                    </Grid.RowDefinitions>
-
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="0.2*" />
-                        <ColumnDefinition Width="0.8*" />
-                    </Grid.ColumnDefinitions>
-                </Grid>
-
-                <Frame 
-                    HeightRequest="80" 
-                    WidthRequest="80" 
-                    CornerRadius="40" 
-                    HorizontalOptions="Start" 
-                    VerticalOptions="Start" 
-                    Margin="0" 
-                    Padding="0" 
-                    BackgroundColor="Maroon">
-
-                    <Label 
-                        x:Name="firstLetterIcon"
-                        Text="{Binding firstLetterIcon}" 
-                        FontSize="28"
-                        TextColor="Black" 
-                        HorizontalOptions="Center" 
-                        VerticalOptions="Center" 
-                        HorizontalTextAlignment="Center" 
-                        VerticalTextAlignment="Center" />
-                </Frame>
-
-
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label
+                                                Text="122" 
+                                                FontSize="28"
+                                                TextColor="Black" 
+                                                HorizontalOptions="Center" 
+                                                VerticalOptions="Center" 
+                                                HorizontalTextAlignment="Center" 
+                                                VerticalTextAlignment="Center" />
+                                        </StackLayout>
+                                    </Frame>
+                                    <Label
+                                        Text="ddeqw" 
+                                        FontSize="28"
+                                        TextColor="Black" 
+                                        HorizontalOptions="Center" 
+                                        VerticalOptions="Center" 
+                                        HorizontalTextAlignment="Start" 
+                                        VerticalTextAlignment="Center" />
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
             </StackLayout>
 
-            <!--<StackLayout>
-                
-                <Label
+            <!--<StackLayout
+                Grid.Row="1">               
+                    <Label
                         x:Name="LoggedAs"
                         HorizontalOptions="Center">
-                     </Label>
+                    </Label>
 
                     <Button
                         VerticalOptions="Center"
