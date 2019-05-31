@@ -16,7 +16,7 @@ namespace fondomerende.PostLoginPages
 
         public InformationPage()
         {
-        InitializeComponent();
+            InitializeComponent();
             LoggedAs.Text = "Loggato come: " + Preferences.Get("username", null);   //semplice testo che ti dice il nome dell'account con cui sei loggato
             LoggedAs.Opacity = 0.5;
             switch (Device.RuntimePlatform)             //Se il dispositivo è Android non mostra la Top Bar della Navigation Page, se è iOS la mostra
@@ -46,13 +46,23 @@ namespace fondomerende.PostLoginPages
 
             if (response.response.success == true)
             {
-                await Navigation.PopAsync();
-
+                App.Current.MainPage = new LoginPage();
                 Preferences.Clear();
             }
             else
             {
                 await DisplayAlert("Fondo Merende", "Guarda, sta cosa non ha senso", "OK");
+            }
+        }
+
+        public void First_letter()
+        {
+            string username;
+
+            string[] strSplit = Preferences.Get("username",);
+            foreach (string res in strSplit)
+            {
+                Console.Write(res.Substring(0, 1));
             }
         }
     }

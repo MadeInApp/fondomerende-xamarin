@@ -24,7 +24,7 @@ namespace fondomerende.Services.RESTServices
         }
 
         // iniziato ma devo aspettare l'input dall'utente
-        public async System.Threading.Tasks.Task<SnackDTO> GetSnackAsync(String GetSnackName)  // Servizio per Ottenere informazioni su uno snack in particolare (non usato per ora)
+        public async System.Threading.Tasks.Task<SnackDTO> GetSnackAsync(string GetSnackName)  // Servizio per Ottenere informazioni su uno snack in particolare (non usato per ora)
         {
             var result = await "http://192.168.0.175:8888/fondomerende/public/process-request.php?commandName=get-snack-data&name="
                                 .WithCookie("auth-key", "metticiquellochetipare")
@@ -35,7 +35,7 @@ namespace fondomerende.Services.RESTServices
         
         }
 
-        public async System.Threading.Tasks.Task<SnackDTO> AddSnackAsync(String nome, double prezzo, int snackPerBox, int scadenzaGiorni, bool contabile) //Servizio per aggiungere snacks (non usato per ora)
+        public async System.Threading.Tasks.Task<SnackDTO> AddSnackAsync(string nome, double prezzo, int snackPerBox, int scadenzaGiorni, bool contabile) //Servizio per aggiungere snacks (non usato per ora)
         {
             var result = await "http://192.168.0.175:8888/fondomerende/public/process-request.php"
                                 .WithCookie("auth-key", "metticiquellochetipare")
