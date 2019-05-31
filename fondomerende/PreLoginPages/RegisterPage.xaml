@@ -6,7 +6,7 @@
     x:Class="fondomerende.RegisterPage"
          xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              ios:Page.UseSafeArea="true"
-    BackgroundColor="{OnPlatform Android=#FFCC00, iOS=#FF9900, Default=#FF9900}">
+    BackgroundColor="{OnPlatform Android={StaticResource ColorBackground}, iOS={StaticResource ColorBackground}, Default=#FF9900}">
 
     <Grid
         Margin="{OnIdiom Phone=20, Default=100}"
