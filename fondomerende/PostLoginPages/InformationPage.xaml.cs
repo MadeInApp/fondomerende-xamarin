@@ -57,13 +57,7 @@ namespace fondomerende.PostLoginPages
 
         public void First_letter()
         {
-            string username;
 
-            string[] strSplit = Preferences.Get("username",);
-            foreach (string res in strSplit)
-            {
-                Console.Write(res.Substring(0, 1));
-            }
         }
     }
 }

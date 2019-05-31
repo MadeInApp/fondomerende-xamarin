@@ -42,9 +42,9 @@
 
 
             </StackLayout>
-            
-            <!--<StackLayout>
-                
+
+            <StackLayout>
+
                 <Label
                         x:Name="LoggedAs"
                         HorizontalOptions="Center">
@@ -59,8 +59,8 @@
                         Style="{OnPlatform Android={StaticResource FondomerendeButton}}">
                 </Button>
 
-            </StackLayout>-->
-            
+            </StackLayout>
+
         </Grid>
             
     </ContentPage.Content>

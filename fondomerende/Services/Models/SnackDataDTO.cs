@@ -13,6 +13,8 @@ namespace fondomerende.Services.Models
 
         [JsonProperty("friendly-name")]
         public string friendly_name { get; set; }
+
+        [JsonProperty("price-per-snack")]
         public double price { get; set; }
         [JsonProperty("snack-per-box")]
         public int snack_per_box { get; set; }
