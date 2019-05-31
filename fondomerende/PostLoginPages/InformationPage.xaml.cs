@@ -46,12 +46,11 @@ namespace fondomerende.PostLoginPages
 
             if (response.response.success == true)
             {
-                await Navigation.PopAsync();
                 Preferences.Clear("username");
                 Preferences.Clear("password");
                 Preferences.Clear("token");
                 Preferences.Clear("Logged");
-
+                await Navigation.PopAsync();
             }
             else
             {
