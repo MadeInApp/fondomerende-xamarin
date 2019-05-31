@@ -15,6 +15,7 @@ namespace fondomerende
         public SnackViewCell()
         {
             InitializeComponent();
+           // GoogleImage_View.Source = ImageSource.FromResource("fondomerende.image.CheckBox_empty_32x32.png");
 
         }
     }

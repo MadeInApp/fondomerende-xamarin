@@ -74,7 +74,7 @@ namespace fondomerende.PostLoginPages
             if (ans == true)
             {
               await snackServiceManager.EatAsync((e.SelectedItem as SnackDataDTO).id, 1);
-              await DisplayAlert("Fondo Merende", (e.SelectedItem as SnackDataDTO).friendly_name + " mangiato/i", "ok");
+           //   await DisplayAlert("Fondo Merende", (e.SelectedItem as SnackDataDTO).friendly_name + " mangiato/i", "ok");
               await GetSnacksMethod();
             } 
             else

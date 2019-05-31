@@ -9,6 +9,13 @@
         <StackLayout
             Orientation="Horizontal"
             HorizontalOptions="FillAndExpand">
+            <Image
+                Margin="20,0,0,0"
+                x:Name="GoogleImage_View"
+                WidthRequest="40"
+                HeightRequest="40"
+                Source="{Binding name, StringFormat='http://192.168.0.175:8888/fondomerende/public/getphoto.php?name={0}'}">
+            </Image>
             <StackLayout
                 HorizontalOptions="StartAndExpand"
                 VerticalOptions="CenterAndExpand"

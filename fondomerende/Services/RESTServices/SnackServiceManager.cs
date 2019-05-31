@@ -11,7 +11,7 @@ namespace fondomerende.Services.RESTServices
 {
     class SnackServiceManager
     {
-
+       //http://192.168.0.175:8888/fondomerende/public/getphoto.php?name=
         private static string token = UserManager.Instance.token;
 
         public async System.Threading.Tasks.Task<SnackDTO> GetSnacksAsync() //  Servizio per Ottenere informazioni sugli snack mangiabili
