@@ -30,6 +30,16 @@
                 <Setter Property="FontSize" Value = "15" />
             </Style>
 
+            <Style x:Key="RemeberButton" TargetType="Button">
+                <!--<Setter Property="FontFamily" Value="{StaticResource OpenSans}" />-->
+                <Setter Property="BorderRadius" Value = "20" />
+                <Setter Property="BorderColor" Value = "White" />
+                <Setter Property="BorderWidth" Value = "0.75" />
+                <Setter Property="BackgroundColor" Value = "Transparent"/>
+                <Setter Property="HeightRequest" Value = "25" />
+                <Setter Property="WidthRequest" Value = "25" />
+            </Style>
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>

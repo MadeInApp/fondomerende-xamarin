@@ -54,9 +54,9 @@
             <Image
                 Grid.Row="0"
                 Grid.Column="0"      
-                Scale="{OnIdiom Phone=1.8, Tablet=1.5}"
+                Scale="{OnIdiom Phone=2.2, Tablet=1.5}"
                 x:Name ="Fondo_Merende_logo"
-                Margin="{OnPlatform iOS='0,0,0,80'}"
+                Margin="{OnPlatform iOS='0,0,0,80', Android='0,0,0,120'}"
                 Aspect="AspectFit">
 
             </Image>
@@ -169,8 +169,9 @@
             </Button>
 
             <StackLayout
-                HorizontalOptions="Center"
+                HorizontalOptions="Start"
                 Orientation="Horizontal"
+                Margin="5,0,0,0"
                 Grid.Row="5"
                 Grid.Column="0">
                 <StackLayout.IsVisible>
@@ -178,21 +179,23 @@
                              iOS="false"
                              Android="true"/>
                 </StackLayout.IsVisible>
-                
-                    <ImageButton    
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center"
-                    x:Name="CheckBox"
-                    Aspect="AspectFit">
-                </ImageButton>
 
                 <Button
                     Clicked="RememberMeButton_Clicked"
                     x:Name="RememberMe_Button"
-                    Text="Ricordami"
+                    Text=""
                     TextColor="{StaticResource ColorBackground}"
-                    Style="{OnPlatform Android={StaticResource FondomerendeButton}}">
+                    Style="{OnPlatform Android={StaticResource RemeberButton}}">
                 </Button>
+
+                <Label
+                    FontSize="Default"
+                    FontAttributes="Bold"
+                    Text="Remember me?"
+                    HorizontalOptions="Start"
+                    VerticalOptions="Center"
+                    TextColor="{OnPlatform Android = {StaticResource ColorText}}">
+                </Label>
             </StackLayout>
         </Grid>
     </Grid>
