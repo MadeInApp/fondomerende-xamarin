@@ -5,7 +5,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="fondomerende.PostLoginPages.AllSnacksPage"
-             BackgroundColor="{StaticResource ColorSnackBackground}">
+             BackgroundColor="{StaticResource ColorSnackBackground}"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true">
     <ContentPage.Content>
         <StackLayout>
             <ListView

@@ -26,45 +26,45 @@ namespace fondomerende.PostLoginPages
 
         public AllSnacksPage()
         {
+         
+            
             InitializeComponent();
             GetSnacksMethod();
-            switch (Device.RuntimePlatform)
-            {
-                default:
-                    NavigationPage.SetHasNavigationBar(this, true);
-                    break;
-                case Device.Android:
-                    NavigationPage.SetHasNavigationBar(this, false);
-                    break;
 
-            }
+            switch (Device.RuntimePlatform)                                                     //
+            {                                                                                   //
+                default:                                                                        //
+                    NavigationPage.SetHasNavigationBar(this, true);                             //
+                    break;                                                                      //   Se il dispositivo è Android non mostra la Top Bar della Navigation Page,
+                case Device.Android:                                                            //      Se è iOS invece si (perchè senza è una schifezza)
+                    NavigationPage.SetHasNavigationBar(this, false);                            //
+                    break;                                                                      //
+            }                                                                                   //
+
+    
+
+            ListView.RefreshCommand = new Command(async () =>                            //
+        {                                                                                //
+            await RefreshDataAsync();                                                    //
+            ListView.IsRefreshing = false;                                               //
+        });                                                                              //
+                                                                                         //
+                                                                                         // Pull to Refresh GetSnacksMethod()
+        }                                                                                //
+        public async Task RefreshDataAsync()                                             //
+        {                                                                                //
+           await GetSnacksMethod();                                                      //
+        }                                                                                //
 
 
 
-            ListView.RefreshCommand = new Command(async () => 
+     public async Task GetSnacksMethod()     //ottiene la lista degli snack e la applica alla ListView
         {
-            await RefreshDataAsync();
-            ListView.IsRefreshing = false;
-        });
-
-
-        }
-        public async Task RefreshDataAsync()
-        {
-           await GetSnacksMethod();
-        }
-
-
-
-     public async Task GetSnacksMethod()
-        {
-           
             var result = await snackServiceManager.GetSnacksAsync();
-            AllSnacks = result.data.snacks;
-            ListView.ItemsSource = AllSnacks;
+            ListView.ItemsSource = result.data.snacks;
         }
 
-        private async void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        private async void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)     //quando uno snack è tappato si apre un prompt in cui viene chiesto se lo si vuole mangiare
         {
             var ans =  await DisplayAlert("Fondo Merende", "Vuoi davvero mangiare " + (e.SelectedItem as SnackDataDTO).friendly_name + "?", "Si", "No");
 
@@ -73,11 +73,10 @@ namespace fondomerende.PostLoginPages
               await snackServiceManager.EatAsync((e.SelectedItem as SnackDataDTO).id, 1);
               await DisplayAlert("Fondo Merende", (e.SelectedItem as SnackDataDTO).friendly_name + " mangiato/i", "ok");
               await  GetSnacksMethod();
-
             } 
             else
             {
-                GetSnacksMethod();
+               await GetSnacksMethod();
             }
         }
     }

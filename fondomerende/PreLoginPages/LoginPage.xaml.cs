@@ -26,14 +26,14 @@ namespace fondomerende
             NavigationPage.SetHasNavigationBar(this, false);
         }
 
-        private void RememberMeButton_Clicked(object sender, EventArgs e)
+        private void RememberMeButton_Clicked(object sender, EventArgs e) //Ricorda nome utente e pw (da fixare)
         {
             remember = !remember;
 
             CheckBox.BackgroundColor = remember ? Color.Black : Color.White;
         }
 
-        private async void Bottone_ClickedAsync(object sender, EventArgs e)
+        private async void Bottone_ClickedAsync(object sender, EventArgs e) //Effettua il Log In
         {
             if (!wait)
             {   //assicura che il tasto login venga premuto una volta
@@ -65,13 +65,11 @@ namespace fondomerende
             wait = !wait;
         }
 
-        private async void RegisterButton_ClickedAsync(object sender, EventArgs e)
+        private async void RegisterButton_ClickedAsync(object sender, EventArgs e) //Mostra il form di registrazione
         {
             if (!wait)
             {
-                //App.Current.MainPage = new RegisterPage();
                 wait = true;
-
                 await Navigation.PushAsync(new RegisterPage());
             }
             wait = !wait;

@@ -16,11 +16,10 @@ namespace fondomerende.PostLoginPages
 
         public InformationPage()
         {
-            
-            InitializeComponent();
-            LoggedAs.Text = "Loggato come: " + Preferences.Get("username", null);
+        InitializeComponent();
+            LoggedAs.Text = "Loggato come: " + Preferences.Get("username", null);   //semplice testo che ti dice il nome dell'account con cui sei loggato
             LoggedAs.Opacity = 0.5;
-            switch (Device.RuntimePlatform)
+            switch (Device.RuntimePlatform)             //Se il dispositivo è Android non mostra la Top Bar della Navigation Page, se è iOS la mostra
             {
                 default:
                     NavigationPage.SetHasNavigationBar(this, true);
@@ -39,23 +38,21 @@ namespace fondomerende.PostLoginPages
             throw new NotImplementedException();
         }
 
-        private async void LogOut_button_Clicked(object sender, EventArgs e)
+        private async void LogOut_button_Clicked(object sender, EventArgs e)        //effettua il Log Out
         {
             LogoutServiceManager logoutService = new LogoutServiceManager();
             var response = await logoutService.LogoutAsync();
 
+
             if (response.response.success == true)
             {
                 await Navigation.PopAsync();
-                Preferences.Clear("username");
-                Preferences.Clear("password");
-                Preferences.Clear("token");
-                Preferences.Clear("Logged");
-
+                Navigation.RemovePage(this);
+                Preferences.Clear();
             }
             else
             {
-                await DisplayAlert("Fondo Merende", "Guarda, sarò franco. sta cosa non ha senso", "OK");
+                await DisplayAlert("Fondo Merende", "Guarda, sta cosa non ha senso", "OK");
             }
         }
     }
