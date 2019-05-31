@@ -13,12 +13,26 @@
         
         <!--Layout utente-->
         <Grid                                                           
-            HorizontalOptions="CenterAndExpand"
+            HorizontalOptions="StartAndExpand"
             VerticalOptions="Center">
 
             <StackLayout
                 Grid.Row="0"
                 BackgroundColor="#F4f4f4">
+                
+                <Grid
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="Center">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.2*" />
+                        <ColumnDefinition Width="0.8*" />
+                    </Grid.ColumnDefinitions>
+                </Grid>
                 
                 <Frame 
                     HeightRequest="80" 
@@ -42,22 +56,25 @@
                 
 
             </StackLayout>
+              <StackLayout>
+
+                     <Label
             
             <!--<StackLayout>
                 
                 <Label
                         x:Name="LoggedAs"
                         HorizontalOptions="Center">
-                </Label>
+                     </Label>
 
-                <Button
+                    <Button
                         VerticalOptions="Center"
                         HorizontalOptions="FillAndExpand"
                         Clicked="LogOut_button_Clicked"
                         x:Name="LogOut_button"
                         Text="Log out"
                         Style="{OnPlatform Android={StaticResource FondomerendeButton}}">
-                </Button>
+                    </Button>
 
             </StackLayout>-->
             

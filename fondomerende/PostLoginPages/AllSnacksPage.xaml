@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:fondomerende"
              mc:Ignorable="d"
              x:Class="fondomerende.PostLoginPages.AllSnacksPage"
-             BackgroundColor="{StaticResource ColorSnackBackground}"
+             BackgroundColor="{OnPlatform Android= {StaticResource ColorSnackBackground}, iOS= 'White'}"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              ios:Page.UseSafeArea="true"
              Title="{OnPlatform iOS='Snacks'}">
@@ -19,9 +19,9 @@
                 ItemSelected="ListView_ItemSelected"
                  IsRefreshing="{Binding IsBusy, Mode=OneWay}"
                 HasUnevenRows="True">
-
-                <ListView.ItemTemplate>
+            <ListView.ItemTemplate>
                     <DataTemplate>
+                        
                         <local:SnackViewCell x:Name="SnackCell"> </local:SnackViewCell> 
                     </DataTemplate>
                 </ListView.ItemTemplate>
