@@ -15,8 +15,9 @@
         ios:NavigationPage.IsNavigationBarTranslucent="True"
         IconImageSource="fondomerende.image.vm_icon_51x51.png" 
         x:Name="SnacksNavPage"
+        BarTextColor="{OnPlatform iOS='White'}"
         BarBackgroundColor="{OnPlatform iOS=OrangeRed}"
-        ios:NavigationPage.PrefersLargeTitles="True">
+        ios:NavigationPage.PrefersLargeTitles="false">
         <x:Arguments>
             <local:AllSnacksPage />
         </x:Arguments>
@@ -25,7 +26,7 @@
     <NavigationPage 
         Title="Impostazioni" 
         x:Name="SettingsNavPage"
-        ios:NavigationPage.PrefersLargeTitles="True"
+        ios:NavigationPage.PrefersLargeTitles="False"
         ios:NavigationPage.IsNavigationBarTranslucent="True"
         BarTextColor="{OnPlatform iOS='White'}"
         BarBackgroundColor="{OnPlatform iOS=OrangeRed}">
