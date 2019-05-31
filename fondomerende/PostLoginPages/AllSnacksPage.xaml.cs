@@ -75,6 +75,10 @@ namespace fondomerende.PostLoginPages
               await  GetSnacksMethod();
 
             } 
+            else
+            {
+                GetSnacksMethod();
+            }
         }
     }
 }
