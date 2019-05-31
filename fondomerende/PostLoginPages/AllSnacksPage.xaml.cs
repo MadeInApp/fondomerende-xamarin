@@ -45,6 +45,7 @@ namespace fondomerende.PostLoginPages
 
     
 
+
             ListView.RefreshCommand = new Command(async () =>                            //
         {                                                                                //
             await RefreshDataAsync();                                                    //
@@ -60,8 +61,14 @@ namespace fondomerende.PostLoginPages
 
 
 
-     public async Task GetSnacksMethod()     //ottiene la lista degli snack e la applica alla ListView
+        public async Task GetSnacksMethod()     //ottiene la lista degli snack e la applica alla ListView
         {
+            LoginServiceManager login = new LoginServiceManager();
+            var resultLogin = await login.LoginAsync(Preferences.Get("username", ""), Preferences.Get("password", ""), true);
+            if (!resultLogin.response.success)
+            {
+                App.Current.MainPage = new NavigationPage(new LoginPage());
+            }
             var result = await snackServiceManager.GetSnacksAsync();
             ListView.ItemsSource = result.data.snacks;
         }
@@ -73,7 +80,7 @@ namespace fondomerende.PostLoginPages
             if (ans == true)
             {
               await snackServiceManager.EatAsync((e.SelectedItem as SnackDataDTO).id, 1);
-              await DisplayAlert("Fondo Merende", (e.SelectedItem as SnackDataDTO).friendly_name + " mangiato/i", "ok");
+           //   await DisplayAlert("Fondo Merende", (e.SelectedItem as SnackDataDTO).friendly_name + " mangiato/i", "ok");
               await GetSnacksMethod();
             } 
             else

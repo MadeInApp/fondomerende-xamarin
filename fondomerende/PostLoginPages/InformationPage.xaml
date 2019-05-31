@@ -6,6 +6,7 @@
              mc:Ignorable="d"
              x:Class="fondomerende.PostLoginPages.InformationPage"
              BackgroundColor="{StaticResource ColorSnackBackground}"
+             Title="Impostazioni"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              ios:Page.UseSafeArea="true">
 

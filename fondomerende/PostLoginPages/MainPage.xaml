@@ -27,6 +27,7 @@
         x:Name="SettingsNavPage"
         ios:NavigationPage.PrefersLargeTitles="True"
         ios:NavigationPage.IsNavigationBarTranslucent="True"
+        BarTextColor="{OnPlatform iOS='White'}"
         BarBackgroundColor="{OnPlatform iOS=OrangeRed}">
         <x:Arguments>
             <local:InformationPage />

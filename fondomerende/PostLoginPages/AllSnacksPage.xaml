@@ -8,7 +8,7 @@
              x:Class="fondomerende.PostLoginPages.AllSnacksPage"
              BackgroundColor="{OnPlatform Android= {StaticResource ColorSnackBackground}, iOS= 'White'}"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-             ios:Page.UseSafeArea="true"
+             ios:Page.UseSafeArea="True"
              Title="{OnPlatform iOS='Snacks'}">
     <ContentPage.Content>
         <StackLayout>
@@ -17,7 +17,7 @@
                 IsPullToRefreshEnabled="False"
                 RefreshCommand="{Binding RefreshCommand}"
                 ItemSelected="ListView_ItemSelected"
-                 IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                IsRefreshing="{Binding IsBusy, Mode=OneWay}"
                 HasUnevenRows="True">
             <ListView.ItemTemplate>
                     <DataTemplate>
