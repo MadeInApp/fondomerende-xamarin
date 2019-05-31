@@ -30,15 +30,16 @@ namespace fondomerende
 
         private void RememberMeButton_Clicked(object sender, EventArgs e) //Ricorda nome utente e pw (da fixare)
         {
-            remember = !remember;
             if (clicked == true)
             {
                 clicked = false;
+                remember = !remember;
                 CheckBox.Source = ImageSource.FromResource("fondomerende.image.CheckBox_empty_32x32.png");
             }
             else
             {
                 clicked = true;
+                remember = !remember;
                 CheckBox.Source = ImageSource.FromResource("fondomerende.image.CheckBox_Checked_32x32.png");
             }
 
