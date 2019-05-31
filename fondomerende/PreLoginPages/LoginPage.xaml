@@ -63,6 +63,7 @@
                     Margin="5,20,0,5"
                     Clicked="Bottone_ClickedAsync"
                     x:Name="bottone"
+                    TextColor="White"
                     Text="Log in"
                     Style="{OnPlatform Android={StaticResource FondomerendeButton}}">
             </Button>
@@ -76,6 +77,7 @@
                     Clicked="RegisterButton_ClickedAsync"
                     x:Name="Register"
                     Text="Sign up"
+                    TextColor="White"
                     Style="{OnPlatform Android={StaticResource FondomerendeButton}}">
             </Button>
 
@@ -95,6 +97,7 @@
                     Clicked="RememberMeButton_Clicked"
                     x:Name="RememberMe_Button"
                     Text="Ricordami"
+                    TextColor="White"
                     Style="{OnPlatform Android={StaticResource FondomerendeButton}}">
                 </Button>
             </StackLayout>
