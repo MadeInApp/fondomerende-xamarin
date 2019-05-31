@@ -27,6 +27,7 @@ namespace fondomerende
             InitializeComponent();
             Fondo_Merende_logo.Source = ImageSource.FromResource("fondomerende.image.macchinettaNew.png");
             CheckBox.Source = ImageSource.FromResource("fondomerende.image.CheckBox_empty_32x32.png");
+            CheckBox_iOS.Source = ImageSource.FromResource("fondomerende.image.CheckBox_empty_32x32.png");
             NavigationPage.SetHasNavigationBar(this, false);
         }
 
@@ -37,12 +38,14 @@ namespace fondomerende
                 clicked = false;
                 remember = !remember;
                 CheckBox.Source = ImageSource.FromResource("fondomerende.image.CheckBox_empty_32x32.png");
+                CheckBox_iOS.Source = ImageSource.FromResource("fondomerende.image.CheckBox_empty_32x32.png");
             }
             else
             {
                 clicked = true;
                 remember = !remember;
                 CheckBox.Source = ImageSource.FromResource("fondomerende.image.CheckBox_Checked_32x32.png");
+                CheckBox_iOS.Source = ImageSource.FromResource("fondomerende.image.CheckBox_Checked_32x32.png");
             }
 
         }
