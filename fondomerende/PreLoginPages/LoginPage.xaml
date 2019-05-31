@@ -65,7 +65,7 @@
                     Margin="5,20,0,5"
                     Clicked="Bottone_ClickedAsync"
                     x:Name="bottone"
-                    TextColor="White"
+                    TextColor="{StaticResource ColorBackground}"
                     Text="Log in"
                     Style="{OnPlatform Android={StaticResource FondomerendeButton}}">
                 <Button.IsVisible>
@@ -122,8 +122,30 @@
                     Clicked="RegisterButton_ClickedAsync"
                     x:Name="Register"
                     Text="Sign up"
+                    TextColor="{StaticResource ColorBackground}"
+                    Style="{OnPlatform Android={StaticResource FondomerendeButton}}">
+                <Button.IsVisible>
+                    <OnPlatform x:TypeArguments="x:Boolean"
+                             iOS="False"
+                             Android="True"/>
+                </Button.IsVisible>
+            </Button>
+
+            <Button
+                    HorizontalOptions="FillAndExpand"
+                    Grid.Row="4"
+                    Grid.Column="0"
+                    Margin="5,0,0,5"
+                    Clicked="RegisterButton_ClickedAsync"
+                    x:Name="Register_iOS"
+                    Text="Sign up"
                     TextColor="White"
                     Style="{OnPlatform Android={StaticResource FondomerendeButton}}">
+                <Button.IsVisible>
+                    <OnPlatform x:TypeArguments="x:Boolean"
+                             iOS="True"
+                             Android="False"/>
+                </Button.IsVisible>
             </Button>
 
             <StackLayout
@@ -148,7 +170,7 @@
                     Clicked="RememberMeButton_Clicked"
                     x:Name="RememberMe_Button"
                     Text="Ricordami"
-                    TextColor="White"
+                    TextColor="{StaticResource ColorBackground}"
                     Style="{OnPlatform Android={StaticResource FondomerendeButton}}">
                 </Button>
             </StackLayout>
