@@ -20,7 +20,7 @@
 
             <Style x:Key="FondomerendeButton" TargetType="Button">
                 <!--<Setter Property="FontFamily" Value="{StaticResource OpenSans}" />-->
-                <Setter Property="TextColor" Value = "{StaticResource ColorBackground}" />
+                <Setter Property="TextColor" Value = "{StaticResource ColorBackground}"/>
                 <Setter Property="BorderRadius" Value = "20" />
                 <Setter Property="BorderColor" Value = "WhiteSmoke" />
                 <Setter Property="BorderWidth" Value = "0.75" />

@@ -4,8 +4,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:fondomerende"
     x:Class="fondomerende.LoginPage"
-         xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-            ios:Page.UseSafeArea="true"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    ios:Page.UseSafeArea="true"
     BackgroundColor="{OnPlatform Android={StaticResource ColorBackground}, iOS={StaticResource ColorBackground}, Default=#FF9900}"><!--FFCC00-->
 
 
@@ -41,22 +41,22 @@
 
             </Image>
 
-            <Entry
+            <local:LineEntry
                 Grid.Row="1"
                 Grid.Column="0"
                 x:Name="usernameEntry"
                 Text="StefanoVe"
                 Placeholder="Username">
-            </Entry>
+            </local:LineEntry>
 
-            <Entry
+            <local:LineEntry
                 Grid.Row="2"
                 Grid.Column="0"
                 x:Name="passwordEntry"
                 Text="pw"
                 Placeholder="Password"
                 IsPassword="True">
-            </Entry>
+            </local:LineEntry>
 
             <Button
                     HorizontalOptions="FillAndExpand"

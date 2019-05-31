@@ -47,7 +47,7 @@ namespace fondomerende.PostLoginPages
             if (response.response.success == true)
             {
                 await Navigation.PopAsync();
-                Navigation.RemovePage(this);
+
                 Preferences.Clear();
             }
             else
