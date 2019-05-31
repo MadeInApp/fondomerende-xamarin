@@ -19,7 +19,7 @@
             <StackLayout
                 Grid.Row="0"
                 BackgroundColor="#F4f4f4">
-                
+
                 <Grid
                     HorizontalOptions="CenterAndExpand"
                     VerticalOptions="Center">
@@ -33,7 +33,7 @@
                         <ColumnDefinition Width="0.8*" />
                     </Grid.ColumnDefinitions>
                 </Grid>
-                
+
                 <Frame 
                     HeightRequest="80" 
                     WidthRequest="80" 
@@ -43,23 +43,21 @@
                     Margin="0" 
                     Padding="0" 
                     BackgroundColor="Maroon">
-                    
+
                     <Label 
                         x:Name="firstLetterIcon"
                         Text="{Binding firstLetterIcon}" 
+                        FontSize="28"
                         TextColor="Black" 
                         HorizontalOptions="Center" 
                         VerticalOptions="Center" 
                         HorizontalTextAlignment="Center" 
                         VerticalTextAlignment="Center" />
                 </Frame>
-                
+
 
             </StackLayout>
-              <StackLayout>
 
-                     <Label
-            
             <!--<StackLayout>
                 
                 <Label
