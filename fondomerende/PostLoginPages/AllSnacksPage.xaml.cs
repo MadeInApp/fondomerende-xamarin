@@ -61,8 +61,14 @@ namespace fondomerende.PostLoginPages
 
 
 
-     public async Task GetSnacksMethod()     //ottiene la lista degli snack e la applica alla ListView
+        public async Task GetSnacksMethod()     //ottiene la lista degli snack e la applica alla ListView
         {
+            LoginServiceManager login = new LoginServiceManager();
+            var resultLogin = await login.LoginAsync(Preferences.Get("username", ""), Preferences.Get("password", ""), true);
+            if (!resultLogin.response.success)
+            {
+                App.Current.MainPage = new NavigationPage(new LoginPage());
+            }
             var result = await snackServiceManager.GetSnacksAsync();
             ListView.ItemsSource = result.data.snacks;
         }

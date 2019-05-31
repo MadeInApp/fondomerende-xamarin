@@ -12,13 +12,12 @@ namespace fondomerende.Services.RESTServices
     class SnackServiceManager
     {
        //http://192.168.0.175:8888/fondomerende/public/getphoto.php?name=
-        private static string token = UserManager.Instance.token;
 
         public async System.Threading.Tasks.Task<SnackDTO> GetSnacksAsync() //  Servizio per Ottenere informazioni sugli snack mangiabili
         {
             var result = await "http://192.168.0.175:8888/fondomerende/public/process-request.php?commandName=get-to-eat-and-user-funds"
                             .WithCookie("auth-key", "metticiquellochetipare")
-                            .WithCookie("user-token", token)
+                            .WithCookie("user-token", UserManager.Instance.token)
                             .GetJsonAsync<SnackDTO>();
             return result;
         }
@@ -28,7 +27,7 @@ namespace fondomerende.Services.RESTServices
         {
             var result = await "http://192.168.0.175:8888/fondomerende/public/process-request.php?commandName=get-snack-data&name="
                                 .WithCookie("auth-key", "metticiquellochetipare")
-                                .WithCookie("user-token", token)
+                                .WithCookie("user-token", UserManager.Instance.token)
                                 .PostUrlEncodedAsync(new { commandName = "get-snack-data", name = GetSnackName })
                                 .ReceiveJson<SnackDTO>();
             return result;
@@ -39,7 +38,7 @@ namespace fondomerende.Services.RESTServices
         {
             var result = await "http://192.168.0.175:8888/fondomerende/public/process-request.php"
                                 .WithCookie("auth-key", "metticiquellochetipare")
-                                .WithCookie("user-token", token)
+                                .WithCookie("user-token", UserManager.Instance.token)
                                 .PostUrlEncodedAsync(new { commandName = "add-snack", name = nome, price = prezzo, snack_per_box = snackPerBox, expiration_in_days = scadenzaGiorni, countable = contabile } )
                                 .ReceiveJson<SnackDTO>();
             return result;
@@ -51,7 +50,7 @@ namespace fondomerende.Services.RESTServices
         {
             var result = await "http://192.168.0.175:8888/fondomerende/public/process-request.php"
             .WithCookie("auth-key", "metticiquellochetipare")
-            .WithCookie("user-token", token)
+            .WithCookie("user-token", UserManager.Instance.token)
             .PostUrlEncodedAsync(new { commandName = "eat", id = idsnack, quantity = quantity_snack })
             .ReceiveJson<EatDTO>();
 
