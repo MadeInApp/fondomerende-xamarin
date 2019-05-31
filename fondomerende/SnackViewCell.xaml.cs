@@ -15,6 +15,7 @@ namespace fondomerende
         public SnackViewCell()
         {
             InitializeComponent();
+
         }
     }
 }
