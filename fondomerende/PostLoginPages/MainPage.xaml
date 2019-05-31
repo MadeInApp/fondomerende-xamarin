@@ -16,7 +16,6 @@
         x:Name="SnacksNavPage">
         <x:Arguments>
             <local:AllSnacksPage />
-
         </x:Arguments>
     
  

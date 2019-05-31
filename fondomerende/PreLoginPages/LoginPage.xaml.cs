@@ -59,7 +59,6 @@ namespace fondomerende
 
                     if (response.response.success == true)
                     {
-                        var page = new MainPage();
                         App.Current.MainPage = new MainPage();
                         wait = true;
                     }
@@ -86,6 +85,8 @@ namespace fondomerende
             }
             wait = !wait;
         }
+
+        
     }
 }
 
