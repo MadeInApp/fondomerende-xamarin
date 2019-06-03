@@ -48,8 +48,11 @@ namespace fondomerende.GraphicInterfaces
             Color color = c.GetRandomColor();
             Cerchio.BackgroundColor = color;
 
+            LogoutViewCell logoutView = new LogoutViewCell();
+            logoutView.SetImageColor(color);
 
-            Preferences.Set("Colore", "#" + color.R.ToString("X2") + color.G.ToString("X2") + color.B.ToString("X2"));
+
+            //Preferences.Set("Colore", "#" + color.R.ToString("X2") + color.G.ToString("X2") + color.B.ToString("X2"));
         }
 
 

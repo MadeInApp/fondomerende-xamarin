@@ -14,7 +14,7 @@ namespace fondomerende
             Color[] color = new Color[] { Color.FromHex("#FFFFFF"), Color.FromHex("#E01F25"), Color.FromHex("FFBF18"), Color.FromHex("41FF32"),
             Color.FromHex("00A000"), Color.FromHex("00C196"), Color.FromHex("#00323F") };
 
-
+            //string[] color = new string[] { "#FFFFFF", "#E01F25", "#FFBF18", "#41FF32", "#00A000", "#00C196", "#00323F" };
             int numeroCasuale = random.Next(0, color.Length);
 
             return color[numeroCasuale];

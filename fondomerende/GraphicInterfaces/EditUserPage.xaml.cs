@@ -57,6 +57,10 @@ namespace fondomerende.GraphicInterfaces
             {
                 await DisplayAlert("Fondo Merende", "Password Errata", "Ok");
             }
+
+            
         }
+        private async void CancelButton_Clicked(object sender, EventArgs e) => await Navigation.PopAsync();
+        
     }
 }
