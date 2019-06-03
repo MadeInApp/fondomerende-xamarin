@@ -15,7 +15,11 @@ namespace fondomerende.Services.RESTServices
                                 .WithCookie("auth-key", "metticiquellochetipare")
                                 .WithCookie("user-token", Manager.UserManager.Instance.token)
                                 .GetJsonAsync<UserFundsDTO>();
-            return response;
+           if(response.response.success)
+            {
+                return response;
+            }
+            return null;
 
         }
 

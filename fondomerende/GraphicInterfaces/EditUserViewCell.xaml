@@ -19,7 +19,8 @@
                 VerticalOptions="Center" 
                 Margin="5" 
                 Padding="0" 
-                BackgroundColor="Gray">
+                BackgroundColor="Gray"
+                IsEnabled="False">
 
                 <StackLayout 
                     Orientation="Horizontal"
@@ -34,13 +35,21 @@
                         VerticalTextAlignment="Center" />
                 </StackLayout>
             </Frame>
-            
-            <Label 
-                VerticalOptions="Center"
-                x:Name="friendly_name"
-                FontSize="20">
-            </Label>
 
+
+            <StackLayout>
+                <Label 
+                Margin="10,10,0,5"
+                FontSize="22"
+                FontAttributes="Bold"
+                x:Name="friendly_name">
+                </Label>
+
+                <Label 
+                Margin="10,0,10,100"
+                FontSize="16"
+                Opacity="0.5"
+                x:Name="username"
             <Label 
                 x:Name="FundsAmmount"
                 Margin="0,0,0,0"
@@ -51,6 +60,9 @@
             <Button
                 HorizontalOptions="EndAndExpand"
                 VerticalOptions="Center"
+                HorizontalOptions="Start">
+                </Label>
+            </StackLayout>
                 Grid.Row="3"
                 Grid.Column="0"
                 Margin="0,0,20,0"
@@ -63,5 +75,5 @@
             </Button>
             
         </StackLayout>
-  </ViewCell.View>
+    </ViewCell.View>
 </ViewCell>

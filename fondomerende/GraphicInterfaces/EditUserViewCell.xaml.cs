@@ -19,7 +19,6 @@ namespace fondomerende.GraphicInterfaces
         public EditUserViewCell()
         {
             InitializeComponent();
-          
             First_letter();
             friendly_name.Text = InformationFriendlyName();
             Cerchio.BackgroundColor = Color.FromHex(Preferences.Get("Colore", "#CCCCCC"));
@@ -44,8 +43,7 @@ namespace fondomerende.GraphicInterfaces
 
         public string InformationFriendlyName() => Preferences.Get("friendly-name", "");
 
-        [Obsolete]
-        public async void Bottone_ClickedAsync(object sender, EventArgs e)  // modifica i vari colori 
+        public void Bottone_ClickedAsync(object sender, EventArgs e)  // modifica i vari colori 
         {
             ColorRandom c = new ColorRandom();
             Color color = c.GetRandomColor();
@@ -56,14 +54,6 @@ namespace fondomerende.GraphicInterfaces
 
 
             //Preferences.Set("Colore", "#" + color.R.ToString("X2") + color.G.ToString("X2") + color.B.ToString("X2"));
-        }
-
-        public async void GetFundsAsync()     //ottiene la lista degli snack e la applica alla ListView
-        {
-            UserFundsServiceManager funds = new UserFundsServiceManager();
-            var resultFunds = await funds.GetUserFunds();
-
-            x = resultFunds.data + "€";          
         }
     }
 }
