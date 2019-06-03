@@ -6,7 +6,7 @@ using Flurl.Http;
 
 namespace fondomerende.Services.RESTServices
 {
-    class UserFundsServiceMangaer
+    class UserFundsServiceManager
     {
         public async System.Threading.Tasks.Task<UserFundsDTO> GetUserFunds()
         {

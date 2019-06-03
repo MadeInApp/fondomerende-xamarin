@@ -18,11 +18,6 @@ namespace fondomerende
     {
         private string username, friendly_name, password, testpassword;
 
-        private async void Cancel_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PopAsync(true);
-        }
-
         public RegisterPage()
         {
             InitializeComponent();
@@ -73,7 +68,7 @@ namespace fondomerende
                 await DisplayAlert("Fondo Merende", "Inserire i campi obbligatori", "OK");
             }
         }
-
+        private async void CancelButton_Clicked(object sender, EventArgs e) => await Navigation.PopAsync();
     }
 }
 

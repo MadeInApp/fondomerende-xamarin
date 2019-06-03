@@ -36,9 +36,16 @@
             </Frame>
             
             <Label 
+                VerticalOptions="Center"
                 x:Name="friendly_name"
-                Margin="10,10,0,5"
                 FontSize="20">
+            </Label>
+
+            <Label 
+                x:Name="FundsAmmount"
+                Margin="0,0,0,0"
+                FontSize="15"
+                Opacity="0.6">
             </Label>
 
             <Button
@@ -50,7 +57,7 @@
                 Clicked="Bottone_ClickedAsync"
                 x:Name="bottone"
                 TextColor="#6495ed"
-                Text="Modifica Colore"
+                Text="Modifica"
                 Opacity="1"
                 BackgroundColor="Transparent">
             </Button>

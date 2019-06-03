@@ -14,6 +14,7 @@ namespace fondomerende.GraphicInterfaces
     public partial class EditUserViewCell : ViewCell
     {
         public string firstLetterIcon;
+        string x;
 
         public EditUserViewCell()
         {
@@ -22,6 +23,7 @@ namespace fondomerende.GraphicInterfaces
             First_letter();
             friendly_name.Text = InformationFriendlyName();
             Cerchio.BackgroundColor = Color.FromHex(Preferences.Get("Colore", "#CCCCCC"));
+            FundsAmmount.Text = x;  // da sistemare
 
         }
 
@@ -54,6 +56,14 @@ namespace fondomerende.GraphicInterfaces
 
 
             //Preferences.Set("Colore", "#" + color.R.ToString("X2") + color.G.ToString("X2") + color.B.ToString("X2"));
+        }
+
+        public async void GetFundsAsync()     //ottiene la lista degli snack e la applica alla ListView
+        {
+            UserFundsServiceManager funds = new UserFundsServiceManager();
+            var resultFunds = await funds.GetUserFunds();
+
+            x = resultFunds.data + "€";          
         }
     }
 }

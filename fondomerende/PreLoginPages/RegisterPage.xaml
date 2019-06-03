@@ -26,7 +26,25 @@
             Margin="{OnPlatform iOS='0,0,0,80'}"
             Aspect="AspectFit">
         </Image>
-        
+
+        <StackLayout
+                HeightRequest="80"
+                WidthRequest="80"
+                VerticalOptions="Start"
+                HorizontalOptions="End">
+
+            <ImageButton
+                    Source="{local:EmbeddedImage Resource=fondomerende.image.x.png}"
+                    HorizontalOptions="EndAndExpand"
+                    VerticalOptions="StartAndExpand"      
+                    BackgroundColor="Transparent"
+                    Scale="{OnIdiom Phone=0.7, Tablet=0.3}"
+                    x:Name ="CancelButton"
+                    Clicked="CancelButton_Clicked">
+            </ImageButton>
+
+        </StackLayout>
+
         <Grid
             Margin="{OnIdiom Phone=20, Default=100}"
             HorizontalOptions="Center"
@@ -46,9 +64,7 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-        
-        
-        
+
             <Label
                 Grid.Row="0"
                 Grid.Column="0"
@@ -132,13 +148,6 @@
                 Grid.Row="8"
                 Grid.Column="0">
 
-                <Button
-                    Margin="30"
-                    Clicked="Cancel_Clicked"
-                    x:Name="Cancel"
-                    Text="Cancel"
-                    Style="{OnPlatform Android={StaticResource FondomerendeButton}}">
-                </Button>
 
                 <Button
                     Margin="30"
