@@ -41,5 +41,10 @@ namespace fondomerende.GraphicInterfaces
         {
             throw new NotImplementedException();
         }
+
+        private void SetImageColor()
+        {
+            LogoutButton.BackgroundColor = Color.FromHex(Preferences.Get("Colore", null));
+        }
     }
 }

@@ -21,6 +21,7 @@ namespace fondomerende.GraphicInterfaces
           
             First_letter();
             friendly_name.Text = InformationFriendlyName();
+            Cerchio.BackgroundColor = Color.FromHex(Preferences.Get("Colore", null));
 
         }
 
@@ -44,7 +45,11 @@ namespace fondomerende.GraphicInterfaces
         public async void Bottone_ClickedAsync(object sender, EventArgs e)  // modifica i vari colori 
         {
             ColorRandom c = new ColorRandom();
-            Cerchio.BackgroundColor = c.GetRandomColor();
+            Color color = c.GetRandomColor();
+            Cerchio.BackgroundColor = color;
+
+
+            Preferences.Set("Colore", "#" + color.R.ToString("X2") + color.G.ToString("X2") + color.B.ToString("X2"));
         }
     }
 }
