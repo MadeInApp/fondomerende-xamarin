@@ -26,7 +26,7 @@
                     Source="{local:EmbeddedImage Resource=fondomerende.image.LogoutButtonMinimalist.png}"
                     Grid.Row="0"
                     Grid.Column="0"      
-                    Scale="{OnIdiom Phone=0.5, Tablet=1.5}"
+                    Scale="{OnIdiom Phone=0.8, Tablet=1.5}"
                     x:Name ="LogoutButton"
                     Aspect="AspectFit">
                 </Image>
@@ -47,7 +47,8 @@
                     <Label
                         Text="Effettua il Log out"
                         FontSize="12"
-                        TextColor="#9c9c9c">
+                        TextColor="#9c9c9c"
+                        Margin="0,0,0,5">
 
                     </Label>
 

@@ -18,11 +18,6 @@ namespace fondomerende
             InitializeComponent();
         }
 
-        private async Task ApplyChanges_Clicked(object sender, EventArgs e)
-        {
-         
-        }
-
         private async void ApplyChanges_Clicked_1(object sender, EventArgs e)
         {
             string username = Preferences.Get("username", null);
@@ -50,6 +45,12 @@ namespace fondomerende
             if (OldpasswordEntry.Text == Preferences.Get("password", null))
             {
                 var result = await editUser.EditUserAsync(FriendlyName, username, password);
+                  if (result.response.success == true)
+                    {
+                        await DisplayAlert("Fondo Merende", "Impostazioni Cambiate", "Ok");
+                        Preferences.Clear();
+                        App.Current.MainPage = new LoginPage();
+                  }
             }
             else
             {
