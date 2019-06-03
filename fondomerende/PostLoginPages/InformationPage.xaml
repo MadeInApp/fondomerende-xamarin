@@ -33,11 +33,11 @@
                 <TableSection
                     Title="Impostazioni"
                     TextColor="#6495ed">
+
                     <local:LogoutViewCell
                         x:Name="LogoutCell"
-                        IsEnabled="False">
-                    </local:LogoutViewCell>
-                    
+                        IsEnabled="True">
+                    </local:LogoutViewCell> 
                 </TableSection>
                 
             </TableRoot>

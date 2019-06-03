@@ -30,6 +30,7 @@ namespace fondomerende.Services.RESTServices
                 UserManager.Instance.token = result.data.token;
                 Preferences.Set("username", username);
                 Preferences.Set("password", passwordToLogin);
+                Preferences.Set("friendly-name", friendly_name);
             }
 
             return result;

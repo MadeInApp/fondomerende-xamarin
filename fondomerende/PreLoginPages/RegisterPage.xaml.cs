@@ -44,7 +44,7 @@ namespace fondomerende
                 {
 
                     RegisterServiceManager registerService = new RegisterServiceManager();
-                    var response = await registerService.RegisterAsync(username, friendly_name, password);
+                    var response = await registerService.RegisterAsync(username, password, friendly_name);
                     if (response.response.success == true && response.response.status == 201)
                     {
                         App.Current.MainPage = new MainPage();

@@ -11,7 +11,7 @@
         <StackLayout
             Orientation="Horizontal"
             HorizontalOptions="StartAndExpand"
-            VerticalOptions="StartAndExpand">   
+            VerticalOptions="StartAndExpand">
             <Frame
                 x:Name="Cerchio"
                 HasShadow="true"
@@ -21,8 +21,7 @@
                 HorizontalOptions="Start" 
                 VerticalOptions="Start" 
                 Margin="5" 
-                Padding="0" 
-                BackgroundColor="Gray">
+                Padding="0">
 
                 <StackLayout 
                     Orientation="Horizontal"
@@ -39,7 +38,7 @@
             </Frame>
             
             <Label 
-                Text="{Binding .}"
+                x:Name="friendly_name"
                 Margin="10,10,0,5"
                 FontSize="20">
             </Label>
@@ -52,7 +51,9 @@
                 x:Name="bottone"
                 TextColor="#6495ed"
                 Text="Modifica"
-                BackgroundColor="Transparent">
+                BackgroundColor="Transparent"
+                Font="Bold,10">
+
             </Button>
             
         </StackLayout>

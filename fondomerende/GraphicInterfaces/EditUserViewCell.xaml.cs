@@ -13,12 +13,12 @@ namespace fondomerende.GraphicInterfaces
     public partial class EditUserViewCell : ViewCell
     {
         public string firstLetterIcon;
-        public string friendly_name = Preferences.Get("friendly-name", "");
+
         public EditUserViewCell()
         {
             InitializeComponent();
             First_letter();
-            friendly_name = InformationFriendlyName();
+            friendly_name.Text = InformationFriendlyName();
 
         }
 
@@ -39,9 +39,10 @@ namespace fondomerende.GraphicInterfaces
 
         public string InformationFriendlyName() => Preferences.Get("friendly-name", "");
 
-        public async void Bottone_ClickedAsync(object sender, EventArgs e)
+        public async void Bottone_ClickedAsync(object sender, EventArgs e)  // modifica i vari colori 
         {
-         //   Cerchio.BackgroundColor = ColorRandom.GetRandomColor();
+            ColorRandom c = new ColorRandom();
+            Cerchio.BackgroundColor = c.GetRandomColor();
         }
     }
 }

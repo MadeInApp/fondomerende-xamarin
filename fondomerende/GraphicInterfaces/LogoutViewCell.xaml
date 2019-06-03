@@ -5,8 +5,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:local="clr-namespace:fondomerende"
              mc:Ignorable="d"
-             x:Class="fondomerende.GraphicInterfaces.LogoutViewCell">
-    
+             x:Class="fondomerende.GraphicInterfaces.LogoutViewCell"
+             Tapped="LogoutCellTapped">
 
     <ViewCell.View>
         <StackLayout 

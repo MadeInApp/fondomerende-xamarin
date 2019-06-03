@@ -12,7 +12,6 @@ namespace fondomerende.PostLoginPages
         UserServiceManager UserService = new UserServiceManager();
         
         public object LoggedAs { get; }
-        public string firstLetterIcon = "dd";
         public string friendly_name = Preferences.Get("username", "");
 
         public InformationPage()
