@@ -3,6 +3,7 @@ using fondomerende.Services.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Xamarin.Essentials;
 
 namespace fondomerende.Services.RESTServices
 {
@@ -16,7 +17,13 @@ namespace fondomerende.Services.RESTServices
                 .WithCookie("token", token)
                 .PostUrlEncodedAsync(new { commandName = "logout" })
                 .ReceiveJson<LogoutDTO>();
-            return result;
+           
+
+           if(result.response.success == true)
+           {
+                Preferences.Clear();
+           }
+           return result;
         }
     }
 }

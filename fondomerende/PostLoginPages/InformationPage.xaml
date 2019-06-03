@@ -4,7 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             xmlns:local="clr-namespace:fondomerende"
+             xmlns:local="clr-namespace:fondomerende.GraphicInterfaces"
              x:Class="fondomerende.PostLoginPages.InformationPage"
              BackgroundColor="{StaticResource ColorSnackBackground}"
              Title="Impostazioni"
@@ -13,15 +13,33 @@
 
     <ContentPage.Content>
 
-        <TableView Intent="Settings" HasUnevenRows="True">
-            <TableRoot >
-                <TableSection Title="Utente">
-                    <local:EditUserViewCell x:Name="EditUserViewCell"
-                                            IsEnabled="False">
+        <TableView 
+            Intent="Settings" 
+            HasUnevenRows="True">
+            <TableRoot>
+                <TableSection
+                    Title="Utente"
+                    TextColor="#6495ed">
+                    <local:EditUserViewCell
+                        x:Name="EditUserViewCell"
+                        IsEnabled="False">
                     </local:EditUserViewCell>
                 </TableSection>
-                <TableSection  ios:Cell.DefaultBackgroundColor="Gray">
+
+                <TableSection  
+                    ios:Cell.DefaultBackgroundColor="Gray">
                 </TableSection>
+
+                <TableSection
+                    Title="Impostazioni"
+                    TextColor="#6495ed">
+                    <local:LogoutViewCell
+                        x:Name="LogoutCell"
+                        IsEnabled="False">
+                    </local:LogoutViewCell>
+                    
+                </TableSection>
+                
             </TableRoot>
 
         </TableView>

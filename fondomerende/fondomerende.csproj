@@ -17,6 +17,7 @@
     <None Remove="image\CheckBox_empty_32x32.png" />
     <None Remove="image\Fondo_Merende_logo.png" />
     <None Remove="image\LoginGradiente.png" />
+    <None Remove="image\LogoutButtonMinimalist.png" />
     <None Remove="image\macchinettaNew.png" />
     <None Remove="image\macchinetta_merende.png" />
     <None Remove="image\macchinetta_minimalist.jpg" />
@@ -39,6 +40,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="image\LoginGradiente.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="image\LogoutButtonMinimalist.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="image\macchinettaNew.png">
@@ -64,16 +68,19 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="GraphicInterfaces\LogoutViewCell.xaml.cs">
+      <DependentUpon>LogoutViewCell.xaml</DependentUpon>
+    </Compile>
     <Compile Update="SnackViewCell.xaml.cs">
       <DependentUpon>SnackViewCell.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="EditUserViewCell.xaml">
+    <EmbeddedResource Update="GraphicInterfaces\EditUserViewCell.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Frame.xaml">
+    <EmbeddedResource Update="GraphicInterfaces\LogoutViewCell.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="SettingsTableView.xaml">
@@ -88,5 +95,9 @@
     <EmbeddedResource Update="PostLoginPages\InformationPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Exception\" />
   </ItemGroup>
 </Project>

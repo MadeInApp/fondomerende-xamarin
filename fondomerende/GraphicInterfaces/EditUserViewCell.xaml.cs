@@ -7,21 +7,23 @@ using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace fondomerende
+namespace fondomerende.GraphicInterfaces
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Frame : ViewCell
+    public partial class EditUserViewCell : ViewCell
     {
         public string firstLetterIcon;
-        public string friendly_name = Preferences.Get("username", null);
-        public Frame()
+        public string friendly_name = Preferences.Get("friendly-name", "");
+        public EditUserViewCell()
         {
             InitializeComponent();
-            firstLetterIcon = First_letter();
+            First_letter();
             friendly_name = InformationFriendlyName();
+
         }
 
-        public string First_letter()        //Grafica
+
+        public void First_letter()        //Grafica
         {
             string firstLetter = "";
             Preferences.Get("friendly-name", "");
@@ -32,9 +34,15 @@ namespace fondomerende
             {
                 firstLetter = (res.Substring(0, 1));
             }
-            return firstLetter;
+            inizialeLabel.Text = firstLetter;
         }
 
         public string InformationFriendlyName() => Preferences.Get("friendly-name", "");
+
+        public async void Bottone_ClickedAsync(object sender, EventArgs e)
+        {
+         //   Cerchio.BackgroundColor = ColorRandom.GetRandomColor();
+        }
     }
 }
+

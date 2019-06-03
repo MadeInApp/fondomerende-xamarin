@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ViewCell xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:fondomerende"
+             mc:Ignorable="d"
+             x:Class="fondomerende.GraphicInterfaces.LogoutViewCell">
+    
+
+    <ViewCell.View>
+        <StackLayout 
+            Orientation="Horizontal" 
+            VerticalOptions="Center">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.2*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Image
+                    Source="{local:EmbeddedImage Resource=fondomerende.image.LogoutButtonMinimalist.png}"
+                    Grid.Row="0"
+                    Grid.Column="0"      
+                    Scale="{OnIdiom Phone=0.5, Tablet=1.5}"
+                    x:Name ="LogoutButton"
+                    Aspect="AspectFit">
+                </Image>
+
+                <StackLayout
+                    VerticalOptions="Center"
+                    Grid.Row="0"
+                    Grid.Column="1">
+
+                    <Label
+                        VerticalOptions="End"                               
+                        Text="Log out"
+                        FontSize="14"
+                        TextColor="#000000">
+
+                    </Label>
+
+                    <Label
+                        Text="Effettua il Log out"
+                        FontSize="12"
+                        TextColor="#9c9c9c">
+
+                    </Label>
+
+                </StackLayout>
+            </Grid>
+        </StackLayout>
+    </ViewCell.View>
+</ViewCell>

@@ -1,14 +1,8 @@
 ﻿using fondomerende.Services.RESTServices;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using System.ComponentModel;
 using Xamarin.Essentials;
-using fondomerende.Services.Models;
 
 namespace fondomerende.PostLoginPages
 {
@@ -19,7 +13,7 @@ namespace fondomerende.PostLoginPages
         
         public object LoggedAs { get; }
         public string firstLetterIcon = "dd";
-        public string friendly_name = Preferences.Get("username", null);
+        public string friendly_name = Preferences.Get("username", "");
 
         public InformationPage()
         {

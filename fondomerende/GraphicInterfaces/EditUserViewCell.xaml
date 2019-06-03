@@ -5,23 +5,24 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              xmlns:local="clr-namespace:fondomerende"
-             x:Class="fondomerende.EditUserViewCell">
+             x:Class="fondomerende.GraphicInterfaces.EditUserViewCell">
   <ViewCell.View>
       
         <StackLayout
             Orientation="Horizontal"
             HorizontalOptions="StartAndExpand"
             VerticalOptions="StartAndExpand">   
-            <Frame 
+            <Frame
+                x:Name="Cerchio"
                 HasShadow="true"
-                HeightRequest="65" 
-                WidthRequest="65" 
+                HeightRequest="64" 
+                WidthRequest="64" 
                 CornerRadius="32.5"
                 HorizontalOptions="Start" 
                 VerticalOptions="Start" 
-                Margin="0" 
+                Margin="5" 
                 Padding="0" 
-                BackgroundColor="AntiqueWhite">
+                BackgroundColor="Gray">
 
                 <StackLayout 
                     Orientation="Horizontal"
@@ -36,11 +37,24 @@
                         VerticalTextAlignment="Center" />
                 </StackLayout>
             </Frame>
-            <Label Text="{Binding .}"
-                   Margin="10,10,0,5"
-                   FontSize="20">
+            
+            <Label 
+                Text="{Binding .}"
+                Margin="10,10,0,5"
+                FontSize="20">
             </Label>
 
+            <Button
+                Grid.Row="3"
+                Grid.Column="0"
+                Margin="0,0,10,0"
+                Clicked="Bottone_ClickedAsync"
+                x:Name="bottone"
+                TextColor="#6495ed"
+                Text="Modifica"
+                BackgroundColor="Transparent">
+            </Button>
+            
         </StackLayout>
   </ViewCell.View>
 </ViewCell>

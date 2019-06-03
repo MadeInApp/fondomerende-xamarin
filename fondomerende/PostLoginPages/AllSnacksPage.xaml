@@ -10,6 +10,7 @@
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              ios:Page.UseSafeArea="True"
              Title="{OnPlatform iOS='Snacks'}">
+    
     <ContentPage.Content>
         <StackLayout>
             <ListView

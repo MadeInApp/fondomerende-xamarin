@@ -13,7 +13,7 @@ namespace fondomerende
         {
             InitializeComponent();
 
-            if(Preferences.Get("Logged", false))
+            if (Preferences.Get("Logged", false))
             {
                 MainPage = new MainPage();
             }
@@ -38,5 +38,6 @@ namespace fondomerende
         {
             // Handle when your app resumes
         }
+
     }
 }
