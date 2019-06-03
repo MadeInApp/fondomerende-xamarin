@@ -6,8 +6,7 @@
              mc:Ignorable="d"
              xmlns:local="clr-namespace:fondomerende"
              x:Class="fondomerende.GraphicInterfaces.EditUserViewCell">
-  <ViewCell.View>
-      
+    <ViewCell.View>
         <StackLayout
             Orientation="Horizontal"
             HorizontalOptions="StartAndExpand"
@@ -19,9 +18,10 @@
                 WidthRequest="64" 
                 CornerRadius="32.5"
                 HorizontalOptions="Start" 
-                VerticalOptions="Start" 
+                VerticalOptions="Center" 
                 Margin="5" 
-                Padding="0">
+                Padding="0" 
+                BackgroundColor="Gray">
 
                 <StackLayout 
                     Orientation="Horizontal"
@@ -51,9 +51,7 @@
                 x:Name="bottone"
                 TextColor="#6495ed"
                 Text="Modifica"
-                BackgroundColor="Transparent"
-                Font="Bold,10">
-
+                BackgroundColor="Transparent">
             </Button>
             
         </StackLayout>

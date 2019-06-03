@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using fondomerende.Services.RESTServices;
 
 namespace fondomerende.GraphicInterfaces
 {
@@ -17,6 +18,7 @@ namespace fondomerende.GraphicInterfaces
         public EditUserViewCell()
         {
             InitializeComponent();
+          
             First_letter();
             friendly_name.Text = InformationFriendlyName();
 
