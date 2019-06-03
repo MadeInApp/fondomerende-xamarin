@@ -9,8 +9,30 @@
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              ios:Page.UseSafeArea="True"
              Title="{OnPlatform iOS='Modifica Utente'}">
+    
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout
+            BackgroundColor="Aqua">
+            <StackLayout
+                HeightRequest="50"
+                WidthRequest="50"
+                VerticalOptions="Start"
+                HorizontalOptions="End">
+
+                <ImageButton
+                    Source="{local:EmbeddedImage Resource=fondomerende.image.x.png}"
+                    HorizontalOptions="EndAndExpand"
+                    VerticalOptions="StartAndExpand"      
+                    BackgroundColor="Transparent"
+                    Scale="{OnIdiom Phone=1, Tablet=0.3}"
+                    x:Name ="CancelButton"
+                    Clicked="CancelButton_Clicked">
+                </ImageButton>
+                
+            </StackLayout>
+            
+            
+            
             <local:LineEntry 
                 HorizontalOptions="StartAndExpand" 
                 Placeholder="Cambia Username      " 
@@ -43,6 +65,8 @@
                 x:Name="ApplyChanges" 
                 Clicked="ApplyChanges_Clicked_1" 
                 VerticalOptions="EndAndExpand"/>
+
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

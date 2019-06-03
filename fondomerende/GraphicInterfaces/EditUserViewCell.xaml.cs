@@ -42,14 +42,18 @@ namespace fondomerende.GraphicInterfaces
 
         public string InformationFriendlyName() => Preferences.Get("friendly-name", "");
 
+        [Obsolete]
         public async void Bottone_ClickedAsync(object sender, EventArgs e)  // modifica i vari colori 
         {
             ColorRandom c = new ColorRandom();
             Color color = c.GetRandomColor();
             Cerchio.BackgroundColor = color;
 
+            LogoutViewCell logoutView = new LogoutViewCell();
+            logoutView.SetImageColor(color);
 
-            Preferences.Set("Colore", "#" + color.R.ToString("X2") + color.G.ToString("X2") + color.B.ToString("X2"));
+
+            //Preferences.Set("Colore", "#" + color.R.ToString("X2") + color.G.ToString("X2") + color.B.ToString("X2"));
         }
     }
 }
