@@ -19,7 +19,8 @@
                 VerticalOptions="Center" 
                 Margin="5" 
                 Padding="0" 
-                BackgroundColor="Gray">
+                BackgroundColor="Gray"
+                IsEnabled="False">
 
                 <StackLayout 
                     Orientation="Horizontal"
@@ -34,27 +35,25 @@
                         VerticalTextAlignment="Center" />
                 </StackLayout>
             </Frame>
-            
-            <Label 
-                x:Name="friendly_name"
-                Margin="10,10,0,5"
-                FontSize="20">
-            </Label>
 
-            <Button
-                HorizontalOptions="EndAndExpand"
+
+            <StackLayout>
+                <Label 
+                Margin="10,10,0,5"
+                FontSize="22"
+                FontAttributes="Bold"
+                x:Name="friendly_name">
+                </Label>
+
+                <Label 
+                Margin="10,0,10,100"
+                FontSize="16"
+                Opacity="0.5"
+                x:Name="username"
                 VerticalOptions="Center"
-                Grid.Row="3"
-                Grid.Column="0"
-                Margin="0,0,20,0"
-                Clicked="Bottone_ClickedAsync"
-                x:Name="bottone"
-                TextColor="#6495ed"
-                Text="Modifica Colore"
-                Opacity="1"
-                BackgroundColor="Transparent">
-            </Button>
-            
+                HorizontalOptions="Start">
+                </Label>
+            </StackLayout>
         </StackLayout>
-  </ViewCell.View>
+    </ViewCell.View>
 </ViewCell>

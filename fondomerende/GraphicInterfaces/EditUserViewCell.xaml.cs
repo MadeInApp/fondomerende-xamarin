@@ -18,10 +18,10 @@ namespace fondomerende.GraphicInterfaces
         public EditUserViewCell()
         {
             InitializeComponent();
-          
             First_letter();
             friendly_name.Text = InformationFriendlyName();
             Cerchio.BackgroundColor = Color.FromHex(Preferences.Get("Colore", "#CCCCCC"));
+          //  GetFundsMethod();
 
         }
 
@@ -42,7 +42,7 @@ namespace fondomerende.GraphicInterfaces
 
         public string InformationFriendlyName() => Preferences.Get("friendly-name", "");
 
-        public async void Bottone_ClickedAsync(object sender, EventArgs e)  // modifica i vari colori 
+        public void Bottone_ClickedAsync(object sender, EventArgs e)  // modifica i vari colori 
         {
             ColorRandom c = new ColorRandom();
             Color color = c.GetRandomColor();
@@ -50,6 +50,25 @@ namespace fondomerende.GraphicInterfaces
 
 
             Preferences.Set("Colore", "#" + color.R.ToString("X2") + color.G.ToString("X2") + color.B.ToString("X2"));
+        }
+
+
+        public async void GetFundsMethod()
+        {
+            UserFundsServiceMangaer UserFundsService = new UserFundsServiceMangaer();
+
+            var result = await UserFundsService.GetUserFunds();
+
+            if(result.response.success)
+            {
+                username.Text = result.data.user_funds_amount;
+            }
+            else
+            {
+               //
+            }
+
+
         }
     }
 }
