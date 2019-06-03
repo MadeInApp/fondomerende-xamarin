@@ -25,6 +25,7 @@
     <None Remove="image\vm_icon.png" />
     <None Remove="image\vm_icon_51x51.png" />
     <None Remove="image\vm_icon_64x64.png" />
+    <None Remove="image\x.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -57,6 +58,9 @@
     <EmbeddedResource Include="image\settings_icon_64x64.png" />
     <EmbeddedResource Include="image\vm_icon_51x51.png" />
     <EmbeddedResource Include="image\vm_icon_64x64.png" />
+    <EmbeddedResource Include="image\x.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>

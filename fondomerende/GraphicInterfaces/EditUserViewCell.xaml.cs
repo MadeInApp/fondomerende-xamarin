@@ -21,7 +21,7 @@ namespace fondomerende.GraphicInterfaces
           
             First_letter();
             friendly_name.Text = InformationFriendlyName();
-            Cerchio.BackgroundColor = Color.FromHex(Preferences.Get("Colore", null));
+            Cerchio.BackgroundColor = Color.FromHex(Preferences.Get("Colore", "#CCCCCC"));
 
         }
 

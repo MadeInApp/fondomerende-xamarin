@@ -8,7 +8,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using fondomerende.Services.RESTServices;
 
-namespace fondomerende
+namespace fondomerende.GraphicInterfaces
 {
     public partial class EditUserPage : ContentPage
     {
@@ -16,6 +16,7 @@ namespace fondomerende
         public EditUserPage()
         {
             InitializeComponent();
+            NavigationPage.SetHasNavigationBar(this, false);
         }
 
         private async Task ApplyChanges_Clicked(object sender, EventArgs e)
