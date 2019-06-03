@@ -64,5 +64,10 @@ namespace fondomerende.PostLoginPages
         {
             await Navigation.PushAsync(new EditUserPage());
         }
+
+        private void ChangeUserSettings_Tapped(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new EditUserPage());
+        }
     }
 }

@@ -8,9 +8,7 @@
              x:Class="fondomerende.GraphicInterfaces.EditUserViewCell">
     <ViewCell.View>
         <StackLayout
-            Orientation="Horizontal"
-            HorizontalOptions="StartAndExpand"
-            VerticalOptions="StartAndExpand">
+            Orientation="Horizontal">
             <Frame
                 x:Name="Cerchio"
                 HasShadow="true"
@@ -44,13 +42,16 @@
             </Label>
 
             <Button
+                HorizontalOptions="EndAndExpand"
+                VerticalOptions="Center"
                 Grid.Row="3"
                 Grid.Column="0"
-                Margin="0,0,10,0"
+                Margin="0,0,20,0"
                 Clicked="Bottone_ClickedAsync"
                 x:Name="bottone"
                 TextColor="#6495ed"
-                Text="Modifica"
+                Text="Modifica Colore"
+                Opacity="1"
                 BackgroundColor="Transparent">
             </Button>
             

@@ -23,12 +23,10 @@
                     <local:EditUserViewCell
                         x:Name="EditUserViewCell"
                         IsEnabled="true" Height="90">
-                    
                     </local:EditUserViewCell>
-                    
-                    
+                    <TextCell Text="Modifica impostazioni utente"
+                              Tapped="ChangeUserSettings_Tapped" x:Name="ChangeUserSettings"/>
                 </TableSection>
-
                 <TableSection
                     Title="Impostazioni"
                     TextColor="{OnPlatform Android= #6495ed}">
