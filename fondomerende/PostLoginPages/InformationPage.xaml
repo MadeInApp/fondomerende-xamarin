@@ -22,20 +22,19 @@
                     TextColor="#6495ed">
                     <local:EditUserViewCell
                         x:Name="EditUserViewCell"
-                        IsEnabled="False">
+                        IsEnabled="true" Height="90">
+                    
                     </local:EditUserViewCell>
-                </TableSection>
-
-                <TableSection  
-                    ios:Cell.DefaultBackgroundColor="Gray">
+                    
+                    
                 </TableSection>
 
                 <TableSection
                     Title="Impostazioni"
-                    TextColor="#6495ed">
+                    TextColor="{OnPlatform Android= #6495ed}">
                     <local:LogoutViewCell
                         x:Name="LogoutCell"
-                        IsEnabled="False">
+                        IsEnabled="True">
                     </local:LogoutViewCell>
                     
                 </TableSection>

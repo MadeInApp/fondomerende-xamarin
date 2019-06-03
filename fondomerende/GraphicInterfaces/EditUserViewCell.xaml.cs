@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using fondomerende.Services.RESTServices;
 
 namespace fondomerende.GraphicInterfaces
 {
@@ -17,6 +18,7 @@ namespace fondomerende.GraphicInterfaces
         public EditUserViewCell()
         {
             InitializeComponent();
+          
             First_letter();
             friendly_name = InformationFriendlyName();
 
@@ -39,10 +41,6 @@ namespace fondomerende.GraphicInterfaces
 
         public string InformationFriendlyName() => Preferences.Get("friendly-name", "");
 
-        public async void Bottone_ClickedAsync(object sender, EventArgs e)
-        {
-         //   Cerchio.BackgroundColor = ColorRandom.GetRandomColor();
-        }
     }
 }
 

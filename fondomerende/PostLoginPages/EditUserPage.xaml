@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+              xmlns:local="clr-namespace:fondomerende"
+             mc:Ignorable="d"
+             x:Class="fondomerende.EditUserPage"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="True"
+             Title="{OnPlatform iOS='Modifica Utente'}">
+    <ContentPage.Content>
+        <StackLayout>
+            <local:LineEntry 
+                HorizontalOptions="StartAndExpand" 
+                Placeholder="Cambia Username      " 
+                Margin="10,20,0,30" 
+                x:Name="usernameEntry" />
+
+            <local:LineEntry 
+                HorizontalOptions="StartAndExpand" 
+                Placeholder="Cambia Friendly Name" 
+                x:Name="friendlynameEntry" 
+                Margin="10,20,100,30"/>
+
+            <local:LineEntry 
+                HorizontalOptions="StartAndExpand" 
+                Placeholder="Cambia Password        "
+                IsPassword="True"
+                x:Name="passwordEntry" 
+                Margin="10,20,0,30"/>
+
+            <local:LineEntry 
+                VerticalOptions="EndAndExpand" 
+                HorizontalOptions="Center"
+                Placeholder="Inserisci la Vecchia Password"
+                IsPassword="True"
+                x:Name="OldpasswordEntry" 
+                Margin="40,240,40,0"/>
+
+            <Button 
+                Text="Applica" 
+                x:Name="ApplyChanges" 
+                Clicked="ApplyChanges_Clicked_1" 
+                VerticalOptions="EndAndExpand"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

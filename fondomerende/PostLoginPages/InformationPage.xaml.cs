@@ -61,6 +61,9 @@ namespace fondomerende.PostLoginPages
             }
         }
 
-
+        private async void EditUserViewCell_Tapped(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new EditUserPage());
+        }
     }
 }

@@ -6,12 +6,9 @@
              mc:Ignorable="d"
              xmlns:local="clr-namespace:fondomerende"
              x:Class="fondomerende.GraphicInterfaces.EditUserViewCell">
-  <ViewCell.View>
-      
+    <ViewCell.View>
         <StackLayout
-            Orientation="Horizontal"
-            HorizontalOptions="StartAndExpand"
-            VerticalOptions="StartAndExpand">   
+            Orientation="Horizontal">   
             <Frame
                 x:Name="Cerchio"
                 HasShadow="true"
@@ -19,10 +16,11 @@
                 WidthRequest="64" 
                 CornerRadius="32.5"
                 HorizontalOptions="Start" 
-                VerticalOptions="Start" 
+                VerticalOptions="Center" 
                 Margin="5" 
                 Padding="0" 
-                BackgroundColor="Gray">
+                BackgroundColor="Gray"
+                IsEnabled="False">
 
                 <StackLayout 
                     Orientation="Horizontal"
@@ -44,16 +42,7 @@
                 FontSize="20">
             </Label>
 
-            <Button
-                Grid.Row="3"
-                Grid.Column="0"
-                Margin="0,0,10,0"
-                Clicked="Bottone_ClickedAsync"
-                x:Name="bottone"
-                TextColor="#6495ed"
-                Text="Modifica"
-                BackgroundColor="Transparent">
-            </Button>
+         
             
         </StackLayout>
   </ViewCell.View>
