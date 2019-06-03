@@ -19,12 +19,12 @@
             <TableRoot>
                 <TableSection
                     Title="Utente"
-                    TextColor="#6495ed">
+                    TextColor="{OnPlatform Android= #6495ed}">
                     <local:EditUserViewCell
                         x:Name="EditUserViewCell"
                         IsEnabled="true" Height="90">
                     </local:EditUserViewCell>
-                    <TextCell Text="Modifica impostazioni utente"
+                    <TextCell Text="Modifica impostazioni Utente"
                               Tapped="ChangeUserSettings_Tapped" x:Name="ChangeUserSettings"/>
                 </TableSection>
                 <TableSection

@@ -15,6 +15,7 @@
     <None Remove="image\BackGradientRosAr.jpg" />
     <None Remove="image\CheckBox_Checked_32x32.png" />
     <None Remove="image\CheckBox_empty_32x32.png" />
+    <None Remove="image\Edit_Icon_32x32.png" />
     <None Remove="image\Fondo_Merende_logo.png" />
     <None Remove="image\LoginGradiente.png" />
     <None Remove="image\LogoutButtonMinimalist.png" />
@@ -37,6 +38,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="image\CheckBox_Checked_32x32.png" />
     <EmbeddedResource Include="image\CheckBox_empty_32x32.png" />
+    <EmbeddedResource Include="image\Edit_Icon_32x32.png" />
     <EmbeddedResource Include="image\Fondo_Merende_logo.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
