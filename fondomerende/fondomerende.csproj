@@ -17,6 +17,8 @@
     <None Remove="image\CheckBox_empty_32x32.png" />
     <None Remove="image\close_icon_32x32.png" />
     <None Remove="image\Edit_Icon_32x32.png" />
+    <None Remove="image\Edit_snack_icon_256x256.png" />
+    <None Remove="image\Edit_snack_icon_32x32.png" />
     <None Remove="image\Fondo_Merende_logo.png" />
     <None Remove="image\LoginGradiente.png" />
     <None Remove="image\LogoutButtonMinimalist.png" />
@@ -45,6 +47,8 @@
     <EmbeddedResource Include="image\Edit_Icon_32x32.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="image\Edit_snack_icon_256x256.png" />
+    <EmbeddedResource Include="image\Edit_snack_icon_32x32.png" />
     <EmbeddedResource Include="image\Fondo_Merende_logo.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -80,8 +84,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="GraphicInterfaces\EditSnackViewCell.xaml.cs">
+      <DependentUpon>EditSnackViewCell.xaml</DependentUpon>
+    </Compile>
     <Compile Update="GraphicInterfaces\LogoutViewCell.xaml.cs">
       <DependentUpon>LogoutViewCell.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="PostLoginPages\EditSnackListPage.xaml.cs">
+      <DependentUpon>EditSnackListPage.xaml</DependentUpon>
     </Compile>
     <Compile Update="SnackViewCell.xaml.cs">
       <DependentUpon>SnackViewCell.xaml</DependentUpon>
@@ -89,6 +99,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="GraphicInterfaces\EditSnackViewCell.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="PostLoginPages\EditSnackListPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="GraphicInterfaces\EditUserSettingsViewCell.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -96,6 +112,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="GraphicInterfaces\LogoutViewCell.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="PostLoginPages\LoadingPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="SettingsTableView.xaml">

@@ -19,7 +19,6 @@ namespace fondomerende.Services.RESTServices
                                 .WithCookie("user-token", Manager.UserManager.Instance.token)
                                 .GetJsonAsync<UserFundsDTO>();
 
-          string token = Manager.UserManager.Instance.token;
             return response;
         }
     }

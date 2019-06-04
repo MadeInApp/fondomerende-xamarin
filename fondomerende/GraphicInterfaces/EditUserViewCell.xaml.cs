@@ -48,10 +48,9 @@ namespace fondomerende.GraphicInterfaces
             ColorRandom c = new ColorRandom();
             Color color = c.GetRandomColor();
             Cerchio.BackgroundColor = color;
-
+            
             LogoutViewCell logoutView = new LogoutViewCell();
             logoutView.SetImageColor(color);
-
         }
 
         public async void GetUserFundsMethod()

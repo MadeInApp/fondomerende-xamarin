@@ -31,7 +31,12 @@
                         x:Name="ChangeUserSettings"/>
                     
                 </TableSection>
-                
+
+                <TableSection Title="Snacks">
+                    <local:EditSnackViewCell x:Name="AddSnackViewCell" Tapped="AddSnackViewCell_Tapped"/>
+
+                </TableSection>
+
                 <TableSection
                     Title="Generali"
                     TextColor="{OnPlatform Android= #6495ed}">
@@ -39,12 +44,9 @@
                         x:Name="LogoutCell"
                         IsEnabled="True">
                     </local:LogoutViewCell>
-                    
                 </TableSection>
                 
             </TableRoot>
-
         </TableView>
-
     </ContentPage.Content>
 </ContentPage>

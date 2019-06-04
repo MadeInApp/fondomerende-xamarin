@@ -53,11 +53,10 @@
                 x:Name="userFunds"/>
                 </StackLayout>
                 <Button
-                    Padding="30,0,30,0"
-                    IsEnabled ="True"
+                    Padding="30,0,0,0"
                     HorizontalOptions="End"
                     VerticalOptions="CenterAndExpand"
-                    Margin="10,0,0,0"
+                    Margin="50,0,0,0"
                     Clicked="Bottone_ClickedAsync"
                     x:Name="bottone"
                     TextColor="#6495ed"

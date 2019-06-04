@@ -4,29 +4,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Xamarin.Forms;
 using Xamarin.Essentials;
+using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using fondomerende.Services.Models;
-using fondomerende.Manager;
-using fondomerende.GraphicInterfaces;
 
-namespace fondomerende.PostLoginPages
+namespace fondomerende.GraphicInterfaces
 {
-
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class AllSnacksPage : ContentPage
+    public partial class EditSnackListPage : ContentPage
     {
-        SnackServiceManager snackServiceManager = new SnackServiceManager();
-        List<SnackDataDTO> AllSnacks = new List<SnackDataDTO>();
-
-
-        public AllSnacksPage()
+        SnackServiceManager SnackService = new SnackServiceManager();
+        public EditSnackListPage()
         {
-                      
             InitializeComponent();
             GetSnacksMethod();
-
 
             switch (Device.RuntimePlatform)                                                     //
             {                                                                                   //                                    
@@ -35,12 +26,12 @@ namespace fondomerende.PostLoginPages
                     NavigationPage.SetHasNavigationBar(this, false);                            //
                     break;                                                                      //
                                                                                                 //
-                    default:                                                                    //
+                default:                                                                    //
                     NavigationPage.SetHasNavigationBar(this, true);                             //
                     break;                                                                      //
             }                                                                                   //
 
-    
+
 
 
             ListView.RefreshCommand = new Command(async () =>                                //
@@ -53,31 +44,23 @@ namespace fondomerende.PostLoginPages
         }                                                                                    //
         public async Task RefreshDataAsync()                                                 //
         {                                                                                    //
-           await GetSnacksMethod();                                                          //
+          await GetSnacksMethod();                                                          //
         }                                                                                    //
 
 
 
         public async Task GetSnacksMethod()     //ottiene la lista degli snack e la applica alla ListView
         {
-          
-            var result = await snackServiceManager.GetSnacksAsync();
-            ListView.ItemsSource = result.data.snacks;
-        }
-
-        private async void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)     //quando uno snack è tappato si apre un prompt in cui viene chiesto se lo si vuole mangiare
-        {
-            var ans =  await DisplayAlert("Fondo Merende", "Vuoi davvero mangiare " + (e.SelectedItem as SnackDataDTO).friendly_name + "?", "Si", "No");
-
-            if (ans == true)
+            LoginServiceManager login = new LoginServiceManager();
+            var resultLogin = await login.LoginAsync(Preferences.Get("username", ""), Preferences.Get("password", ""), true);
+            if (!resultLogin.response.success)
             {
-              await snackServiceManager.EatAsync((e.SelectedItem as SnackDataDTO).id, 1);
-              await GetSnacksMethod();
-            } 
-            else
-            {
-               await GetSnacksMethod();
+                App.Current.MainPage = new NavigationPage(new LoginPage());
             }
+            var result = await SnackService.GetSnacksAsync();
+            ListView.ItemsSource = result.data.snacks;
         }
     }
 }
+
+

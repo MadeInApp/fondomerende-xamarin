@@ -15,7 +15,7 @@ namespace fondomerende
 
             if (Preferences.Get("Logged", false))
             {
-                MainPage = new MainPage();
+                MainPage = new LoadingPage();
             }
             else
             {

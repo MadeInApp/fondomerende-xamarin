@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ViewCell xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:fondomerende"
+             mc:Ignorable="d"
+             x:Class="fondomerende.GraphicInterfaces.EditSnackViewCell"
+             Tapped="ViewCell_Tapped">
+
+    <ViewCell.View>
+        <!--Tasto Aggiungi Snack-->
+        <StackLayout 
+            Orientation="Horizontal" 
+            VerticalOptions="Center">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.2*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Image
+                    Source="{local:EmbeddedImage Resource=fondomerende.image.Edit_snack_icon_256x256.png}"
+                    Grid.Row="0"
+                    Grid.Column="0"      
+                    Scale="{OnIdiom Phone=0.6, Tablet=1.5}"
+                    Aspect="AspectFit">
+                </Image>
+
+                <StackLayout
+                    VerticalOptions="Center"
+                    Grid.Row="0"
+                    Grid.Column="1">
+
+                    <Label
+                        VerticalOptions="End"                               
+                        Text="Modifica Snack"
+                        FontSize="14"
+                        TextColor="Black">
+
+                    </Label>
+
+                    <Label
+                        Text="Nome, Prezzo, Snacks per Scatola.. "
+                        FontSize="12"
+                        TextColor="#9c9c9c"
+                        Margin="0,0,0,5">
+
+                    </Label>
+
+                </StackLayout>
+            </Grid>
+        </StackLayout>
+    </ViewCell.View>
+</ViewCell>
