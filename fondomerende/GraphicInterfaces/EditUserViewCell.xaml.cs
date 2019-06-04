@@ -7,6 +7,7 @@ using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using fondomerende.Services.RESTServices;
+using fondomerende.Manager;
 
 namespace fondomerende.GraphicInterfaces
 {
@@ -15,15 +16,13 @@ namespace fondomerende.GraphicInterfaces
     {
         public string firstLetterIcon;
     
-        string x;
-
         public EditUserViewCell()
         {
             InitializeComponent();
             First_letter();
+            GetUserFundsMethod();
             friendly_name.Text = InformationFriendlyName();
             Cerchio.BackgroundColor = Color.FromHex(Preferences.Get("Colore", "#CCCCCC"));
-            GetUserFundsMethod();
 
         }
 
@@ -53,21 +52,19 @@ namespace fondomerende.GraphicInterfaces
             LogoutViewCell logoutView = new LogoutViewCell();
             logoutView.SetImageColor(color);
 
-
-            //Preferences.Set("Colore", "#" + color.R.ToString("X2") + color.G.ToString("X2") + color.B.ToString("X2"));
         }
 
         public async void GetUserFundsMethod()
         {
             UserFundsServiceManager userFundsService = new UserFundsServiceManager();
-          var result =  await userFundsService.GetUserFunds();
+            var result =  await userFundsService.GetUserFunds();
             if(result.response.success == true)
             {
                 userFunds.Text = result.data.user_funds_amount;
             }
             else
             {
-                userFunds.Text = "Errore di token(?)";
+                userFunds.Text = "Errore";
             }
             
         }

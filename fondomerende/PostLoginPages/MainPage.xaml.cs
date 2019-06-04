@@ -1,4 +1,5 @@
-﻿using fondomerende.Services.RESTServices;
+﻿using fondomerende.Manager;
+using fondomerende.Services.RESTServices;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -25,6 +26,7 @@ namespace fondomerende.PostLoginPages
             SnacksNavPage.IconImageSource = ImageSource.FromResource("fondomerende.image.vm_icon_64x64.png");
             SettingsNavPage.IconImageSource = ImageSource.FromResource("fondomerende.image.settings_icon_64x64.png");
         }
+
     }
 }
 

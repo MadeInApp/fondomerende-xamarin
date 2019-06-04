@@ -9,6 +9,7 @@ using Xamarin.Essentials;
 using Xamarin.Forms.Xaml;
 using fondomerende.Services.Models;
 using fondomerende.Manager;
+using fondomerende.GraphicInterfaces;
 
 namespace fondomerende.PostLoginPages
 {
@@ -16,8 +17,6 @@ namespace fondomerende.PostLoginPages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AllSnacksPage : ContentPage
     {
-       
-       
         SnackServiceManager snackServiceManager = new SnackServiceManager();
         List<SnackDataDTO> AllSnacks = new List<SnackDataDTO>();
 
@@ -44,31 +43,29 @@ namespace fondomerende.PostLoginPages
     
 
 
-            ListView.RefreshCommand = new Command(async () =>                            //
-        {                                                                                //
-            await RefreshDataAsync();                                                    //
-            ListView.IsRefreshing = false;                                               //
-        });                                                                              //
-                                                                                         //
-                                                                                         // Pull to Refresh GetSnacksMethod()
-        }                                                                                //
-        public async Task RefreshDataAsync()                                             //
-        {                                                                                //
-           await GetSnacksMethod();                                                      //
-        }                                                                                //
+            ListView.RefreshCommand = new Command(async () =>                                //
+            {                                                                                //         
+                await RefreshDataAsync();                                                    //
+                ListView.IsRefreshing = false;                                               //
+            });                                                                              //
+                                                                                             //
+                                                                                             // Pull to Refresh GetSnacksMethod()
+        }                                                                                    //
+        public async Task RefreshDataAsync()                                                 //
+        {                                                                                    //
+           await GetSnacksMethod();                                                          //
+        }                                                                                    //
 
 
 
         public async Task GetSnacksMethod()     //ottiene la lista degli snack e la applica alla ListView
         {
-            LoginServiceManager login = new LoginServiceManager();
-            var resultLogin = await login.LoginAsync(Preferences.Get("username", ""), Preferences.Get("password", ""), true);
-            if (!resultLogin.response.success)
+          LoginServiceManager login = new LoginServiceManager();
+           var resultLogin = await login.LoginAsync(Preferences.Get("username", ""), Preferences.Get("password", ""), true);
+           if (!resultLogin.response.success)
             {
               App.Current.MainPage = new NavigationPage(new LoginPage());
             }
-            UserManager.Instance.token = resultLogin.data.token;
-            Preferences.Set("token", resultLogin.data.token);
             var result = await snackServiceManager.GetSnacksAsync();
             ListView.ItemsSource = result.data.snacks;
         }
@@ -80,7 +77,6 @@ namespace fondomerende.PostLoginPages
             if (ans == true)
             {
               await snackServiceManager.EatAsync((e.SelectedItem as SnackDataDTO).id, 1);
-           //   await DisplayAlert("Fondo Merende", (e.SelectedItem as SnackDataDTO).friendly_name + " mangiato/i", "ok");
               await GetSnacksMethod();
             } 
             else

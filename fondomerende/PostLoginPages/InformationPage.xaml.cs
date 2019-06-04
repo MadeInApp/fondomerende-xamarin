@@ -21,11 +21,7 @@ namespace fondomerende.PostLoginPages
             
             InitializeComponent();
             EditUserViewCell.BindingContext = friendly_name;
-
-         //   listView.ItemsSource = new List<string> { "" };
-            
-            /*LoggedAs.Text = "Loggato come: " + Preferences.Get("username", null);   //semplice testo che ti dice il nome dell'account con cui sei loggato
-            LoggedAs.Opacity = 0.5;*/
+        
             switch (Device.RuntimePlatform)             //Se il dispositivo è Android non mostra la Top Bar della Navigation Page, se è iOS la mostra
             {
                 default:
