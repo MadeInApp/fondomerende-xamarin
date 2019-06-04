@@ -23,7 +23,7 @@
                     
                     <local:EditUserViewCell
                         x:Name="EditUserViewCell"
-                         Height="90" IsEnabled="False">
+                         Height="90" IsEnabled="True">
                     </local:EditUserViewCell>
                     
                     <local:EditUserSettingsViewCell
@@ -35,7 +35,7 @@
                 <TableSection
                     Title="Generali"
                     TextColor="{OnPlatform Android= #6495ed}">
-                    <local:LogoutViewCell
+                    <local:LogoutViewCell Height="40"
                         x:Name="LogoutCell"
                         IsEnabled="True">
                     </local:LogoutViewCell>

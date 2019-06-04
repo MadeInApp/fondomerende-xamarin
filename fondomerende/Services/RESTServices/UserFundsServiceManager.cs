@@ -6,6 +6,7 @@ using Flurl.Http;
 
 namespace fondomerende.Services.RESTServices
 {
+
     class UserFundsServiceManager
     {
         public async System.Threading.Tasks.Task<UserFundsDTO> GetUserFunds()
@@ -15,13 +16,9 @@ namespace fondomerende.Services.RESTServices
                                 .WithCookie("auth-key", "metticiquellochetipare")
                                 .WithCookie("user-token", Manager.UserManager.Instance.token)
                                 .GetJsonAsync<UserFundsDTO>();
-           if(response.response.success)
-            {
-                return response;
-            }
-            return null;
+
+            return response;
 
         }
-
     }
 }

@@ -46,19 +46,21 @@ namespace fondomerende.PostLoginPages
 
         private async void LogOut_button_Clicked(object sender, EventArgs e)        //effettua il Log Out
         {
-            LogoutServiceManager logoutService = new LogoutServiceManager();
-            var response = await logoutService.LogoutAsync();
-
-
-            if (response.response.success == true)
+            var ans = await DisplayAlert("Fondo Merende", "Sicuro di voler effettuare il Log Out?", "Si", "No");
+            if(ans)
             {
-                App.Current.MainPage = new LoginPage();
-                Preferences.Clear();
-            }
-            else
-            {
-                await DisplayAlert("Fondo Merende", "Guarda, sta cosa non ha senso", "OK");
-            }
+                LogoutServiceManager logoutService = new LogoutServiceManager();
+                var response = await logoutService.LogoutAsync();
+                if (response.response.success == true)
+                {
+                    App.Current.MainPage = new LoginPage();
+                    Preferences.Clear();
+                }
+                else
+                {
+                    await DisplayAlert("Fondo Merende", "Guarda, sta cosa non ha senso", "OK");
+                }
+            }         
         }
 
       

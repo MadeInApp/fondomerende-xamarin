@@ -40,7 +40,7 @@
                         VerticalOptions="End"                               
                         Text="Log out"
                         FontSize="14"
-                        TextColor="#000000">
+                        TextColor="Red">
 
                     </Label>
 

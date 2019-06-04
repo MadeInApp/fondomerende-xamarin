@@ -10,7 +10,7 @@
     <ViewCell.View>                             <!--Tasto per modificare Utente-->
         <StackLayout>
             <StackLayout 
-             Orientation="Horizontal" 
+                 Orientation="Horizontal" 
                  VerticalOptions="Center">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -23,25 +23,24 @@
                     </Grid.ColumnDefinitions>
 
                     <Image
-                    Source="{local:EmbeddedImage Resource=fondomerende.image.Edit_Icon_32x32.png}"
-                    Grid.Row="0"
-                    Grid.Column="0"      
-                    Scale="{OnIdiom Phone=0.5, Tablet=1.5}"
-                    x:Name ="LogoutButton"
-                    Aspect="AspectFit">
+                      Source="{local:EmbeddedImage Resource=fondomerende.image.Edit_Icon_32x32.png}"
+                      Grid.Row="0"
+                      Grid.Column="0"      
+                      Scale="{OnIdiom Phone=0.5, Tablet=1.5}"
+                      x:Name ="LogoutButton"
+                      Aspect="AspectFit">
                     </Image>
 
                     <StackLayout
-                    VerticalOptions="Center"
-                    Grid.Row="0"
-                    Grid.Column="1">
+                        VerticalOptions="Center"
+                        Grid.Row="0"
+                        Grid.Column="1">
 
                         <Label
                         VerticalOptions="End"                               
                         Text="Modifica Informazioni Personali"
                         FontSize="14"
                         TextColor="#000000">
-
                         </Label>
 
                         <Label
@@ -49,9 +48,7 @@
                         FontSize="12"
                         TextColor="#9c9c9c"
                         Margin="0,0,0,5">
-
                         </Label>
-
                     </StackLayout>
                 </Grid>
             </StackLayout>

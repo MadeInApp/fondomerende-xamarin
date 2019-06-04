@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using fondomerende.GraphicInterfaces;
 
 namespace fondomerende.GraphicInterfaces
 {
@@ -22,25 +23,27 @@ namespace fondomerende.GraphicInterfaces
 
         public async void LogoutCellTapped(object sender, EventArgs e)
         {
-            LogoutServiceManager logoutService = new LogoutServiceManager();
-            var response = await logoutService.LogoutAsync();
-
-
-            if (response.response.success == true)
+            
+            var ans = await App.Current.MainPage.DisplayAlert("Fondo Merende", "Vuoi davvero effettuare il Log Out?", "Si", "No");
+            if (ans)
             {
-                App.Current.MainPage = new LoginPage();
+                LogoutServiceManager logoutService = new LogoutServiceManager();
+                var response = await logoutService.LogoutAsync();
+                if (response.response.success == true)
+                {
+                    App.Current.MainPage = new LoginPage();
+                    Preferences.Clear();
+                }
+                else
+                {
+                    await App.Current.MainPage.DisplayAlert("Fondo Merende", "Guarda, sta cosa non ha senso", "OK");
+                }
             }
-            else
-            {
-                await DisplayAlert("Fondo Merende", "Guarda, sta cosa non ha senso", "OK");
-            }
-
         }
 
-        private Task DisplayAlert(string v1, string v2, string v3)
-        {
-            throw new NotImplementedException();
-        }
+
+
+
 
         public void SetImageColor(Color c)
         {

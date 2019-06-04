@@ -14,6 +14,7 @@ namespace fondomerende.GraphicInterfaces
     public partial class EditUserViewCell : ViewCell
     {
         public string firstLetterIcon;
+    
         string x;
 
         public EditUserViewCell()
@@ -22,7 +23,7 @@ namespace fondomerende.GraphicInterfaces
             First_letter();
             friendly_name.Text = InformationFriendlyName();
             Cerchio.BackgroundColor = Color.FromHex(Preferences.Get("Colore", "#CCCCCC"));
-            FundsAmmount.Text = x;  // da sistemare
+            GetUserFundsMethod();
 
         }
 
@@ -54,6 +55,21 @@ namespace fondomerende.GraphicInterfaces
 
 
             //Preferences.Set("Colore", "#" + color.R.ToString("X2") + color.G.ToString("X2") + color.B.ToString("X2"));
+        }
+
+        public async void GetUserFundsMethod()
+        {
+            UserFundsServiceManager userFundsService = new UserFundsServiceManager();
+          var result =  await userFundsService.GetUserFunds();
+            if(result.response.success == true)
+            {
+                userFunds.Text = result.data.user_funds_amount;
+            }
+            else
+            {
+                userFunds.Text = "Errore di token(?)";
+            }
+            
         }
     }
 }

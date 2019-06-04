@@ -27,8 +27,6 @@ namespace fondomerende.GraphicInterfaces
 
             EditUserServiceManager editUser = new EditUserServiceManager();
 
-
-
             if (usernameEntry.Text != null)
             {
                 username = usernameEntry.Text;
@@ -41,8 +39,7 @@ namespace fondomerende.GraphicInterfaces
             {
                 password = passwordEntry.Text;
             }
-
-
+            
             if (OldpasswordEntry.Text == Preferences.Get("password", null))
             {
                 var result = await editUser.EditUserAsync(FriendlyName, username, password);
@@ -56,9 +53,7 @@ namespace fondomerende.GraphicInterfaces
             else
             {
                 await DisplayAlert("Fondo Merende", "Password Errata", "Ok");
-            }
-
-            
+            }          
         }
         private async void CancelButton_Clicked(object sender, EventArgs e) => await Navigation.PopAsync();
         
