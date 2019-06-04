@@ -23,32 +23,35 @@
                 </Grid.ColumnDefinitions>
 
                 <Image
+                    Margin="0,0,15,0"
                     Source="{local:EmbeddedImage Resource=fondomerende.image.Chronology_icon_256x256.png}"
                     Grid.Row="0"
                     Grid.Column="0"      
-                    Scale="{OnIdiom Phone=0.6, Tablet=1.5}"
+                    Scale="{OnPlatform Android=0.6, iOS=0.6}"
                     x:Name ="ChronologyButton"
                     Aspect="AspectFit">
                 </Image>
 
                 <StackLayout
+                    HorizontalOptions="Start"
                     VerticalOptions="Center"
                     Grid.Row="0"
-                    Grid.Column="1">
+                    Grid.Column="1"
+                    Margin="0,0,15,0">
 
                     <Label
                         VerticalOptions="End"                               
                         Text="Cronologia"
                         FontSize="14"
-                        TextColor="{OnPlatform iOS=Red, Default=Black}">
+                        TextColor="Black">
 
                     </Label>
 
                     <Label
-                        Text="Cronologia delle azioni"
+                        Text="Ultime azioni compiute dagli Utenti"
                         FontSize="12"
                         TextColor="#9c9c9c"
-                        Margin="0,0,0,5">
+                        Margin="0,0,15,5">
 
                     </Label>
 

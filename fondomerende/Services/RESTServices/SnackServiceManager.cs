@@ -59,5 +59,26 @@ namespace fondomerende.Services.RESTServices
             return result;
         }
 
+        public async System.Threading.Tasks.Task<EditSnackDTO> EditSnackAsync(string idsnack, string snackName,string snackPrice,string snacksPerBox,string SnackExpiration, string quantity_snack) //Servizio per mangiare uno snack
+
+        {
+            var data = new Dictionary<string, string>();
+            data.Add("commandName", "edit-snack");
+            data.Add("id", idsnack);
+            data.Add("name", snackName);
+            data.Add("price", snackPrice);
+            data.Add("snacks-per-box", snacksPerBox);
+            data.Add("expiration-in-days", SnackExpiration);
+            data.Add("quantity", quantity_snack);
+
+            var result = await "http://192.168.0.175:8888/fondomerende/public/process-request.php"
+            .WithCookie("auth-key", "metticiquellochetipare")
+            .WithCookie("user-token", UserManager.Instance.token)
+            .PostUrlEncodedAsync(data)
+            .ReceiveJson<EditSnackDTO>();
+
+            return result;
+        }
+
     }
 }
