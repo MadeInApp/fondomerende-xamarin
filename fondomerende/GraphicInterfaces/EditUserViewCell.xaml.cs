@@ -53,19 +53,23 @@ namespace fondomerende.GraphicInterfaces
             logoutView.SetImageColor(color);
         }
 
-        public async void GetUserFundsMethod()
+        public async Task<string> GetUserFundsMethod()
         {
             UserFundsServiceManager userFundsService = new UserFundsServiceManager();
             var result =  await userFundsService.GetUserFunds();
             if(result.response.success == true)
             {
-                userFunds.Text = result.data.user_funds_amount;
+                userFunds.Text = "€" + result.data.user_funds_amount;
+                if (Int32.Parse(result.data.user_funds_amount) <= 0)
+                {
+                    userFunds.TextColor = Color.Red;
+                }
             }
             else
             {
                 userFunds.Text = "Errore";
             }
-            
+            return result.response.message;
         }
     }
 }

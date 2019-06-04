@@ -16,8 +16,9 @@
             <StackLayout
                 HeightRequest="50"
                 WidthRequest="50"
-                VerticalOptions="Start"
-                HorizontalOptions="End">
+                VerticalOptions="Center"
+                HorizontalOptions="End"
+                Spacing="20">
 
                 <ImageButton
                     IsVisible="{OnPlatform Android=true}"

@@ -6,13 +6,16 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
+using fondomerende.Services.Models;
 using Xamarin.Forms.Xaml;
+using fondomerende.PostLoginPages;
 
 namespace fondomerende.GraphicInterfaces
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class EditSnackListPage : ContentPage
     {
+        public static string SelectedSnack;
         SnackServiceManager SnackService = new SnackServiceManager();
         public EditSnackListPage()
         {
@@ -44,7 +47,7 @@ namespace fondomerende.GraphicInterfaces
         }                                                                                    //
         public async Task RefreshDataAsync()                                                 //
         {                                                                                    //
-          await GetSnacksMethod();                                                          //
+            await GetSnacksMethod();                                                         //
         }                                                                                    //
 
 
@@ -60,7 +63,15 @@ namespace fondomerende.GraphicInterfaces
             var result = await SnackService.GetSnacksAsync();
             ListView.ItemsSource = result.data.snacks;
         }
+
+        private async void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            await Navigation.PushAsync(new EditSnackSettingsPage());
+            SelectedSnack = (e.SelectedItem as SnackDataDTO).name;
+        }
+
     }
 }
+
 
 
