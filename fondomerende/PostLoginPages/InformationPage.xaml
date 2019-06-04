@@ -34,27 +34,30 @@
 
                 <TableSection Title="Snacks">
                     <local:EditSnackViewCell x:Name="EditSnackViewCell" Tapped="EditSnackViewCell_Tapped"/>
+                    <local:AddSnackViewCell 
+                        Height="{OnPlatform Android=60, iOS=40}"
+                        x:Name="AddSnackCell"
+                        IsEnabled="True" />
+                </TableSection>
 
-                    <local:ChronologyViewCell Height="{OnPlatform Android=60, iOS=40}"
+                <TableSection
+                    Title="Generali"
+                    TextColor="{OnPlatform Android= #6495ed}">
+
+                    <local:ChronologyViewCell 
+                        Height="{OnPlatform Android=60, iOS=40}"
                         x:Name="ChronologyCell"
                         IsEnabled="True">
                     </local:ChronologyViewCell>
                 </TableSection>
 
-               
-
-                <TableSection
-                    Title="Generali"
-                    TextColor="{OnPlatform Android= #6495ed}">
-                    <local:LogoutViewCell Height="{OnPlatform Android=60, iOS=40}"
+                <TableSection >
+                        <local:LogoutViewCell 
+                        Height="{OnPlatform Android=60, iOS=40}"
                         x:Name="LogoutCell"
                         IsEnabled="True">
-                    </local:LogoutViewCell>
-
-            
-
+                        </local:LogoutViewCell>
                 </TableSection>
-
             </TableRoot>
         </TableView>
     </ContentPage.Content>

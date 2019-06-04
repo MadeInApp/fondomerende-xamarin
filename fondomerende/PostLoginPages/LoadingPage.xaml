@@ -11,6 +11,7 @@
                 IsRunning="True"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
+            <Label VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" x:Name="LoadingLabel"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

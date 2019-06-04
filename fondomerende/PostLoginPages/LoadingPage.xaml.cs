@@ -16,7 +16,16 @@ namespace fondomerende.PostLoginPages
         public LoadingPage()
         {
             InitializeComponent();
+            LabelRandom c = new LabelRandom();
+            String rPhrase = c.GetRandomPhrases();
+            LoadingLabel.Text = rPhrase;
+
+
             LogIn();
+
+
+            
+
         }
 
         public async void LogIn()
