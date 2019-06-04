@@ -66,7 +66,8 @@
                 Grid.Column="0"
                 x:Name="usernameEntry"
                 Text="StefanoVe"
-                Placeholder="Username">
+                Placeholder="Username"
+                Completed="usernameEntry_Completed">
             </local:LineEntry>
 
             <local:LineEntry

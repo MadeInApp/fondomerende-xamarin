@@ -3,16 +3,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-              xmlns:local="clr-namespace:fondomerende"
+             xmlns:local="clr-namespace:fondomerende"
              mc:Ignorable="d"
              x:Class="fondomerende.GraphicInterfaces.EditUserPage"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              ios:Page.UseSafeArea="True"
              Title="{OnPlatform iOS='Modifica Utente'}">
     
-    <ContentPage.Content>
-        <StackLayout
-            BackgroundColor="Aqua">
+    <ContentPage.Content>                               <!--Pagina Modifica utente-->
+        <StackLayout>
             <StackLayout
                 HeightRequest="50"
                 WidthRequest="50"
@@ -37,7 +36,7 @@
                 HorizontalOptions="StartAndExpand" 
                 Placeholder="Cambia Username      " 
                 Margin="10,20,0,30" 
-                x:Name="usernameEntry" />
+                x:Name="usernameEntry"/>
 
             <local:LineEntry 
                 HorizontalOptions="StartAndExpand" 
@@ -60,13 +59,19 @@
                 x:Name="OldpasswordEntry" 
                 Margin="40,240,40,0"/>
 
-            <Button 
-                Text="Applica" 
-                x:Name="ApplyChanges" 
+            <Button
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="EndAndExpand"
+                Margin="5,0,0,5"
                 Clicked="ApplyChanges_Clicked_1" 
-                VerticalOptions="EndAndExpand"/>
+                x:Name="ApplyChanges" 
+                Text="Applica"
+                TextColor="{OnPlatform iOS={StaticResource ColorBackground}}"
+                Style="{OnPlatform Android={StaticResource FondomerendeButton}}">
+                
+            </Button>
 
-            
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

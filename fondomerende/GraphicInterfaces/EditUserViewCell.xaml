@@ -6,7 +6,9 @@
              mc:Ignorable="d"
              xmlns:local="clr-namespace:fondomerende"
              x:Class="fondomerende.GraphicInterfaces.EditUserViewCell">
-    <ViewCell.View>
+    
+    
+    <ViewCell.View>                                                 <!--Interfaccia Cerchio con nome-->
         <StackLayout
             Orientation="Horizontal">
             <Frame
@@ -15,7 +17,7 @@
                 HeightRequest="64" 
                 WidthRequest="64" 
                 CornerRadius="32.5"
-                HorizontalOptions="Start" 
+                HorizontalOptions="Center" 
                 VerticalOptions="Center" 
                 Margin="5" 
                 Padding="0" 
@@ -37,43 +39,45 @@
             </Frame>
 
 
-            <StackLayout>
-                <Label 
-                Margin="10,10,0,5"
-                FontSize="22"
-                FontAttributes="Bold"
-                x:Name="friendly_name">
-                </Label>
-
-                <Label 
-                Margin="10,0,10,100"
-                FontSize="16"
-                Opacity="0.5"
-                x:Name="username"
-            <Label 
-                x:Name="FundsAmmount"
-                Margin="0,0,0,0"
-                FontSize="15"
-                Opacity="0.6">
-            </Label>
-
-            <Button
-                HorizontalOptions="EndAndExpand"
+            <StackLayout
                 VerticalOptions="Center"
-                HorizontalOptions="Start">
+                Margin="10,10,0,0">
+                <Label 
+                    BackgroundColor="Blue"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Start"
+                    FontSize="22"
+                    FontAttributes="Bold"
+                    x:Name="friendly_name"
+                    TextColor="Black">
                 </Label>
+
+                
+                <Label 
+                    BackgroundColor="Red"
+                    x:Name="FundsAmmount"
+                    Margin="0,0,0,0"
+                    FontSize="15"
+                    Opacity="0.6">
+                </Label>
+
+                
             </StackLayout>
-                Grid.Row="3"
-                Grid.Column="0"
-                Margin="0,0,20,0"
-                Clicked="Bottone_ClickedAsync"
-                x:Name="bottone"
-                TextColor="#6495ed"
-                Text="Modifica"
-                Opacity="1"
-                BackgroundColor="Transparent">
-            </Button>
-            
+                <Button
+                    HorizontalOptions="EndAndExpand"
+                    VerticalOptions="Center"
+                    Grid.Row="3"
+                    Grid.Column="0"
+                    Margin="0,0,15,0"
+                    Clicked="Bottone_ClickedAsync"
+                    x:Name="bottone"
+                    Font="Bold,12"
+                    TextColor="#6495ed"
+                    Text="Modifica"
+                    Opacity="1"
+                    BackgroundColor="Transparent">
+
+                </Button>
         </StackLayout>
     </ViewCell.View>
 </ViewCell>

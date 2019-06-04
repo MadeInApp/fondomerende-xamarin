@@ -88,6 +88,14 @@ namespace fondomerende
             wait = !wait;
         }
 
+        private async void usernameEntry_Completed(object sender, EventArgs e)
+        {
+
+        }
+    
+        {
+            usernameEntry.Completed += (s, e) => passwordEntry.Focus();
+        }
         
     }
 }

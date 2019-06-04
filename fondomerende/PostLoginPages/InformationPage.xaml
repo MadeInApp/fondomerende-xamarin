@@ -20,13 +20,18 @@
                 <TableSection
                     Title="Utente"
                     TextColor="{OnPlatform Android= #6495ed}">
+                    
                     <local:EditUserViewCell
                         x:Name="EditUserViewCell"
                          Height="90" IsEnabled="False">
                     </local:EditUserViewCell>
+                    
                     <local:EditUserSettingsViewCell
-                              Tapped="ChangeUserSettings_Tapped" x:Name="ChangeUserSettings"/>
+                        Tapped="ChangeUserSettings_Tapped" 
+                        x:Name="ChangeUserSettings"/>
+                    
                 </TableSection>
+                
                 <TableSection
                     Title="Generali"
                     TextColor="{OnPlatform Android= #6495ed}">

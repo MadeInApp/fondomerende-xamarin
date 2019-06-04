@@ -6,7 +6,8 @@
              mc:Ignorable="d"
              x:Class="fondomerende.GraphicInterfaces.EditUserSettingsViewCell"
              xmlns:local="clr-namespace:fondomerende">
-    <ViewCell.View>
+    
+    <ViewCell.View>                             <!--Tasto per modificare Utente-->
         <StackLayout>
             <StackLayout 
              Orientation="Horizontal" 
