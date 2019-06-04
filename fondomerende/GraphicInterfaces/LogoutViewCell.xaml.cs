@@ -47,7 +47,7 @@ namespace fondomerende.GraphicInterfaces
 
         public void SetImageColor(Color c)
         {
-            //LogoutButton. = c ;
+           //LogoutButton= c ;
         }
     }
 }

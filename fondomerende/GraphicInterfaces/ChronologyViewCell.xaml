@@ -5,8 +5,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:local="clr-namespace:fondomerende"
              mc:Ignorable="d"
-             x:Class="fondomerende.GraphicInterfaces.LogoutViewCell"
-             Tapped="LogoutCellTapped">
+             x:Class="fondomerende.GraphicInterfaces.ChronologyViewCell"
+             Tapped="ChronologyCellTapped">
 
     <ViewCell.View>                                                    <!--Tasto Logout--> 
         <StackLayout 
@@ -23,11 +23,11 @@
                 </Grid.ColumnDefinitions>
 
                 <Image
-                    Source="{local:EmbeddedImage Resource=fondomerende.image.Logout_icon_256x256.png}"
+                    Source="{local:EmbeddedImage Resource=fondomerende.image.Chronology_icon_256x256.png}"
                     Grid.Row="0"
-                    Grid.Column="0"
+                    Grid.Column="0"      
                     Scale="{OnIdiom Phone=0.6, Tablet=1.5}"
-                    x:Name ="LogoutButton"
+                    x:Name ="ChronologyButton"
                     Aspect="AspectFit">
                 </Image>
 
@@ -38,14 +38,14 @@
 
                     <Label
                         VerticalOptions="End"                               
-                        Text="Log out"
+                        Text="Cronologia"
                         FontSize="14"
                         TextColor="{OnPlatform iOS=Red, Default=Black}">
 
                     </Label>
 
                     <Label
-                        Text="Effettua il Log out"
+                        Text="Cronologia delle azioni"
                         FontSize="12"
                         TextColor="#9c9c9c"
                         Margin="0,0,0,5">
