@@ -38,18 +38,28 @@
                         Height="{OnPlatform Android=60, iOS=40}"
                         x:Name="AddSnackCell"
                         IsEnabled="True" />
-                </TableSection>
+                    <local:EditSnackViewCell x:Name="EditSnackViewCell" Tapped="EditSnackViewCell_Tapped"/>
 
-                <TableSection
-                    Title="Generali"
-                    TextColor="{OnPlatform Android= #6495ed}">
-
-                    <local:ChronologyViewCell 
-                        Height="{OnPlatform Android=60, iOS=40}"
+                    <local:ChronologyViewCell Height="{OnPlatform Android=60, iOS=40}"
                         x:Name="ChronologyCell"
                         IsEnabled="True">
                     </local:ChronologyViewCell>
                 </TableSection>
+
+               
+
+                <TableSection
+                    Title="Generali"
+                    TextColor="{OnPlatform Android= #6495ed}">
+                    <local:LogoutViewCell Height="60"
+                        x:Name="LogoutCell"
+                        IsEnabled="True">
+                    </local:LogoutViewCell>
+
+                    <local:ChronologyViewCell Height="60"
+                        x:Name="ChronologyCell"
+                        IsEnabled="True">
+                    </local:ChronologyViewCell>
 
                 <TableSection >
                         <local:LogoutViewCell 
