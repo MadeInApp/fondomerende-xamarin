@@ -19,6 +19,7 @@ namespace fondomerende.GraphicInterfaces
         public ChronologyViewCell()
         {
             InitializeComponent();
+            SetImageColorPreferences();
         }
 
         public async void ChronologyCellTapped(object sender, EventArgs e)
@@ -33,12 +34,12 @@ namespace fondomerende.GraphicInterfaces
         }
 
 
-
-
-
-        public void SetImageColor(Color c)
+        public void SetImageColorPreferences()
         {
-           //LogoutButton= c ;
+            ChronologyIcon.TintColor = Color.FromHex(Preferences.Get("Colore", "#000000"));
         }
+
+
+     
     }
 }

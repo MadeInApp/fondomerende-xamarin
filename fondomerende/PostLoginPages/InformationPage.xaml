@@ -14,7 +14,9 @@
     <ContentPage.Content>
         <TableView
             Intent="Settings" 
-            HasUnevenRows="True">
+            HasUnevenRows="True"
+            x:Name="tableView">
+            
             <TableRoot>
                 <TableSection
                     Title="Utente"
@@ -22,17 +24,20 @@
 
                     <local:EditUserViewCell
                         x:Name="EditUserViewCell"
-                         Height="90" IsEnabled="True"
+                        Height="90" IsEnabled="True"
                         Tapped="ChangeUserSettings_Tapped">
                     </local:EditUserViewCell>
-                    
-                    <!--<local:EditUserSettingsViewCell
+
+                    <local:EditUserSettingsViewCell                          
                         Tapped="ChangeUserSettings_Tapped" 
-                        x:Name="ChangeUserSettings"/>-->
-                    
+                        x:Name="ChangeUserSettings">
+                    </local:EditUserSettingsViewCell>
+
                 </TableSection>
 
-                <TableSection Title="Snacks">
+                <TableSection 
+                    Title="Snacks"
+                    TextColor="{OnPlatform Android= #6495ed}">
                     <local:EditSnackViewCell x:Name="EditSnackViewCell" Tapped="EditSnackViewCell_Tapped"/>
                     <local:AddSnackViewCell 
                         Height="{OnPlatform Android=60, iOS=40}"

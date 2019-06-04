@@ -4,6 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:local="clr-namespace:fondomerende"
+          xmlns:controls="clr-namespace:Plugin.CrossPlatformTintedImage.Abstractions;assembly=Plugin.CrossPlatformTintedImage.Abstractions"
              mc:Ignorable="d"
              x:Class="fondomerende.GraphicInterfaces.ChronologyViewCell"
              Tapped="ChronologyCellTapped">
@@ -11,7 +12,8 @@
     <ViewCell.View>                                                    <!--Tasto Logout--> 
         <StackLayout 
             Orientation="Horizontal" 
-            VerticalOptions="Center">
+            VerticalOptions="Center"
+            BackgroundColor="WhiteSmoke">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
@@ -22,15 +24,25 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
-                <Image
-                    Margin="0,0,15,0"
+                <controls:TintedImage 
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    x:Name="ChronologyIcon" 
+                    Scale="{OnIdiom Phone=0.5, Tablet=1.5}"
+                    VerticalOptions="Center" 
+                    HorizontalOptions="Center" 
+                    Aspect="AspectFit"
+                    Source="{local:EmbeddedImage Resource=fondomerende.image.Chronology_icon_256x256.png}">
+                </controls:TintedImage>
+                
+                <!--<Image
                     Source="{local:EmbeddedImage Resource=fondomerende.image.Chronology_icon_256x256.png}"
                     Grid.Row="0"
                     Grid.Column="0"      
                     Scale="{OnPlatform Android=0.6, iOS=0.6}"
                     x:Name ="ChronologyButton"
                     Aspect="AspectFit">
-                </Image>
+                </Image>-->
 
                 <StackLayout
                     HorizontalOptions="Start"

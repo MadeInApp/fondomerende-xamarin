@@ -4,6 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:local="clr-namespace:fondomerende"
+             xmlns:controls="clr-namespace:Plugin.CrossPlatformTintedImage.Abstractions;assembly=Plugin.CrossPlatformTintedImage.Abstractions"
              mc:Ignorable="d"
              x:Class="fondomerende.GraphicInterfaces.EditSnackViewCell"
              Tapped="ViewCell_Tapped">
@@ -19,17 +20,28 @@
                 </Grid.RowDefinitions>
 
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="0.2*" />
+                    <ColumnDefinition Width="0.3*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
-                <Image
+                <controls:TintedImage 
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    x:Name="SnackIcon" 
+                    Scale="{OnIdiom Phone=0.5, Tablet=1.5}"
+                    VerticalOptions="Center" 
+                    HorizontalOptions="Center" 
+                    Aspect="AspectFit"
+                    Source="{local:EmbeddedImage Resource=fondomerende.image.Edit_snack_icon_256x256.png}">
+                </controls:TintedImage>
+                
+                <!--<Image
                     Source="{local:EmbeddedImage Resource=fondomerende.image.Edit_snack_icon_256x256.png}"
                     Grid.Row="0"
                     Grid.Column="0"      
                      Scale="{OnPlatform Android=0.6, iOS=0.6}"
                     Aspect="AspectFit">
-                </Image>
+                </Image>-->
 
                 <StackLayout
                     VerticalOptions="Center"

@@ -9,6 +9,7 @@
                                             
     <ViewCell.View>                             <!--Cerchio con il nome al suo interno-->
         <StackLayout
+            BackgroundColor="WhiteSmoke"
             Orientation="Horizontal">
             <Frame
                 x:Name="Cerchio"
@@ -28,8 +29,8 @@
                     HorizontalOptions="Center">
                     <Label
                         x:Name="inizialeLabel"
-                        FontSize="28"
-                        TextColor="Black" 
+                        Font="Bold,28"
+                        TextColor="WhiteSmoke" 
                         HorizontalOptions="Center" 
                         VerticalOptions="Center" 
                         HorizontalTextAlignment="Center" 
@@ -38,30 +39,36 @@
                 </StackLayout>
             </Frame>
 
-            <StackLayout  Orientation="Horizontal">
+            <StackLayout  
+                Orientation="Horizontal">
                 <StackLayout>
                     <Label 
-                Margin="10,10,0,5"
-                FontSize="22"
-                FontAttributes="Bold"
-                x:Name="friendly_name">
+                        VerticalOptions="Center"
+                        Margin="10,24,0,0"
+                        FontSize="22"
+                        FontAttributes="Bold"
+                        x:Name="friendly_name"
+                        TextColor="Black">
                     </Label>
 
-                    <Label 
-                Margin="10,0,40,100"
-                FontSize="16"
-                Opacity="0.5"
-                x:Name="userFunds"/>
+                    <Label                     
+                        Margin="13,0,0,0"
+                        FontSize="16"
+                        Opacity="0.7"
+                        x:Name="userFunds">
+                    </Label>
                 </StackLayout>
-                <Button
-                    Padding="30,0,0,0"
+
+                <!--Padding="30,0,0,0"-->
+                <Button     
                     HorizontalOptions="End"
                     VerticalOptions="CenterAndExpand"
-                    Margin="50,0,0,0"
+                    Margin="0,0,10,0"
                     Clicked="Bottone_ClickedAsync"
                     x:Name="bottone"
                     TextColor="#6495ed"
-                    Text="Modifica Colore"
+                    Text="Modifica"
+                    Font="Bold,12"
                     BackgroundColor="Transparent">
                 </Button>
             </StackLayout>

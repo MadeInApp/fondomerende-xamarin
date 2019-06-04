@@ -48,9 +48,16 @@ namespace fondomerende.GraphicInterfaces
             ColorRandom c = new ColorRandom();
             Color color = c.GetRandomColor();
             Cerchio.BackgroundColor = color;
-            
-            LogoutViewCell logoutView = new LogoutViewCell();
-            logoutView.SetImageColor(color);
+
+            //momentaneo poi lo faremo meglio
+            LogoutViewCell lo = new LogoutViewCell();
+            ChronologyViewCell ch = new ChronologyViewCell();
+            EditSnackViewCell ed = new EditSnackViewCell();
+
+            lo.SetImageColorPreferences();
+            ch.SetImageColorPreferences();
+            ed.SetImageColorPreferences();
+
         }
 
         public async Task<string> GetUserFundsMethod()

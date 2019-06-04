@@ -9,6 +9,7 @@ using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using fondomerende.GraphicInterfaces;
+using Plugin.CrossPlatformTintedImage.Abstractions;
 
 namespace fondomerende.GraphicInterfaces
 {
@@ -19,6 +20,7 @@ namespace fondomerende.GraphicInterfaces
         public LogoutViewCell()
         {
             InitializeComponent();
+            SetImageColorPreferences();
         }
 
         public async void LogoutCellTapped(object sender, EventArgs e)
@@ -45,9 +47,9 @@ namespace fondomerende.GraphicInterfaces
 
 
 
-        public void SetImageColor(Color c)
+        public void SetImageColorPreferences()
         {
-           //LogoutButton= c ;
+            LogoutIcon.TintColor = Color.FromHex(Preferences.Get("Colore", "#000000")) ;
         }
     }
 }

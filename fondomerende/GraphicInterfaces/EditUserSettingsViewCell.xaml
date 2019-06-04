@@ -10,8 +10,9 @@
     <ViewCell.View>                             <!--Tasto per modificare Utente-->
         <StackLayout>
             <StackLayout 
-                 Orientation="Horizontal" 
-                 VerticalOptions="Center">
+                Orientation="Horizontal" 
+                VerticalOptions="Center"
+                BackgroundColor="WhiteSmoke">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" />
