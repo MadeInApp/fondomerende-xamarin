@@ -47,12 +47,13 @@
                     </Label>
 
                     <Label 
-                Margin="10,0,10,100"
+                Margin="10,0,40,100"
                 FontSize="16"
                 Opacity="0.5"
                 x:Name="userFunds"/>
                 </StackLayout>
                 <Button
+                    Padding="30,0,30,0"
                     IsEnabled ="True"
                     HorizontalOptions="End"
                     VerticalOptions="CenterAndExpand"
