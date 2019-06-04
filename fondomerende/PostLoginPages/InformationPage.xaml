@@ -20,28 +20,34 @@
                 <TableSection
                     Title="Utente"
                     TextColor="{OnPlatform Android= #6495ed}">
-                    
+
                     <local:EditUserViewCell
                         x:Name="EditUserViewCell"
-                         Height="90" IsEnabled="True">
+                         Height="90" IsEnabled="True"
+                        Tapped="ChangeUserSettings_Tapped">
                     </local:EditUserViewCell>
                     
-                    <local:EditUserSettingsViewCell
+                    <!--<local:EditUserSettingsViewCell
                         Tapped="ChangeUserSettings_Tapped" 
-                        x:Name="ChangeUserSettings"/>
+                        x:Name="ChangeUserSettings"/>-->
                     
                 </TableSection>
-                
+
                 <TableSection
                     Title="Generali"
                     TextColor="{OnPlatform Android= #6495ed}">
-                    <local:LogoutViewCell Height="40"
+                    <local:LogoutViewCell Height="60"
                         x:Name="LogoutCell"
                         IsEnabled="True">
                     </local:LogoutViewCell>
-                    
+
+                    <local:ChronologyViewCell Height="60"
+                        x:Name="ChronologyCell"
+                        IsEnabled="True">
+                    </local:ChronologyViewCell>
+
                 </TableSection>
-                
+
             </TableRoot>
 
         </TableView>

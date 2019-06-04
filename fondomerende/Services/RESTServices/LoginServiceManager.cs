@@ -25,7 +25,7 @@ namespace fondomerende.Services.RESTServices
                 .ReceiveJson<LoginDTO>();
            
 
-            if (result.response.success = true && result.response.status == 201)
+            if (result.response.success == true)
             {
                 UserManager.Instance.token = result.data.token;
                 Preferences.Set("username", username);

@@ -6,7 +6,8 @@
              mc:Ignorable="d"
              xmlns:local="clr-namespace:fondomerende"
              x:Class="fondomerende.GraphicInterfaces.EditUserViewCell">
-    <ViewCell.View>
+                                            
+    <ViewCell.View>                             <!--Cerchio con il nome al suo interno-->
         <StackLayout
             Orientation="Horizontal">
             <Frame
