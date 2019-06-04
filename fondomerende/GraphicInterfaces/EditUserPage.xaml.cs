@@ -16,7 +16,20 @@ namespace fondomerende.GraphicInterfaces
         public EditUserPage()
         {
             InitializeComponent();
-            NavigationPage.SetHasNavigationBar(this, false);
+
+
+            switch (Device.RuntimePlatform)                                                     //
+            {                                                                                   //                                    
+                                                                                                //   Se il dispositivo è Android non mostra la Top Bar della Navigation Page,
+                case Device.Android:                                                            //      Se è iOS invece si (perchè senza è una schifezza)
+                    NavigationPage.SetHasNavigationBar(this, false);                            //
+                    break;                                                                      //
+                                                                                                //
+                default:                                                                    //
+                    NavigationPage.SetHasNavigationBar(this, true);                             //
+                    break;                                                                      //
+            }                                                                                   //
+
         }
 
         private async void ApplyChanges_Clicked_1(object sender, EventArgs e)

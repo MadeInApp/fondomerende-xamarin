@@ -9,8 +9,9 @@
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              ios:Page.UseSafeArea="True"
              Title="{OnPlatform iOS='Modifica Utente'}">
-    
-    <ContentPage.Content>                               <!--Pagina Modifica utente-->
+
+    <ContentPage.Content>
+        <!--Pagina Modifica utente-->
         <StackLayout>
             <StackLayout
                 HeightRequest="50"
@@ -19,19 +20,21 @@
                 HorizontalOptions="End">
 
                 <ImageButton
-                    Source="{local:EmbeddedImage Resource=fondomerende.image.x.png}"
+                    IsVisible="{OnPlatform Android=true}"
+                    Source="{local:EmbeddedImage Resource=fondomerende.image.close_icon_32x32.png}"
                     HorizontalOptions="EndAndExpand"
                     VerticalOptions="StartAndExpand"      
                     BackgroundColor="Transparent"
-                    Scale="{OnIdiom Phone=1, Tablet=0.3}"
+                    Margin="0,20,40,0"
+                    Scale="{OnIdiom Phone=2, Tablet=3}"
                     x:Name ="CancelButton"
                     Clicked="CancelButton_Clicked">
                 </ImageButton>
-                
+
             </StackLayout>
-            
-            
-            
+
+
+
             <local:LineEntry 
                 HorizontalOptions="StartAndExpand" 
                 Placeholder="Cambia Username      " 
@@ -68,7 +71,7 @@
                 Text="Applica"
                 TextColor="{OnPlatform iOS={StaticResource ColorBackground}}"
                 Style="{OnPlatform Android={StaticResource FondomerendeButton}}">
-                
+
             </Button>
 
 

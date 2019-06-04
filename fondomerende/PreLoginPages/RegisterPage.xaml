@@ -34,11 +34,12 @@
                 HorizontalOptions="End">
 
             <ImageButton
-                    Source="{local:EmbeddedImage Resource=fondomerende.image.x.png}"
+                    Source="{local:EmbeddedImage Resource=fondomerende.image.close_icon_32x32.png}"
                     HorizontalOptions="EndAndExpand"
-                    VerticalOptions="StartAndExpand"      
+                    VerticalOptions="StartAndExpand"
+                Margin="0,50,40,0"
                     BackgroundColor="Transparent"
-                    Scale="{OnIdiom Phone=0.7, Tablet=0.3}"
+                    Scale="{OnIdiom Phone=1.5, Tablet=2.5}"
                     x:Name ="CancelButton"
                     Clicked="CancelButton_Clicked">
             </ImageButton>

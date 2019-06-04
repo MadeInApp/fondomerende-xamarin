@@ -8,9 +8,7 @@ using Xamarin.Forms;
 using Xamarin.Essentials;
 using Xamarin.Forms.Xaml;
 using fondomerende.Services.Models;
-
-
-
+using fondomerende.Manager;
 
 namespace fondomerende.PostLoginPages
 {
@@ -26,10 +24,10 @@ namespace fondomerende.PostLoginPages
 
         public AllSnacksPage()
         {
-
-            GetSnacksMethod();
+                      
             InitializeComponent();
-            
+            GetSnacksMethod();
+
 
             switch (Device.RuntimePlatform)                                                     //
             {                                                                                   //                                    
@@ -67,8 +65,10 @@ namespace fondomerende.PostLoginPages
             var resultLogin = await login.LoginAsync(Preferences.Get("username", ""), Preferences.Get("password", ""), true);
             if (!resultLogin.response.success)
             {
-                App.Current.MainPage = new NavigationPage(new LoginPage());
+              App.Current.MainPage = new NavigationPage(new LoginPage());
             }
+            UserManager.Instance.token = resultLogin.data.token;
+            Preferences.Set("token", resultLogin.data.token);
             var result = await snackServiceManager.GetSnacksAsync();
             ListView.ItemsSource = result.data.snacks;
         }
