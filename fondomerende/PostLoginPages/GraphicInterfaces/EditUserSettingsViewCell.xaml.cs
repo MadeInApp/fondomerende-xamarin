@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace fondomerende.GraphicInterfaces
+namespace fondomerende.PostLoginPages.GraphicInterfaces
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class SnacksListSettingsViewCell : ViewCell
+    public partial class EditUserSettingsViewCell : ViewCell
     {
-        public SnacksListSettingsViewCell()
+        public EditUserSettingsViewCell()
         {
             InitializeComponent();
         }

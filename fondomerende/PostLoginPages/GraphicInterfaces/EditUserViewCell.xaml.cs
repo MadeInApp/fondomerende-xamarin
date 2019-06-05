@@ -9,7 +9,7 @@ using Xamarin.Forms.Xaml;
 using fondomerende.Services.RESTServices;
 using fondomerende.Manager;
 
-namespace fondomerende.GraphicInterfaces
+namespace fondomerende.PostLoginPages.GraphicInterfaces
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class EditUserViewCell : ViewCell

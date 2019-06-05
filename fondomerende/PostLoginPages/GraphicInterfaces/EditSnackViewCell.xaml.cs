@@ -8,17 +8,22 @@ using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using fondomerende.GraphicInterfaces;
+using fondomerende.PostLoginPages.GraphicInterfaces;
 
-namespace fondomerende.GraphicInterfaces
+namespace fondomerende.PostLoginPages.GraphicInterfaces
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class AddSnackViewCell : ViewCell
+    public partial class EditSnackViewCell : ViewCell
     {
-        public AddSnackViewCell()
+        public EditSnackViewCell()
         {
             InitializeComponent();
             SetImageColorPreferences();
+        }
+
+        private void ViewCell_Tapped(object sender, EventArgs e)
+        {
+            
         }
 
         public void SetImageColorPreferences()

@@ -19,6 +19,16 @@ namespace fondomerende.PostLoginPages
         public AddSnackPage()
         {
             InitializeComponent();
+            switch (Device.RuntimePlatform)             //Se il dispositivo è Android non mostra la Top Bar della Navigation Page, se è iOS la mostra
+            {
+                default:
+                    NavigationPage.SetHasNavigationBar(this, true);
+                    break;
+                case Device.Android:
+                    NavigationPage.SetHasNavigationBar(this, false);
+                    break;
+
+            }
         }
 
 

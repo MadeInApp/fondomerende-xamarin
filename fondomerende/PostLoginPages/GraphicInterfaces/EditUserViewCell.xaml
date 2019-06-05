@@ -5,7 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              xmlns:local="clr-namespace:fondomerende"
-             x:Class="fondomerende.GraphicInterfaces.EditUserViewCell">
+             x:Class="fondomerende.PostLoginPages.GraphicInterfaces.EditUserViewCell">
                                             
     <ViewCell.View>                             <!--Cerchio con il nome al suo interno-->
         <StackLayout

@@ -18,11 +18,17 @@
     <None Remove="image\CheckBox_empty_32x32.png" />
     <None Remove="image\Chronology_icon_256x256.png" />
     <None Remove="image\close_icon_32x32.png" />
+    <None Remove="image\Donut_icon_512x512.png" />
     <None Remove="image\Edit_Icon_32x32.png" />
     <None Remove="image\Edit_snack_icon_256x256.png" />
     <None Remove="image\Edit_snack_icon_32x32.png" />
     <None Remove="image\Fondo_Merende_logo.png" />
+    <None Remove="image\LoginBackground.png" />
+    <None Remove="image\LoginBackground_dinamico.png" />
     <None Remove="image\LoginGradiente.png" />
+    <None Remove="image\Login_Animation.png" />
+    <None Remove="image\Login_Animation2.png" />
+    <None Remove="image\Login_Animation3.png" />
     <None Remove="image\Logout_icon_256x256.png" />
     <None Remove="image\macchinettaNew.png" />
     <None Remove="image\macchinetta_merende.png" />
@@ -42,12 +48,18 @@
     <EmbeddedResource Include="image\BackGradientRosAr.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="image\Login_Animation2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="image\CheckBox_Checked_32x32.png" />
     <EmbeddedResource Include="image\CheckBox_empty_32x32.png" />
     <EmbeddedResource Include="image\Chronology_icon_256x256.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="image\close_icon_32x32.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="image\Donut_icon_512x512.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="image\Edit_Icon_32x32.png">
@@ -58,7 +70,19 @@
     <EmbeddedResource Include="image\Fondo_Merende_logo.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="image\LoginBackground.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="image\LoginBackground_dinamico.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="image\LoginGradiente.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="image\Login_Animation.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="image\Login_Animation3.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="image\Logout_icon_256x256.png">
@@ -92,37 +116,37 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="GraphicInterfaces\EditSnackViewCell.xaml.cs">
+    <Compile Update="PostLoginPages\GraphicInterfaces\EditSnackViewCell.xaml.cs">
       <DependentUpon>EditSnackViewCell.xaml</DependentUpon>
     </Compile>
-    <Compile Update="GraphicInterfaces\ChronologyViewCell.xaml.cs">
+    <Compile Update="PostLoginPages\GraphicInterfaces\ChronologyViewCell.xaml.cs">
       <DependentUpon>ChronologyViewCell.xaml</DependentUpon>
     </Compile>
-    <Compile Update="GraphicInterfaces\LogoutViewCell.xaml.cs">
+    <Compile Update="PostLoginPages\GraphicInterfaces\LogoutViewCell.xaml.cs">
       <DependentUpon>LogoutViewCell.xaml</DependentUpon>
     </Compile>
-    <Compile Update="GraphicInterfaces\SubInterfaces\ChronologyLog.xaml.cs">
+    <Compile Update="PostLoginPages\GraphicInterfaces\SubInterfaces\ChronologyLog.xaml.cs">
       <DependentUpon>ChronologyLog.xaml</DependentUpon>
     </Compile>
     <Compile Update="PostLoginPages\EditSnackListPage.xaml.cs">
       <DependentUpon>EditSnackListPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="GraphicInterfaces\SnackViewCell.xaml.cs">
+    <Compile Update="PostLoginPages\GraphicInterfaces\SnackViewCell.xaml.cs">
       <DependentUpon>SnackViewCell.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="GraphicInterfaces\AddSnackViewCell.xaml">
+    <EmbeddedResource Update="PostLoginPages\GraphicInterfaces\AddSnackViewCell.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="GraphicInterfaces\EditSnackViewCell.xaml">
+    <EmbeddedResource Update="PostLoginPages\GraphicInterfaces\EditSnackViewCell.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="GraphicInterfaces\SnacksListSettingsViewCell.xaml">
+    <EmbeddedResource Update="PostLoginPages\GraphicInterfaces\SnacksListSettingsViewCell.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="GraphicInterfaces\SubInterfaces\ChronologyLog.xaml">
+    <EmbeddedResource Update="PostLoginPages\GraphicInterfaces\SubInterfaces\ChronologyLog.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="PostLoginPages\AddSnackPage.xaml">
@@ -131,13 +155,13 @@
     <EmbeddedResource Update="PostLoginPages\EditSnackListPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="GraphicInterfaces\EditUserSettingsViewCell.xaml">
+    <EmbeddedResource Update="PostLoginPages\GraphicInterfaces\EditUserSettingsViewCell.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="GraphicInterfaces\EditUserViewCell.xaml">
+    <EmbeddedResource Update="PostLoginPages\GraphicInterfaces\EditUserViewCell.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="GraphicInterfaces\LogoutViewCell.xaml">
+    <EmbeddedResource Update="PostLoginPages\GraphicInterfaces\LogoutViewCell.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="PostLoginPages\EditSnackSettingsPage.xaml">
@@ -149,7 +173,7 @@
     <EmbeddedResource Update="SettingsTableView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="GraphicInterfaces\SnackViewCell.xaml">
+    <EmbeddedResource Update="PostLoginPages\GraphicInterfaces\SnackViewCell.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="PostLoginPages\AllSnacksPage.xaml">

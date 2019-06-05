@@ -18,7 +18,7 @@
         </Grid.ColumnDefinitions>
 
         <Image
-            Source="{local:EmbeddedImage Resource=fondomerende.image.LoginGradiente.png}"
+            Source="{local:EmbeddedImage Resource=fondomerende.image.LoginBackground.png}"
             Grid.Row="0"
             Grid.Column="0"      
             Scale="{OnIdiom Phone=1.8, Tablet=1.5}"
