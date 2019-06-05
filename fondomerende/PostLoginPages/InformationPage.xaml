@@ -38,9 +38,14 @@
                 <TableSection 
                     Title="Snacks"
                     TextColor="{OnPlatform Android= #6495ed}">
-                    <local:EditSnackViewCell x:Name="EditSnackViewCell" Tapped="EditSnackViewCell_Tapped"/>
+
+                    <local:EditSnackViewCell 
+                        Height="{OnPlatform Android=60, iOS=60}"
+                        x:Name="EditSnackViewCell" 
+                        Tapped="EditSnackViewCell_Tapped"/>
+
                     <local:AddSnackViewCell 
-                        Height="{OnPlatform Android=60, iOS=40}"
+                        Height="{OnPlatform Android=60, iOS=60}"
                         x:Name="AddSnackCell"
                         IsEnabled="True" 
                         Tapped="AddSnackCell_Tapped"/>
@@ -50,25 +55,25 @@
                         IsEnabled="True"
                         Tapped="BuySnack_Tapped"/>
                 </TableSection>
-
-
-
+                
                 <TableSection
                     Title="Generali"
                     TextColor="{OnPlatform Android= #6495ed}">
-                    <local:ChronologyViewCell
-                        Height="{OnPlatform Android=60, iOS=40}"
+                    <local:ChronologyViewCell 
+                        Height="{OnPlatform Android=60, iOS=60}"
                         x:Name="ChronologyCell"
                         IsEnabled="True">
                     </local:ChronologyViewCell>
                 </TableSection>
+                
                 <TableSection>
-                    <local:LogoutViewCell
-                        Height="{OnPlatform Android=60, iOS=40}"
+                    <local:LogoutViewCell 
+                        Height="{OnPlatform Android=60, iOS=60}"
                         x:Name="LogoutCell"
                         IsEnabled="True">
                     </local:LogoutViewCell>
                 </TableSection>
+                
             </TableRoot>
         </TableView>
     </ContentPage.Content>

@@ -90,6 +90,7 @@
     <PackageReference Include="Plugin.ImageCropper" Version="1.0.1" />
     <PackageReference Include="Xamarin.Forms" Version="4.0.0.482894" />
     <PackageReference Include="Xamarin.Essentials" Version="1.1.0" />
+    <PackageReference Include="XForms.Plugin.AnimationNavigationPage" Version="1.0.7" />
   </ItemGroup>
 
   <ItemGroup>

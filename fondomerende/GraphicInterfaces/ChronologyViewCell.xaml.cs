@@ -9,6 +9,10 @@ using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using fondomerende.GraphicInterfaces;
+using Android.Content.Res;
+using fondomerende.GraphicInterfaces.SubInterfaces;
+using FormsControls.Base;
+using fondomerende.PostLoginPages;
 
 namespace fondomerende.GraphicInterfaces
 {
@@ -20,17 +24,17 @@ namespace fondomerende.GraphicInterfaces
         {
             InitializeComponent();
             SetImageColorPreferences();
+ 
         }
 
         public async void ChronologyCellTapped(object sender, EventArgs e)
         {
-            LastActionServiceManager lastAction = new LastActionServiceManager();
-            var result = await lastAction.GetLastActions();
+            //var a = new InterfaceImplementedPage();
+            AnimationNavigationPage a= new AnimationNavigationPage();
+            IPageAnimation PageAnimation  = new SlidePageAnimation { Duration = AnimationDuration.Long, Subtype = AnimationSubtype.FromTop };
 
-            if(result.response.success == true)
-            {
+            App.Current.MainPage = new AnimationNavigationPage(new ChronologyLog());
 
-            }
         }
 
 

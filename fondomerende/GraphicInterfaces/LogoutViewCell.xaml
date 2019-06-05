@@ -28,7 +28,7 @@
                     Grid.Row="0"
                     Grid.Column="0"
                     x:Name="LogoutIcon" 
-                    Scale="{OnIdiom Phone=0.5, Tablet=1.5}"
+                    Scale="{OnPlatform Android=0.5, Default=0.6}"
                     VerticalOptions="Center" 
                     HorizontalOptions="Center" 
                     Aspect="AspectFit"
@@ -46,6 +46,7 @@
                 </Image>-->
 
                 <StackLayout
+                    HorizontalOptions="Start"
                     VerticalOptions="Center"
                     Grid.Row="0"
                     Grid.Column="1">
@@ -61,8 +62,7 @@
                     <Label
                         Text="Effettua il Log out"
                         FontSize="12"
-                        TextColor="#9c9c9c"
-                        Margin="0,0,0,5">
+                        TextColor="#9c9c9c">
 
                     </Label>
 

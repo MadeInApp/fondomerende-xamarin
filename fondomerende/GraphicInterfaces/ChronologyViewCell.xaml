@@ -4,7 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:local="clr-namespace:fondomerende"
-          xmlns:controls="clr-namespace:Plugin.CrossPlatformTintedImage.Abstractions;assembly=Plugin.CrossPlatformTintedImage.Abstractions"
+             xmlns:controls="clr-namespace:Plugin.CrossPlatformTintedImage.Abstractions;assembly=Plugin.CrossPlatformTintedImage.Abstractions"
              mc:Ignorable="d"
              x:Class="fondomerende.GraphicInterfaces.ChronologyViewCell"
              Tapped="ChronologyCellTapped">
@@ -28,7 +28,7 @@
                     Grid.Row="0"
                     Grid.Column="0"
                     x:Name="ChronologyIcon" 
-                    Scale="{OnIdiom Phone=0.5, Tablet=1.5}"
+                    Scale="{OnPlatform Android=0.5, Default=0.6}"
                     VerticalOptions="Center" 
                     HorizontalOptions="Center" 
                     Aspect="AspectFit"
@@ -48,8 +48,7 @@
                     HorizontalOptions="Start"
                     VerticalOptions="Center"
                     Grid.Row="0"
-                    Grid.Column="1"
-                    Margin="0,0,15,0">
+                    Grid.Column="1">
 
                     <Label
                         VerticalOptions="End"                               
@@ -62,13 +61,13 @@
                     <Label
                         Text="Ultime azioni compiute dagli Utenti"
                         FontSize="12"
-                        TextColor="#9c9c9c"
-                        Margin="0,0,15,5">
+                        TextColor="#9c9c9c">
 
                     </Label>
 
                 </StackLayout>
             </Grid>
+            
         </StackLayout>
     </ViewCell.View>
 </ViewCell>

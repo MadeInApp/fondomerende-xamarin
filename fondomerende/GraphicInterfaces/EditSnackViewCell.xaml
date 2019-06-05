@@ -28,7 +28,7 @@
                     Grid.Row="0"
                     Grid.Column="0"
                     x:Name="SnackIcon" 
-                    Scale="{OnIdiom Phone=0.5, Tablet=1.5}"
+                    Scale="{OnPlatform Android=0.5, Default=0.6}"
                     VerticalOptions="Center" 
                     HorizontalOptions="Center" 
                     Aspect="AspectFit"
@@ -44,6 +44,7 @@
                 </Image>-->
 
                 <StackLayout
+                    HorizontalOptions="Start"
                     VerticalOptions="Center"
                     Grid.Row="0"
                     Grid.Column="1">
