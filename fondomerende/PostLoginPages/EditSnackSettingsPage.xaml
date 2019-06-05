@@ -21,7 +21,6 @@
             <local:LineEntry Grid.Row="1" Placeholder="Prezzo" x:Name="Prezzo"/>
             <local:LineEntry Grid.Row="2" Placeholder="Snack per Scatola" x:Name="SnackPerScatola"/>
             <local:LineEntry Grid.Row="3" Placeholder="Scadenza" x:Name="Scadenza"/>
-            <local:LineEntry Grid.Row="4" Placeholder="Quantità" x:Name="Qta"/>
             <Button Grid.Row="10" Text="Applica" x:Name="ApplyChanges" Clicked="ApplyChanges_Clicked"/>
         </Grid>
     </ContentPage.Content>

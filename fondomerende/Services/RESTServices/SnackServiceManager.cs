@@ -11,7 +11,7 @@ namespace fondomerende.Services.RESTServices
 {
     class SnackServiceManager
     {
-       //http://192.168.0.175:8888/fondomerende/public/getphoto.php?name=
+        //http://192.168.0.175:8888/fondomerende/public/getphoto.php?name=
 
         public async System.Threading.Tasks.Task<SnackDTO> GetSnacksAsync() //  Servizio per Ottenere informazioni sugli snack mangiabili
         {
@@ -23,15 +23,15 @@ namespace fondomerende.Services.RESTServices
         }
 
         // iniziato ma devo aspettare l'input dall'utente
-        public async System.Threading.Tasks.Task<SnackDTO> GetSnackAsync(string GetSnackName)  // Servizio per Ottenere informazioni su uno snack in particolare (non usato per ora)
+        public async System.Threading.Tasks.Task<GetSnackDTO> GetSnackAsync(string GetSnackName)  // Servizio per Ottenere informazioni su uno snack in particolare (non usato per ora)
         {
             var result = await "http://192.168.0.175:8888/fondomerende/public/process-request.php?commandName=get-snack-data&name="
                                 .WithCookie("auth-key", "metticiquellochetipare")
                                 .WithCookie("user-token", UserManager.Instance.token)
                                 .PostUrlEncodedAsync(new { commandName = "get-snack-data", name = GetSnackName })
-                                .ReceiveJson<SnackDTO>();
+                                .ReceiveJson<GetSnackDTO>();
             return result;
-        
+
         }
 
         public async System.Threading.Tasks.Task<AddSnackDTO> AddSnackAsync(string nome, Double prezzo, int snackPerBox, int scadenzaGiorni, bool contabile) //Servizio per aggiungere snacks (non usato per ora)
@@ -67,7 +67,7 @@ namespace fondomerende.Services.RESTServices
             return result;
         }
 
-        public async System.Threading.Tasks.Task<EditSnackDTO> EditSnackAsync(string idsnack, string snackName,string snackPrice,string snacksPerBox,string SnackExpiration, string quantity_snack) //Servizio per mangiare uno snack
+        public async System.Threading.Tasks.Task<EditSnackDTO> EditSnackAsync(string idsnack, string snackName, string snackPrice, string snacksPerBox, string SnackExpiration, string quantity_snack) //Servizio per mangiare uno snack
 
         {
             var data = new Dictionary<string, string>();
@@ -88,5 +88,15 @@ namespace fondomerende.Services.RESTServices
             return result;
         }
 
+        public async System.Threading.Tasks.Task<EatDTO> GetSnackAsync(string idsnack, string quantity)
+        {
+            var result = await "http://192.168.0.175:8888/fondomerende/public/process-request.php"
+            .WithCookie("auth-key", "metticiquellochetipare")
+            .WithCookie("user-token", UserManager.Instance.token)
+            .PostUrlEncodedAsync(new { commandName = "buy", id = idsnack, quantity = quantity})
+            .ReceiveJson<EatDTO>(); //ri uso il DTO di Eat perchè sono Lazyaf
+
+            return result;
+        }
     }
 }

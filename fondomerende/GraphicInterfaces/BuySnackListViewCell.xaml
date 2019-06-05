@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ViewCell xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="fondomerende.BuySnackListViewCell">
+  <ViewCell.View>
+        <StackLayout
+            Orientation="Horizontal"
+            HorizontalOptions="FillAndExpand">
+            <Image
+                Margin="20,0,0,0"
+                x:Name="GoogleImage_View"
+                WidthRequest="40"
+                HeightRequest="40"
+                Source="{Binding name, StringFormat='http://192.168.0.175:8888/fondomerende/public/getphoto.php?name={0}'}">
+            </Image>
+            <StackLayout
+                HorizontalOptions="StartAndExpand"
+                VerticalOptions="CenterAndExpand"
+                Padding="15,0,0,0">
+                <Label
+                        x:Name="Nome"
+                        Text="{Binding friendly_name}">
+                </Label>
+                <Label
+                        Margin="0,0,0,5"
+                        x:Name="Prezzo"
+                        Text="{Binding price, StringFormat= '€{0}'}"
+                        FontSize="14"
+                        Opacity="0.6">
+                </Label>
+            </StackLayout>
+            <StackLayout 
+                Padding="0,0,15,0"
+                HorizontalOptions="EndAndExpand"
+                VerticalOptions="Center">
+                <Label
+                    x:Name="qta"
+                    Text="{Binding quantity}">
+                </Label>
+            </StackLayout>
+        </StackLayout>
+  </ViewCell.View>
+</ViewCell>

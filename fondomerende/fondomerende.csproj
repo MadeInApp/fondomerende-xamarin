@@ -28,6 +28,7 @@
     <None Remove="image\macchinetta_merende.png" />
     <None Remove="image\macchinetta_minimalist.jpg" />
     <None Remove="image\settings_icon_64x64.png" />
+    <None Remove="image\shop_icon_256x256.png" />
     <None Remove="image\vm_icon.png" />
     <None Remove="image\vm_icon_51x51.png" />
     <None Remove="image\vm_icon_64x64.png" />
@@ -74,6 +75,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="image\settings_icon_64x64.png" />
+    <EmbeddedResource Include="image\shop_icon_256x256.png" />
     <EmbeddedResource Include="image\vm_icon_51x51.png" />
     <EmbeddedResource Include="image\vm_icon_64x64.png" />
     <EmbeddedResource Include="image\x.png">
@@ -100,6 +102,9 @@
     <Compile Update="GraphicInterfaces\LogoutViewCell.xaml.cs">
       <DependentUpon>LogoutViewCell.xaml</DependentUpon>
     </Compile>
+    <Compile Update="GraphicInterfaces\BuySnackListViewCell.xaml.cs">
+      <DependentUpon>BuySnackListViewCell.xaml</DependentUpon>
+    </Compile>
     <Compile Update="GraphicInterfaces\SubInterfaces\ChronologyLog.xaml.cs">
       <DependentUpon>ChronologyLog.xaml</DependentUpon>
     </Compile>
@@ -115,6 +120,9 @@
     <EmbeddedResource Update="GraphicInterfaces\AddSnackViewCell.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="GraphicInterfaces\BuySnackViewCell.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="GraphicInterfaces\EditSnackViewCell.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -125,6 +133,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="PostLoginPages\AddSnackPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="PostLoginPages\BuySnackListPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="PostLoginPages\EditSnackListPage.xaml">

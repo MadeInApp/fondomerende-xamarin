@@ -23,8 +23,12 @@ namespace fondomerende.PostLoginPages
         public async void GetSnackDataMethod()
         {
             SnackServiceManager snackService = new SnackServiceManager();
-            snackService.GetSnackAsync(EditSnackListPage.SelectedSnack);
-            Nome.Text = EditSnackListPage.SelectedSnack;
+            var result = await snackService.GetSnackAsync(EditSnackListPage.SelectedSnackName);
+            Nome.Text = EditSnackListPage.SelectedSnackFriendlyName;
+           // Prezzo.Text = Convert.ToString(result.data.snack.price);
+          /*  SnackPerScatola.Text = Convert.ToString(result.data.snack.snack_per_box);
+            Scadenza.Text = Convert.ToString(result.data.snack.expiration_in_days);
+*/
         }
 
         private void ApplyChanges_Clicked(object sender, EventArgs e)

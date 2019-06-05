@@ -3,11 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:fondomerende.GraphicInterfaces"
              mc:Ignorable="d"
-             x:Class="fondomerende.GraphicInterfaces.EditSnackListPage"
-              xmlns:local="clr-namespace:fondomerende.GraphicInterfaces"
-             Title="{OnPlatform iOS= 'Modifica Snack'}"
+             x:Class="fondomerende.PostLoginPages.BuySnackListPage"
+             Title="{OnPlatform iOS= 'Compra Snack'}"
               xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:local1="clr-namespace:fondomerende"
              ios:Page.UseSafeArea="true">
     <ContentPage.Content>
         <ListView
@@ -19,7 +20,7 @@
                 HasUnevenRows="True">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <local:SnacksListSettingsViewCell x:Name="EditSnack" ></local:SnacksListSettingsViewCell>
+                    <local1:BuySnackListViewCell x:Name="BuySnack" ></local1:BuySnackListViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

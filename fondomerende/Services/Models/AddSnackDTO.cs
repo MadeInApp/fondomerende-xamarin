@@ -9,6 +9,5 @@ namespace fondomerende.Services.Models
     public class AddSnackDTO
     {
         public AddSnackResponseDTO response { get; set; }
-
     }
 }
