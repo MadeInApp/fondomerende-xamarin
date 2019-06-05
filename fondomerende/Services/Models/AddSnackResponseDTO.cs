@@ -8,9 +8,15 @@ namespace fondomerende.Services.Models
     [JsonObject("response")]
     public class AddSnackResponseDTO
     {
+        [JsonObject("data")]
+        public class AddSnackDataDTO
+        {
+            [JsonProperty("snack-id")]
+            public int id { get; set; }
+        }
         public bool success { get; set; }
         public int status { get; set; }
-        public AddSnackDataDTO data { get; set; }
         public string message { get; set; }
+        public AddSnackDataDTO data { get; set; }
     }
 }

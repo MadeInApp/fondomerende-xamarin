@@ -50,7 +50,11 @@
                         x:Name="AddSnackCell"
                         IsEnabled="True" 
                         Tapped="AddSnackCell_Tapped"/>
-
+                    <local:BuySnackViewCell  
+                        Height="{OnPlatform Android=60, iOS=40}"
+                        x:Name="BuySnack"
+                        IsEnabled="True"
+                        Tapped="BuySnack_Tapped"/>
                 </TableSection>
                 
                 <TableSection

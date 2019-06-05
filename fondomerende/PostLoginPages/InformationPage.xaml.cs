@@ -83,5 +83,10 @@ namespace fondomerende.PostLoginPages
         {
             Navigation.PushAsync(new ChronologyLog());
         }
+
+        private void BuySnack_Tapped(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new BuySnackListPage());
+        }
     }
 }
