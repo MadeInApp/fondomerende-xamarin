@@ -73,5 +73,10 @@ namespace fondomerende.PostLoginPages
         {
             Navigation.PushAsync(new EditSnackListPage());
         }
+
+        private void AddSnackCell_Tapped(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new AddSnackPage());
+        }
     }
 }

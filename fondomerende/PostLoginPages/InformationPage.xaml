@@ -16,7 +16,7 @@
             Intent="Settings" 
             HasUnevenRows="True"
             x:Name="tableView">
-            
+
             <TableRoot>
                 <TableSection
                     Title="Utente"
@@ -47,7 +47,8 @@
                     <local:AddSnackViewCell 
                         Height="{OnPlatform Android=60, iOS=60}"
                         x:Name="AddSnackCell"
-                        IsEnabled="True" />
+                        IsEnabled="True" 
+                        Tapped="AddSnackCell_Tapped"/>
 
                 </TableSection>
                 

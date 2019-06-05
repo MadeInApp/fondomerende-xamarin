@@ -11,6 +11,7 @@ namespace fondomerende.Services.Models
         public ResponseDTO response { get; set; }
         public SnackDataArrayDTO data { get; set; }
 
+
         public static implicit operator SnackDTO(HttpResponseMessage v)
         {
             throw new NotImplementedException();

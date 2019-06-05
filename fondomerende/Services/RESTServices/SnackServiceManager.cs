@@ -34,13 +34,21 @@ namespace fondomerende.Services.RESTServices
         
         }
 
-        public async System.Threading.Tasks.Task<SnackDTO> AddSnackAsync(string nome, double prezzo, int snackPerBox, int scadenzaGiorni, bool contabile) //Servizio per aggiungere snacks (non usato per ora)
+        public async System.Threading.Tasks.Task<AddSnackDTO> AddSnackAsync(string nome, Double prezzo, int snackPerBox, int scadenzaGiorni, bool contabile) //Servizio per aggiungere snacks (non usato per ora)
         {
+            var data = new Dictionary<string, string>();
+            data.Add("commandName", "edit-snack");
+            data.Add("name", nome);
+            data.Add("price", Convert.ToString(prezzo));
+            data.Add("snacks-per-box", Convert.ToString(snackPerBox));
+            data.Add("expiration-in-days", Convert.ToString(scadenzaGiorni));
+            data.Add("countable", Convert.ToString(contabile));
+
             var result = await "http://192.168.0.175:8888/fondomerende/public/process-request.php"
                                 .WithCookie("auth-key", "metticiquellochetipare")
                                 .WithCookie("user-token", UserManager.Instance.token)
-                                .PostUrlEncodedAsync(new { commandName = "add-snack", name = nome, price = prezzo, snack_per_box = snackPerBox, expiration_in_days = scadenzaGiorni, countable = contabile } )
-                                .ReceiveJson<SnackDTO>();
+                                .PostUrlEncodedAsync(data)
+                                .ReceiveJson<AddSnackDTO>();
             return result;
 
         }
