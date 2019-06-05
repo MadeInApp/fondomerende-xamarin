@@ -5,7 +5,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="fondomerende.GraphicInterfaces.EditSnackListPage"
-              xmlns:local="clr-namespace:fondomerende">
+              xmlns:local="clr-namespace:fondomerende.GraphicInterfaces"
+             Title="{OnPlatform iOS= 'Modifica Snack'}">
     <ContentPage.Content>
         <ListView
                 x:Name="ListView"
@@ -16,7 +17,7 @@
                 HasUnevenRows="True">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <local:SnackViewCell x:Name="SnackCell"></local:SnackViewCell>
+                    <local:SnacksListSettingsViewCell x:Name="EditSnack" ></local:SnacksListSettingsViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
