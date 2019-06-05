@@ -9,7 +9,7 @@
                                             
     <ViewCell.View>                             <!--Cerchio con il nome al suo interno-->
         <StackLayout
-            BackgroundColor="WhiteSmoke"
+            BackgroundColor="{OnPlatform Android=WhiteSmoke}"
             Orientation="Horizontal">
             <Frame
                 x:Name="Cerchio"

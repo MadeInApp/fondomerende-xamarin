@@ -98,5 +98,15 @@ namespace fondomerende.Services.RESTServices
 
             return result;
         }
+
+
+        public async System.Threading.Tasks.Task<SnackDTO> GetAllSnacksAsync() //  Servizio per Ottenere informazioni sugli snack mangiabili
+        {
+            var result = await "http://192.168.0.175:8888/fondomerende/public/process-request.php?commandName=get-to-buy-and-fund-funds"
+                            .WithCookie("auth-key", "metticiquellochetipare")
+                            .WithCookie("user-token", UserManager.Instance.token)
+                            .GetJsonAsync<SnackDTO>();
+            return result;
+        }
     }
 }

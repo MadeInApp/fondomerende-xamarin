@@ -25,13 +25,14 @@
                 <controls:TintedImage 
                     Grid.Row="0"
                     Grid.Column="0"
-                    x:Name="ChronologyIcon" 
-                    Scale="{OnIdiom Phone=0.5, Tablet=1.5}"
+                    x:Name="BuyIcon" 
+                    Scale="0.6"
                     VerticalOptions="Center" 
                     HorizontalOptions="Center" 
+                    Margin="0,0,0,0 "
                     Aspect="AspectFit"
-                    Margin="0,0,20,0"
-                    Source="{local:EmbeddedImage Resource=fondomerende.image.shop_icon_256x256.png}">
+                    Source="{local:EmbeddedImage Resource=fondomerende.image.shopping_bag_256x256.png}"
+                    TintColor="Aquamarine">
                 </controls:TintedImage>
 
                 <!--<Image
@@ -47,7 +48,8 @@
                     HorizontalOptions="StartAndExpand"
                     VerticalOptions="Center"
                     Grid.Row="0"
-                    Grid.Column="1">
+                    Grid.Column="1"
+                    Margin="0,0,0,0">
 
                     <Label
                         VerticalOptions="End"                               

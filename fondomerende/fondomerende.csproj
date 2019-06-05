@@ -22,12 +22,15 @@
     <None Remove="image\Edit_snack_icon_256x256.png" />
     <None Remove="image\Edit_snack_icon_32x32.png" />
     <None Remove="image\Fondo_Merende_logo.png" />
+    <None Remove="image\history_icon_256x256.png" />
     <None Remove="image\LoginGradiente.png" />
+    <None Remove="image\logout_256x256.png" />
     <None Remove="image\Logout_icon_256x256.png" />
     <None Remove="image\macchinettaNew.png" />
     <None Remove="image\macchinetta_merende.png" />
     <None Remove="image\macchinetta_minimalist.jpg" />
     <None Remove="image\settings_icon_64x64.png" />
+    <None Remove="image\shopping_bag_256x256.png" />
     <None Remove="image\shop_icon_256x256.png" />
     <None Remove="image\vm_icon.png" />
     <None Remove="image\vm_icon_51x51.png" />
@@ -59,9 +62,11 @@
     <EmbeddedResource Include="image\Fondo_Merende_logo.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="image\history_icon_256x256.png" />
     <EmbeddedResource Include="image\LoginGradiente.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="image\logout_256x256.png" />
     <EmbeddedResource Include="image\Logout_icon_256x256.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -75,6 +80,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="image\settings_icon_64x64.png" />
+    <EmbeddedResource Include="image\shopping_bag_256x256.png" />
     <EmbeddedResource Include="image\shop_icon_256x256.png" />
     <EmbeddedResource Include="image\vm_icon_51x51.png" />
     <EmbeddedResource Include="image\vm_icon_64x64.png" />

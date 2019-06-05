@@ -26,7 +26,7 @@ namespace fondomerende.GraphicInterfaces.SubInterfaces
 
             if (result.response.success == true)
             {
-                var a = result.data.;
+                var a = result.data;
             }
             else
             {

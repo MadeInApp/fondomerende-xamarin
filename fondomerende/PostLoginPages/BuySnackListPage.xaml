@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:fondomerende.GraphicInterfaces"
              mc:Ignorable="d"
              x:Class="fondomerende.PostLoginPages.BuySnackListPage"
-             Title="{OnPlatform iOS= 'Compra Snack'}"
+             Title="{OnPlatform iOS= 'Acquista Snack'}"
               xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              xmlns:local1="clr-namespace:fondomerende"
              ios:Page.UseSafeArea="true">

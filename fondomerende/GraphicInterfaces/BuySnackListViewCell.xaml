@@ -24,13 +24,6 @@
                         x:Name="Nome"
                         Text="{Binding friendly_name}">
                 </Label>
-                <Label
-                        Margin="0,0,0,5"
-                        x:Name="Prezzo"
-                        Text="{Binding price, StringFormat= '€{0}'}"
-                        FontSize="14"
-                        Opacity="0.6">
-                </Label>
             </StackLayout>
             <StackLayout 
                 Padding="0,0,15,0"

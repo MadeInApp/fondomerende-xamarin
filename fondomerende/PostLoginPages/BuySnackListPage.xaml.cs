@@ -8,6 +8,7 @@ using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using fondomerende.PostLoginPages;
+using fondomerende.Services.Models;
 
 namespace fondomerende.PostLoginPages
 {
@@ -41,13 +42,17 @@ namespace fondomerende.PostLoginPages
 
         public async Task GetSnacksMethod()     //ottiene la lista degli snack e la applica alla ListView
         {
-            var result = await SnackService.GetSnacksAsync();
-            ListView.ItemsSource = result.data.snacks;
+            var resultTrue = await SnackService.GetAllSnacksAsync();
+
+
+
+            ListView.ItemsSource = resultTrue.data.snacks;
 
         }
 
         private async void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
+
 
         }
 
