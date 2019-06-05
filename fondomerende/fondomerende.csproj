@@ -119,11 +119,8 @@
     <Compile Update="PostLoginPages\GraphicInterfaces\LogoutViewCell.xaml.cs">
       <DependentUpon>LogoutViewCell.xaml</DependentUpon>
     </Compile>
-    <Compile Update="GraphicInterfaces\BuySnackListViewCell.xaml.cs">
+    <Compile Update="PostLoginPages\GraphicInterfaces\BuySnackListViewCell.xaml.cs">
       <DependentUpon>BuySnackListViewCell.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="GraphicInterfaces\SubInterfaces\ChronologyLog.xaml.cs">
-      <DependentUpon>ChronologyLog.xaml</DependentUpon>
     </Compile>
     <Compile Update="PostLoginPages\EditSnackListPage.xaml.cs">
       <DependentUpon>EditSnackListPage.xaml</DependentUpon>
@@ -135,9 +132,6 @@
 
   <ItemGroup>
     <EmbeddedResource Update="PostLoginPages\GraphicInterfaces\AddSnackViewCell.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="GraphicInterfaces\EditSnackViewCell.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="PostLoginPages\GraphicInterfaces\SnacksListSettingsViewCell.xaml">

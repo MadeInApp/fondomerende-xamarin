@@ -16,27 +16,31 @@ namespace fondomerende.Services.RESTServices
 
         public async System.Threading.Tasks.Task<LoginDTO> LoginAsync(string username, string passwordToLogin, bool remember) //Servizio di Log In
         {
-            
-           
-            var result = await "http://192.168.0.175:8888/fondomerende/public/process-request.php"
-                .WithCookie("auth-key", "metticiquellochetipare")
-                .WithHeader("Content-Type", "application/x-www-form-urlencoded; param=value;charset=UTF-8")
-                .PostUrlEncodedAsync(new { commandName = "login", name = username, password = passwordToLogin })
-                .ReceiveJson<LoginDTO>();
-           
+            LoginDTO result = null;
+            try
+            {
+                result = await "http://192.168.0.175:8888/fondomerende/public/process-request.php"
+                    .WithCookie("auth-key", "metticiquellochetipare")
+                    .WithHeader("Content-Type", "application/x-www-form-urlencoded; param=value;charset=UTF-8")
+                    .PostUrlEncodedAsync(new { commandName = "login", name = username, password = passwordToLogin })
+                    .ReceiveJson<LoginDTO>();
 
-            if (result.response.success == true)
-            {
-                UserManager.Instance.token = result.data.token;
-                Preferences.Set("username", username);
-                Preferences.Set("password", passwordToLogin);
-                Preferences.Set("Logged", remember);
-                Preferences.Set("token", result.data.token);
+                if (result.response.success == true)
+                {
+                    UserManager.Instance.token = result.data.token;
+                    Preferences.Set("username", username);
+                    Preferences.Set("password", passwordToLogin);
+                    Preferences.Set("Logged", remember);
+                    Preferences.Set("token", result.data.token);
+                }
             }
-            else
+            catch (FlurlHttpTimeoutException ex)
             {
-                
+                App.Current.MainPage.DisplayAlert("Fondo Merende", "Connessione al server scaduta!", "OK");
+                App.Current.MainPage = new NavigationPage(new LoginPage());
             }
+            
+
 
             return result;
         }  

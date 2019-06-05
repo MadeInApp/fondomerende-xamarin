@@ -4,11 +4,12 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="fondomerende.GraphicInterfaces.EditSnackListPage"
-              xmlns:local="clr-namespace:fondomerende.PostLoginPages.GraphicInterfaces"
-             Title="{OnPlatform iOS= 'Modifica Snack'}">
-              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             x:Class="fondomerende.PostLoginPages.GraphicInterfaces.EditSnackListPage"
+             xmlns:local="clr-namespace:fondomerende.PostLoginPages.GraphicInterfaces"
+             Title="{OnPlatform iOS= 'Modifica Snack'}"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              ios:Page.UseSafeArea="true">
+    
     <ContentPage.Content>
         <ListView
                 x:Name="ListView"

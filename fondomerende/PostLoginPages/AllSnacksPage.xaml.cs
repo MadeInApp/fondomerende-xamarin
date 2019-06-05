@@ -9,7 +9,7 @@ using Xamarin.Essentials;
 using Xamarin.Forms.Xaml;
 using fondomerende.Services.Models;
 using fondomerende.Manager;
-using fondomerende.GraphicInterfaces;
+using fondomerende.PostLoginPages.GraphicInterfaces;
 
 namespace fondomerende.PostLoginPages
 {

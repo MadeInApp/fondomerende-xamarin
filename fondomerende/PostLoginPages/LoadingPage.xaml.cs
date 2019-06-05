@@ -22,9 +22,11 @@ namespace fondomerende.PostLoginPages
 
 
             LogIn();
-
-
+            Ciambella();
             
+
+
+
 
         }
 
@@ -40,6 +42,39 @@ namespace fondomerende.PostLoginPages
             {
                 App.Current.MainPage = new MainPage();
             }
+        }
+
+        private async void Ciambella()
+        {
+            await Fondo_Merende_logo.ScaleTo(0.2, 0);
+            await Fondo_Merende_logo.TranslateTo(0, 0, 500);
+
+            await Task.WhenAny<bool>
+                (
+                    Fondo_Merende_logo.ScaleTo(0.8, 500),
+                    Fondo_Merende_logo.RotateTo(360, 500)
+                );
+            
+            await Fondo_Merende_logo.ScaleTo(1.2, 150);
+            await Fondo_Merende_logo.ScaleTo(1.0, 250);
+            await Fondo_Merende_logo.TranslateTo(0, 0, 1500);
+
+
+            //await Task.WhenAny<bool>
+            //   (
+            //    Fondo_Merende_logo.FadeTo(1, 0),
+            //    Fondo_Merende_logo.ScaleTo(0.2, 0)
+            //   );
+
+            //await Task.WhenAny<bool>
+            //    (
+            //    Fondo_Merende_logo.FadeTo(1, 200),
+            //    Fondo_Merende_logo.ScaleTo(0.9, 800),
+            //    Fondo_Merende_logo.RotateTo(360, 800)
+            //   );
+
+            //await Fondo_Merende_logo.ScaleTo(1.2, 200);
+            //await Fondo_Merende_logo.ScaleTo(1.0, 200);
         }
     }
 }

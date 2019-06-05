@@ -6,9 +6,9 @@
              xmlns:controls="clr-namespace:Plugin.CrossPlatformTintedImage.Abstractions;assembly=Plugin.CrossPlatformTintedImage.Abstractions"
              mc:Ignorable="d"
              xmlns:local="clr-namespace:fondomerende"
-             x:Class="fondomerende.GraphicInterfaces.BuySnackViewCell">
+             x:Class="fondomerende.PostLoginPages.GraphicInterfaces.BuySnackViewCell">
     <ViewCell.View>
-        <!--Tasto Logout-->
+        <!--Acquista Snack-->
         <StackLayout 
             Orientation="Horizontal" 
             VerticalOptions="Center">
@@ -31,8 +31,7 @@
                     HorizontalOptions="Center" 
                     Margin="0,0,0,0 "
                     Aspect="AspectFit"
-                    Source="{local:EmbeddedImage Resource=fondomerende.image.shopping_bag_256x256.png}"
-                    TintColor="Aquamarine">
+                    Source="{local:EmbeddedImage Resource=fondomerende.image.shopping_bag_256x256.png}">
                 </controls:TintedImage>
 
                 <!--<Image

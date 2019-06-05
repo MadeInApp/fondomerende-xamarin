@@ -31,7 +31,7 @@
                     VerticalOptions="Center" 
                     HorizontalOptions="Center" 
                     Aspect="AspectFit"
-                    Source="{local:EmbeddedImage Resource=fondomerende.image.history_icon_256x256.png}">
+                    Source="{local:EmbeddedImage Resource=fondomerende.image.Chronology_icon_256x256.png}">
                 </controls:TintedImage>
                 
                 <!--<Image

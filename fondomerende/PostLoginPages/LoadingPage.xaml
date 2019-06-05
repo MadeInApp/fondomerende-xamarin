@@ -4,14 +4,31 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             xmlns:local="clr-namespace:fondomerende"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              x:Class="fondomerende.PostLoginPages.LoadingPage">
     <ContentPage.Content>
         <StackLayout>
+
+            <Image
+                Source="{local:EmbeddedImage Resource=fondomerende.image.Donut_icon_512x512.png}"
+                Scale="{OnIdiom Phone=1, Tablet=1.5}"
+                x:Name ="Fondo_Merende_logo"
+                Margin="{OnPlatform iOS='0,120,0,0', Android='0,120,0,0'}"
+                Aspect="AspectFit">
+            </Image>
+            
             <ActivityIndicator
                 IsRunning="True"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
-            <Label VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" x:Name="LoadingLabel"/>
+            
+            <Label 
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" 
+                x:Name="LoadingLabel"
+                Font="Bold, 16"/>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
