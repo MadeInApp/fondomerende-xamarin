@@ -4,10 +4,11 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             xmlns:controls="clr-namespace:Plugin.CrossPlatformTintedImage.Abstractions;assembly=Plugin.CrossPlatformTintedImage.Abstractions"
              xmlns:local="clr-namespace:fondomerende"
              x:Class="fondomerende.GraphicInterfaces.AddSnackViewCell">
     <ViewCell.View>
-        <!--Tasto Logout-->
+        <!--Tasto aggiungi snack-->
         <StackLayout 
             Orientation="Horizontal" 
             VerticalOptions="Center">
@@ -21,17 +22,29 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
-                <Image
+                <controls:TintedImage 
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    x:Name="SnackIcon" 
+                    Scale="{OnPlatform Android=0.5, Default=0.6}"
+                    VerticalOptions="Center" 
+                    HorizontalOptions="Center" 
+                    Aspect="AspectFit"
+                    Source="{local:EmbeddedImage Resource=fondomerende.image.add_icon_256x256.png}">
+                </controls:TintedImage>
+                
+                <!--<Image
                     Margin="2,0,0,0"
                     Source="{local:EmbeddedImage Resource=fondomerende.image.add_icon_256x256.png}"
                     Grid.Row="0"
                     Grid.Column="0"
-                    Scale="{OnPlatform Android=0.6, iOS=0.6}"
+                    Scale="{OnPlatform Android=0.3, iOS=0.6}"
                     x:Name ="LogoutButton"
                     Aspect="AspectFit">
-                </Image>
+                </Image>-->
 
                 <StackLayout
+                    HorizontalOptions="Start"
                     VerticalOptions="Center"
                     Grid.Row="0"
                     Grid.Column="1">

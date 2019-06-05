@@ -27,32 +27,35 @@
                       Source="{local:EmbeddedImage Resource=fondomerende.image.Edit_Icon_32x32.png}"
                       Grid.Row="0"
                       Grid.Column="0"      
-                      Scale="{OnIdiom Phone=0.5, Tablet=1.5}"
+                      Scale="{OnPlatform Android=0.5, Default=0.6}"
                       x:Name ="LogoutButton"
                       Aspect="AspectFit">
                     </Image>
 
                     <StackLayout
+                        HorizontalOptions="Start"                                             
                         VerticalOptions="Center"
                         Grid.Row="0"
                         Grid.Column="1">
 
                         <Label
-                        VerticalOptions="End"                               
-                        Text="Modifica Informazioni Personali"
-                        FontSize="14"
-                        TextColor="#000000">
+                            VerticalOptions="End"                               
+                            Text="Modifica Informazioni Personali"
+                            FontSize="14"
+                            TextColor="#000000">
                         </Label>
 
                         <Label
-                        Text="Username, Friendly Name, Password..."
-                        FontSize="12"
-                        TextColor="#9c9c9c"
-                        Margin="0,0,0,5">
+                            Text="Username, Friendly Name, Password..."
+                            FontSize="12"
+                            TextColor="#9c9c9c"
+                            Margin="0,0,0,5">
                         </Label>
                     </StackLayout>
+                    
                 </Grid>
             </StackLayout>
+            
         </StackLayout>
     </ViewCell.View>
 </ViewCell>

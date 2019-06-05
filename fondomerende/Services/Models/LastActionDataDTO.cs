@@ -14,7 +14,7 @@ namespace fondomerende.Services.Models
     [JsonObject("actions")]
     public class LastActionDataArrayDTO
     {
-        public LastActionDataDTO action { get; set; }
+        public LastActionDataDTO actions { get; set; }
     }
 
 }
