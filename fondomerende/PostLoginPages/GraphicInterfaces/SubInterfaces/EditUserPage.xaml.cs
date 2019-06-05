@@ -8,7 +8,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using fondomerende.Services.RESTServices;
 
-namespace fondomerende.GraphicInterfaces.SubInterfaces
+namespace fondomerende.PostLoginPages.GraphicInterfaces.SubInterfaces
 {
     public partial class EditUserPage : ContentPage
     {

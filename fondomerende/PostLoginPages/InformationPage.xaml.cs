@@ -4,7 +4,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Xamarin.Essentials;
 using fondomerende.GraphicInterfaces;
-using fondomerende.GraphicInterfaces.SubInterfaces;
+using fondomerende.PostLoginPages.GraphicInterfaces.SubInterfaces;
 
 namespace fondomerende.PostLoginPages
 {
@@ -77,6 +77,11 @@ namespace fondomerende.PostLoginPages
         private void AddSnackCell_Tapped(object sender, EventArgs e)
         {
             Navigation.PushAsync(new AddSnackPage());
+        }
+
+        private void ChronologyCell_Tapped(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new ChronologyLog());
         }
 
         private void BuySnack_Tapped(object sender, EventArgs e)

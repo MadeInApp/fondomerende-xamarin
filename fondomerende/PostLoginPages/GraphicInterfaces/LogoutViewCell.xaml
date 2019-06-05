@@ -1,17 +1,19 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<ViewCell xmlns="http://xamarin.com/schemas/2014/forms" 
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ViewCell xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
-             xmlns:controls="clr-namespace:Plugin.CrossPlatformTintedImage.Abstractions;assembly=Plugin.CrossPlatformTintedImage.Abstractions"
              xmlns:local="clr-namespace:fondomerende"
-             x:Class="fondomerende.GraphicInterfaces.AddSnackViewCell">
-    <ViewCell.View>
-        <!--Tasto aggiungi snack-->
+             xmlns:controls="clr-namespace:Plugin.CrossPlatformTintedImage.Abstractions;assembly=Plugin.CrossPlatformTintedImage.Abstractions"
+             mc:Ignorable="d"
+             x:Class="fondomerende.PostLoginPages.GraphicInterfaces.LogoutViewCell"
+             Tapped="LogoutCellTapped">
+
+    <ViewCell.View>                                                    <!--Tasto Logout--> 
         <StackLayout 
             Orientation="Horizontal" 
-            VerticalOptions="Center">
+            VerticalOptions="Center"
+            BackgroundColor="WhiteSmoke">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
@@ -25,20 +27,20 @@
                 <controls:TintedImage 
                     Grid.Row="0"
                     Grid.Column="0"
-                    x:Name="SnackIcon" 
+                    x:Name="LogoutIcon" 
                     Scale="{OnPlatform Android=0.5, Default=0.6}"
                     VerticalOptions="Center" 
                     HorizontalOptions="Center" 
                     Aspect="AspectFit"
-                    Source="{local:EmbeddedImage Resource=fondomerende.image.add_icon_256x256.png}">
+                    Source="{local:EmbeddedImage Resource=fondomerende.image.logout_256x256.png}"
+                    TintColor="Aquamarine">
                 </controls:TintedImage>
                 
                 <!--<Image
-                    Margin="2,0,0,0"
-                    Source="{local:EmbeddedImage Resource=fondomerende.image.add_icon_256x256.png}"
+                    Source="{local:EmbeddedImage Resource=fondomerende.image.Logout_icon_256x256.png}"
                     Grid.Row="0"
                     Grid.Column="0"
-                    Scale="{OnPlatform Android=0.3, iOS=0.6}"
+                    Scale="{OnPlatform Android=0.6, iOS=0.6}"
                     x:Name ="LogoutButton"
                     Aspect="AspectFit">
                 </Image>-->
@@ -51,22 +53,22 @@
 
                     <Label
                         VerticalOptions="End"                               
-                        Text="Aggiungi Snack"
+                        Text="Log out"
                         FontSize="14"
-                        TextColor="Black">
+                        TextColor="{OnPlatform iOS=Red, Default=Black}">
 
                     </Label>
 
                     <Label
-                        Text="Possibilità Infinite"
+                        Text="Effettua il Log out"
                         FontSize="12"
-                        TextColor="#9c9c9c"
-                        Margin="0,0,0,5">
+                        TextColor="#9c9c9c">
 
                     </Label>
 
                 </StackLayout>
             </Grid>
+            
         </StackLayout>
     </ViewCell.View>
 </ViewCell>

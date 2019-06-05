@@ -4,13 +4,14 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="fondomerende.GraphicInterfaces.SubInterfaces.ChronologyLog"
+             x:Class="fondomerende.PostLoginPages.GraphicInterfaces.SubInterfaces.ChronologyLog"
              BackgroundColor="{OnPlatform Android= {StaticResource ColorSnackBackground}, iOS= 'White'}"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:controls="clr-namespace:FormsControls.Base;assembly=FormsControls.Base"
              ios:Page.UseSafeArea="True"
              Title="{OnPlatform iOS='Cronologia'}">
 
-    <ContentPage.Content>
+    <!--<ContentPage.Content>
         <StackLayout>
             <ListView
                 x:Name="ChronologyView"
@@ -25,5 +26,5 @@
                 </ListView.ItemTemplate>
             </ListView>
         </StackLayout>
-    </ContentPage.Content>
+    </ContentPage.Content>-->
 </ContentPage>

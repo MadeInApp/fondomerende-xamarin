@@ -7,16 +7,14 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace fondomerende
+namespace fondomerende.PostLoginPages.GraphicInterfaces
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class SnackViewCell : ViewCell
+    public partial class SnacksListSettingsViewCell : ViewCell
     {
-        public SnackViewCell()
+        public SnacksListSettingsViewCell()
         {
             InitializeComponent();
-           // GoogleImage_View.Source = ImageSource.FromResource("fondomerende.image.CheckBox_empty_32x32.png");
-
         }
     }
 }

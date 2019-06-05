@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using fondomerende.GraphicInterfaces;
+using fondomerende.PostLoginPages.GraphicInterfaces;
 using Plugin.CrossPlatformTintedImage.Abstractions;
 
-namespace fondomerende.GraphicInterfaces
+namespace fondomerende.PostLoginPages.GraphicInterfaces
 {
 
     [DesignTimeVisible(true)]

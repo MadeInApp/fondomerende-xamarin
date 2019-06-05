@@ -25,8 +25,8 @@ namespace fondomerende
         public LoginPage()
         {
             InitializeComponent();
-            Fondo_Merende_logo.Source = ImageSource.FromResource("fondomerende.image.macchinettaNew.png");
             NavigationPage.SetHasNavigationBar(this, false);
+            Donut_Background();
         }
 
         private void RememberMeButton_Clicked(object sender, EventArgs e) //Ricorda nome utente e pw (da fixare)
@@ -88,6 +88,17 @@ namespace fondomerende
             wait = !wait;
         }
 
+        private async void Donut_Background()
+        {
+            
+                await Task.WhenAny<bool>
+                (
+                    Donut.RotateTo(10, 0),
+                    Donut.ScaleTo(1.5, 0),
+                    Donut.TranslateTo(20, -1000, 100000)
+                );
+            
+        }
     }
 }
 

@@ -6,8 +6,7 @@
              xmlns:local="clr-namespace:fondomerende"
              xmlns:controls="clr-namespace:Plugin.CrossPlatformTintedImage.Abstractions;assembly=Plugin.CrossPlatformTintedImage.Abstractions"
              mc:Ignorable="d"
-             x:Class="fondomerende.GraphicInterfaces.ChronologyViewCell"
-             Tapped="ChronologyCellTapped">
+             x:Class="fondomerende.PostLoginPages.GraphicInterfaces.ChronologyViewCell">
 
     <ViewCell.View>                                                    <!--Tasto Logout--> 
         <StackLayout 
