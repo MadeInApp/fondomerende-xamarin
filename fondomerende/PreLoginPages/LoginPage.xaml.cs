@@ -57,7 +57,7 @@ namespace fondomerende
                     password = passwordEntry.Text;
 
                     LoginServiceManager loginService = new LoginServiceManager();
-                    var response = await loginService.LoginAsync(username, password, remember);
+                    var response = await loginService.LoginAsync(username, password, !remember);
 
                     if (response.response.success == true)
                     {
@@ -145,10 +145,11 @@ namespace fondomerende
         {
             await Donut.RotateTo(10, 0);
             await Donut.ScaleTo(1.5, 0);
-            await Donut.TranslateTo(20, -800, 100000);
-            await Donut.TranslateTo(-20, 0, 1);
-            await Donut.TranslateTo(20, -800, 100000);
-
+            while (true)
+            { 
+                await Donut.TranslateTo(20, -800, 100000);
+                await Donut.TranslateTo(-20, 0, 1);
+            }
 
 
         }

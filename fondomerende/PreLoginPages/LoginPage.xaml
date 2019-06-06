@@ -196,7 +196,7 @@
                     <Label
                         FontSize="Default"
                         FontAttributes="Bold"
-                        Text="Remember me?"
+                        Text="Don't remember me"
                         HorizontalOptions="Start"
                         VerticalOptions="Center"
                         TextColor="{OnPlatform Android = {StaticResource ColorText}}">
@@ -244,8 +244,19 @@
 
                 </Image>
 
-                <local:LineEntry
+                <Label
                     Grid.Row="1"
+                    Grid.Column="0" 
+                    FontSize="18"
+                    FontAttributes="Bold"
+                    Text="Registrati:"
+                    HorizontalOptions="Start"
+                    VerticalOptions="Center"
+                    TextColor="{OnPlatform Android = {StaticResource ColorText}}">
+                </Label>
+
+                <local:LineEntry
+                    Grid.Row="2"
                     Grid.Column="0"
                     x:Name="usernameEntryR"
                     Text=""
@@ -253,7 +264,7 @@
                 </local:LineEntry>
 
                 <local:LineEntry
-                    Grid.Row="2"
+                    Grid.Row="3"
                     Grid.Column="0"
                     x:Name="friendlyNameEntryR"
                     Text=""
@@ -261,7 +272,7 @@
                 </local:LineEntry>
                                                     <!--Password e conferma password-->
                 <StackLayout
-                    Grid.Row="3"
+                    Grid.Row="4"
                     Grid.Column="0">
                     
                     <Grid>
@@ -278,7 +289,6 @@
                             Grid.Row="0"
                             Grid.Column="0"
                             x:Name="passwordEntryR"
-                            Text="pw"
                             Placeholder="Password"
                             IsPassword="True">
                         </local:LineEntry>
@@ -287,8 +297,7 @@
                             Grid.Row="0"
                             Grid.Column="1"
                             x:Name="testPasswordEntryR"
-                            Text="pw"
-                            Placeholder="Conferma Password"
+                            Placeholder="Password"
                             IsPassword="True">
                         </local:LineEntry>
                     </Grid>
@@ -297,12 +306,13 @@
                                                  <!--Register tasto Android-->               
                 <Button
                         HorizontalOptions="FillAndExpand"
-                        Grid.Row="4"
+                        Grid.Row="5"
                         Grid.Column="0"
                         Margin="5,20,0,5"
                         Clicked="Register_ClickedAsync"
                         x:Name="bottoneR"
                         Text="Register"
+                        TextColor="Black"
                         Style="{OnPlatform Android={StaticResource FondomerendeButton}}">
                     <Button.IsVisible>
                         <OnPlatform x:TypeArguments="x:Boolean"
@@ -316,7 +326,7 @@
                 <StackLayout
                     HorizontalOptions="Center"
                     Orientation="Horizontal"
-                    Grid.Row="4"
+                    Grid.Row="5"
                     Grid.Column="0">
                     <StackLayout.IsVisible>
                         <OnPlatform x:TypeArguments="x:Boolean"
@@ -329,7 +339,7 @@
                             Clicked="Register_ClickedAsync"
                             x:Name="bottone_iOSR"
                             TextColor="{OnPlatform iOS={StaticResource ColorBackground}}"
-                            Text="Log in">
+                            Text="Register">
                     </Button>
 
                 </StackLayout>
@@ -337,11 +347,10 @@
 
                 <Button
                         HorizontalOptions="FillAndExpand"
-                        Grid.Row="5"
+                        Grid.Row="6"
                         Grid.Column="0"
                         Margin="5,0,0,5"
                         Clicked="Cancel_ClickedAsync"
-                        x:Name="RegisterR"
                         Text="Log in"
                         TextColor="Black"
                         Style="{OnPlatform Android={StaticResource FondomerendeButton}}">
@@ -354,11 +363,10 @@
 
                 <Button
                         HorizontalOptions="FillAndExpand"
-                        Grid.Row="5"
+                        Grid.Row="6"
                         Grid.Column="0"
                         Margin="5,0,0,5"
                         Clicked="Cancel_ClickedAsync"
-                        x:Name="Register_iOSR"
                         Text="Log in"
                         TextColor="White"
                         Style="{OnPlatform Android={StaticResource FondomerendeButton}}">

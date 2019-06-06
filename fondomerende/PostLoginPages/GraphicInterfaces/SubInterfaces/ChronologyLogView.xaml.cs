@@ -29,31 +29,8 @@ namespace fondomerende.PostLoginPages.GraphicInterfaces.SubInterfaces
                    
 
             }
-            GetLastAction();
-            //MyPageAnimation = new SlidePageAnimation()
-            //{
-            //    Duration = AnimationDuration.Long,
-            //    Subtype = AnimationSubtype.FromLeft
-            //};
         }
 
-        public async void GetLastAction() //roba non funzionante
-        {
-            LastActionServiceManager lastAction = new LastActionServiceManager();
-            var result = await lastAction.GetLastActions();
-
-            if (result.response.success == true)
-            {
-                string[] cronologia = result.data.actions;
-                ChronologyLabel.Text = cronologia[0];
-            }
-            else
-            {
-                await App.Current.MainPage.DisplayAlert("Fondo Merende", "Guarda, sta cosa non ha senso", "OK");
-            }
-        }
-
-        public IPageAnimation MyPageAnimation { get; set; }
         
     }
 }

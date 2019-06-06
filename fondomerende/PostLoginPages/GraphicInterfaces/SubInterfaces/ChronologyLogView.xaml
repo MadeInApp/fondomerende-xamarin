@@ -9,7 +9,7 @@
              xmlns:controls="clr-namespace:FormsControls.Base;assembly=FormsControls.Base"
              ios:Page.UseSafeArea="True">
     
-    <ViewCell.View>                 <!--Log cronologia-->
+    <ViewCell.View>                <!--Non in utilizzo-->
         <StackLayout
             Orientation="Horizontal"
             HorizontalOptions="FillAndExpand">
@@ -19,7 +19,8 @@
                 Padding="15,0,0,0">
                 <Label
                     x:Name="ChronologyLabel"
-                    Font="Bold,14">
+                    Font="Bold,14"
+                    Text="{Binding .}">
                 </Label>
             </StackLayout>
         </StackLayout>

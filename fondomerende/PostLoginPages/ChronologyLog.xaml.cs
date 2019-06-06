@@ -1,4 +1,6 @@
-﻿using System;
+﻿using fondomerende.Services.RESTServices;
+using FormsControls.Base;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,8 +12,9 @@ using Xamarin.Forms.Xaml;
 namespace fondomerende.PostLoginPages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ChronologyLog : ContentPage
+    public partial class ChronologyLog : AnimationPage
     {
+
         public ChronologyLog()
         {
             InitializeComponent();
@@ -23,6 +26,23 @@ namespace fondomerende.PostLoginPages
                 case Device.Android:
                     NavigationPage.SetHasNavigationBar(this, false);
                     break;
+            }
+            GetLastActions();
+        }
+
+        public async void GetLastActions() //roba non funzionante
+        {
+            LastActionServiceManager lastAction = new LastActionServiceManager();
+            var result = await lastAction.GetLastActions();
+
+            if (result.response.success == true)
+            {
+                string[] cronologia = result.data.actions;
+                listView.ItemsSource = cronologia;
+            }
+            else
+            {
+                await App.Current.MainPage.DisplayAlert("Fondo Merende", "Guarda, sta cosa non ha senso", "OK");
             }
         }
     }
