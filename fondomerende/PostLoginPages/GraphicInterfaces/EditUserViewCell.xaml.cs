@@ -67,7 +67,7 @@ namespace fondomerende.PostLoginPages.GraphicInterfaces
             if(result.response.success == true)
             {
                 userFunds.Text = "€" + result.data.user_funds_amount;
-                if (Int32.Parse(result.data.user_funds_amount) <= 0)
+                if (float.Parse(result.data.user_funds_amount) <= 0)
                 {
                     userFunds.TextColor = Color.Red;
                 }

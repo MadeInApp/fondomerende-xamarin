@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using fondomerende.PostLoginPages;
 
 namespace fondomerende.PostLoginPages
 {
@@ -24,7 +25,7 @@ namespace fondomerende.PostLoginPages
 
             LogIn();
             Ciambella();
-
+            Donut_Background();
 
 
 
@@ -48,7 +49,7 @@ namespace fondomerende.PostLoginPages
 
         private async void Ciambella()
         {
-            //await Fondo_Merende_logo.ScaleTo(0.2, 0);
+            // await Fondo_Merende_logo.ScaleTo(0.2, 0);
             //await Fondo_Merende_logo.TranslateTo(0, 0, 500);
 
             //await Task.WhenAny<bool>
@@ -79,6 +80,20 @@ namespace fondomerende.PostLoginPages
 
             //await Fondo_Merende_logo.ScaleTo(1.2, 200);
             //await Fondo_Merende_logo.ScaleTo(1.0, 200);
+        }
+
+        private async void Donut_Background()
+        {
+            await Task.WhenAny<bool>
+            (
+                Donut.RotateTo(10, 0),
+                Donut.ScaleTo(1.5, 0),
+                Donut.TranslateTo(20, -1000, 100000),
+                Donut.TranslateTo(-20, 1000, 0),
+                Donut.TranslateTo(20, -1000, 100000)
+            );
+
+
         }
     }
 }

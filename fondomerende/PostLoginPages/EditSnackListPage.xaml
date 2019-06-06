@@ -20,7 +20,7 @@
                 HasUnevenRows="True">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <local:SnacksListSettingsViewCell x:Name="EditSnack" ></local:SnacksListSettingsViewCell>
+                    <local:SnacksListSettingsViewCell x:Name="EditSnack"></local:SnacksListSettingsViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

@@ -94,9 +94,9 @@ namespace fondomerende
                 (
                     Donut.RotateTo(10, 0),
                     Donut.ScaleTo(1.5, 0),
-                    Donut.TranslateTo(20, -1000, 100000),
+                    Donut.TranslateTo(20, -1000, 1000),
                     Donut.TranslateTo(-20, 1000, 0),
-                    Donut.TranslateTo(20, -1000, 100000)
+                    Donut.TranslateTo(20, -1000, 1000)
                 );
             
 
@@ -133,7 +133,25 @@ namespace fondomerende
             //await Fondo_Merende_logo.ScaleTo(1.2, 200);
             //await Fondo_Merende_logo.ScaleTo(1.0, 200);
         }
+        private void RememberMeButton_iOS_Clicked(object sender, EventArgs e) //Ricorda nome utente e pw (da fixare)
+        {
+            if (clicked == true)
+            {
+                clicked = false;
+                remember = !remember;
+                RememberMe_Button.BackgroundColor = Color.Transparent;
+            }
+            else
+            {
+                clicked = true;
+                remember = !remember;
+                RememberMe_Button.BackgroundColor = Color.WhiteSmoke;
+            }
+
+        }
 
     }
+
+   
 }
 

@@ -9,12 +9,16 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using fondomerende.PostLoginPages;
 using fondomerende.Services.Models;
+using fondomerende.PostLoginPages.GraphicInterfaces;
+using Rg.Plugins.Popup.Extensions;
 
 namespace fondomerende.PostLoginPages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class BuySnackListPage : ContentPage
     {
+        public static int SelectedSnackID;
+        public static bool Refresh = false;
         SnackServiceManager SnackService = new SnackServiceManager();
         public ObservableCollection<string> Items { get; set; }
 
@@ -22,6 +26,7 @@ namespace fondomerende.PostLoginPages
         {
             InitializeComponent();
             GetSnacksMethod();
+            
 
 
             switch (Device.RuntimePlatform)                                                     //
@@ -36,26 +41,28 @@ namespace fondomerende.PostLoginPages
                     break;                                                                      //
             }                                                                                   //
 
-
+            
 
         }
 
         public async Task GetSnacksMethod()     //ottiene la lista degli snack e la applica alla ListView
         {
-            var resultTrue = await SnackService.GetAllSnacksAsync();
-
-
-
-            ListView.ItemsSource = resultTrue.data.snacks;
-
+            var result = await SnackService.GetToBuySnacksAsync();
+            ListView.ItemsSource = result.data.snacks;
         }
 
         private async void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-
+            var result = await SnackService.GetToBuySnacksAsync();
+            SelectedSnackID = (e.SelectedItem as ToBuyDataDTO).id;
+            await Navigation.PushPopupAsync(new BuySnackPopUpPage());
 
         }
 
+        private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+          
+        }
     }
 }
 

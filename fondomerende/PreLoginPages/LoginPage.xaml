@@ -133,6 +133,33 @@
                         x:Name="CheckBox_iOS"
                         Aspect="AspectFit">
                     </ImageButton>
+
+                <StackLayout
+                HorizontalOptions="Start"
+                Orientation="Horizontal"
+                Margin="5,0,0,0"
+                Grid.Row="5"
+                Grid.Column="0">
+                    <StackLayout.IsVisible>
+                        <OnPlatform x:TypeArguments="x:Boolean"
+                             iOS="true"
+                             Android="False"/>
+                    </StackLayout.IsVisible>
+
+                    <Button
+                    Clicked="RememberMeButton_iOS_Clicked"
+                    x:Name="RememberMe_Button_iOS"
+                    Text="[]"
+                    TextColor="{StaticResource ColorBackground}">
+                    </Button>
+
+                    <Label
+                    Text="Remember me?"
+                    HorizontalOptions="Start"
+                    VerticalOptions="Center"
+                    TextColor="{OnPlatform Android = {StaticResource ColorText}}">
+                    </Label>
+                </StackLayout>
             </StackLayout>
 
 

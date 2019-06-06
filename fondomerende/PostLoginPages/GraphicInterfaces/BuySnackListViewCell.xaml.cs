@@ -1,4 +1,5 @@
-﻿using System;
+﻿using fondomerende.Services.RESTServices;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,13 +13,12 @@ namespace fondomerende.PostLoginPages.GraphicInterfaces
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class BuySnackListViewCell : ViewCell
     {
+        SnackServiceManager snackService = new SnackServiceManager();
         public BuySnackListViewCell()
         {
             InitializeComponent();
-          
 
         }
 
-        
     }
 }

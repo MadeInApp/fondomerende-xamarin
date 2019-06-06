@@ -8,27 +8,64 @@
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              x:Class="fondomerende.PostLoginPages.LoadingPage">
     <ContentPage.Content>
-        <StackLayout>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
 
             <Image
+            Source="{local:EmbeddedImage Resource=fondomerende.image.LoginBackground.png}"
+            Grid.Row="0"
+            Grid.Column="0"   
+            Scale="{OnIdiom Phone=1.8, Tablet=1.5}"
+            x:Name ="BackGradientArRos"
+            Margin="{OnPlatform iOS='0,0,0,80'}"
+            Aspect="AspectFit">
+            </Image>
+            
+            <Image
+                Source="{local:EmbeddedImage Resource=fondomerende.image.Livellodinamico.png}"
+                Grid.Row="0"
+                Grid.Column="0" 
+                Opacity="0.4"
+                x:Name ="Donut"
+                Margin="{OnPlatform iOS='0,0,0,-500', Android='0,0,0,-500'}"
+                Aspect="AspectFit">
+            </Image>
+
+            <Grid>
+
+                <Image
                 Source="{local:EmbeddedImage Resource=fondomerende.image.Donut_icon_512x512.png}"
                 Scale="{OnIdiom Phone=1, Tablet=1.5}"
+                Grid.Row="0"
                 x:Name ="Fondo_Merende_logo"
                 Margin="{OnPlatform iOS='0,120,0,0', Android='0,120,0,0'}"
                 Aspect="AspectFit">
-            </Image>
-            
-            <ActivityIndicator
+                </Image>
+
+                <ActivityIndicator
                 IsRunning="True"
+                Grid.Row="1"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
-            
-            <Label 
+
+                <Label 
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" 
                 x:Name="LoadingLabel"
+                Grid.Row="2"
+                    Margin="0,0,0,200"
                 Font="Bold, 16"/>
 
-        </StackLayout>
+            </Grid>
+
+
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

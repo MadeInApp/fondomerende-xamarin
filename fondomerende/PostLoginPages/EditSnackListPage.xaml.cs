@@ -59,7 +59,7 @@ namespace fondomerende.PostLoginPages.GraphicInterfaces
 
         public async Task GetSnacksMethod()     //ottiene la lista degli snack e la applica alla ListView
         {
-            var result = await SnackService.GetSnacksAsync();
+            var result = await SnackService.GetAllSnacksAsync();
             ListView.ItemsSource = result.data.snacks;
         }
 
