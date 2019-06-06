@@ -6,19 +6,20 @@
     x:Class="fondomerende.LoginPage"
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     ios:Page.UseSafeArea="true">
-    <!--BackgroundColor="{OnPlatform Android={StaticResource ColorBackground}, iOS={StaticResource ColorBackground}, Default=#FF9900}"--><!--FFCC00-->
+    <!--BackgroundColor="{OnPlatform Android={StaticResource ColorBackground}, iOS={StaticResource ColorBackground}, Default=#FF9900}"-->
+    <!--FFCC00-->
 
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-
-        <Image
+            <Image
             Source="{local:EmbeddedImage Resource=fondomerende.image.LoginBackground.png}"
             Grid.Row="0"
             Grid.Column="0"      
@@ -26,9 +27,9 @@
             x:Name ="BackGradientArRos"
             Margin="{OnPlatform iOS='0,0,0,80'}"
             Aspect="AspectFit">
-        </Image>
+            </Image>
 
-        <Image
+            <Image
             Source="{local:EmbeddedImage Resource=fondomerende.image.Livellodinamico.png}"
             Grid.Row="0"
             Grid.Column="0" 
@@ -36,14 +37,14 @@
             x:Name ="Donut"
             Margin="{OnPlatform iOS='0,0,0,-500', Android='0,0,0,-500'}"
             Aspect="AspectFit">
-        </Image>
-        
-        <StackLayout
+            </Image>
+
+            <StackLayout
             Grid.Row="0"
             Grid.Column="0"
             x:Name="LoginStack">
-            
-            <Grid
+
+                <Grid
                 Grid.Row="0"
                 Grid.Column="0"
                 Padding="{OnPlatform iOS=25}"
@@ -51,22 +52,22 @@
                 HorizontalOptions="FillAndExpand"
                 VerticalOptions="CenterAndExpand">
 
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="0.4*" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.4*" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
 
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
 
-                <Image
+                    <Image
                     Grid.Row="0"
                     Grid.Column="0"  
                     Source="{local:EmbeddedImage Resource=fondomerende.image.Donut_icon_512x512.png}"
@@ -74,26 +75,26 @@
                     x:Name ="Fondo_Merende_logo"
                     Margin="{OnPlatform iOS='0,0,0,80', Android='0,0,0,120'}"
                     Aspect="AspectFit">
-                </Image>
+                    </Image>
 
-                <local:LineEntry
+                    <local:LineEntry
                     Grid.Row="1"
                     Grid.Column="0"
                     x:Name="usernameEntry"
                     Text="Giulio1234"
                     Placeholder="Username">
-                </local:LineEntry>
+                    </local:LineEntry>
 
-                <local:LineEntry
+                    <local:LineEntry
                     Grid.Row="2"
                     Grid.Column="0"
                     x:Name="passwordEntry"
                     Text="1234"
                     Placeholder="Password"
                     IsPassword="True">
-                </local:LineEntry>
-                                                        <!--Android-->
-                <Button
+                    </local:LineEntry>
+                    <!--Android-->
+                    <Button
                         HorizontalOptions="FillAndExpand"
                         Grid.Row="3"
                         Grid.Column="0"
@@ -102,25 +103,25 @@
                         TextColor="{OnPlatform iOS={StaticResource ColorBackground}}"
                         Text="Log in"
                         Style="{OnPlatform Android={StaticResource FondomerendeButton}}">
-                    <Button.IsVisible>
-                        <OnPlatform x:TypeArguments="x:Boolean"
+                        <Button.IsVisible>
+                            <OnPlatform x:TypeArguments="x:Boolean"
                           iOS="false"
                           Android="true"/>
-                    </Button.IsVisible> 
-                </Button>
+                        </Button.IsVisible>
+                    </Button>
 
 
-                                                        <!--iOS-->
-                <StackLayout
+                    <!--iOS-->
+                    <StackLayout
                     HorizontalOptions="Center"
                     Orientation="Horizontal"
                     Grid.Row="3"
                     Grid.Column="0">
-                    <StackLayout.IsVisible>
-                        <OnPlatform x:TypeArguments="x:Boolean"
+                        <StackLayout.IsVisible>
+                            <OnPlatform x:TypeArguments="x:Boolean"
                                  iOS="True"
                                  Android="false"/>
-                    </StackLayout.IsVisible>
+                        </StackLayout.IsVisible>
 
                         <Button
                             HorizontalOptions="Center"
@@ -131,15 +132,11 @@
                         </Button>
 
 
-                        <ImageButton 
-                            Margin="30,0,0,0"
-                            x:Name="CheckBox_iOS"
-                            Aspect="AspectFit">
-                        </ImageButton>
-                </StackLayout>
+                      
+                    </StackLayout>
 
 
-                <Button
+                    <Button
                         HorizontalOptions="FillAndExpand"
                         Grid.Row="4"
                         Grid.Column="0"
@@ -149,14 +146,14 @@
                         Text="Sign up"
                         TextColor="{OnPlatform iOS={StaticResource ColorBackground}}"
                         Style="{OnPlatform Android={StaticResource FondomerendeButton}}">
-                    <Button.IsVisible>
-                        <OnPlatform x:TypeArguments="x:Boolean"
+                        <Button.IsVisible>
+                            <OnPlatform x:TypeArguments="x:Boolean"
                                  iOS="False"
                                  Android="True"/>
-                    </Button.IsVisible>
-                </Button>
-                                              <!--Per IOS-->
-                <Button
+                        </Button.IsVisible>
+                    </Button>
+                    <!--Per IOS-->
+                    <Button
                         HorizontalOptions="FillAndExpand"
                         Grid.Row="4"
                         Grid.Column="0"
@@ -166,55 +163,55 @@
                         Text="Sign up"
                         TextColor="White"
                         Style="{OnPlatform Android={StaticResource FondomerendeButton}}">
-                    <Button.IsVisible>
-                        <OnPlatform x:TypeArguments="x:Boolean"
+                        <Button.IsVisible>
+                            <OnPlatform x:TypeArguments="x:Boolean"
                                  iOS="True"
                                  Android="False"/>
-                    </Button.IsVisible>
-                </Button>
-                                            <!--Per android-->
-                <StackLayout
+                        </Button.IsVisible>
+                    </Button>
+                    <!--Per android-->
+                    <StackLayout
                     HorizontalOptions="Start"
                     Orientation="Horizontal"
                     Margin="5,0,0,0"
                     Grid.Row="5"
                     Grid.Column="0">
-                    <StackLayout.IsVisible>
-                        <OnPlatform x:TypeArguments="x:Boolean"
+                        <StackLayout.IsVisible>
+                            <OnPlatform x:TypeArguments="x:Boolean"
                                  iOS="false"
                                  Android="true"/>
-                    </StackLayout.IsVisible>
+                        </StackLayout.IsVisible>
 
-                    <Button
+                        <Button
                         Clicked="RememberMeButton_Clicked"
                         x:Name="RememberMe_Button"
                         Text=""
                         TextColor="{StaticResource ColorBackground}"
                         Style="{OnPlatform Android={StaticResource RemeberButton}}">
-                    </Button>
+                        </Button>
 
-                    <Label
+                        <Label
                         FontSize="Default"
                         FontAttributes="Bold"
                         Text="Don't remember me"
                         HorizontalOptions="Start"
                         VerticalOptions="Center"
                         TextColor="{OnPlatform Android = {StaticResource ColorText}}">
-                    </Label>
-                </StackLayout>
-            </Grid>
-        </StackLayout>
-                                            <!--Parte Register-->
-        <StackLayout
+                        </Label>
+                    </StackLayout>
+                </Grid>
+            </StackLayout>
+            <!--Parte Register-->
+            <StackLayout
             Grid.Row="0"
             Grid.Column="0"
             x:Name="RegisterStack">
 
-                    <ImageButton 
+                <ImageButton 
                         Margin="30,0,0,0"
                         x:Name="CheckBox_iOS"
                         Aspect="AspectFit">
-                    </ImageButton>
+                </ImageButton>
 
                 <StackLayout
                 HorizontalOptions="Start"
@@ -303,21 +300,21 @@
                     Text=""
                     Placeholder="Nome">
                 </local:LineEntry>
-                                                    <!--Password e conferma password-->
+                <!--Password e conferma password-->
                 <StackLayout
                     Grid.Row="4"
                     Grid.Column="0">
-                    
+
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
-                        
+
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
-                        
+
                         <local:LineEntry
                             Grid.Row="0"
                             Grid.Column="0"
@@ -335,8 +332,8 @@
                         </local:LineEntry>
                     </Grid>
                 </StackLayout>
-                                                    <!--Bottoni-->
-                                                 <!--Register tasto Android-->               
+                <!--Bottoni-->
+                <!--Register tasto Android-->
                 <Button
                         HorizontalOptions="FillAndExpand"
                         Grid.Row="5"
@@ -354,7 +351,7 @@
                     </Button.IsVisible>
                 </Button>
 
-                                                <!--Register tasto iOS-->
+                <!--Register tasto iOS-->
 
                 <StackLayout
                     HorizontalOptions="Center"
@@ -410,10 +407,7 @@
                     </Button.IsVisible>
                 </Button>
             </Grid>
-        </StackLayout>
-        
-    </Grid>
-    
-
+        </Grid>
+    </ContentPage.Content>
 </ContentPage>
 
