@@ -29,7 +29,7 @@
         </Image>
 
         <Image
-            Source="{local:EmbeddedImage Resource=fondomerende.image.Login_Animation3.png}"
+            Source="{local:EmbeddedImage Resource=fondomerende.image.Livellodinamico.png}"
             Grid.Row="0"
             Grid.Column="0" 
             Opacity="0.4"

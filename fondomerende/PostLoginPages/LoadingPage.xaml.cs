@@ -16,14 +16,16 @@ namespace fondomerende.PostLoginPages
         public LoadingPage()
         {
             InitializeComponent();
+
             LabelRandom c = new LabelRandom();
             String rPhrase = c.GetRandomPhrases();
             LoadingLabel.Text = rPhrase;
-
+            
 
             LogIn();
             Ciambella();
-            
+
+
 
 
 
@@ -46,19 +48,21 @@ namespace fondomerende.PostLoginPages
 
         private async void Ciambella()
         {
-            await Fondo_Merende_logo.ScaleTo(0.2, 0);
-            await Fondo_Merende_logo.TranslateTo(0, 0, 500);
+            //await Fondo_Merende_logo.ScaleTo(0.2, 0);
+            //await Fondo_Merende_logo.TranslateTo(0, 0, 500);
 
-            await Task.WhenAny<bool>
-                (
-                    Fondo_Merende_logo.ScaleTo(0.8, 500),
-                    Fondo_Merende_logo.RotateTo(360, 500)
-                );
-            
-            await Fondo_Merende_logo.ScaleTo(1.2, 150);
-            await Fondo_Merende_logo.ScaleTo(1.0, 250);
-            await Fondo_Merende_logo.TranslateTo(0, 0, 1500);
+            //await Task.WhenAny<bool>
+            //    (
+            //        Fondo_Merende_logo.ScaleTo(0.8, 500),
+            //        Fondo_Merende_logo.RotateTo(360, 500)
+            //    );
 
+            //await Fondo_Merende_logo.ScaleTo(1.2, 150);
+            //await Fondo_Merende_logo.ScaleTo(1, 400);
+
+            await Fondo_Merende_logo.FadeTo(0, 0);
+            await Fondo_Merende_logo.FadeTo(0.4, 500);
+            await Fondo_Merende_logo.FadeTo(1, 500);
 
             //await Task.WhenAny<bool>
             //   (

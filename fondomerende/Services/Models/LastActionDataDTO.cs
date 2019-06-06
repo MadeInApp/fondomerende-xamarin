@@ -5,16 +5,10 @@ using System.Text;
 
 namespace fondomerende.Services.Models
 {
-
+    [JsonObject("actions")]
     public class LastActionDataDTO
     {
-        string[] contenuto { get; set; }
-    }
-
-    [JsonObject("actions")]
-    public class LastActionDataArrayDTO
-    {
-        public LastActionDataDTO actions { get; set; }
+        public string[] actions { get; set; }
     }
 
 }
