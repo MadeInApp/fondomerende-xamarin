@@ -26,6 +26,7 @@ namespace fondomerende.PostLoginPages
                       
             InitializeComponent();
             GetSnacksMethod();
+            Fade();
 
 
             switch (Device.RuntimePlatform)                                                     //
@@ -78,6 +79,12 @@ namespace fondomerende.PostLoginPages
             {
                await GetSnacksMethod();
             }
+        }
+
+        private async void Fade()
+        {
+            await StackSnack.FadeTo(0, 0);
+            await StackSnack.FadeTo(1, 1400);
         }
     }
 }

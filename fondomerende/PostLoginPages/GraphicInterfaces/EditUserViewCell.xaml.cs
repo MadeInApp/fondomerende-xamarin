@@ -49,15 +49,6 @@ namespace fondomerende.PostLoginPages.GraphicInterfaces
             Color color = c.GetRandomColor();
             Cerchio.BackgroundColor = color;
 
-            //momentaneo poi lo faremo meglio
-            LogoutViewCell lo = new LogoutViewCell();
-            ChronologyViewCell ch = new ChronologyViewCell();
-            EditSnackViewCell ed = new EditSnackViewCell();
-
-            lo.SetImageColorPreferences();
-            ch.SetImageColorPreferences();
-            ed.SetImageColorPreferences();
-
         }
 
         public async Task<string> GetUserFundsMethod()

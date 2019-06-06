@@ -64,29 +64,29 @@ namespace fondomerende.PostLoginPages
 
       
 
-        private void ChangeUserSettings_Tapped(object sender, EventArgs e)
+        private async void ChangeUserSettings_Tapped(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new EditUserPage());
+            await Navigation.PushAsync(new EditUserPage());
         }
 
-        private void EditSnackViewCell_Tapped(object sender, EventArgs e)
+        private async void EditSnackViewCell_Tapped(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new EditSnackListPage());
+            await Navigation.PushAsync(new EditSnackListPage());
         }
 
-        private void AddSnackCell_Tapped(object sender, EventArgs e)
+        private async void AddSnackCell_Tapped(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new AddSnackPage());
+            await Navigation.PushAsync(new AddSnackPage());
         }
 
-        private void ChronologyCell_Tapped(object sender, EventArgs e)
+        private async void ChronologyCell_Tapped(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new ChronologyLog());
+            await Navigation.PushAsync(new ChronologyLog());
         }
 
-        private void BuySnack_Tapped(object sender, EventArgs e)
+        private async void BuySnack_Tapped(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new BuySnackListPage());
+            await Navigation.PushAsync(new BuySnackListPage());
         }
     }
 }

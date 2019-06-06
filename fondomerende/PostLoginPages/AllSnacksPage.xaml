@@ -12,7 +12,8 @@
              Title="{OnPlatform iOS='Snacks'}">
     
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout
+            x:Name="StackSnack">
             <ListView
                 x:Name="ListView"
                 IsPullToRefreshEnabled="true"

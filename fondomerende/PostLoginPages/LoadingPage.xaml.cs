@@ -21,7 +21,6 @@ namespace fondomerende.PostLoginPages
             LabelRandom c = new LabelRandom();
             String rPhrase = c.GetRandomPhrases();
             LoadingLabel.Text = rPhrase;
-            
 
             LogIn();
             Ciambella();
