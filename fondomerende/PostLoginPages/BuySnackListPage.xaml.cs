@@ -50,12 +50,6 @@ namespace fondomerende.PostLoginPages
 
         }
 
-        private async void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
-        {
-
-
-        }
-
     }
 }
 

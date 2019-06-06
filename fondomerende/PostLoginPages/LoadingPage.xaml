@@ -24,6 +24,7 @@
                 HorizontalOptions="CenterAndExpand" />
             
             <Label 
+                Margin="20,0,20,0"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" 
                 x:Name="LoadingLabel"

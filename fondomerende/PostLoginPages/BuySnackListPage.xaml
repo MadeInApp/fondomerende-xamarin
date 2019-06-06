@@ -14,8 +14,7 @@
         <ListView
                 x:Name="ListView"
                 IsPullToRefreshEnabled="true"
-                RefreshCommand="{Binding RefreshCommand}"
-                ItemSelected="ListView_ItemSelected"               
+                RefreshCommand="{Binding RefreshCommand}"              
                 IsRefreshing="{Binding IsBusy, Mode=OneWay}"
                 HasUnevenRows="True">
             <ListView.ItemTemplate>

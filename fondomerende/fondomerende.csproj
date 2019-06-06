@@ -132,8 +132,14 @@
     <Compile Update="PostLoginPages\EditSnackListPage.xaml.cs">
       <DependentUpon>EditSnackListPage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="PostLoginPages\ChronologyLog.xaml.cs">
+      <DependentUpon>ChronologyLog.xaml</DependentUpon>
+    </Compile>
     <Compile Update="PostLoginPages\GraphicInterfaces\SnackViewCell.xaml.cs">
       <DependentUpon>SnackViewCell.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="PostLoginPages\GraphicInterfaces\SubInterfaces\ChronologyLogView.xaml.cs">
+      <DependentUpon>ChronologyLogView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
@@ -141,10 +147,13 @@
     <EmbeddedResource Update="PostLoginPages\GraphicInterfaces\AddSnackViewCell.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="PostLoginPages\ChronologyLog.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="PostLoginPages\GraphicInterfaces\SnacksListSettingsViewCell.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="PostLoginPages\GraphicInterfaces\SubInterfaces\ChronologyLog.xaml">
+    <EmbeddedResource Update="PostLoginPages\GraphicInterfaces\SubInterfaces\ChronologyLogView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="PostLoginPages\AddSnackPage.xaml">

@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ViewCell xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="fondomerende.PostLoginPages.GraphicInterfaces.SubInterfaces.ChronologyLogView"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:controls="clr-namespace:FormsControls.Base;assembly=FormsControls.Base"
+             ios:Page.UseSafeArea="True">
+    
+    <ViewCell.View>                 <!--Log cronologia-->
+        <StackLayout
+            Orientation="Horizontal"
+            HorizontalOptions="FillAndExpand">
+            <StackLayout
+                HorizontalOptions="StartAndExpand"
+                VerticalOptions="CenterAndExpand"
+                Padding="15,0,0,0">
+                <Label
+                    x:Name="ChronologyLabel"
+                    Font="Bold,14">
+                </Label>
+            </StackLayout>
+        </StackLayout>
+    </ViewCell.View>
+</ViewCell>

@@ -12,9 +12,9 @@ using Xamarin.Forms.Xaml;
 namespace fondomerende.PostLoginPages.GraphicInterfaces.SubInterfaces
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ChronologyLog : ContentPage
+    public partial class ChronologyLogView : ViewCell
     {
-        public ChronologyLog()
+        public ChronologyLogView()
         {
             InitializeComponent();
             switch (Device.RuntimePlatform)             //Se il dispositivo è Android non mostra la Top Bar della Navigation Page, se è iOS la mostra
@@ -29,22 +29,23 @@ namespace fondomerende.PostLoginPages.GraphicInterfaces.SubInterfaces
                    
 
             }
-            cose();
-            MyPageAnimation = new SlidePageAnimation()
-            {
-                Duration = AnimationDuration.Long,
-                Subtype = AnimationSubtype.FromLeft
-            };
+            GetLastAction();
+            //MyPageAnimation = new SlidePageAnimation()
+            //{
+            //    Duration = AnimationDuration.Long,
+            //    Subtype = AnimationSubtype.FromLeft
+            //};
         }
 
-        public async void cose() //roba non funzionante
+        public async void GetLastAction() //roba non funzionante
         {
             LastActionServiceManager lastAction = new LastActionServiceManager();
             var result = await lastAction.GetLastActions();
 
             if (result.response.success == true)
             {
-                var a = result.data;
+                string[] cronologia = result.data.actions;
+                ChronologyLabel.Text = cronologia[0];
             }
             else
             {

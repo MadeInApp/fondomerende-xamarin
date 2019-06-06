@@ -16,7 +16,7 @@ namespace fondomerende
     [DesignTimeVisible(true)]
     public partial class LoginPage : ContentPage
     {
-        private string username, password;
+        private string username, password, testpassword, friendly_name;
         private bool remember = false;
         private bool wait = false;
         bool clicked = false;
@@ -27,6 +27,7 @@ namespace fondomerende
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
             Donut_Background();
+            LoginFade();
         }
 
         private void RememberMeButton_Clicked(object sender, EventArgs e) //Ricorda nome utente e pw (da fixare)
@@ -46,7 +47,7 @@ namespace fondomerende
 
         }
 
-        private async void Bottone_ClickedAsync(object sender, EventArgs e) //Effettua il Log In
+        private async void Login_ClickedAsync(object sender, EventArgs e) //Effettua il Log In
         {
             if (!wait)
             {   //assicura che il tasto login venga premuto una volta
@@ -80,25 +81,75 @@ namespace fondomerende
 
         private async void RegisterButton_ClickedAsync(object sender, EventArgs e) //Mostra il form di registrazione
         {
-            if (!wait)
-            {
-                wait = true;
-                await Navigation.PushAsync(new RegisterPage());
-            }
-            wait = !wait;
+            await LoginStack.FadeTo(0, 500);
+            await LoginStack.TranslateTo(0, 1000, 1);
+            await RegisterStack.TranslateTo(0, 0, 1);
+            await RegisterStack.FadeTo(1, 500);
         }
 
+   
+
+        private async void Register_ClickedAsync(object sender, EventArgs e)
+        {
+            //SnackServiceManager snackService = new SnackServiceManager();
+            //var a = await snackService.GetSnacksAsync();
+            if (!string.IsNullOrEmpty(usernameEntryR.Text) && !string.IsNullOrEmpty(friendlyNameEntryR.Text) && !string.IsNullOrEmpty(passwordEntryR.Text) && !string.IsNullOrEmpty(testPasswordEntryR.Text))
+            {
+                password = passwordEntryR.Text;
+                testpassword = testPasswordEntryR.Text;
+                username = usernameEntryR.Text;
+                friendly_name = friendlyNameEntryR.Text;
+
+                if (password == testpassword)
+                {
+
+                    RegisterServiceManager registerService = new RegisterServiceManager();
+                    var response = await registerService.RegisterAsync(username, password, friendly_name);
+                    if (response.response.success == true && response.response.status == 201)
+                    {
+                        App.Current.MainPage = new MainPage();
+                    }
+
+                    if (response.response.success == false)
+                    {
+
+                        if (response.response.status == 400)
+                        {
+                            await DisplayAlert("Fondo Merende", response.response.message, "OK");
+                        }
+                        else
+                        {
+                            await DisplayAlert("Fondo Merende", "Registrazione fallita", "OK");
+                        }
+                    }
+                }
+                else
+                {
+                    await DisplayAlert("Fondo Merende", "Le password non combaciano", "OK");
+                }
+            }
+            else
+            {
+                await DisplayAlert("Fondo Merende", "Inserire i campi obbligatori", "OK");
+            }
+        }
+
+        private async void Cancel_ClickedAsync(object sender, EventArgs e) //Mostra il form di registrazione
+        {
+            await RegisterStack.FadeTo(0, 500);
+            await RegisterStack.TranslateTo(0, 1000, 1);
+            await LoginStack.TranslateTo(0, 0, 1);
+            await LoginStack.FadeTo(1, 500);
+        }
         private async void Donut_Background()
         {
-                await Task.WhenAny<bool>
-                (
-                    Donut.RotateTo(10, 0),
-                    Donut.ScaleTo(1.5, 0),
-                    Donut.TranslateTo(20, -1000, 100000),
-                    Donut.TranslateTo(-20, 1000, 0),
-                    Donut.TranslateTo(20, -1000, 100000)
-                );
-            
+            await Donut.RotateTo(10, 0);
+            await Donut.ScaleTo(1.5, 0);
+            await Donut.TranslateTo(20, -800, 100000);
+            await Donut.TranslateTo(-20, 0, 1);
+            await Donut.TranslateTo(20, -800, 100000);
+
+
 
         }
         private async void Ciambella()
@@ -116,22 +167,13 @@ namespace fondomerende
             await Fondo_Merende_logo.ScaleTo(1.0, 250);
             await Fondo_Merende_logo.TranslateTo(0, 0, 1500);
 
+        }
 
-            //await Task.WhenAny<bool>
-            //   (
-            //    Fondo_Merende_logo.FadeTo(1, 0),
-            //    Fondo_Merende_logo.ScaleTo(0.2, 0)
-            //   );
 
-            //await Task.WhenAny<bool>
-            //    (
-            //    Fondo_Merende_logo.FadeTo(1, 200),
-            //    Fondo_Merende_logo.ScaleTo(0.9, 800),
-            //    Fondo_Merende_logo.RotateTo(360, 800)
-            //   );
-
-            //await Fondo_Merende_logo.ScaleTo(1.2, 200);
-            //await Fondo_Merende_logo.ScaleTo(1.0, 200);
+        private async void LoginFade()
+        {
+            await RegisterStack.FadeTo(0, 1);
+            await RegisterStack.TranslateTo(0, 1000, 1);
         }
 
     }
