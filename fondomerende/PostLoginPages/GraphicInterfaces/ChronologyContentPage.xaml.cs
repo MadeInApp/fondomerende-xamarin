@@ -12,8 +12,8 @@ namespace fondomerende.PostLoginPages.GraphicInterfaces
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ChronologyContentPage : ContentPage
     {
-        private double diametro = 15;
-        private double larghezzaLinea = 7;
+        private double diametro = 50;
+        private double larghezzaLinea = 4;
         private double altezzaLinea = 50;
 
         string[] cronologia;
@@ -32,6 +32,19 @@ namespace fondomerende.PostLoginPages.GraphicInterfaces
             }
             AddAction();
             AddTimeLine(diametro, larghezzaLinea, altezzaLinea );
+            AddAction();
+            AddTimeLine(diametro, larghezzaLinea, altezzaLinea);
+        }
+
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
         }
 
         private void Fusione()
@@ -54,28 +67,29 @@ namespace fondomerende.PostLoginPages.GraphicInterfaces
                 Orientation = StackOrientation.Horizontal
             };
 
-            var cerchio = new Frame
+            var cerchio = new RoundedCornerView
             {
-                HorizontalOptions = LayoutOptions.Start,
-                VerticalOptions = LayoutOptions.Center,
-                HasShadow = true,
                 HeightRequest = diametro,
                 WidthRequest = diametro,
-                CornerRadius = 32,
+                MinimumHeightRequest = diametro,
+                MinimumWidthRequest = diametro,
+                BackgroundColor = Color.Wheat,
+                RoundedCornerRadius = diametro/2
             };
 
             var stackLabel = new StackLayout
             {
                 VerticalOptions = LayoutOptions.Center,
                 HorizontalOptions = LayoutOptions.Center,
+                BackgroundColor = Color.Red
             };
 
             var firstLetter = new Label
             {
                 Text="C",
-                HorizontalOptions = LayoutOptions.Center,
-                VerticalOptions = LayoutOptions.Center,
-                FontSize = 12,
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                VerticalOptions = LayoutOptions.CenterAndExpand,
+                FontSize = 16,
                 FontAttributes = FontAttributes.Bold,
                 TextColor = Color.Black,
                 HorizontalTextAlignment = TextAlignment.Center,
@@ -92,19 +106,17 @@ namespace fondomerende.PostLoginPages.GraphicInterfaces
                 VerticalTextAlignment = TextAlignment.Center,
             };
 
+            cerchio.Children.Add(stackLabel);
+            stackLabel.Children.Add(firstLetter);
             stackPrincipale.Children.Add(cerchio);
             stackPrincipale.Children.Add(textAction);
-            cerchio.Content = stackLabel;
-            stackLabel.Children.Add(firstLetter);
-
-
             
             ContentLayout.Children.Add(stackPrincipale);
         }
 
         public void AddTimeLine(double diametro, double larghezzaLinea,double altezzaLinea)
         {
-            double paddinLinea = (diametro)+(larghezzaLinea);
+            double paddingLinea = diametro/2 - larghezzaLinea/2;
             var stackPrincipale = new StackLayout
             {
                 HorizontalOptions = LayoutOptions.Start,
@@ -117,7 +129,7 @@ namespace fondomerende.PostLoginPages.GraphicInterfaces
                 HorizontalOptions = LayoutOptions.Center,
                 HeightRequest = altezzaLinea,
                 WidthRequest = larghezzaLinea,
-                Margin = new Thickness(paddinLinea,0,0,0),
+                Margin = new Thickness(paddingLinea,0,0,0),
                 BackgroundColor = Color.White,
                 
             };
@@ -164,6 +176,11 @@ namespace fondomerende.PostLoginPages.GraphicInterfaces
             {
                 await App.Current.MainPage.DisplayAlert("Fondo Merende", "Guarda, sta cosa non ha senso", "OK");
             }
+        }
+
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+
         }
     }
 }
