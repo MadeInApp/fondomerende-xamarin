@@ -25,6 +25,8 @@ namespace fondomerende.PostLoginPages.GraphicInterfaces
 
         public static readonly BindableProperty MakeCircleProperty =
             BindableProperty.Create<RoundedCornerView, Boolean>(w => w.MakeCircle, false);
+
+
         public Boolean MakeCircle
         {
             get { return (Boolean)GetValue(MakeCircleProperty); }
