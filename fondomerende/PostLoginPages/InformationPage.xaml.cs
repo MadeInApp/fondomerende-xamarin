@@ -81,7 +81,7 @@ namespace fondomerende.PostLoginPages
 
         private async void ChronologyCell_Tapped(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new ChronologyLog());
+            await Navigation.PushAsync(new ChronologyContentPage());
         }
 
         private async void BuySnack_Tapped(object sender, EventArgs e)

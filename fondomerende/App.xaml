@@ -4,7 +4,7 @@
 
         <ResourceDictionary>
 
-            <Color x:Key="ColorHeader">#FBB03B</Color> cb3234
+            <Color x:Key="ColorHeader">#FBB03B</Color>
 
             <Color x:Key="ColorBackground">#cb3234</Color>
 

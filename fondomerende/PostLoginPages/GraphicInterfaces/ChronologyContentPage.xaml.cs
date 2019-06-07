@@ -13,6 +13,10 @@ namespace fondomerende.PostLoginPages.GraphicInterfaces
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ChronologyContentPage : ContentPage
     {
+        private double diametro = 15;
+        private double larghezzaLinea = 7;
+        private double altezzaLinea = 50;
+
         string[] cronologia;
         public ChronologyContentPage()
         {
@@ -37,23 +41,22 @@ namespace fondomerende.PostLoginPages.GraphicInterfaces
         {
             var stackPrincipale = new StackLayout
             {
-                BackgroundColor = Color.Red
+                Orientation = StackOrientation.Horizontal
             };
 
             var cerchio = new Frame
             {
                 HorizontalOptions = LayoutOptions.Start,
                 VerticalOptions = LayoutOptions.Center,
-                BorderColor = Color.Black,
                 HasShadow = true,
-                HeightRequest = 15,
-                WidthRequest = 15,
+                HeightRequest = diametro,
+                WidthRequest = diametro,
                 CornerRadius = 32,
             };
 
             var stackLabel = new StackLayout
             {
-                Orientation = StackOrientation.Horizontal,
+                VerticalOptions = LayoutOptions.Center,
                 HorizontalOptions = LayoutOptions.Center,
             };
 
@@ -91,18 +94,22 @@ namespace fondomerende.PostLoginPages.GraphicInterfaces
 
         public void AddTimeLine()
         {
+            double paddinLinea = (diametro)+(larghezzaLinea);
             var stackPrincipale = new StackLayout
             {
+                HorizontalOptions = LayoutOptions.Start,
                 Orientation = StackOrientation.Horizontal,
-                BackgroundColor = Color.Blue
 
             };
 
-            var linea = new Frame
+            var linea = new StackLayout
             {
-                HasShadow = true,
-                HeightRequest = 20,
-                WidthRequest = 5,
+                HorizontalOptions = LayoutOptions.Center,
+                HeightRequest = 50,
+                WidthRequest = 7,
+                Margin = new Thickness(paddinLinea,0,0,0),
+                BackgroundColor = Color.White,
+                
             };
 
             var orario = new Label

@@ -22,10 +22,12 @@
           HasBackgroundAnimation="True"/>
         </pages:PopupPage.Animation>
     <!--You can use any elements here which are extended from Xamarin.Forms.View-->
-    <Graph:RoundedCornerView RoundedCornerRadius="20"
-                             HeightRequest="100" Margin="30,310,30,310"
-            WidthRequest="300" 
-            BackgroundColor="White">
+    <Graph:RoundedCornerView 
+        RoundedCornerRadius="20"                          
+        HeightRequest="100" Margin="30,310,30,310"
+        WidthRequest="300" 
+        BackgroundColor="White">
+        
         <StackLayout 
             Orientation="Horizontal" 
             VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand" Margin="0,10,0,0">

@@ -7,6 +7,7 @@
              x:Class="fondomerende.PostLoginPages.GraphicInterfaces.ChronologyContentPage">
     <ContentPage.Content>
         <StackLayout
+            BackgroundColor="Violet"
             x:Name="ContentLayout"
             Spacing="0"
             Orientation="Vertical">
