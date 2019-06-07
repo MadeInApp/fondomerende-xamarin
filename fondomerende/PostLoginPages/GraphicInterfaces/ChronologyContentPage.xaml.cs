@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -32,10 +31,21 @@ namespace fondomerende.PostLoginPages.GraphicInterfaces
 
             }
             AddAction();
-            AddTimeLine();
+            AddTimeLine(diametro, larghezzaLinea, altezzaLinea );
         }
 
+        private void Fusione()
+        {
+            int i = 0;
+            do
+            {
+                AddAction();
 
+                    if(cronologia[i + 1] == null)  AddTimeLine(diametro, larghezzaLinea, altezzaLinea);
+
+                i++;
+            }while (cronologia[i + 1] == null);
+        }
 
         private void AddAction()
         {
@@ -92,7 +102,7 @@ namespace fondomerende.PostLoginPages.GraphicInterfaces
             ContentLayout.Children.Add(stackPrincipale);
         }
 
-        public void AddTimeLine()
+        public void AddTimeLine(double diametro, double larghezzaLinea,double altezzaLinea)
         {
             double paddinLinea = (diametro)+(larghezzaLinea);
             var stackPrincipale = new StackLayout
@@ -105,8 +115,8 @@ namespace fondomerende.PostLoginPages.GraphicInterfaces
             var linea = new StackLayout
             {
                 HorizontalOptions = LayoutOptions.Center,
-                HeightRequest = 50,
-                WidthRequest = 7,
+                HeightRequest = altezzaLinea,
+                WidthRequest = larghezzaLinea,
                 Margin = new Thickness(paddinLinea,0,0,0),
                 BackgroundColor = Color.White,
                 
@@ -141,7 +151,7 @@ namespace fondomerende.PostLoginPages.GraphicInterfaces
         //    }
         //    inizialeLabel.Text = firstLetter;
         //}
-        public async void GetLastActions() //roba non funzionante
+        public async void GetLastActions()
         {
             LastActionServiceManager lastAction = new LastActionServiceManager();
             var result = await lastAction.GetLastActions();

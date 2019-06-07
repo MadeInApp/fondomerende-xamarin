@@ -176,22 +176,6 @@ namespace fondomerende
             await RegisterStack.FadeTo(0, 1);
             await RegisterStack.TranslateTo(0, 1000, 1);
         }
-        private void RememberMeButton_iOS_Clicked(object sender, EventArgs e) //Ricorda nome utente e pw (da fixare)
-        {
-            if (clicked == true)
-            {
-                clicked = false;
-                remember = !remember;
-                RememberMe_Button.BackgroundColor = Color.Transparent;
-            }
-            else
-            {
-                clicked = true;
-                remember = !remember;
-                RememberMe_Button.BackgroundColor = Color.WhiteSmoke;
-            }
-
-        }
 
     }
 

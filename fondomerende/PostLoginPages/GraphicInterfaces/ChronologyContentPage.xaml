@@ -10,6 +10,7 @@
             BackgroundColor="Violet"
             x:Name="ContentLayout"
             Spacing="0"
+            Margin="10"
             Orientation="Vertical">
         </StackLayout>
     </ContentPage.Content>
