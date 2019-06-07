@@ -49,6 +49,13 @@ namespace fondomerende.PostLoginPages
         {
             var result = await SnackService.GetToBuySnacksAsync();
             ListView.ItemsSource = result.data.snacks;
+  
+            for(int i = 0; i <= result.data.snacks.Count; i++)
+            {
+                BindingContext = result.data.snacks[i];
+                Column0.Children.Add(Nome);
+                Column0.Children.Add(GoogleImage_View);
+            }
         }
 
         private async void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)

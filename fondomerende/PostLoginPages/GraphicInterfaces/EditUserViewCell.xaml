@@ -44,6 +44,7 @@
 
             <StackLayout  
                 HorizontalOptions="Start"
+                VerticalOptions="StartAndExpand"
                 Orientation="Horizontal">
                 <StackLayout>
                     <Label 

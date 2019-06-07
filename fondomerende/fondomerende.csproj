@@ -118,6 +118,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="PostLoginPages\GraphicInterfaces\BuySnackGridViewCell.xaml.cs">
+      <DependentUpon>BuySnackGridViewCell.xaml</DependentUpon>
+    </Compile>
     <Compile Update="PostLoginPages\GraphicInterfaces\EditSnackViewCell.xaml.cs">
       <DependentUpon>EditSnackViewCell.xaml</DependentUpon>
     </Compile>
@@ -146,6 +149,9 @@
 
   <ItemGroup>
     <EmbeddedResource Update="PostLoginPages\GraphicInterfaces\AddSnackViewCell.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="PostLoginPages\GraphicInterfaces\BuySnackGridViewCell.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="PostLoginPages\GraphicInterfaces\SnacksListSettingsViewCell.xaml">

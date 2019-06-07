@@ -25,6 +25,8 @@ namespace fondomerende
         public LoginPage()
         {
             InitializeComponent();
+            UserServiceManager userService = new UserServiceManager();
+            userService.GetUserData();
             NavigationPage.SetHasNavigationBar(this, false);
             Donut_Background();
             LoginFade();

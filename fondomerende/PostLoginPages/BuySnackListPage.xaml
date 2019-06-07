@@ -11,28 +11,45 @@
              ios:Page.UseSafeArea="true">
     <ContentPage.Content>
         <StackLayout>
-            <Grid
+            <ScrollView>
+                <Grid
                 x:Name="GridView" 
-                IsVisible="False">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
+                IsVisible="True">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
 
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                
-                <ScrollView>
-                    <Label Text="Hey">
-                    </Label>
-                </ScrollView>
-            </Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <StackLayout Grid.Column="0" x:Name="Column0">
+                        <Image
+                            Margin="20,0,0,0"
+                            x:Name="GoogleImage_View"
+                            Scale="1.8"
+                            Source="{Binding friendly_name, StringFormat='http://192.168.0.175:8888/fondomerende/public/getphoto.php?name={0}'}">
+                        </Image>
+
+                        <Label
+                            x:Name="Nome"
+                            Text ="{Binding friendly_name}">
+                        </Label>
+
+                    </StackLayout>
+
+                    <StackLayout Grid.Column="1">
+                        
+
+                    </StackLayout>
+                </Grid>
+            </ScrollView>
             <ListView
+                IsVisible="False"
                 x:Name="ListView"
                 IsPullToRefreshEnabled="False"
                 RefreshCommand="{Binding RefreshCommand}"
                 ItemSelected="ListView_ItemSelected"  
-            ItemTapped="ListView_ItemTapped"
+                ItemTapped="ListView_ItemTapped"
                 IsRefreshing="{Binding IsBusy, Mode=OneWay}"
                 HasUnevenRows="True">
                 <ListView.ItemTemplate>

@@ -59,6 +59,7 @@
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" 
                 x:Name="LoadingLabel"
+                HorizontalTextAlignment="Center"
                 Grid.Row="2"
                     Margin="0,0,0,200"
                 Font="Bold, 16"/>

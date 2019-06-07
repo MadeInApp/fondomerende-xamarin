@@ -17,14 +17,24 @@ namespace fondomerende.PostLoginPages
         public LoadingPage()
         {
             InitializeComponent();
+            Donut_Background();
+            Ciambella();
+            UserServiceManager userService = new UserServiceManager();
+            userService.GetUserData();
+            LogIn();
+           
 
             LabelRandom c = new LabelRandom();
             String rPhrase = c.GetRandomPhrases();
+            if (rPhrase == "Welcome to the wonderfully edible world of Fondo Merende")
+            {
+                LoadingLabel.FontSize = 14;
+                
+            }
             LoadingLabel.Text = rPhrase;
 
-            LogIn();
-            Ciambella();
-            Donut_Background();
+            
+           
 
 
 
@@ -36,6 +46,8 @@ namespace fondomerende.PostLoginPages
         {
             LoginServiceManager login = new LoginServiceManager();
             var resultLogin = await login.LoginAsync(Preferences.Get("username", ""), Preferences.Get("password", ""), true);
+           
+            
             if (!resultLogin.response.success)
             {
                 App.Current.MainPage = new NavigationPage(new LoginPage());
@@ -81,9 +93,9 @@ namespace fondomerende.PostLoginPages
             //await Fondo_Merende_logo.ScaleTo(1.0, 200);
         }
 
-        private async void Donut_Background()
+        private void Donut_Background()
         {
-            await Task.WhenAny<bool>
+            Task.WhenAny<bool>
             (
                 Donut.RotateTo(10, 0),
                 Donut.ScaleTo(1.5, 0),
