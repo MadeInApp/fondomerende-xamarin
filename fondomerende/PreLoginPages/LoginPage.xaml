@@ -93,6 +93,7 @@
                     Placeholder="Password"
                     IsPassword="True">
                     </local:LineEntry>
+                
                     <!--Android-->
                     <Button
                         HorizontalOptions="FillAndExpand"
@@ -130,9 +131,6 @@
                             TextColor="{OnPlatform iOS={StaticResource ColorBackground}}"
                             Text="Log in">
                         </Button>
-
-
-                      
                     </StackLayout>
 
 
@@ -152,6 +150,7 @@
                                  Android="True"/>
                         </Button.IsVisible>
                     </Button>
+                    
                     <!--Per IOS-->
                     <Button
                         HorizontalOptions="FillAndExpand"
@@ -169,6 +168,7 @@
                                  Android="False"/>
                         </Button.IsVisible>
                     </Button>
+                    
                     <!--Per android-->
                     <StackLayout
                     HorizontalOptions="Start"
@@ -176,69 +176,69 @@
                     Margin="5,0,0,0"
                     Grid.Row="5"
                     Grid.Column="0">
-                        <StackLayout.IsVisible>
+                        <StackLayout>
                             <OnPlatform x:TypeArguments="x:Boolean"
                                  iOS="false"
                                  Android="true"/>
-                        </StackLayout.IsVisible>
-
-                        <Button
+                            <Button
                         Clicked="RememberMeButton_Clicked"
                         x:Name="RememberMe_Button"
                         Text=""
                         TextColor="{StaticResource ColorBackground}"
                         Style="{OnPlatform Android={StaticResource RemeberButton}}">
-                        </Button>
-
-                        <Label
+                            </Button>
+                            <Label
                         FontSize="Default"
                         FontAttributes="Bold"
-                        Text="Don't remember me"
+                        Text="Ricordami"
                         HorizontalOptions="Start"
                         VerticalOptions="Center"
                         TextColor="{OnPlatform Android = {StaticResource ColorText}}">
-                        </Label>
+                            </Label>
+                        </StackLayout>
+                    </StackLayout>
+
+                    <!-- per iOS-->
+                    <StackLayout
+                    HorizontalOptions="Start"
+                    Orientation="Horizontal"
+                    Margin="5,0,0,0"
+                    Grid.Row="5"
+                    Grid.Column="0">
+                        <StackLayout>
+                            <OnPlatform x:TypeArguments="x:Boolean"
+                                 iOS="True"
+                                 Android="False"/>
+
+
+                            <Button
+                        Clicked="RememberMeButton_iOS_Clicked"
+                        x:Name="RememberMe_iOS_Button"
+                        Text=""
+                        TextColor="{StaticResource ColorBackground}">
+                            </Button>
+
+                            <Label
+                        FontSize="Default"
+                        FontAttributes="Bold"
+                        Text="Ricordami"
+                        HorizontalOptions="Start"
+                        VerticalOptions="Center"
+                        TextColor="{OnPlatform Android = {StaticResource ColorText}}">
+                            </Label>
+                        </StackLayout>
                     </StackLayout>
                 </Grid>
             </StackLayout>
+            
+            
+            
+            
             <!--Parte Register-->
             <StackLayout
             Grid.Row="0"
             Grid.Column="0"
             x:Name="RegisterStack">
-
-                <ImageButton 
-                        Margin="30,0,0,0"
-                        x:Name="CheckBox_iOS"
-                        Aspect="AspectFit">
-                </ImageButton>
-
-                <StackLayout
-                HorizontalOptions="Start"
-                Orientation="Horizontal"
-                Margin="5,0,0,0"
-                Grid.Row="5"
-                Grid.Column="0">
-                    <StackLayout.IsVisible>
-                        <OnPlatform x:TypeArguments="x:Boolean"
-                             iOS="true"
-                             Android="False"/>
-                    </StackLayout.IsVisible>
-
-                    <Button
-                    Clicked="RememberMeButton_iOS_Clicked"
-                    x:Name="RememberMe_Button_iOS"
-                    Text="[]"
-                    TextColor="{StaticResource ColorBackground}">
-                    </Button>
-
-                    <Label
-                    Text="Remember me?"
-                    HorizontalOptions="Start"
-                    VerticalOptions="Center"
-                    TextColor="{OnPlatform Android = {StaticResource ColorText}}">
-                    </Label>
-                </StackLayout>
             </StackLayout>
             <Grid
                 Grid.Row="0"
