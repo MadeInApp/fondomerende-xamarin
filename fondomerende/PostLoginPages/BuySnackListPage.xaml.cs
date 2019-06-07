@@ -49,14 +49,24 @@ namespace fondomerende.PostLoginPages
         {
             var result = await SnackService.GetToBuySnacksAsync();
             ListView.ItemsSource = result.data.snacks;
-  
-            for(int i = 0; i <= result.data.snacks.Count; i++)
+            int z;
+            for (int i = 0; i <= result.data.snacks.Count; i++)
             {
-                BindingContext = result.data.snacks[i];
-                Column0.Children.Add(Nome);
-                Column0.Children.Add(GoogleImage_View);
+                if (i % 2 == 0)
+                {
+                    z = i;
+                    Column0.Children.Add(new ImageButton { Scale = 2, Source = "http://192.168.0.175:8888/fondomerende/public/getphoto.php?name=" + result.data.snacks[z].friendly_name.Replace(" ", "") });
+                    Column0.Children.Add(new Label { HorizontalTextAlignment = TextAlignment.Center, Text = result.data.snacks[z].friendly_name });
+                }
+                else
+                {
+                  Column1.Children.Add(new ImageButton {Scale = 2, Source = "http://192.168.0.175:8888/fondomerende/public/getphoto.php?name=" + result.data.snacks[i].friendly_name.Replace(" ", "") });
+                  Column1.Children.Add(new Label { HorizontalTextAlignment = TextAlignment.Center, Text = result.data.snacks[i].friendly_name });
+                }
             }
         }
+
+ 
 
         private async void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
@@ -64,11 +74,6 @@ namespace fondomerende.PostLoginPages
             SelectedSnackID = (e.SelectedItem as ToBuyDataDTO).id;
             await Navigation.PushPopupAsync(new BuySnackPopUpPage());
 
-        }
-
-        private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
-        {
-          
         }
     }
 }
