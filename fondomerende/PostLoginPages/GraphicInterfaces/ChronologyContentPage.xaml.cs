@@ -1,4 +1,5 @@
 ﻿using fondomerende.Services.RESTServices;
+using Java.Util.Prefs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using System.ComponentModel;
+using Xamarin.Essentials;
 
 namespace fondomerende.PostLoginPages.GraphicInterfaces
 {
@@ -14,11 +17,14 @@ namespace fondomerende.PostLoginPages.GraphicInterfaces
     {
         private double diametro = 50;
         private double larghezzaLinea = 4;
-        private double altezzaLinea = 50;
+        private double altezzaLinea = 30;
+        private int posizione = 3;
+        Color colore;
+        Dictionary<string, Color> Nomi = new Dictionary<string, Color>();
 
         string[] cronologia;
         public ChronologyContentPage()
-        {
+        {          
             InitializeComponent();
             switch (Device.RuntimePlatform)             //Se il dispositivo è Android non mostra la Top Bar della Navigation Page, se è iOS la mostra
             {
@@ -30,29 +36,17 @@ namespace fondomerende.PostLoginPages.GraphicInterfaces
                     break;
 
             }
-            AddAction();
-            AddTimeLine(diametro, larghezzaLinea, altezzaLinea );
-            AddAction();
-            AddTimeLine(diametro, larghezzaLinea, altezzaLinea);
+            Aspetta();
         }
 
 
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-        }
-
-        protected override void OnDisappearing()
-        {
-            base.OnDisappearing();
-        }
 
         private void Fusione()
         {
             int i = 0;
             do
             {
-                AddAction();
+                AddAction(0);
 
                     if(cronologia[i + 1] == null)  AddTimeLine(diametro, larghezzaLinea, altezzaLinea);
 
@@ -60,8 +54,18 @@ namespace fondomerende.PostLoginPages.GraphicInterfaces
             }while (cronologia[i + 1] == null);
         }
 
-        private void AddAction()
+        private void AddAction(int posizione)
         {
+
+            string[] strSplit = cronologia[posizione].Split();
+            string dataLabel="";
+            colorBack(strSplit[2]);
+
+            for (int i = 0; i <= strSplit.Length; i++)
+            {
+                dataLabel = strSplit[i]+" ";
+            }
+
             var stackPrincipale = new StackLayout
             {
                 Orientation = StackOrientation.Horizontal
@@ -73,20 +77,19 @@ namespace fondomerende.PostLoginPages.GraphicInterfaces
                 WidthRequest = diametro,
                 MinimumHeightRequest = diametro,
                 MinimumWidthRequest = diametro,
-                BackgroundColor = Color.Wheat,
-                RoundedCornerRadius = diametro/2
+                RoundedCornerRadius = diametro
             };
 
             var stackLabel = new StackLayout
             {
-                VerticalOptions = LayoutOptions.Center,
-                HorizontalOptions = LayoutOptions.Center,
-                BackgroundColor = Color.Red
+                VerticalOptions = LayoutOptions.FillAndExpand,
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                BackgroundColor = Nomi[strSplit[2]]
             };
 
             var firstLetter = new Label
             {
-                Text="C",
+                Text = First_letter(cronologia[posizione]),
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 VerticalOptions = LayoutOptions.CenterAndExpand,
                 FontSize = 16,
@@ -98,7 +101,7 @@ namespace fondomerende.PostLoginPages.GraphicInterfaces
 
             var textAction = new Label
             {
-                Text = "Ha mangiato",
+                Text = dataLabel,
                 VerticalOptions = LayoutOptions.Center,
                 FontSize = 14,
                 FontAttributes = FontAttributes.Bold,
@@ -117,6 +120,8 @@ namespace fondomerende.PostLoginPages.GraphicInterfaces
         public void AddTimeLine(double diametro, double larghezzaLinea,double altezzaLinea)
         {
             double paddingLinea = diametro/2 - larghezzaLinea/2;
+            string[] strSplit = cronologia[posizione].Split();
+
             var stackPrincipale = new StackLayout
             {
                 HorizontalOptions = LayoutOptions.Start,
@@ -129,9 +134,9 @@ namespace fondomerende.PostLoginPages.GraphicInterfaces
                 HorizontalOptions = LayoutOptions.Center,
                 HeightRequest = altezzaLinea,
                 WidthRequest = larghezzaLinea,
-                Margin = new Thickness(paddingLinea,0,0,0),
-                BackgroundColor = Color.White,
-                
+                Margin = new Thickness(paddingLinea, 0, 0, 0),
+                BackgroundColor = Nomi[strSplit[2]]
+
             };
 
             var orario = new Label
@@ -151,19 +156,35 @@ namespace fondomerende.PostLoginPages.GraphicInterfaces
             ContentLayout.Children.Add(stackPrincipale);
         }
 
-        //public void First_letter()        //Grafica
-        //{
-        //    string firstLetter = ;
+        public string First_letter(string app)        //Grafica
+        {
+            string firstLetter = "";
 
-        //    string[] strSplit = //array da passare .Split();
+            
+            firstLetter = (app.Substring(0, 1));
+            return firstLetter;
+        }
 
-        //    foreach (string res in strSplit)
-        //    {
-        //        firstLetter = (res.Substring(0, 1));
-        //    }
-        //    inizialeLabel.Text = firstLetter;
-        //}
-        public async void GetLastActions()
+        public void colorBack(string app)
+        {
+            ColorRandom c = new ColorRandom();
+            Color colorapp;
+          
+            colorapp = c.GetRandomColor();
+           
+
+            if((app).Equals(Xamarin.Essentials.Preferences.Get("friendly-name", " ")))
+            {
+                Nomi.Add(app, Color.FromHex(Xamarin.Essentials.Preferences.Get("Colore", "#000000")));
+            }
+
+            if (!Nomi.ContainsKey(app)
+            {
+                Nomi.Add(app, colorapp);
+            }
+        }
+
+        public async Task GetLastActions()
         {
             LastActionServiceManager lastAction = new LastActionServiceManager();
             var result = await lastAction.GetLastActions();
@@ -178,9 +199,13 @@ namespace fondomerende.PostLoginPages.GraphicInterfaces
             }
         }
 
-        private void Button_Clicked(object sender, EventArgs e)
+        public async void Aspetta()
         {
-
+            await GetLastActions();
+            AddAction(0);
+            AddTimeLine(diametro, larghezzaLinea, altezzaLinea);
+            AddAction(11);
+            AddTimeLine(diametro, larghezzaLinea, altezzaLinea);
         }
     }
 }
