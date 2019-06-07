@@ -32,7 +32,7 @@
 
             <Style x:Key="RemeberButton" TargetType="Button">
                 <!--<Setter Property="FontFamily" Value="{StaticResource OpenSans}" />-->
-                <Setter Property="BorderRadius" Value = "20" />
+                <Setter Property="BorderRadius" Value = "30" />
                 <Setter Property="BorderColor" Value = "White" />
                 <Setter Property="BorderWidth" Value = "0.75" />
                 <Setter Property="BackgroundColor" Value = "Transparent"/>

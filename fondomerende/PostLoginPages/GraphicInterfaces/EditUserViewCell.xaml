@@ -80,7 +80,6 @@
                     Font="Bold,12"
                     BackgroundColor="Transparent">
                 </Button>
-
             </StackLayout>
         </StackLayout>
     </ViewCell.View>

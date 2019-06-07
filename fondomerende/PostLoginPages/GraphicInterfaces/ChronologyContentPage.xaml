@@ -10,8 +10,13 @@
             BackgroundColor="Violet"
             x:Name="ContentLayout"
             Spacing="0"
-            Margin="10"
+            Margin="0"
             Orientation="Vertical">
+            <Button
+                Clicked="Button_Clicked">
+                
+            </Button>
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
