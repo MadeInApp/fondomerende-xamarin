@@ -11,10 +11,11 @@
              ios:Page.UseSafeArea="true">
     <ContentPage.Content>
         <StackLayout>
-            <ScrollView>
+            <ScrollView Margin="0,30,0,0">
                 <Grid
-                x:Name="GridView" 
-                IsVisible="True">
+                    HorizontalOptions="CenterAndExpand"
+                    x:Name="GridView" 
+                    IsVisible="True">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
@@ -22,24 +23,21 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <StackLayout Grid.Column="0" x:Name="Column0">
-                        <Image
-                            Margin="20,0,0,0"
-                            x:Name="GoogleImage_View"
-                            Scale="1.8"
-                            Source="{Binding friendly_name, StringFormat='http://192.168.0.175:8888/fondomerende/public/getphoto.php?name={0}'}">
-                        </Image>
-
-                        <Label
-                            x:Name="Nome"
-                            Text ="{Binding friendly_name}">
-                        </Label>
-
+                    <StackLayout 
+                        Margin="0,30,0,0"
+                        Grid.Column="0" 
+                        x:Name="Column0"
+                        Spacing="40"
+                        HorizontalOptions="Center">
                     </StackLayout>
+                    
 
-                    <StackLayout Grid.Column="1">
-                        
-
+                    <StackLayout 
+                        Margin="0,20,0,0"
+                        Grid.Column="1" 
+                        x:Name="Column1"
+                        Spacing="40"
+                        HorizontalOptions="Center">
                     </StackLayout>
                 </Grid>
             </ScrollView>
@@ -49,7 +47,6 @@
                 IsPullToRefreshEnabled="False"
                 RefreshCommand="{Binding RefreshCommand}"
                 ItemSelected="ListView_ItemSelected"  
-                ItemTapped="ListView_ItemTapped"
                 IsRefreshing="{Binding IsBusy, Mode=OneWay}"
                 HasUnevenRows="True">
                 <ListView.ItemTemplate>
