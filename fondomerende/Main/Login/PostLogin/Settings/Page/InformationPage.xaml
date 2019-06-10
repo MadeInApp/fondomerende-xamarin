@@ -1,8 +1,9 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="fondomerende.Main.PostLogin.Settings.SubFolder.EditUser.ViewCell"
              mc:Ignorable="d"
              xmlns:local="clr-namespace:fondomerende.Main.PostLogin.Settings.SubFolder.EditUser.View"
              xmlns:local2="clr-namespace:fondomerende.Main.PostLogin.Settings.SubFolder.EditSnack.View"

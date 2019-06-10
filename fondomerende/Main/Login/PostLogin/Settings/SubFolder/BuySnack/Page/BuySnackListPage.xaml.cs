@@ -7,7 +7,9 @@ using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using fondomerende.PostLoginPages;
 using fondomerende.Main.Services.Models;
+using fondomerende.PostLoginPages.GraphicInterfaces;
 using Rg.Plugins.Popup.Extensions;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup;
 
