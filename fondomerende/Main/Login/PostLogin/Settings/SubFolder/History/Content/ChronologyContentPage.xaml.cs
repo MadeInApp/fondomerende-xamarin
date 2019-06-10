@@ -39,8 +39,8 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
                     break;
 
             }
-            SizeFrame();
             Aspetta();
+            
         }
 
 
@@ -64,7 +64,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
             string[] strSplit = cronologia[posizione].Split();           
             ColorBack(strSplit[2]);
 
-            for (int i = 2; i <= strSplit.Length; i++)
+            for (int i = 2; i < strSplit.Length; i++)
             {
                 dataLabel = " "+strSplit[i];
             }
@@ -180,7 +180,12 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
             if((app).Equals(Xamarin.Essentials.Preferences.Get("friendly-name", " ")))
             {
                 colorapp = Color.FromHex(Xamarin.Essentials.Preferences.Get("Colore", "#000000"));
-                colorByName.Add(app, colorapp);
+
+                if(!colorByName.ContainsKey(Xamarin.Essentials.Preferences.Get("friendly-name", " ")))
+                {
+                    colorByName.Add(app, colorapp);
+                }
+                   
             }
 
             if (!colorByName.ContainsKey(app))
@@ -191,7 +196,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
 
         public void SizeFrame()
         {
-            for(int i = 0; i <= cronologia.Length; i++)
+            for(int i = 0; i < cronologia.Length; i++)
             {
                 string[] strSplit = cronologia[i].Split();
 
@@ -251,9 +256,10 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
         public async void Aspetta()
         {
             await GetLastActions();
+            SizeFrame();
             AddAction(0);
             AddTimeLine(diametro, larghezzaLinea, altezzaLinea);
-            AddAction(11);
+            AddAction(1);
             AddTimeLine(diametro, larghezzaLinea, altezzaLinea);
         }
     }
