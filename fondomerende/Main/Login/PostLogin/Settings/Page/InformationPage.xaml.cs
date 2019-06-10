@@ -1,10 +1,11 @@
-﻿using fondomerende.Services.RESTServices;
+﻿using fondomerende.Main.Services.RESTServices;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Xamarin.Essentials;
-using fondomerende.PostLoginPages.GraphicInterfaces;
-using fondomerende.PostLoginPages.GraphicInterfaces.SubInterfaces;
+using fondomerende.Main.Login.LoginPages;
+using fondomerende.Main.PostLogin.Settings.SubFolder.EditUser.Page;
+using fondomerende.Main.PostLogin.Settings.SubFolder.History.Content;
 
 namespace fondomerende.PostLoginPages
 {
