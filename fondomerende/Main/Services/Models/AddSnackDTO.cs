@@ -4,7 +4,7 @@ using System.Net.Http;
 using System.Text;
 using Newtonsoft.Json;
 
-namespace fondomerende.Services.Models
+namespace fondomerende.Main.Services.Models
 {
     public class AddSnackDTO
     {

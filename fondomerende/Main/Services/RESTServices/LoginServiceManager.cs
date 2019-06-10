@@ -1,6 +1,6 @@
 ﻿using Flurl.Http;
 using fondomerende.Manager;
-using fondomerende.Services.Models;
+using fondomerende.Main.Services.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,7 +9,7 @@ using Xamarin.Forms;
 using System.Threading.Tasks;
 using System.ComponentModel;
 
-namespace fondomerende.Services.RESTServices
+namespace fondomerende.Main.Services.RESTServices
 {
     class LoginServiceManager
     {

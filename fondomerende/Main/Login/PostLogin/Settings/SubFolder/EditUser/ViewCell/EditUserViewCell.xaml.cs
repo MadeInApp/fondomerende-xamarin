@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using fondomerende.Services.RESTServices;
-using fondomerende.Manager;
+using fondomerende.Main.Services.RESTServices;
+using fondomerende.Main.Manager;
 using fondomerende.Main.Utilities;
 
-namespace fondomerende.PostLoginPages.GraphicInterfaces
+namespace fondomerende.Main.PostLogin.Settings.SubFolder.EditUser.ViewCell
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class EditUserViewCell : ViewCell

@@ -1,4 +1,4 @@
-﻿using fondomerende.Services.RESTServices;
+﻿using fondomerende.Main.Services.RESTServices;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using fondomerende.PostLoginPages.GraphicInterfaces;
 using Plugin.CrossPlatformTintedImage.Abstractions;
+using fondomerende.Main.Login;
 
-namespace fondomerende.PostLoginPages.GraphicInterfaces
+namespace fondomerende.Main.PostLogin.Settings.SubFolder.LogOut.View
 {
 
     [DesignTimeVisible(true)]

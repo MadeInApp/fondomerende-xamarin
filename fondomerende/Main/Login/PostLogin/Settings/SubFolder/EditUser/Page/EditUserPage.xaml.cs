@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using fondomerende.Services.RESTServices;
+using fondomerende.Main.Services.RESTServices;
 
-namespace fondomerende.PostLoginPages.GraphicInterfaces.SubInterfaces
+namespace fondomerende.Main.PostLogin.Settings.SubFolder.EditUser.Page
 {
     public partial class EditUserPage : ContentPage
     {

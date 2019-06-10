@@ -1,4 +1,4 @@
-﻿using fondomerende.Services.RESTServices;
+﻿using fondomerende.Main.Services.RESTServices;
 using FormsControls.Base;
 using System;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace fondomerende.PostLoginPages.GraphicInterfaces.SubInterfaces
+namespace fondomerende.Main.PostLogin.Settings.SubFolder.History.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ChronologyLogView : ViewCell

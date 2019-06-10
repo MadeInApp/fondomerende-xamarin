@@ -124,10 +124,10 @@
     <Compile Update="Main\Login\PostLogin\Settings\SubFolder\EditSnack\ViewCell\EditSnackViewCell.xaml.cs">
       <DependentUpon>EditSnackViewCell.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Main\Login\PostLogin\Settings\SubFolder\History\ViewCell\ChronologyViewCell.xaml.cs">
+    <Compile Update="Main\Login\PostLogin\Settings\SubFolder\History\View\ChronologyViewCell.xaml.cs">
       <DependentUpon>ChronologyViewCell.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Main\Login\PostLogin\Settings\SubFolder\LogOut\ViewCell\LogoutViewCell.xaml.cs">
+    <Compile Update="Main\Login\PostLogin\Settings\SubFolder\LogOut\View\LogoutViewCell.xaml.cs">
       <DependentUpon>LogoutViewCell.xaml</DependentUpon>
     </Compile>
     <Compile Update="Main\Login\PostLogin\Settings\SubFolder\BuySnack\ViewCell\BuySnackListViewCell.xaml.cs">
@@ -142,7 +142,7 @@
     <Compile Update="Main\Login\PostLogin\AllSnacks\ViewCell\SnackViewCell.xaml.cs">
       <DependentUpon>SnackViewCell.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Main\Login\PostLogin\Settings\SubFolder\History\ViewCell\ChronologyLogView.xaml.cs">
+    <Compile Update="Main\Login\PostLogin\Settings\SubFolder\History\View\ChronologyLogView.xaml.cs">
       <DependentUpon>ChronologyLogView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -157,7 +157,7 @@
     <EmbeddedResource Update="Main\Login\PostLogin\Settings\SubFolder\EditSnack\ViewCell\SnacksListSettingsViewCell.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Main\Login\PostLogin\Settings\SubFolder\History\ViewCell\ChronologyLogView.xaml">
+    <EmbeddedResource Update="Main\Login\PostLogin\Settings\SubFolder\History\View\ChronologyLogView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Main\Login\PostLogin\Settings\SubFolder\AddSnack\Page\AddSnackPage.xaml">
@@ -175,7 +175,7 @@
     <EmbeddedResource Update="Main\Login\PostLogin\Settings\SubFolder\EditUser\ViewCell\EditUserViewCell.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Main\Login\PostLogin\Settings\SubFolder\LogOut\ViewCell\LogoutViewCell.xaml">
+    <EmbeddedResource Update="Main\Login\PostLogin\Settings\SubFolder\LogOut\View\LogoutViewCell.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Main\Login\PostLogin\Settings\SubFolder\EditSnack\Page\EditSnackSettingsPage.xaml">
@@ -200,7 +200,6 @@
 
   <ItemGroup>
     <Folder Include="Exception\" />
-    <Folder Include="Main\Login\PostLogin\GraphicInterfaces\SubInterfaces\" />
   </ItemGroup>
 
   <ItemGroup>

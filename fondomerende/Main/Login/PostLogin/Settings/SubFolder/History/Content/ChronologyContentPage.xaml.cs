@@ -11,7 +11,7 @@ using System.ComponentModel;
 using Xamarin.Essentials;
 using fondomerende.Main.Utilities;
 
-namespace fondomerende.PostLoginPages.GraphicInterfaces
+namespace fondomerende.Main.PostLogin.Settings.SubFolder.History.Content
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ChronologyContentPage : ContentPage

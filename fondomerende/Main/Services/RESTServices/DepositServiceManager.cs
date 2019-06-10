@@ -1,13 +1,13 @@
 ﻿using Flurl.Http;
 using fondomerende.Manager;
-using fondomerende.Services.Models;
+using fondomerende.Main.Services.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
-namespace fondomerende.Services.RESTServices
+namespace fondomerende.Main.Services.RESTServices
 {
     class DepositServiceManager
     {

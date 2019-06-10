@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 using fondomerende.Manager;
 
-namespace fondomerende.Services
+namespace fondomerende.Main.Services
 {
     static class Services
     {
