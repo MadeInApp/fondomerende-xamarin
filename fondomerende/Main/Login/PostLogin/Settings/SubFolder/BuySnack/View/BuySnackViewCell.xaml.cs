@@ -2,7 +2,7 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace fondomerende.PostLoginPages.GraphicInterfaces
+namespace fondomerende.Main.PostLogin.Settings.SubFolder.BuySnack.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class BuySnackViewCell : ViewCell

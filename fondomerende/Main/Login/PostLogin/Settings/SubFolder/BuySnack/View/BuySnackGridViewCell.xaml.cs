@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace fondomerende.Main.PostLogin.Settings.SubFolder.EditUser.ViewCell
-{
+namespace fondomerende.Main.PostLogin.Settings.SubFolder.BuySnack.View
+{ 
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class EditUserSettingsViewCell : ViewCell
+    public partial class BuySnackGridViewCell : ViewCell
     {
-        public EditUserSettingsViewCell()
+        public BuySnackGridViewCell()
         {
             InitializeComponent();
         }

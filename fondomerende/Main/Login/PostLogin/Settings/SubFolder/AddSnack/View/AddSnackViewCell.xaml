@@ -5,8 +5,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              xmlns:controls="clr-namespace:Plugin.CrossPlatformTintedImage.Abstractions;assembly=Plugin.CrossPlatformTintedImage.Abstractions"
-             xmlns:local="clr-namespace:fondomerende"
-             x:Class="fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.ViewCell.AddSnackViewCell">
+             xmlns:local="clr-namespace:fondomerende.Main.Utilities"
+             x:Class="fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.View.AddSnackViewCell">
     <ViewCell.View>
         <!--Tasto aggiungi snack-->
         <StackLayout 

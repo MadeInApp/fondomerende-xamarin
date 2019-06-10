@@ -5,7 +5,6 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:local="clr-namespace:fondomerende.Main.Utilities"
              xmlns:controls="clr-namespace:Plugin.CrossPlatformTintedImage.Abstractions;assembly=Plugin.CrossPlatformTintedImage.Abstractions"
-             mc:Ignorable="d"
              x:Class="fondomerende.Main.PostLogin.Settings.SubFolder.LogOut.View.LogoutViewCell"
              Tapped="LogoutCellTapped">
 

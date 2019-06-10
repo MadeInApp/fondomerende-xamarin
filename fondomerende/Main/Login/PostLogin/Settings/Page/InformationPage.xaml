@@ -4,10 +4,17 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             xmlns:local="clr-namespace:fondomerende.Main.PostLogin.Settings.SubFolder.EditUser.View"
+             xmlns:local2="clr-namespace:fondomerende.Main.PostLogin.Settings.SubFolder.EditSnack.View"
+             xmlns:local3="clr-namespace:fondomerende.Main.PostLogin.Settings.SubFolder.AddSnack.View"
+             xmlns:local4="clr-namespace:fondomerende.Main.PostLogin.Settings.SubFolder.BuySnack.View"
+             xmlns:local5="clr-namespace:fondomerende.Main.PostLogin.Settings.SubFolder.History.View"
+             xmlns:local6="clr-namespace:fondomerende.Main.PostLogin.Settings.SubFolder.LogOut.View"
              x:Class="fondomerende.Main.PostLogin.Settings.Page.InformationPage"
              BackgroundColor="{StaticResource ColorSnackBackground}"
              Title="Impostazioni"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:local31="clr-namespace:fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.View"
              ios:Page.UseSafeArea="true">
 
     <ContentPage.Content>
@@ -21,12 +28,12 @@
                     Title="Utente"
                     TextColor="{OnPlatform Android= #6495ed}">
 
-                    <local:fondomerende.Main.PostLogin.Settings.SubFolder.EditUser.ViewCell.EditUserViewCell
+                    <local:EditUserViewCell
                         x:Name="EditUserViewCell"
                         Height="90" 
                         IsEnabled="True"
                         Tapped="ChangeUserSettings_Tapped">
-                    </local:fondomerende.Main.PostLogin.Settings.SubFolder.EditUser.ViewCell.EditUserViewCell>
+                    </local:EditUserViewCell>
 
                     <local:EditUserSettingsViewCell                          
                         Tapped="ChangeUserSettings_Tapped" 
@@ -39,17 +46,17 @@
                     Title="Snacks"
                     TextColor="{OnPlatform Android= #6495ed}">
 
-                    <local:EditSnackViewCell 
+                    <local2:EditSnackViewCell 
                         Height="{OnPlatform Android=60, iOS=60}"
                         x:Name="EditSnackViewCell" 
                         Tapped="EditSnackViewCell_Tapped"/>
 
-                    <local:AddSnackViewCell 
+                    <local31:AddSnackViewCell 
                         Height="{OnPlatform Android=60, iOS=60}"
                         x:Name="AddSnackCell"
                         IsEnabled="True" 
                         Tapped="AddSnackCell_Tapped"/>
-                    <local:BuySnackViewCell  
+                    <local4:BuySnackViewCell  
                         Height="{OnPlatform Android=60, iOS=60}"
                         x:Name="BuySnack"
                         IsEnabled="True"
@@ -59,20 +66,20 @@
                 <TableSection
                     Title="Generali"
                     TextColor="{OnPlatform Android= #6495ed}">
-                    <local:ChronologyViewCell 
+                    <local5:ChronologyViewCell 
                         Height="{OnPlatform Android=60, iOS=60}"
                         x:Name="ChronologyCell"
                         IsEnabled="True"
                         Tapped="ChronologyCell_Tapped">
-                    </local:ChronologyViewCell>
+                    </local5:ChronologyViewCell>
                 </TableSection>
                 
                 <TableSection>
-                    <local:LogoutViewCell 
+                    <local6:LogoutViewCell 
                         Height="{OnPlatform Android=60, iOS=60}"
                         x:Name="LogoutCell"
                         IsEnabled="True">
-                    </local:LogoutViewCell>
+                    </local6:LogoutViewCell>
                 </TableSection>
                 
             </TableRoot>

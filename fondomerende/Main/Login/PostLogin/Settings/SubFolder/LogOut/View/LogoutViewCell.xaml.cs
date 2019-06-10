@@ -10,6 +10,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Plugin.CrossPlatformTintedImage.Abstractions;
 using fondomerende.Main.Login;
+using fondomerende.Main.Login.LoginPages;
 
 namespace fondomerende.Main.PostLogin.Settings.SubFolder.LogOut.View
 {

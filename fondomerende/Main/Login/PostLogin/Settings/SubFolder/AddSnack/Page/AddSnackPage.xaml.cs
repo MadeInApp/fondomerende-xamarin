@@ -1,5 +1,5 @@
-﻿using fondomerende.Services.Models;
-using fondomerende.Services.RESTServices;
+﻿using fondomerende.Main.Services.Models;
+using fondomerende.Main.Services.RESTServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;

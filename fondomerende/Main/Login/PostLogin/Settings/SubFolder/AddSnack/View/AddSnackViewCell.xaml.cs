@@ -1,4 +1,4 @@
-﻿using fondomerende.Services.RESTServices;
+﻿using fondomerende.Main.Services.RESTServices;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,9 +8,8 @@ using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using fondomerende.PostLoginPages.GraphicInterfaces;
 
-namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.ViewCell
+namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AddSnackViewCell : ViewCell

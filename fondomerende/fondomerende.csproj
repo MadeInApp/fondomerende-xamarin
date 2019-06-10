@@ -124,10 +124,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Main\Login\PostLogin\Settings\SubFolder\BuySnack\ViewCell\BuySnackGridViewCell.xaml.cs">
+    <Compile Update="Main\Login\PostLogin\Settings\SubFolder\BuySnack\View\BuySnackGridViewCell.xaml.cs">
       <DependentUpon>BuySnackGridViewCell.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Main\Login\PostLogin\Settings\SubFolder\EditSnack\ViewCell\EditSnackViewCell.xaml.cs">
+    <Compile Update="Main\Login\PostLogin\Settings\SubFolder\EditSnack\View\EditSnackViewCell.xaml.cs">
       <DependentUpon>EditSnackViewCell.xaml</DependentUpon>
     </Compile>
     <Compile Update="Main\Login\PostLogin\Settings\SubFolder\History\View\ChronologyViewCell.xaml.cs">
@@ -136,7 +136,7 @@
     <Compile Update="Main\Login\PostLogin\Settings\SubFolder\LogOut\View\LogoutViewCell.xaml.cs">
       <DependentUpon>LogoutViewCell.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Main\Login\PostLogin\Settings\SubFolder\BuySnack\ViewCell\BuySnackListViewCell.xaml.cs">
+    <Compile Update="Main\Login\PostLogin\Settings\SubFolder\BuySnack\View\BuySnackListViewCell.xaml.cs">
       <DependentUpon>BuySnackListViewCell.xaml</DependentUpon>
     </Compile>
     <Compile Update="Main\Login\PostLogin\Settings\SubFolder\EditSnack\Page\EditSnackListPage.xaml.cs">
@@ -145,7 +145,7 @@
     <Compile Update="Main\Login\PostLogin\Settings\SubFolder\History\Log\ChronologyLog.xaml.cs">
       <DependentUpon>ChronologyLog.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Main\Login\PostLogin\AllSnacks\ViewCell\SnackViewCell.xaml.cs">
+    <Compile Update="Main\Login\PostLogin\AllSnacks\View\SnackViewCell.xaml.cs">
       <DependentUpon>SnackViewCell.xaml</DependentUpon>
     </Compile>
     <Compile Update="Main\Login\PostLogin\Settings\SubFolder\History\View\ChronologyLogView.xaml.cs">
@@ -154,13 +154,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Main\Login\PostLogin\Settings\SubFolder\AddSnack\ViewCell\AddSnackViewCell.xaml">
+    <EmbeddedResource Update="Main\Login\PostLogin\Settings\SubFolder\AddSnack\View\AddSnackViewCell.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Main\Login\PostLogin\Settings\SubFolder\BuySnack\ViewCell\BuySnackGridViewCell.xaml">
+    <EmbeddedResource Update="Main\Login\PostLogin\Settings\SubFolder\BuySnack\View\BuySnackGridViewCell.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Main\Login\PostLogin\Settings\SubFolder\EditSnack\ViewCell\SnacksListSettingsViewCell.xaml">
+    <EmbeddedResource Update="Main\Login\PostLogin\Settings\SubFolder\EditSnack\View\SnacksListSettingsViewCell.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Main\Login\PostLogin\Settings\SubFolder\History\View\ChronologyLogView.xaml">
@@ -175,10 +175,10 @@
     <EmbeddedResource Update="Main\Login\PostLogin\Settings\SubFolder\EditSnack\Page\EditSnackListPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Main\Login\PostLogin\Settings\SubFolder\EditUser\ViewCell\EditUserSettingsViewCell.xaml">
+    <EmbeddedResource Update="Main\Login\PostLogin\Settings\SubFolder\EditUser\View\EditUserSettingsViewCell.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Main\Login\PostLogin\Settings\SubFolder\EditUser\ViewCell\EditUserViewCell.xaml">
+    <EmbeddedResource Update="Main\Login\PostLogin\Settings\SubFolder\EditUser\View\EditUserViewCell.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Main\Login\PostLogin\Settings\SubFolder\LogOut\View\LogoutViewCell.xaml">
@@ -193,7 +193,7 @@
     <EmbeddedResource Update="SettingsTableView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Main\Login\PostLogin\AllSnacks\ViewCell\SnackViewCell.xaml">
+    <EmbeddedResource Update="Main\Login\PostLogin\AllSnacks\View\SnackViewCell.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Main\Login\PostLogin\AllSnacks\Page\AllSnacksPage.xaml">
