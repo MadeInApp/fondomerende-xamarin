@@ -8,16 +8,18 @@ using Xamarin.Essentials;
 using Xamarin.Forms;
 using System.Threading.Tasks;
 using System.ComponentModel;
+using fondomerende.Main.Login.LoginPages;
 
 namespace fondomerende.Main.Services.RESTServices
 {
     class LoginServiceManager
     {
-
         public async System.Threading.Tasks.Task<LoginDTO> LoginAsync(string username, string passwordToLogin, bool remember) //Servizio di Log In
         {
-            
-                var result = await "http://192.168.0.175:8888/fondomerende/public/process-request.php"
+            LoginDTO result = null;
+            try
+            {
+                result = await "http://192.168.0.175:8888/fondomerende/public/process-request.php"
                     .WithCookie("auth-key", "metticiquellochetipare")
                     .WithHeader("Content-Type", "application/x-www-form-urlencoded; param=value;charset=UTF-8")
                     .PostUrlEncodedAsync(new { commandName = "login", name = username, password = passwordToLogin })
@@ -31,11 +33,16 @@ namespace fondomerende.Main.Services.RESTServices
                     Preferences.Set("Logged", remember);
                     Preferences.Set("token", result.data.token);
                 }
+            }
+            catch (FlurlHttpTimeoutException ex)
+            {
+                App.Current.MainPage.DisplayAlert("Fondo Merende", "Connessione al server scaduta!", "OK");
+            }
 
 
 
             return result;
-        }  
+        }
 
     }
 }

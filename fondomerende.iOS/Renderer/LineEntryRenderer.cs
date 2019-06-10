@@ -9,8 +9,9 @@ using CoreGraphics;
 using System;
 using ObjCRuntime;
 using fondomerende;
+using fondomerende.Main.Utilities;
 
-[assembly: ExportRenderer(typeof(fondomerende.LineEntry), typeof(LineEntryRenderer))]
+[assembly: ExportRenderer(typeof(fondomerende.Main.Utilities.LineEntry), typeof(LineEntryRenderer))]
 namespace moosaicox.iOS.Utils
 {
     public class LineEntryRenderer : EntryRenderer
