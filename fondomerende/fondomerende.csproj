@@ -11,6 +11,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Main\Login\PostLogin\GraphicInterfaces\**" />
+    <EmbeddedResource Remove="Main\Login\PostLogin\GraphicInterfaces\**" />
+    <None Remove="Main\Login\PostLogin\GraphicInterfaces\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="image\add_icon_256x256.png" />
     <None Remove="image\BackGradientArRos.jpg" />
     <None Remove="image\BackGradientRosAr.jpg" />
@@ -200,7 +206,6 @@
 
   <ItemGroup>
     <Folder Include="Exception\" />
-    <Folder Include="Main\Login\PostLogin\GraphicInterfaces\SubInterfaces\" />
   </ItemGroup>
 
   <ItemGroup>
