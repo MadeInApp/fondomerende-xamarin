@@ -4,9 +4,9 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="fondomerende.PostLoginPages.AddSnackPage"
-             xmlns:local="clr-namespace:fondomerende"
+             x:Class="fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.Page.AddSnackPage"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:local="clr-namespace:fondomerende.Main.Utilities"
              ios:Page.UseSafeArea="true">
     <ContentPage.Content>
         <StackLayout Padding="40,20,40,0" Spacing="40">

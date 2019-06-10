@@ -9,7 +9,7 @@ using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace fondomerende.PostLoginPages
+namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.Page
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AddSnackPage : ContentPage
@@ -35,10 +35,10 @@ namespace fondomerende.PostLoginPages
         private async void ApplyChanges_Clicked(object sender, EventArgs e)
         {
             var ans = await DisplayAlert("Fondo Merende", "Lo Snack è contabile?", "Si", "No");
-            if(ans)
+            if (ans)
             {
-              var result = await snackService.AddSnackAsync(Nome.Text, Double.Parse(Prezzo.Text), Int32.Parse(SnackPerScatola.Text), Int32.Parse(ScadenzaInGiorni.Text), true);
-                if(result.response.success)
+                var result = await snackService.AddSnackAsync(Nome.Text, double.Parse(Prezzo.Text), int.Parse(SnackPerScatola.Text), int.Parse(ScadenzaInGiorni.Text), true);
+                if (result.response.success)
                 {
                     await DisplayAlert("Fondo Merende", "SnackID: " + result.response.data.id, "Ok");
                 }
@@ -49,7 +49,7 @@ namespace fondomerende.PostLoginPages
             }
             else
             {
-                await snackService.AddSnackAsync(Nome.Text, Double.Parse(Prezzo.Text), Int32.Parse(SnackPerScatola.Text), Int32.Parse(ScadenzaInGiorni.Text), false);
+                await snackService.AddSnackAsync(Nome.Text, double.Parse(Prezzo.Text), int.Parse(SnackPerScatola.Text), int.Parse(ScadenzaInGiorni.Text), false);
             }
         }
     }

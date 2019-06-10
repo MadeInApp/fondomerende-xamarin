@@ -6,7 +6,7 @@
              mc:Ignorable="d"
              xmlns:controls="clr-namespace:Plugin.CrossPlatformTintedImage.Abstractions;assembly=Plugin.CrossPlatformTintedImage.Abstractions"
              xmlns:local="clr-namespace:fondomerende"
-             x:Class="fondomerende.PostLoginPages.GraphicInterfaces.AddSnackViewCell">
+             x:Class="fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.ViewCell.AddSnackViewCell">
     <ViewCell.View>
         <!--Tasto aggiungi snack-->
         <StackLayout 

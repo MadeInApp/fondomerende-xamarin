@@ -5,7 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:local="clr-namespace:fondomerende.PostLoginPages.GraphicInterfaces"
              mc:Ignorable="d"
-             x:Class="fondomerende.PostLoginPages.BuySnackListPage"
+             x:Class="fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page.BuySnackListPage"
              Title="{OnPlatform iOS= 'Acquista Snack'}"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"             
              ios:Page.UseSafeArea="true">

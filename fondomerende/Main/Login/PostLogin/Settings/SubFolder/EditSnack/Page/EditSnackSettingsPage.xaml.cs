@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace fondomerende.PostLoginPages
+namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.Page
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class EditSnackSettingsPage : ContentPage

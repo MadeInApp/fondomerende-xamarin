@@ -12,7 +12,7 @@ using fondomerende.Services.Models;
 using fondomerende.PostLoginPages.GraphicInterfaces;
 using Rg.Plugins.Popup.Extensions;
 
-namespace fondomerende.PostLoginPages
+namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class BuySnackListPage : ContentPage

@@ -10,7 +10,7 @@ using fondomerende.Services.Models;
 using Xamarin.Forms.Xaml;
 using fondomerende.PostLoginPages;
 
-namespace fondomerende.PostLoginPages.GraphicInterfaces
+namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.Page
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class EditSnackListPage : ContentPage

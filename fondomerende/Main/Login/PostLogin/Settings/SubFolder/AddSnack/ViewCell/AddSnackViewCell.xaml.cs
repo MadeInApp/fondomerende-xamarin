@@ -10,7 +10,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using fondomerende.PostLoginPages.GraphicInterfaces;
 
-namespace fondomerende.PostLoginPages.GraphicInterfaces
+namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.ViewCell
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AddSnackViewCell : ViewCell
