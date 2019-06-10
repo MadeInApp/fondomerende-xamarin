@@ -1,8 +1,6 @@
 ﻿using System;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 using Xamarin.Essentials;
-using fondomerende.PostLoginPages;
 
 namespace fondomerende.Main.Utilities
 {
