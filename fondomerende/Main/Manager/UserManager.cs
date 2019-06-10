@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Xamarin.Essentials;
 
-namespace fondomerende.Manager
+namespace fondomerende.Main.Manager
 {
     public sealed class UserManager
     {

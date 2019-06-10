@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace fondomerende.PostLoginPages.GraphicInterfaces
+namespace fondomerende.Main.PostLogin.Settings.SubFolder.EditUser.ViewCell
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class EditUserSettingsViewCell : ViewCell

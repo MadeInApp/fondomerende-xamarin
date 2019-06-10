@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 
-namespace fondomerende.Services.Models
+namespace fondomerende.Main.Services.Models
 {
     class AllSnacksDTO
     {

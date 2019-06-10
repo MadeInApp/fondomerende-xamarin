@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 using Flurl.Http;
-using fondomerende.Services.Models;
+using fondomerende.Main.Services.Models;
 
-namespace fondomerende.Services.RESTServices
+namespace fondomerende.Main.Services.RESTServices
 {
     class EditUserServiceManager
     {

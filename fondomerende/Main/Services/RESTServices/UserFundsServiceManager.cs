@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using fondomerende.Services.Models;
+using fondomerende.Main.Services.Models;
 using Flurl.Http;
 using Xamarin.Essentials;
 
-namespace fondomerende.Services.RESTServices
+namespace fondomerende.Main.Services.RESTServices
 {
 
     class UserFundsServiceManager

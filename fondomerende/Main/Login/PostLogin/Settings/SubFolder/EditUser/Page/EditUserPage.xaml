@@ -3,9 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:local="clr-namespace:fondomerende"
+             xmlns:local="clr-namespace:fondomerende.Main.Utilities"
              mc:Ignorable="d"
-             x:Class="fondomerende.PostLoginPages.GraphicInterfaces.SubInterfaces.EditUserPage"
+             x:Class="fondomerende.Main.PostLogin.Settings.SubFolder.EditUser.Page.EditUserPage"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              ios:Page.UseSafeArea="True"
              Title="{OnPlatform iOS='Modifica Utente'}">

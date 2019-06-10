@@ -1,10 +1,10 @@
 ﻿using Flurl.Http;
-using fondomerende.Services.Models;
+using fondomerende.Main.Services.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace fondomerende.Services.RESTServices
+namespace fondomerende.Main.Services.RESTServices
 {
     class LastActionServiceManager
     {
