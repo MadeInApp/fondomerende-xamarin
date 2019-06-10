@@ -1,4 +1,5 @@
 ﻿using Flurl.Http;
+using Flurl;
 using fondomerende.Main.Manager;
 using fondomerende.Main.Services.Models;
 using System;
@@ -20,7 +21,7 @@ namespace fondomerende.Main.Services.RESTServices
             try
             {
                 result = await "http://192.168.0.175:8888/fondomerende/public/process-request.php"
-                    .WithCookie("auth-key", "metticiquellochetipare")
+                    //.WithCookie("auth-key", "metticiquellochetipare")
                     .WithHeader("Content-Type", "application/x-www-form-urlencoded; param=value;charset=UTF-8")
                     .PostUrlEncodedAsync(new { commandName = "login", name = username, password = passwordToLogin })
                     .ReceiveJson<LoginDTO>();
@@ -36,7 +37,11 @@ namespace fondomerende.Main.Services.RESTServices
             }
             catch (FlurlHttpTimeoutException ex)
             {
-                App.Current.MainPage.DisplayAlert("Fondo Merende", "Connessione al server scaduta!", "OK");
+                await App.Current.MainPage.DisplayAlert("Fondo Merende", "Connessione al server scaduta!", "OK");
+            }
+            catch(FlurlHttpException ex)
+            {
+                await App.Current.MainPage.DisplayAlert("Fondo Merende", "Errore Http!", "OK");
             }
 
 

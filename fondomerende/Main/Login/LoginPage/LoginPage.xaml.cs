@@ -52,15 +52,12 @@ namespace fondomerende.Main.Login.LoginPages
 
         private async void Login_ClickedAsync(object sender, EventArgs e) //Effettua il Log In
         {
-            if (!wait)
+          if (!wait)
             {   //assicura che il tasto login venga premuto una volta
+                LoginServiceManager loginService = new LoginServiceManager();
                 if (!string.IsNullOrEmpty(usernameEntry.Text) && !string.IsNullOrEmpty(passwordEntry.Text))
                 {
-                    username = usernameEntry.Text;
-                    password = passwordEntry.Text;
-
-                    LoginServiceManager loginService = new LoginServiceManager();
-                    var response = await loginService.LoginAsync(username, password, !remember);
+                    var response = await loginService.LoginAsync(usernameEntry.Text, passwordEntry.Text, remember);
                     if (response == null)
                     {
                         await DisplayAlert("Fondo Merende", "Errore Flurl", "OK");
