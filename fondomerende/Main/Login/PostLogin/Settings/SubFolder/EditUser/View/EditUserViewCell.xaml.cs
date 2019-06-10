@@ -10,7 +10,7 @@ using fondomerende.Main.Services.RESTServices;
 using fondomerende.Main.Manager;
 using fondomerende.Main.Utilities;
 
-namespace fondomerende.Main.PostLogin.Settings.SubFolder.EditUser.View
+namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class EditUserViewCell : ViewCell

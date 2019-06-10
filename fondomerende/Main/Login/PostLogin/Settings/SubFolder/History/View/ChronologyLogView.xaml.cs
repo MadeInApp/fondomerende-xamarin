@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace fondomerende.Main.PostLogin.Settings.SubFolder.History.View
+namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ChronologyLogView : ViewCell

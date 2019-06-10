@@ -4,7 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="fondomerende.Main.PostLogin.AllSnacks.View.SnackViewCell">
+             x:Class="fondomerende.Main.Login.PostLogin.AllSnacks.View.SnackViewCell">
   <ViewCell.View>
         <StackLayout
             Orientation="Horizontal"

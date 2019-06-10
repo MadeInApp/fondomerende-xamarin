@@ -9,7 +9,7 @@ using Xamarin.Forms.Xaml;
 using fondomerende.Main.Services.RESTServices;
 using fondomerende.Main.Login.LoginPages;
 
-namespace fondomerende.Main.PostLogin.Settings.SubFolder.EditUser.Page
+namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.Page
 {
     public partial class EditUserPage : ContentPage
     {

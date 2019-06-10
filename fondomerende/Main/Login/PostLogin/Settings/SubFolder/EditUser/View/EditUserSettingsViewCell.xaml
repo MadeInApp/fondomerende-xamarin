@@ -4,7 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="fondomerende.Main.PostLogin.Settings.SubFolder.EditUser.View.EditUserSettingsViewCell"
+             x:Class="fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View.EditUserSettingsViewCell"
              xmlns:local="clr-namespace:fondomerende.Main.Utilities">
     
     <ViewCell.View>                             <!--Tasto per modificare Utente-->

@@ -4,7 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="fondomerende.Main.PostLogin.Settings.SubFolder.History.View.ChronologyLogView"
+             x:Class="fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.View.ChronologyLogView"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              xmlns:controls="clr-namespace:FormsControls.Base;assembly=FormsControls.Base"
              ios:Page.UseSafeArea="True">

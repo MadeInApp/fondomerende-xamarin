@@ -2,10 +2,10 @@
 using System.ComponentModel;
 using Xamarin.Essentials;
 using Xamarin.Forms;
-using fondomerende.Main.PostLogin.Settings.SubFolder.History.Content;
+using fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content;
 using FormsControls.Base;
 
-namespace fondomerende.Main.PostLogin.Settings.SubFolder.History.View
+namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.View
 {
 
     [DesignTimeVisible(true)]

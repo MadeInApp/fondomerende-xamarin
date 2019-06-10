@@ -5,8 +5,8 @@
     xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
     xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
     x:Class="fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup.BuySnackPopUpPage"
-    xmlns:local ="clr-namespace:fondomerende"
-    xmlns:Graph="clr-namespace:fondomerende.PostLoginPages.GraphicInterfaces"
+    xmlns:local ="clr-namespace:fondomerende.Main.Utilities"
+    xmlns:Graph="clr-namespace:fondomerende.Main.Utilities"
     HasKeyboardOffset="False">
     <!--You can set an animation in the xaml file or in the csharp code behind-->
     <pages:PopupPage.Animation>

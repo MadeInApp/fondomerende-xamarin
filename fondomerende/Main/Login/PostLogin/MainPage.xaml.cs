@@ -10,7 +10,7 @@ using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration;
 
-namespace fondomerende.PostLoginPages
+namespace fondomerende.Main.Login.PostLogin
 {
     // Learn more about making custom code visible in the Xamarin.Forms previewer
     // by visiting https://aka.ms/xamarinforms-previewer

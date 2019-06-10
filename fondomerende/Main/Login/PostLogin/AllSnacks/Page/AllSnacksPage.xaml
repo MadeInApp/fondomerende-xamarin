@@ -3,11 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:local="clr-namespace:fondomerende.PostLoginPages.GraphicInterfaces"
              mc:Ignorable="d"
-             x:Class="fondomerende.PostLoginPages.AllSnacksPage"
+             x:Class="fondomerende.Main.Login.PostLogin.AllSnack.Page.AllSnacksPage"
              BackgroundColor="{OnPlatform Android= {StaticResource ColorSnackBackground}, iOS= 'White'}"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:local1="clr-namespace:fondomerende.Main.Login.PostLogin.AllSnacks.View"
              ios:Page.UseSafeArea="True"
              Title="{OnPlatform iOS='Snacks'}">
     
@@ -23,8 +23,7 @@
                 HasUnevenRows="True">
             <ListView.ItemTemplate>
                     <DataTemplate>
-                        
-                        <local:SnackViewCell x:Name="SnackCell"> </local:SnackViewCell> 
+                        <local1:SnackViewCell x:Name="SnackCell"> </local1:SnackViewCell> 
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

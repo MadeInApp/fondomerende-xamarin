@@ -12,7 +12,7 @@ using Plugin.CrossPlatformTintedImage.Abstractions;
 using fondomerende.Main.Login;
 using fondomerende.Main.Login.LoginPages;
 
-namespace fondomerende.Main.PostLogin.Settings.SubFolder.LogOut.View
+namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.LogOut.View
 {
 
     [DesignTimeVisible(true)]

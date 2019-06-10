@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace fondomerende.Main.PostLogin.AllSnacks.View
+namespace fondomerende.Main.Login.PostLogin.AllSnacks.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SnackViewCell : ViewCell

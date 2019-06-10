@@ -4,14 +4,14 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Xamarin.Essentials;
 using fondomerende.Main.Login.LoginPages;
-using fondomerende.Main.PostLogin.Settings.SubFolder.EditUser.Page;
-using fondomerende.Main.PostLogin.Settings.SubFolder.History.Content;
-using fondomerende.Main.PostLogin.Settings.SubFolder.EditUser.View;
+using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.Page;
+using fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content;
+using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.Page;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.Page;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page;
 
-namespace fondomerende.Main.PostLogin.Settings.Page
+namespace fondomerende.Main.Login.PostLogin.Settings.Page
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class InformationPage : ContentPage

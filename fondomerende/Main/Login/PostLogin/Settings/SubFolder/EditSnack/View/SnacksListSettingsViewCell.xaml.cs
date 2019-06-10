@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace fondomerende.PostLoginPages.GraphicInterfaces
+namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SnacksListSettingsViewCell : ViewCell

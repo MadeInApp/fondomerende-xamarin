@@ -10,7 +10,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Widget;
 using fondomerende.Droid.Assets;
-using fondomerende.PostLoginPages.GraphicInterfaces;
+using fondomerende.Main.Utilities;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 

@@ -6,7 +6,7 @@
              xmlns:controls="clr-namespace:Plugin.CrossPlatformTintedImage.Abstractions;assembly=Plugin.CrossPlatformTintedImage.Abstractions"
              mc:Ignorable="d"
              xmlns:local="clr-namespace:fondomerende.Main.Utilities"
-             x:Class="fondomerende.Main.PostLogin.Settings.SubFolder.BuySnack.View.BuySnackViewCell">
+             x:Class="fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.View.BuySnackViewCell">
     <ViewCell.View>
         <!--Acquista Snack-->
         <StackLayout 

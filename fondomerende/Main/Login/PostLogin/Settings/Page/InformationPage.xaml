@@ -3,19 +3,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:local="fondomerende.Main.PostLogin.Settings.SubFolder.EditUser.ViewCell"
              mc:Ignorable="d"
-             xmlns:local="clr-namespace:fondomerende.Main.PostLogin.Settings.SubFolder.EditUser.View"
-             xmlns:local2="clr-namespace:fondomerende.Main.PostLogin.Settings.SubFolder.EditSnack.View"
-             xmlns:local3="clr-namespace:fondomerende.Main.PostLogin.Settings.SubFolder.AddSnack.View"
-             xmlns:local4="clr-namespace:fondomerende.Main.PostLogin.Settings.SubFolder.BuySnack.View"
-             xmlns:local5="clr-namespace:fondomerende.Main.PostLogin.Settings.SubFolder.History.View"
-             xmlns:local6="clr-namespace:fondomerende.Main.PostLogin.Settings.SubFolder.LogOut.View"
-             x:Class="fondomerende.Main.PostLogin.Settings.Page.InformationPage"
+             xmlns:local="clr-namespace:fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View"
+             xmlns:local2="clr-namespace:fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.View"
+             xmlns:local3="clr-namespace:fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.View"
+             xmlns:local4="clr-namespace:fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.View"
+             xmlns:local5="clr-namespace:fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.View"
+             xmlns:local6="clr-namespace:fondomerende.Main.Login.PostLogin.Settings.SubFolder.LogOut.View"
+             x:Class="fondomerende.Main.Login.PostLogin.Settings.Page.InformationPage"
              BackgroundColor="{StaticResource ColorSnackBackground}"
              Title="Impostazioni"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-             xmlns:local31="clr-namespace:fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.View"
              ios:Page.UseSafeArea="true">
 
     <ContentPage.Content>
@@ -52,7 +50,7 @@
                         x:Name="EditSnackViewCell" 
                         Tapped="EditSnackViewCell_Tapped"/>
 
-                    <local31:AddSnackViewCell 
+                    <local3:AddSnackViewCell 
                         Height="{OnPlatform Android=60, iOS=60}"
                         x:Name="AddSnackCell"
                         IsEnabled="True" 

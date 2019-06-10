@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:fondomerende.Main.Utilities"
              xmlns:controls="clr-namespace:Plugin.CrossPlatformTintedImage.Abstractions;assembly=Plugin.CrossPlatformTintedImage.Abstractions"
              mc:Ignorable="d"
-             x:Class="fondomerende.PostLoginPages.GraphicInterfaces.EditSnackViewCell"
+             x:Class="fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.View.EditSnackViewCell"
              Tapped="ViewCell_Tapped">
 
     <ViewCell.View>

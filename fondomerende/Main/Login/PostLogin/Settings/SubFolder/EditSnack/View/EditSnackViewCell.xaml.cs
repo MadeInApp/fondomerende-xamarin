@@ -8,9 +8,8 @@ using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using fondomerende.PostLoginPages.GraphicInterfaces;
 
-namespace fondomerende.PostLoginPages.GraphicInterfaces
+namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class EditSnackViewCell : ViewCell

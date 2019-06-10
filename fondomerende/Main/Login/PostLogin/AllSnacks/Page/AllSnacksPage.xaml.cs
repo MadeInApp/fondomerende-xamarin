@@ -9,9 +9,8 @@ using Xamarin.Essentials;
 using Xamarin.Forms.Xaml;
 using fondomerende.Main.Services.Models;
 using fondomerende.Main.Manager;
-using fondomerende.PostLoginPages.GraphicInterfaces;
 
-namespace fondomerende.PostLoginPages
+namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 {
 
     [XamlCompilation(XamlCompilationOptions.Compile)]
