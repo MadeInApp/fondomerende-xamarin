@@ -60,9 +60,12 @@ namespace fondomerende.Main.Login.LoginPages
                     password = passwordEntry.Text;
 
                     LoginServiceManager loginService = new LoginServiceManager();
-                    var response = await loginService.LoginAsync(username, password, remember);
-
-                    if (response.response.success == true)
+                    var response = await loginService.LoginAsync(username, password, !remember);
+                    if (response == null)
+                    {
+                        await DisplayAlert("Fondo Merende", "Errore Flurl", "OK");
+                    }
+                    else if (response.response.success == true)
                     {
                         userService = new UserServiceManager();
                         await userService.GetUserData();   //informazioni utente
@@ -73,6 +76,7 @@ namespace fondomerende.Main.Login.LoginPages
                     {
                         await DisplayAlert("Fondo Merende", "Username o Password Errati", "OK");
                     }
+                  
                 }
                 else
                 {
