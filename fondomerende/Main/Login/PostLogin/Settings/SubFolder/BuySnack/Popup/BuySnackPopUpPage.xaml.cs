@@ -1,4 +1,5 @@
-﻿using fondomerende.Services.RESTServices;
+﻿using fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page;
+using fondomerende.Services.RESTServices;
 using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,9 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace fondomerende.PostLoginPages.GraphicInterfaces
+namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
+
+
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class BuySnackPopUpPage : Rg.Plugins.Popup.Pages.PopupPage
