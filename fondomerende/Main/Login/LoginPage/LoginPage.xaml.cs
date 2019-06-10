@@ -1,4 +1,4 @@
-﻿using fondomerende.Services.RESTServices;
+﻿using fondomerende.Main.Services.RESTServices;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -7,10 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Essentials;
-using fondomerende.PostLoginPages;
 using fondomerende.Main.Utilities;
 
-namespace fondomerende.Main.Login
+namespace fondomerende.Main.Login.LoginPages
 {
     // Learn more about making custom code visible in the Xamarin.Forms previewer
     // by visiting https://aka.ms/xamarinforms-previewer
