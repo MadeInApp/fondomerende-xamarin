@@ -8,6 +8,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using fondomerende.Services.RESTServices;
 using fondomerende.Manager;
+using fondomerende.Main.Utilities;
 
 namespace fondomerende.PostLoginPages.GraphicInterfaces
 {

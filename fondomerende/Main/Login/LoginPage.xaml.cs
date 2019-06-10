@@ -8,8 +8,9 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Essentials;
 using fondomerende.PostLoginPages;
+using fondomerende.Main.Utilities;
 
-namespace fondomerende
+namespace fondomerende.Main.Login
 {
     // Learn more about making custom code visible in the Xamarin.Forms previewer
     // by visiting https://aka.ms/xamarinforms-previewer

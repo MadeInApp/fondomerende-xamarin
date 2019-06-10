@@ -4,7 +4,7 @@ using Xamarin.Forms.Xaml;
 using Xamarin.Essentials;
 using fondomerende.PostLoginPages;
 
-namespace fondomerende
+namespace fondomerende.Main.Utilities
 {
     class LabelRandom
     {

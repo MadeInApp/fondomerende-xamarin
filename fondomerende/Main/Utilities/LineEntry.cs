@@ -1,6 +1,6 @@
 ﻿using Xamarin.Forms;
 
-namespace fondomerende
+namespace fondomerende.Main.Utilities
 {
     public class LineEntry : Entry
     {

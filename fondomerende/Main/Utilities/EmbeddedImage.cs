@@ -4,7 +4,7 @@ using System.Text;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace fondomerende
+namespace fondomerende.Main.Utilities
 {
     class EmbeddedImage : IMarkupExtension
     {

@@ -9,6 +9,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using System.ComponentModel;
 using Xamarin.Essentials;
+using fondomerende.Main.Utilities;
 
 namespace fondomerende.PostLoginPages.GraphicInterfaces
 {
@@ -19,9 +20,11 @@ namespace fondomerende.PostLoginPages.GraphicInterfaces
         private double larghezzaLinea = 4;
         private double altezzaLinea = 30;
         private int posizione = 3;
+        private string ultimoOrario ="";
         Color colore;
         Dictionary<string, Color> colorByName = new Dictionary<string, Color>();
         Dictionary<string, double> sizeByName = new Dictionary<string, double>();
+        Dictionary<string, DateTime> dateByTime = new Dictionary<string, DateTime>();
 
         string[] cronologia;
         public ChronologyContentPage()
@@ -204,6 +207,22 @@ namespace fondomerende.PostLoginPages.GraphicInterfaces
             }
         }
 
+        public DateTime LenghtLine(int posizione)
+        {
+            string[] strSplit = cronologia[posizione].Split();
+            string app = strSplit[0]+" "+strSplit[1];
+            var data = DateTime.Parse(app);
+
+            if (!dateByTime.ContainsKey(strSplit[2]))
+            {
+                dateByTime.Add(strSplit[2], data);
+            }
+            else
+            {
+                
+            }
+            return data;
+        }
         public async Task GetLastActions()
         {
             LastActionServiceManager lastAction = new LastActionServiceManager();

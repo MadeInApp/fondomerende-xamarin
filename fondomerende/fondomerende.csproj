@@ -200,6 +200,7 @@
 
   <ItemGroup>
     <Folder Include="Exception\" />
+    <Folder Include="PreLoginPages\" />
   </ItemGroup>
 
   <ItemGroup>
