@@ -4,7 +4,6 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             xmlns:local="clr-namespace:fondomerende.Main.PostLogin.Settings.SubFolder.EditUser.ViewCell"
              x:Class="fondomerende.Main.PostLogin.Settings.Page.InformationPage"
              BackgroundColor="{StaticResource ColorSnackBackground}"
              Title="Impostazioni"
@@ -22,12 +21,12 @@
                     Title="Utente"
                     TextColor="{OnPlatform Android= #6495ed}">
 
-                    <local:EditUserViewCell
+                    <local:fondomerende.Main.PostLogin.Settings.SubFolder.EditUser.ViewCell.EditUserViewCell
                         x:Name="EditUserViewCell"
                         Height="90" 
                         IsEnabled="True"
                         Tapped="ChangeUserSettings_Tapped">
-                    </local:EditUserViewCell>
+                    </local:fondomerende.Main.PostLogin.Settings.SubFolder.EditUser.ViewCell.EditUserViewCell>
 
                     <local:EditUserSettingsViewCell                          
                         Tapped="ChangeUserSettings_Tapped" 
