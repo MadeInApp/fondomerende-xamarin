@@ -3,7 +3,7 @@ using System;
 using System.Net;
 using System.Collections.Generic;
 using System.Text;
-using fondomerende.Manager;
+using fondomerende.Main.Manager;
 
 namespace fondomerende.Main.Services
 {

@@ -1,5 +1,6 @@
 ﻿using Flurl.Http;
-using fondomerende.Manager;
+using fondomerende.Main.Login.LoginPages;
+using fondomerende.Main.Manager;
 using fondomerende.Main.Services.Models;
 using System;
 using System.Collections.Generic;

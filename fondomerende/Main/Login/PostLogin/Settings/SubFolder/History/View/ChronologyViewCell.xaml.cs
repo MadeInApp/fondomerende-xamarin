@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using Xamarin.Essentials;
 using Xamarin.Forms;
-using fondomerende.Main.PostLogin.Settings.SubFolder.History.Log;
+using fondomerende.Main.PostLogin.Settings.SubFolder.History.Content;
 using FormsControls.Base;
 
 namespace fondomerende.Main.PostLogin.Settings.SubFolder.History.View

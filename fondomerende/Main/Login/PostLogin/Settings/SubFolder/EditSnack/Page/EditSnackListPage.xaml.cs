@@ -1,4 +1,4 @@
-﻿using fondomerende.Services.RESTServices;
+﻿using fondomerende.Main.Services.RESTServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
-using fondomerende.Services.Models;
+using fondomerende.Main.Services.Models;
 using Xamarin.Forms.Xaml;
 using fondomerende.PostLoginPages;
 

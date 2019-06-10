@@ -3,7 +3,8 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Xamarin.Essentials;
 using fondomerende.PostLoginPages;
-using fondomerende.Services.RESTServices;
+using fondomerende.Main.Services.RESTServices;
+using fondomerende.Main.Login.LoginPages;
 
 namespace fondomerende
 {
