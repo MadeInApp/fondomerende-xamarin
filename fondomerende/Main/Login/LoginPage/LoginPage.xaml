@@ -99,40 +99,14 @@
                     Grid.Column="0"
                     Margin="5,20,0,5"
                     Clicked="Login_ClickedAsync"
-                    TextColor="{OnPlatform iOS={StaticResource ColorBackground}}"
                     Text="Log in"
-                    Style="{OnPlatform Android={StaticResource FondomerendeButton}}">
-                    <Button.IsVisible>
-                        <OnPlatform x:TypeArguments="x:Boolean"
-                            iOS="false"
-                            Android="true"/>
-                    </Button.IsVisible>
+                    Style="{StaticResource FondomerendeButton}">
                 </Button>
 
 
-                <!--iOS-->
-                <StackLayout
-                HorizontalOptions="Center"
-                Orientation="Horizontal"
-                Grid.Row="3"
-                Grid.Column="0">
-                    <StackLayout.IsVisible>
-                        <OnPlatform x:TypeArguments="x:Boolean"
-                                iOS="True"
-                                Android="false"/>
-                    </StackLayout.IsVisible>
+                
 
                     <Button
-                        HorizontalOptions="Center"
-                        Clicked="Login_ClickedAsync"
-                        x:Name="bottone_iOS"
-                        TextColor="{OnPlatform iOS={StaticResource ColorBackground}}"
-                        Text="Log in">
-                    </Button>
-                </StackLayout>
-
-
-                <Button
                     HorizontalOptions="FillAndExpand"
                     Grid.Row="4"
                     Grid.Column="0"
@@ -140,32 +114,10 @@
                     Clicked="RegisterButton_ClickedAsync"
                     x:Name="Register"
                     Text="Sign up"
-                    TextColor="{OnPlatform iOS={StaticResource ColorBackground}}"
-                    Style="{OnPlatform Android={StaticResource FondomerendeButton}}">
-                    <Button.IsVisible>
-                        <OnPlatform x:TypeArguments="x:Boolean"
-                                iOS="False"
-                                Android="True"/>
-                    </Button.IsVisible>
-                </Button>
+                    Style="{StaticResource FondomerendeButton}">
+                    </Button>
                     
-                <!--Per IOS-->
-                <Button
-                    HorizontalOptions="FillAndExpand"
-                    Grid.Row="4"
-                    Grid.Column="0"
-                    Margin="5,0,0,5"
-                    Clicked="RegisterButton_ClickedAsync"
-                    x:Name="Register_iOS"
-                    Text="Sign up"
-                    TextColor="White"
-                    Style="{OnPlatform Android={StaticResource FondomerendeButton}}">
-                    <Button.IsVisible>
-                        <OnPlatform x:TypeArguments="x:Boolean"
-                                iOS="True"
-                                Android="False"/>
-                    </Button.IsVisible>
-                </Button>
+           
                     
                 <!--Per android-->
                 <StackLayout

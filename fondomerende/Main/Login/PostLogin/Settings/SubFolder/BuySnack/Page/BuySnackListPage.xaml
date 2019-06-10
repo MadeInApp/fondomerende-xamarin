@@ -11,8 +11,9 @@
              ios:Page.UseSafeArea="true">
     <ContentPage.Content>
         <StackLayout>
-            <ScrollView>
+            <ScrollView IsVisible="False">
                 <Grid
+                    
                     HorizontalOptions="CenterAndExpand"
                     x:Name="GridView" 
                     IsVisible="True">
@@ -42,7 +43,7 @@
                 </Grid>
             </ScrollView>
             <ListView
-                IsVisible="False"
+                IsVisible="True"
                 x:Name="ListView"
                 IsPullToRefreshEnabled="False"
                 RefreshCommand="{Binding RefreshCommand}"
