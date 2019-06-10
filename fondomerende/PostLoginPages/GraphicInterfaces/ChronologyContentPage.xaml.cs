@@ -20,7 +20,8 @@ namespace fondomerende.PostLoginPages.GraphicInterfaces
         private double altezzaLinea = 30;
         private int posizione = 3;
         Color colore;
-        Dictionary<string, Color> Nomi = new Dictionary<string, Color>();
+        Dictionary<string, Color> colorByName = new Dictionary<string, Color>();
+        Dictionary<string, double> sizeByName = new Dictionary<string, double>();
 
         string[] cronologia;
         public ChronologyContentPage()
@@ -36,6 +37,7 @@ namespace fondomerende.PostLoginPages.GraphicInterfaces
                     break;
 
             }
+            SizeFrame();
             Aspetta();
         }
 
@@ -56,14 +58,13 @@ namespace fondomerende.PostLoginPages.GraphicInterfaces
 
         private void AddAction(int posizione)
         {
+            string dataLabel = "";
+            string[] strSplit = cronologia[posizione].Split();           
+            ColorBack(strSplit[2]);
 
-            string[] strSplit = cronologia[posizione].Split();
-            string dataLabel="";
-            colorBack(strSplit[2]);
-
-            for (int i = 0; i <= strSplit.Length; i++)
+            for (int i = 2; i <= strSplit.Length; i++)
             {
-                dataLabel = strSplit[i]+" ";
+                dataLabel = " "+strSplit[i];
             }
 
             var stackPrincipale = new StackLayout
@@ -73,18 +74,18 @@ namespace fondomerende.PostLoginPages.GraphicInterfaces
 
             var cerchio = new RoundedCornerView
             {
-                HeightRequest = diametro,
-                WidthRequest = diametro,
-                MinimumHeightRequest = diametro,
-                MinimumWidthRequest = diametro,
-                RoundedCornerRadius = diametro
+                HeightRequest = diametro + (diametro * sizeByName[strSplit[2]]),
+                WidthRequest = diametro + (diametro * sizeByName[strSplit[2]]),
+                MinimumHeightRequest = diametro + (diametro * sizeByName[strSplit[2]]),
+                MinimumWidthRequest = diametro + (diametro * sizeByName[strSplit[2]]),
+                RoundedCornerRadius = diametro+(diametro*sizeByName[strSplit[2]])
             };
 
             var stackLabel = new StackLayout
             {
                 VerticalOptions = LayoutOptions.FillAndExpand,
                 HorizontalOptions = LayoutOptions.FillAndExpand,
-                BackgroundColor = Nomi[strSplit[2]]
+                BackgroundColor = colorByName[strSplit[2]]
             };
 
             var firstLetter = new Label
@@ -119,8 +120,9 @@ namespace fondomerende.PostLoginPages.GraphicInterfaces
 
         public void AddTimeLine(double diametro, double larghezzaLinea,double altezzaLinea)
         {
-            double paddingLinea = diametro/2 - larghezzaLinea/2;
             string[] strSplit = cronologia[posizione].Split();
+            double paddingLinea = (diametro + (diametro * sizeByName[strSplit[2]]) )/ 2 - larghezzaLinea/2;
+            
 
             var stackPrincipale = new StackLayout
             {
@@ -135,7 +137,7 @@ namespace fondomerende.PostLoginPages.GraphicInterfaces
                 HeightRequest = altezzaLinea,
                 WidthRequest = larghezzaLinea,
                 Margin = new Thickness(paddingLinea, 0, 0, 0),
-                BackgroundColor = Nomi[strSplit[2]]
+                BackgroundColor = colorByName[strSplit[2]]
 
             };
 
@@ -165,7 +167,7 @@ namespace fondomerende.PostLoginPages.GraphicInterfaces
             return firstLetter;
         }
 
-        public void colorBack(string app)
+        public void ColorBack(string app)
         {
             ColorRandom c = new ColorRandom();
             Color colorapp;
@@ -175,12 +177,30 @@ namespace fondomerende.PostLoginPages.GraphicInterfaces
 
             if((app).Equals(Xamarin.Essentials.Preferences.Get("friendly-name", " ")))
             {
-                Nomi.Add(app, Color.FromHex(Xamarin.Essentials.Preferences.Get("Colore", "#000000")));
+                colorapp = Color.FromHex(Xamarin.Essentials.Preferences.Get("Colore", "#000000"));
+                colorByName.Add(app, colorapp);
             }
 
-            if (!Nomi.ContainsKey(app)
+            if (!colorByName.ContainsKey(app))
             {
-                Nomi.Add(app, colorapp);
+                colorByName.Add(app, colorapp);
+            }
+        }
+
+        public void SizeFrame()
+        {
+            for(int i = 0; i <= cronologia.Length; i++)
+            {
+                string[] strSplit = cronologia[i].Split();
+
+                if (!sizeByName.ContainsKey(strSplit[2]))
+                {
+                    sizeByName.Add(strSplit[2], 0.11);  //grandezza incrementata 
+                }
+                else
+                {
+                    sizeByName[strSplit[2]] = +0.11;
+                }
             }
         }
 

@@ -34,11 +34,11 @@ namespace fondomerende.Services.RESTServices
                     Preferences.Set("token", result.data.token);
                 }
             }
-            catch (FlurlHttpTimeoutException ex)
-            {
-                App.Current.MainPage.DisplayAlert("Fondo Merende", "Connessione al server scaduta!", "OK");
-                App.Current.MainPage = new NavigationPage(new LoginPage());
-            }
+            //catch (FlurlHttpTimeoutException ex)
+            //{
+            //    App.Current.MainPage.DisplayAlert("Fondo Merende", "Connessione al server scaduta!", "OK");
+            //    App.Current.MainPage = new NavigationPage(new LoginPage());
+            //}
             
 
 
