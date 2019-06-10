@@ -7,16 +7,11 @@
              x:Class="fondomerende.PostLoginPages.GraphicInterfaces.ChronologyContentPage">
     <ContentPage.Content>
         <StackLayout
-            BackgroundColor="Violet"
             x:Name="ContentLayout"
             Spacing="0"
-            Margin="0"
+            Margin="5"
             Orientation="Vertical">
-            <Button
-                Clicked="Button_Clicked">
-                
-            </Button>
-            
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
