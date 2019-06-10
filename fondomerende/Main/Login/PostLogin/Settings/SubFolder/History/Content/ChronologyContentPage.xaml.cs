@@ -20,7 +20,6 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
         private double larghezzaLinea = 4;
         private double altezzaLinea = 30;
         private int posizione = 3;
-        private string ultimoOrario ="";
         Color colore;
         Dictionary<string, Color> colorByName = new Dictionary<string, Color>();
         Dictionary<string, double> sizeByName = new Dictionary<string, double>();
@@ -146,7 +145,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
 
             var orario = new Label
             {
-                Text = "1h 37min",
+                Text = "LenghtLine(posizione)",
                 VerticalOptions = LayoutOptions.Center,
                 FontSize = 12,
                 FontAttributes = FontAttributes.Bold,
@@ -207,21 +206,32 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
             }
         }
 
-        public DateTime LenghtLine(int posizione)
+        public TimeSpan LenghtLine(int posizione)
+        {
+            DateTime current = TrimDate(posizione);
+            DateTime next = TrimDate(posizione + 1);
+
+            //if (!dateByTime.ContainsKey("Last Date"))
+            //{
+            //    dateByTime.Add("Last Date", data);
+            //}
+            //else
+            //{
+            //    dateByTime["Last Date"] = 
+            //}
+            
+            return current.Subtract(next);
+        }
+
+        private DateTime TrimDate(int posizione)     //metodo 100% appoggio
         {
             string[] strSplit = cronologia[posizione].Split();
-            string app = strSplit[0]+" "+strSplit[1];
-            var data = DateTime.Parse(app);
+            string[] anni = strSplit[0].Split('-');
+            string[] minuti = strSplit[1].Split(':');
+            System.DateTime current = new System.DateTime(int.Parse(anni[0]), int.Parse(anni[1]), int.Parse(anni[2]),
+                                    int.Parse(minuti[0]), int.Parse(minuti[1]), int.Parse(minuti[2]));
 
-            if (!dateByTime.ContainsKey(strSplit[2]))
-            {
-                dateByTime.Add(strSplit[2], data);
-            }
-            else
-            {
-                
-            }
-            return data;
+            return current;
         }
         public async Task GetLastActions()
         {

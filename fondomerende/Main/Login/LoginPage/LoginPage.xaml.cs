@@ -60,7 +60,7 @@ namespace fondomerende.Main.Login.LoginPages
                     password = passwordEntry.Text;
 
                     LoginServiceManager loginService = new LoginServiceManager();
-                    var response = await loginService.LoginAsync(username, password, !remember);
+                    var response = await loginService.LoginAsync(username, password, remember);
 
                     if (response.response.success == true)
                     {
