@@ -47,6 +47,7 @@ namespace fondomerende.PostLoginPages
 
         public async Task GetSnacksMethod()     //ottiene la lista degli snack e la applica alla ListView
         {
+            ImageButton imageButton = new ImageButton();
             var result = await SnackService.GetToBuySnacksAsync();
             ListView.ItemsSource = result.data.snacks;
             int z;
@@ -57,6 +58,7 @@ namespace fondomerende.PostLoginPages
                     z = i;
                     Column0.Children.Add(new ImageButton { Scale = 2, Source = "http://192.168.0.175:8888/fondomerende/public/getphoto.php?name=" + result.data.snacks[z].friendly_name.Replace(" ", "") });
                     Column0.Children.Add(new Label { HorizontalTextAlignment = TextAlignment.Center, Text = result.data.snacks[z].friendly_name });
+                    imageButton.Clicked += OnImageButtonClicked;
                 }
                 else
                 {
@@ -66,7 +68,12 @@ namespace fondomerende.PostLoginPages
             }
         }
 
- 
+
+        private async void OnImageButtonClicked(object sender, EventArgs e)
+        {
+            Navigation.PushPopupAsync(new BuySnackPopUpPage());
+        }
+
 
         private async void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
@@ -76,5 +83,6 @@ namespace fondomerende.PostLoginPages
 
         }
     }
+
 }
 

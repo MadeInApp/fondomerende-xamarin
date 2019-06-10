@@ -11,7 +11,7 @@
              ios:Page.UseSafeArea="true">
     <ContentPage.Content>
         <StackLayout>
-            <ScrollView Margin="0,30,0,0">
+            <ScrollView>
                 <Grid
                     HorizontalOptions="CenterAndExpand"
                     x:Name="GridView" 
