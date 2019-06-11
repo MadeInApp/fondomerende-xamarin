@@ -87,8 +87,29 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page
                 }
                 else
                 {
-                  Column1.Children.Add(new ImageButton {Scale = 2, Source = "http://192.168.0.175:8888/fondomerende/public/getphoto.php?name=" + result.data.snacks[i].friendly_name.Replace(" ", "") });
-                  Column1.Children.Add(new Label { HorizontalTextAlignment = TextAlignment.Center, Text = result.data.snacks[i].friendly_name });
+                    var imageButton_i = new ImageButton
+                    {
+                        Scale = 2,
+                        Source = "http://192.168.0.175:8888/fondomerende/public/getphoto.php?name=" + result.data.snacks[i].friendly_name.Replace(" ", "")
+
+                    };
+
+                    switch (Device.RuntimePlatform)
+                    {
+                        case Device.Android:
+                            imageButton_i.BackgroundColor = Color.Transparent;
+                            break;
+                    }
+
+                    var label_i = new Label
+                    {
+                        HorizontalTextAlignment = TextAlignment.Center,
+                        Text = result.data.snacks[i].friendly_name
+                    };
+
+                    imageButton_i.Clicked += OnImageButtonClicked;
+                    Column1.Children.Add(imageButton_i);
+                    Column1.Children.Add(label_i);
                 }
             }
         }
