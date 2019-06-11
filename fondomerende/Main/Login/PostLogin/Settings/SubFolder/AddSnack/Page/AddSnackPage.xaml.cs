@@ -9,6 +9,7 @@ using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
+
 namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.Page
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -52,5 +53,6 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.Page
                 await snackService.AddSnackAsync(Nome.Text, double.Parse(Prezzo.Text), int.Parse(SnackPerScatola.Text), int.Parse(ScadenzaInGiorni.Text), false);
             }
         }
+
     }
 }

@@ -102,22 +102,29 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.Popup
 
             if (Nome.Text == null)
             {
-                ErrorLabel.Text = "Inserisci il nome";
+                ErrorLabel.Text = "Inserire un nome";
             }
-            else
-            {
-                var result = await snackService.BuySnackAsync(AddSnackPage, Int32.Parse(QtaEntry.Text));
-                if (result.response.success)
-                {
-                    await PopupNavigation.Instance.PopAsync();
-                }
-            }
+     
             if(Prezzo.Text == null)
             {
                 ErrorLabel.Text = "Inserire un prezzo";
             }
+            
+            if(SnackPerScatola.Text == null)
+            {
+                ErrorLabel.Text = "Inserire uno snack";
+            }
+           
+            if (ScadenzaInGiorni.Text == null)
+            {
+                ErrorLabel.Text = "Immettere un giorno di scadenza";
+            }
 
-
+            else
+            {
+                await snackService.EditSnackAsync(Nome.Text, Prezzo.Text, SnackPerScatola.Text, ScadenzaInGiorni.Text);   
+            }
+            
         }
 
         private async void Discard_Clicked(object sender, EventArgs e)
