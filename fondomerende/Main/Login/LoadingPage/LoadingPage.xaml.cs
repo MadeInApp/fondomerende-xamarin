@@ -32,32 +32,24 @@ namespace fondomerende.PostLoginPages
             if (rPhrase == "Welcome to the wonderfully edible world of Fondo Merende")
             {
                 LoadingLabel.FontSize = 14;
-                
             }
             LoadingLabel.Text = rPhrase;
-
-            
-           
-
-
-
-
-
         }
 
         public async void LogIn()
         {
             LoginServiceManager login = new LoginServiceManager();
-            var resultLogin = await login.LoginAsync(Preferences.Get("username", ""), Preferences.Get("password", ""), true);
+            var resultLogin = await login.LoginAsync(Preferences.Get("username", null), Preferences.Get("password", null), Preferences.Get("Logged",false));
            
             
-            if (!resultLogin.response.success)
+            if (resultLogin.response.success)
             {
-                App.Current.MainPage = new NavigationPage(new LoginPage());
+                App.Current.MainPage = new MainPage();
+               
             }
             else
             {
-                App.Current.MainPage = new MainPage();
+                App.Current.MainPage = new NavigationPage(new LoginPage());
             }
         }
 

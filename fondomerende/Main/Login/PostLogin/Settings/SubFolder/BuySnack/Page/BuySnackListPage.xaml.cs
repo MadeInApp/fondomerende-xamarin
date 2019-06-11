@@ -10,12 +10,14 @@ using Xamarin.Forms.Xaml;
 using fondomerende.Main.Services.Models;
 using Rg.Plugins.Popup.Extensions;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup;
+using fondomerende.Main.Utilities;
 
 namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class BuySnackListPage : ContentPage
     {
+        public static int[] SelectedSnackIDArr;
         public static int SelectedSnackID;
         public static bool Refresh = false;
         SnackServiceManager SnackService = new SnackServiceManager();
@@ -44,36 +46,23 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page
 
         }
 
-        public async Task GetSnacksMethod()     //ottiene la lista degli snack e la applica alla ListView
+        public async Task GetSnacksMethod()     //ottiene la lista degli snack e la applica alla ListView           !CHIEDERE A LAPO DI AGGIUNGERE UN PARAMETRO "RESOLUTION" ALLA RICERCA!
         {
             var result = await SnackService.GetToBuySnacksAsync();
             ListView.ItemsSource = result.data.snacks;
             int z;
-
-          
-
-
-
-
             for (int i = 0; i <= result.data.snacks.Count; i++)
             {
                 if (i % 2 == 0)
                 {
                     z = i;
+                    var StackLayout_z = new StackLayout{ Spacing = 10, HeightRequest = 100};
                     var imageButton_z = new ImageButton
                     {
-
-                    Scale = 2,
-                        Source = "http://192.168.0.175:8888/fondomerende/public/getphoto.php?name=" + result.data.snacks[z].friendly_name.Replace(" ", "")
-
+                        Margin = new Thickness(0,20,0,20),
+                        Scale = 2,
+                        Source = "http://192.168.0.175:8888/fondomerende/public/getphoto.php?name=" + result.data.snacks[z].friendly_name.Replace(" ", "&nbsp;") + "_500x500"
                     };
-
-                    switch (Device.RuntimePlatform)
-                    {
-                        case Device.Android:
-                            imageButton_z.BackgroundColor = Color.Transparent;
-                            break;
-                    }
 
                     var label_z = new Label
                     {
@@ -81,17 +70,29 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page
                         Text = result.data.snacks[z].friendly_name
                     };
 
+
+                    switch (Device.RuntimePlatform)
+                    {
+                        case Device.Android:
+                            imageButton_z.BackgroundColor = Color.Transparent;
+                            break;
+                    }
                     imageButton_z.Clicked += OnImageButtonClicked;
-                    Column0.Children.Add(imageButton_z);
-                    Column0.Children.Add(label_z);
+                    StackLayout_z.Children.Add(imageButton_z);
+                    StackLayout_z.Children.Add(label_z);
+                    Column0.Children.Add(StackLayout_z);
+                  
                 }
                 else
                 {
+                    var StackLayout_i = new StackLayout { Spacing = 10, HeightRequest=100 };
                     var imageButton_i = new ImageButton
                     {
+                        ScaleY=1,
+                        ScaleX=1,
+                        Margin = new Thickness(0, 20, 0, 20),
                         Scale = 2,
                         Source = "http://192.168.0.175:8888/fondomerende/public/getphoto.php?name=" + result.data.snacks[i].friendly_name.Replace(" ", "")
-
                     };
 
                     switch (Device.RuntimePlatform)
@@ -108,14 +109,15 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page
                     };
 
                     imageButton_i.Clicked += OnImageButtonClicked;
-                    Column1.Children.Add(imageButton_i);
-                    Column1.Children.Add(label_i);
+                    StackLayout_i.Children.Add(imageButton_i);
+                    StackLayout_i.Children.Add(label_i);
+                    Column1.Children.Add(StackLayout_i);
                 }
             }
         }
 
 
-        private async void OnImageButtonClicked(object sender, EventArgs e)
+        async void OnImageButtonClicked(object sender, EventArgs e)
         {
             Navigation.PushPopupAsync(new BuySnackPopUpPage());
         }
@@ -127,6 +129,22 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page
             SelectedSnackID = (e.SelectedItem as ToBuyDataDTO).id;
             await Navigation.PushPopupAsync(new BuySnackPopUpPage());
 
+        }
+
+        private void Swap_Clicked(object sender, EventArgs e)
+        {
+            if(ScrollView.IsVisible == true)
+            {
+                Swap.BackgroundColor = Color.Orange;
+                ScrollView.IsVisible = false;
+                ListView.IsVisible = true;
+            }
+            else
+            {
+                Swap.BackgroundColor = Color.Transparent;
+                ListView.IsVisible = false;
+                ScrollView.IsVisible = true;
+            }
         }
     }
 

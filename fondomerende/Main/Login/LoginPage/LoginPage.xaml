@@ -120,61 +120,33 @@
            
                     
                 <!--Per android-->
-                <StackLayout
+                    <StackLayout
                     HorizontalOptions="Start"
                     Orientation="Horizontal"
                     Margin="5,0,0,0"
                     Grid.Row="5"
                     Grid.Column="0">
-                    <StackLayout
+                        <StackLayout
                         Orientation="Horizontal">
-                        <Button
+                            <Button
                             Clicked="RememberMeButton_Clicked"
                             x:Name="RememberMe_Button"
+                              BackgroundColor="WhiteSmoke"
                             Text=""
                             TextColor="{StaticResource ColorBackground}"
-                            Style="{OnPlatform Android={StaticResource RemeberButton}}">
-                        </Button>
-                        <Label
-                            FontSize="Default"
-                            FontAttributes="Bold"
-                            Text="Don't remember me"
-                            HorizontalOptions="Start"
-                            VerticalOptions="Center"
-                            TextColor="{OnPlatform Android = {StaticResource ColorText}}">
-                        </Label>
-                    </StackLayout>
-                </StackLayout>
-
-                    <!-- per iOS-->
-                <StackLayout
-                    HorizontalOptions="Start"
-                    Orientation="Horizontal"
-                    Margin="5,0,0,0"
-                    Grid.Row="5"
-                    Grid.Column="0"
-                    IsVisible="{OnPlatform iOS=true, Default=false}">
-
-
-                    <StackLayout>
-                        <Button
-                            Clicked="RememberMeButton_Clicked"
-                            x:Name="RememberMe_iOS_Button"
-                            Text=""
-                            TextColor="{StaticResource ColorBackground}">
-                        </Button>
-
-                        <Label
+                            Style="{StaticResource RemeberButton}">
+                            </Button>
+                            <Label
                             FontSize="Default"
                             FontAttributes="Bold"
                             Text="Ricordami"
                             HorizontalOptions="Start"
                             VerticalOptions="Center"
-                            TextColor="{OnPlatform Android = {StaticResource ColorText}}">
-                        </Label>
+                            TextColor="{StaticResource ColorText}">
+                            </Label>
+                        </StackLayout>
                     </StackLayout>
-                </StackLayout>
-            </Grid>
+                </Grid>
             </StackLayout>
             
             
@@ -329,7 +301,7 @@
                           Clicked="Cancel_ClickedAsync"
                           Text="Log in"
                           TextColor="Black"
-                          Style="{OnPlatform Android={StaticResource FondomerendeButton}}">
+                          Style="{StaticResource FondomerendeButton}">
                         <Button.IsVisible>
                             <OnPlatform x:TypeArguments="x:Boolean"
                                iOS="False"
@@ -345,7 +317,7 @@
                           Clicked="Cancel_ClickedAsync"
                           Text="Log in"
                           TextColor="White"
-                          Style="{OnPlatform Android={StaticResource FondomerendeButton}}">
+                          Style="{StaticResource FondomerendeButton}">
                         <Button.IsVisible>
                             <OnPlatform x:TypeArguments="x:Boolean"
                                iOS="True"
