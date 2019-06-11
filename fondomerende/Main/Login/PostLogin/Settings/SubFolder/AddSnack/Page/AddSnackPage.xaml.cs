@@ -15,7 +15,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.Page
     public partial class AddSnackPage : ContentPage
     {
         SnackServiceManager snackService = new SnackServiceManager();
-        bool clicked = false;
+        public static bool clicked = false;
         public AddSnackPage()
         {
             InitializeComponent();
