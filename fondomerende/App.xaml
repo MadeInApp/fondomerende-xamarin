@@ -21,7 +21,7 @@
 
             <Style x:Key="FondomerendeButton" TargetType="Button">
                 <!--<Setter Property="FontFamily" Value="{StaticResource OpenSans}" />-->
-                <Setter Property="TextColor" Value = "{OnPlatform iOS=Black, Android=StaticResource ColorBackground}"/>
+                <Setter Property="TextColor" Value = "Black"/>
                 <Setter Property="BorderRadius" Value = "20" />
                 <Setter Property="BorderColor" Value = "White" />
                 <Setter Property="BorderWidth" Value = "0.75" />

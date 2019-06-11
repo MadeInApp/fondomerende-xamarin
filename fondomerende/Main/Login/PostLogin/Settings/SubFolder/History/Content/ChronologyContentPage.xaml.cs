@@ -16,11 +16,12 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ChronologyContentPage : ContentPage
     {
-        private double diametro = 30;
-        private double larghezzaLinea = 4;
+        private double diametro = 38;
+        private double larghezzaLinea = 3;
         private double altezzaLinea = 30;
-        private int posizione = 3;
-        Color colore;
+
+        private double diametroMod;
+
         Dictionary<string, Color> colorByName = new Dictionary<string, Color>();
         Dictionary<string, double> sizeByName = new Dictionary<string, double>();
         Dictionary<string, DateTime> dateByTime = new Dictionary<string, DateTime>();
@@ -55,30 +56,32 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
             traduttore.Add("bought", "ha comprato");
             traduttore.Add("deposited", "ha depositato");
 
-            int i = 0;
-            do
+            ColorBack();
+            SizeFrame();
+
+            for (int i=0;i<cronologia.Length;i++)
             {
-                AddAction(0);
+                AddAction(i);
+                if(i!=cronologia.Length-1)  AddTimeLine(i);
 
-                    if(cronologia[i + 1] == null)  AddTimeLine(diametro, larghezzaLinea, altezzaLinea);
-
-                i++;
-            }while (cronologia[i + 1] == null);
+            }
         }
 
         private void AddAction(int posizione)
         {
             string dataLabel = "";
-            string[] strSplit = cronologia[posizione].Split();           
-            ColorBack(strSplit[2]);
+            string[] strSplit = cronologia[posizione].Split();
 
             for (int i = 2; i < strSplit.Length; i++)
             {
-                if(traduttore.ContainsKey(strSplit[i]))
+                if (traduttore.ContainsKey(strSplit[i]))
                 {
-                    strSplit[i] = traduttore[strSplit[i]];
+                    dataLabel = dataLabel + " " + traduttore[strSplit[i]];
                 }
-                dataLabel = dataLabel+" "+strSplit[i];
+                else
+                {
+                    dataLabel = dataLabel + " " + strSplit[i];
+                }               
             }
 
             var stackPrincipale = new StackLayout
@@ -88,11 +91,14 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
 
             var cerchio = new RoundedCornerView
             {
-                HeightRequest = diametro + (diametro * sizeByName[strSplit[2]]),
-                WidthRequest = diametro + (diametro * sizeByName[strSplit[2]]),
-                MinimumHeightRequest = diametro + (diametro * sizeByName[strSplit[2]]),
-                MinimumWidthRequest = diametro + (diametro * sizeByName[strSplit[2]]),
-                RoundedCornerRadius = diametro+(diametro*sizeByName[strSplit[2]])
+                HeightRequest = diametro + ((diametro * sizeByName[strSplit[2]])*2),
+                WidthRequest = diametro + ((diametro * sizeByName[strSplit[2]]) * 2),
+                MinimumHeightRequest = diametro + ((diametro * sizeByName[strSplit[2]]) * 2),
+                MinimumWidthRequest = diametro + ((diametro * sizeByName[strSplit[2]]) * 2),
+                RoundedCornerRadius = diametro + ((diametro * sizeByName[strSplit[2]]) * 2),
+                BorderWidth = 6,
+                BorderColor = Color.Black,
+                Margin = new Thickness(3, 0, 0, 0)
             };
 
             var stackLabel = new StackLayout
@@ -118,11 +124,14 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
             {
                 Text = dataLabel,
                 VerticalOptions = LayoutOptions.Center,
-                FontSize = 14,
+                FontSize = 12,
+                Opacity = 0.6,
                 FontAttributes = FontAttributes.Bold,
                 TextColor = Color.Black,
                 VerticalTextAlignment = TextAlignment.Center,
             };
+
+            diametroMod = diametro + (diametro * sizeByName[strSplit[2]]);
 
             cerchio.Children.Add(stackLabel);
             stackLabel.Children.Add(firstLetter);
@@ -132,17 +141,17 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
             ContentLayout.Children.Add(stackPrincipale);
         }
 
-        public void AddTimeLine(double diametro, double larghezzaLinea,double altezzaLinea)
+        public void AddTimeLine(int posizione)
         {
             string[] strSplit = cronologia[posizione].Split();
-            double paddingLinea = (diametro + (diametro * sizeByName[strSplit[2]]) )/ 2 - larghezzaLinea/2;
+            double paddingLinea = (diametroMod + (diametroMod * sizeByName[strSplit[2]]) )/ 2 - larghezzaLinea/2;
             
 
             var stackPrincipale = new StackLayout
             {
                 HorizontalOptions = LayoutOptions.Start,
                 Orientation = StackOrientation.Horizontal,
-
+                Margin = new Thickness(3, 0, 0, 0)
             };
 
             var linea = new StackLayout
@@ -151,8 +160,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
                 HeightRequest = altezzaLinea,
                 WidthRequest = larghezzaLinea,
                 Margin = new Thickness(paddingLinea, 0, 0, 0),
-                BackgroundColor = colorByName[strSplit[2]]
-
+                BackgroundColor = colorByName[strSplit[2]],
             };
 
             var orario = new Label
@@ -160,11 +168,20 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
                 Text = "LenghtLine(posizione)",
                 VerticalOptions = LayoutOptions.Center,
                 FontSize = 12,
+                Opacity = 0.6,
                 FontAttributes = FontAttributes.Bold,
                 TextColor = Color.Black,
                 VerticalTextAlignment = TextAlignment.Center,
             };
 
+            var gradiente = new GradientColorStack
+            {
+                StartColor = colorByName[strSplit[2]],
+                EndColor = LastColor(posizione),
+
+            };
+
+            linea.Children.Add(gradiente);
             stackPrincipale.Children.Add(linea);
             stackPrincipale.Children.Add(orario);
 
@@ -173,36 +190,49 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
         }
 
         public string First_letter(string app)        //Grafica
-        {
+        {      
             string firstLetter = "";
 
             
             firstLetter = (app.Substring(0, 1));
+            if (app == "added") firstLetter = "@";
+
             return firstLetter;
         }
 
-        public void ColorBack(string app)
+        public Color LastColor(int posizione)           //appoggio
+        {
+            string[] strString = cronologia[posizione + 1].Split();
+
+            return colorByName[strString[2]];
+        }
+
+        public void ColorBack()
         {
             ColorRandom c = new ColorRandom();
-            Color colorapp;
-          
-            colorapp = c.GetRandomColor();
+
+            for (int i = 0; i < cronologia.Length; i++)
+            {
+                string[] strSplit = cronologia[i].Split();
+                Color colorapp = c.GetRandomLightColor();
            
+            
 
-            if((app).Equals(Xamarin.Essentials.Preferences.Get("friendly-name", " ")))
-            {
-                colorapp = Color.FromHex(Xamarin.Essentials.Preferences.Get("Colore", "#000000"));
-
-                if(!colorByName.ContainsKey(Xamarin.Essentials.Preferences.Get("friendly-name", " ")))
+                if((strSplit[2]).Equals(Xamarin.Essentials.Preferences.Get("friendly-name", " ")))
                 {
-                    colorByName.Add(app, colorapp);
-                }
-                   
-            }
+                    colorapp = Color.FromHex(Xamarin.Essentials.Preferences.Get("Colore", "#000000"));
 
-            if (!colorByName.ContainsKey(app))
-            {
-                colorByName.Add(app, colorapp);
+                    if(!colorByName.ContainsKey(Xamarin.Essentials.Preferences.Get("friendly-name", " ")))
+                    {
+                        colorByName.Add(strSplit[2], colorapp);
+                    }
+                   
+                }
+
+                if (!colorByName.ContainsKey(strSplit[2]))
+                {
+                    colorByName.Add(strSplit[2], colorapp);
+                }
             }
         }
 
@@ -245,6 +275,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
             string[] strSplit = cronologia[posizione].Split();
             string[] anni = strSplit[0].Split('-');
             string[] minuti = strSplit[1].Split(':');
+
             System.DateTime current = new System.DateTime(int.Parse(anni[0]), int.Parse(anni[1]), int.Parse(anni[2]),
                                     int.Parse(minuti[0]), int.Parse(minuti[1]), int.Parse(minuti[2]));
 
@@ -269,10 +300,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
         {
             await GetLastActions();
             SizeFrame();
-            AddAction(0);
-            AddTimeLine(diametro, larghezzaLinea, altezzaLinea);
-            AddAction(1);
-            AddTimeLine(diametro, larghezzaLinea, altezzaLinea);
+            Fusione();
         }
     }
 }
