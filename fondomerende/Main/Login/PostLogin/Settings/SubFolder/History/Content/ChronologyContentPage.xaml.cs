@@ -16,7 +16,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ChronologyContentPage : ContentPage
     {
-        private double diametro = 50;
+        private double diametro = 30;
         private double larghezzaLinea = 4;
         private double altezzaLinea = 30;
         private int posizione = 3;
@@ -24,6 +24,9 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
         Dictionary<string, Color> colorByName = new Dictionary<string, Color>();
         Dictionary<string, double> sizeByName = new Dictionary<string, double>();
         Dictionary<string, DateTime> dateByTime = new Dictionary<string, DateTime>();
+
+        Dictionary<string, string> traduttore = new Dictionary<string, string>();
+        
 
         string[] cronologia;
         public ChronologyContentPage()
@@ -47,6 +50,11 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
 
         private void Fusione()
         {
+            traduttore.Add("added", "ha aggiunto");
+            traduttore.Add("ate", "ha mangiato");
+            traduttore.Add("bought", "ha comprato");
+            traduttore.Add("deposited", "ha depositato");
+
             int i = 0;
             do
             {
@@ -66,7 +74,11 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
 
             for (int i = 2; i < strSplit.Length; i++)
             {
-                dataLabel = " "+strSplit[i];
+                if(traduttore.ContainsKey(strSplit[i]))
+                {
+                    strSplit[i] = traduttore[strSplit[i]];
+                }
+                dataLabel = dataLabel+" "+strSplit[i];
             }
 
             var stackPrincipale = new StackLayout
@@ -92,7 +104,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
 
             var firstLetter = new Label
             {
-                Text = First_letter(cronologia[posizione]),
+                Text = First_letter(strSplit[2]),
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 VerticalOptions = LayoutOptions.CenterAndExpand,
                 FontSize = 16,
