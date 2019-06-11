@@ -90,11 +90,11 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
 
             var cerchio = new RoundedCornerView
             {
-                HeightRequest = diametro + ((diametro * sizeByName[strSplit[2]])*2),
-                WidthRequest = diametro + ((diametro * sizeByName[strSplit[2]]) * 2),
-                MinimumHeightRequest = diametro + ((diametro * sizeByName[strSplit[2]]) * 2),
-                MinimumWidthRequest = diametro + ((diametro * sizeByName[strSplit[2]]) * 2),
-                RoundedCornerRadius = diametro + ((diametro * sizeByName[strSplit[2]]) * 2),
+                HeightRequest = diametro,
+                WidthRequest = diametro,
+                MinimumHeightRequest = diametro,
+                MinimumWidthRequest = diametro,
+                RoundedCornerRadius = diametro,
                 Margin = new Thickness(3, 0, 0, 0)
             };
 
@@ -138,6 +138,10 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
             ContentLayout.Children.Add(stackPrincipale);
         }
 
+        public void AddMangione()
+        {
+
+        }
         public void AddTimeLine(int posizione)
         {
             string[] strSplit = cronologia[posizione].Split();
