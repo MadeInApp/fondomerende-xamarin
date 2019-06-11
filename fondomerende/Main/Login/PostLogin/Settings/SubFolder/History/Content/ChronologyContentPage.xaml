@@ -6,12 +6,18 @@
              mc:Ignorable="d"
              x:Class="fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content.ChronologyContentPage">
     <ContentPage.Content>
-        <StackLayout
-            x:Name="ContentLayout"
-            Spacing="0"
-            Margin="5"
-            Orientation="Vertical">
+        
+        <ScrollView IsVisible="true">
+            
+            <StackLayout
+                x:Name="ContentLayout"
+                Spacing="0"
+                Margin="5"
+                Orientation="Vertical">
 
-        </StackLayout>
+            </StackLayout>
+            
+        </ScrollView>
+        
     </ContentPage.Content>
 </ContentPage>

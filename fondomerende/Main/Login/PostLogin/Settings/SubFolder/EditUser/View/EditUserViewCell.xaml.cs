@@ -47,7 +47,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View
         public void Bottone_ClickedAsync(object sender, EventArgs e)  // modifica i vari colori 
         {
             ColorRandom c = new ColorRandom();
-            Color color = c.GetRandomColor();
+            Color color = c.GetRandomColorPreferences();
             Cerchio.BackgroundColor = color;
 
         }
