@@ -57,7 +57,6 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
             traduttore.Add("deposited", "ha depositato");
 
             ColorBack();
-            SizeFrame();
 
             for (int i=0;i<cronologia.Length;i++)
             {
@@ -96,8 +95,6 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
                 MinimumHeightRequest = diametro + ((diametro * sizeByName[strSplit[2]]) * 2),
                 MinimumWidthRequest = diametro + ((diametro * sizeByName[strSplit[2]]) * 2),
                 RoundedCornerRadius = diametro + ((diametro * sizeByName[strSplit[2]]) * 2),
-                BorderWidth = 6,
-                BorderColor = Color.Black,
                 Margin = new Thickness(3, 0, 0, 0)
             };
 
@@ -236,8 +233,10 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
             }
         }
 
-        public void SizeFrame()
+        public string Mangione()
         {
+            double app = 0;
+            string app2 = "";
             for(int i = 0; i < cronologia.Length; i++)
             {
                 string[] strSplit = cronologia[i].Split();
@@ -250,7 +249,13 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
                 {
                     sizeByName[strSplit[2]] = +0.11;
                 }
+
+                if(sizeByName[strSplit[2]] > app)
+                {
+                    app2 = strSplit[2];
+                }
             }
+            return app2;
         }
 
         public TimeSpan LenghtLine(int posizione)
@@ -299,7 +304,6 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
         public async void Aspetta()
         {
             await GetLastActions();
-            SizeFrame();
             Fusione();
         }
     }
