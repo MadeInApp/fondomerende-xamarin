@@ -122,7 +122,23 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.Popup
 
             else
             {
-                await snackService.EditSnackAsync(Nome.Text, Prezzo.Text, SnackPerScatola.Text, ScadenzaInGiorni.Text);   
+                var ans = await DisplayAlert("Fondo Merende", "Lo Snack è contabile?", "Si", "No");
+                if (ans)
+                {
+                    var result = await snackService.AddSnackAsync(Nome.Text, double.Parse(Prezzo.Text), int.Parse(SnackPerScatola.Text), int.Parse(ScadenzaInGiorni.Text), true);
+                    if (result.response.success)
+                    {
+                        await DisplayAlert("Fondo Merende", "SnackID: " + result.response.data.id, "Ok");
+                    }
+                    else
+                    {
+                        await DisplayAlert("Fondo Merende", "Errore", "Ok");
+                    }
+                }
+                else
+                {
+                    await snackService.AddSnackAsync(Nome.Text, double.Parse(Prezzo.Text), int.Parse(SnackPerScatola.Text), int.Parse(ScadenzaInGiorni.Text), false);
+                }
             }
             
         }
