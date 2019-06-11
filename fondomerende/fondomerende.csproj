@@ -29,6 +29,8 @@
     <None Remove="image\Edit_snack_icon_256x256.png" />
     <None Remove="image\Edit_snack_icon_32x32.png" />
     <None Remove="image\Fondo_Merende_logo.png" />
+    <None Remove="image\list_256x256.png" />
+    <None Remove="image\list_264x264.png" />
     <None Remove="image\Livellodinamico.png" />
     <None Remove="image\LoginBackground.png" />
     <None Remove="image\LoginBackground_dinamico.png" />
@@ -58,6 +60,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="image\BackGradientRosAr.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="image\list_256x256.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="image\list_264x264.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="image\Livellodinamico.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

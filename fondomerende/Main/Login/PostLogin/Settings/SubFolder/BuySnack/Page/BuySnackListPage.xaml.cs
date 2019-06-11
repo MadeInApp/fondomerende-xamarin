@@ -10,6 +10,7 @@ using Xamarin.Forms.Xaml;
 using fondomerende.Main.Services.Models;
 using Rg.Plugins.Popup.Extensions;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup;
+using fondomerende.Main.Utilities;
 
 namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page
 {
@@ -25,6 +26,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page
         {
             InitializeComponent();
             GetSnacksMethod();
+            SLTitle.HorizontalOptions = LayoutOptions.Center;
             
 
 
@@ -44,28 +46,27 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page
 
         }
 
-        public async Task GetSnacksMethod()     //ottiene la lista degli snack e la applica alla ListView
+        public async Task GetSnacksMethod()     //ottiene la lista degli snack e la applica alla ListView           !CHIEDERE A LAPO DI AGGIUNGERE UN PARAMETRO "RESOLUTION" ALLA RICERCA!
         {
             var result = await SnackService.GetToBuySnacksAsync();
             ListView.ItemsSource = result.data.snacks;
             int z;
 
-          
-
-
-
-
             for (int i = 0; i <= result.data.snacks.Count; i++)
             {
+                ColorRandom rd = new ColorRandom();
                 if (i % 2 == 0)
                 {
                     z = i;
+
+                    var StackLayout_z = new StackLayout{ Spacing = 10, HeightRequest = 100};
+
                     var imageButton_z = new ImageButton
                     {
-
-                    Scale = 2,
-                        Source = "http://192.168.0.175:8888/fondomerende/public/getphoto.php?name=" + result.data.snacks[z].friendly_name.Replace(" ", "")
-
+                        
+                        Margin = new Thickness(0,20,0,20),
+                        Scale = 2,
+                        Source = "http://192.168.0.175:8888/fondomerende/public/getphoto.php?name=" + result.data.snacks[z].friendly_name.Replace(" ", "&nbsp;") + "_500x500"
                     };
 
                     switch (Device.RuntimePlatform)
@@ -82,13 +83,20 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page
                     };
 
                     imageButton_z.Clicked += OnImageButtonClicked;
-                    Column0.Children.Add(imageButton_z);
-                    Column0.Children.Add(label_z);
+                    StackLayout_z.Children.Add(imageButton_z);
+                    StackLayout_z.Children.Add(label_z);
+                    Column0.Children.Add(StackLayout_z);
                 }
                 else
                 {
+                   
+                    var StackLayout_i = new StackLayout { Spacing = 10, HeightRequest=100 };
+
                     var imageButton_i = new ImageButton
                     {
+                        ScaleY=1,
+                        ScaleX=1,
+                        Margin = new Thickness(0, 20, 0, 20),
                         Scale = 2,
                         Source = "http://192.168.0.175:8888/fondomerende/public/getphoto.php?name=" + result.data.snacks[i].friendly_name.Replace(" ", "")
 
@@ -108,8 +116,9 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page
                     };
 
                     imageButton_i.Clicked += OnImageButtonClicked;
-                    Column1.Children.Add(imageButton_i);
-                    Column1.Children.Add(label_i);
+                    StackLayout_i.Children.Add(imageButton_i);
+                    StackLayout_i.Children.Add(label_i);
+                    Column1.Children.Add(StackLayout_i);
                 }
             }
         }
@@ -127,6 +136,24 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page
             SelectedSnackID = (e.SelectedItem as ToBuyDataDTO).id;
             await Navigation.PushPopupAsync(new BuySnackPopUpPage());
 
+        }
+
+        private void Swap_Clicked(object sender, EventArgs e)
+        {
+            if(ScrollView.IsVisible == true)
+            {
+                Swap.BackgroundColor = Color.Orange;
+                SLTitle.Text = "Lista";
+                ScrollView.IsVisible = false;
+                ListView.IsVisible = true;
+            }
+            else
+            {
+                Swap.BackgroundColor = Color.Transparent;
+                SLTitle.Text = "Griglia";
+                ListView.IsVisible = false;
+                ScrollView.IsVisible = true;
+            }
         }
     }
 
