@@ -9,13 +9,14 @@ using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
+
 namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.Page
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AddSnackPage : ContentPage
     {
         SnackServiceManager snackService = new SnackServiceManager();
-        bool clicked = false;
+        public static bool clicked = false;
         public AddSnackPage()
         {
             InitializeComponent();
@@ -52,5 +53,6 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.Page
                 await snackService.AddSnackAsync(Nome.Text, double.Parse(Prezzo.Text), int.Parse(SnackPerScatola.Text), int.Parse(ScadenzaInGiorni.Text), false);
             }
         }
+
     }
 }

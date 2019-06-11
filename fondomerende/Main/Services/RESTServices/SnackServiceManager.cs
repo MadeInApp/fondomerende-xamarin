@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
+using System.Threading.Tasks;
 using Xamarin.Essentials;
 
 namespace fondomerende.Main.Services.RESTServices
@@ -70,6 +71,11 @@ namespace fondomerende.Main.Services.RESTServices
 
         }
 
+        internal Task BuySnackAsync(object selectedSnackID, int v)
+        {
+            throw new NotImplementedException();
+        }
+
         public async System.Threading.Tasks.Task<EatDTO> EatAsync(int idsnack, int quantity_snack) //Servizio per mangiare uno snack
 
         {
@@ -84,17 +90,15 @@ namespace fondomerende.Main.Services.RESTServices
             return result;
         }
 
-        public async System.Threading.Tasks.Task<EditSnackDTO> EditSnackAsync(string idsnack, string snackName, string snackPrice, string snacksPerBox, string SnackExpiration, string quantity_snack) //Servizio per mangiare uno snack
+        public async System.Threading.Tasks.Task<EditSnackDTO> EditSnackAsync(string snackName, string snackPrice, string snacksPerBox, string SnackExpiration) //Servizio per mangiare uno snack
 
         {
             var data = new Dictionary<string, string>();
             data.Add("commandName", "edit-snack");
-            data.Add("id", idsnack);
             data.Add("name", snackName);
             data.Add("price", snackPrice);
             data.Add("snacks-per-box", snacksPerBox);
             data.Add("expiration-in-days", SnackExpiration);
-            data.Add("quantity", quantity_snack);
 
             var result = await "http://192.168.0.175:8888/fondomerende/public/process-request.php"
             .WithCookie("auth-key", "metticiquellochetipare")
