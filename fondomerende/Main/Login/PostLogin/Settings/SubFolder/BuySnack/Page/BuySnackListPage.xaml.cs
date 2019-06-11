@@ -46,18 +46,44 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page
 
         public async Task GetSnacksMethod()     //ottiene la lista degli snack e la applica alla ListView
         {
-            ImageButton imageButton = new ImageButton();
             var result = await SnackService.GetToBuySnacksAsync();
             ListView.ItemsSource = result.data.snacks;
             int z;
+
+          
+
+
+
+
             for (int i = 0; i <= result.data.snacks.Count; i++)
             {
                 if (i % 2 == 0)
                 {
                     z = i;
-                    Column0.Children.Add(new ImageButton { Scale = 2, Source = "http://192.168.0.175:8888/fondomerende/public/getphoto.php?name=" + result.data.snacks[z].friendly_name.Replace(" ", "") });
-                    Column0.Children.Add(new Label { HorizontalTextAlignment = TextAlignment.Center, Text = result.data.snacks[z].friendly_name });
-                    imageButton.Clicked += OnImageButtonClicked;
+                    var imageButton_z = new ImageButton
+                    {
+
+                    Scale = 2,
+                        Source = "http://192.168.0.175:8888/fondomerende/public/getphoto.php?name=" + result.data.snacks[z].friendly_name.Replace(" ", "")
+
+                    };
+
+                    switch (Device.RuntimePlatform)
+                    {
+                        case Device.Android:
+                            imageButton_z.BackgroundColor = Color.Transparent;
+                            break;
+                    }
+
+                    var label_z = new Label
+                    {
+                        HorizontalTextAlignment = TextAlignment.Center,
+                        Text = result.data.snacks[z].friendly_name
+                    };
+
+                    imageButton_z.Clicked += OnImageButtonClicked;
+                    Column0.Children.Add(imageButton_z);
+                    Column0.Children.Add(label_z);
                 }
                 else
                 {

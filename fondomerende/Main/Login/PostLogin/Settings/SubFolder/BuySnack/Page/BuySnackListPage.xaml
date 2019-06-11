@@ -11,8 +11,9 @@
              ios:Page.UseSafeArea="true">
     <ContentPage.Content>
         <StackLayout>
-            <ScrollView>
+            <ScrollView IsVisible="true">
                 <Grid
+                    
                     HorizontalOptions="CenterAndExpand"
                     x:Name="GridView" 
                     IsVisible="True">
@@ -30,8 +31,6 @@
                         Spacing="40"
                         HorizontalOptions="Center">
                     </StackLayout>
-                    
-
                     <StackLayout 
                         Margin="0,20,0,0"
                         Grid.Column="1" 
