@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class EditUserSettingsViewCell : ViewCell
+    public partial class DepositViewCell : ViewCell
     {
-        public EditUserSettingsViewCell()
+        public DepositViewCell()
         {
             InitializeComponent();
         }

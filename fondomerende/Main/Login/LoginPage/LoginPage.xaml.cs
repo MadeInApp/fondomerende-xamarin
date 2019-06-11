@@ -17,17 +17,17 @@ namespace fondomerende.Main.Login.LoginPages
     [DesignTimeVisible(true)]
     public partial class LoginPage : ContentPage
     {
+        UserServiceManager userService = new UserServiceManager();
+        LoginServiceManager loginService = new LoginServiceManager();
         private string username, password, testpassword, friendly_name;
         private bool remember = true;
         private bool wait = false;
         bool clicked = false;
-        UserServiceManager userService;
+
 
         public LoginPage()
         {
             InitializeComponent();
-            UserServiceManager userService = new UserServiceManager();
-            userService.GetUserData();
             NavigationPage.SetHasNavigationBar(this, false);
             Donut_Background();
             LoginFade();
@@ -52,35 +52,35 @@ namespace fondomerende.Main.Login.LoginPages
 
         private async void Login_ClickedAsync(object sender, EventArgs e) //Effettua il Log In
         {
-          if (!wait)
-            {   //assicura che il tasto login venga premuto una volta
-                LoginServiceManager loginService = new LoginServiceManager();
+            wait = !wait;
                 if (!string.IsNullOrEmpty(usernameEntry.Text) && !string.IsNullOrEmpty(passwordEntry.Text))
                 {
-                    var response = await loginService.LoginAsync(usernameEntry.Text, passwordEntry.Text, remember);
-                    if (response == null)
-                    {
-                        await DisplayAlert("Fondo Merende", "Errore Flurl", "OK");
-                    }
-                    else if (response.response.success == true)
-                    {
-                        userService = new UserServiceManager();
-                        await userService.GetUserData();   //informazioni utente
-                        App.Current.MainPage = new MainPage();                                       
-                        wait = true;
-                    }
-                    else
-                    {
-                        await DisplayAlert("Fondo Merende", "Username o Password Errati", "OK");
-                    }
-                  
+                 //   if (!wait)
+                  //  { 
+                        var response = await loginService.LoginAsync(usernameEntry.Text, passwordEntry.Text, remember);
+                        if (response.response.message == "Invalid login: wrong credentials.")
+                        {
+                            await DisplayAlert("Fondo Merende", "Username o Password Errati", "OK");
+                        }
+                        else if (response.response.success == true)
+                        {
+                           
+                            await userService.GetUserData();
+                            App.Current.MainPage = new MainPage();                                       
+                            wait = true;
+                        }
+                        else
+                        {
+                            await DisplayAlert("Fondo Merende", "Errore da investigare", "OK");
+                        }
+                    //}
                 }
+               
                 else
                 {
                     await DisplayAlert("Fondo Merende", "Username o Password mancanti", "OK");
+
                 }
-            }
-            wait = !wait;
         }
 
         private async void RegisterButton_ClickedAsync(object sender, EventArgs e) //Mostra il form di registrazione

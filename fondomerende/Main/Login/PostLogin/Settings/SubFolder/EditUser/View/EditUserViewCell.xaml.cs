@@ -31,7 +31,6 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View
         public void First_letter()        //Grafica
         {
             string firstLetter = "";
-            Preferences.Get("friendly-name", "");
 
             string[] strSplit = Preferences.Get("friendly-name", "").Split();
 

@@ -17,15 +17,16 @@ namespace fondomerende.PostLoginPages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LoadingPage : ContentPage
     {
+        UserServiceManager userService = new UserServiceManager();
         public LoadingPage()
         {
             InitializeComponent();
+            LogIn();
+            
             Donut_Background();
             Ciambella();
-            UserServiceManager userService = new UserServiceManager();
-            userService.GetUserData();
-            LogIn();
-           
+
+
 
             LabelRandom c = new LabelRandom();
             String rPhrase = c.GetRandomPhrases();
@@ -40,12 +41,11 @@ namespace fondomerende.PostLoginPages
         {
             LoginServiceManager login = new LoginServiceManager();
             var resultLogin = await login.LoginAsync(Preferences.Get("username", null), Preferences.Get("password", null), Preferences.Get("Logged",false));
-           
-            
+            await userService.GetUserData();
+
             if (resultLogin.response.success)
             {
                 App.Current.MainPage = new MainPage();
-               
             }
             else
             {
