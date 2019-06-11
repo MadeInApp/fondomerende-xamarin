@@ -14,10 +14,7 @@ namespace fondomerende.Main.Manager
     
         private UserManager()
         {
-            if(Preferences.Get("Logged",false))
-            {
-                token = Preferences.Get("token", null);
-            }
+            
         }
        
         public static UserManager Instance

@@ -18,7 +18,7 @@ namespace fondomerende.Main.Login.LoginPages
     public partial class LoginPage : ContentPage
     {
         private string username, password, testpassword, friendly_name;
-        private bool remember = false;
+        private bool remember = true;
         private bool wait = false;
         bool clicked = false;
         UserServiceManager userService;

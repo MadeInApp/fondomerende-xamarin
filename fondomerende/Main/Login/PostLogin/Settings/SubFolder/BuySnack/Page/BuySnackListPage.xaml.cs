@@ -53,11 +53,9 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page
             int z;
             for (int i = 0; i <= result.data.snacks.Count; i++)
             {
-                ColorRandom rd = new ColorRandom();
                 if (i % 2 == 0)
                 {
                     z = i;
-                    SelectedSnackIDArr[i] = z;
                     var StackLayout_z = new StackLayout{ Spacing = 10, HeightRequest = 100};
                     var imageButton_z = new ImageButton
                     {
@@ -79,17 +77,15 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page
                             imageButton_z.BackgroundColor = Color.Transparent;
                             break;
                     }
-
                     imageButton_z.Clicked += OnImageButtonClicked;
                     StackLayout_z.Children.Add(imageButton_z);
                     StackLayout_z.Children.Add(label_z);
                     Column0.Children.Add(StackLayout_z);
+                  
                 }
                 else
                 {
-                    SelectedSnackIDArr[i] = i;
                     var StackLayout_i = new StackLayout { Spacing = 10, HeightRequest=100 };
-
                     var imageButton_i = new ImageButton
                     {
                         ScaleY=1,
@@ -121,7 +117,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page
         }
 
 
-        private async void OnImageButtonClicked(object sender, EventArgs e)
+        async void OnImageButtonClicked(object sender, EventArgs e)
         {
             Navigation.PushPopupAsync(new BuySnackPopUpPage());
         }
