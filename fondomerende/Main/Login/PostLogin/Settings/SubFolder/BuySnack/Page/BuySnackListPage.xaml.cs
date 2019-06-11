@@ -51,7 +51,6 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page
             var result = await SnackService.GetToBuySnacksAsync();
             ListView.ItemsSource = result.data.snacks;
             int z;
-
             for (int i = 0; i <= result.data.snacks.Count; i++)
             {
                 ColorRandom rd = new ColorRandom();
