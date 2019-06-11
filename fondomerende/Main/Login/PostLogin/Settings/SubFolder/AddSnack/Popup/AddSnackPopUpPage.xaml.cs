@@ -9,6 +9,7 @@ using fondomerende.Main.Login.LoginPages;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.Page;
+using fondomerende.Main.Login.PostLogin.Settings.Page;
 
 namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.Popup
 {
@@ -128,11 +129,12 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.Popup
                     var result = await snackService.AddSnackAsync(Nome.Text, double.Parse(Prezzo.Text), int.Parse(SnackPerScatola.Text), int.Parse(ScadenzaInGiorni.Text), true);
                     if (result.response.success)
                     {
+
                         await DisplayAlert("Fondo Merende", "SnackID: " + result.response.data.id, "Ok");
                     }
                     else
                     {
-                        await DisplayAlert("Fondo Merende", "Errore", "Ok");
+                        await DisplayAlert("Fondo Merende", "Snack già presente", "Ok");
                     }
                 }
                 else
@@ -145,7 +147,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.Popup
 
         private async void Discard_Clicked(object sender, EventArgs e)
         {
-            await PopupNavigation.Instance.PopAsync();
+            await Navigation.PopToRootAsync();
         }
     }
 }
