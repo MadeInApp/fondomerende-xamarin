@@ -109,6 +109,10 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
                 {
                     await PopupNavigation.Instance.PopAsync();
                 }
+                else
+                {
+                    await DisplayAlert("Fondo Merende", "Errore", "Ok");
+                }
             }
            
         }
