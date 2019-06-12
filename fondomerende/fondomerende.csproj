@@ -41,7 +41,7 @@
     <None Remove="image\Login_Animation.png" />
     <None Remove="image\Login_Animation2.png" />
     <None Remove="image\Login_Animation3.png" />
-    <None Remove="image\logout-icon.png" />
+    <None Remove="image\logout-img.png" />
     <None Remove="image\logout_256x256.png" />
     <None Remove="image\Logout_icon_256x256.png" />
     <None Remove="image\macchinettaNew.png" />
@@ -107,7 +107,7 @@
     <EmbeddedResource Include="image\LoginGradiente.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="image\logout-icon.png">
+    <EmbeddedResource Include="image\logout-img.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="image\Logout_icon_256x256.png">
