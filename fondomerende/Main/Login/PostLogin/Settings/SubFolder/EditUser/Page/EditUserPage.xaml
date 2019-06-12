@@ -20,17 +20,7 @@
                 HorizontalOptions="End"
                 Spacing="20">
 
-                <ImageButton
-                    IsVisible="{OnPlatform Android=true}"
-                    Source="{local:EmbeddedImage Resource=fondomerende.image.close_icon_32x32.png}"
-                    HorizontalOptions="EndAndExpand"
-                    VerticalOptions="StartAndExpand"      
-                    BackgroundColor="Transparent"
-                    Margin="0,20,40,0"
-                    Scale="{OnIdiom Phone=2, Tablet=3}"
-                    x:Name ="CancelButton"
-                    Clicked="CancelButton_Clicked">
-                </ImageButton>
+                
 
             </StackLayout>
 

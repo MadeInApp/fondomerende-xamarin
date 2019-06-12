@@ -30,7 +30,7 @@
         RoundedCornerRadius="20" 
         HeightRequest="{OnPlatform Android=50, iOS=100}"
         WidthRequest="300"
-        Margin="30,310,30,310">
+        Margin="10,40,10,40">
 
         <StackLayout 
             BackgroundColor="White">
@@ -48,8 +48,9 @@
                 </Label>
 
                 <local:LineEntry 
-                    WidthRequest="20" 
+                    WidthRequest="150" 
                     x:Name="newPassword" 
+                    IsPassword="true"
                     Keyboard="Default">
                 </local:LineEntry>
 
