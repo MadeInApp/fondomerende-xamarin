@@ -56,21 +56,23 @@
                 x:Name="passwordEntry" 
                 Margin="10,20,0,30"/>
 
-            <local:LineEntry 
+            <!--<local:LineEntry 
                 VerticalOptions="EndAndExpand" 
                 HorizontalOptions="Center"
                 Placeholder="Inserisci la Vecchia Password"
                 IsPassword="True"
                 x:Name="OldpasswordEntry" 
-                Margin="40,240,40,0"/>
+                Margin="40,240,40,0"/>-->
+
 
             <Button
                 HorizontalOptions="FillAndExpand"
-                VerticalOptions="EndAndExpand"
+                VerticalOptions="CenterAndExpand"
                 Margin="5,0,0,5"
                 Clicked="ApplyChanges_Clicked_1" 
                 x:Name="ApplyChanges" 
                 Text="Applica"
+                
                 TextColor="{OnPlatform iOS={StaticResource ColorBackground}}"
                 Style="{OnPlatform Android={StaticResource FondomerendeButton}}">
 
