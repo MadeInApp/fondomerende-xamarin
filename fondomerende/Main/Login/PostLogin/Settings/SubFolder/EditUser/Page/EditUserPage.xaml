@@ -39,12 +39,14 @@
             <local:LineEntry 
                 HorizontalOptions="StartAndExpand" 
                 Placeholder="Cambia Username      " 
+                SelectionLength="15"
                 Margin="10,20,0,30" 
                 x:Name="usernameEntry"/>
 
             <local:LineEntry 
                 HorizontalOptions="StartAndExpand" 
                 Placeholder="Cambia Friendly Name" 
+                MinimumWidthRequest="10"
                 x:Name="friendlynameEntry" 
                 Margin="10,20,100,30"/>
 
