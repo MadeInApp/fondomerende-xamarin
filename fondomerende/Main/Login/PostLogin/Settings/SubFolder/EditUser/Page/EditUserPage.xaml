@@ -38,21 +38,20 @@
 
             <local:LineEntry 
                 HorizontalOptions="StartAndExpand" 
-                Placeholder="Cambia Username      " 
-                SelectionLength="15"
                 Margin="10,20,0,30" 
+                WidthRequest="200"
                 x:Name="usernameEntry"/>
 
             <local:LineEntry 
                 HorizontalOptions="StartAndExpand" 
-                Placeholder="Cambia Friendly Name" 
-                MinimumWidthRequest="10"
                 x:Name="friendlynameEntry" 
+                WidthRequest="200"
                 Margin="10,20,100,30"/>
 
             <local:LineEntry 
                 HorizontalOptions="StartAndExpand" 
-                Placeholder="Cambia Password        "
+                Placeholder="Cambia Password"
+                WidthRequest="200"
                 IsPassword="True"
                 x:Name="passwordEntry" 
                 Margin="10,20,0,30"/>

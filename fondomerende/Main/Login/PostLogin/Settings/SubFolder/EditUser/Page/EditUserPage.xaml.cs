@@ -20,9 +20,8 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.Page
         public EditUserPage()
         {
             InitializeComponent();
-            usernameEntry.Placeholder = Preferences.Get("username", "Non funziona");
-            friendlynameEntry.Placeholder = Preferences.Get("friendly-name", "Non funziona");
-
+            usernameEntry.Placeholder = Preferences.Get("username", null) ;
+            friendlynameEntry.Placeholder = Preferences.Get("friendly-name", null);
             switch (Device.RuntimePlatform)                                                     //
             {                                                                                   //                                    
                                                                                                 //   Se il dispositivo è Android non mostra la Top Bar della Navigation Page,
