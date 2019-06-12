@@ -13,6 +13,7 @@ using fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.Page;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.Popup;
 using Rg.Plugins.Popup.Extensions;
+using fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup;
 
 namespace fondomerende.Main.Login.PostLogin.Settings.Page
 {

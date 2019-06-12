@@ -4,6 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             xmlns:local7="clr-namespace:fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.View"
              xmlns:local="clr-namespace:fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View"
              xmlns:local2="clr-namespace:fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.View"
              xmlns:local3="clr-namespace:fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.View"
@@ -69,11 +70,11 @@
                 </TableSection>
                 
                 <TableSection>
-                    <local:DepositViewCell                          
-                        Tapped="Deposit_Tapped" 
-                        x:Name="Deposit">
-                    </local:DepositViewCell>
-
+                  <local7:DepositViewCell 
+                    Tapped="Deposit_Tapped"
+                    x:Name="Deposit"> 
+                  </local7:DepositViewCell>
+                   
                     <local6:LogoutViewCell 
                         Height="{OnPlatform Android=60, iOS=60}"
                         x:Name="LogoutCell"
