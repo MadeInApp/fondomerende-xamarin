@@ -12,7 +12,7 @@
         <StackLayout 
             Orientation="Horizontal" 
             VerticalOptions="Center"
-            BackgroundColor="WhiteSmoke">
+            BackgroundColor="{OnPlatform Android=WhiteSmoke}">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />

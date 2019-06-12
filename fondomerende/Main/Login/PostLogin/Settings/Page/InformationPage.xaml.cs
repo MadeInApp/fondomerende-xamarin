@@ -37,8 +37,8 @@ namespace fondomerende.Main.Login.PostLogin.Settings.Page
                     break;
                 case Device.Android:
                     NavigationPage.SetHasNavigationBar(this, false);
-                    var section = tableView.Root[0];
-                    section.RemoveAt(1);
+                   // var section = tableView.Root[0];
+                   // section.RemoveAt(1);
                     break;
 
             }

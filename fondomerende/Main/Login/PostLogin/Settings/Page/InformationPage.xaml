@@ -73,8 +73,7 @@
                         Tapped="Deposit_Tapped" 
                         x:Name="Deposit">
                     </local:DepositViewCell>
-                    
-                    
+
                     <local6:LogoutViewCell 
                         Height="{OnPlatform Android=60, iOS=60}"
                         x:Name="LogoutCell"
