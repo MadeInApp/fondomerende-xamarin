@@ -24,6 +24,8 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View
             GetUserFundsMethod();
             friendly_name.Text = InformationFriendlyName();
             Cerchio.BackgroundColor = Color.FromHex(Preferences.Get("Colore", "#CCCCCC"));
+            CerchioRc.FillColor = Color.FromHex(Preferences.Get("Colore", "#CCCCCC"));
+            CerchioRc.BackgroundColor = Color.FromHex(Preferences.Get("Colore", "#CCCCCC"));
 
         }
 
