@@ -5,27 +5,29 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              xmlns:controls="clr-namespace:FormsControls.Base;assembly=FormsControls.Base"
-             x:Class="fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content.ChronologyContentPage">
-    
+             x:Class="fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content.ChronologyContentPage"
+             xmlns:local="clr-namespace:fondomerende.Main.Utilities">
+
     <controls:AnimationPage.PageAnimation>
         <controls:LandingPageAnimation Duration="Medium" Subtype="Default" />
     </controls:AnimationPage.PageAnimation>
     
+            
     <controls:AnimationPage.Content>
-        
+
         <ScrollView 
+            BackgroundColor="White"
             IsVisible="true"
             Margin="0,0,0,10">
-            
+
             <StackLayout
-                x:Name="ContentLayout"
-                Spacing="0"
-                Margin="10"
-                Orientation="Vertical">
+                    x:Name="ContentLayout"
+                    Spacing="0"
+                    Margin="10"
+                    Orientation="Vertical">
 
             </StackLayout>
-            
+
         </ScrollView>
-        
     </controls:AnimationPage.Content>
 </controls:AnimationPage>
