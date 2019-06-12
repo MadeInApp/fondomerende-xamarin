@@ -30,6 +30,7 @@
     <None Remove="image\Edit_snack_icon_256x256.png" />
     <None Remove="image\Edit_snack_icon_32x32.png" />
     <None Remove="image\Fondo_Merende_logo.png" />
+    <None Remove="image\History.png" />
     <None Remove="image\list_256x256.png" />
     <None Remove="image\list_264x264.png" />
     <None Remove="image\Livellodinamico.png" />
@@ -40,6 +41,7 @@
     <None Remove="image\Login_Animation.png" />
     <None Remove="image\Login_Animation2.png" />
     <None Remove="image\Login_Animation3.png" />
+    <None Remove="image\logout-icon.png" />
     <None Remove="image\logout_256x256.png" />
     <None Remove="image\Logout_icon_256x256.png" />
     <None Remove="image\macchinettaNew.png" />
@@ -64,6 +66,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="image\deposit_256x256.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="image\History.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="image\list_256x256.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -100,6 +105,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="image\LoginGradiente.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="image\logout-icon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="image\Logout_icon_256x256.png">
