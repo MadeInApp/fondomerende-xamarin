@@ -11,7 +11,7 @@ namespace fondomerende.Main.Services.RESTServices
 {
     class DepositServiceManager
     {
-        public async System.Threading.Tasks.Task<DepositDTO> DepositAsync(double DepAmount) //Servizio per mangiare uno snack
+        public async System.Threading.Tasks.Task<DepositDTO> DepositAsync(float DepAmount)
 
         {
             var result = await "http://192.168.0.175:8888/fondomerende/public/process-request.php"
@@ -19,8 +19,10 @@ namespace fondomerende.Main.Services.RESTServices
             .WithCookie("user-token", UserManager.Instance.token)
             .PostUrlEncodedAsync(new { commandName = "deposit", amount = DepAmount})
             .ReceiveJson<DepositDTO>();
-
-            return result;
+            if (result.response.success)
+            {
+                return result;
+            }
         }
     }
 }

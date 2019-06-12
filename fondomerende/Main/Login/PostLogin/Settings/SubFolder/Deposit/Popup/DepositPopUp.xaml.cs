@@ -99,9 +99,9 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup
             {
                 ErrorLabel.Text = "Inserisci l'ammontare";
             }
-            else if(Convert.ToDouble(Amount.Text) > 0)
+            else if(float.Parse(Amount.Text) > 0)
             {
-                var result = depositService.DepositAsync(Convert.ToDouble(Amount.Text));
+                var result = depositService.DepositAsync(float.Parse(Amount.Text));
                 if (result.Result.response.success)
                 {
                     await Navigation.PopPopupAsync();
