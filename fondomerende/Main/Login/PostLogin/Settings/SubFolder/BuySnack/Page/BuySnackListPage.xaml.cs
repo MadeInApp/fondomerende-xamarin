@@ -11,11 +11,12 @@ using fondomerende.Main.Services.Models;
 using Rg.Plugins.Popup.Extensions;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup;
 using fondomerende.Main.Utilities;
+using FormsControls.Base;
 
 namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class BuySnackListPage : ContentPage
+    public partial class BuySnackListPage : AnimationPage
     {
         public static int[] SelectedSnackIDArr;
         public static int SelectedSnackID;
@@ -135,7 +136,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page
         {
             if(ScrollView.IsVisible == true)
             {
-                Swap.BackgroundColor = Color.Orange;
+                Swap.BackgroundColor = Color.OrangeRed;
                 ScrollView.IsVisible = false;
                 ListView.IsVisible = true;
             }
