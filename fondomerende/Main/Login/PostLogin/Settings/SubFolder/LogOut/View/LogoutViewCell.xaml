@@ -31,7 +31,7 @@
                     VerticalOptions="Center" 
                     HorizontalOptions="Center" 
                     Aspect="AspectFit"
-                    Source="{local:EmbeddedImage Resource=fondomerende.image.logout-icon.png}"
+                    Source="{local:EmbeddedImage Resource=fondomerende.image.logout-img.png}"
                     TintColor="Aquamarine">
                 </controls:TintedImage>
 
