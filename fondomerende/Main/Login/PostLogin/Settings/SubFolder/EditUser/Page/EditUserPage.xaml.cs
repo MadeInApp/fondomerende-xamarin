@@ -52,8 +52,8 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.Page
                 password = passwordEntry.Text;
             }
             
-            if (OldpasswordEntry.Text == Preferences.Get("password", null))
-            {
+            //if (OldpasswordEntry.Text == Preferences.Get("password", null))
+            //{
                 var result = await editUser.EditUserAsync(FriendlyName, username, password);
                   if (result.response.success == true)
                     {
@@ -61,7 +61,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.Page
                         Preferences.Clear();
                         App.Current.MainPage = new LoginPage();
                   }
-            }
+            //}
             else
             {
                 await DisplayAlert("Fondo Merende", "Password Errata", "Ok");
