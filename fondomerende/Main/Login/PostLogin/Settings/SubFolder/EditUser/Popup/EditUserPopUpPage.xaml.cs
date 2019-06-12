@@ -5,20 +5,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using fondomerende.Main.Login.LoginPages;
-using Rg.Plugins.Popup.Extensions;
+using Xamarin.Essentials;
 using Xamarin.Forms;
+using fondomerende.Main.Services.Models;
 using Xamarin.Forms.Xaml;
-using fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.Page;
-using fondomerende.Main.Login.PostLogin.Settings.Page;
+using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser;
+using fondomerende.Main.Login.LoginPages;
+using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.Page;
 
-namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.Popup
+namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.Popup
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class AddSnackPopUpPage : Rg.Plugins.Popup.Pages.PopupPage
+    public partial class EditUserPopUpPage : Rg.Plugins.Popup.Pages.PopupPage
     {
+        EditUserServiceManager editUser = new EditUserServiceManager();
         SnackServiceManager snackService = new SnackServiceManager();
-        public AddSnackPopUpPage()
+        private static bool click = false;
+
+        
+
+        public EditUserPopUpPage()
         {
             InitializeComponent();
         }
@@ -29,7 +35,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.Popup
 
         protected override void OnDisappearing()
         {
-            AddSnackPage.clicked = true;
+            EditUserPopUpPage.click = true;
             base.OnDisappearing();
         }
 
@@ -96,70 +102,38 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.Popup
         }
 
 
-
-        //per applicare le modifiche//
         private async void Apply_Clicked(object sender, EventArgs e)
         {
-            SnackServiceManager snackService = new SnackServiceManager();
-
-            if (Nome.Text == null)
-            {
-                ErrorLabel.Text = "Inserire un nome";
-            }
-     
-            if(Prezzo.Text == null)
-            {
-                ErrorLabel.Text = "Inserire un prezzo";
-            }
             
-            if(SnackPerScatola.Text == null)
+            string oldPAssword = Preferences.Get("password", null);
+            if(oldPAssword == newPassword.Text)
             {
-                ErrorLabel.Text = "Inserire uno snack";
-            }
-           
-            if (ScadenzaInGiorni.Text == null)
-            {
-                ErrorLabel.Text = "Immettere un giorno di scadenza";
-            }
+                var risp = await editUser.EditUserAsync(EditUserPage.username, EditUserPage.FriendlyName, EditUserPage.passwordNuova);
+                if (risp.response.success == true)
+                {
 
+                    await DisplayAlert("Fondo Merende", "Impostazioni Cambiate", "Ok");
+                    Xamarin.Essentials.Preferences.Clear();
+                    Application.Current.MainPage = new LoginPage();
+
+                }
+                
+            }
             else
             {
-                var ans = await DisplayAlert("Fondo Merende", "Lo Snack è contabile?", "Si", "No");
-                if (ans)
-                {
-                    var result = await snackService.AddSnackAsync(Nome.Text, double.Parse(Prezzo.Text), int.Parse(SnackPerScatola.Text), int.Parse(ScadenzaInGiorni.Text), true);
-                    if (result.response.success)
-                    {
-
-                        await DisplayAlert("Fondo Merende", "SnackID: " + result.response.data.id, "Ok");
-                        Navigation.PopPopupAsync();
-                    }
-                    else
-                    {
-                        await DisplayAlert("Fondo Merende", "Snack già presente", "Ok");
-                    }
-                }
-                else
-                {
-                    var result = await snackService.AddSnackAsync(Nome.Text, double.Parse(Prezzo.Text), int.Parse(SnackPerScatola.Text), int.Parse(ScadenzaInGiorni.Text), false);
-                    if (result.response.success)
-                    {
-
-                        await DisplayAlert("Fondo Merende", "SnackID: " + result.response.data.id, "Ok");
-                        Navigation.PopPopupAsync();
-                    }
-                    else
-                    {
-                        await DisplayAlert("Fondo Merende", "Snack già presente", "Ok");
-                    }
-                }
+                await DisplayAlert("Fondo Merende", "Password errata", "Ok");
             }
-            
+
+
+
         }
 
         private async void Discard_Clicked(object sender, EventArgs e)
         {
             await PopupNavigation.Instance.PopAsync();
         }
+
+
+
     }
 }

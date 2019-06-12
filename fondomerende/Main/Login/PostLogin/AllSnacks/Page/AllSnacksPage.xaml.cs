@@ -9,6 +9,9 @@ using Xamarin.Essentials;
 using Xamarin.Forms.Xaml;
 using fondomerende.Main.Services.Models;
 using fondomerende.Main.Manager;
+using Rg.Plugins.Popup.Pages;
+using Rg.Plugins.Popup.Extensions;
+using fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup;
 
 namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 {
@@ -172,9 +175,10 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                 ScrollView.IsVisible = true;
             }
         }
-        private void OnButtonTapped(object sender, EventArgs e)
-        {
 
+        private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+            await Navigation.PushPopupAsync(new DepositPopUp());
         }
     }
 
