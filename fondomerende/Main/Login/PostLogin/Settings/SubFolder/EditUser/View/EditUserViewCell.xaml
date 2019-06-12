@@ -13,8 +13,22 @@
             BackgroundColor="{OnPlatform Android=WhiteSmoke}"
             Orientation="Horizontal"
             HorizontalOptions="FillAndExpand">
-            <local:RoundedCornerView
+            <Frame
+                IsVisible="{OnPlatform iOS=false, Android= true}"
                 x:Name="Cerchio"
+                HasShadow="true"
+                BorderColor="Black"
+                HeightRequest="64" 
+                WidthRequest="64" 
+                CornerRadius="32.5"
+                HorizontalOptions="Start" 
+                VerticalOptions="Center" 
+                Margin="5" 
+                Padding="0" 
+                BackgroundColor="Gray"
+                IsEnabled="False">
+                <local:RoundedCornerView  IsVisible="{OnPlatform iOS=true, Android= false}"
+                x:Name="CerchioRc"
                 BorderColor="Black"
                 HeightRequest="64" 
                 WidthRequest="64" 
@@ -24,7 +38,7 @@
                 Margin="5" 
                 Padding="0" 
                 IsEnabled="False">
-                <StackLayout x:Name="TrueCircle">
+
                     <StackLayout 
                     Orientation="Horizontal"
                     HorizontalOptions="Center">
@@ -38,8 +52,8 @@
                         VerticalTextAlignment="Center" />
 
                     </StackLayout>
-                </StackLayout>
-            </local:RoundedCornerView>
+                </local:RoundedCornerView>
+            </Frame>
 
             <StackLayout  
                 HorizontalOptions="Start"
