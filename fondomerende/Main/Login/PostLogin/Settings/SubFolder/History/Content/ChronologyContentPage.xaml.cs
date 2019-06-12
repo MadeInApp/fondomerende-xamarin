@@ -118,115 +118,79 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
                 Orientation = StackOrientation.Horizontal
             };
 
+
+            var cerchio = new RoundedCornerView
+            {
+                HeightRequest = diametro + ((diametro * sizeByName[strSplit[2]]) * 2),
+                WidthRequest = diametro + ((diametro * sizeByName[strSplit[2]]) * 2),
+                MinimumHeightRequest = diametro + ((diametro * sizeByName[strSplit[2]]) * 2),
+                MinimumWidthRequest = diametro + ((diametro * sizeByName[strSplit[2]]) * 2),
+                RoundedCornerRadius = diametro + ((diametro * sizeByName[strSplit[2]]) * 2),
+                Margin = new Thickness(3, 0, 0, 0),
+                BorderColor = Color.Black,
+                BorderWidth = 3,
+            };
+
+            var cerchioiOS = new RoundedCornerView
+            {
+                HeightRequest = diametro + ((diametro * sizeByName[strSplit[2]]) * 2),
+                WidthRequest = diametro + ((diametro * sizeByName[strSplit[2]]) * 2),
+                MinimumHeightRequest = diametro + ((diametro * sizeByName[strSplit[2]]) * 2),
+                MinimumWidthRequest = diametro + ((diametro * sizeByName[strSplit[2]]) * 2),
+                RoundedCornerRadius = (diametro + ((diametro * sizeByName[strSplit[2]]) * 2))/2,
+                Margin = new Thickness(3, 0, 0, 0),
+                BackgroundColor = colorByName[strSplit[2]],
+                BorderColor = Color.Black,
+                BorderWidth = 1,
+            };
+
+            var stackLabel = new StackLayout
+            {
+                VerticalOptions = LayoutOptions.FillAndExpand,
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                BackgroundColor = colorByName[strSplit[2]]
+            };
+
+            var firstLetter = new Label
+            {
+                Text = First_letter(strSplit[2]),
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                VerticalOptions = LayoutOptions.CenterAndExpand,
+                FontSize = 16,
+                FontAttributes = FontAttributes.Bold,
+                TextColor = Color.WhiteSmoke,
+                HorizontalTextAlignment = TextAlignment.Center,
+                VerticalTextAlignment = TextAlignment.Center,
+            };
+
+            var textAction = new Label
+            {
+                Text = dataLabel,
+                VerticalOptions = LayoutOptions.Center,
+                FontSize = 12,
+                Opacity = 0.6,
+                FontAttributes = FontAttributes.Bold,
+                TextColor = Color.Black,
+                VerticalTextAlignment = TextAlignment.Center,
+            };
+
+            diametroMod = diametro + (diametro * sizeByName[strSplit[2]]);
+
+            cerchio.Children.Add(stackLabel);
+            stackLabel.Children.Add(firstLetter);
+
             switch (Device.RuntimePlatform)             //Se il dispositivo è Android non mostra la Top Bar della Navigation Page, se è iOS la mostra
             {
                 default:
-                    var cerchioiOS = new Frame
-                    {
-                        HeightRequest = diametro + ((diametro * sizeByName[strSplit[2]]) * 2),
-                        WidthRequest = diametro + ((diametro * sizeByName[strSplit[2]]) * 2),
-                        CornerRadius = Convert.ToSingle(diametro/2),
-                        HorizontalOptions = LayoutOptions.Start,
-                        VerticalOptions = LayoutOptions.Center,
-                        BackgroundColor = colorByName[strSplit[2]],
-                    };
-
-                    var stackLabeliOS = new StackLayout
-                    {
-                        VerticalOptions = LayoutOptions.FillAndExpand,
-                        HorizontalOptions = LayoutOptions.FillAndExpand,
-                        BackgroundColor = colorByName[strSplit[2]]
-                    };
-
-                    var firstLetteriOS = new Label
-                    {
-                        Text = First_letter(strSplit[2]),
-                        HorizontalOptions = LayoutOptions.CenterAndExpand,
-                        VerticalOptions = LayoutOptions.CenterAndExpand,
-                        FontSize = 16,
-                        FontAttributes = FontAttributes.Bold,
-                        TextColor = Color.WhiteSmoke,
-                        HorizontalTextAlignment = TextAlignment.Center,
-                        VerticalTextAlignment = TextAlignment.Center,
-                    };
-
-                    var textActioniOS = new Label
-                    {
-                        Text = dataLabel,
-                        VerticalOptions = LayoutOptions.Center,
-                        FontSize = 12,
-                        Opacity = 0.6,
-                        FontAttributes = FontAttributes.Bold,
-                        TextColor = Color.Black,
-                        VerticalTextAlignment = TextAlignment.Center,
-                    };
-
-                    diametroMod = diametro + (diametro * sizeByName[strSplit[2]]);
-
-                    cerchioiOS.Content = stackLabeliOS;
-                    stackLabeliOS.Children.Add(firstLetteriOS);
                     stackPrincipale.Children.Add(cerchioiOS);
-                    stackPrincipale.Children.Add(textActioniOS);
-
-                    ContentLayout.Children.Add(stackPrincipale);
                     break;
-
                 case Device.Android:
-
-                    var cerchio = new RoundedCornerView
-                    {
-                        HeightRequest = diametro + ((diametro * sizeByName[strSplit[2]]) * 2),
-                        WidthRequest = diametro + ((diametro * sizeByName[strSplit[2]]) * 2),
-                        MinimumHeightRequest = diametro + ((diametro * sizeByName[strSplit[2]]) * 2),
-                        MinimumWidthRequest = diametro + ((diametro * sizeByName[strSplit[2]]) * 2),
-                        RoundedCornerRadius = diametro + ((diametro * sizeByName[strSplit[2]]) * 2),
-                        Margin = new Thickness(3, 0, 0, 0),
-                        BorderColor = Color.Black,
-                        BorderWidth = 3,
-                    };
-
-                    var stackLabel = new StackLayout
-                    {
-                        VerticalOptions = LayoutOptions.FillAndExpand,
-                        HorizontalOptions = LayoutOptions.FillAndExpand,
-                        BackgroundColor = colorByName[strSplit[2]]
-                    };
-
-                    var firstLetter = new Label
-                    {
-                        Text = First_letter(strSplit[2]),
-                        HorizontalOptions = LayoutOptions.CenterAndExpand,
-                        VerticalOptions = LayoutOptions.CenterAndExpand,
-                        FontSize = 16,
-                        FontAttributes = FontAttributes.Bold,
-                        TextColor = Color.WhiteSmoke,
-                        HorizontalTextAlignment = TextAlignment.Center,
-                        VerticalTextAlignment = TextAlignment.Center,
-                    };
-
-                    var textAction = new Label
-                    {
-                        Text = dataLabel,
-                        VerticalOptions = LayoutOptions.Center,
-                        FontSize = 12,
-                        Opacity = 0.6,
-                        FontAttributes = FontAttributes.Bold,
-                        TextColor = Color.Black,
-                        VerticalTextAlignment = TextAlignment.Center,
-                    };
-
-                    diametroMod = diametro + (diametro * sizeByName[strSplit[2]]);
-
-                    cerchio.Children.Add(stackLabel);
-                    stackLabel.Children.Add(firstLetter);
                     stackPrincipale.Children.Add(cerchio);
-                    stackPrincipale.Children.Add(textAction);
-
-                    ContentLayout.Children.Add(stackPrincipale);
                     break;
-            }
 
-           
+            }
+            stackPrincipale.Children.Add(textAction);
+            ContentLayout.Children.Add(stackPrincipale);
         }
 
         public void AddTimeLine(int posizione)
