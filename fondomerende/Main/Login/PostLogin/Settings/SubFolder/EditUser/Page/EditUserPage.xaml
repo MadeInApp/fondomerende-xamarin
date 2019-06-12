@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
@@ -66,13 +66,11 @@
 
 
             <Button
-                HorizontalOptions="FillAndExpand"
-                VerticalOptions="CenterAndExpand"
-                Margin="5,0,0,5"
+                AbsoluteLayout.LayoutBounds=".5,.5,25,1000"
+                Margin="5,0,5,0"
                 Clicked="ApplyChanges_Clicked_1" 
                 x:Name="ApplyChanges" 
                 Text="Applica"
-                
                 TextColor="{OnPlatform iOS={StaticResource ColorBackground}}"
                 Style="{OnPlatform Android={StaticResource FondomerendeButton}}">
 
