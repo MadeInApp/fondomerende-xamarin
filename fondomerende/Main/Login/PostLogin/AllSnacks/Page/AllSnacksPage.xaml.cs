@@ -170,6 +170,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                 ScrollView.IsVisible = true;
             }
         }
+        private void OnButtonTapped(object sender, EventArgs e)
 
     }
 
