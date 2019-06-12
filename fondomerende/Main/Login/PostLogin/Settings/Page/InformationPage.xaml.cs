@@ -4,6 +4,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Xamarin.Essentials;
 using fondomerende.Main.Login.LoginPages;
+using fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.Page;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View;
@@ -36,8 +37,8 @@ namespace fondomerende.Main.Login.PostLogin.Settings.Page
                     break;
                 case Device.Android:
                     NavigationPage.SetHasNavigationBar(this, false);
-                    var section = tableView.Root[0];
-                    section.RemoveAt(1);
+                   // var section = tableView.Root[0];
+                   // section.RemoveAt(1);
                     break;
 
             }
@@ -94,6 +95,11 @@ namespace fondomerende.Main.Login.PostLogin.Settings.Page
         private async void BuySnack_Tapped(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new BuySnackListPage());
+        }
+
+        private async void Deposit_Tapped(object sender, EventArgs e)
+        {
+            await Navigation.PushPopupAsync(new DepositPopUp());
         }
     }
 }

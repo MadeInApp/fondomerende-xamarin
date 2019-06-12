@@ -1,23 +1,21 @@
-﻿using fondomerende.Main.Services.RESTServices;
+﻿using fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page;
+using fondomerende.Main.Services.RESTServices;
 using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using fondomerende.Main.Login.LoginPages;
+
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.Page;
-using fondomerende.Main.Login.PostLogin.Settings.Page;
 
-namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.Popup
+namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class AddSnackPopUpPage : Rg.Plugins.Popup.Pages.PopupPage
+    public partial class DepositPopUp : Rg.Plugins.Popup.Pages.PopupPage
     {
-        SnackServiceManager snackService = new SnackServiceManager();
-        public AddSnackPopUpPage()
+        public DepositPopUp()
         {
             InitializeComponent();
         }
@@ -28,7 +26,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.Popup
 
         protected override void OnDisappearing()
         {
-            AddSnackPage.clicked = true;
+            BuySnackListPage.Refresh = true;
             base.OnDisappearing();
         }
 
@@ -94,55 +92,29 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.Popup
             return base.OnBackgroundClicked();
         }
 
-
-
-        //per applicare le modifiche//
         private async void Apply_Clicked(object sender, EventArgs e)
         {
-            SnackServiceManager snackService = new SnackServiceManager();
-
-            if (Nome.Text == null)
+            DepositServiceManager depositService = new DepositServiceManager();
+            if(Amount.Text == null)
             {
-                ErrorLabel.Text = "Inserire un nome";
+                ErrorLabel.Text = "Inserisci l'ammontare";
             }
-     
-            if(Prezzo.Text == null)
+            else if(Convert.ToDouble(Amount.Text) > 0)
             {
-                ErrorLabel.Text = "Inserire un prezzo";
-            }
-            
-            if(SnackPerScatola.Text == null)
-            {
-                ErrorLabel.Text = "Inserire uno snack";
-            }
-           
-            if (ScadenzaInGiorni.Text == null)
-            {
-                ErrorLabel.Text = "Immettere un giorno di scadenza";
-            }
-
-            else
-            {
-                var ans = await DisplayAlert("Fondo Merende", "Lo Snack è contabile?", "Si", "No");
-                if (ans)
+                var result = depositService.DepositAsync(Convert.ToDouble(Amount.Text));
+                if (result.Result.response.success)
                 {
-                    var result = await snackService.AddSnackAsync(Nome.Text, double.Parse(Prezzo.Text), int.Parse(SnackPerScatola.Text), int.Parse(ScadenzaInGiorni.Text), true);
-                    if (result.response.success)
-                    {
-
-                        await DisplayAlert("Fondo Merende", "SnackID: " + result.response.data.id, "Ok");
-                    }
-                    else
-                    {
-                        await DisplayAlert("Fondo Merende", "Snack già presente", "Ok");
-                    }
+                    await PopupNavigation.Instance.PopAsync();
                 }
                 else
                 {
-                    await snackService.AddSnackAsync(Nome.Text, double.Parse(Prezzo.Text), int.Parse(SnackPerScatola.Text), int.Parse(ScadenzaInGiorni.Text), false);
+                    ErrorLabel.Text = "Errore";
                 }
             }
-            
+            else
+            {
+                ErrorLabel.Text = "L'ammontare non può essere minore di 1";
+            }
         }
 
         private async void Discard_Clicked(object sender, EventArgs e)

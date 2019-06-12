@@ -12,7 +12,7 @@
         <StackLayout 
             Orientation="Horizontal" 
             VerticalOptions="Center"
-            BackgroundColor="WhiteSmoke">
+            BackgroundColor="{OnPlatform Android= WhiteSmoke}">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
@@ -31,7 +31,7 @@
                     VerticalOptions="Center" 
                     HorizontalOptions="Center" 
                     Aspect="AspectFit"
-                    Source="{local:EmbeddedImage Resource=fondomerende.image.Chronology_icon_256x256.png}">
+                    Source="{local:EmbeddedImage Resource=fondomerende.image.History.png}">
                 </controls:TintedImage>
                 
                 <!--<Image

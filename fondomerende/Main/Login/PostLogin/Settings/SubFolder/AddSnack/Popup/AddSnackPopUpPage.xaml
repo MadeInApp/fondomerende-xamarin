@@ -9,7 +9,8 @@
             mc:Ignorable="d"            
             xmlns:local ="clr-namespace:fondomerende.Main.Utilities"
             xmlns:Graph="clr-namespace:fondomerende.Main.Utilities"
-            x:Class="fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.Popup.AddSnackPopUpPage">
+            x:Class="fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.Popup.AddSnackPopUpPage"
+            HasKeyboardOffset="False">
     
     <!--You can set an animation in the xaml file or in the csharp code behind-->
     <pages:PopupPage.Animation>
@@ -28,7 +29,7 @@
     <Graph:RoundedCornerView 
         RoundedCornerRadius="20"                          
         BackgroundColor="White"
-        Margin="0,200,0,200">
+        Margin="20,200,20,200">
 
         <StackLayout 
             VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand" Margin="0,10,0,10">
