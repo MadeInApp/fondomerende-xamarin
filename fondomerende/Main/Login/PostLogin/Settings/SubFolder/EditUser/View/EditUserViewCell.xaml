@@ -27,7 +27,8 @@
                 Padding="0" 
                 BackgroundColor="Gray"
                 IsEnabled="False">
-                <local:RoundedCornerView  IsVisible="{OnPlatform iOS=true, Android= false}"
+            </Frame>
+            <local:RoundedCornerView  IsVisible="{OnPlatform iOS=true, Android= false}"
                 x:Name="CerchioRc"
                 BorderColor="Black"
                 HeightRequest="64" 
@@ -39,10 +40,10 @@
                 Padding="0" 
                 IsEnabled="False">
 
-                    <StackLayout 
+                <StackLayout 
                     Orientation="Horizontal"
                     HorizontalOptions="Center">
-                        <Label
+                    <Label
                         x:Name="inizialeLabel"
                         Font="Bold,28"
                         TextColor="WhiteSmoke" 
@@ -51,9 +52,8 @@
                         HorizontalTextAlignment="Center" 
                         VerticalTextAlignment="Center" />
 
-                    </StackLayout>
-                </local:RoundedCornerView>
-            </Frame>
+                </StackLayout>
+            </local:RoundedCornerView>
 
             <StackLayout  
                 HorizontalOptions="Start"

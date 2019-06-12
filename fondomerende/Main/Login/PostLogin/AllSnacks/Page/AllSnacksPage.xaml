@@ -23,6 +23,7 @@
                             NumberOfTapsRequired="1" >
                         </TapGestureRecognizer>
                     </StackLayout.GestureRecognizers>
+                    
                     <ImageButton 
                     Margin="10,0,0,0"
                     Source="{local:EmbeddedImage Resource=fondomerende.image.deposit_256x256.png}"
