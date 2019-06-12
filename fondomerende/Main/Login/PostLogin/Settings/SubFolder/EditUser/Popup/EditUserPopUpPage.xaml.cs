@@ -111,8 +111,8 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.Popup
                 var risp = await editUser.EditUserAsync(EditUserPage.username, EditUserPage.FriendlyName, EditUserPage.passwordNuova);
                 if (risp.response.success == true)
                 {
-
                     await DisplayAlert("Fondo Merende", "Impostazioni Cambiate", "Ok");
+                    await PopupNavigation.Instance.PopAsync();                  
                     Xamarin.Essentials.Preferences.Clear();
                     Application.Current.MainPage = new LoginPage();
 
