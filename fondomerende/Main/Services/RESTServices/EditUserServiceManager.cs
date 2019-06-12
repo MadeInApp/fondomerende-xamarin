@@ -13,7 +13,7 @@ namespace fondomerende.Main.Services.RESTServices
         {
             var data = new Dictionary<string, string>();
             {
-                data.Add("commandName", "add-user");
+                data.Add("commandName", "edit-user");
                 data.Add("name", ChangeUsername);
                 data.Add("friendly-name", ChangeFriendlyName);
                 data.Add("password", ChangePassword);
