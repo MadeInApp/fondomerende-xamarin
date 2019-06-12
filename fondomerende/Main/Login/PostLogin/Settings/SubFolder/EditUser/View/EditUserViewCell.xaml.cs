@@ -47,7 +47,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View
         {
             ColorRandom c = new ColorRandom();
             Color color = c.GetRandomColorPreferences();
-            Cerchio.FillColor = color;
+            TrueCircle.BackgroundColor = color;
 
         }
 

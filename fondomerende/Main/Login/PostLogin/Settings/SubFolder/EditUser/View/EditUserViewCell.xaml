@@ -24,11 +24,11 @@
                 Margin="5" 
                 Padding="0" 
                 IsEnabled="False">
-
-                <StackLayout 
+                <StackLayout x:Name="TrueCircle">
+                    <StackLayout 
                     Orientation="Horizontal"
                     HorizontalOptions="Center">
-                    <Label
+                        <Label
                         x:Name="inizialeLabel"
                         Font="Bold,28"
                         TextColor="WhiteSmoke" 
@@ -37,6 +37,7 @@
                         HorizontalTextAlignment="Center" 
                         VerticalTextAlignment="Center" />
 
+                    </StackLayout>
                 </StackLayout>
             </local:RoundedCornerView>
 
