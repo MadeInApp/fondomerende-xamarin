@@ -27,6 +27,19 @@
                 Padding="0" 
                 BackgroundColor="Gray"
                 IsEnabled="False">
+                <StackLayout 
+                    Orientation="Horizontal"
+                    HorizontalOptions="Center">
+                    <Label
+                        x:Name="inizialeLabel"
+                        Font="Bold,28"
+                        TextColor="WhiteSmoke" 
+                        HorizontalOptions="Center" 
+                        VerticalOptions="Center" 
+                        HorizontalTextAlignment="Center" 
+                        VerticalTextAlignment="Center" />
+                </StackLayout>
+
             </Frame>
             <local:RoundedCornerView  IsVisible="{OnPlatform iOS=true, Android= false}"
                 x:Name="CerchioRc"
@@ -44,7 +57,7 @@
                     Orientation="Horizontal"
                     HorizontalOptions="Center">
                     <Label
-                        x:Name="inizialeLabel"
+                        x:Name="inizialeLabel_iOS"
                         Font="Bold,28"
                         TextColor="WhiteSmoke" 
                         HorizontalOptions="Center" 
