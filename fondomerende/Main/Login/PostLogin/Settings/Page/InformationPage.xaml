@@ -26,6 +26,7 @@
             <TableRoot>
                 <TableSection
                     Title="Utente"
+                    
                     TextColor="{OnPlatform Android= #6495ed}">
 
                     <local:EditUserViewCell
@@ -68,13 +69,8 @@
                         Tapped="ChronologyCell_Tapped">
                     </local5:ChronologyViewCell>
                 </TableSection>
-                
+
                 <TableSection>
-                  <local7:DepositViewCell 
-                    Tapped="Deposit_Tapped"
-                    x:Name="Deposit"> 
-                  </local7:DepositViewCell>
-                   
                     <local6:LogoutViewCell 
                         Height="{OnPlatform Android=60, iOS=60}"
                         x:Name="LogoutCell"

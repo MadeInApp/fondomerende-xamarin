@@ -248,10 +248,16 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
                 HeightRequest = altezzaLinea+ (altezzaLinea * LenghtLine(posizione)),
                 WidthRequest = larghezzaLinea,
                 Margin = new Thickness(paddingLinea, 0, 0, 0),
-                BackgroundColor = Color.Black, //colorByName[strSplit[2]],
+                //BackgroundColor = Color.Black, //colorByName[strSplit[2]],
             };
 
-            var app = new StackLayout { };
+            var app = new StackLayout
+            {
+                HorizontalOptions = LayoutOptions.Center,
+                HeightRequest = altezzaLinea + (altezzaLinea * LenghtLine(posizione)),
+                WidthRequest = larghezzaLinea,
+                Margin = new Thickness(paddingLinea, 0, 0, 0),
+            };
 
             var orario = new Label
             {
@@ -270,7 +276,8 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
                 EndColor = LastColor(posizione),
             };
 
-
+            gradiente.Children.Add(app);
+            linea.Children.Add(gradiente);
             stackPrincipale.Children.Add(linea);
             stackPrincipale.Children.Add(orario);
 
@@ -432,13 +439,13 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
                 }
                 else
                 {                  
-                    multipler += ris.TotalHours*0.89;
+                    multipler += ris.TotalHours*1.8;
                 }
                 
             }
             else
             {
-                multipler += ris.Days*20;
+                multipler += ris.Days*24;
                 if (multipler > 600) multipler = 60;
             }
 
