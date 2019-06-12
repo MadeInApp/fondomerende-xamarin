@@ -30,7 +30,7 @@
                     VerticalOptions="Center" 
                     HorizontalOptions="Center" 
                     Aspect="AspectFit"
-                    Source="{local:EmbeddedImage Resource=fondomerende.image.add_icon_256x256.png}">
+                    Source="{local:EmbeddedImage Resource=fondomerende.image.add-snack-icon.png}">
                 </controls:TintedImage>
                 
                 <!--<Image
