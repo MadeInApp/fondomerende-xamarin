@@ -4,16 +4,37 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             xmlns:local2="clr-namespace:fondomerende.Main.Utilities"
              x:Class="fondomerende.Main.Login.PostLogin.AllSnack.Page.AllSnacksPage"
+             xmlns:local="clr-namespace:fondomerende.Main.Utilities"
              BackgroundColor="{OnPlatform Android= {StaticResource ColorSnackBackground}, iOS= 'White'}"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              xmlns:local1="clr-namespace:fondomerende.Main.Login.PostLogin.AllSnacks.View"
              ios:Page.UseSafeArea="True"
              Title="{OnPlatform iOS='Snacks'}">
-    
     <ContentPage.Content>
         <StackLayout
             x:Name="StackSnack">
+            <StackLayout Orientation="Horizontal" HeightRequest="45">
+                <ImageButton 
+                    Margin="10,0,0,0"
+                    Source="{local:EmbeddedImage Resource=fondomerende.image.deposit_256x256.png}"
+                    Scale="0.3"
+                    HorizontalOptions="StartAndExpand"
+                    Style="{StaticResource FondomerendeButton}">
+                </ImageButton>
+                <ImageButton 
+                    Margin="0,10,10,0"
+                    CornerRadius="5"
+                    WidthRequest="35"
+                    HeightRequest="30"
+                    HorizontalOptions="EndAndExpand" 
+                    VerticalOptions="StartAndExpand" 
+                    Source="{local2:EmbeddedImage Resource=fondomerende.image.list_264x264.png}"
+                    Scale="{OnIdiom Phone=0.8, Tablet=3}"
+                    x:Name="Swap">
+                </ImageButton>
+            </StackLayout>
             <ListView
                 x:Name="ListView"
                 IsPullToRefreshEnabled="true"
