@@ -1,6 +1,7 @@
 ﻿using fondomerende.Main.Services.RESTServices;
 using Java.Util.Prefs;
 using System;
+using FormsControls.Base;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,17 +15,18 @@ using fondomerende.Main.Utilities;
 namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ChronologyContentPage : ContentPage
+    public partial class ChronologyContentPage : AnimationPage
     {
-        private double diametro = 38;
+        private double diametro = 40;
         private double larghezzaLinea = 3;
-        private double altezzaLinea = 30;
+        private double altezzaLinea = 20;
 
         private double diametroMod;
 
         Dictionary<string, Color> colorByName = new Dictionary<string, Color>();
         Dictionary<string, double> sizeByName = new Dictionary<string, double>();
-        Dictionary<string, DateTime> dateByTime = new Dictionary<string, DateTime>();
+        Dictionary<string, string> dateByTime = new Dictionary<string, string>();
+        Dictionary<string, string> mangione = new Dictionary<string, string>();
 
         Dictionary<string, string> traduttore = new Dictionary<string, string>();
         
@@ -55,8 +57,12 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
             traduttore.Add("ate", "ha mangiato");
             traduttore.Add("bought", "ha comprato");
             traduttore.Add("deposited", "ha depositato");
+            mangione.Add("mangione", "");
+            dateByTime.Add("Intervallo", "");
 
             ColorBack();
+            SizeFrame();
+            AddMangione();
 
             for (int i=0;i<cronologia.Length;i++)
             {
@@ -65,7 +71,31 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
 
             }
         }
+        public void AddMangione()
+        {
+            var stackPrincipale = new StackLayout
+            {
+                Orientation = StackOrientation.Horizontal,
+            };
 
+            var persona = new Label
+            {
+                Text = "Mangione: " + mangione["mangione"],
+                HorizontalOptions = LayoutOptions.StartAndExpand,
+                VerticalOptions = LayoutOptions.CenterAndExpand,
+                Margin = 5,
+                FontSize = 14,
+                FontAttributes = FontAttributes.Bold,
+                TextColor = Color.FromHex(Xamarin.Essentials.Preferences.Get("Colore", "#000000")),
+                HorizontalTextAlignment = TextAlignment.Center,
+                VerticalTextAlignment = TextAlignment.Center,
+            };
+
+            stackPrincipale.Children.Add(persona);
+
+            ContentLayout.Children.Add(stackPrincipale);
+
+        }
         private void AddAction(int posizione)
         {
             string dataLabel = "";
@@ -90,12 +120,14 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
 
             var cerchio = new RoundedCornerView
             {
-                HeightRequest = diametro,
-                WidthRequest = diametro,
-                MinimumHeightRequest = diametro,
-                MinimumWidthRequest = diametro,
-                RoundedCornerRadius = diametro,
-                Margin = new Thickness(3, 0, 0, 0)
+                HeightRequest = diametro + ((diametro * sizeByName[strSplit[2]])*2),
+                WidthRequest = diametro + ((diametro * sizeByName[strSplit[2]]) * 2),
+                MinimumHeightRequest = diametro + ((diametro * sizeByName[strSplit[2]]) * 2),
+                MinimumWidthRequest = diametro + ((diametro * sizeByName[strSplit[2]]) * 2),
+                RoundedCornerRadius = diametro + ((diametro * sizeByName[strSplit[2]]) * 2),
+                Margin = new Thickness(3, 0, 0, 0),
+                BorderColor = Color.Black,
+                BorderWidth = 3,
             };
 
             var stackLabel = new StackLayout
@@ -138,10 +170,6 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
             ContentLayout.Children.Add(stackPrincipale);
         }
 
-        public void AddMangione()
-        {
-
-        }
         public void AddTimeLine(int posizione)
         {
             string[] strSplit = cronologia[posizione].Split();
@@ -158,15 +186,17 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
             var linea = new StackLayout
             {
                 HorizontalOptions = LayoutOptions.Center,
-                HeightRequest = altezzaLinea,
+                HeightRequest = altezzaLinea+ (altezzaLinea * LenghtLine(posizione)),
                 WidthRequest = larghezzaLinea,
                 Margin = new Thickness(paddingLinea, 0, 0, 0),
                 BackgroundColor = colorByName[strSplit[2]],
             };
 
+            var app = new StackLayout { };
+
             var orario = new Label
             {
-                Text = "LenghtLine(posizione)",
+                Text = TestoOrario(posizione),
                 VerticalOptions = LayoutOptions.Center,
                 FontSize = 12,
                 Opacity = 0.6,
@@ -179,10 +209,9 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
             {
                 StartColor = colorByName[strSplit[2]],
                 EndColor = LastColor(posizione),
-
             };
 
-            linea.Children.Add(gradiente);
+
             stackPrincipale.Children.Add(linea);
             stackPrincipale.Children.Add(orario);
 
@@ -215,7 +244,13 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
             for (int i = 0; i < cronologia.Length; i++)
             {
                 string[] strSplit = cronologia[i].Split();
-                Color colorapp = c.GetRandomLightColor();
+
+                Color colorapp = c.GetRandomColor();
+
+                while (colorapp == Color.FromHex(Xamarin.Essentials.Preferences.Get("Colore", "#000000")))
+                {
+                    colorapp = c.GetRandomColor();
+                }
            
             
 
@@ -237,7 +272,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
             }
         }
 
-        public string Mangione()
+        public void SizeFrame()
         {
             double app = 0;
             string app2 = "";
@@ -247,36 +282,119 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
 
                 if (!sizeByName.ContainsKey(strSplit[2]))
                 {
-                    sizeByName.Add(strSplit[2], 0.11);  //grandezza incrementata 
+                    sizeByName.Add(strSplit[2], 0.001);  //grandezza incrementata 
                 }
                 else
                 {
-                    sizeByName[strSplit[2]] = +0.11;
+                    sizeByName[strSplit[2]] += 0.001;
                 }
 
-                if(sizeByName[strSplit[2]] > app)
+                if (sizeByName[strSplit[2]] > app)
                 {
+                    app = sizeByName[strSplit[2]];
                     app2 = strSplit[2];
                 }
             }
-            return app2;
+            mangione["mangione"] = app2;
         }
 
-        public TimeSpan LenghtLine(int posizione)
+        public string TestoOrario(int posizione)
         {
             DateTime current = TrimDate(posizione);
             DateTime next = TrimDate(posizione + 1);
 
-            //if (!dateByTime.ContainsKey("Last Date"))
+            int[] app = new int[5];
+
+            TimeSpan ris = current.Subtract(next);
+
+            double giorni = ris.TotalDays;
+            double temp = 0;
+
+            double ore = giorni * 24;
+            if (giorni < 1)
+            {
+                double minuti = ore * 60;
+                if (ore < 1)
+                {
+                    double secondi = minuti * 60;
+                    if (minuti < 1)
+                    {
+                        return (Convert.ToInt32(secondi)) + "s";
+                    }
+                    else
+                    {
+                        temp = Math.Abs((minuti - Convert.ToInt32(minuti)) * 60);
+                        return Convert.ToInt32(minuti) + "m "+ Convert.ToInt32(temp)+"s";
+                    }
+
+                }
+                else
+                {
+                    temp = Math.Abs((ore - Convert.ToInt32(ore)) * 60);
+                    return Convert.ToInt32(ore) + "h " + Convert.ToInt32(temp)+"m";
+                }
+
+            }
+            else
+            {
+                return Convert.ToInt32(giorni) + "g";               
+            }
+        }
+
+        public double LenghtLine(int posizione)
+        {
+            DateTime current = TrimDate(posizione);
+            DateTime next = TrimDate(posizione + 1);
+
+            int[] app = new int[5];
+
+            TimeSpan ris = current.Subtract(next);
+
+            double giorni = ris.TotalDays;
+            double multipler = 0;
+
+            double ore = giorni * 24;
+            if (giorni < 1)
+            {
+                double minuti = ore * 60;
+                if (ore < 1)
+                {
+                    double secondi = minuti * 60;
+                    if (minuti < 1)
+                    {
+                        multipler += ris.TotalSeconds * 0.0005;
+                    }
+                    else
+                    {
+                        multipler += ris.TotalMinutes*0.0013;
+                    }
+                    
+                }
+                else
+                {                  
+                    multipler += ris.TotalHours*0.83;
+                }
+                
+            }
+            else
+            {
+                multipler += ris.Days*20;
+                if (multipler > 600) multipler = 60;
+            }
+
+            //for(int i = 0; i < current.Length; i++)
             //{
-            //    dateByTime.Add("Last Date", data);
+            //    app[i] = Math.Abs(current[i] - next[i]);
             //}
-            //else
-            //{
-            //    dateByTime["Last Date"] = 
-            //}
+
             
-            return current.Subtract(next);
+
+            //if (app[4] != 0) multipler += app[4] * 1;
+            //else if (app[3] != 0) multipler += app[3] * 0.5;
+            //else if (app[2] != 0) multipler += app[2] * 0.25;
+            //else if (app[1] != 0) multipler += app[1] * 0.025;
+            //else if (app[0] != 0) multipler += app[0] * 0.0025;
+            return multipler;
         }
 
         private DateTime TrimDate(int posizione)     //metodo 100% appoggio
@@ -285,9 +403,8 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
             string[] anni = strSplit[0].Split('-');
             string[] minuti = strSplit[1].Split(':');
 
-            System.DateTime current = new System.DateTime(int.Parse(anni[0]), int.Parse(anni[1]), int.Parse(anni[2]),
+            DateTime current = new DateTime(int.Parse(anni[0]), int.Parse(anni[1]), int.Parse(anni[2]),
                                     int.Parse(minuti[0]), int.Parse(minuti[1]), int.Parse(minuti[2]));
-
             return current;
         }
         public async Task GetLastActions()
@@ -309,6 +426,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
         {
             await GetLastActions();
             Fusione();
+            LenghtLine(0);
         }
     }
 }

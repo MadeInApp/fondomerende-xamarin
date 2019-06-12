@@ -138,6 +138,9 @@
     <Compile Update="Main\Login\PostLogin\Settings\SubFolder\EditSnack\View\EditSnackViewCell.xaml.cs">
       <DependentUpon>EditSnackViewCell.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Main\Login\PostLogin\Settings\SubFolder\History\Content\GradientColorPage.xaml.cs">
+      <DependentUpon>GradientColorPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Main\Login\PostLogin\Settings\SubFolder\History\View\ChronologyViewCell.xaml.cs">
       <DependentUpon>ChronologyViewCell.xaml</DependentUpon>
     </Compile>
@@ -169,6 +172,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Main\Login\PostLogin\Settings\SubFolder\EditSnack\View\SnacksListSettingsViewCell.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Main\Login\PostLogin\Settings\SubFolder\History\Content\GradientColorPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Main\Login\PostLogin\Settings\SubFolder\History\View\ChronologyLogView.xaml">
