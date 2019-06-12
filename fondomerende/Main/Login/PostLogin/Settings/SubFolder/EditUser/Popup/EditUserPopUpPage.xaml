@@ -44,11 +44,13 @@
                 BackgroundColor="White">
 
                 <Label 
-                    FontSize="{OnPlatform Android=18}"
-                    Text="Inserire la nuova password">
+                    Text="Inserire la nuova password"
+                    VerticalOptions="StartAndExpand"
+                    HorizontalOptions="CenterAndExpand">
                 </Label>
 
                 <local:LineEntry 
+                    VerticalOptions="CenterAndExpand"
                     WidthRequest="150" 
                     x:Name="newPassword" 
                     IsPassword="true"

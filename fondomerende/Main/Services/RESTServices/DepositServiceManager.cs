@@ -19,10 +19,8 @@ namespace fondomerende.Main.Services.RESTServices
             .WithCookie("user-token", UserManager.Instance.token)
             .PostUrlEncodedAsync(new { commandName = "deposit", amount = DepAmount})
             .ReceiveJson<DepositDTO>();
-            if (result.response.success)
-            {
-                return result;
-            }
+
+            return result;
         }
     }
 }
