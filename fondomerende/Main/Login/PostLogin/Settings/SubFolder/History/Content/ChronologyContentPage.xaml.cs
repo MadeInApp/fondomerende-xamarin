@@ -18,7 +18,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
     public partial class ChronologyContentPage : AnimationPage
     {
         private double diametro = 40;
-        private double larghezzaLinea = 3;
+        private double larghezzaLinea = 2;
         private double altezzaLinea = 20;
 
         private double diametroMod;
@@ -145,7 +145,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
                         VerticalOptions = LayoutOptions.CenterAndExpand,
                         FontSize = 16,
                         FontAttributes = FontAttributes.Bold,
-                        TextColor = Color.Black,
+                        TextColor = Color.WhiteSmoke,
                         HorizontalTextAlignment = TextAlignment.Center,
                         VerticalTextAlignment = TextAlignment.Center,
                     };
@@ -199,7 +199,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
                         VerticalOptions = LayoutOptions.CenterAndExpand,
                         FontSize = 16,
                         FontAttributes = FontAttributes.Bold,
-                        TextColor = Color.Black,
+                        TextColor = Color.WhiteSmoke,
                         HorizontalTextAlignment = TextAlignment.Center,
                         VerticalTextAlignment = TextAlignment.Center,
                     };
@@ -248,7 +248,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
                 HeightRequest = altezzaLinea+ (altezzaLinea * LenghtLine(posizione)),
                 WidthRequest = larghezzaLinea,
                 Margin = new Thickness(paddingLinea, 0, 0, 0),
-                BackgroundColor = colorByName[strSplit[2]],
+                BackgroundColor = Color.Black, //colorByName[strSplit[2]],
             };
 
             var app = new StackLayout { };
@@ -425,13 +425,13 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
                     }
                     else
                     {
-                        multipler += ris.TotalMinutes*0.0013;
+                        multipler += ris.TotalMinutes*0.03;
                     }
                     
                 }
                 else
                 {                  
-                    multipler += ris.TotalHours*0.83;
+                    multipler += ris.TotalHours*0.89;
                 }
                 
             }

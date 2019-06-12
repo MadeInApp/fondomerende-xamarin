@@ -22,13 +22,15 @@ namespace fondomerende.Main.Utilities
              
         Color[] color = new Color[] 
         {
-            Color.FromHex("#FFFFFF"),
-            Color.FromHex("#E01F25"),
-            Color.FromHex("FFBF18"),
-            Color.FromHex("41FF32"),
-            Color.FromHex("00A000"),
-            Color.FromHex("00C196"),
-            Color.FromHex("#00323F")
+            Color.FromHex("#999999"),
+            //Color.FromHex("#E01F25"), //rosso bellino
+            Color.FromHex("#FFBF18"),
+            Color.FromHex("#38B54A"), //verde
+            Color.FromHex("#00A99D"), //celeste
+            Color.FromHex("#9B212A"), //rosso
+            Color.FromHex("#C7B299"), //grigiochiaro
+            Color.FromHex("#824E84"), //viola
+            Color.FromHex("#EA5454") // rosso sbiadito
         };
 
         public Color GetRandomColorPreferences()
