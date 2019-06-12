@@ -13,12 +13,14 @@
     
     <controls:AnimationPage.Content>
         
-        <ScrollView IsVisible="true">
+        <ScrollView 
+            IsVisible="true"
+            Margin="0,0,0,10">
             
             <StackLayout
                 x:Name="ContentLayout"
                 Spacing="0"
-                Margin="5"
+                Margin="10"
                 Orientation="Vertical">
 
             </StackLayout>

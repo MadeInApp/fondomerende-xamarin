@@ -6,7 +6,7 @@
     xmlns:local2="clr-namespace:fondomerende.Main.Login.PostLogin.Settings.Page"
     x:Class="fondomerende.Main.Login.PostLogin.MainPage"
     SelectedTabColor="{OnPlatform Android = White}"
-    UnselectedTabColor="{OnPlatform Android = #A5A5A5}"
+    UnselectedTabColor="{OnPlatform Android = #4d4d4d}"
     BackgroundColor="{StaticResource ColorSnackBackground}"
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     ios:Page.UseSafeArea="true">

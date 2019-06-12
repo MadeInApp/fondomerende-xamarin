@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit
+namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DepositPopUp : Rg.Plugins.Popup.Pages.PopupPage

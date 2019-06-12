@@ -183,13 +183,13 @@
     <EmbeddedResource Update="Main\Login\PostLogin\Settings\SubFolder\BuySnack\View\BuySnackGridViewCell.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Main\Login\PostLogin\Settings\SubFolder\Deposit\DepositPopUp.xaml">
+    <EmbeddedResource Update="Main\Login\PostLogin\Settings\SubFolder\Deposit\Popup\DepositPopUp.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Main\Login\PostLogin\Settings\SubFolder\EditSnack\View\SnacksListSettingsViewCell.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Main\Login\PostLogin\Settings\SubFolder\EditUser\View\DepositViewCell.xaml">
+    <EmbeddedResource Update="Main\Login\PostLogin\Settings\SubFolder\Deposit\View\DepositViewCell.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Main\Login\PostLogin\Settings\SubFolder\History\Content\GradientColorPage.xaml">
