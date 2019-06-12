@@ -18,7 +18,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
     public partial class ChronologyContentPage : AnimationPage
     {
         private double diametro = 40;
-        private double larghezzaLinea = 2;
+        private double larghezzaLinea = 3;
         private double altezzaLinea = 20;
 
         private double diametroMod;
@@ -53,7 +53,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
 
         private void Fusione()
         {
-            traduttore.Add("added", "Sistema ha aggiunto");
+            traduttore.Add("added", "ha aggiunto");
             traduttore.Add("ate", "ha mangiato");
             traduttore.Add("bought", "ha comprato");
             traduttore.Add("deposited", "ha depositato");
@@ -270,37 +270,54 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
             return colorByName[strString[2]];
         }
 
+
         public void ColorBack()
         {
+            bool colorifiniti = false;
             ColorRandom c = new ColorRandom();
 
             for (int i = 0; i < cronologia.Length; i++)
             {
                 string[] strSplit = cronologia[i].Split();
 
-                Color colorapp = c.GetRandomColor();
-
-                while (colorapp == Color.FromHex(Xamarin.Essentials.Preferences.Get("Colore", "#000000")))
+                if (!colorByName.ContainsKey(strSplit[2]))
                 {
-                    colorapp = c.GetRandomColor();
-                }
-           
-            
+                    Color colorapp = c.GetRandomColor();
+                    int j = 0;
 
-                if((strSplit[2]).Equals(Xamarin.Essentials.Preferences.Get("friendly-name", " ")))
-                {
-                    colorapp = Color.FromHex(Xamarin.Essentials.Preferences.Get("Colore", "#000000"));
+                    if (!colorifiniti)
+                    {
 
-                    if(!colorByName.ContainsKey(Xamarin.Essentials.Preferences.Get("friendly-name", " ")))
+                        while ((colorByName.ContainsValue(colorapp) && j != cronologia.Length)||( colorapp == Color.FromHex(Xamarin.Essentials.Preferences.Get("Colore", "#000000"))))
+                        {
+                            j++;
+                            colorapp = c.GetRandomColor();
+                            if (j == cronologia.Length) colorifiniti = true;
+                        }
+                    }
+
+                    if(colorifiniti)
+
+                    {
+                        Random rnd = new Random();
+                        colorapp = Color.FromRgb(rnd.Next(256), rnd.Next(256), rnd.Next(256));
+                    }
+
+                    if((strSplit[2]).Equals(Xamarin.Essentials.Preferences.Get("friendly-name", " ")))
+                    {
+                        colorapp = Color.FromHex(Xamarin.Essentials.Preferences.Get("Colore", "#000000"));
+
+                        if(!colorByName.ContainsKey(Xamarin.Essentials.Preferences.Get("friendly-name", " ")))
+                        {
+                            colorByName.Add(strSplit[2], colorapp);
+                        }
+                   
+                    }
+
+                    if (!colorByName.ContainsKey(strSplit[2]))
                     {
                         colorByName.Add(strSplit[2], colorapp);
                     }
-                   
-                }
-
-                if (!colorByName.ContainsKey(strSplit[2]))
-                {
-                    colorByName.Add(strSplit[2], colorapp);
                 }
             }
         }
