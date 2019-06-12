@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Rg.Plugins.Popup.Extensions;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -104,9 +104,13 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup
                 var result = depositService.DepositAsync(Convert.ToDouble(Amount.Text));
                 if (result.Result.response.success)
                 {
-                    await PopupNavigation.Instance.PopAsync();
+                    await Navigation.PopPopupAsync();
                 }
                 else
+                {
+                    ErrorLabel.Text = "Errore";
+                }
+                if(result.Result == null)
                 {
                     ErrorLabel.Text = "Errore";
                 }
