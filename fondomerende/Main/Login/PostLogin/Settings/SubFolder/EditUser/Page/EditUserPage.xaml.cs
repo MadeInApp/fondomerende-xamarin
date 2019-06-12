@@ -11,10 +11,10 @@ using fondomerende.Main.Login.LoginPages;
 
 namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.Page
 {
-    public partial class EditUserPage : ContentPage
+    public partial class DepositViewCell : ContentPage
     {
         
-        public EditUserPage()
+        public DepositViewCell()
         {
             InitializeComponent();
 

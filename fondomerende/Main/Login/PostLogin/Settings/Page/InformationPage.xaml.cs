@@ -73,7 +73,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.Page
 
         private async void ChangeUserSettings_Tapped(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new EditUserPage());
+            await Navigation.PushAsync(new SubFolder.EditUser.Page.DepositViewCell());
         }
 
         private async void EditSnackViewCell_Tapped(object sender, EventArgs e)

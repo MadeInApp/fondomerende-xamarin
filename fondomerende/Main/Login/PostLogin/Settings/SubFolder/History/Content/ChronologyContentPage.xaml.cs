@@ -17,7 +17,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ChronologyContentPage : AnimationPage
     {
-        private double diametro = 40;
+        private double diametro = 60;
         private double larghezzaLinea = 3;
         private double altezzaLinea = 20;
 
