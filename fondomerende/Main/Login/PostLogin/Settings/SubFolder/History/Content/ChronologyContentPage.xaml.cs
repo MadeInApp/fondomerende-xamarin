@@ -27,7 +27,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
         Dictionary<string, double> sizeByName = new Dictionary<string, double>();
         Dictionary<string, string> dateByTime = new Dictionary<string, string>();
         Dictionary<string, string> mangione = new Dictionary<string, string>();
-
+        Dictionary<Color, bool> colorReserved = new Dictionary<Color, bool>();
         Dictionary<string, string> traduttore = new Dictionary<string, string>();
         
 
@@ -86,7 +86,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
                 Margin = 5,
                 FontSize = 14,
                 FontAttributes = FontAttributes.Bold,
-                TextColor = Color.FromHex(Xamarin.Essentials.Preferences.Get("Colore", "#000000")),
+                TextColor = (colorByName[mangione["mangione"]]),
                 HorizontalTextAlignment = TextAlignment.Center,
                 VerticalTextAlignment = TextAlignment.Center,
             };
@@ -276,6 +276,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
 
 
             ContentLayout.Children.Add(stackPrincipale);
+
         }
 
         public string First_letter(string app)        //Grafica

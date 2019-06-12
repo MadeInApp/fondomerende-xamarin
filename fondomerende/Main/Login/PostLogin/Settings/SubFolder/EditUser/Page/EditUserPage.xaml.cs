@@ -13,12 +13,15 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.Page
 {
     public partial class EditUserPage : ContentPage
     {
-        
+        string username = "";
+        string FriendlyName = "";
+        string password = "";
+
         public EditUserPage()
         {
             InitializeComponent();
-
-
+            usernameEntry.Placeholder = Preferences.Get("username", null) ;
+            friendlynameEntry.Placeholder = Preferences.Get("friendly-name", null);
             switch (Device.RuntimePlatform)                                                     //
             {                                                                                   //                                    
                                                                                                 //   Se il dispositivo è Android non mostra la Top Bar della Navigation Page,
@@ -35,12 +38,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.Page
 
         private async void ApplyChanges_Clicked_1(object sender, EventArgs e)
         {
-            string username = Preferences.Get("username", null);
-            string FriendlyName = Preferences.Get("friendly-name", null);
-            string password = Preferences.Get("password", null);
-
             EditUserServiceManager editUser = new EditUserServiceManager();
-
             if (usernameEntry.Text != null)
             {
                 username = usernameEntry.Text;
