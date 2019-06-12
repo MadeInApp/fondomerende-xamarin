@@ -24,6 +24,7 @@
     <None Remove="image\CheckBox_empty_32x32.png" />
     <None Remove="image\Chronology_icon_256x256.png" />
     <None Remove="image\close_icon_32x32.png" />
+    <None Remove="image\deposit_256x256.png" />
     <None Remove="image\Donut_icon_512x512.png" />
     <None Remove="image\Edit_Icon_32x32.png" />
     <None Remove="image\Edit_snack_icon_256x256.png" />
@@ -60,6 +61,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="image\BackGradientRosAr.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="image\deposit_256x256.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="image\list_256x256.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -174,6 +178,9 @@
     <EmbeddedResource Update="Main\Login\PostLogin\Settings\SubFolder\EditSnack\View\SnacksListSettingsViewCell.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Main\Login\PostLogin\Settings\SubFolder\EditUser\View\DepositViewCell.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Main\Login\PostLogin\Settings\SubFolder\History\Content\GradientColorPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -187,9 +194,6 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Main\Login\PostLogin\Settings\SubFolder\EditSnack\Page\EditSnackListPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Main\Login\PostLogin\Settings\SubFolder\EditUser\View\EditUserSettingsViewCell.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Main\Login\PostLogin\Settings\SubFolder\EditUser\View\EditUserViewCell.xaml">

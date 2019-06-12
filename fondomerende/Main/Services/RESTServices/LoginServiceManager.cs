@@ -17,11 +17,12 @@ namespace fondomerende.Main.Services.RESTServices
     {
         public async System.Threading.Tasks.Task<LoginDTO> LoginAsync(string username, string passwordToLogin, bool remember) //Servizio di Log In
         {
+            string data = "metticiquellochetipare";
             LoginDTO result = null;
             try
             {
                 result = await "http://192.168.0.175:8888/fondomerende/public/process-request.php"
-                    //.WithCookie("auth-key", "metticiquellochetipare")
+                    .WithCookie("auth-key", data)
                     .WithHeader("Content-Type", "application/x-www-form-urlencoded; param=value;charset=UTF-8")
                     .PostUrlEncodedAsync(new { commandName = "login", name = username, password = passwordToLogin })
                     .ReceiveJson<LoginDTO>();
@@ -34,6 +35,7 @@ namespace fondomerende.Main.Services.RESTServices
                     Preferences.Set("Logged", remember);
                     Preferences.Set("token", result.data.token);
                 }
+                return result;
             }
             catch (FlurlHttpTimeoutException ex)
             {
@@ -43,10 +45,7 @@ namespace fondomerende.Main.Services.RESTServices
             {
                 await App.Current.MainPage.DisplayAlert("Fondo Merende", "Errore Http!", "OK");
             }
-
-
-
-            return result;
+            return null;
         }
 
     }

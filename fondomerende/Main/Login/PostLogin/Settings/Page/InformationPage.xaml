@@ -34,10 +34,10 @@
                         Tapped="ChangeUserSettings_Tapped">
                     </local:EditUserViewCell>
 
-                    <local:EditUserSettingsViewCell                          
+                    <local:DepositViewCell                          
                         Tapped="ChangeUserSettings_Tapped" 
                         x:Name="ChangeUserSettings">
-                    </local:EditUserSettingsViewCell>
+                    </local:DepositViewCell>
 
                 </TableSection>
 

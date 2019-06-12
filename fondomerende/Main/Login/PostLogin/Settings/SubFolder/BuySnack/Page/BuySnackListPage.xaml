@@ -30,7 +30,6 @@
                 <Grid
                     HorizontalOptions="CenterAndExpand"
                     x:Name="GridView" 
-                    IsVisible="True"
                     ColumnSpacing="20">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" />

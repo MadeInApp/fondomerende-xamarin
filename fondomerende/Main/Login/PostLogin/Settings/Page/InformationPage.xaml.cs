@@ -10,6 +10,8 @@ using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.Page;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.Page;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page;
+using fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.Popup;
+using Rg.Plugins.Popup.Extensions;
 
 namespace fondomerende.Main.Login.PostLogin.Settings.Page
 {
@@ -81,7 +83,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.Page
 
         private async void AddSnackCell_Tapped(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new AddSnackPage());
+            await Navigation.PushPopupAsync(new AddSnackPopUpPage());
         }
 
         private async void ChronologyCell_Tapped(object sender, EventArgs e)
