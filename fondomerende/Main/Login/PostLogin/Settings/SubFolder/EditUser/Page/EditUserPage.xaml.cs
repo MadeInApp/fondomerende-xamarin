@@ -8,15 +8,29 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using fondomerende.Main.Services.RESTServices;
 using fondomerende.Main.Login.LoginPages;
+using Rg.Plugins.Popup.Services;
+using Rg.Plugins.Popup.Extensions;
+using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.Popup;
 
 namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.Page
 {
     public partial class EditUserPage : ContentPage
     {
-        string username = "";
-        string FriendlyName = "";
-        string password = "";
+        public static string username = "";
+        public static string FriendlyName = "";
+        public static string passwordNuova = "";
 
+        public string GetpasswordNuova()
+        {
+            return passwordNuova;
+        }
+
+        private void SetpasswordNuova(string value)
+        {
+            passwordNuova = value;
+        }
+
+        public static bool clicked = false;
         public EditUserPage()
         {
             InitializeComponent();
@@ -43,31 +57,55 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.Page
             {
                 username = usernameEntry.Text;
             }
+            else
+            {
+                await DisplayAlert("Fondo Merende", "username mancante", "Ok");
+            }
             if (friendlynameEntry.Text != null)
             {
                 FriendlyName = friendlynameEntry.Text;
             }
-            if (passwordEntry.Text != null)
-            {
-                password = passwordEntry.Text;
-            }
-            
-            //if (OldpasswordEntry.Text == Preferences.Get("password", null))
-            //{
-                var result = await editUser.EditUserAsync(FriendlyName, username, password);
-                  if (result.response.success == true)
-                    {
-                        await DisplayAlert("Fondo Merende", "Impostazioni Cambiate", "Ok");
-                        Preferences.Clear();
-                        App.Current.MainPage = new LoginPage();
-                  }
-            //}
             else
             {
-                await DisplayAlert("Fondo Merende", "Password Errata", "Ok");
-            }          
+                await DisplayAlert("Fondo Merende", "nome mancante", "Ok");
+            }
+            if (passwordEntry.Text != null)
+            {
+                SetpasswordNuova(passwordEntry.Text);
+            }
+            else
+            {
+                await DisplayAlert("Fondo Merende", "password mancante", "Ok");
+            }
+            if (usernameEntry.Text != null && friendlynameEntry.Text != null && passwordEntry.Text != null)
+            {
+                Navigation.PushPopupAsync(new EditUserPopUpPage());
+            }
+
+            /*
+            else
+            {
+                var risp = await editUser.EditUserAsync(username, FriendlyName, passwordNuova);
+                if (risp.response.success == true)
+                {
+
+                    await DisplayAlert("Fondo Merende", "Impostazioni Cambiate", "Ok");
+                    Xamarin.Essentials.Preferences.Clear();
+                    Application.Current.MainPage = new LoginPage();
+
+                }
+                else
+                {
+                    await DisplayAlert("Fondo Merende", "Password errata", "Ok");
+                }
+
+            }  
         }
-        private async void CancelButton_Clicked(object sender, EventArgs e) => await Navigation.PopAsync();
-        
+        private async void Discard_Clicked(object sender, EventArgs e)
+        {
+            await PopupNavigation.Instance.PopAsync();
+
+        }*/
+        }
     }
 }
