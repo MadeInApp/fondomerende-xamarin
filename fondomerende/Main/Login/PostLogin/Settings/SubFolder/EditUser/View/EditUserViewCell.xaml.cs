@@ -39,6 +39,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View
                 firstLetter = (res.Substring(0, 1));
             }
             inizialeLabel.Text = firstLetter;
+            inizialeLabel_iOS.Text = firstLetter;
         }
 
         public string InformationFriendlyName() => Preferences.Get("friendly-name", "");
