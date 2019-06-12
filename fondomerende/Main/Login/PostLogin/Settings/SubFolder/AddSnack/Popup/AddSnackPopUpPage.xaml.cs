@@ -147,7 +147,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.Popup
 
         private async void Discard_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PopToRootAsync();
+            await PopupNavigation.Instance.PopAsync();
         }
     }
 }

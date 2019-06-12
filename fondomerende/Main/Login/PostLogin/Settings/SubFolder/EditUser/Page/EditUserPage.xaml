@@ -5,7 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:local="clr-namespace:fondomerende.Main.Utilities"
              mc:Ignorable="d"
-             x:Class="fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.Page.DepositViewCell"
+             x:Class="fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.Page.EditUserPage"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              ios:Page.UseSafeArea="True"
              Title="{OnPlatform iOS='Modifica Utente'}">
