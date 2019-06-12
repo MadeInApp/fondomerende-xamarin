@@ -13,18 +13,16 @@
             BackgroundColor="{OnPlatform Android=WhiteSmoke}"
             Orientation="Horizontal"
             HorizontalOptions="FillAndExpand">
-            <Frame
+            <local:RoundedCornerView
                 x:Name="Cerchio"
-                HasShadow="true"
                 BorderColor="Black"
                 HeightRequest="64" 
                 WidthRequest="64" 
-                CornerRadius="32.5"
+                RoundedCornerRadius="32.5"
                 HorizontalOptions="Start" 
                 VerticalOptions="Center" 
                 Margin="5" 
                 Padding="0" 
-                BackgroundColor="Gray"
                 IsEnabled="False">
 
                 <StackLayout 
@@ -40,7 +38,7 @@
                         VerticalTextAlignment="Center" />
 
                 </StackLayout>
-            </Frame>
+            </local:RoundedCornerView>
 
             <StackLayout  
                 HorizontalOptions="Start"

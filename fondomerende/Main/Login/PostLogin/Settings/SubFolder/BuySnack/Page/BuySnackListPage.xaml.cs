@@ -136,7 +136,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page
         {
             if(ScrollView.IsVisible == true)
             {
-                Swap.BackgroundColor = Color.Orange;
+                Swap.BackgroundColor = Color.OrangeRed;
                 ScrollView.IsVisible = false;
                 ListView.IsVisible = true;
             }
