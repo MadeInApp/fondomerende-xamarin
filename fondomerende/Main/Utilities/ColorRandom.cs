@@ -30,7 +30,8 @@ namespace fondomerende.Main.Utilities
             Color.FromHex("#9B212A"), //rosso
             Color.FromHex("#C7B299"), //grigiochiaro
             Color.FromHex("#824E84"), //viola
-            Color.FromHex("#EA5454") // rosso sbiadito
+            Color.FromHex("#EA5454"), //rosso sbiadito
+            Color.FromHex("#000000")  //nero cattivo
         };
 
         public Color GetRandomColorPreferences()
