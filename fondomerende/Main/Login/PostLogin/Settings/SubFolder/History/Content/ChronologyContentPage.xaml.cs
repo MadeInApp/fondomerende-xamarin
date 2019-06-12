@@ -176,15 +176,17 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
 
             diametroMod = diametro + (diametro * sizeByName[strSplit[2]]);
 
-            cerchio.Children.Add(stackLabel);
-            stackLabel.Children.Add(firstLetter);
-
             switch (Device.RuntimePlatform)             //Se il dispositivo è Android non mostra la Top Bar della Navigation Page, se è iOS la mostra
             {
                 default:
+                    stackLabel.Children.Add(firstLetter);
+                    cerchioiOS.Children.Add(stackLabel);
                     stackPrincipale.Children.Add(cerchioiOS);
+
                     break;
                 case Device.Android:
+                    stackLabel.Children.Add(firstLetter);
+                    cerchio.Children.Add(stackLabel);
                     stackPrincipale.Children.Add(cerchio);
                     break;
 
