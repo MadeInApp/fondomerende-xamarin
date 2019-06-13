@@ -6,7 +6,6 @@ using fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content;
 using FormsControls.Base;
 using fondomerende.Main.Utilities;
 using Plugin.CrossPlatformTintedImage.Abstractions;
-using UIKit;
 
 namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.View
 {
@@ -22,25 +21,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.View
         }
         public void Tint()
         {
-            switch (Device.RuntimePlatform)                                                    
-            {                                                                                                                    
-               case Device.Android:
-                    ChronologyIcon.TintColor = Color.FromHex(Preferences.Get("Colore", "#000000"));
-                    break;                                                                      
-                                                                                                
-                default:
-                    ColorRandom r = new ColorRandom();
-                    Color app = Color.FromHex(Preferences.Get("Colore", "#000000"));
-                    ChronologyIcon.TintColor = UIColor.FromRGB;
-                    break;                                                                      
-            }
             ChronologyIcon.TintColor = Color.FromHex(Preferences.Get("Colore", "#000000"));
-
-            EmbeddedImage e = new EmbeddedImage();
-            e.Resource = "fondomerende.image.History.png";
-
-            var image = e.Resource;
-            var tintable = UIColor.White;
         }
 
         public void InizializeImage()
