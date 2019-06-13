@@ -25,13 +25,15 @@
     <Graph:RoundedCornerView 
         RoundedCornerRadius="20" 
         HeightRequest="{OnPlatform Android=50, iOS=50}"
-        WidthRequest="{OnPlatform Android=80, iOS=200}"
-        Margin="30,310,30,180"
+        WidthRequest="{OnPlatform Android=200, iOS=200}"
+        Margin="30,180,30,180"
          >
 
         <StackLayout 
             BackgroundColor="White">
-            
+            <Label HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand" Text="Fondo Merende" FontAttributes="Bold">
+            </Label>
+
             <StackLayout 
                 Orientation="Horizontal" 
                 VerticalOptions="StartAndExpand" 
@@ -42,8 +44,10 @@
                 <Label 
                     HorizontalOptions="CenterAndExpand"
                     VerticalOptions="StartAndExpand"
-                    Margin="5,10,5,10"
-                    Text="Quanti Snack vuoi acquistare?">
+                    Margin="5,5,5,-10"
+                    Text="Quanti Snack vuoi acquistare?"
+                    FontSize="18">
+                    
                 </Label>
             
                 
