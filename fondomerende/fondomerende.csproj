@@ -17,8 +17,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="image\add-snack-icon.png" />
     <None Remove="image\add_icon_256x256.png" />
+    <None Remove="image\add_snack_icon.png" />
     <None Remove="image\BackGradientArRos.jpg" />
     <None Remove="image\BackGradientRosAr.jpg" />
     <None Remove="image\CheckBox_Checked_32x32.png" />
@@ -58,9 +58,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="image\add-snack-icon.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
     <EmbeddedResource Include="image\add_icon_256x256.png" />
     <EmbeddedResource Include="image\BackGradientArRos.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -129,6 +126,9 @@
     <EmbeddedResource Include="image\settings_icon_64x64.png" />
     <EmbeddedResource Include="image\shopping_bag_256x256.png" />
     <EmbeddedResource Include="image\shop_icon_256x256.png" />
+    <EmbeddedResource Include="image\add_snack_icon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="image\vm_icon_51x51.png" />
     <EmbeddedResource Include="image\vm_icon_64x64.png" />
     <EmbeddedResource Include="image\x.png">
