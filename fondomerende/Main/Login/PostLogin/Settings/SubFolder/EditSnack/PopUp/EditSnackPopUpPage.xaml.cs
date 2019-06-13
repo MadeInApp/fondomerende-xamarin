@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using fondomerende.Main.Utilities;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -15,6 +15,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.PopUp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class EditSnackPopUpPage : Rg.Plugins.Popup.Pages.PopupPage
     {
+        EmbeddedImage img = new EmbeddedImage();
         SnackServiceManager snackService = new SnackServiceManager();
         int snackID = EditSnackListPage.SelectedSnackID;
         bool Swapped = true;
@@ -136,10 +137,11 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.PopUp
 
         private void Swap_Clicked(object sender, EventArgs e)
         {
-
             if (Swapped == true)
             {
-                Swap.BackgroundColor = Color.Orange;
+                
+                img.Resource = "fondomerende.image.fill_clear_256x256.png";
+                Swap.Source = img;
                 NomeSnack.Placeholder = null;
                 PrezzoSnack.Placeholder = null;
                 SnackPerBox.Placeholder = null;
@@ -168,8 +170,10 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.PopUp
             }
             else
             {
-                
-                Swap.BackgroundColor = Color.Transparent;
+
+                EmbeddedImage img = new EmbeddedImage();
+                img.Resource = "fondomerende.image.fill_full_256x256.png";
+                Swap.Source = img.Resource;
                 NomeSnack.Text = null;
                 PrezzoSnack.Text = null;
                 SnackPerBox.Text = null;
