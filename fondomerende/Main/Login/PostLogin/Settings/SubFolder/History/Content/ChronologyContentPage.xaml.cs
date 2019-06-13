@@ -239,7 +239,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
             var gradiente = new GradientColorStack
             {
                 StartColor = colorByName[strSplit[2]],
-                EndColor = LastColor(posizione),
+                EndColor = NextColor(posizione),
             };
 
             gradiente.Children.Add(app);
@@ -263,17 +263,30 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
             return firstLetter;
         }
 
-        public Color LastColor(int posizione)           //appoggio
+        private Color NextColor(int posizione)           //appoggio
         {
             string[] strString = cronologia[posizione + 1].Split();
 
             return colorByName[strString[2]];
         }
 
+        private Color LastColor(int posizione)
+        {
+            if(posizione == 0)
+            {
+
+            }
+            else
+            { 
+                string[] strString = cronologia[posizione - 1].Split();
+                return colorByName[strString[2]];
+            }
+            return Color.FromHex("#000001");
+        }
+
 
         public void ColorBack()
         {
-            bool colorifiniti = false;
             ColorRandom c = new ColorRandom();
 
             for (int i = 0; i < cronologia.Length; i++)
@@ -283,35 +296,22 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
                 if (!colorByName.ContainsKey(strSplit[2]))
                 {
                     Color colorapp = c.GetRandomColor();
-                    int j = 0;
 
-                    if (!colorifiniti)
+                    while (colorapp == Color.FromHex(Xamarin.Essentials.Preferences.Get("Colore", "#000002")) || colorapp == LastColor(i))
                     {
-
-                        while ((colorByName.ContainsValue(colorapp) && j != cronologia.Length)||( colorapp == Color.FromHex(Xamarin.Essentials.Preferences.Get("Colore", "#000000"))))
-                        {
-                            j++;
-                            colorapp = c.GetRandomColor();
-                            if (j == cronologia.Length) colorifiniti = true;
-                        }
+                        colorapp = c.GetRandomColor();
                     }
 
-                    if(colorifiniti)
 
+                    if ((strSplit[2]).Equals(Xamarin.Essentials.Preferences.Get("friendly-name", " ")))
                     {
-                        Random rnd = new Random();
-                        colorapp = Color.FromRgb(rnd.Next(256), rnd.Next(256), rnd.Next(256));
-                    }
+                        colorapp = Color.FromHex(Xamarin.Essentials.Preferences.Get("Colore", "#000002"));
 
-                    if((strSplit[2]).Equals(Xamarin.Essentials.Preferences.Get("friendly-name", " ")))
-                    {
-                        colorapp = Color.FromHex(Xamarin.Essentials.Preferences.Get("Colore", "#000000"));
-
-                        if(!colorByName.ContainsKey(Xamarin.Essentials.Preferences.Get("friendly-name", " ")))
+                        if (!colorByName.ContainsKey(Xamarin.Essentials.Preferences.Get("friendly-name", " ")))
                         {
                             colorByName.Add(strSplit[2], colorapp);
                         }
-                   
+
                     }
 
                     if (!colorByName.ContainsKey(strSplit[2]))
@@ -416,13 +416,25 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
                     }
                     else
                     {
-                        multipler += ris.TotalMinutes*0.03;
+                        if (ris.TotalMinutes < 30)
+                            multipler += ris.TotalMinutes * 0.09;
+                        else
+                        {
+                            multipler += 0.09*30;
+                            multipler += (ris.TotalMinutes-30) * 0.05;
+                        }
                     }
                     
                 }
                 else
-                {                  
-                    multipler += ris.TotalHours*1.8;
+                {
+                    if (ris.TotalHours < 12)
+                        multipler += ris.TotalHours * 1.8;
+                    else
+                    {
+                        multipler += 1.8 * 12;
+                        multipler += (ris.TotalHours-12) * 1.5;
+                    }
                 }
                 
             }
