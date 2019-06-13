@@ -108,22 +108,28 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.Popup
         {
             string msgError = "Invalid name: " + EditUserPage.FriendlyName + " is already present in database users table at name column.";
             string oldPAssword = Preferences.Get("password", null);
-            if(oldPAssword == Password.Text)
+            if(oldPAssword.Equals(Password.Text))
             {
-                var risp = await editUser.EditUserAsync(EditUserPage.username, EditUserPage.FriendlyName, EditUserPage.passwordNuova);
+                var risp = await editUser.EditUserAsync( EditUserPage.FriendlyName, EditUserPage.username, EditUserPage.passwordNuova);
                 if (risp.response.success == true)
                 {
+                    var ans = await App.Current.MainPage.DisplayAlert("Fondo Merende", "Vuoi davvero cambiare account?", "Si", "No");
+                    await PopupNavigation.Instance.PopAsync();
+                    if (ans)
+                    {
+                        LogoutServiceManager logoutService = new LogoutServiceManager();
+                        var response = await logoutService.LogoutAsync();
+                        if (response.response.success == true)
+                        {
+                            App.Current.MainPage = new LoginPage();
+                            Preferences.Clear();
+                        }
+                        else
+                        {
+                            await App.Current.MainPage.DisplayAlert("Fondo Merende", "Guarda, sta cosa non ha senso", "OK");
+                        }
+                    }
 
-                    await DisplayAlert("Fondo Merende", "Impostazioni Cambiate", "Ok");
-                   
-                  //  var rispLogout = logoutService.LogoutAsync();
-               /*     if(rispLogout.Result.response.success)
-                   {
-                        await Navigation.PopPopupAsync();
-                        Xamarin.Essentials.Preferences.Clear();
-                        Application.Current.MainPage = new LoginPage();
-                        
-                    } */
 
                 }
                 else if (risp.response.message == msgError)
