@@ -64,7 +64,7 @@ namespace fondomerende.Main.Utilities
 
         }
 
-        private static string GetHexString(Color color)
+        public static string GetHexString(Color color)
         {
             var red = (int)(color.R * 255);
             var green = (int)(color.G * 255);
