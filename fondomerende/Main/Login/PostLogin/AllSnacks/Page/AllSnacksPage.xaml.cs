@@ -10,6 +10,7 @@ using Xamarin.Forms.Xaml;
 using fondomerende.Main.Services.Models;
 using fondomerende.Main.Manager;
 using Rg.Plugins.Popup.Pages;
+using fondomerende.Main.Utilities;
 using Rg.Plugins.Popup.Extensions;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup;
 
@@ -65,71 +66,63 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
         {
             var result = await snackServiceManager.GetSnacksAsync();
             ListView.ItemsSource = result.data.snacks;
-            int z = 0;
             if (!Loaded) //!WORKAROUND!   in questo modo si evita il crash ma la griglia non si aggiorna, urge investigazione sul vero problema
             {
                 for (int i = 0; i <= result.data.snacks.Count; i++)
                 {
-                    if (i % 2 == 0)
+                    int box = 100;
+                    var app = new StackLayout
                     {
-                        z = i;
-                        var StackLayout_z = new StackLayout { Spacing = 10, HeightRequest = 100 };
-                        var imageButton_z = new ImageButton
-                        {
-                            Margin = new Thickness(0, 20, 0, 20),
-                            Scale = 2,
-                            Source = "http://192.168.0.175:8888/fondomerende/public/getphoto.php?name=" + result.data.snacks[z].friendly_name.Replace(" ", "&nbsp;") + "_500x500"
-                        };
+                        Orientation = StackOrientation.Vertical
+                    };
 
-                        var label_z = new Label
-                        {
-                            HorizontalTextAlignment = TextAlignment.Center,
-                            Text = result.data.snacks[z].friendly_name
-                        };
-
-
-                        switch (Device.RuntimePlatform)
-                        {
-                            case Device.Android:
-                                imageButton_z.BackgroundColor = Color.Transparent;
-                                break;
-                        }
-                        imageButton_z.Clicked += OnImageButtonClicked;
-                        StackLayout_z.Children.Add(imageButton_z);
-                        StackLayout_z.Children.Add(label_z);
-                        Column0.Children.Add(StackLayout_z);
-
-                    }
-                    else
+                    var StackLayout = new StackLayout
                     {
-                        var StackLayout_i = new StackLayout { Spacing = 10, HeightRequest = 100 };
-                        var imageButton_i = new ImageButton
-                        {
-                            ScaleY = 1,
-                            ScaleX = 1,
-                            Margin = new Thickness(0, 20, 0, 20),
-                            Scale = 2,
-                            Source = "http://192.168.0.175:8888/fondomerende/public/getphoto.php?name=" + result.data.snacks[i].friendly_name.Replace(" ", "")
-                        };
+                        Spacing = 10,
+                        BackgroundColor = Color.Red,
+                    };
 
-                        switch (Device.RuntimePlatform)
-                        {
-                            case Device.Android:
-                                imageButton_i.BackgroundColor = Color.Transparent;
-                                break;
-                        }
+                    var imageButton = new ImageButton
+                    {
+                        Margin = new Thickness(0, 20, 0, 20),
+                        HorizontalOptions = LayoutOptions.Center,
+                        VerticalOptions = LayoutOptions.Center,
+                        Scale = 2,
+                        Source = "http://192.168.0.175:8888/fondomerende/public/getphoto.php?name=" + result.data.snacks[i].friendly_name.Replace(" ", "&nbsp;") + "_500x500"
+                    };
 
-                        var label_i = new Label
-                        {
-                            HorizontalTextAlignment = TextAlignment.Center,
-                            Text = result.data.snacks[i].friendly_name
-                        };
+                    var BordiSmussatiAndroid = new RoundedCornerView
+                    {
+                        HeightRequest = box,
+                        WidthRequest = box,
+                        RoundedCornerRadius = box / 2,
+                        BorderColor = Color.Black,
+                        BorderWidth = 3,
+                    };
 
-                        imageButton_i.Clicked += OnImageButtonClicked;
-                        StackLayout_i.Children.Add(imageButton_i);
-                        StackLayout_i.Children.Add(label_i);
-                        Column1.Children.Add(StackLayout_i);
+                    var label = new Label
+                    {
+                        HorizontalTextAlignment = TextAlignment.Center,
+                        Text = result.data.snacks[i].friendly_name
+                    };
+
+                    switch (Device.RuntimePlatform)            
+                    {
+                        case Device.Android:
+                            imageButton.BackgroundColor = Color.Transparent;
+                        break;
                     }
+
+
+                    imageButton.Clicked += OnImageButtonClicked;
+                    StackLayout.Children.Add(imageButton);
+
+                    BordiSmussatiAndroid.Children.Add(StackLayout);
+                    app.Children.Add(BordiSmussatiAndroid);
+                    app.Children.Add(label);
+
+                    if (i % 2 == 0) Column0.Children.Add(BordiSmussatiAndroid);
+                    else Column1.Children.Add(BordiSmussatiAndroid);
                 }
             }
         }

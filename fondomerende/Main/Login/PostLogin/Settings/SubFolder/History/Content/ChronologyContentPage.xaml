@@ -21,10 +21,10 @@
             Margin="0,0,0,10">
 
             <StackLayout
-                    x:Name="ContentLayout"
-                    Spacing="0"
-                    Margin="10"
-                    Orientation="Vertical">
+                x:Name="ContentLayout"
+                Spacing="0"
+                Margin="10"
+                Orientation="Vertical">
 
             </StackLayout>
 
