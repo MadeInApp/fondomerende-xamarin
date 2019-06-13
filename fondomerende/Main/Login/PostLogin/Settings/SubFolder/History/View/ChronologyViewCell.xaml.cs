@@ -31,7 +31,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.View
                 default:
                     ColorRandom r = new ColorRandom();
                     Color app = Color.FromHex(Preferences.Get("Colore", "#000000"));
-                    ChronologyIcon.TintColor = UIColor.FromRGB;
+                    //ChronologyIcon.TintColor = UIColor.FromRGB;
                     break;                                                                      
             }
             ChronologyIcon.TintColor = Color.FromHex(Preferences.Get("Colore", "#000000"));
