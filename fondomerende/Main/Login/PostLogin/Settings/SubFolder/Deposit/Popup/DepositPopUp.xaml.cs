@@ -101,23 +101,23 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup
             }
             else if(float.Parse(Amount.Text) > 0)
             {
-                var result = depositService.DepositAsync(float.Parse(Amount.Text));
-                if (result.Result.response.success)
+                var resultDep = await depositService.DepositAsync(Convert.ToDecimal(Amount.Text));
+                if (resultDep.response.success)
                 {
-                    await Navigation.PopPopupAsync();
+                    Navigation.PopPopupAsync();
                 }
                 else
                 {
-                    ErrorLabel.Text = "Errore";
+                    await DisplayAlert("Fondo Merende", "Errore", "Ok");
                 }
-                if(result == null)
+                if(resultDep == null)
                 {
                     ErrorLabel.Text = "Errore";
                 }
             }
             else
             {
-                ErrorLabel.Text = "L'ammontare non può essere minore di 1";
+                await DisplayAlert("Fondo Merende","L'ammontare non può essere minore di 1", "Ok");
             }
         }
 
