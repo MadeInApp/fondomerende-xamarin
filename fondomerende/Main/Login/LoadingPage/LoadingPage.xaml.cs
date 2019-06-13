@@ -45,6 +45,7 @@ namespace fondomerende.PostLoginPages
 
             if (resultLogin.response.success)
             {
+                await userService.GetUserData();
                 App.Current.MainPage = new MainPage();
             }
             else

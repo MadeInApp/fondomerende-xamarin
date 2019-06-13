@@ -31,6 +31,8 @@
     <None Remove="image\Edit_snack_icon_256x256.png" />
     <None Remove="image\Edit_snack_icon_32x32.png" />
     <None Remove="image\Fill_256x256.png" />
+    <None Remove="image\fill_clear_256x256.png" />
+    <None Remove="image\fill_full_256x256.png" />
     <None Remove="image\Fondo_Merende_logo.png" />
     <None Remove="image\History.png" />
     <None Remove="image\list_256x256.png" />
@@ -70,6 +72,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="image\Fill_256x256.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="image\fill_clear_256x256.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="image\fill_full_256x256.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="image\History.png">

@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using fondomerende.Main.Utilities;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -15,6 +15,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.PopUp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class EditSnackPopUpPage : Rg.Plugins.Popup.Pages.PopupPage
     {
+        EmbeddedImage img = new EmbeddedImage();
         SnackServiceManager snackService = new SnackServiceManager();
         int snackID = EditSnackListPage.SelectedSnackID;
         bool Swapped = true;
@@ -134,21 +135,15 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.PopUp
             await Navigation.PopPopupAsync();
         }
 
-        private void Swap_Clicked(object sender, EventArgs e)
+        private async void Swap_Clicked(object sender, EventArgs e)
         {
-
             if (Swapped == true)
             {
-                Swap.BackgroundColor = Color.Orange;
-                idSnack.Placeholder = null;
+                Swap.Source = ImageSource.FromResource("fondomerende.image.fill_clear_256x256.png");
                 NomeSnack.Placeholder = null;
                 PrezzoSnack.Placeholder = null;
                 SnackPerBox.Placeholder = null;
                 ExpInDays.Placeholder = null;
-                if(idSnack.Text == null)
-                {
-                    idSnack.Text = Convert.ToString(EditSnackListPage.SelectedSnackID);
-                }
                 if(NomeSnack.Text == null)
                 {
                     NomeSnack.Text = EditSnackListPage.SelectedSnackName;
@@ -173,18 +168,17 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.PopUp
             }
             else
             {
-                
-                Swap.BackgroundColor = Color.Transparent;
-                idSnack.Text = null;
+                Swap.Source = ImageSource.FromResource("fondomerende.image.fill_full_256x256.png");
                 NomeSnack.Text = null;
                 PrezzoSnack.Text = null;
                 SnackPerBox.Text = null;
                 ExpInDays.Text = null;
-                idSnack.Placeholder = Convert.ToString(EditSnackListPage.SelectedSnackID);
+                Qta.Text = null;
                 NomeSnack.Placeholder = EditSnackListPage.SelectedSnackName;
                 PrezzoSnack.Placeholder = Convert.ToString(EditSnackListPage.SelectedSnackPrice);
                 SnackPerBox.Placeholder = Convert.ToString(EditSnackListPage.SelectedSnackPerBox);
                 ExpInDays.Placeholder = Convert.ToString(EditSnackListPage.SelectedSnackExpiration);
+                Qta.Placeholder = Convert.ToString(Quantity);
                 Swapped = true;
             }
         }
