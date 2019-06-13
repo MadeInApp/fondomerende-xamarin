@@ -24,7 +24,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.Popup
         SnackServiceManager snackService = new SnackServiceManager();
         private static bool click = false;
 
-        
+
 
         public EditUserPopUpPage()
         {
