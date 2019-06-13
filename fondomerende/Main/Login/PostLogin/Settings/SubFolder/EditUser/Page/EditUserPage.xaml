@@ -29,13 +29,22 @@
                 HorizontalOptions="StartAndExpand" 
                 Margin="10,20,0,30" 
                 WidthRequest="200"
-                x:Name="usernameEntry"/>
+                x:Name="usernameEntry"
+                IsSpellCheckEnabled="False"
+                IsTextPredictionEnabled="False"
+                Keyboard="Plain"
+                />
 
             <local:LineEntry 
                 HorizontalOptions="StartAndExpand" 
                 x:Name="friendlynameEntry" 
                 WidthRequest="200"
-                Margin="10,20,100,30"/>
+                Margin="10,20,100,30"
+                IsSpellCheckEnabled="False"
+                IsTextPredictionEnabled="False"
+                Keyboard="Plain"
+                
+                />
 
             <local:LineEntry 
                 HorizontalOptions="StartAndExpand" 

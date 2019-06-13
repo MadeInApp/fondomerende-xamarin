@@ -22,7 +22,7 @@ namespace fondomerende.Main.Utilities
              
         Color[] color = new Color[] 
         {
-            Color.FromHex("#999999"),
+            Color.FromHex("#0898e2"), //celestino
             //Color.FromHex("#E01F25"), //rosso bellino
             Color.FromHex("#FFBF18"),
             Color.FromHex("#38B54A"), //verde
@@ -31,7 +31,8 @@ namespace fondomerende.Main.Utilities
             Color.FromHex("#C7B299"), //grigiochiaro
             Color.FromHex("#824E84"), //viola
             Color.FromHex("#EA5454"), //rosso sbiadito
-            Color.FromHex("#000000")  //nero cattivo
+            Color.FromHex("#000000"),  //nero cattivo
+            Color.FromHex("#911856")
         };
 
         public Color GetRandomColorPreferences()
