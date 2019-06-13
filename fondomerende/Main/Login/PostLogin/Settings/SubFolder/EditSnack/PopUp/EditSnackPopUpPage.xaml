@@ -33,7 +33,7 @@
                 FontAttributes="Bold"/>
 
             <ImageButton 
-                Source="{local:EmbeddedImage Resource=fondomerende.image.Fill_256x256.png}" 
+                Source="{local:EmbeddedImage Resource=fondomerende.image.fill_full_256x256.png}" 
                 x:Name="Swap"
                 CornerRadius="20"
                 Scale="0.3"
