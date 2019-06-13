@@ -110,10 +110,11 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.Popup
             string oldPAssword = Preferences.Get("password", null);
             if(oldPAssword.Equals(Password.Text))
             {
+                var ans = await App.Current.MainPage.DisplayAlert("Fondo Merende", "Vuoi davvero cambiare account?", "Si", "No");
                 var risp = await editUser.EditUserAsync( EditUserPage.FriendlyName, EditUserPage.username, EditUserPage.passwordNuova);
                 if (risp.response.success == true)
                 {
-                    var ans = await App.Current.MainPage.DisplayAlert("Fondo Merende", "Vuoi davvero cambiare account?", "Si", "No");
+                    
                     await PopupNavigation.Instance.PopAsync();
                     if (ans)
                     {
@@ -132,7 +133,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.Popup
 
 
                 }
-                else if (risp.response.message == msgError)
+                else if (risp.response.message != null)
                 {
                     await DisplayAlert("Fondo Merende", "il friendly name " + EditUserPage.FriendlyName + " è già utilizzato", "Ok");
                     await Navigation.PopPopupAsync();
