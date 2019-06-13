@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
+using Rg.Plugins.Popup.Extensions;
 using fondomerende.Main.Services.Models;
 using Xamarin.Forms.Xaml;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser;
@@ -18,11 +19,12 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.Popup
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class EditUserPopUpPage : Rg.Plugins.Popup.Pages.PopupPage
     {
+        LogoutServiceManager logoutService = new LogoutServiceManager();
         EditUserServiceManager editUser = new EditUserServiceManager();
         SnackServiceManager snackService = new SnackServiceManager();
         private static bool click = false;
 
-        
+
 
         public EditUserPopUpPage()
         {
@@ -104,20 +106,39 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.Popup
 
         private async void Apply_Clicked(object sender, EventArgs e)
         {
-            
+            string msgError = "Invalid name: " + EditUserPage.FriendlyName + " is already present in database users table at name column.";
             string oldPAssword = Preferences.Get("password", null);
-            if(oldPAssword == newPassword.Text)
+            if (oldPAssword.Equals(Password.Text))
             {
-                var risp = await editUser.EditUserAsync(EditUserPage.username, EditUserPage.FriendlyName, EditUserPage.passwordNuova);
+                var ans = await App.Current.MainPage.DisplayAlert("Fondo Merende", "Vuoi davvero cambiare account?", "Si", "No");
+                var risp = await editUser.EditUserAsync(EditUserPage.FriendlyName, EditUserPage.username, EditUserPage.passwordNuova);
                 if (risp.response.success == true)
                 {
 
-                    await DisplayAlert("Fondo Merende", "Impostazioni Cambiate", "Ok");
-                    Xamarin.Essentials.Preferences.Clear();
-                    Application.Current.MainPage = new LoginPage();
+                    await PopupNavigation.Instance.PopAsync();
+                    if (ans)
+                    {
+                        LogoutServiceManager logoutService = new LogoutServiceManager();
+                        var response = await logoutService.LogoutAsync();
+                        if (response.response.success == true)
+                        {
+                            App.Current.MainPage = new LoginPage();
+                            Preferences.Clear();
+                        }
+                        else
+                        {
+                            await App.Current.MainPage.DisplayAlert("Fondo Merende", "Guarda, sta cosa non ha senso", "OK");
+                        }
+                    }
+
 
                 }
-                
+                else if (risp.response.message != null)
+                {
+                    await DisplayAlert("Fondo Merende", "il friendly name " + EditUserPage.FriendlyName + " è già utilizzato", "Ok");
+                    await Navigation.PopPopupAsync();
+                }
+
             }
             else
             {

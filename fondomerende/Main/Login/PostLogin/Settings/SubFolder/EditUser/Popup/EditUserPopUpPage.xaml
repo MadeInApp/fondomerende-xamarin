@@ -10,10 +10,10 @@
     xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
     x:Class="fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.Popup.EditUserPopUpPage"
     HasKeyboardOffset="False">
-    
-    
-    
-    
+
+
+
+
     <pages:PopupPage.Animation>
         <animations:ScaleAnimation 
           PositionIn="Center"
@@ -29,37 +29,34 @@
     <!--You can use any elements here which are extended from Xamarin.Forms.View-->
     <local:RoundedCornerView 
         RoundedCornerRadius="20" 
-        HeightRequest="{OnPlatform Android=50, iOS=100}"
-        WidthRequest="300"
-        Margin="10,40,10,40">
+        Margin="30,250,30,250">
 
         <StackLayout 
             BackgroundColor="White">
 
             <StackLayout 
-                Orientation="Horizontal" 
                 VerticalOptions="StartAndExpand" 
                 HorizontalOptions="CenterAndExpand" 
                 Margin="0,10,0,0"
                 BackgroundColor="White">
 
                 <Label 
-                    Text="Inserire la nuova password"
+                    Text="Inserire la Password per confermare"
                     VerticalOptions="StartAndExpand"
                     HorizontalOptions="CenterAndExpand">
                 </Label>
 
                 <local:LineEntry 
                     VerticalOptions="CenterAndExpand"
-                    WidthRequest="150" 
-                    x:Name="newPassword" 
+                    WidthRequest="200" 
+                    x:Name="Password" 
                     IsPassword="true"
                     Keyboard="Default">
                 </local:LineEntry>
 
             </StackLayout>
 
-            
+
 
             <StackLayout 
                 Orientation="Horizontal" 

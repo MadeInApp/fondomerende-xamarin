@@ -71,7 +71,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.Page
             }
             if (passwordEntry.Text != null)
             {
-                SetpasswordNuova(passwordEntry.Text);
+                passwordNuova = passwordEntry.Text;
             }
             else
             {
@@ -81,31 +81,6 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.Page
             {
                 Navigation.PushPopupAsync(new EditUserPopUpPage());
             }
-
-            /*
-            else
-            {
-                var risp = await editUser.EditUserAsync(username, FriendlyName, passwordNuova);
-                if (risp.response.success == true)
-                {
-
-                    await DisplayAlert("Fondo Merende", "Impostazioni Cambiate", "Ok");
-                    Xamarin.Essentials.Preferences.Clear();
-                    Application.Current.MainPage = new LoginPage();
-
-                }
-                else
-                {
-                    await DisplayAlert("Fondo Merende", "Password errata", "Ok");
-                }
-
-            }  
-        }
-        private async void Discard_Clicked(object sender, EventArgs e)
-        {
-            await PopupNavigation.Instance.PopAsync();
-
-        }*/
         }
     }
 }
