@@ -13,7 +13,8 @@
             Orientation="Horizontal" 
             VerticalOptions="Center"
             BackgroundColor="{OnPlatform Android= WhiteSmoke}">
-            <Grid>
+            <Grid
+                x:Name="Griglia">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
@@ -31,7 +32,8 @@
                     VerticalOptions="Center" 
                     HorizontalOptions="Center" 
                     Aspect="AspectFit"
-                    Source="{local:EmbeddedImage Resource=fondomerende.image.History.png}">
+                    Source="{local:EmbeddedImage Resource=fondomerende.image.History.png}"
+                    TintColor="Blue">
                 </controls:TintedImage>
                 
                 <!--<Image

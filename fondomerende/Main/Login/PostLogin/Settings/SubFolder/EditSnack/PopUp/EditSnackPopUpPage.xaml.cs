@@ -123,7 +123,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.PopUp
         private async void Apply_Clicked(object sender, EventArgs e)
         {
            var res = await snackService.EditSnackAsync(snackID, NomeSnack.Text, PrezzoSnack.Text, SnackPerBox.Text, ExpInDays.Text,Int32.Parse(Qta.Text));
-            if (res.response.success)
+            if (res != null)
             {
                 await Navigation.PopPopupAsync();
             }

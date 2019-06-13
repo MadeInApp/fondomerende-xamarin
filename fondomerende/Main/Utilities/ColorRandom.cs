@@ -22,22 +22,22 @@ namespace fondomerende.Main.Utilities
              
         Color[] color = new Color[] 
         {
-            Color.FromHex("#0898e2"), //celestino
+            Color.FromHex("#0886c7"), //azzurro
             //Color.FromHex("#E01F25"), //rosso bellino
             Color.FromHex("#FFBF18"),
             Color.FromHex("#38B54A"), //verde
-            Color.FromHex("#00A99D"), //celeste
+            Color.FromHex("#0b9906"), //verde scurino
             Color.FromHex("#9B212A"), //rosso
-            Color.FromHex("#C7B299"), //grigiochiaro
-            Color.FromHex("#824E84"), //viola
+            //Color.FromHex("#C7B299"), //grigiochiaro
+            Color.FromHex("#904b93"), //viola
             Color.FromHex("#EA5454"), //rosso sbiadito
-            Color.FromHex("#000000"),  //nero cattivo
-            Color.FromHex("#911856")
+            Color.FromHex("#84830b"), //Coleottero
+            Color.FromHex("#0bb6b0")  //azzurrino
         };
 
         public Color GetRandomColorPreferences()
         {
-            Random random = new Random();
+            Random random = new Random((int)DateTime.Now.Ticks);
 
             //string[] color = new string[] { "#FFFFFF", "#E01F25", "#FFBF18", "#41FF32", "#00A000", "#00C196", "#00323F" };
             int numeroCasuale = random.Next(0, color.Length);
@@ -49,7 +49,7 @@ namespace fondomerende.Main.Utilities
 
         public Color GetRandomColor()
         {
-            Random random = new Random();
+            Random random = new Random((int)DateTime.Now.Ticks);
             int numeroCasuale = random.Next(0, color.Length);
 
             return color[numeroCasuale];
@@ -57,14 +57,14 @@ namespace fondomerende.Main.Utilities
 
         public Color GetRandomLightColor()
         {
-            Random random = new Random();
+            Random random = new Random((int)DateTime.Now.Ticks);
             int numeroCasuale = random.Next(0, color.Length);
 
             return colorLight[numeroCasuale];
 
         }
 
-        private static string GetHexString(Color color)
+        public static string GetHexString(Color color)
         {
             var red = (int)(color.R * 255);
             var green = (int)(color.G * 255);

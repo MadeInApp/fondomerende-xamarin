@@ -369,19 +369,19 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
                     double secondi = minuti * 60;
                     if (minuti < 1)
                     {
-                        return (Convert.ToInt32(secondi)) + "s";
+                        return "1< min";
                     }
                     else
                     {
                         temp = Math.Abs((minuti - Convert.ToInt32(minuti)) * 60);
-                        return Convert.ToInt32(minuti) + "m "+ Convert.ToInt32(temp)+"s";
+                        return Convert.ToInt32(minuti) + "min ";//+ Convert.ToInt32(temp)+"s";
                     }
 
                 }
                 else
                 {
                     temp = Math.Abs((ore - Convert.ToInt32(ore)) * 60);
-                    return Convert.ToInt32(ore) + "h " + Convert.ToInt32(temp)+"m";
+                    return Convert.ToInt32(ore) + "h " + Convert.ToInt32(temp)+"min";
                 }
 
             }

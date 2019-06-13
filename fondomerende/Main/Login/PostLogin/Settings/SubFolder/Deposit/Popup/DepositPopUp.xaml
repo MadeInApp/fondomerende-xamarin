@@ -29,15 +29,27 @@
         BackgroundColor="White"
         Margin="50,300,50,300">
         <AbsoluteLayout>
-            <Label Text="Fondo Merende" Margin="75,10,0,0">
+            <Label Text="Fondo Merende"
+                   Margin="75,10,0,0">
             </Label>
 
             <StackLayout
                 HorizontalOptions="CenterAndExpand" 
                 Margin="40,40,0,0">
-                <local:LineEntry x:Name="Amount" Placeholder="Quanto vuoi depositare?" Keyboard="Numeric" MaxLength="4">
+
+                <local:LineEntry 
+                    
+                    x:Name="Amount" 
+                    Placeholder="Quanto vuoi depositare?" 
+                    Keyboard="Numeric"
+                    TextChanged="Amount_TextChanged"
+                    MaxLength="2">
                 </local:LineEntry>
-                <Label x:Name="ErrorLabel" TextColor="Red" Text="" HorizontalOptions="Center">
+                
+                <Label 
+                    x:Name="ErrorLabel" 
+                    TextColor="Red" Text="" 
+                    HorizontalOptions="Center">
                 </Label>
             </StackLayout>
 
