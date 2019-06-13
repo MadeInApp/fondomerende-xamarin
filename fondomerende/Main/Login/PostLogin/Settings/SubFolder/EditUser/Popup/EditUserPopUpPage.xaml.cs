@@ -24,7 +24,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.Popup
         SnackServiceManager snackService = new SnackServiceManager();
         private static bool click = false;
 
-        
+
 
         public EditUserPopUpPage()
         {
@@ -108,13 +108,13 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.Popup
         {
             string msgError = "Invalid name: " + EditUserPage.FriendlyName + " is already present in database users table at name column.";
             string oldPAssword = Preferences.Get("password", null);
-            if(oldPAssword.Equals(Password.Text))
+            if (oldPAssword.Equals(Password.Text))
             {
                 var ans = await App.Current.MainPage.DisplayAlert("Fondo Merende", "Vuoi davvero cambiare account?", "Si", "No");
-                var risp = await editUser.EditUserAsync( EditUserPage.FriendlyName, EditUserPage.username, EditUserPage.passwordNuova);
+                var risp = await editUser.EditUserAsync(EditUserPage.FriendlyName, EditUserPage.username, EditUserPage.passwordNuova);
                 if (risp.response.success == true)
                 {
-                    
+
                     await PopupNavigation.Instance.PopAsync();
                     if (ans)
                     {
@@ -138,7 +138,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.Popup
                     await DisplayAlert("Fondo Merende", "il friendly name " + EditUserPage.FriendlyName + " è già utilizzato", "Ok");
                     await Navigation.PopPopupAsync();
                 }
-                
+
             }
             else
             {
