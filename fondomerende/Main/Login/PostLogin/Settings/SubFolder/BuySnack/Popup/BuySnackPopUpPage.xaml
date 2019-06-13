@@ -26,7 +26,7 @@
         RoundedCornerRadius="20" 
         HeightRequest="{OnPlatform Android=50, iOS=50}"
         WidthRequest="{OnPlatform Android=200, iOS=200}"
-        Margin="30,180,30,180"
+        Margin="{OnPlatform Android= '30,180,30,180', iOS = '30,310,30,180'}"
          >
 
         <StackLayout 
@@ -44,7 +44,7 @@
                 <Label 
                     HorizontalOptions="CenterAndExpand"
                     VerticalOptions="StartAndExpand"
-                    Margin="5,5,5,-10"
+                    Margin="5,5,5,0"
                     Text="Quanti Snack vuoi acquistare?"
                     FontSize="18">
                     
