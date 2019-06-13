@@ -74,8 +74,6 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.Page
             SelectedSnackPerBox = (e.SelectedItem as AllSnacksDataDTO).snack_per_box;
             SelectedSnackPrice = (e.SelectedItem as AllSnacksDataDTO).price;
             SelectedSnackExpiration = (e.SelectedItem as AllSnacksDataDTO).expiration_in_days;
-         //   var result = await SnackService.GetSnacksAsync();
-           // SelectedSnackQuantity = (e.SelectedItem as SnackDataDTO).quantity;
             await Navigation.PushPopupAsync(new EditSnackPopUpPage());
         }
 

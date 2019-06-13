@@ -25,19 +25,22 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.PopUp
             PrezzoSnack.Placeholder = Convert.ToString(EditSnackListPage.SelectedSnackPrice);
             SnackPerBox.Placeholder = Convert.ToString(EditSnackListPage.SelectedSnackPerBox);
             ExpInDays.Placeholder = Convert.ToString(EditSnackListPage.SelectedSnackExpiration);
-            Qta.Placeholder = Convert.ToString(EditSnackListPage.SelectedSnackQuantity);
+            GetQta();
             
         }
         public async void GetQta()
         {
+            Qta.Placeholder = null;
+            Quantity = 0;
             var result = await snackService.GetSnacksAsync();
             if (result.response.success)
             {
-                for(int i = 0; i==result.data.snacks.Count; i++)
+                for (int i = 0; i <= result.data.snacks.Count; i++)
                 {
                     if(result.data.snacks[i].id == EditSnackListPage.SelectedSnackID)
                     {
-                        Quantity = result.data.snacks[i].quantity;
+                        Qta.Placeholder = Convert.ToString(result.data.snacks[i].quantity);
+                        return;
                     }
                 }
             }
