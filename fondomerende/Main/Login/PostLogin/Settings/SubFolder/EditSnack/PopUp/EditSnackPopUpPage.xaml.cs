@@ -135,13 +135,11 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.PopUp
             await Navigation.PopPopupAsync();
         }
 
-        private void Swap_Clicked(object sender, EventArgs e)
+        private async void Swap_Clicked(object sender, EventArgs e)
         {
             if (Swapped == true)
             {
-                
-                img.Resource = "fondomerende.image.fill_clear_256x256.png";
-                Swap.Source = img;
+                Swap.Source = ImageSource.FromResource("fondomerende.image.fill_clear_256x256.png");
                 NomeSnack.Placeholder = null;
                 PrezzoSnack.Placeholder = null;
                 SnackPerBox.Placeholder = null;
@@ -170,10 +168,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.PopUp
             }
             else
             {
-
-                EmbeddedImage img = new EmbeddedImage();
-                img.Resource = "fondomerende.image.fill_full_256x256.png";
-                Swap.Source = img.Resource;
+                Swap.Source = ImageSource.FromResource("fondomerende.image.fill_full_256x256.png");
                 NomeSnack.Text = null;
                 PrezzoSnack.Text = null;
                 SnackPerBox.Text = null;

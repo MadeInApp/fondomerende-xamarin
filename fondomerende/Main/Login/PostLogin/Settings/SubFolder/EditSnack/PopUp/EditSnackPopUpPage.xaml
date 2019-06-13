@@ -17,14 +17,14 @@
           ScaleOut="0.8"
           DurationIn="200"
           DurationOut="200"
-          EasingIn="SinOut"
-          EasingOut="SinIn"
+          EasingIn="CubicInOut"
+          EasingOut="CubicIn"
           HasBackgroundAnimation="True"/>
     </pages:PopupPage.Animation>
     <!--You can use any elements here which are extended from Xamarin.Forms.View-->
     <local:RoundedCornerView 
         RoundedCornerRadius="20" 
-        Margin="30,200,30,200">
+        Margin="30,220,30,220">
             <Label 
                 HorizontalOptions="Center"
                 Margin="0,10,0,0"
@@ -44,7 +44,7 @@
         
         <StackLayout
             Opacity="80"
-            Margin="30,0,60,0" 
+            Margin="30,0,60,20" 
             VerticalOptions="CenterAndExpand">
                 <local:LineEntry x:Name ="NomeSnack" WidthRequest="50">
                 </local:LineEntry>
@@ -62,7 +62,7 @@
                 Spacing="50" 
                 HorizontalOptions="Center" 
                 VerticalOptions="EndAndExpand" 
-                Margin="0,10,0,0"
+                Margin="0,10,0,30"
                 Scale="1.2">
                 <Button Text="Annulla" x:Name="Discard" Clicked="Discard_Clicked"/>
                 <Button Text="Applica" x:Name="Apply" Clicked="Apply_Clicked"/>
