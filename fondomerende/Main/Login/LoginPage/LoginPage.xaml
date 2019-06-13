@@ -5,6 +5,7 @@
     xmlns:local="clr-namespace:fondomerende.Main.Utilities"
     x:Class="fondomerende.Main.Login.LoginPages.LoginPage"
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     ios:Page.UseSafeArea="true">
 
     <ContentPage.Content>
@@ -80,7 +81,10 @@
                     Grid.Column="0"
                     x:Name="usernameEntry"
                     Text="Giulio1234"
-                    Placeholder="Username">
+                    Placeholder="Username"
+                    IsSpellCheckEnabled="False"
+                    IsTextPredictionEnabled="False"
+                    Keyboard="Plain">
                     </local:LineEntry>
 
                     <local:LineEntry
@@ -89,7 +93,8 @@
                     x:Name="passwordEntry"
                     Text="1234"
                     Placeholder="Password"
-                    IsPassword="True">
+                    IsPassword="True"
+                    IsTextPredictionEnabled="False">
                     </local:LineEntry>
 
                     <!--Android-->
@@ -204,7 +209,12 @@
                       Grid.Column="0"
                       x:Name="usernameEntryR"
                       Text=""
-                      Placeholder="Username">
+                      Placeholder="Username"
+                      IsSpellCheckEnabled="False"
+                      IsTextPredictionEnabled="False"
+                      Keyboard="Plain"
+                      >
+                        
                     </local:LineEntry>
 
                     <local:LineEntry
@@ -212,6 +222,9 @@
                       Grid.Column="0"
                       x:Name="friendlyNameEntryR"
                       Text=""
+                      IsSpellCheckEnabled="False"
+                      IsTextPredictionEnabled="False"
+                      Keyboard="Plain"
                       Placeholder="Nome">
                     </local:LineEntry>
                     <!--Password e conferma password-->
