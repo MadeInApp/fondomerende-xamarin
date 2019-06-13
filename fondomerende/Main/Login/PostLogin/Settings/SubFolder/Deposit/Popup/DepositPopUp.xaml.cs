@@ -99,9 +99,11 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup
             {
                 ErrorLabel.Text = "Inserisci l'ammontare";
             }
-            else if(float.Parse(Amount.Text) > 0)
+            string[] strSplit = Amount.Text.Split(',');
+            float ris = float.Parse(strSplit[0]) + (float.Parse(strSplit[1]) / 100);
+            if(ris > 0)
             {
-                var resultDep = await depositService.DepositAsync(Convert.ToDecimal(Amount.Text));
+                var resultDep = await depositService.DepositAsync(Convert.ToDecimal(ris));
                 if (resultDep.response.success)
                 {
                     Navigation.PopPopupAsync();
@@ -124,6 +126,16 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup
         private async void Discard_Clicked(object sender, EventArgs e)
         {
             await PopupNavigation.Instance.PopAsync();
+        }
+
+        private void Amount_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            //int app = Convert.ToInt32(Amount.Text);
+            //if(app < 100 && app >= 10)
+            //{
+            //    Amount.Text = Amount.Text + ",";
+            //}
+            
         }
     }
 }
