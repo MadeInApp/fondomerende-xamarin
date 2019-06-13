@@ -56,12 +56,11 @@
                 HorizontalOptions="CenterAndExpand" />
 
                 <Label 
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" 
+                
                 x:Name="LoadingLabel"
                 HorizontalTextAlignment="Center"
                 Grid.Row="2"
-                    Margin="5,0,5,200"
+                AbsoluteLayout.LayoutBounds="0.6,0.5,25,300"
                 Font="Bold, 16"/>
 
             </Grid>

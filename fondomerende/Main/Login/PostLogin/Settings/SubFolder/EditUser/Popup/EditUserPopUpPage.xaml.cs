@@ -111,34 +111,38 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.Popup
             if (oldPAssword.Equals(Password.Text))
             {
                 var ans = await App.Current.MainPage.DisplayAlert("Fondo Merende", "Vuoi davvero cambiare account?", "Si", "No");
-                var risp = await editUser.EditUserAsync(EditUserPage.FriendlyName, EditUserPage.username, EditUserPage.passwordNuova);
-                if (risp.response.success == true)
+                if (ans)
                 {
+                    var risp = await editUser.EditUserAsync(EditUserPage.FriendlyName, EditUserPage.username, EditUserPage.passwordNuova);
 
-                    await PopupNavigation.Instance.PopAsync();
-                    if (ans)
+                    if (risp.response.success == true)
                     {
-                        LogoutServiceManager logoutService = new LogoutServiceManager();
-                        var response = await logoutService.LogoutAsync();
-                        if (response.response.success == true)
+
+                        await PopupNavigation.Instance.PopAsync();
+                        if (ans)
                         {
-                            App.Current.MainPage = new LoginPage();
-                            Preferences.Clear();
+                            LogoutServiceManager logoutService = new LogoutServiceManager();
+                            var response = await logoutService.LogoutAsync();
+                            if (response.response.success == true)
+                            {
+                                App.Current.MainPage = new LoginPage();
+                                Preferences.Clear();
+                            }
+                            else
+                            {
+                                await App.Current.MainPage.DisplayAlert("Fondo Merende", "Guarda, sta cosa non ha senso", "OK");
+                            }
                         }
-                        else
-                        {
-                            await App.Current.MainPage.DisplayAlert("Fondo Merende", "Guarda, sta cosa non ha senso", "OK");
-                        }
+
+
                     }
-
-
+                    else if (risp.response.message != null)
+                    {
+                        await DisplayAlert("Fondo Merende", "il friendly name " + EditUserPage.FriendlyName + " è già utilizzato", "Ok");
+                        await Navigation.PopPopupAsync();
+                    }
                 }
-                else if (risp.response.message != null)
-                {
-                    await DisplayAlert("Fondo Merende", "il friendly name " + EditUserPage.FriendlyName + " è già utilizzato", "Ok");
-                    await Navigation.PopPopupAsync();
-                }
-
+                
             }
             else
             {
