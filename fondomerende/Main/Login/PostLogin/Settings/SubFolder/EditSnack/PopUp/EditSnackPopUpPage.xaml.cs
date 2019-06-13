@@ -194,9 +194,5 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.PopUp
 
         }
 
-        private void Apply_Clicked_1(object sender, EventArgs e)
-        {
-
-        }
     }
 }

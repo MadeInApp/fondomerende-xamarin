@@ -6,7 +6,9 @@ namespace fondomerende.Main.Services.Models
 {
     class EditSnackDTO
     {
+      
             public ResponseDTO response { get; set; }
-
+      
     }
 }
+
