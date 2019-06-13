@@ -16,13 +16,32 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.PopUp
     public partial class EditSnackPopUpPage : Rg.Plugins.Popup.Pages.PopupPage
     {
         SnackServiceManager snackService = new SnackServiceManager();
-        string Quantity;
+        int Quantity;
         public EditSnackPopUpPage()
         {
             InitializeComponent();
+            idSnack.Placeholder = Convert.ToString(EditSnackListPage.SelectedSnackID);
             NomeSnack.Placeholder = EditSnackListPage.SelectedSnackName;
+            PrezzoSnack.Placeholder = Convert.ToString(EditSnackListPage.SelectedSnackPrice);
+            SnackPerBox.Placeholder = Convert.ToString(EditSnackListPage.SelectedSnackPerBox);
+            ExpInDays.Placeholder = Convert.ToString(EditSnackListPage.SelectedSnackExpiration);
+            Qta.Placeholder = Convert.ToString(EditSnackListPage.SelectedSnackQuantity);
+            
         }
-
+        public async void GetQta()
+        {
+            var result = await snackService.GetSnacksAsync();
+            if (result.response.success)
+            {
+                for(int i = 0; i==result.data.snacks.Count; i++)
+                {
+                    if(result.data.snacks[i].id == EditSnackListPage.SelectedSnackID)
+                    {
+                        Quantity = result.data.snacks[i].quantity;
+                    }
+                }
+            }
+        }
         protected override void OnAppearing()
         {
             base.OnAppearing();

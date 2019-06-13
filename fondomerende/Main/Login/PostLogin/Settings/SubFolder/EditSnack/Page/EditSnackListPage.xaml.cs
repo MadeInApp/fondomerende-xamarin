@@ -17,6 +17,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.Page
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class EditSnackListPage : ContentPage
     {
+        public static int SelectedSnackID;
         public static string SelectedSnackName;
         public static string SelectedSnackFriendlyName;
         public static double SelectedSnackPrice;
@@ -67,14 +68,14 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.Page
 
         private async void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            
+            SelectedSnackID = (e.SelectedItem as AllSnacksDataDTO).id;
             SelectedSnackName = (e.SelectedItem as AllSnacksDataDTO).name;
             SelectedSnackFriendlyName = (e.SelectedItem as AllSnacksDataDTO).friendly_name;
             SelectedSnackPerBox = (e.SelectedItem as AllSnacksDataDTO).snack_per_box;
             SelectedSnackPrice = (e.SelectedItem as AllSnacksDataDTO).price;
             SelectedSnackExpiration = (e.SelectedItem as AllSnacksDataDTO).expiration_in_days;
-            var result = await SnackService.GetSnacksAsync();
-            SelectedSnackQuantity = (e.SelectedItem as SnackDataDTO).quantity;
+         //   var result = await SnackService.GetSnacksAsync();
+           // SelectedSnackQuantity = (e.SelectedItem as SnackDataDTO).quantity;
             await Navigation.PushPopupAsync(new EditSnackPopUpPage());
         }
 
