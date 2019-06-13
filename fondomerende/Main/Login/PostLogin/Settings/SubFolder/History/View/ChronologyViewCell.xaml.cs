@@ -4,6 +4,9 @@ using Xamarin.Essentials;
 using Xamarin.Forms;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content;
 using FormsControls.Base;
+using fondomerende.Main.Utilities;
+using Plugin.CrossPlatformTintedImage.Abstractions;
+using UIKit;
 
 namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.View
 {
@@ -14,17 +17,40 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.View
         public ChronologyViewCell()
         {
             InitializeComponent();
-            SetImageColorPreferences();
- 
+            Tint();
+
         }
-
-
-        public void SetImageColorPreferences()
+        public void Tint()
         {
+            switch
+            {
+
+            }
             ChronologyIcon.TintColor = Color.FromHex(Preferences.Get("Colore", "#000000"));
+
+            EmbeddedImage e = new EmbeddedImage();
+            e.Resource = "fondomerende.image.History.png";
+
+            var image = e.Resource;
+            var tintable = UIColor.White;
         }
 
+        public void InizializeImage()
+        {
+            EmbeddedImage e = new EmbeddedImage();
+            e.Resource = "fondomerende.image.History.png";
 
-     
+            var tinted = new TintedImage
+            {
+                Scale = 0.5,
+                VerticalOptions = LayoutOptions.Center,
+                HorizontalOptions = LayoutOptions.Center,
+                Aspect = Aspect.AspectFill,
+                Source = e.Resource,
+            };
+
+            tinted.TintColor = Color.FromHex(Preferences.Get("Colore", "#000000"));
+            Griglia.Children.Add(tinted,0,0);
+        }
     }
 }
