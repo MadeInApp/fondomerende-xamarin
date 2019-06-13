@@ -374,7 +374,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
                     else
                     {
                         temp = Math.Abs((minuti - Convert.ToInt32(minuti)) * 60);
-                        return Convert.ToInt32(minuti) + "min ";//+ Convert.ToInt32(temp)+"s";
+                        return Convert.ToInt32(minuti) + " min";//+ Convert.ToInt32(temp)+"s";
                     }
 
                 }

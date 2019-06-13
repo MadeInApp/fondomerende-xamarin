@@ -26,7 +26,7 @@
                     Grid.Row="0"
                     Grid.Column="0"
                     x:Name="SnackIcon" 
-                    Scale="{OnPlatform Android=0.9, Default=0.6}"
+                    Scale="{OnPlatform Android=0.9, Default=1}"
                     VerticalOptions="Center" 
                     HorizontalOptions="Center" 
                     Aspect="AspectFit"
