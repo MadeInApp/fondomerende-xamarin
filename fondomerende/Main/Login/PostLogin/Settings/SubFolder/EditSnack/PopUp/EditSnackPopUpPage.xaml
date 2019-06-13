@@ -25,22 +25,43 @@
     <local:RoundedCornerView 
         RoundedCornerRadius="20" 
         Margin="30,250,30,250">
-        <Label HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand" Text="Fondo Merende" FontAttributes="Bold"/>
-        <StackLayout
-            Margin="30,0,0,30">
-            <local:LineEntry x:Name ="idSnack">
-            </local:LineEntry>
-            <local:LineEntry x:Name ="NomeSnack">
-            </local:LineEntry>
-            <local:LineEntry x:Name ="PrezzoSnack">
-            </local:LineEntry>
-            <local:LineEntry x:Name ="SnackPerBox">
-            </local:LineEntry>
-            <local:LineEntry x:Name ="ExpInDays">
-            </local:LineEntry>
-            <local:LineEntry x:Name ="Qta">
-            </local:LineEntry>
-            
+        <StackLayout>
+            <StackLayout 
+                Orientation="Horizontal" 
+                HorizontalOptions="FillAndExpand" 
+                VerticalOptions="StartAndExpand">
+                <Label 
+                    HorizontalOptions="CenterAndExpand" 
+                    Text="Fondo Merende" 
+                    FontAttributes="Bold"/>
+                <ImageButton 
+                    Source="{local:EmbeddedImage Resource=fondomerende.image.Fill_256x256.png}" 
+                    x:Name="Swap"
+                    Scale="0.3"
+                    Clicked="Swap_Clicked"
+                    Margin="0,0,0,20"
+                    HorizontalOptions="EndAndExpand"/>
+            </StackLayout>
+            <StackLayout
+            Margin="30,30,0,30">
+                <local:LineEntry x:Name ="idSnack">
+                </local:LineEntry>
+                <local:LineEntry x:Name ="NomeSnack">
+                </local:LineEntry>
+                <local:LineEntry x:Name ="PrezzoSnack">
+                </local:LineEntry>
+                <local:LineEntry x:Name ="SnackPerBox">
+                </local:LineEntry>
+                <local:LineEntry x:Name ="ExpInDays">
+                </local:LineEntry>
+                <local:LineEntry x:Name ="Qta">
+                </local:LineEntry>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" Spacing="40">
+                <Button Text="Annulla" x:Name="Discard" Clicked="Discard_Clicked"/>
+
+                <Button Text="Applica" x:Name="Apply" Clicked="Apply_Clicked"/>
+            </StackLayout>
         </StackLayout>
     </local:RoundedCornerView>
     </pages:PopupPage>
