@@ -110,7 +110,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup
                 {
                     ErrorLabel.Text = "Errore";
                 }
-                if(result.Result == null)
+                if(result == null)
                 {
                     ErrorLabel.Text = "Errore";
                 }
