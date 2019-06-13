@@ -25,17 +25,26 @@
     </pages:PopupPage.Animation>
     <!--You can use any elements here which are extended from Xamarin.Forms.View-->
     <Graph:RoundedCornerView 
-        RoundedCornerRadius="20"                          
-        BackgroundColor="White"
-        Margin="50,300,50,300">
-        <AbsoluteLayout>
+        RoundedCornerRadius="20"        
+        HorizontalOptions="CenterAndExpand"
+        VerticalOptions="Center"
+        HeightRequest="{OnPlatform Android=200, iOS=50}"
+        WidthRequest="{OnPlatform Android=700, iOS=200}"
+        Margin="{OnPlatform Android= '30,0,30,0', iOS = '50,300,50,300'}"
+        
+        >
+
+
+        <AbsoluteLayout BackgroundColor="White">
             <Label Text="Fondo Merende"
-                   Margin="75,10,0,0">
+                   Margin="5,10,0,0"
+                   HorizontalOptions="CenterAndExpand">
             </Label>
 
             <StackLayout
                 HorizontalOptions="CenterAndExpand" 
-                Margin="40,40,0,0">
+                Margin="40,40,0,0"
+                >
 
                 <local:LineEntry 
                     
@@ -43,7 +52,9 @@
                     Placeholder="Quanto vuoi depositare?" 
                     Keyboard="Numeric"
                     TextChanged="Amount_TextChanged"
-                    MaxLength="2">
+                    MaxLength="2"
+                    
+                    >
                 </local:LineEntry>
                 
                 <Label 
@@ -60,9 +71,9 @@
                 Spacing="90" 
                 Padding="0,0,0,0" 
                 Margin="20,80,0,0">
-                <Button Text="Annulla" VerticalOptions="EndAndExpand" FontSize="20" HorizontalOptions="Center" x:Name="Discard" Clicked="Discard_Clicked">
+                <Button Text="Annulla" Margin="{OnPlatform Android= '0,50,0,0'}" VerticalOptions="EndAndExpand" FontSize="14" x:Name="Discard" Clicked="Discard_Clicked" Style="{StaticResource FondomerendeButton}" HorizontalOptions="FillAndExpand" >
                 </Button>
-                <Button Text="Deposita" VerticalOptions="EndAndExpand" HorizontalOptions="Center" FontSize="20" x:Name="Apply" Clicked="Apply_Clicked" >
+                <Button Text="Deposita" Margin="{OnPlatform Android= '0,50,0,0'}" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand"  FontSize="14" x:Name="Apply" Clicked="Apply_Clicked" Style="{StaticResource FondomerendeButton}">
                 </Button>
             </StackLayout>
         </AbsoluteLayout>

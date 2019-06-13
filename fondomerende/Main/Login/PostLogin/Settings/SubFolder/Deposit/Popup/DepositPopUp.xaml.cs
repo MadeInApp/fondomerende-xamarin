@@ -101,20 +101,21 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup
             }
             string[] strSplit = Amount.Text.Split(',');
             float ris = float.Parse(strSplit[0]) + (float.Parse(strSplit[1]) / 100);
+            
             if(ris > 0)
             {
+                if (Amount.Text == "")
+                {
+                    ErrorLabel.Text = "inserire un numero";
+                }
                 var resultDep = await depositService.DepositAsync(Convert.ToDecimal(ris));
                 if (resultDep.response.success)
                 {
-                    Navigation.PopPopupAsync();
+                    await Navigation.PopPopupAsync();
                 }
                 else
                 {
                     await DisplayAlert("Fondo Merende", "Errore", "Ok");
-                }
-                if(resultDep == null)
-                {
-                    ErrorLabel.Text = "Errore";
                 }
             }
             else
