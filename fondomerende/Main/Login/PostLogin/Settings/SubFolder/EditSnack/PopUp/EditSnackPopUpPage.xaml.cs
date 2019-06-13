@@ -140,15 +140,10 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.PopUp
             if (Swapped == true)
             {
                 Swap.BackgroundColor = Color.Orange;
-                idSnack.Placeholder = null;
                 NomeSnack.Placeholder = null;
                 PrezzoSnack.Placeholder = null;
                 SnackPerBox.Placeholder = null;
                 ExpInDays.Placeholder = null;
-                if(idSnack.Text == null)
-                {
-                    idSnack.Text = Convert.ToString(EditSnackListPage.SelectedSnackID);
-                }
                 if(NomeSnack.Text == null)
                 {
                     NomeSnack.Text = EditSnackListPage.SelectedSnackName;
@@ -175,16 +170,16 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.PopUp
             {
                 
                 Swap.BackgroundColor = Color.Transparent;
-                idSnack.Text = null;
                 NomeSnack.Text = null;
                 PrezzoSnack.Text = null;
                 SnackPerBox.Text = null;
                 ExpInDays.Text = null;
-                idSnack.Placeholder = Convert.ToString(EditSnackListPage.SelectedSnackID);
+                Qta.Text = null;
                 NomeSnack.Placeholder = EditSnackListPage.SelectedSnackName;
                 PrezzoSnack.Placeholder = Convert.ToString(EditSnackListPage.SelectedSnackPrice);
                 SnackPerBox.Placeholder = Convert.ToString(EditSnackListPage.SelectedSnackPerBox);
                 ExpInDays.Placeholder = Convert.ToString(EditSnackListPage.SelectedSnackExpiration);
+                Qta.Placeholder = Convert.ToString(Quantity);
                 Swapped = true;
             }
         }
