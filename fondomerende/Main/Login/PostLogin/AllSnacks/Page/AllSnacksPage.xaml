@@ -17,7 +17,8 @@
     <ContentPage.Content>
 
         <StackLayout
-                x:Name="StackSnack">
+                x:Name="StackSnack"
+                BackgroundColor="#FFF8EB">
 
             <StackLayout 
                     Orientation="Horizontal" 
@@ -65,13 +66,26 @@
                 </StackLayout>
             </StackLayout>
 
-            <Gradient:GradientColorStack StartColor="#FDEBC8" EndColor="#FFF8EB">
-                <StackLayout>
+            <StackLayout
+                    BackgroundColor="#FFF8EB"
+                    x:Name="Cane">
+                <Grid>
+                    <Image
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        x:Name="paolo"
+                        Source="{local:EmbeddedImage Resource = fondomerende.image.cup_cake_128x128.png}"
+                        Opacity="0.6"
+                        Scale="1"
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="CenterAndExpand">
+                    </Image>
                     <ScrollView 
-                    IsVisible="True" 
-                    x:Name="ScrollView" 
-                    Margin="0,10,0,10" 
-                    Padding="0,0,0,20">
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        IsVisible="True" 
+                        x:Name="ScrollView"  
+                        Padding="0,10,0,20">
 
                         <Grid HorizontalOptions="CenterAndExpand"
                             x:Name="GridView" 
@@ -86,49 +100,51 @@
                             </Grid.ColumnDefinitions>
 
                             <StackLayout 
-                                Grid.Column="0" 
-                                x:Name="Column0"
-                                Spacing="40"
-                                HorizontalOptions="StartAndExpand"
-                                Margin="5,0,10,0">
+                                    Grid.Column="0" 
+                                    x:Name="Column0"
+                                    Spacing="40"
+                                    HorizontalOptions="StartAndExpand"
+                                    Margin="5,0,10,0">
                             </StackLayout>
 
                             <StackLayout 
-                                Grid.Column="1" 
-                                x:Name="Column1"
-                                Spacing="40"
-                                HorizontalOptions="EndAndExpand"
-                                Margin="10,0,5,0">
+                                    Grid.Column="1" 
+                                    x:Name="Column1"
+                                    Spacing="40"
+                                    HorizontalOptions="EndAndExpand"
+                                    Margin="10,0,5,0">
                             </StackLayout>
 
                         </Grid>
-                
+
                     </ScrollView>
-                </StackLayout>
-            </Gradient:GradientColorStack>
+                </Grid>
+            </StackLayout>
 
 
             <ListView
-                    Margin="0,0,0,10"
-                    x:Name="ListView"
-                    IsPullToRefreshEnabled="true"
-                    RefreshCommand="{Binding RefreshCommand}"
-                    ItemSelected="ListView_ItemSelected"
-                    IsRefreshing="{Binding IsBusy, Mode=OneWay}"
-                    IsVisible="False"
-                    HasUnevenRows="True">
-                    <ListView.ItemTemplate>
+                Margin="0,0,0,0"
+                x:Name="ListView"
+                VerticalOptions="Start"
+                IsPullToRefreshEnabled="true"
+                RefreshCommand="{Binding RefreshCommand}"
+                ItemSelected="ListView_ItemSelected"
+                IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                IsVisible="False"
+                BackgroundColor="#FFF8EB"
+                HasUnevenRows="True">
+                <ListView.ItemTemplate>
 
-                        <DataTemplate>
+                    <DataTemplate>
 
-                            <local1:SnackViewCell 
-                            x:Name="SnackCell">
-                            </local1:SnackViewCell>
+                        <local1:SnackViewCell 
+                        x:Name="SnackCell">
+                        </local1:SnackViewCell>
 
-                        </DataTemplate>
+                    </DataTemplate>
 
-                    </ListView.ItemTemplate>
-                </ListView>
-            </StackLayout>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -30,6 +30,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             InitializeComponent();
             GetSnacksMethod(false);
             Fade();
+            animation();
 
 
             switch (Device.RuntimePlatform)                                                     //
@@ -57,7 +58,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
         }                                                                                    //
         public async Task RefreshDataAsync()                                                 //
         {                                                                                    //
-           await GetSnacksMethod(true);                                                      //
+            await GetSnacksMethod(true);                                                      //
         }                                                                                    //
 
 
@@ -139,7 +140,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                             StackLayout.Children.Add(imageButtonAndroid);
                             BordiSmussatiAndroid.Children.Add(StackLayout);
                             app.Children.Add(BordiSmussatiAndroid);
-                            
+
                             break;
 
                         default:
@@ -165,16 +166,16 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
         private async void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)     //quando uno snack è tappato si apre un prompt in cui viene chiesto se lo si vuole mangiare
         {
-            var ans =  await DisplayAlert("Fondo Merende", "Vuoi davvero mangiare " + (e.SelectedItem as SnackDataDTO).friendly_name + "?", "Si", "No");
+            var ans = await DisplayAlert("Fondo Merende", "Vuoi davvero mangiare " + (e.SelectedItem as SnackDataDTO).friendly_name + "?", "Si", "No");
 
             if (ans == true)
             {
-              await snackServiceManager.EatAsync((e.SelectedItem as SnackDataDTO).id, 1);
-              await GetSnacksMethod(true);
-            } 
+                await snackServiceManager.EatAsync((e.SelectedItem as SnackDataDTO).id, 1);
+                await GetSnacksMethod(true);
+            }
             else
             {
-               await GetSnacksMethod(true);
+                await GetSnacksMethod(true);
             }
         }
 
@@ -188,14 +189,14 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             if (ScrollView.IsVisible == true)
             {
                 Swap.BackgroundColor = Color.Orange;
-                
+
                 ScrollView.IsVisible = false;
                 ListView.IsVisible = true;
             }
             else
             {
                 Swap.BackgroundColor = Color.Transparent;
-                
+
                 ListView.IsVisible = false;
                 ScrollView.IsVisible = true;
             }
@@ -206,7 +207,55 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             await Navigation.PushPopupAsync(new DepositPopUp());
         }
 
-        
+        private async void animation()
+        {
+            EmbeddedImage e = new EmbeddedImage();
+            e.Resource = "cup_cake_128x128.png";
+
+            double ScreenHeight = Convert.ToInt32(App.Current.MainPage.Height);
+            double ScreenWidth = Convert.ToInt32(App.Current.MainPage.Width);
+
+            var cupcake = new Image
+            {
+                Source = e.Resource,
+                Opacity = 0.6,
+                Scale = 1,
+            };
+            Cane.Children.Add(cupcake);
+            
+
+            Random randomWidth = new Random((int)DateTime.Now.Ticks);
+            double casual;
+            double spawncasuale;
+
+            for (int f = 0; f < 20; f++)
+            {
+
+                casual = randomWidth.Next(0, Convert.ToInt32(ScreenWidth));
+                casual -= ScreenWidth / 2;
+                spawncasuale = randomWidth.Next(0, Convert.ToInt32(ScreenWidth));
+                spawncasuale -= ScreenWidth / 4;
+                await paolo.TranslateTo(spawncasuale, 0, 0);
+                await Task.WhenAny<bool>
+                (
+                    paolo.RotateTo(360, 15000),
+                    paolo.TranslateTo(casual, ScreenHeight, 15000)
+                );
+
+                
+            }
+
+        }
+        public async void Animazioni_infinite(Random randomWidth, double ScreenWidth,double ScreenHeight)
+        {
+            double casual;
+            int i = 0;
+            while (i<100)
+            {
+                
+                i++;
+            }
+        }
     }
 
 }
