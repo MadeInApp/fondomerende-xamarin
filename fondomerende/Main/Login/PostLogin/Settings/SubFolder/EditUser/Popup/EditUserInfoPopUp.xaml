@@ -15,9 +15,9 @@
           PositionOut="Bottom"
           ScaleIn="1.2"
           ScaleOut="0.8"
-          DurationIn="200"
-          DurationOut="200"
-          EasingIn="Linear"
+          DurationIn="400"
+          DurationOut="400"
+          EasingIn="SpringOut"
           EasingOut="SpringIn"
           HasBackgroundAnimation="True"/>
     </pages:PopupPage.Animation>
@@ -61,7 +61,7 @@
                     HorizontalOptions="StartAndExpand" 
                     x:Name="friendlynameEntry" 
                     WidthRequest="200"
-                    Margin="10,20,100,30"
+                    Margin="{OnPlatform Android='10,20,100,30', iOS='10,20,0,30'}"
                     IsSpellCheckEnabled="False"
                     IsTextPredictionEnabled="False"
                     Keyboard="Plain" />

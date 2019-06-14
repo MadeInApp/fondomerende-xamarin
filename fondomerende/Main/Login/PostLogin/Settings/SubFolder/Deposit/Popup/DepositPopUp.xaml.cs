@@ -112,7 +112,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup
                 }
                 else if(resultDep.response.message == "Execution error in UPDATE users_funds SET amount=amount+? WHERE user_id=?. Out of range value for column 'amount' at row 1.")
                 {
-                 await DisplayAlert("Fondo Merende", "Hai raggiunto la quota massima di fondi depositabili", "Ok");
+                 await DisplayAlert("Fondo Merende", "Non puoi superare i €99.99 di fondo utente", "Ok");
                 }
                 else
                 {
