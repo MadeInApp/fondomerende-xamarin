@@ -71,10 +71,11 @@
                 HorizontalOptions="FillAndExpand" 
                 Spacing="90" 
                 Padding="0,0,0,0" 
-                Margin="20,80,0,0">
-                <Button Text="Annulla" Margin="{OnPlatform Android= '0,60,0,0', iOS='0,60,0,0'}" VerticalOptions="EndAndExpand" FontSize="14" x:Name="Discard" Clicked="Discard_Clicked" Style="{StaticResource FondomerendeButton}" HorizontalOptions="FillAndExpand" >
+                Margin="20,140,20,0"
+                BackgroundColor="Red">
+                <Button Text="Annulla"  VerticalOptions="EndAndExpand" FontSize="14" x:Name="Discard" Clicked="Discard_Clicked" Style="{StaticResource FondomerendeButton}" HorizontalOptions="StartAndExpand" >
                 </Button>
-                <Button Text="Deposita" Margin="{OnPlatform Android= '0,60,0,0', iOS='60,60,20,0'}" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand"  FontSize="14" x:Name="Apply" Clicked="Apply_Clicked" Style="{StaticResource FondomerendeButton}">
+                <Button Text="Deposita"  VerticalOptions="EndAndExpand" HorizontalOptions="EndAndExpand"  FontSize="14" x:Name="Apply" Clicked="Apply_Clicked" Style="{StaticResource FondomerendeButton}">
                 </Button>
             </StackLayout>
         </AbsoluteLayout>
