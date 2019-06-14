@@ -3,32 +3,32 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
              xmlns:controls="clr-namespace:Plugin.CrossPlatformTintedImage.Abstractions;assembly=Plugin.CrossPlatformTintedImage.Abstractions"
              xmlns:local="clr-namespace:fondomerende.Main.Utilities"
-             mc:Ignorable="d"
-             x:Class="fondomerende.Main.Login.PostLogin.Settings.SubFolder.About_and_UserSettings.View.FondoFondoMerendeViewCell">
+             x:Class="fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View.EditUserInfoViewCell">
     <ViewCell.View>
-        <!--Tasto aggiungi snack-->
         <StackLayout 
             Orientation="Horizontal" 
             VerticalOptions="Center">
             <controls:TintedImage 
                     Grid.Row="0"
                     Grid.Column="0"
-                    x:Name="SnackIcon"
+                    x:Name="SnackIcon" 
+                    Scale="1.2"
                     VerticalOptions="Center" 
                     HorizontalOptions="Center" 
                     Aspect="AspectFit"
-                    Margin="5,0,5,0"
-                    Source="{local:EmbeddedImage Resource=fondomerende.image.fund_256x256.png}">
-                </controls:TintedImage>
-                <Label
+                    Margin="11,0,11,0"
+                    Source="{local:EmbeddedImage Resource=fondomerende.image.edit_profile_256x256.png}">
+            </controls:TintedImage>
+            <Label
                     VerticalOptions="CenterAndExpand"                               
                     x:Name="FundFund"
                     FontSize="14"
                     TextColor="Black"
-                    Text="PlaceHolder">
-                </Label>
+                    Text="Modifica Informazioni Utente">
+            </Label>
         </StackLayout>
     </ViewCell.View>
 </ViewCell>
