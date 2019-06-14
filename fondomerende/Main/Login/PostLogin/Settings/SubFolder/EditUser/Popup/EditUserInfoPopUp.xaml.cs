@@ -1,4 +1,5 @@
 ﻿using fondomerende.Main.Services.RESTServices;
+using Rg.Plugins.Popup.Extensions;
 using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
@@ -7,28 +8,31 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
-using Rg.Plugins.Popup.Extensions;
-using fondomerende.Main.Services.Models;
 using Xamarin.Forms.Xaml;
-using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser;
-using fondomerende.Main.Login.LoginPages;
-using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.Page;
 
 namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.Popup
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class EditUserPopUpPage : Rg.Plugins.Popup.Pages.PopupPage
+    public partial class EditUserInfoPopUp : Rg.Plugins.Popup.Pages.PopupPage
     {
-        LogoutServiceManager logoutService = new LogoutServiceManager();
-        EditUserServiceManager editUser = new EditUserServiceManager();
-        SnackServiceManager snackService = new SnackServiceManager();
-        private static bool click = false;
+        public static string username = "";
+        public static string FriendlyName = "";
+        public static string passwordNuova = "";
+        public string GetpasswordNuova()
+        {
+            return passwordNuova;
+        }
 
+        private void SetpasswordNuova(string value)
+        {
+            passwordNuova = value;
+        }
 
-
-        public EditUserPopUpPage()
+        public EditUserInfoPopUp()
         {
             InitializeComponent();
+            usernameEntry.Placeholder = Preferences.Get("username", null);
+            friendlynameEntry.Placeholder = Preferences.Get("friendly-name", null);
         }
         protected override void OnAppearing()
         {
@@ -37,7 +41,6 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.Popup
 
         protected override void OnDisappearing()
         {
-            EditUserPopUpPage.click = true;
             base.OnDisappearing();
         }
 
@@ -104,62 +107,26 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.Popup
         }
 
 
-        private async void Apply_Clicked(object sender, EventArgs e)
+        private async void ApplyChanges_Clicked_1(object sender, EventArgs e)
         {
-            string msgError = "Invalid name: " + EditUserPage.FriendlyName + " is already present in database users table at name column.";
-            string oldPAssword = Preferences.Get("password", null);
-            if (oldPAssword.Equals(Password.Text))
+            EditUserServiceManager editUser = new EditUserServiceManager();
+            if (usernameEntry.Text != null && friendlynameEntry.Text != null && passwordEntry.Text != null)
             {
-                var ans = await App.Current.MainPage.DisplayAlert("Fondo Merende", "Vuoi davvero cambiare  account?", "Si", "No");
-                if (ans)
-                {
-                    var risp = await editUser.EditUserAsync(EditUserInfoPopUp.username, EditUserInfoPopUp.FriendlyName, EditUserInfoPopUp.passwordNuova);
 
-                    if (risp.response.success == true)
-                    {
-
-                        await PopupNavigation.Instance.PopAsync();
-                        if (ans)
-                        {
-                            LogoutServiceManager logoutService = new LogoutServiceManager();
-                            var response = await logoutService.LogoutAsync();
-                            if (response.response.success == true)
-                            {
-                                await Navigation.PopAllPopupAsync();
-                                App.Current.MainPage = new LoginPage();
-                                Preferences.Clear();
-                            }
-                            else
-                            {
-                                await App.Current.MainPage.DisplayAlert("Fondo Merende", "Guarda, sta cosa non ha senso", "OK");
-                            }
-                        }
-
-
-                    }
-                    else if (risp.response.message != null)
-                    {
-                        await DisplayAlert("Fondo Merende","Errore", "Ok");
-                        await Navigation.PopPopupAsync();
-                    }
-                }
-                
+                username = usernameEntry.Text;
+                FriendlyName = friendlynameEntry.Text;
+                passwordNuova = passwordEntry.Text;
+                Navigation.PushPopupAsync(new EditUserPopUpPage());
             }
             else
             {
-                await DisplayAlert("Fondo Merende", "Password errata", "Ok");
+                await DisplayAlert("Fondo Merende", "inserisci tutti i dati", "Ok");
             }
-
-
-
         }
 
         private async void Discard_Clicked(object sender, EventArgs e)
         {
             await PopupNavigation.Instance.PopAsync();
         }
-
-
-
     }
 }

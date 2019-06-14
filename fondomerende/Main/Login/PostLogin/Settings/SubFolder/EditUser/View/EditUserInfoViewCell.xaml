@@ -9,20 +9,17 @@
              x:Class="fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View.EditUserInfoViewCell">
     <ViewCell.View>
         <StackLayout 
-            Orientation="Horizontal" 
-            VerticalOptions="Center">
-            <Image 
-                Grid.Row="0"
-                Grid.Column="0"
+            Orientation="Horizontal" >
+            <Image
                 x:Name="SnackIcon" 
                 VerticalOptions="Center" 
-                HorizontalOptions="Center" 
-                Aspect="AspectFit"
-                Scale="1.5"
-                Margin="15,0,5,0"
+                HorizontalOptions="Start"
+                Scale="0.8"
+                Margin="5,0,5,0"
                 Source="{local:EmbeddedImage Resource=fondomerende.image.edit_profile_256x256.png}">
             </Image>
             <Label
+                HorizontalOptions="StartAndExpand"
                 VerticalOptions="CenterAndExpand"                               
                 x:Name="FundFund"
                 FontSize="14"
