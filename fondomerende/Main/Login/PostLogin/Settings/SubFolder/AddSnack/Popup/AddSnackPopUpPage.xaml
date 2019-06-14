@@ -11,7 +11,7 @@
             xmlns:Graph="clr-namespace:fondomerende.Main.Utilities"
             x:Class="fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.Popup.AddSnackPopUpPage"
             HasKeyboardOffset="False">
-    
+
     <!--You can set an animation in the xaml file or in the csharp code behind-->
     <pages:PopupPage.Animation>
         <animations:ScaleAnimation 
@@ -28,20 +28,16 @@
     <!--You can use any elements here which are extended from Xamarin.Forms.View-->
     <Graph:RoundedCornerView 
         RoundedCornerRadius="20"                                  
-        Margin="{OnPlatform iOS=' 35,160,35,200', Android='10,40,10,40'}"
-        HorizontalOptions="{OnPlatform Android=CenterAndExpand}"
-        VerticalOptions="{OnPlatform Android=CenterAndExpand}"
+        Margin="{OnPlatform iOS=' 10,160,0,160', Android='10,40,10,40'}"
+        VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"
+        
         >
-
-
-        <StackLayout BackgroundColor="White" VerticalOptions="StartAndExpand">
-            <Label HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand" Text="Fondo Merende" FontAttributes="Bold" Margin="0,10,0,0">
-            </Label>
+        <StackLayout BackgroundColor="White">
             <StackLayout
-                VerticalOptions="StartAndExpand" 
-                HorizontalOptions="CenterAndExpand" 
-                Margin="{OnPlatform Android='0,10,0,10'}" 
-                Spacing="30">
+                VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand" Margin="0,10,0,10" Spacing="30">
+                <Label HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand" Text="Fondo Merende" FontAttributes="Bold">
+                </Label>
+
                 <local:LineEntry Placeholder="Nome" x:Name="Nome" Keyboard="Default">
                 </local:LineEntry>
                 <local:LineEntry Placeholder="Prezzo"  MaxLength="5" x:Name="Prezzo" Keyboard="Numeric">
@@ -50,31 +46,21 @@
                 </local:LineEntry>
                 <local:LineEntry Placeholder="Giorni alla scadenza" x:Name="ScadenzaInGiorni" Keyboard="Numeric">
                 </local:LineEntry>
+               
             </StackLayout>
             <Label x:Name="ErrorLabel" TextColor="Red" Text=" " HorizontalOptions="Center">
             </Label>
-            <StackLayout>
-                <Button 
-                Text="Annulla" 
-                VerticalOptions="EndAndExpand" 
-                FontSize="14" 
-                HorizontalOptions="StartAndExpand"
-                x:Name="Discard" 
-                Clicked="Discard_Clicked" 
-                Margin="20,0,0,10" 
-                Style="{StaticResource FondomerendeButton}" >
-                </Button>
-                <Button 
-                Text="Immetti" 
-                VerticalOptions="EndAndExpand" 
-                HorizontalOptions="EndAndExpand" 
-                FontSize="14" 
-                x:Name="Apply" 
-                Clicked="Apply_Clicked"
-                Margin="0,0,20,10" 
-                Style="{StaticResource FondomerendeButton}">
+            
+        </StackLayout>
+        
+        <StackLayout >
+            <Button Text="Annulla" VerticalOptions="EndAndExpand" FontSize="14" HorizontalOptions="StartAndExpand" x:Name="Discard" Clicked="Discard_Clicked" Margin="20,0,0,10" Style="{StaticResource FondomerendeButton}" >
             </Button>
         </StackLayout>
+        <StackLayout>
+            <Button Text="Immetti" VerticalOptions="EndAndExpand" HorizontalOptions="EndAndExpand" FontSize="14" x:Name="Apply" Clicked="Apply_Clicked" Margin="0,0,20,10" Style="{StaticResource FondomerendeButton}">
+            </Button>
         </StackLayout>
+        
     </Graph:RoundedCornerView>
 </pages:PopupPage>
