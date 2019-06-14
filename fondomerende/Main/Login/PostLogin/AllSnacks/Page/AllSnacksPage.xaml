@@ -65,10 +65,8 @@
                 </StackLayout>
             </StackLayout>
 
-            
-            <StackLayout>
-
-                <Gradient:GradientColorStack StartColor="#FDEBC8" EndColor="#FFF8EB">
+            <Gradient:GradientColorStack StartColor="#FDEBC8" EndColor="#FFF8EB">
+                <StackLayout>
                     <ScrollView 
                     IsVisible="True" 
                     x:Name="ScrollView" 
@@ -106,9 +104,9 @@
                         </Grid>
                 
                     </ScrollView>
-                </Gradient:GradientColorStack>
-            </StackLayout>
-            
+                </StackLayout>
+            </Gradient:GradientColorStack>
+
 
             <ListView
                     Margin="0,0,0,10"

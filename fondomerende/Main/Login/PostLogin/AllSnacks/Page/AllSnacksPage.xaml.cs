@@ -32,19 +32,19 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             Fade();
 
 
-            //switch (Device.RuntimePlatform)                                                     //
-            //{                                                                                   //                                    
-            //                                                                                    //   Se il dispositivo è Android non mostra la Top Bar della Navigation Page,
-            //    case Device.Android:                                                            //      Se è iOS invece si (perchè senza è una schifezza)
-            //        NavigationPage.SetHasNavigationBar(this, false);                            //
-            //        break;                                                                      //
-            //                                                                                    //
-            //        default:                                                                    //
-            //        NavigationPage.SetHasNavigationBar(this, true);                             //
-            //        break;                                                                      //
-            //}                                                                                   //
+            switch (Device.RuntimePlatform)                                                     //
+            {                                                                                   //                                    
+                                                                                                //   Se il dispositivo è Android non mostra la Top Bar della Navigation Page,
+                case Device.Android:                                                            //      Se è iOS invece si (perchè senza è una schifezza)
+                    NavigationPage.SetHasNavigationBar(this, false);                            //
+                    break;                                                                      //
+                                                                                                //
+                default:                                                                        //
+                    NavigationPage.SetHasNavigationBar(this, true);                             //
+                    break;                                                                      //
+            }                                                                                   //
 
-    
+
 
 
             ListView.RefreshCommand = new Command(async () =>                                //
@@ -57,7 +57,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
         }                                                                                    //
         public async Task RefreshDataAsync()                                                 //
         {                                                                                    //
-           await GetSnacksMethod(true);                                                          //
+           await GetSnacksMethod(true);                                                      //
         }                                                                                    //
 
 
@@ -73,12 +73,22 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                     ColorRandom c = new ColorRandom();
                     int box = 140;
 
-                    var imageButton = new ImageButton
+                    var imageButtonAndroid = new ImageButton
                     {
                         Margin = new Thickness(0, 20, 0, 20),
                         HorizontalOptions = LayoutOptions.CenterAndExpand,
                         VerticalOptions = LayoutOptions.CenterAndExpand,
                         Scale = 3,
+                        BackgroundColor = Color.White,
+                        Source = "http://192.168.0.175:8888/fondomerende/public/getphoto.php?name=" + result.data.snacks[i].friendly_name.Replace(" ", "&nbsp;") + "_500x500"
+                    };
+
+                    var imageButtoniOS = new ImageButton
+                    {
+                        Margin = new Thickness(0, 20, 0, 20),
+                        HorizontalOptions = LayoutOptions.CenterAndExpand,
+                        VerticalOptions = LayoutOptions.CenterAndExpand,
+                        Scale = 2.6,
                         Source = "http://192.168.0.175:8888/fondomerende/public/getphoto.php?name=" + result.data.snacks[i].friendly_name.Replace(" ", "&nbsp;") + "_500x500"
                     };
 
@@ -122,26 +132,19 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                         Orientation = StackOrientation.Vertical
                     };
 
-                    switch (Device.RuntimePlatform)            
-                    {
-                        case Device.Android:
-                            imageButton.BackgroundColor = Color.White;
-                        break;
-                    }
-
-
-                    imageButton.Clicked += OnImageButtonClicked;
-                    StackLayout.Children.Add(imageButton);
-
                     switch (Device.RuntimePlatform)
                     {
                         case Device.Android:
+                            imageButtonAndroid.Clicked += OnImageButtonClicked;
+                            StackLayout.Children.Add(imageButtonAndroid);
                             BordiSmussatiAndroid.Children.Add(StackLayout);
                             app.Children.Add(BordiSmussatiAndroid);
                             
                             break;
 
                         default:
+                            imageButtoniOS.Clicked += OnImageButtonClicked;
+                            StackLayout.Children.Add(imageButtoniOS);
                             BordiSmussatiiOS.Children.Add(StackLayout);
                             app.Children.Add(BordiSmussatiiOS);
                             break;
@@ -202,6 +205,8 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
         {
             await Navigation.PushPopupAsync(new DepositPopUp());
         }
+
+        
     }
 
 }
