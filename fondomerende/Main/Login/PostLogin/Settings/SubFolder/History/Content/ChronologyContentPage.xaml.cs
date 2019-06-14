@@ -373,7 +373,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
                     double secondi = minuti * 60;
                     if (minuti < 1)
                     {
-                        return "1< min";
+                        return "<1 min";
                     }
                     else
                     {
@@ -432,11 +432,11 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
                 }
                 else
                 {
-                    if (ris.TotalHours < 12)
+                    if (ris.TotalHours < 8)
                         multipler += ris.TotalHours * 1.8;
                     else
                     {
-                        multipler += 1.8 * 12;
+                        multipler += 1.8 * 8;
                         multipler += (ris.TotalHours-12) * 1.5;
                     }
                 }
