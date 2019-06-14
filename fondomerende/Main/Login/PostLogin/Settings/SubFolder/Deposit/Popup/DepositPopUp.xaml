@@ -34,16 +34,15 @@
 
 
         <AbsoluteLayout BackgroundColor="White">
-            <Label 
-                Margin="100,10,0,10" 
-                HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand" Text="Fondo Merende" FontAttributes="Bold"
-                   >
-            </Label>
+            
 
             <StackLayout
                 HorizontalOptions="CenterAndExpand" 
-                Margin="30,40,0,0">
-
+                Margin="30,20,0,0">
+                <Label 
+                    Margin="10,0,0,10" 
+                    HorizontalOptions="Center" VerticalOptions="StartAndExpand" Text="Fondo Merende" FontAttributes="Bold">
+                </Label>
                 <local:LineEntry 
                     x:Name="Amount" 
                     Placeholder="Quanto vuoi depositare?" 
