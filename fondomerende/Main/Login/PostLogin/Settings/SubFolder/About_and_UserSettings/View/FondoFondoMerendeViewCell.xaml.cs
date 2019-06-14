@@ -17,6 +17,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.About_and_UserSet
         public FondoFondoMerendeViewCell()
         {
             InitializeComponent();
+            GetFunds();
         }
 
         private async void GetFunds()
@@ -24,10 +25,14 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.About_and_UserSet
             var result = await userFundsService.GetFundsFundAsync();
             if (result.response.success)
             {
-                FundFund.Text = Convert.ToString(result.data.fund_funds_amount);
+                FundFund.Text = "il Fondo merende ha €" + Convert.ToString(result.data.fund_funds_amount) + "a disposizione";
                 if(result.data.fund_funds_amount <= 0)
                 {
-                    FundFund.TextColor = Color.Red;
+                    var fs = new FormattedString();
+                    fs.Spans.Add(new Span { Text = "il Fondo merende ha €", TextColor = Color.Black });
+                    fs.Spans.Add(new Span { Text = Convert.ToString(result.data.fund_funds_amount), TextColor = Color.Red });
+                    fs.Spans.Add(new Span { Text = " a disposizione", TextColor = Color.Black });
+                    FundFund.FormattedText = fs;
                 }
             }
             else

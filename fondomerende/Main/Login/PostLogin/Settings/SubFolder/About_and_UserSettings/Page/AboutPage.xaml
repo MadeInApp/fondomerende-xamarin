@@ -20,12 +20,12 @@
             Intent="Settings" 
             HasUnevenRows="True"
             x:Name="tableView">
-            <TableRoot 
-                Title="Fondo"
-                TextColor="{OnPlatform Android= #6495ed}">
-                <TableSection>
+            <TableRoot>
+                <TableSection
+                      Title="Fondo"
+                      TextColor="{OnPlatform Android= #6495ed}">
                     <ffm:FondoFondoMerendeViewCell
-                          x:Name="FondoFondoMerendeViewCell"
+                        x:Name="FondoFondoMerendeViewCell"
                         Height="60" 
                         IsEnabled="False">
                     </ffm:FondoFondoMerendeViewCell>
