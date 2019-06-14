@@ -34,6 +34,7 @@
     <None Remove="image\fill_clear_256x256.png" />
     <None Remove="image\fill_full_256x256.png" />
     <None Remove="image\Fondo_Merende_logo.png" />
+    <None Remove="image\fund_256x256.png" />
     <None Remove="image\History.png" />
     <None Remove="image\list_256x256.png" />
     <None Remove="image\list_264x264.png" />
@@ -78,6 +79,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="image\fill_full_256x256.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="image\fund_256x256.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="image\History.png">
@@ -194,6 +198,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Main\Login\PostLogin\Settings\SubFolder\About_and_UserSettings\Page\AboutPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Main\Login\PostLogin\Settings\SubFolder\About_and_UserSettings\View\FondoFondoMerendeViewCell.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Main\Login\PostLogin\Settings\SubFolder\AddSnack\View\AddSnackViewCell.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

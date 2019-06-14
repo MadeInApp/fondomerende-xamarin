@@ -21,5 +21,16 @@ namespace fondomerende.Main.Services.RESTServices
 
             return response;
         }
+
+        public async System.Threading.Tasks.Task<FundFundsDTO> GetFundsFundAsync()
+        {
+            var response = await "http://192.168.0.175:8888/fondomerende/public/process-request.php?commandName=get-fund-funds"
+                                .WithCookie("auth-key", "metticiquellochetipare")
+                                .WithCookie("user-token", Manager.UserManager.Instance.token)
+                                .GetJsonAsync<FundFundsDTO>();
+
+            return response;
+        }
+
     }
 }
