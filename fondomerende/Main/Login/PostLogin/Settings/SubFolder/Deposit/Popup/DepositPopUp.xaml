@@ -54,7 +54,9 @@
                     Keyboard="Numeric"
                     TextChanged="Amount_TextChanged"
                     MaxLength="4"
+                    Margin="15,0,0,0"
                     HorizontalOptions="CenterAndExpand"
+                    HorizontalTextAlignment="Center"
                     >
                 </local:LineEntry>
                 
@@ -74,7 +76,7 @@
                 Margin="20,80,0,0">
                 <Button Text="Annulla" Margin="{OnPlatform Android= '0,60,0,0', iOS='0,60,0,0'}" VerticalOptions="EndAndExpand" FontSize="14" x:Name="Discard" Clicked="Discard_Clicked" Style="{StaticResource FondomerendeButton}" HorizontalOptions="FillAndExpand" >
                 </Button>
-                <Button Text="Deposita" Margin="{OnPlatform Android= '0,60,0,0', iOS='0,60,0,0'}" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand"  FontSize="14" x:Name="Apply" Clicked="Apply_Clicked" Style="{StaticResource FondomerendeButton}">
+                <Button Text="Deposita" Margin="{OnPlatform Android= '0,60,0,0', iOS='100,60,0,0'}" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand"  FontSize="14" x:Name="Apply" Clicked="Apply_Clicked" Style="{StaticResource FondomerendeButton}">
                 </Button>
             </StackLayout>
         </AbsoluteLayout>
