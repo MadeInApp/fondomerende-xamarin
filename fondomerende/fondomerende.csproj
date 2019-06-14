@@ -28,6 +28,7 @@
     <None Remove="image\deposit_256x256.png" />
     <None Remove="image\Donut_icon_512x512.png" />
     <None Remove="image\Edit_Icon_32x32.png" />
+    <None Remove="image\edit_profile_256x256.png" />
     <None Remove="image\Edit_snack_icon_256x256.png" />
     <None Remove="image\Edit_snack_icon_32x32.png" />
     <None Remove="image\Fill_256x256.png" />
@@ -71,6 +72,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="image\deposit_256x256.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="image\edit_profile_256x256.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="image\Fill_256x256.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -223,6 +227,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Main\Login\PostLogin\Settings\SubFolder\EditUser\Popup\EditUserPopUpPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Main\Login\PostLogin\Settings\SubFolder\EditUser\View\EditUserInfoViewCell.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Main\Login\PostLogin\Settings\SubFolder\History\Content\GradientColorPage.xaml">
