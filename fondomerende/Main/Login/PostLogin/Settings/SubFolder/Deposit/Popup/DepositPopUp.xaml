@@ -30,7 +30,7 @@
         VerticalOptions="Center"
         HeightRequest="{OnPlatform Android=200, iOS=200}"
         WidthRequest="{OnPlatform Android=700, iOS=700}"
-        Margin="{OnPlatform Android= '30,0,30,0', iOS = '30,0,30,0'}"
+        Margin="{OnPlatform Android= '30,0,30,0', iOS = '40,0,40,0'}"
         
         >
 
@@ -44,25 +44,23 @@
 
             <StackLayout
                 HorizontalOptions="CenterAndExpand" 
-                Margin="40,40,0,0"
-                >
+                Margin="40,40,0,0">
 
                 <local:LineEntry 
-                    
                     x:Name="Amount" 
                     Placeholder="Quanto vuoi depositare?" 
                     Keyboard="Numeric"
                     TextChanged="Amount_TextChanged"
                     MaxLength="4"
-                    Margin="15,0,0,0"
+                    Margin="22,0,0,0"
                     HorizontalOptions="CenterAndExpand"
-                    HorizontalTextAlignment="Center"
-                    >
+                    HorizontalTextAlignment="Center">
                 </local:LineEntry>
                 
                 <Label 
                     x:Name="ErrorLabel" 
-                    TextColor="Red" Text="" 
+                    TextColor="Red" Text=""
+                    Margin="18,0,0,0"
                     HorizontalOptions="Center">
                 </Label>
             </StackLayout>
@@ -70,13 +68,13 @@
             <StackLayout 
                 Orientation="Horizontal" 
                 VerticalOptions="EndAndExpand" 
-                HorizontalOptions="CenterAndExpand" 
+                HorizontalOptions="FillAndExpand" 
                 Spacing="90" 
                 Padding="0,0,0,0" 
-                Margin="20,80,0,0">
+                Margin="20,80,20,0">
                 <Button Text="Annulla" Margin="{OnPlatform Android= '0,60,0,0', iOS='0,60,0,0'}" VerticalOptions="EndAndExpand" FontSize="14" x:Name="Discard" Clicked="Discard_Clicked" Style="{StaticResource FondomerendeButton}" HorizontalOptions="FillAndExpand" >
                 </Button>
-                <Button Text="Deposita" Margin="{OnPlatform Android= '0,60,0,0', iOS='100,60,0,0'}" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand"  FontSize="14" x:Name="Apply" Clicked="Apply_Clicked" Style="{StaticResource FondomerendeButton}">
+                <Button Text="Deposita" Margin="{OnPlatform Android= '0,60,0,0', iOS='80,60,0,0'}" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand"  FontSize="14" x:Name="Apply" Clicked="Apply_Clicked" Style="{StaticResource FondomerendeButton}">
                 </Button>
             </StackLayout>
         </AbsoluteLayout>
