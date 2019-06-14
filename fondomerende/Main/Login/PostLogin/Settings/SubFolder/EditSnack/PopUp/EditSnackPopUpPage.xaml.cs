@@ -123,11 +123,23 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.PopUp
 
         private async void Apply_Clicked(object sender, EventArgs e)
         {
-           var res = await snackService.EditSnackAsync(snackID, NomeSnack.Text, PrezzoSnack.Text, SnackPerBox.Text, ExpInDays.Text,Int32.Parse(Qta.Text));
-            if (res != null)
+            if (NomeSnack.Text == null || PrezzoSnack.Text == null || SnackPerBox.Text == null || ExpInDays.Text == null || Qta.Text == null)
             {
-                await Navigation.PopPopupAsync();
+                await DisplayAlert("Fondo Merende", "Riempi tutti i campi", "Ok");
             }
+            else
+            {
+                var res = await snackService.EditSnackAsync(snackID, NomeSnack.Text, PrezzoSnack.Text, SnackPerBox.Text, ExpInDays.Text, Int32.Parse(Qta.Text));
+                if (res.response.success)
+                {
+                    await Navigation.PopPopupAsync();
+                }
+                else
+                {
+                    await DisplayAlert("Fondo Merende", "Errore", "Ok");
+                }
+            }
+                
         }
 
         private async void Discard_Clicked(object sender, EventArgs e)
@@ -183,10 +195,6 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.PopUp
             }
         }
 
-        private void Discard_Clicked_1(object sender, EventArgs e)
-        {
-
-        }
 
     }
 }
