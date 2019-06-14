@@ -12,69 +12,81 @@
 
     <ContentPage.Content>
         <!--Pagina Modifica utente-->
-        <StackLayout>
-            <StackLayout
-                HeightRequest="50"
-                WidthRequest="50"
-                VerticalOptions="Center"
-                HorizontalOptions="End"
-                Spacing="20">
 
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
 
-            </StackLayout>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
 
+            <Image
+                Source="{local:EmbeddedImage Resource=fondomerende.image.LoginBackground.png}"
+                Grid.Row="0"
+                Grid.Column="0"   
+                Scale="{OnIdiom Phone=1.8, Tablet=1.5}"
+                x:Name ="BackGradientArRos"
+                Margin="{OnPlatform iOS='0,0,0,80'}"
+                Aspect="AspectFit">
+            </Image>
+            <Image
+                Source="{local:EmbeddedImage Resource=fondomerende.image.Livellodinamico.png}"
+                Grid.Row="0"
+                Grid.Column="0" 
+                Opacity="0.4"
+                Scale="4"
+                x:Name ="Donut"
+                Margin="{OnPlatform iOS='0,0,0,-500', Android='0,0,0,-500'}"
+                Aspect="AspectFit">
+            </Image>
+            <Grid>
+                <StackLayout
+                    Grid.Row="1"
+                    HeightRequest="50"
+                    WidthRequest="300"
+                    HorizontalOptions="CenterAndExpand"
+                    Spacing="20">
 
+                <local:LineEntry 
+                    HorizontalOptions="StartAndExpand" 
+                    Margin="10,20,0,30" 
+                    WidthRequest="200"
+                    x:Name="usernameEntry"
+                    IsSpellCheckEnabled="False"
+                    IsTextPredictionEnabled="False"
+                    Keyboard="Plain" />
 
-            <local:LineEntry 
-                HorizontalOptions="StartAndExpand" 
-                Margin="10,20,0,30" 
-                WidthRequest="200"
-                x:Name="usernameEntry"
-                IsSpellCheckEnabled="False"
-                IsTextPredictionEnabled="False"
-                Keyboard="Plain"
-                />
+                <local:LineEntry 
+                    HorizontalOptions="StartAndExpand" 
+                    x:Name="friendlynameEntry" 
+                    WidthRequest="200"
+                    Margin="10,20,100,30"
+                    IsSpellCheckEnabled="False"
+                    IsTextPredictionEnabled="False"
+                    Keyboard="Plain" />
 
-            <local:LineEntry 
-                HorizontalOptions="StartAndExpand" 
-                x:Name="friendlynameEntry" 
-                WidthRequest="200"
-                Margin="10,20,100,30"
-                IsSpellCheckEnabled="False"
-                IsTextPredictionEnabled="False"
-                Keyboard="Plain"
-                
-                />
+                <local:LineEntry 
+                    HorizontalOptions="StartAndExpand" 
+                    Placeholder="Cambia Password"
+                    WidthRequest="200"
+                    IsPassword="True"
+                    x:Name="passwordEntry" 
+                    Margin="10,20,0,30"/>
 
-            <local:LineEntry 
-                HorizontalOptions="StartAndExpand" 
-                Placeholder="Cambia Password"
-                WidthRequest="200"
-                IsPassword="True"
-                x:Name="passwordEntry" 
-                Margin="10,20,0,30"/>
-
-            <!--<local:LineEntry 
-                VerticalOptions="EndAndExpand" 
-                HorizontalOptions="Center"
-                Placeholder="Inserisci la Vecchia Password"
-                IsPassword="True"
-                x:Name="OldpasswordEntry" 
-                Margin="40,240,40,0"/>-->
-
-
-            <Button
-                AbsoluteLayout.LayoutBounds=".5,.5,25,1000"
-                Margin="5,0,5,0"
-                Clicked="ApplyChanges_Clicked_1" 
-                x:Name="ApplyChanges" 
-                Text="Applica"
-                TextColor="{OnPlatform iOS={StaticResource ColorBackground}}"
-                Style="{OnPlatform Android={StaticResource FondomerendeButton}}">
-
-            </Button>
-
-
-        </StackLayout>
+                <Button
+                    HorizontalOptions="FillAndExpand"
+                    AbsoluteLayout.LayoutBounds=".5,.5,25,1000"
+                    Margin="5,0,5,0"
+                    Clicked="ApplyChanges_Clicked_1" 
+                    x:Name="ApplyChanges" 
+                    Text="Applica"
+                    TextColor="Black"
+                    Style="{StaticResource FondomerendeButton}">
+                </Button>
+                </StackLayout>
+            </Grid>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

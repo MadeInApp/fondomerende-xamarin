@@ -33,6 +33,7 @@
                 Grid.Row="0"
                 Grid.Column="0" 
                 Opacity="0.4"
+                Scale="1.5"
                 x:Name ="Donut"
                 Margin="{OnPlatform iOS='0,0,0,-500', Android='0,0,0,-500'}"
                 Aspect="AspectFit">

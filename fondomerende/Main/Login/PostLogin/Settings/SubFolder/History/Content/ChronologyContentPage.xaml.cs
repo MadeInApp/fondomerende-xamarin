@@ -54,6 +54,10 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
         private void Fusione()
         {
             traduttore.Add("added", "ha aggiunto");
+            traduttore.Add("changed", "ha cambiato il nome di");
+            traduttore.Add("name", "");
+            traduttore.Add("from", "da");
+            traduttore.Add("to", "a");
             traduttore.Add("ate", "ha mangiato");
             traduttore.Add("bought", "ha comprato");
             traduttore.Add("deposited", "ha depositato");

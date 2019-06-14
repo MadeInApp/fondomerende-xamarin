@@ -19,7 +19,6 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.Page
         public static string username = "";
         public static string FriendlyName = "";
         public static string passwordNuova = "";
-
         public string GetpasswordNuova()
         {
             return passwordNuova;
@@ -53,33 +52,16 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.Page
         private async void ApplyChanges_Clicked_1(object sender, EventArgs e)
         {
             EditUserServiceManager editUser = new EditUserServiceManager();
-            if (usernameEntry.Text != null)
-            {
-                username = usernameEntry.Text;
-            }
-            else
-            {
-                await DisplayAlert("Fondo Merende", "username mancante", "Ok");
-            }
-            if (friendlynameEntry.Text != null)
-            {
-                FriendlyName = friendlynameEntry.Text;
-            }
-            else
-            {
-                await DisplayAlert("Fondo Merende", "nome mancante", "Ok");
-            }
-            if (passwordEntry.Text != null)
-            {
-                passwordNuova = passwordEntry.Text;
-            }
-            else
-            {
-                await DisplayAlert("Fondo Merende", "password mancante", "Ok");
-            }
             if (usernameEntry.Text != null && friendlynameEntry.Text != null && passwordEntry.Text != null)
             {
+                username = usernameEntry.Text;
+                FriendlyName = friendlynameEntry.Text;
+                passwordNuova = passwordEntry.Text;
                 Navigation.PushPopupAsync(new EditUserPopUpPage());
+            }
+            else
+            {
+                await DisplayAlert("Fondo Merende", "inserisci tutti i dati", "Ok");
             }
         }
     }

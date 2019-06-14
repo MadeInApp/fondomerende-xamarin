@@ -95,20 +95,17 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup
         private async void Apply_Clicked(object sender, EventArgs e)
         {
             DepositServiceManager depositService = new DepositServiceManager();
-            if(Amount.Text == null)
+            if (Amount.Text == null)
             {
                 ErrorLabel.Text = "Inserisci l'ammontare";
             }
-            string[] strSplit = Amount.Text.Split(',');
-            float ris = float.Parse(strSplit[0]) + (float.Parse(strSplit[1]) / 100);
-            
-            if(ris > 0)
+            else if (Int32.Parse(Amount.Text) <= 0)
             {
-                if (Amount.Text == "")
-                {
-                    ErrorLabel.Text = "inserire un numero";
-                }
-                var resultDep = await depositService.DepositAsync(Convert.ToDecimal(ris));
+                await DisplayAlert("Fondo Merende", "L'ammontare deve essere maggiore di zero", "Ok");
+            }
+            else
+            {
+                var resultDep = await depositService.DepositAsync(Convert.ToDecimal(Amount.Text));
                 if (resultDep.response.success)
                 {
                     await Navigation.PopPopupAsync();
@@ -117,10 +114,6 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup
                 {
                     await DisplayAlert("Fondo Merende", "Errore", "Ok");
                 }
-            }
-            else
-            {
-                await DisplayAlert("Fondo Merende","L'ammontare non può essere minore di 1", "Ok");
             }
         }
 
