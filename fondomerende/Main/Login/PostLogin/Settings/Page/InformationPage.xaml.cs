@@ -14,6 +14,7 @@ using fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.Popup;
 using Rg.Plugins.Popup.Extensions;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup;
+using fondomerende.Main.Login.PostLogin.Settings.SubFolder.About_and_UserSettings.Page;
 
 namespace fondomerende.Main.Login.PostLogin.Settings.Page
 {
@@ -75,7 +76,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.Page
 
         private async void ChangeUserSettings_Tapped(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new EditUserPage());
+            await Navigation.PushAsync(new AboutPage());
         }
 
         private async void EditSnackViewCell_Tapped(object sender, EventArgs e)

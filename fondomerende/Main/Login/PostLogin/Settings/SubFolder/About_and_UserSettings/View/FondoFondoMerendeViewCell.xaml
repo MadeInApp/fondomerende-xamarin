@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ViewCell xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:controls="clr-namespace:Plugin.CrossPlatformTintedImage.Abstractions;assembly=Plugin.CrossPlatformTintedImage.Abstractions"
+             xmlns:local="clr-namespace:fondomerende.Main.Utilities"
+             mc:Ignorable="d"
+             x:Class="fondomerende.Main.Login.PostLogin.Settings.SubFolder.About_and_UserSettings.View.FondoFondoMerendeViewCell">
+    <ViewCell.View>
+        <!--Tasto aggiungi snack-->
+        <StackLayout 
+            Orientation="Horizontal" 
+            VerticalOptions="Center">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.3*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <controls:TintedImage 
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    x:Name="SnackIcon" 
+                    Scale="{OnPlatform Android=0.9, Default=1}"
+                    VerticalOptions="Center" 
+                    HorizontalOptions="Center" 
+                    Aspect="AspectFit"
+                    Margin="11,0,11,0"
+                    Source="{local:EmbeddedImage Resource=fondomerende.image.fund_256x256.png}">
+                </controls:TintedImage>
+
+                <StackLayout
+                    HorizontalOptions="Start"
+                    VerticalOptions="Center"
+                    Grid.Row="0"
+                    Grid.Column="1">
+
+                    <Label
+                        VerticalOptions="CenterAndExpand"                               
+                        x:Name="FundFund"
+                        FontSize="14"
+                        TextColor="Black">
+                    </Label>
+                </StackLayout>
+            </Grid>
+        </StackLayout>
+    </ViewCell.View>
+</ViewCell>

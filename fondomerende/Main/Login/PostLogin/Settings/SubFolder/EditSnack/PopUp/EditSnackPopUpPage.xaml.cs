@@ -127,6 +127,10 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.PopUp
             {
                 await DisplayAlert("Fondo Merende", "Riempi tutti i campi", "Ok");
             }
+            else if(Int32.Parse(PrezzoSnack.Text) == 0 || Int32.Parse(SnackPerBox.Text) == 0)
+            {
+                await DisplayAlert("Fondo Merende", "Il Prezzo e 'gli Snacks per scatola' devono essere maggiori di 0", "Ok");
+            }
             else
             {
                 var res = await snackService.EditSnackAsync(snackID, NomeSnack.Text, PrezzoSnack.Text, SnackPerBox.Text, ExpInDays.Text, Int32.Parse(Qta.Text));
@@ -139,7 +143,6 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.PopUp
                     await DisplayAlert("Fondo Merende", "Errore", "Ok");
                 }
             }
-                
         }
 
         private async void Discard_Clicked(object sender, EventArgs e)
