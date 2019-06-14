@@ -10,7 +10,7 @@ using Xamarin.Forms.Xaml;
 namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.About_and_UserSettings.Page
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class AboutPage : TabbedPage
+    public partial class AboutPage : ContentPage
     {
         public AboutPage()
         {
