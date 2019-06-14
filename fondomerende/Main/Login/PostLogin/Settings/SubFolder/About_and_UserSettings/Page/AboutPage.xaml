@@ -35,7 +35,7 @@
                     TextColor="{OnPlatform Android= #6495ed}">
                     <local:EditUserInfoViewCell  
                         x:Name="EditUserInfoViewCell"
-                        Height="60" 
+                        Height="40" 
                         IsEnabled="True">
                     </local:EditUserInfoViewCell>
                 </TableSection>

@@ -11,23 +11,23 @@
         <StackLayout 
             Orientation="Horizontal" 
             VerticalOptions="Center">
-            <controls:TintedImage 
-                    Grid.Row="0"
-                    Grid.Column="0"
-                    x:Name="SnackIcon" 
-                    Scale="1.2"
-                    VerticalOptions="Center" 
-                    HorizontalOptions="Center" 
-                    Aspect="AspectFit"
-                    Margin="11,0,11,0"
-                    Source="{local:EmbeddedImage Resource=fondomerende.image.edit_profile_256x256.png}">
-            </controls:TintedImage>
+            <Image 
+                Grid.Row="0"
+                Grid.Column="0"
+                x:Name="SnackIcon" 
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" 
+                Aspect="AspectFit"
+                Scale="1.5"
+                Margin="15,0,5,0"
+                Source="{local:EmbeddedImage Resource=fondomerende.image.edit_profile_256x256.png}">
+            </Image>
             <Label
-                    VerticalOptions="CenterAndExpand"                               
-                    x:Name="FundFund"
-                    FontSize="14"
-                    TextColor="Black"
-                    Text="Modifica Informazioni Utente">
+                VerticalOptions="CenterAndExpand"                               
+                x:Name="FundFund"
+                FontSize="14"
+                TextColor="Black"
+                Text="Modifica Informazioni Utente">
             </Label>
         </StackLayout>
     </ViewCell.View>
