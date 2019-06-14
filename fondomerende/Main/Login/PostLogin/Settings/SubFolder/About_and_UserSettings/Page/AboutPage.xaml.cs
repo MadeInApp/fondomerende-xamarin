@@ -1,5 +1,6 @@
 ﻿using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.Page;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.Popup;
+using Foundation;
 using Rg.Plugins.Popup.Extensions;
 using System;
 using System.Collections.Generic;
@@ -18,6 +19,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.About_and_UserSet
         public AboutPage()
         {
             InitializeComponent();
+            Version.Text = "Version:" + "  " + NSBundle.MainBundle.InfoDictionary["CFBundleVersion"];
         }
 
         private void EditUserInfoViewCell_Tapped(object sender, EventArgs e)

@@ -22,7 +22,6 @@
             x:Name="tableView">
             <TableRoot>
                 <TableSection
-                      Title="Fondo"
                       TextColor="{OnPlatform Android= #6495ed}">
                     <ffm:FondoFondoMerendeViewCell
                         Height="50"
@@ -38,6 +37,9 @@
                         x:Name="EditUserInfoViewCell"
                         IsEnabled="True">
                     </local:EditUserInfoViewCell>
+                </TableSection>
+                <TableSection Title="Informazioni App">
+                    <TextCell DetailColor="Transparent" Text="Version" x:Name="Version" IsEnabled="False"/>
                 </TableSection>
             </TableRoot>
         </TableView>

@@ -11,19 +11,11 @@
         <!--Tasto aggiungi snack-->
         <StackLayout 
             Orientation="Horizontal" >
-            <Image 
-                x:Name="SnackIcon" 
-                VerticalOptions="Center" 
-                HorizontalOptions="Start"
-                Scale="0.8"
-                Margin="5,0,5,0"
-                Source="{local:EmbeddedImage Resource=fondomerende.image.fund_256x256.png}">
-            </Image>
             <Label
-                HorizontalOptions="StartAndExpand"
+                HorizontalOptions="CenterAndExpand"
                 VerticalOptions="CenterAndExpand"                    
                 x:Name="FundFund"
-                FontSize="14"
+                FontSize="16"
                 TextColor="Black"
                 Text="PlaceHolder">
             </Label>

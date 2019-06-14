@@ -25,25 +25,18 @@
     <local:RoundedCornerView 
         RoundedCornerRadius="10"
         Margin="30,100,30,250">
-        <StackLayout BackgroundColor="White" VerticalOptions="CenterAndExpand">
+        <StackLayout BackgroundColor="White" VerticalOptions="StartAndExpand">
             <Label 
                 Text="Fondo Merende" 
                 FontAttributes="Bold" 
                 HorizontalOptions="Center" 
                 VerticalOptions="StartAndExpand" 
-                Margin="0,10,0,0"/>
+                Margin="0,30,0,0"/>
 
-            <StackLayout 
-                    Margin="0,50,0,0"
-                    Grid.Row="0"
-                    HeightRequest="50"
-                    WidthRequest="300"
-                    HorizontalOptions="CenterAndExpand"
-                    Spacing="20">
-
-                <local:LineEntry 
-                    HorizontalOptions="StartAndExpand" 
-                    Margin="10,20,0,30" 
+                <local:LineEntry
+                    HorizontalTextAlignment="Center"
+                    HorizontalOptions="CenterAndExpand" 
+                    Margin="0,20,0,30" 
                     WidthRequest="200"
                     x:Name="usernameEntry"
                     IsSpellCheckEnabled="False"
@@ -51,33 +44,34 @@
                     Keyboard="Plain" />
 
                 <local:LineEntry 
-                    HorizontalOptions="StartAndExpand" 
+                    HorizontalTextAlignment="Center"
+                    HorizontalOptions="CenterAndExpand" 
                     x:Name="friendlynameEntry" 
                     WidthRequest="200"
-                    Margin="{OnPlatform Android='10,20,100,30', iOS='10,20,0,30'}"
+                    Margin="{OnPlatform Android='0,20,100,30', iOS='0,20,0,30'}"
                     IsSpellCheckEnabled="False"
                     IsTextPredictionEnabled="False"
                     Keyboard="Plain" />
 
-                <local:LineEntry 
-                    HorizontalOptions="StartAndExpand" 
+            <local:LineEntry 
+                    HorizontalTextAlignment="Center"
+                    HorizontalOptions="CenterAndExpand" 
                     Placeholder="Cambia Password"
                     WidthRequest="200"
                     IsPassword="True"
                     x:Name="passwordEntry" 
-                    Margin="10,20,0,30"/>
-
-                <Button
-                    HorizontalOptions="FillAndExpand"
-                    AbsoluteLayout.LayoutBounds=".5,.5,25,1000"
-                    Margin="5,0,5,0"
-                    Clicked="ApplyChanges_Clicked_1" 
-                    x:Name="ApplyChanges" 
-                    Text="Applica"
-                    TextColor="Black"
-                    Style="{StaticResource FondomerendeButton}">
-                </Button>
-            </StackLayout>
+                    Margin="0,20,0,30"/>
+            <Button
+                VerticalOptions="EndAndExpand"
+                HorizontalOptions="FillAndExpand"
+                AbsoluteLayout.LayoutBounds=".5,.5,25,1000"
+                Margin="5,40,5,0"
+                Clicked="ApplyChanges_Clicked_1" 
+                x:Name="ApplyChanges" 
+                Text="Applica"
+                TextColor="Black"
+                Style="{StaticResource FondomerendeButton}">
+            </Button>
         </StackLayout>
     </local:RoundedCornerView>
 </pages:PopupPage>

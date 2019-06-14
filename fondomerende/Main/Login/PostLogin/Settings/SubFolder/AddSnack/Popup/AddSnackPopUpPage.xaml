@@ -28,15 +28,15 @@
     <!--You can use any elements here which are extended from Xamarin.Forms.View-->
     <Graph:RoundedCornerView 
         RoundedCornerRadius="20"                                  
-        Margin="{OnPlatform iOS=' 10,160,0,160', Android='10,40,10,40'}"
-        VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"
+        Margin="{OnPlatform iOS=' 10,200,10,200', Android='10,40,10,40'}">
         
-        >
+        
         <StackLayout BackgroundColor="White">
+            <Label HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand" Text="Fondo Merende" FontAttributes="Bold" Margin="0,10,0,0">
+            </Label>
             <StackLayout
-                VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand" Margin="0,10,0,10" Spacing="30">
-                <Label HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand" Text="Fondo Merende" FontAttributes="Bold">
-                </Label>
+                VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand" Margin="{OnPlatform Android='0,10,0,10', iOS='60,30,60,30'} " Spacing="30">
+                
 
                 <local:LineEntry Placeholder="Nome" x:Name="Nome" Keyboard="Default">
                 </local:LineEntry>
@@ -53,12 +53,17 @@
             </StackLayout>
             <Label x:Name="ErrorLabel" TextColor="Red" Text=" " HorizontalOptions="Center">
             </Label>
-            <StackLayout Orientation="Horizontal" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand" Spacing="80" Padding="0,0,0,0" >
-                <Button Text="Annulla" VerticalOptions="EndAndExpand" FontSize="16" HorizontalOptions="FillAndExpand" x:Name="Discard" Clicked="Discard_Clicked" Margin="5,0,0,10" Style="{StaticResource FondomerendeButton}" >
-                </Button>
-                <Button Text="Immetti" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand" FontSize="16" x:Name="Apply" Clicked="Apply_Clicked" Margin="0,0,5,10" Style="{StaticResource FondomerendeButton}">
-                </Button>
-            </StackLayout>
+            
         </StackLayout>
+        
+        <StackLayout >
+            <Button Text="Annulla" VerticalOptions="EndAndExpand" FontSize="14" HorizontalOptions="StartAndExpand" x:Name="Discard" Clicked="Discard_Clicked" Margin="20,0,0,10" Style="{StaticResource FondomerendeButton}" >
+            </Button>
+        </StackLayout>
+        <StackLayout>
+            <Button Text="Immetti" VerticalOptions="EndAndExpand" HorizontalOptions="EndAndExpand" FontSize="14" x:Name="Apply" Clicked="Apply_Clicked" Margin="0,0,20,10" Style="{StaticResource FondomerendeButton}">
+            </Button>
+        </StackLayout>
+        
     </Graph:RoundedCornerView>
 </pages:PopupPage>
