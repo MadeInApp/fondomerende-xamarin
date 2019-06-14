@@ -12,42 +12,24 @@
         <StackLayout 
             Orientation="Horizontal" 
             VerticalOptions="Center">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
-
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="0.3*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-
-                <controls:TintedImage 
+            <controls:TintedImage 
                     Grid.Row="0"
                     Grid.Column="0"
                     x:Name="SnackIcon" 
-                    Scale="{OnPlatform Android=0.9, Default=1}"
+                    Scale="1.2"
                     VerticalOptions="Center" 
                     HorizontalOptions="Center" 
                     Aspect="AspectFit"
                     Margin="11,0,11,0"
                     Source="{local:EmbeddedImage Resource=fondomerende.image.fund_256x256.png}">
                 </controls:TintedImage>
-
-                <StackLayout
-                    HorizontalOptions="Start"
-                    VerticalOptions="Center"
-                    Grid.Row="0"
-                    Grid.Column="1">
-
-                    <Label
-                        VerticalOptions="CenterAndExpand"                               
-                        x:Name="FundFund"
-                        FontSize="14"
-                        TextColor="Black">
-                    </Label>
-                </StackLayout>
-            </Grid>
+                <Label
+                    VerticalOptions="CenterAndExpand"                               
+                    x:Name="FundFund"
+                    FontSize="14"
+                    TextColor="Black"
+                    Text="PlaceHolder">
+                </Label>
         </StackLayout>
     </ViewCell.View>
 </ViewCell>

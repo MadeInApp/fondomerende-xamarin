@@ -26,7 +26,6 @@
             <TableRoot>
                 <TableSection
                     Title="Utente"
-                    
                     TextColor="{OnPlatform Android= #6495ed}">
 
                     <local:EditUserViewCell

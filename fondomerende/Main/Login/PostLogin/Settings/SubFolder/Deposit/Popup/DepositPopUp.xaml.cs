@@ -105,14 +105,18 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup
             }
             else
             {
-                var resultDep = await depositService.DepositAsync(Convert.ToDecimal(Amount.Text));
+                var resultDep = await depositService.DepositAsync(float.Parse(Amount.Text));
                 if (resultDep.response.success)
                 {
                     await Navigation.PopPopupAsync();
                 }
+                else if(resultDep.response.message == "Execution error in UPDATE users_funds SET amount=amount+? WHERE user_id=?. Out of range value for column 'amount' at row 1.")
+                {
+                 await DisplayAlert("Fondo Merende", "Hai raggiunto la quota massima di fondi depositabili", "Ok");
+                }
                 else
                 {
-                    await DisplayAlert("Fondo Merende", "Errore", "Ok");
+                   await DisplayAlert("Fondo Merende", "Errore", "Ok");
                 }
             }
         }

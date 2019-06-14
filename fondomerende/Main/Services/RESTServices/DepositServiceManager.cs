@@ -11,7 +11,7 @@ namespace fondomerende.Main.Services.RESTServices
 {
     class DepositServiceManager
     {
-        public async System.Threading.Tasks.Task<DepositDTO> DepositAsync(Decimal DepAmount)
+        public async System.Threading.Tasks.Task<DepositDTO> DepositAsync(float DepAmount)
         {
             var result = await "http://192.168.0.175:8888/fondomerende/public/process-request.php"
             .WithCookie("auth-key", "metticiquellochetipare")

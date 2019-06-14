@@ -53,7 +53,7 @@
                     Placeholder="Quanto vuoi depositare?" 
                     Keyboard="Numeric"
                     TextChanged="Amount_TextChanged"
-                    MaxLength="2"
+                    MaxLength="4"
                     HorizontalOptions="CenterAndExpand"
                     >
                 </local:LineEntry>
