@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration;
+using fondomerende.Main.Utilities;
 
 namespace fondomerende.Main.Login.PostLogin
 {
@@ -27,7 +28,6 @@ namespace fondomerende.Main.Login.PostLogin
             SnacksNavPage.IconImageSource = ImageSource.FromResource("fondomerende.image.vm_icon_64x64.png");
             SettingsNavPage.IconImageSource = ImageSource.FromResource("fondomerende.image.settings_icon_64x64.png");
         }
-
     }
 }
 

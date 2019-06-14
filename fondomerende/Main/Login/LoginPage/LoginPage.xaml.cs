@@ -111,6 +111,7 @@ namespace fondomerende.Main.Login.LoginPages
                     var response = await registerService.RegisterAsync(username, password, friendly_name);
                     if (response.response.success == true && response.response.status == 201)
                     {
+                        await userService.GetUserData();
                         App.Current.MainPage = new MainPage();
                     }
 

@@ -57,7 +57,8 @@
 
                 <Label 
                     x:Name="ErrorLabel" 
-                    TextColor="Red" Text=""
+                    TextColor="Red" 
+                    Text=""
                     Margin="18,0,0,0"
                     HorizontalOptions="Center">
                 </Label>
