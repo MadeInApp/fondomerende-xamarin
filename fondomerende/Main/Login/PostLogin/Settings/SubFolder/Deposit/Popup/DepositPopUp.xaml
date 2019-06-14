@@ -54,7 +54,7 @@
                     Keyboard="Numeric"
                     TextChanged="Amount_TextChanged"
                     MaxLength="2"
-                    Margin="40,0,0,0"
+                    Margin="15,0,0,0"
                     HorizontalOptions="CenterAndExpand"
                     HorizontalTextAlignment="Center"
                     >
