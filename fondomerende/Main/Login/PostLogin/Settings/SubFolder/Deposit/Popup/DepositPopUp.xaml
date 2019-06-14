@@ -63,18 +63,18 @@
                 </Label>
             </StackLayout>
 
-            <StackLayout 
-            Orientation="Horizontal" 
-            VerticalOptions="EndAndExpand" 
-            HorizontalOptions="CenterAndExpand" 
-                BackgroundColor="Red"
-                Spacing="100"
-            Margin="50,140,10,0">
-                <Button Text="Annulla"  VerticalOptions="EndAndExpand" FontSize="14" x:Name="Discard" Clicked="Discard_Clicked" Style="{StaticResource FondomerendeButton}">
-                </Button>
-                <Button Text="Deposita"  VerticalOptions="EndAndExpand"  FontSize="14" x:Name="Apply" Clicked="Apply_Clicked" Style="{StaticResource FondomerendeButton}">
-                </Button>
-            </StackLayout>
+                <StackLayout 
+                Orientation="Horizontal" 
+                VerticalOptions="EndAndExpand" 
+                HorizontalOptions="CenterAndExpand" 
+                Spacing="100" 
+                Margin="10,140,10,0">
+                    <Button Text="Annulla"  VerticalOptions="EndAndExpand" FontSize="14" x:Name="Discard" Clicked="Discard_Clicked" Style="{StaticResource FondomerendeButton}" HorizontalOptions="StartAndExpand" >
+                    </Button>
+                    <Button Text="Deposita"  VerticalOptions="EndAndExpand" HorizontalOptions="EndAndExpand"  FontSize="14" x:Name="Apply" Clicked="Apply_Clicked" Style="{StaticResource FondomerendeButton}">
+                    </Button>
+                </StackLayout>
+          
         </AbsoluteLayout>
     </Graph:RoundedCornerView>
 </pages:PopupPage>
