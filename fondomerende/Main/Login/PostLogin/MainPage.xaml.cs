@@ -23,19 +23,9 @@ namespace fondomerende.Main.Login.PostLogin
         {
 
             InitializeComponent();
-            switch (Device.RuntimePlatform)                                                     
-            {                                                                                                                   
-                                                                                                
-                case Device.iOS:                                                            
-                    SnacksNavPage.IconImageSource = ImageSource.FromResource("fondomerende.image.vm_icon_64x64.png");
-                    SettingsNavPage.IconImageSource = ImageSource.FromResource("fondomerende.image.settings_icon_64x64.png");                          
-                    break;                                                                      
-                                                                                                
-                default:                                                                                            
-                    break;                                                                      
-            }
-            //SnacksNavPage.IconImageSource = ImageSource.FromResource("fondomerende.image.vm_icon_64x64.png");
-            //SettingsNavPage.IconImageSource = ImageSource.FromResource("fondomerende.image.settings_icon_64x64.png");
+
+            SnacksNavPage.IconImageSource = ImageSource.FromResource("fondomerende.image.vm_icon_64x64.png");
+            SettingsNavPage.IconImageSource = ImageSource.FromResource("fondomerende.image.settings_icon_64x64.png");
         }
 
     }

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <pages:PopupPage
              xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
              xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
@@ -30,9 +30,7 @@
         VerticalOptions="Center"
         HeightRequest="{OnPlatform Android=200, iOS=200}"
         WidthRequest="{OnPlatform Android=700, iOS=700}"
-        Margin="{OnPlatform Android= '30,0,30,0', iOS = '40,0,40,0'}"
-        
-        >
+        Margin="{OnPlatform Android= '30,0,30,0', iOS = '40,0,40,0'}">
 
 
         <AbsoluteLayout BackgroundColor="White">
@@ -56,7 +54,7 @@
                     HorizontalOptions="CenterAndExpand"
                     HorizontalTextAlignment="Center">
                 </local:LineEntry>
-                
+
                 <Label 
                     x:Name="ErrorLabel" 
                     TextColor="Red" Text=""
@@ -66,13 +64,15 @@
             </StackLayout>
 
             <StackLayout 
+                
                 Orientation="Horizontal" 
                 VerticalOptions="EndAndExpand" 
-                HorizontalOptions="FillAndExpand" 
-                Spacing="90" 
+                HorizontalOptions="CenterAndExpand" 
+                Spacing="100" 
+                BackgroundColor="Red"
                 Padding="0,0,0,0" 
                 Margin="20,140,20,0"
-                BackgroundColor="Red">
+                >
                 <Button Text="Annulla"  VerticalOptions="EndAndExpand" FontSize="14" x:Name="Discard" Clicked="Discard_Clicked" Style="{StaticResource FondomerendeButton}" HorizontalOptions="StartAndExpand" >
                 </Button>
                 <Button Text="Deposita"  VerticalOptions="EndAndExpand" HorizontalOptions="EndAndExpand"  FontSize="14" x:Name="Apply" Clicked="Apply_Clicked" Style="{StaticResource FondomerendeButton}">
