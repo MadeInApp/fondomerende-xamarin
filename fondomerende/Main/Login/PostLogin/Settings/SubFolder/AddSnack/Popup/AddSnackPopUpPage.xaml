@@ -28,7 +28,7 @@
     <!--You can use any elements here which are extended from Xamarin.Forms.View-->
     <Graph:RoundedCornerView 
         RoundedCornerRadius="20"                                  
-        Margin="{OnPlatform iOS=' 40,180,40,180' , Android='10,40,10,40'}"
+        Margin="{OnPlatform iOS=' 10,160,0,160', Android='10,40,10,40'}"
         VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"
         
         >
