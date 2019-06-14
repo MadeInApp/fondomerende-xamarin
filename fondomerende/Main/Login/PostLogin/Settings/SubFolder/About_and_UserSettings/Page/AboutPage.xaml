@@ -30,6 +30,15 @@
                         IsEnabled="False">
                     </ffm:FondoFondoMerendeViewCell>
                 </TableSection>
+                <TableSection
+                    Title="Informazioni Personali" 
+                    TextColor="{OnPlatform Android= #6495ed}">
+                    <local:EditUserInfoViewCell  
+                        x:Name="EditUserInfoViewCell"
+                        Height="60" 
+                        IsEnabled="True">
+                    </local:EditUserInfoViewCell>
+                </TableSection>
             </TableRoot>
         </TableView>
     </ContentPage.Content>
