@@ -1,6 +1,5 @@
 ﻿using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.Page;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.Popup;
-using FormsControls.Base;
 using Rg.Plugins.Popup.Extensions;
 using System;
 using System.Collections.Generic;
@@ -19,6 +18,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.About_and_UserSet
         public AboutPage()
         {
             InitializeComponent();
+            Version.Text = "Version:" + "  " + NSBundle.MainBundle.InfoDictionary["CFBundleVersion"];
             switch (Device.RuntimePlatform)             //Se il dispositivo è Android non mostra la Top Bar della Navigation Page, se è iOS la mostra
             {
                 default:
