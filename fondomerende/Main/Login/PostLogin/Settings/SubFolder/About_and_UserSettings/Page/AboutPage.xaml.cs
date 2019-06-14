@@ -1,4 +1,7 @@
-﻿using System;
+﻿using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.Page;
+using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.Popup;
+using Rg.Plugins.Popup.Extensions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +18,11 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.About_and_UserSet
         public AboutPage()
         {
             InitializeComponent();
+        }
+
+        private void EditUserInfoViewCell_Tapped(object sender, EventArgs e)
+        {
+            Navigation.PushPopupAsync(new EditUserInfoPopUp());
         }
     }
 }

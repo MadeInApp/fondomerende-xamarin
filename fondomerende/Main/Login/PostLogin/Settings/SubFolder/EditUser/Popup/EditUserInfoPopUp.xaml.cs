@@ -1,23 +1,38 @@
-﻿using fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page;
-using fondomerende.Main.Services.RESTServices;
+﻿using fondomerende.Main.Services.RESTServices;
+using Rg.Plugins.Popup.Extensions;
 using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Rg.Plugins.Popup.Extensions;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup
+namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.Popup
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class DepositPopUp : Rg.Plugins.Popup.Pages.PopupPage
+    public partial class EditUserInfoPopUp : Rg.Plugins.Popup.Pages.PopupPage
     {
-        public DepositPopUp()
+        public static string username = "";
+        public static string FriendlyName = "";
+        public static string passwordNuova = "";
+        public string GetpasswordNuova()
+        {
+            return passwordNuova;
+        }
+
+        private void SetpasswordNuova(string value)
+        {
+            passwordNuova = value;
+        }
+
+        public EditUserInfoPopUp()
         {
             InitializeComponent();
+            usernameEntry.Placeholder = Preferences.Get("username", null);
+            friendlynameEntry.Placeholder = Preferences.Get("friendly-name", null);
         }
         protected override void OnAppearing()
         {
@@ -26,7 +41,6 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup
 
         protected override void OnDisappearing()
         {
-            BuySnackListPage.Refresh = true;
             base.OnDisappearing();
         }
 
@@ -92,48 +106,27 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup
             return base.OnBackgroundClicked();
         }
 
-        private async void Apply_Clicked(object sender, EventArgs e)
+
+        private async void ApplyChanges_Clicked_1(object sender, EventArgs e)
         {
-            DepositServiceManager depositService = new DepositServiceManager();
-            if (Amount.Text == null)
+            EditUserServiceManager editUser = new EditUserServiceManager();
+            if (usernameEntry.Text != null && friendlynameEntry.Text != null && passwordEntry.Text != null)
             {
-                ErrorLabel.Text = "Inserisci l'ammontare";
-            }
-            else if (Int32.Parse(Amount.Text) <= 0)
-            {
-                await DisplayAlert("Fondo Merende", "L'ammontare deve essere maggiore di zero", "Ok");
+
+                username = usernameEntry.Text;
+                FriendlyName = friendlynameEntry.Text;
+                passwordNuova = passwordEntry.Text;
+                Navigation.PushPopupAsync(new EditUserPopUpPage());
             }
             else
             {
-                var resultDep = await depositService.DepositAsync(float.Parse(Amount.Text));
-                if (resultDep.response.success)
-                {
-                    await Navigation.PopPopupAsync();
-                }
-                else if(resultDep.response.message == "Execution error in UPDATE users_funds SET amount=amount+? WHERE user_id=?. Out of range value for column 'amount' at row 1.")
-                {
-                 await DisplayAlert("Fondo Merende", "Non puoi superare i €99.99 di fondo utente", "Ok");
-                }
-                else
-                {
-                   await DisplayAlert("Fondo Merende", "Errore", "Ok");
-                }
+                await DisplayAlert("Fondo Merende", "inserisci tutti i dati", "Ok");
             }
         }
 
         private async void Discard_Clicked(object sender, EventArgs e)
         {
             await PopupNavigation.Instance.PopAsync();
-        }
-
-        private void Amount_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            //int app = Convert.ToInt32(Amount.Text);
-            //if(app < 100 && app >= 10)
-            //{
-            //    Amount.Text = Amount.Text + ",";
-            //}
-            
         }
     }
 }

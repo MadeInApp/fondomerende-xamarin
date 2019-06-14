@@ -110,10 +110,10 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.Popup
             string oldPAssword = Preferences.Get("password", null);
             if (oldPAssword.Equals(Password.Text))
             {
-                var ans = await App.Current.MainPage.DisplayAlert("Fondo Merende", "Vuoi davvero cambiare account?", "Si", "No");
+                var ans = await App.Current.MainPage.DisplayAlert("Fondo Merende", "Vuoi davvero cambiare  account?", "Si", "No");
                 if (ans)
                 {
-                    var risp = await editUser.EditUserAsync(EditUserPage.FriendlyName, EditUserPage.username, EditUserPage.passwordNuova);
+                    var risp = await editUser.EditUserAsync(EditUserInfoPopUp.username, EditUserInfoPopUp.FriendlyName, EditUserInfoPopUp.passwordNuova);
 
                     if (risp.response.success == true)
                     {
@@ -125,6 +125,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.Popup
                             var response = await logoutService.LogoutAsync();
                             if (response.response.success == true)
                             {
+                                await Navigation.PopAllPopupAsync();
                                 App.Current.MainPage = new LoginPage();
                                 Preferences.Clear();
                             }
@@ -138,7 +139,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.Popup
                     }
                     else if (risp.response.message != null)
                     {
-                        await DisplayAlert("Fondo Merende", "il friendly name " + EditUserPage.FriendlyName + " è già utilizzato", "Ok");
+                        await DisplayAlert("Fondo Merende","Errore", "Ok");
                         await Navigation.PopPopupAsync();
                     }
                 }

@@ -235,6 +235,9 @@
     <EmbeddedResource Update="Main\Login\PostLogin\Settings\SubFolder\Deposit\View\DepositViewCell.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Main\Login\PostLogin\Settings\SubFolder\EditUser\Popup\EditUserInfoPopUp.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Main\Login\PostLogin\Settings\SubFolder\EditUser\Popup\EditUserPopUpPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

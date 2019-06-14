@@ -9,7 +9,7 @@ namespace fondomerende.Main.Services.RESTServices
     class EditUserServiceManager
     {
 
-        public async System.Threading.Tasks.Task<EditUserDTO> EditUserAsync(string ChangeFriendlyName, string ChangeUsername, string ChangePassword)
+        public async System.Threading.Tasks.Task<EditUserDTO> EditUserAsync(string ChangeUsername, string ChangeFriendlyName, string ChangePassword)
         {
             var data = new Dictionary<string, string>();
             {

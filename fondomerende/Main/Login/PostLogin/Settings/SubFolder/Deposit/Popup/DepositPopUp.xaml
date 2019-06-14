@@ -50,7 +50,7 @@
                     Keyboard="Numeric"
                     TextChanged="Amount_TextChanged"
                     MaxLength="4"
-                    Margin="22,0,0,0"
+                    Margin="21,0,0,0"
                     HorizontalOptions="CenterAndExpand"
                     HorizontalTextAlignment="Center">
                 </local:LineEntry>
@@ -63,22 +63,23 @@
                     HorizontalOptions="Center">
                 </Label>
             </StackLayout>
-
-            <StackLayout 
-                
-                Orientation="Horizontal" 
-                VerticalOptions="EndAndExpand" 
-                HorizontalOptions="CenterAndExpand" 
-                Spacing="100" 
-                BackgroundColor="Red"
-                Padding="0,0,0,0" 
-                Margin="20,140,20,0"
-                >
-                <Button Text="Annulla"  VerticalOptions="EndAndExpand" FontSize="14" x:Name="Discard" Clicked="Discard_Clicked" Style="{StaticResource FondomerendeButton}" HorizontalOptions="StartAndExpand" >
-                </Button>
-                <Button Text="Deposita"  VerticalOptions="EndAndExpand" HorizontalOptions="EndAndExpand"  FontSize="14" x:Name="Apply" Clicked="Apply_Clicked" Style="{StaticResource FondomerendeButton}">
-                </Button>
-            </StackLayout>
         </AbsoluteLayout>
+        <StackLayout 
+                Orientation="Horizontal" 
+                VerticalOptions="End" 
+                HorizontalOptions="Start"
+                Margin="20,0,0,10">
+            <Button Text="Annulla"  VerticalOptions="EndAndExpand" FontSize="14" x:Name="Discard" Clicked="Discard_Clicked" Style="{StaticResource FondomerendeButton}" HorizontalOptions="StartAndExpand" >
+            </Button>
+
+        </StackLayout>
+        <StackLayout
+                Orientation="Horizontal" 
+                VerticalOptions="End" 
+                HorizontalOptions="End"
+                Margin="0,0,20,10">
+            <Button Text="Deposita"  VerticalOptions="EndAndExpand" HorizontalOptions="EndAndExpand"  FontSize="14" x:Name="Apply" Clicked="Apply_Clicked" Style="{StaticResource FondomerendeButton}">
+            </Button>
+        </StackLayout>
     </Graph:RoundedCornerView>
 </pages:PopupPage>
