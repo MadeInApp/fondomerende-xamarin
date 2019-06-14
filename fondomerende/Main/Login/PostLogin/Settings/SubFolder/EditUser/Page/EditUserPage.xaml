@@ -21,26 +21,6 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-
-            <Image
-                Source="{local:EmbeddedImage Resource=fondomerende.image.LoginBackground.png}"
-                Grid.Row="0"
-                Grid.Column="0"   
-                Scale="{OnIdiom Phone=1.8, Tablet=1.5}"
-                x:Name ="BackGradientArRos"
-                Margin="{OnPlatform iOS='0,0,0,80'}"
-                Aspect="AspectFit">
-            </Image>
-            <Image
-                Source="{local:EmbeddedImage Resource=fondomerende.image.Livellodinamico.png}"
-                Grid.Row="0"
-                Grid.Column="0" 
-                Opacity="0.4"
-                Scale="4"
-                x:Name ="Donut"
-                Margin="{OnPlatform iOS='0,0,0,-500', Android='0,0,0,-500'}"
-                Aspect="AspectFit">
-            </Image>
             <Grid>
                 <StackLayout
                     Grid.Row="1"
