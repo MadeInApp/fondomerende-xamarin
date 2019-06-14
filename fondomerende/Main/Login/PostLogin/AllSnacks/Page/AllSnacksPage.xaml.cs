@@ -70,46 +70,62 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             {
                 for (int i = 0; i <= result.data.snacks.Count; i++)
                 {
-                    int box = 100;
-                    var app = new StackLayout
-                    {
-                        Orientation = StackOrientation.Vertical
-                    };
-
-                    var StackLayout = new StackLayout
-                    {
-                        Spacing = 10,
-                        BackgroundColor = Color.Red,
-                    };
+                    ColorRandom c = new ColorRandom();
+                    int box = 140;
 
                     var imageButton = new ImageButton
                     {
                         Margin = new Thickness(0, 20, 0, 20),
-                        HorizontalOptions = LayoutOptions.Center,
-                        VerticalOptions = LayoutOptions.Center,
-                        Scale = 2,
+                        HorizontalOptions = LayoutOptions.CenterAndExpand,
+                        VerticalOptions = LayoutOptions.CenterAndExpand,
+                        Scale = 3,
                         Source = "http://192.168.0.175:8888/fondomerende/public/getphoto.php?name=" + result.data.snacks[i].friendly_name.Replace(" ", "&nbsp;") + "_500x500"
                     };
+
+                    var StackLayout = new StackLayout
+                    {
+                        WidthRequest = box,
+                        HeightRequest = box,
+                        BackgroundColor = Color.White,
+                    };
+
 
                     var BordiSmussatiAndroid = new RoundedCornerView
                     {
                         HeightRequest = box,
                         WidthRequest = box,
                         RoundedCornerRadius = box / 2,
-                        BorderColor = Color.Black,
+                        BorderColor = c.GetRandomColor(),
                         BorderWidth = 3,
+                    };
+
+                    var BordiSmussatiiOS = new RoundedCornerView
+                    {
+                        HeightRequest = box,
+                        WidthRequest = box,
+                        RoundedCornerRadius = box / 4,
+                        BorderColor = c.GetRandomColor(),
+                        BorderWidth = 1,
                     };
 
                     var label = new Label
                     {
                         HorizontalTextAlignment = TextAlignment.Center,
-                        Text = result.data.snacks[i].friendly_name
+                        VerticalTextAlignment = TextAlignment.End,
+                        Text = result.data.snacks[i].friendly_name,
+                        FontSize = 12,
+                    };
+
+
+                    var app = new StackLayout
+                    {
+                        Orientation = StackOrientation.Vertical
                     };
 
                     switch (Device.RuntimePlatform)            
                     {
                         case Device.Android:
-                            imageButton.BackgroundColor = Color.Transparent;
+                            imageButton.BackgroundColor = Color.White;
                         break;
                     }
 
@@ -117,12 +133,23 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                     imageButton.Clicked += OnImageButtonClicked;
                     StackLayout.Children.Add(imageButton);
 
-                    BordiSmussatiAndroid.Children.Add(StackLayout);
-                    app.Children.Add(BordiSmussatiAndroid);
-                    app.Children.Add(label);
+                    switch (Device.RuntimePlatform)
+                    {
+                        case Device.Android:
+                            BordiSmussatiAndroid.Children.Add(StackLayout);
+                            app.Children.Add(BordiSmussatiAndroid);
+                            
+                            break;
 
-                    if (i % 2 == 0) Column0.Children.Add(BordiSmussatiAndroid);
-                    else Column1.Children.Add(BordiSmussatiAndroid);
+                        default:
+                            BordiSmussatiiOS.Children.Add(StackLayout);
+                            app.Children.Add(BordiSmussatiiOS);
+                            break;
+                    }
+
+                    app.Children.Add(label);
+                    if (i % 2 == 0) Column0.Children.Add(app);
+                    else Column1.Children.Add(app);
                 }
             }
         }
@@ -158,12 +185,14 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             if (ScrollView.IsVisible == true)
             {
                 Swap.BackgroundColor = Color.Orange;
+                
                 ScrollView.IsVisible = false;
                 ListView.IsVisible = true;
             }
             else
             {
                 Swap.BackgroundColor = Color.Transparent;
+                
                 ListView.IsVisible = false;
                 ScrollView.IsVisible = true;
             }
