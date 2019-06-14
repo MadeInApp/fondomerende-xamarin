@@ -69,7 +69,8 @@
             <StackLayout
                     BackgroundColor="#FFF8EB"
                     x:Name="Cane">
-                <Grid>
+                <Grid
+                    x:Name="griglia">
                     <Image
                         Grid.Column="0"
                         Grid.Row="0"
@@ -85,7 +86,7 @@
                         Grid.Row="0"
                         IsVisible="True" 
                         x:Name="ScrollView"  
-                        Padding="0,10,0,20">
+                        Padding="0,10,0,10">
 
                         <Grid HorizontalOptions="CenterAndExpand"
                             x:Name="GridView" 
