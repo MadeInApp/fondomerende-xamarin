@@ -31,10 +31,6 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page
             MessagingCenter.Subscribe<BuySnackListPage>(this, "Refresh", async (value) =>
             {
                 await GetSnacksMethod(true);
-            GetSnacksMethod();
-            MessagingCenter.Subscribe<BuySnackListPage>(this, "Refresh", async (value) =>
-            {
-                await GetSnacksMethod();
             });
 
 
