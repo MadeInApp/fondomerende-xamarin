@@ -100,9 +100,9 @@
 
                     <DataTemplate>
 
-                        <local:BuySnackViewCell 
-                        x:Name="BuySnackCell">
-                        </local:BuySnackViewCell>
+                        <local:BuySnackListViewCell 
+                         x:Name="BuySnackListViewCell">
+                        </local:BuySnackListViewCell>
 
                     </DataTemplate>
 
