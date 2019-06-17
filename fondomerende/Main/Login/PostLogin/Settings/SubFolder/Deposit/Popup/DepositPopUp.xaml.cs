@@ -28,6 +28,10 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup
 
         protected override void OnDisappearing()
         {
+            MessagingCenter.Send(new EditUserViewCell()
+            {
+
+            }, "Refresh");
             base.OnDisappearing();
         }
 

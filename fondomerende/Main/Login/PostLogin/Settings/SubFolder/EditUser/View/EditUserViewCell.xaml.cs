@@ -22,9 +22,9 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View
             InitializeComponent();
             First_letter();
             GetUserFundsMethod();
-            MessagingCenter.Subscribe<EditUserViewCell>(this, "Refresh", (value) =>
+            MessagingCenter.Subscribe<EditUserViewCell>(this, "Refresh", async (value) =>
             {
-                GetUserFundsMethod();
+              await GetUserFundsMethod();
             });
             friendly_name.Text = InformationFriendlyName();
             Cerchio.BackgroundColor = Color.FromHex(Preferences.Get("Colore", "#CCCCCC"));

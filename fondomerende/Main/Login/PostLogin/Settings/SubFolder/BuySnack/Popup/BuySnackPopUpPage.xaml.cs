@@ -31,7 +31,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
             MessagingCenter.Send(new BuySnackListPage()
             {
 
-            }, "PopUpData");
+            }, "Refresh");
             base.OnDisappearing();
         }
 
