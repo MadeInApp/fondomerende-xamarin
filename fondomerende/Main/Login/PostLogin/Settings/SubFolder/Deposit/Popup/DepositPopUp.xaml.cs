@@ -11,6 +11,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View;
 using Xamarin.Forms.Internals;
+using fondomerende.Main.Utilities;
 
 namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup
 {
@@ -22,10 +23,19 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup
         public DepositPopUp()
         {
             InitializeComponent();
+            Inizia();
+
         }
+
+        private void Inizia()
+        {
+           Popuppage.Content=PopupUtilities.PopUpPiccoli();
+        }
+
         protected override void OnAppearing()
         {
             base.OnAppearing();
+
         }
 
         protected override void OnDisappearing()
