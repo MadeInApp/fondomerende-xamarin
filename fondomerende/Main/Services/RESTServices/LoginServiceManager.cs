@@ -17,18 +17,14 @@ namespace fondomerende.Main.Services.RESTServices
     {
         public async System.Threading.Tasks.Task<LoginDTO> LoginAsync(string username, string passwordToLogin, bool remember) //Servizio di Log In
         {
-            LoginDTO result = new LoginDTO();
+            string data = "metticiquellochetipare";
+            LoginDTO result = null;
             try
             {
-                var data = new Dictionary<string, string>();
-                data.Add("commandName", "login");
-                data.Add("password", passwordToLogin);
-                data.Add("name", username);
-
-                var resultString = await "http://192.168.0.175:8888/fondomerende/public/process-request.php"
-                    .WithCookie("auth-key", "metticiquellochetipare")
+                result = await "http://192.168.0.175:8888/fondomerende/public/process-request.php"
+                    .WithCookie("auth-key", data)
                     .WithHeader("Content-Type", "application/x-www-form-urlencoded; param=value;charset=UTF-8")
-                    .PostUrlEncodedAsync(data)
+                    .PostUrlEncodedAsync(new { commandName = "login", name = username, password = passwordToLogin })
                     .ReceiveJson<LoginDTO>();
 
                 if (result.response.success == true)
@@ -41,11 +37,15 @@ namespace fondomerende.Main.Services.RESTServices
                 }
                 return result;
             }
-            catch
+            catch (FlurlHttpTimeoutException ex)
             {
                 await App.Current.MainPage.DisplayAlert("Fondo Merende", "Connessione al server scaduta!", "OK");
             }
-            return result;
+            catch (FlurlHttpException ex)
+            {
+                await App.Current.MainPage.DisplayAlert("Fondo Merende", "Errore Http!", "OK");
+            }
+            return null;
         }
 
     }
