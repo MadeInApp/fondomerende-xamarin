@@ -101,7 +101,7 @@
                     <DataTemplate>
 
                         <local:BuySnackViewCell 
-                        x:Name="BuySnackCell">
+                         x:Name="BuySnackListCell">
                         </local:BuySnackViewCell>
 
                     </DataTemplate>
