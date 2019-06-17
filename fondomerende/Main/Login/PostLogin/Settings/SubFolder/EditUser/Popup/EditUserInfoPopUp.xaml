@@ -24,8 +24,8 @@
     <!--You can use any elements here which are extended from Xamarin.Forms.View-->
     <local:RoundedCornerView 
         RoundedCornerRadius="10"
-        Margin="30,100,30,250">
-        <StackLayout BackgroundColor="White" VerticalOptions="StartAndExpand">
+        Margin="{OnPlatform iOS='30,100,30,250', Android='20,100,20,100'}">
+        <StackLayout BackgroundColor="White" VerticalOptions="StartAndExpand" >
             <Label 
                 Text="Fondo Merende" 
                 FontAttributes="Bold" 
@@ -48,7 +48,7 @@
                 HorizontalOptions="CenterAndExpand" 
                 x:Name="friendlynameEntry" 
                 WidthRequest="200"
-                Margin="{OnPlatform Android='0,20,100,30', iOS='0,20,0,30'}"
+                
                 IsSpellCheckEnabled="False"
                 IsTextPredictionEnabled="False"
                 Keyboard="Plain" />
@@ -62,9 +62,9 @@
                     x:Name="passwordEntry" 
                     Margin="0,20,0,30"/>
             <Button
+                BackgroundColor="Red"
                 VerticalOptions="EndAndExpand"
                 HorizontalOptions="FillAndExpand"
-                AbsoluteLayout.LayoutBounds=".5,.5,25,1000"
                 Margin="5,40,5,0"
                 Clicked="ApplyChanges_Clicked_1" 
                 x:Name="ApplyChanges" 

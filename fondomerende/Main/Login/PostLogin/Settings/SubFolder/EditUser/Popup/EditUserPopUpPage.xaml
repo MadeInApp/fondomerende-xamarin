@@ -25,7 +25,7 @@
     <!--You can use any elements here which are extended from Xamarin.Forms.View-->
     <local:RoundedCornerView 
         RoundedCornerRadius="20" 
-        Margin="30,250,30,250">
+        Margin="{ OnPlatform iOS='30,250,30,250', Android='20,200,20,200'}">
         <StackLayout 
             BackgroundColor="White">
             <StackLayout 
@@ -40,20 +40,19 @@
                 </Label>
                 <local:LineEntry 
                     VerticalOptions="CenterAndExpand"
-                    WidthRequest="50" 
+                    WidthRequest="50"
                     x:Name="Password" 
                     IsPassword="true"
                     Keyboard="Default">
                 </local:LineEntry>
             </StackLayout>
-            <StackLayout 
-                Orientation="Horizontal" 
+            
+        </StackLayout>
+        <StackLayout 
                 VerticalOptions="EndAndExpand" 
-                HorizontalOptions="CenterAndExpand"
-                Spacing="90" 
-                Padding="0,0,0,0" 
-                Margin="0,0,0,0">
-                <Button 
+                HorizontalOptions="StartAndExpand"
+                Margin="20,0,0,20">
+            <Button 
                     Text="Annulla" 
                     VerticalOptions="EndAndExpand"
                     FontSize="14" 
@@ -62,8 +61,14 @@
                     Margin="0,0,0,10"
                     Clicked="Discard_Clicked"
                     Style="{StaticResource FondomerendeButton}">
-                </Button>
-                <Button 
+            </Button>
+
+        </StackLayout>
+        <StackLayout 
+                VerticalOptions="EndAndExpand" 
+                HorizontalOptions="EndAndExpand"
+                Margin="0,0,20,20">
+            <Button 
                     Text="Cambio" 
                     VerticalOptions="EndAndExpand" 
                     HorizontalOptions="Center" 
@@ -72,8 +77,7 @@
                     Margin="0,0,0,10"
                     Clicked="Apply_Clicked" 
                     Style="{StaticResource FondomerendeButton}">
-                </Button>
-            </StackLayout>
+            </Button>
         </StackLayout>
     </local:RoundedCornerView>
 </pages:PopupPage>
