@@ -25,13 +25,7 @@
           HasBackgroundAnimation="True"/>
     </pages:PopupPage.Animation>
     <!--You can use any elements here which are extended from Xamarin.Forms.View-->
-    <Graph:RoundedCornerView 
-        RoundedCornerRadius="20"        
-        HorizontalOptions="CenterAndExpand"
-        VerticalOptions="Center"
-        HeightRequest="{OnPlatform Android=200, iOS=200}"
-        WidthRequest="{OnPlatform Android=700, iOS=700}"
-        Margin="{OnPlatform Android= '30,0,30,0', iOS = '40,0,40,0'}">
+    <Graph:RoundedCornerView>
 
 
         <AbsoluteLayout BackgroundColor="White">

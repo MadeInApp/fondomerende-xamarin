@@ -11,6 +11,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View;
 using Xamarin.Forms.Internals;
+using fondomerende.Main.Utilities;
 
 namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup
 {
@@ -18,14 +19,154 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup
 
     public partial class DepositPopUp : Rg.Plugins.Popup.Pages.PopupPage
     {
-        
+        string appoggio;
         public DepositPopUp()
         {
             InitializeComponent();
+            PopupDeposita();
         }
+
+        public static Color GetPrimaryAndroidColor()
+        {
+            return Color.FromHex("#f29e17");
+        }
+
+        public static double GetLarghezzaPagina()
+        {
+            return App.Current.MainPage.Width;
+        }
+
+        public static double GetAltezzaPagina()
+        {
+            return App.Current.MainPage.Height;
+        }
+        private void PopupDeposita()
+        {
+            double Altezza = 200;
+            double Larghezza = GetLarghezzaPagina() - 80;
+            double banner = 50;
+
+            var Round = new RoundedCornerView  //coso che stonda
+            {
+                RoundedCornerRadius = 20,
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                VerticalOptions = LayoutOptions.Center,
+                HeightRequest = Altezza,
+                WidthRequest = Larghezza,
+            };
+
+            var stackFondoAndroid = new StackLayout() //per android 
+            {
+                HeightRequest = banner,
+                WidthRequest = Larghezza,
+                BackgroundColor = GetPrimaryAndroidColor(),
+            };
+
+            var stackFondoiOS = new StackLayout()  //per ios 
+            {
+                HeightRequest = banner,
+                WidthRequest = Larghezza,
+                BackgroundColor = Color.Orange,
+            };
+
+            var fondomerende = new Label  //Label per Il titolo banner 
+            {
+                Text = "Fondo merende",
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                VerticalOptions = LayoutOptions.CenterAndExpand,
+                FontSize = 20,
+                FontAttributes = FontAttributes.Bold,
+                TextColor = Color.White,
+            };
+            var entry = new LineEntry
+            {
+                
+                Placeholder = "Quanto vuoi depositare?",
+                Keyboard = Keyboard.Numeric,
+                MaxLength = 5,
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                HorizontalTextAlignment = TextAlignment.Center,
+            };
+           
+
+
+            var stackBody = new StackLayout  //stack principale dove è contenuto l'interno di tutto (tranne round che stonda)
+
+            {
+                HeightRequest = Altezza,
+                WidthRequest = Larghezza,
+                BackgroundColor = Color.White,
+            };
+            
+            var stackBottoni = new StackLayout  //stack che contiene la gridlia dei bottoni
+            {
+                VerticalOptions = LayoutOptions.EndAndExpand,
+                WidthRequest = Larghezza,
+                HeightRequest = banner,
+                MinimumHeightRequest = banner,
+            };
+
+            var griglia = new Grid //griglia che contiene i bottoni
+            {
+
+            };
+
+            var buttonCancel = new Button
+            {
+                Text = "Annulla",
+                VerticalOptions = LayoutOptions.CenterAndExpand,
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                BackgroundColor = Color.Transparent,
+            };
+
+            var buttonConfirm = new Button
+            {
+                Text = "Conferma",
+                VerticalOptions = LayoutOptions.CenterAndExpand,
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                BackgroundColor = Color.Transparent,
+            };
+             
+            stackBottoni.Children.Add(griglia);
+            griglia.Children.Add((buttonCancel)); //inzia nella prima colonna
+            griglia.Children.Add((buttonConfirm)); //inizia seconda colonna
+
+            Grid.SetColumn(buttonCancel, 0); //mi è toccato farlo qui
+            Grid.SetColumn(buttonConfirm, 1);
+
+
+
+            switch (Device.RuntimePlatform)
+            {
+                case Device.Android:
+                    stackFondoAndroid.Children.Add(fondomerende);
+                    stackBody.Children.Add(stackFondoAndroid);
+                    break;
+                default:
+                    stackFondoAndroid.Children.Add(fondomerende);
+                    stackBody.Children.Add(stackFondoiOS);
+                    break;
+            }
+            entry.TextChanged += Entrata;
+            buttonCancel.Clicked += Discard_Clicked;
+            buttonConfirm.Clicked += Apply_Clicked;
+            stackBody.Children.Add(entry);
+            stackBody.Children.Add(stackBottoni);
+            Round.Children.Add(stackBody);
+
+            Popuppage.Content = Round;
+        }
+
+        public void Entrata(object sender, TextChangedEventArgs e)
+        {
+            appoggio = e.NewTextValue;
+           
+        }
+
         protected override void OnAppearing()
         {
             base.OnAppearing();
+
         }
 
         protected override void OnDisappearing()
@@ -101,24 +242,22 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup
         
         private async void Apply_Clicked(object sender, EventArgs e)
         {
+      
 
-            DepositServiceManager depositService = new DepositServiceManager();
-            if (Amount.Text == null)
+            DepositServiceManager depositService = new DepositServiceManager(); 
+            if (appoggio == null)
             {
-                ErrorLabel.Text = "Inserisci l'ammontare";
+                await DisplayAlert("Fondo Merende","Inserisci l'ammontare","OK");
             }
-            else if (Int32.Parse(Amount.Text) <= 0)
+            else if (Int32.Parse(appoggio) <= 0)
             {
                 await DisplayAlert("Fondo Merende", "L'ammontare deve essere maggiore di zero", "Ok");
             }
             else
             {
-                var resultDep = await depositService.DepositAsync(float.Parse(Amount.Text));
+                var resultDep = await depositService.DepositAsync(float.Parse(appoggio));
                 if (resultDep.response.success)
                 {
-                    String.Format(Amount.Text,"f");
-                    
-
                     await Navigation.PopPopupAsync();
                 }
                 else if(resultDep.response.message == "Execution error in UPDATE users_funds SET amount=amount+? WHERE user_id=?. Out of range value for column 'amount' at row 1.")
