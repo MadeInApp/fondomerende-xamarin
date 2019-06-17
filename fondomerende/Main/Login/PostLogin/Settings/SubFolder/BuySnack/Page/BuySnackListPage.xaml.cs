@@ -27,11 +27,11 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page
         public BuySnackListPage()
         {
             InitializeComponent();
-            GetSnacksMethod();
-            /*MessagingCenter.Subscribe<BuySnackListPage>(this, "Refresh", async (value) =>
+            GetSnacksMethod(false);
+            MessagingCenter.Subscribe<BuySnackListPage>(this, "Refresh", async (value) =>
             {
-                await GetSnacksMethod();
-            });*/
+                await GetSnacksMethod(true);
+            });
 
 
 
@@ -51,96 +51,99 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page
 
         }
 
-        public async Task GetSnacksMethod()     //ottiene la lista degli snack e la applica alla ListView           !CHIEDERE A LAPO DI AGGIUNGERE UN PARAMETRO "RESOLUTION" ALLA RICERCA!
+        public async Task GetSnacksMethod(bool Loaded)     //ottiene la lista degli snack e la applica alla ListView
         {
-            var result = await SnackService.GetToBuySnacksAsync();
+           var result = await SnackService.GetSnacksAsync();
             ListView.ItemsSource = result.data.snacks;
-            for (int i = 0; i <= result.data.snacks.Count; i++)
+            if (!Loaded) //!WORKAROUND!   in questo modo si evita il crash ma la griglia non si aggiorna, urge investigazione sul vero problema
             {
-
-                ColorRandom c = new ColorRandom();
-                int box = 140;
-
-                var imageButtonAndroid = new ImageButton
+                for (int i = 0; i <= result.data.snacks.Count; i++)
                 {
-                    Margin = new Thickness(0, 20, 0, 20),
-                    HorizontalOptions = LayoutOptions.CenterAndExpand,
-                    VerticalOptions = LayoutOptions.CenterAndExpand,
-                    Scale = 3,
-                    BackgroundColor = Color.White,
-                    Source = "http://192.168.0.175:8888/fondomerende/public/getphoto.php?name=" + result.data.snacks[i].friendly_name.Replace(" ", "&nbsp;") + "_500x500"
-                };
 
-                var imageButtoniOS = new ImageButton
-                {
-                    Margin = new Thickness(0, 20, 0, 20),
-                    HorizontalOptions = LayoutOptions.CenterAndExpand,
-                    VerticalOptions = LayoutOptions.CenterAndExpand,
-                    Scale = 2.6,
-                    Source = "http://192.168.0.175:8888/fondomerende/public/getphoto.php?name=" + result.data.snacks[i].friendly_name.Replace(" ", "&nbsp;") + "_500x500"
-                };
+                    ColorRandom c = new ColorRandom();
+                    int box = 140;
 
-                var StackLayout = new StackLayout
-                {
-                    WidthRequest = box,
-                    HeightRequest = box,
-                    BackgroundColor = Color.White,
-                };
+                    var imageButtonAndroid = new ImageButton
+                    {
+                        Margin = new Thickness(0, 20, 0, 20),
+                        HorizontalOptions = LayoutOptions.CenterAndExpand,
+                        VerticalOptions = LayoutOptions.CenterAndExpand,
+                        Scale = 3,
+                        BackgroundColor = Color.White,
+                        Source = "http://192.168.0.175:8888/fondomerende/public/getphoto.php?name=" + result.data.snacks[i].friendly_name.Replace(" ", "&nbsp;") + "_500x500"
+                    };
 
+                    var imageButtoniOS = new ImageButton
+                    {
+                        Margin = new Thickness(0, 20, 0, 20),
+                        HorizontalOptions = LayoutOptions.CenterAndExpand,
+                        VerticalOptions = LayoutOptions.CenterAndExpand,
+                        Scale = 2.6,
+                        Source = "http://192.168.0.175:8888/fondomerende/public/getphoto.php?name=" + result.data.snacks[i].friendly_name.Replace(" ", "&nbsp;") + "_500x500"
+                    };
 
-                var BordiSmussatiAndroid = new RoundedCornerView
-                {
-                    HeightRequest = box,
-                    WidthRequest = box,
-                    RoundedCornerRadius = box / 2,
-                    BorderColor = c.GetRandomColor(),
-                    BorderWidth = 3,
-                };
-
-                var BordiSmussatiiOS = new RoundedCornerView
-                {
-                    HeightRequest = box,
-                    WidthRequest = box,
-                    RoundedCornerRadius = box / 4,
-                    BorderColor = c.GetRandomColor(),
-                    BorderWidth = 1,
-                };
-
-                var label = new Label
-                {
-                    HorizontalTextAlignment = TextAlignment.Center,
-                    VerticalTextAlignment = TextAlignment.End,
-                    Text = result.data.snacks[i].friendly_name,
-                    FontSize = 12,
-                };
+                    var StackLayout = new StackLayout
+                    {
+                        WidthRequest = box,
+                        HeightRequest = box,
+                        BackgroundColor = Color.White,
+                    };
 
 
-                var app = new StackLayout
-                {
-                    Orientation = StackOrientation.Vertical
-                };
+                    var BordiSmussatiAndroid = new RoundedCornerView
+                    {
+                        HeightRequest = box,
+                        WidthRequest = box,
+                        RoundedCornerRadius = box / 2,
+                        BorderColor = c.GetRandomColor(),
+                        BorderWidth = 3,
+                    };
 
-                switch (Device.RuntimePlatform)
-                {
-                    case Device.Android:
-                        imageButtonAndroid.Clicked += OnImageButtonClicked;
-                        StackLayout.Children.Add(imageButtonAndroid);
-                        BordiSmussatiAndroid.Children.Add(StackLayout);
-                        app.Children.Add(BordiSmussatiAndroid);
+                    var BordiSmussatiiOS = new RoundedCornerView
+                    {
+                        HeightRequest = box,
+                        WidthRequest = box,
+                        RoundedCornerRadius = box / 4,
+                        BorderColor = c.GetRandomColor(),
+                        BorderWidth = 1,
+                    };
 
-                        break;
+                    var label = new Label
+                    {
+                        HorizontalTextAlignment = TextAlignment.Center,
+                        VerticalTextAlignment = TextAlignment.End,
+                        Text = result.data.snacks[i].friendly_name,
+                        FontSize = 12,
+                    };
 
-                    default:
-                        imageButtoniOS.Clicked += OnImageButtonClicked;
-                        StackLayout.Children.Add(imageButtoniOS);
-                        BordiSmussatiiOS.Children.Add(StackLayout);
-                        app.Children.Add(BordiSmussatiiOS);
-                        break;
+
+                    var app = new StackLayout
+                    {
+                        Orientation = StackOrientation.Vertical
+                    };
+
+                    switch (Device.RuntimePlatform)
+                    {
+                        case Device.Android:
+                            imageButtonAndroid.Clicked += OnImageButtonClicked;
+                            StackLayout.Children.Add(imageButtonAndroid);
+                            BordiSmussatiAndroid.Children.Add(StackLayout);
+                            app.Children.Add(BordiSmussatiAndroid);
+
+                            break;
+
+                        default:
+                            imageButtoniOS.Clicked += OnImageButtonClicked;
+                            StackLayout.Children.Add(imageButtoniOS);
+                            BordiSmussatiiOS.Children.Add(StackLayout);
+                            app.Children.Add(BordiSmussatiiOS);
+                            break;
+                    }
+
+                    app.Children.Add(label);
+                    if (i % 2 == 0) Column0.Children.Add(app);
+                    else Column1.Children.Add(app);
                 }
-
-                app.Children.Add(label);
-                if (i % 2 == 0) Column0.Children.Add(app);
-                else Column1.Children.Add(app);
             }
         }
 
