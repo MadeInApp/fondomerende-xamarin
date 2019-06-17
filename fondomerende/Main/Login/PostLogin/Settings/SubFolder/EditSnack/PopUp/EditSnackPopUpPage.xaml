@@ -24,28 +24,36 @@
     <!--You can use any elements here which are extended from Xamarin.Forms.View-->
     <local:RoundedCornerView 
         RoundedCornerRadius="20" 
-        Margin="30,220,30,240">
-            <Label 
-                HorizontalOptions="Center"
-                Margin="0,10,0,0"
-                VerticalOptions="Start"
-                Text="Fondo Merende" 
-                FontAttributes="Bold"/>
+        Margin="10,60,10,60"
+        >
+        <StackLayout BackgroundColor="White">
+            <StackLayout>
+                <Label
+                    HorizontalOptions="Center"
+                    Margin="0,10,0,0"
+                    VerticalOptions="Start"
+                    Text="Fondo Merende" 
+                    FontAttributes="Bold"
+                />
+            </StackLayout>
 
-            <ImageButton 
-                Source="{local:EmbeddedImage Resource=fondomerende.image.fill_full_256x256.png}" 
-                x:Name="Swap"
-                CornerRadius="20"
-                Scale="0.3"
-                Clicked="Swap_Clicked"
-                Margin="0,0,0,40"
-                HorizontalOptions="End"
-                VerticalOptions="Start"/>
-        
-        <StackLayout
-            Opacity="80"
-            Margin="30,0,50,20" 
-            VerticalOptions="CenterAndExpand">
+            <StackLayout>
+                <ImageButton 
+                    Source="{local:EmbeddedImage Resource=fondomerende.image.fill_full_256x256.png}" 
+                    x:Name="Swap"
+                    CornerRadius="20"
+                    Scale="0.3"
+                    Clicked="Swap_Clicked"
+                    Margin="0,0,0,40"
+                    HorizontalOptions="End"
+                    VerticalOptions="Start"
+                    />
+            </StackLayout>
+
+            <StackLayout
+                Opacity="80"
+                Margin="30,0,50,20" 
+                VerticalOptions="CenterAndExpand">
                 <local:LineEntry x:Name ="NomeSnack" WidthRequest="50">
                 </local:LineEntry>
                 <local:LineEntry x:Name ="PrezzoSnack" WidthRequest="50" MaxLength="4">
@@ -57,15 +65,14 @@
                 <local:LineEntry x:Name ="Qta" WidthRequest="50">
                 </local:LineEntry>
             </StackLayout>
-            <StackLayout 
-                Orientation="Horizontal" 
-                Spacing="50" 
-                HorizontalOptions="Center" 
-                VerticalOptions="EndAndExpand" 
-                Margin="0,10,0,10"
-                Scale="1.2">
-                <Button Text="Annulla" x:Name="Discard" Clicked="Discard_Clicked"/>
-                <Button Text="Applica" x:Name="Apply" Clicked="Apply_Clicked"/>
-            </StackLayout>
+            
+        </StackLayout>
+        <StackLayout>
+            <Button Text="Annulla" Scale="1.2" x:Name="Discard" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand" Clicked="Discard_Clicked" Margin="20,10,0,10" Style="{StaticResource FondomerendeButton}"/>
+
+        </StackLayout>
+        <StackLayout>
+            <Button Text="Applica" Scale="1.2" x:Name="Apply" HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand" Clicked="Apply_Clicked" Margin="0,10,20,10" Style="{StaticResource FondomerendeButton}"/>
+        </StackLayout>
     </local:RoundedCornerView>
     </pages:PopupPage>
