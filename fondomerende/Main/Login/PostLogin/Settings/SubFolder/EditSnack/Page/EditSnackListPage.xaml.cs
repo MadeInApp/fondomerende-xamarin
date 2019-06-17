@@ -11,11 +11,12 @@ using Xamarin.Forms.Xaml;
 using fondomerende.PostLoginPages;
 using Rg.Plugins.Popup.Extensions;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.PopUp;
+using FormsControls.Base;
 
 namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.Page
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class EditSnackListPage : ContentPage
+    public partial class EditSnackListPage : AnimationPage
     {
         public static int SelectedSnackID;
         public static string SelectedSnackName;

@@ -55,69 +55,92 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page
         {
             var result = await SnackService.GetToBuySnacksAsync();
             ListView.ItemsSource = result.data.snacks;
-            int z;
             for (int i = 0; i <= result.data.snacks.Count; i++)
             {
-                if (i % 2 == 0)
+
+                ColorRandom c = new ColorRandom();
+                int box = 140;
+
+                var imageButtonAndroid = new ImageButton
                 {
-                    z = i;
-                    var StackLayout_z = new StackLayout{ Spacing = 10, HeightRequest = 100};
-                    var imageButton_z = new ImageButton
-                    {
-                        Margin = new Thickness(0,20,0,20),
-                        Scale = 2,
-                        Source = "http://192.168.0.175:8888/fondomerende/public/getphoto.php?name=" + result.data.snacks[z].friendly_name.Replace(" ", "&nbsp;") + "_500x500"
-                    };
+                    Margin = new Thickness(0, 20, 0, 20),
+                    HorizontalOptions = LayoutOptions.CenterAndExpand,
+                    VerticalOptions = LayoutOptions.CenterAndExpand,
+                    Scale = 3,
+                    BackgroundColor = Color.White,
+                    Source = "http://192.168.0.175:8888/fondomerende/public/getphoto.php?name=" + result.data.snacks[i].friendly_name.Replace(" ", "&nbsp;") + "_500x500"
+                };
 
-                    var label_z = new Label
-                    {
-                        HorizontalTextAlignment = TextAlignment.Center,
-                        Text = result.data.snacks[z].friendly_name
-                    };
-
-
-                    switch (Device.RuntimePlatform)
-                    {
-                        case Device.Android:
-                            imageButton_z.BackgroundColor = Color.Transparent;
-                            break;
-                    }
-                    imageButton_z.Clicked += OnImageButtonClicked;
-                    StackLayout_z.Children.Add(imageButton_z);
-                    StackLayout_z.Children.Add(label_z);
-                    Column0.Children.Add(StackLayout_z);
-                  
-                }
-                else
+                var imageButtoniOS = new ImageButton
                 {
-                    var StackLayout_i = new StackLayout { Spacing = 10, HeightRequest=100 };
-                    var imageButton_i = new ImageButton
-                    {
-                        ScaleY=1,
-                        ScaleX=1,
-                        Margin = new Thickness(0, 20, 0, 20),
-                        Scale = 2,
-                        Source = "http://192.168.0.175:8888/fondomerende/public/getphoto.php?name=" + result.data.snacks[i].friendly_name.Replace(" ", "")
-                    };
+                    Margin = new Thickness(0, 20, 0, 20),
+                    HorizontalOptions = LayoutOptions.CenterAndExpand,
+                    VerticalOptions = LayoutOptions.CenterAndExpand,
+                    Scale = 2.6,
+                    Source = "http://192.168.0.175:8888/fondomerende/public/getphoto.php?name=" + result.data.snacks[i].friendly_name.Replace(" ", "&nbsp;") + "_500x500"
+                };
 
-                    switch (Device.RuntimePlatform)
-                    {
-                        case Device.Android:
-                            imageButton_i.BackgroundColor = Color.Transparent;
-                            break;
-                    }
+                var StackLayout = new StackLayout
+                {
+                    WidthRequest = box,
+                    HeightRequest = box,
+                    BackgroundColor = Color.White,
+                };
 
-                    var label_i = new Label
-                    {
-                        HorizontalTextAlignment = TextAlignment.Center,
-                        Text = result.data.snacks[i].friendly_name
-                    };
 
-                    imageButton_i.Clicked += OnImageButtonClicked;
-                    StackLayout_i.Children.Add(imageButton_i);
-                    StackLayout_i.Children.Add(label_i);
-                    Column1.Children.Add(StackLayout_i);
+                var BordiSmussatiAndroid = new RoundedCornerView
+                {
+                    HeightRequest = box,
+                    WidthRequest = box,
+                    RoundedCornerRadius = box / 2,
+                    BorderColor = c.GetRandomColor(),
+                    BorderWidth = 3,
+                };
+
+                var BordiSmussatiiOS = new RoundedCornerView
+                {
+                    HeightRequest = box,
+                    WidthRequest = box,
+                    RoundedCornerRadius = box / 4,
+                    BorderColor = c.GetRandomColor(),
+                    BorderWidth = 1,
+                };
+
+                var label = new Label
+                {
+                    HorizontalTextAlignment = TextAlignment.Center,
+                    VerticalTextAlignment = TextAlignment.End,
+                    Text = result.data.snacks[i].friendly_name,
+                    FontSize = 12,
+                };
+
+
+                var app = new StackLayout
+                {
+                    Orientation = StackOrientation.Vertical
+                };
+
+                switch (Device.RuntimePlatform)
+                {
+                    case Device.Android:
+                        imageButtonAndroid.Clicked += OnImageButtonClicked;
+                        StackLayout.Children.Add(imageButtonAndroid);
+                        BordiSmussatiAndroid.Children.Add(StackLayout);
+                        app.Children.Add(BordiSmussatiAndroid);
+
+                        break;
+
+                    default:
+                        imageButtoniOS.Clicked += OnImageButtonClicked;
+                        StackLayout.Children.Add(imageButtoniOS);
+                        BordiSmussatiiOS.Children.Add(StackLayout);
+                        app.Children.Add(BordiSmussatiiOS);
+                        break;
                 }
+
+                app.Children.Add(label);
+                if (i % 2 == 0) Column0.Children.Add(app);
+                else Column1.Children.Add(app);
             }
         }
 

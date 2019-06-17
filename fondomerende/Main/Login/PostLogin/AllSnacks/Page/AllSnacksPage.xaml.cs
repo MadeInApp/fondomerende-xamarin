@@ -22,7 +22,8 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
     {
         SnackServiceManager snackServiceManager = new SnackServiceManager();
         List<SnackDataDTO> AllSnacks = new List<SnackDataDTO>();
-
+        SnackDTO result;
+        int marrocchino = 0;
 
         public AllSnacksPage()
         {
@@ -65,12 +66,13 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
         public async Task GetSnacksMethod(bool Loaded)     //ottiene la lista degli snack e la applica alla ListView
         {
-            var result = await snackServiceManager.GetSnacksAsync();
+            result = await snackServiceManager.GetSnacksAsync();
             ListView.ItemsSource = result.data.snacks;
             if (!Loaded) //!WORKAROUND!   in questo modo si evita il crash ma la griglia non si aggiorna, urge investigazione sul vero problema
             {
                 for (int i = 0; i <= result.data.snacks.Count; i++)
                 {
+                   
                     ColorRandom c = new ColorRandom();
                     int box = 140;
 
@@ -158,9 +160,12 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             }
         }
 
-        async void OnImageButtonClicked(object sender, EventArgs e)
+        private async void OnImageButtonClicked(object sender, EventArgs e)
         {
-            await DisplayAlert("Fondo merende", "test", "test");
+            var a = sender;
+           // var ciao = sender.LoadFromXaml<>;
+            //string section = Convert.ToString(Column0.Children);
+            // section.RemoveAt(1);
         }
 
 
@@ -170,6 +175,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
             if (ans == true)
             {
+               
                 await snackServiceManager.EatAsync((e.SelectedItem as SnackDataDTO).id, 1);
                 await GetSnacksMethod(true);
             }

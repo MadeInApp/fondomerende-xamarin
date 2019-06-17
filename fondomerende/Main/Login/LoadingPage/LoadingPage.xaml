@@ -6,6 +6,7 @@
              mc:Ignorable="d"
              xmlns:local="clr-namespace:fondomerende.Main.Utilities"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
              x:Class="fondomerende.PostLoginPages.LoadingPage">
     <ContentPage.Content>
 
@@ -38,6 +39,15 @@
                 Margin="{OnPlatform iOS='0,0,0,-500', Android='0,0,0,-500'}"
                 Aspect="AspectFit">
             </Image>
+
+            <!--<lottie:AnimationView
+                Grid.Row="1"
+                Grid.Column="0"
+                Loop="true"
+                AutoPlay="True"
+                Animation="fondomerende.Animated.star.json">
+                        
+            </lottie:AnimationView>-->
 
             <Grid>
 

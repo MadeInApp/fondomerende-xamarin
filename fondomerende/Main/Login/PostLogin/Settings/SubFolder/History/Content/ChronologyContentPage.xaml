@@ -18,9 +18,10 @@
         <ScrollView 
             BackgroundColor="White"
             IsVisible="true"
-            Margin="0,0,0,10">
+            Padding="0,0,10,0">
 
             <StackLayout
+                Padding="0,0,10,0"
                 x:Name="ContentLayout"
                 Spacing="0"
                 Margin="10"

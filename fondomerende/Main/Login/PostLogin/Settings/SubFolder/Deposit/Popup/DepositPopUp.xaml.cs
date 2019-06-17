@@ -11,12 +11,15 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Messages;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View;
+using Xamarin.Forms.Internals;
 
 namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
+
     public partial class DepositPopUp : Rg.Plugins.Popup.Pages.PopupPage
     {
+        
         public DepositPopUp()
         {
             InitializeComponent();
@@ -96,9 +99,10 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup
             // Return false if you don't want to close this popup page when a background of the popup page is clicked
             return base.OnBackgroundClicked();
         }
-
+        
         private async void Apply_Clicked(object sender, EventArgs e)
         {
+
             DepositServiceManager depositService = new DepositServiceManager();
             if (Amount.Text == null)
             {
@@ -113,6 +117,9 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup
                 var resultDep = await depositService.DepositAsync(float.Parse(Amount.Text));
                 if (resultDep.response.success)
                 {
+                    String.Format(Amount.Text,"f");
+                    
+
                     await Navigation.PopPopupAsync();
                 }
                 else if(resultDep.response.message == "Execution error in UPDATE users_funds SET amount=amount+? WHERE user_id=?. Out of range value for column 'amount' at row 1.")

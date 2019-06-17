@@ -4,6 +4,7 @@ using System.Linq;
 using Foundation;
 using Plugin.CrossPlatformTintedImage.iOS;
 using UIKit;
+using Lottie.Forms.iOS.Renderers;
 
 namespace fondomerende.iOS
 {
@@ -17,6 +18,7 @@ namespace fondomerende.iOS
         {
             Rg.Plugins.Popup.Popup.Init();
             global::Xamarin.Forms.Forms.Init();
+            AnimationViewRenderer.Init();
             TintedImageRenderer.Init();
             FormsControls.Touch.Main.Init();
             LoadApplication(new App());

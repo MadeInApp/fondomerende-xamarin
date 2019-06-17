@@ -1,5 +1,6 @@
 ﻿using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.Page;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.Popup;
+using FormsControls.Base;
 using Foundation;
 using Rg.Plugins.Popup.Extensions;
 using System;
@@ -14,12 +15,22 @@ using Xamarin.Forms.Xaml;
 namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.About_and_UserSettings.Page
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class AboutPage : ContentPage
+    public partial class AboutPage : AnimationPage
     {
         public AboutPage()
         {
             InitializeComponent();
             Version.Text = "Version:" + "0.5";
+            switch (Device.RuntimePlatform)             //Se il dispositivo è Android non mostra la Top Bar della Navigation Page, se è iOS la mostra
+            {
+                default:
+                    NavigationPage.SetHasNavigationBar(this, true);
+                    break;
+                case Device.Android:
+                    NavigationPage.SetHasNavigationBar(this, false);
+                    break;
+
+            }
         }
 
         private void EditUserInfoViewCell_Tapped(object sender, EventArgs e)
