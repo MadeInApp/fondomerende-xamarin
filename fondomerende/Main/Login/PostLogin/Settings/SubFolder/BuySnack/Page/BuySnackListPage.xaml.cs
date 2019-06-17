@@ -28,7 +28,11 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page
         {
             InitializeComponent();
             GetSnacksMethod();
-            
+            MessagingCenter.Subscribe<BuySnackListPage>(this, "Refresh", (value) =>
+            {
+                GetSnacksMethod();
+            });
+
 
 
             switch (Device.RuntimePlatform)                                                     //

@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using Rg.Plugins.Popup.Extensions;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Messages;
+using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View;
 
 namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup
 {
@@ -26,7 +28,6 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup
 
         protected override void OnDisappearing()
         {
-            BuySnackListPage.Refresh = true;
             base.OnDisappearing();
         }
 
