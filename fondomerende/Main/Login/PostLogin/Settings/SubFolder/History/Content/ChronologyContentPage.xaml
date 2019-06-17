@@ -18,7 +18,7 @@
         <ScrollView 
             BackgroundColor="White"
             IsVisible="true"
-            Padding="0,0,10,0">
+            Padding="0,0,0,10">
 
             <StackLayout
                 Padding="0,0,10,0"

@@ -8,6 +8,7 @@ namespace fondomerende.Main.Utilities
 {
     class PopupUtilities
     {
+       
 
         public static Color GetPrimaryAndroidColor()
         {
@@ -29,6 +30,16 @@ namespace fondomerende.Main.Utilities
             double Altezza = 200;
             double Larghezza = GetLarghezzaPagina() - 80;
             double banner = 50;
+
+            var fondomerende = new Label  //Label per Il titolo banner 
+            {
+                Text = "Fondo merende",
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                VerticalOptions = LayoutOptions.CenterAndExpand,
+                FontSize = 20,
+                FontAttributes = FontAttributes.Bold,
+                TextColor = Color.White,
+            };
 
             var Round = new RoundedCornerView  //coso che stonda
             {
@@ -52,16 +63,7 @@ namespace fondomerende.Main.Utilities
                 WidthRequest = Larghezza,
                 BackgroundColor = Color.Orange,
             };
-
-            var fondomerende = new Label  //Label per Il titolo banner 
-            {
-                Text = "Fondo merende",
-                HorizontalOptions = LayoutOptions.CenterAndExpand,
-                VerticalOptions = LayoutOptions.CenterAndExpand,
-                FontSize = 20,
-                FontAttributes = FontAttributes.Bold,
-                TextColor = Color.White,
-            };
+        
 
             var stackBody = new StackLayout  //stack principale dove è contenuto l'interno di tutto (tranne round che stonda)
 

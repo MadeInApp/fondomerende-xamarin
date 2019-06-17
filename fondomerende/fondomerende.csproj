@@ -61,6 +61,8 @@
     <None Remove="image\settings_icon_64x64.png" />
     <None Remove="image\shopping_bag_256x256.png" />
     <None Remove="image\shop_icon_256x256.png" />
+    <None Remove="image\star_empty.png" />
+    <None Remove="image\star_fill.png" />
     <None Remove="image\vm_icon.png" />
     <None Remove="image\vm_icon_51x51.png" />
     <None Remove="image\vm_icon_64x64.png" />
@@ -164,6 +166,12 @@
     <EmbeddedResource Include="image\shopping_bag_256x256.png" />
     <EmbeddedResource Include="image\shop_icon_256x256.png" />
     <EmbeddedResource Include="image\add_snack_icon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="image\star_empty.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="image\star_fill.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="image\vm_icon_51x51.png" />
