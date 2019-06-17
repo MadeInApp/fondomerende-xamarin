@@ -13,7 +13,8 @@
              xmlns:local4="clr-namespace:fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.View"
              xmlns:local5="clr-namespace:fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.View"
              xmlns:local6="clr-namespace:fondomerende.Main.Login.PostLogin.Settings.SubFolder.LogOut.View"
-             x:Class="fondomerende.Main.Login.PostLogin.Settings.SubFolder.About_and_UserSettings.Page.AboutPage"
+                        xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+                        x:Class="fondomerende.Main.Login.PostLogin.Settings.SubFolder.About_and_UserSettings.Page.AboutPage"
              Title="Impostazioni">
   <!--Pages can be added as references or inline-->
     
@@ -49,5 +50,6 @@
                 </TableSection>
             </TableRoot>
         </TableView>
+        
     </controls:AnimationPage.Content>
 </controls:AnimationPage>

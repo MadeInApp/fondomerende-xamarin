@@ -7,6 +7,7 @@
              mc:Ignorable="d"
              x:Class="fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.Page.EditUserPage"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
              ios:Page.UseSafeArea="True"
              Title="{OnPlatform iOS='Modifica Utente'}">
 
@@ -29,7 +30,7 @@
                     HorizontalOptions="CenterAndExpand"
                     Spacing="20">
 
-                <local:LineEntry 
+                    <local:LineEntry 
                     HorizontalOptions="StartAndExpand" 
                     Margin="10,20,0,30" 
                     WidthRequest="200"
@@ -38,7 +39,7 @@
                     IsTextPredictionEnabled="False"
                     Keyboard="Plain" />
 
-                <local:LineEntry 
+                    <local:LineEntry 
                     HorizontalOptions="StartAndExpand" 
                     x:Name="friendlynameEntry" 
                     WidthRequest="200"
@@ -47,7 +48,7 @@
                     IsTextPredictionEnabled="False"
                     Keyboard="Plain" />
 
-                <local:LineEntry 
+                    <local:LineEntry 
                     HorizontalOptions="StartAndExpand" 
                     Placeholder="Cambia Password"
                     WidthRequest="200"
@@ -55,7 +56,9 @@
                     x:Name="passwordEntry" 
                     Margin="10,20,0,30"/>
 
-                <Button
+                    
+
+                    <Button
                     HorizontalOptions="FillAndExpand"
                     AbsoluteLayout.LayoutBounds=".5,.5,25,1000"
                     Margin="5,0,5,0"
@@ -64,7 +67,7 @@
                     Text="Applica"
                     TextColor="Black"
                     Style="{StaticResource FondomerendeButton}">
-                </Button>
+                    </Button>
                 </StackLayout>
             </Grid>
         </Grid>

@@ -46,12 +46,12 @@
                 </local:LineEntry>
                 <local:LineEntry Placeholder="Giorni alla scadenza" x:Name="ScadenzaInGiorni" Keyboard="Numeric">
                 </local:LineEntry>
-                <StackLayout>
-                    <Label x:Name="ErrorLabel" TextColor="Red" Text=" " VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" FontSize="Small">
-                    </Label>
-                </StackLayout>
+                
             </StackLayout>
-            
+            <StackLayout VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand">
+                <Label x:Name="ErrorLabel" TextColor="Red" Text=" " VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand" FontSize="Small">
+                </Label>
+            </StackLayout>
 
         </StackLayout>
         
