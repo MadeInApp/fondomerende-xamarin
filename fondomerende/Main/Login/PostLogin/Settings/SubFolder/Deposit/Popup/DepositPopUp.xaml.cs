@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using Rg.Plugins.Popup.Extensions;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using Messages;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View;
 using Xamarin.Forms.Internals;
 
