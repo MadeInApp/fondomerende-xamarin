@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Rg.Plugins.Popup.Extensions;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using fondomerende.Main.Utilities;
 using Messages;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View;
 using Xamarin.Forms.Internals;
@@ -23,12 +24,17 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup
         public DepositPopUp()
         {
             InitializeComponent();
+            Inizia();
         }
         protected override void OnAppearing()
         {
             base.OnAppearing();
         }
 
+        private void Inizia()
+        {
+            Popuppage.Content=PopupUtilities.PopUpPiccoli();
+        }
         protected override void OnDisappearing()
         {
             MessagingCenter.Send(new EditUserViewCell()
