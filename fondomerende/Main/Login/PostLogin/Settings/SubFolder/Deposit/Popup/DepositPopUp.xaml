@@ -9,6 +9,7 @@
              mc:Ignorable="d"
              xmlns:local ="clr-namespace:fondomerende.Main.Utilities"
              xmlns:Graph="clr-namespace:fondomerende.Main.Utilities"
+             x:Name="Popuppage"
              x:Class="fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup.DepositPopUp"
              HasKeyboardOffset="False">
     <pages:PopupPage.Animation>
