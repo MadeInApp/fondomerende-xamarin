@@ -26,7 +26,7 @@ namespace fondomerende.Main.Utilities
 
         public static RoundedCornerView PopUpPiccoli()
         {
-            double Altezza = 600;
+            double Altezza = 200;
             double Larghezza = GetLarghezzaPagina() - 80;
             double banner = 50;
 
@@ -39,21 +39,21 @@ namespace fondomerende.Main.Utilities
                 WidthRequest = Larghezza,
             };
 
-            var stackFondoAndroid = new StackLayout() // 
+            var stackFondoAndroid = new StackLayout() //per android 
             {
                 HeightRequest = banner,
                 WidthRequest = Larghezza,
                 BackgroundColor = GetPrimaryAndroidColor(),
             };
 
-            var stackFondoiOS = new StackLayout()
+            var stackFondoiOS = new StackLayout()  //per ios 
             {
                 HeightRequest = banner,
                 WidthRequest = Larghezza,
                 BackgroundColor = Color.Orange,
             };
 
-            var fondomerende = new Label
+            var fondomerende = new Label  //Label per Il titolo banner 
             {
                 Text = "Fondo merende",
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
@@ -63,14 +63,15 @@ namespace fondomerende.Main.Utilities
                 TextColor = Color.White,
             };
 
-            var stackBody = new StackLayout
+            var stackBody = new StackLayout  //stack principale dove è contenuto l'interno di tutto (tranne round che stonda)
+
             {
                 HeightRequest = Altezza,
                 WidthRequest = Larghezza,
                 BackgroundColor = Color.White,
             };
 
-            var stackBottoni = new StackLayout
+            var stackBottoni = new StackLayout  //stack che contiene la gridlia dei bottoni
             {
                 VerticalOptions = LayoutOptions.EndAndExpand,
                 WidthRequest = Larghezza,
@@ -78,7 +79,7 @@ namespace fondomerende.Main.Utilities
                 MinimumHeightRequest = banner,
             };
 
-            var griglia = new Grid
+            var griglia = new Grid //griglia che contiene i bottoni
             {
 
             };
@@ -100,8 +101,12 @@ namespace fondomerende.Main.Utilities
             };
             stackBottoni.Children.Add(griglia);
             griglia.Children.Add((buttonCancel)); //inzia nella prima colonna
-            griglia.Children.Add((buttonConfirm)); //inizia secondsa colonna
-            
+            griglia.Children.Add((buttonConfirm)); //inizia seconda colonna
+
+            Grid.SetColumn(buttonCancel, 0); //mi è toccato farlo qui
+            Grid.SetColumn(buttonConfirm, 1); 
+
+
 
             switch (Device.RuntimePlatform)
             {
