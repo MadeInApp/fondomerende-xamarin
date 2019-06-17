@@ -40,25 +40,27 @@
 
                 <local:LineEntry Placeholder="Nome" x:Name="Nome" Keyboard="Default">
                 </local:LineEntry>
-
                 <local:LineEntry Placeholder="Prezzo"  MaxLength="5" x:Name="Prezzo" Keyboard="Numeric">
                 </local:LineEntry>
-
                 <local:LineEntry Placeholder="Snacks per Scatola" x:Name="SnackPerScatola" Keyboard="Numeric">
                 </local:LineEntry>
-
                 <local:LineEntry Placeholder="Giorni alla scadenza" x:Name="ScadenzaInGiorni" Keyboard="Numeric">
                 </local:LineEntry>
-
+               
             </StackLayout>
             <Label x:Name="ErrorLabel" TextColor="Red" Text=" " HorizontalOptions="Center">
             </Label>
-            <StackLayout Orientation="Horizontal" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand" Spacing="80" Padding="0,0,0,0" >
-                <Button Text="Annulla" VerticalOptions="EndAndExpand" FontSize="16" HorizontalOptions="FillAndExpand" x:Name="Discard" Clicked="Discard_Clicked" Margin="5,0,0,10" Style="{StaticResource FondomerendeButton}" >
-                </Button>
-                <Button Text="Immetti" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand" FontSize="16" x:Name="Apply" Clicked="Apply_Clicked" Margin="0,0,5,10" Style="{StaticResource FondomerendeButton}">
-                </Button>
-            </StackLayout>
+            
         </StackLayout>
+        
+        <StackLayout >
+            <Button Text="Annulla" VerticalOptions="EndAndExpand" FontSize="14" HorizontalOptions="StartAndExpand" x:Name="Discard" Clicked="Discard_Clicked" Margin="20,0,0,10" Style="{StaticResource FondomerendeButton}" >
+            </Button>
+        </StackLayout>
+        <StackLayout>
+            <Button Text="Immetti" VerticalOptions="EndAndExpand" HorizontalOptions="EndAndExpand" FontSize="14" x:Name="Apply" Clicked="Apply_Clicked" Margin="0,0,20,10" Style="{StaticResource FondomerendeButton}">
+            </Button>
+        </StackLayout>
+        
     </Graph:RoundedCornerView>
 </pages:PopupPage>

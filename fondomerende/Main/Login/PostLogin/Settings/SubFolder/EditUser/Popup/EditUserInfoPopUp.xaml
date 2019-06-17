@@ -33,25 +33,25 @@
                 VerticalOptions="StartAndExpand" 
                 Margin="0,30,0,0"/>
 
-                <local:LineEntry
-                    HorizontalTextAlignment="Center"
-                    HorizontalOptions="CenterAndExpand" 
-                    Margin="0,20,0,30" 
-                    WidthRequest="200"
-                    x:Name="usernameEntry"
-                    IsSpellCheckEnabled="False"
-                    IsTextPredictionEnabled="False"
-                    Keyboard="Plain" />
+            <local:LineEntry
+                HorizontalTextAlignment="Center"
+                HorizontalOptions="CenterAndExpand" 
+                Margin="0,20,0,30" 
+                WidthRequest="200"
+                x:Name="usernameEntry"
+                IsSpellCheckEnabled="False"
+                IsTextPredictionEnabled="False"
+                Keyboard="Plain" />
 
-                <local:LineEntry 
-                    HorizontalTextAlignment="Center"
-                    HorizontalOptions="CenterAndExpand" 
-                    x:Name="friendlynameEntry" 
-                    WidthRequest="200"
-                    Margin="{OnPlatform Android='0,20,100,30', iOS='0,20,0,30'}"
-                    IsSpellCheckEnabled="False"
-                    IsTextPredictionEnabled="False"
-                    Keyboard="Plain" />
+            <local:LineEntry 
+                HorizontalTextAlignment="Center"
+                HorizontalOptions="CenterAndExpand" 
+                x:Name="friendlynameEntry" 
+                WidthRequest="200"
+                Margin="{OnPlatform Android='0,20,100,30', iOS='0,20,0,30'}"
+                IsSpellCheckEnabled="False"
+                IsTextPredictionEnabled="False"
+                Keyboard="Plain" />
 
             <local:LineEntry 
                     HorizontalTextAlignment="Center"
