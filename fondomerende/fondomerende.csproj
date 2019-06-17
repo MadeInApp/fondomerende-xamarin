@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <None Remove="Animated\pac-man.gif" />
+    <None Remove="Animated\star.json" />
     <None Remove="image\add_icon_256x256.png" />
     <None Remove="image\add_snack_icon.png" />
     <None Remove="image\BackGradientArRos.jpg" />
@@ -68,6 +69,9 @@
 
   <ItemGroup>
     <EmbeddedResource Include="Animated\pac-man.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Animated\star.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="image\add_icon_256x256.png" />
@@ -272,6 +276,9 @@
     <EmbeddedResource Update="Main\Login\LoadingPage\LoadingPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Page1.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="SettingsTableView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -297,6 +304,7 @@
 
   <ItemGroup>
     <Folder Include="Exception\" />
+    <Folder Include="Main\Utilities\LottieAddictions\Android\" />
   </ItemGroup>
 
   <ItemGroup>

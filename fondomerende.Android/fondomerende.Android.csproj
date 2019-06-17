@@ -83,10 +83,13 @@
     <Compile Include="Assets\GradientColorStackRenderer.cs" />
     <Compile Include="Assets\RoundedCornerViewRenderer.cs" />
     <Compile Include="MainActivity.cs" />
+    <Compile Include="Renderer\AnimationListener.cs" />
+    <Compile Include="Renderer\AnimationViewRenderer.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\star.json" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml" />
