@@ -28,13 +28,13 @@
     <!--You can use any elements here which are extended from Xamarin.Forms.View-->
     <Graph:RoundedCornerView 
         RoundedCornerRadius="20"                                  
-        Margin="{OnPlatform iOS=' 10,160,0,160', Android='10,40,10,40'}"
-        VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"
+        Margin="{OnPlatform iOS=' 10,160,10,160', Android='20,40,20,40'}"
+        
         
         >
         <StackLayout BackgroundColor="White">
             <StackLayout
-                VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand" Margin="0,10,0,10" Spacing="30">
+                VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand" Spacing="30">
                 <Label HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand" Text="Fondo Merende" FontAttributes="Bold">
                 </Label>
 
@@ -46,11 +46,13 @@
                 </local:LineEntry>
                 <local:LineEntry Placeholder="Giorni alla scadenza" x:Name="ScadenzaInGiorni" Keyboard="Numeric">
                 </local:LineEntry>
-               
+                
             </StackLayout>
-            <Label x:Name="ErrorLabel" TextColor="Red" Text=" " HorizontalOptions="Center">
-            </Label>
-            
+            <StackLayout VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand">
+                <Label x:Name="ErrorLabel" TextColor="Red" Text=" " VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand" FontSize="Small">
+                </Label>
+            </StackLayout>
+
         </StackLayout>
         
         <StackLayout >

@@ -15,6 +15,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class EditUserViewCell : ViewCell
     {
+        UserFundsServiceManager userFundsService = new UserFundsServiceManager();
         public string firstLetterIcon;
     
         public EditUserViewCell()
@@ -62,7 +63,6 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View
 
         public async Task<string> GetUserFundsMethod()
         {
-            UserFundsServiceManager userFundsService = new UserFundsServiceManager();
             var result =  await userFundsService.GetUserFunds();
             if(result.response.success == true)
             {
