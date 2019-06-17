@@ -77,6 +77,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
         }
         public void AddMangione()
         {
+
             var stackPrincipale = new StackLayout
             {
                 Orientation = StackOrientation.Horizontal,
@@ -104,18 +105,29 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
         {
             string dataLabel = "";
             string[] strSplit = cronologia[posizione].Split();
+            var fs = new FormattedString();
+           
+            fs.Spans.Add(new Span { Text = " a disposizione", TextColor = Color.Black });
+            
 
             for (int i = 2; i < strSplit.Length; i++)
             {
-                if (traduttore.ContainsKey(strSplit[i]))
+                    
+                if (i==2)
                 {
-                    dataLabel = dataLabel + " " + traduttore[strSplit[i]];
+                    fs.Spans.Add(new Span { Text = strSplit[2], TextColor = colorByName[strSplit[2]] });
+                }
+
+                else if(traduttore.ContainsKey(strSplit[i]))
+                {
+                    fs.Spans.Add(new Span { Text = " " + traduttore[strSplit[i]], TextColor = Color.Black });
                 }
                 else
-                {
-                    dataLabel = dataLabel + " " + strSplit[i];
-                }               
+                    {
+                        fs.Spans.Add(new Span { Text = " " + strSplit[i], TextColor = Color.Black });
+                    }          
             }
+            dataLabel = Convert.ToString(fs);
 
             var stackPrincipale = new StackLayout
             {

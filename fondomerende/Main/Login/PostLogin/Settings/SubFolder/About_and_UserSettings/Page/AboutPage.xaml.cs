@@ -1,5 +1,7 @@
 ﻿using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.Page;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.Popup;
+using FormsControls.Base;
+using Foundation;
 using Rg.Plugins.Popup.Extensions;
 using System;
 using System.Collections.Generic;

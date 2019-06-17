@@ -5,6 +5,7 @@
     xmlns:local="clr-namespace:fondomerende.Main.Utilities"
     x:Class="fondomerende.Main.Login.LoginPages.LoginPage"
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     ios:Page.UseSafeArea="true">
 
@@ -67,14 +68,16 @@
                     </Grid.ColumnDefinitions>
 
                     <Image
-                    Grid.Row="0"
-                    Grid.Column="0"  
-                    Source="{local:EmbeddedImage Resource=fondomerende.image.Donut_icon_512x512.png}"
-                    Scale="{OnIdiom Phone=1.3, Tablet=1.5}"
-                    x:Name ="Fondo_Merende_logo"
-                    Margin="{OnPlatform iOS='0,0,0,80', Android='0,0,0,120'}"
-                    Aspect="AspectFit">
+                        Grid.Row="0"
+                        Grid.Column="0"  
+                        Source="{local:EmbeddedImage Resource=fondomerende.image.Donut_icon_512x512.png}"
+                        Scale="{OnIdiom Phone=1.3, Tablet=1.5}"
+                        x:Name ="Fondo_Merende_logo"
+                        Margin="{OnPlatform iOS='0,0,0,80', Android='0,0,0,120'}"
+                        Aspect="AspectFit">
                     </Image>
+                    
+                    
 
                     <local:LineEntry
                     Grid.Row="1"
