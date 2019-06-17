@@ -28,7 +28,10 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
 
         protected override void OnDisappearing()
         {
-             BuySnackListPage.Refresh = true;
+            MessagingCenter.Send(new BuySnackListPage()
+            {
+
+            }, "Refresh");
             base.OnDisappearing();
         }
 
