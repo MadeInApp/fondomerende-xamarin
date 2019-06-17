@@ -20,7 +20,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.About_and_UserSet
         public AboutPage()
         {
             InitializeComponent();
-            Version.Text = "Version:" + "  " + NSBundle.MainBundle.InfoDictionary["CFBundleVersion"];
+            Version.Text = "Version:" + "0.5";
             switch (Device.RuntimePlatform)             //Se il dispositivo è Android non mostra la Top Bar della Navigation Page, se è iOS la mostra
             {
                 default:
