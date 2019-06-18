@@ -1,5 +1,6 @@
 ﻿using fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page;
 using fondomerende.Main.Services.RESTServices;
+using fondomerende.Main.Utilities;
 using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
+
 namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
 
 
@@ -16,10 +18,148 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class BuySnackPopUpPage : Rg.Plugins.Popup.Pages.PopupPage
     {
+        string appoggio;
         SnackServiceManager snackService = new SnackServiceManager();
         public BuySnackPopUpPage()
         {
             InitializeComponent();
+            PopupBuy();
+        }
+
+        public static Color GetPrimaryAndroidColor()
+        {
+            return Color.FromHex("#f29e17");
+        }
+
+        public static double GetLarghezzaPagina()
+        {
+            return App.Current.MainPage.Width;
+        }
+
+        public static double GetAltezzaPagina()
+        {
+            return App.Current.MainPage.Height;
+        }
+        private void PopupBuy()
+        {
+            double Altezza = 200;
+            double Larghezza = GetLarghezzaPagina() - 80;
+            double banner = 50;
+
+            var Round = new RoundedCornerView  //coso che stonda
+            {
+                RoundedCornerRadius = 20,
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                VerticalOptions = LayoutOptions.Center,
+                HeightRequest = Altezza,
+                WidthRequest = Larghezza,
+            };
+
+            var stackFondoAndroid = new StackLayout() //per android 
+            {
+                HeightRequest = banner,
+                WidthRequest = Larghezza,
+                BackgroundColor = GetPrimaryAndroidColor(),
+            };
+
+            var stackFondoiOS = new StackLayout()  //per ios 
+            {
+                HeightRequest = banner,
+                WidthRequest = Larghezza,
+                BackgroundColor = Color.Orange,
+            };
+
+            var fondomerende = new Label  //Label per Il titolo banner 
+            {
+                Text = "Fondo merende",
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                VerticalOptions = LayoutOptions.CenterAndExpand,
+                FontSize = 20,
+                FontAttributes = FontAttributes.Bold,
+                TextColor = Color.White,
+            };
+            var entry = new LineEntry
+            {
+
+                Placeholder = "Quanti snck vuoi acquistare?",
+                Keyboard = Keyboard.Numeric,
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                HorizontalTextAlignment = TextAlignment.Center,
+            };
+
+
+
+            var stackBody = new StackLayout  //stack principale dove è contenuto l'interno di tutto (tranne round che stonda)
+
+            {
+                HeightRequest = Altezza,
+                WidthRequest = Larghezza,
+                BackgroundColor = Color.White,
+            };
+
+            var stackBottoni = new StackLayout  //stack che contiene la gridlia dei bottoni
+            {
+                VerticalOptions = LayoutOptions.EndAndExpand,
+                WidthRequest = Larghezza,
+                HeightRequest = banner,
+                MinimumHeightRequest = banner,
+            };
+
+            var griglia = new Grid //griglia che contiene i bottoni
+            {
+
+            };
+
+            var buttonCancel = new Button
+            {
+                Text = "Annulla",
+                VerticalOptions = LayoutOptions.CenterAndExpand,
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                BackgroundColor = Color.Transparent,
+            };
+
+            var buttonConfirm = new Button
+            {
+                Text = "Conferma",
+                VerticalOptions = LayoutOptions.CenterAndExpand,
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                BackgroundColor = Color.Transparent,
+            };
+
+            stackBottoni.Children.Add(griglia);
+            griglia.Children.Add((buttonCancel)); //inzia nella prima colonna
+            griglia.Children.Add((buttonConfirm)); //inizia seconda colonna
+
+            Grid.SetColumn(buttonCancel, 0); //mi è toccato farlo qui
+            Grid.SetColumn(buttonConfirm, 1);
+
+
+
+            switch (Device.RuntimePlatform)
+            {
+                case Device.Android:
+                    stackFondoAndroid.Children.Add(fondomerende);
+                    stackBody.Children.Add(stackFondoAndroid);
+                    break;
+                default:
+                    stackFondoAndroid.Children.Add(fondomerende);
+                    stackBody.Children.Add(stackFondoiOS);
+                    break;
+            }
+            entry.TextChanged += Entrata;
+            buttonCancel.Clicked += Discard_Clicked;
+            buttonConfirm.Clicked += Apply_Clicked;
+            stackBody.Children.Add(entry);
+            stackBody.Children.Add(stackBottoni);
+            Round.Children.Add(stackBody);
+
+            PopupBuySnack.Content = Round;
+        }
+
+        public void Entrata(object sender, TextChangedEventArgs e)
+        {
+            appoggio = e.NewTextValue;
+
         }
         protected override void OnAppearing()
         {
@@ -101,13 +241,13 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
         {
             SnackServiceManager snackService = new SnackServiceManager();
 
-            if(QtaEntry.Text == null)
+            if(appoggio == null || appoggio=="")
             {
-                ErrorLabel.Text = "Inserisci la quantità";
+                await DisplayAlert("Fondo Merende", "Inserisci la quantità" , "OK");
             }
             else
             {
-                var result = await snackService.BuySnackAsync(BuySnackListPage.SelectedSnackID, Int32.Parse(QtaEntry.Text));
+                var result = await snackService.BuySnackAsync(BuySnackListPage.SelectedSnackID, Int32.Parse(appoggio));
                 if (result.response.success)
                 {
                     await PopupNavigation.Instance.PopAsync();

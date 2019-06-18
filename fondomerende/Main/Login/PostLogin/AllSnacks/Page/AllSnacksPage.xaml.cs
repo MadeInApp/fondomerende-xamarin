@@ -234,7 +234,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             double casual;
             double spawncasuale;
 
-            for (int f = 0; f < 20; f++)
+           for (int f = 0; f < 20; f++)
             {
 
                 casual = randomWidth.Next(0, Convert.ToInt32(ScreenWidth));
