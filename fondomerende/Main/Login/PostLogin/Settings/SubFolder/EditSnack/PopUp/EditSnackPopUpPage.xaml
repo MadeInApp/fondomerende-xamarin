@@ -48,21 +48,6 @@
                     HorizontalOptions="EndAndExpand"
                     VerticalOptions="StartAndExpand"
                 />
-                <StackLayout
-                Opacity="80"
-                Margin="30,0,30,20" 
-                VerticalOptions="StartAndExpand">
-                    <local:LineEntry x:Name ="NomeSnack" WidthRequest="50">
-                    </local:LineEntry>
-                    <local:LineEntry x:Name ="PrezzoSnack" WidthRequest="50" MaxLength="4">
-                    </local:LineEntry>
-                    <local:LineEntry x:Name ="SnackPerBox" WidthRequest="50">
-                    </local:LineEntry>
-                    <local:LineEntry x:Name ="ExpInDays" WidthRequest="50">
-                    </local:LineEntry>
-                    <local:LineEntry x:Name ="Qta" WidthRequest="50">
-                    </local:LineEntry>
-                </StackLayout>
             </StackLayout>
         </StackLayout>
         <StackLayout>

@@ -11,17 +11,25 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.Page;
 using fondomerende.Main.Login.PostLogin.Settings.Page;
+using fondomerende.Main.Utilities;
 
 namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.Popup
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AddSnackPopUpPage : Rg.Plugins.Popup.Pages.PopupPage
     {
+        
         SnackServiceManager snackService = new SnackServiceManager();
+        LineEntry NomeSnack;
+        LineEntry PrezzoSnack;
+        LineEntry SnackPerBox;
+        LineEntry ExpInDays;
+        LineEntry Qta;
         public AddSnackPopUpPage()
         {
             InitializeComponent();
         }
+
         protected override void OnAppearing()
         {
             base.OnAppearing();

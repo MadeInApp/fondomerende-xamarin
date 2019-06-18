@@ -11,62 +11,68 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Main\image\**" />
     <Compile Remove="Main\Login\PostLogin\GraphicInterfaces\**" />
+    <EmbeddedResource Remove="Main\image\**" />
     <EmbeddedResource Remove="Main\Login\PostLogin\GraphicInterfaces\**" />
+    <None Remove="Main\image\**" />
     <None Remove="Main\Login\PostLogin\GraphicInterfaces\**" />
   </ItemGroup>
 
   <ItemGroup>
     <None Remove="Animated\pac-man.gif" />
     <None Remove="Animated\star.json" />
-    <None Remove="Main\image\add_icon_256x256.png" />
-    <None Remove="Main\image\add_snack_icon.png" />
-    <None Remove="Main\image\BackGradientArRos.jpg" />
-    <None Remove="Main\image\BackGradientRosAr.jpg" />
-    <None Remove="Main\image\CheckBox_Checked_32x32.png" />
-    <None Remove="Main\image\CheckBox_empty_32x32.png" />
-    <None Remove="Main\image\Chronology_icon_256x256.png" />
-    <None Remove="Main\image\close_icon_32x32.png" />
-    <None Remove="Main\image\cup_cake_128x128.png" />
-    <None Remove="Main\image\cup_cake_24x24.png" />
-    <None Remove="Main\image\cup_cake_512x512.png" />
-    <None Remove="Main\image\deposit_256x256.png" />
-    <None Remove="Main\image\Donut_icon_512x512.png" />
-    <None Remove="Main\image\Edit_Icon_32x32.png" />
-    <None Remove="Main\image\edit_profile_256x256.png" />
-    <None Remove="Main\image\Edit_snack_icon_256x256.png" />
-    <None Remove="Main\image\Edit_snack_icon_32x32.png" />
-    <None Remove="Main\image\Fill_256x256.png" />
-    <None Remove="Main\image\fill_clear_256x256.png" />
-    <None Remove="Main\image\fill_full_256x256.png" />
-    <None Remove="Main\image\Fondo_Merende_logo.png" />
-    <None Remove="Main\image\fund_256x256.png" />
-    <None Remove="Main\image\History.png" />
-    <None Remove="Main\image\list_256x256.png" />
-    <None Remove="Main\image\list_264x264.png" />
-    <None Remove="Main\image\Livellodinamico.png" />
-    <None Remove="Main\image\LoginBackground.png" />
-    <None Remove="Main\image\LoginBackground_dinamico.png" />
-    <None Remove="Main\image\history_icon_256x256.png" />
-    <None Remove="Main\image\LoginGradiente.png" />
-    <None Remove="Main\image\Login_Animation.png" />
-    <None Remove="Main\image\Login_Animation2.png" />
-    <None Remove="Main\image\Login_Animation3.png" />
-    <None Remove="Main\image\logout-img.png" />
-    <None Remove="Main\image\logout_256x256.png" />
-    <None Remove="Main\image\Logout_icon_256x256.png" />
-    <None Remove="Main\image\macchinettaNew.png" />
-    <None Remove="Main\image\macchinetta_merende.png" />
-    <None Remove="Main\image\macchinetta_minimalist.jpg" />
-    <None Remove="Main\image\settings_icon_64x64.png" />
-    <None Remove="Main\image\shopping_bag_256x256.png" />
-    <None Remove="Main\image\shop_icon_256x256.png" />
-    <None Remove="Main\image\star_empty.png" />
-    <None Remove="Main\image\star_fill.png" />
-    <None Remove="Main\image\vm_icon.png" />
-    <None Remove="Main\image\vm_icon_51x51.png" />
-    <None Remove="Main\image\vm_icon_64x64.png" />
-    <None Remove="Main\image\x.png" />
+    <None Remove="image\add_icon_256x256.png" />
+    <None Remove="image\add_snack_icon.png" />
+    <None Remove="image\BackGradientArRos.jpg" />
+    <None Remove="image\BackGradientRosAr.jpg" />
+    <None Remove="image\CheckBox_Checked_32x32.png" />
+    <None Remove="image\CheckBox_empty_32x32.png" />
+    <None Remove="image\Chronology_icon_256x256.png" />
+    <None Remove="image\close_icon_32x32.png" />
+    <None Remove="image\cup_cake_128x128.png" />
+    <None Remove="image\cup_cake_24x24.png" />
+    <None Remove="image\cup_cake_512x512.png" />
+    <None Remove="image\deposit_256x256.png" />
+    <None Remove="image\Donut_icon_512x512.png" />
+    <None Remove="image\Edit_Icon_32x32.png" />
+    <None Remove="image\edit_profile_256x256.png" />
+    <None Remove="image\Edit_snack_icon_256x256.png" />
+    <None Remove="image\Edit_snack_icon_32x32.png" />
+    <None Remove="image\Fill_256x256.png" />
+    <None Remove="image\fill_clear_256x256.png" />
+    <None Remove="image\fill_full_256x256.png" />
+    <None Remove="image\Fondo_Merende_logo.png" />
+    <None Remove="image\fund_256x256.png" />
+    <None Remove="image\History.png" />
+    <None Remove="image\history_icon_256x256.png" />
+    <None Remove="image\list_256x256.png" />
+    <None Remove="image\list_264x264.png" />
+    <None Remove="image\Livellodinamico.png" />
+    <None Remove="image\LoginBackground.png" />
+    <None Remove="image\LoginBackground_dinamico.png" />
+    <None Remove="image\LoginGradiente.png" />
+    <None Remove="image\Login_Animation.png" />
+    <None Remove="image\Login_Animation2.png" />
+    <None Remove="image\Login_Animation3.png" />
+    <None Remove="image\logout-img.png" />
+    <None Remove="image\logout_256x256.png" />
+    <None Remove="image\Logout_icon_256x256.png" />
+    <None Remove="image\macchinettaNew.png" />
+    <None Remove="image\macchinetta_merende.png" />
+    <None Remove="image\macchinetta_minimalist.jpg" />
+    <None Remove="image\pac-man.gif" />
+    <None Remove="image\roller.png" />
+    <None Remove="image\settings_icon_64x64.png" />
+    <None Remove="image\shopping_bag_256x256.png" />
+    <None Remove="image\shop_icon_256x256.png" />
+    <None Remove="image\star.png" />
+    <None Remove="image\star_empty.png" />
+    <None Remove="image\star_fill.png" />
+    <None Remove="image\vm_icon.png" />
+    <None Remove="image\vm_icon_51x51.png" />
+    <None Remove="image\vm_icon_64x64.png" />
+    <None Remove="image\x.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -76,109 +82,57 @@
     <EmbeddedResource Include="Animated\star.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="Main\image\add_icon_256x256.png" />
-    <EmbeddedResource Include="Main\image\BackGradientArRos.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Main\image\BackGradientRosAr.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Main\image\cup_cake_24x24.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Main\image\cup_cake_512x512.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Main\image\deposit_256x256.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Main\image\edit_profile_256x256.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Main\image\Fill_256x256.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Main\image\fill_clear_256x256.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Main\image\fill_full_256x256.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Main\image\fund_256x256.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Main\image\History.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Main\image\list_256x256.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Main\image\list_264x264.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Main\image\Livellodinamico.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Main\image\LoginBackground.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Main\image\Login_Animation2.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Main\image\CheckBox_Checked_32x32.png" />
-    <EmbeddedResource Include="Main\image\CheckBox_empty_32x32.png" />
-    <EmbeddedResource Include="Main\image\Chronology_icon_256x256.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Main\image\close_icon_32x32.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Main\image\Donut_icon_512x512.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Main\image\Edit_Icon_32x32.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Main\image\Edit_snack_icon_256x256.png" />
-    <EmbeddedResource Include="Main\image\Edit_snack_icon_32x32.png" />
-    <EmbeddedResource Include="Main\image\Fondo_Merende_logo.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Main\image\LoginGradiente.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Main\image\logout-img.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Main\image\Logout_icon_256x256.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Main\image\macchinettaNew.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Main\image\macchinetta_merende.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Main\image\macchinetta_minimalist.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Main\image\settings_icon_64x64.png" />
-    <EmbeddedResource Include="Main\image\shopping_bag_256x256.png" />
-    <EmbeddedResource Include="Main\image\shop_icon_256x256.png" />
-    <EmbeddedResource Include="Main\image\add_snack_icon.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Main\image\star_empty.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Main\image\star_fill.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Main\image\vm_icon_51x51.png" />
-    <EmbeddedResource Include="Main\image\vm_icon_64x64.png" />
-    <EmbeddedResource Include="Main\image\x.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
+    <EmbeddedResource Include="image\add_icon_256x256.png" />
+    <EmbeddedResource Include="image\add_snack_icon.png" />
+    <EmbeddedResource Include="image\BackGradientArRos.jpg" />
+    <EmbeddedResource Include="image\BackGradientRosAr.jpg" />
+    <EmbeddedResource Include="image\CheckBox_Checked_32x32.png" />
+    <EmbeddedResource Include="image\CheckBox_empty_32x32.png" />
+    <EmbeddedResource Include="image\Chronology_icon_256x256.png" />
+    <EmbeddedResource Include="image\close_icon_32x32.png" />
+    <EmbeddedResource Include="image\cup_cake_128x128.png" />
+    <EmbeddedResource Include="image\cup_cake_24x24.png" />
+    <EmbeddedResource Include="image\cup_cake_512x512.png" />
+    <EmbeddedResource Include="image\deposit_256x256.png" />
+    <EmbeddedResource Include="image\Donut_icon_512x512.png" />
+    <EmbeddedResource Include="image\Edit_Icon_32x32.png" />
+    <EmbeddedResource Include="image\edit_profile_256x256.png" />
+    <EmbeddedResource Include="image\Edit_snack_icon_256x256.png" />
+    <EmbeddedResource Include="image\Edit_snack_icon_32x32.png" />
+    <EmbeddedResource Include="image\Fill_256x256.png" />
+    <EmbeddedResource Include="image\fill_clear_256x256.png" />
+    <EmbeddedResource Include="image\fill_full_256x256.png" />
+    <EmbeddedResource Include="image\Fondo_Merende_logo.png" />
+    <EmbeddedResource Include="image\fund_256x256.png" />
+    <EmbeddedResource Include="image\History.png" />
+    <EmbeddedResource Include="image\history_icon_256x256.png" />
+    <EmbeddedResource Include="image\list_256x256.png" />
+    <EmbeddedResource Include="image\list_264x264.png" />
+    <EmbeddedResource Include="image\Livellodinamico.png" />
+    <EmbeddedResource Include="image\LoginBackground.png" />
+    <EmbeddedResource Include="image\LoginBackground_dinamico.png" />
+    <EmbeddedResource Include="image\LoginGradiente.png" />
+    <EmbeddedResource Include="image\Login_Animation.png" />
+    <EmbeddedResource Include="image\Login_Animation2.png" />
+    <EmbeddedResource Include="image\Login_Animation3.png" />
+    <EmbeddedResource Include="image\logout-img.png" />
+    <EmbeddedResource Include="image\logout_256x256.png" />
+    <EmbeddedResource Include="image\Logout_icon_256x256.png" />
+    <EmbeddedResource Include="image\macchinettaNew.png" />
+    <EmbeddedResource Include="image\macchinetta_merende.png" />
+    <EmbeddedResource Include="image\macchinetta_minimalist.jpg" />
+    <EmbeddedResource Include="image\pac-man.gif" />
+    <EmbeddedResource Include="image\roller.png" />
+    <EmbeddedResource Include="image\settings_icon_64x64.png" />
+    <EmbeddedResource Include="image\shopping_bag_256x256.png" />
+    <EmbeddedResource Include="image\shop_icon_256x256.png" />
+    <EmbeddedResource Include="image\star.png" />
+    <EmbeddedResource Include="image\star_empty.png" />
+    <EmbeddedResource Include="image\star_fill.png" />
+    <EmbeddedResource Include="image\vm_icon.png" />
+    <EmbeddedResource Include="image\vm_icon_51x51.png" />
+    <EmbeddedResource Include="image\vm_icon_64x64.png" />
+    <EmbeddedResource Include="image\x.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -313,11 +267,5 @@
   <ItemGroup>
     <Folder Include="Exception\" />
     <Folder Include="Main\Utilities\LottieAddictions\Android\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="Main\image\cup_cake_128x128.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
   </ItemGroup>
 </Project>
