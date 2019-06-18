@@ -53,7 +53,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page
 
         public async Task GetSnacksMethod(bool Loaded)     //ottiene la lista degli snack e la applica alla ListView
         {
-           var result = await SnackService.GetSnacksAsync();
+           var result = await SnackService.GetToBuySnacksAsync();
             ListView.ItemsSource = result.data.snacks;
             if (!Loaded) //!WORKAROUND!   in questo modo si evita il crash ma la griglia non si aggiorna, urge investigazione sul vero problema
             {
@@ -156,7 +156,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page
 
         private async void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            var result = await SnackService.GetToBuySnacksAsync();
+            await SnackService.GetToBuySnacksAsync();
             SelectedSnackID = (e.SelectedItem as ToBuyDataDTO).id;
             await Navigation.PushPopupAsync(new BuySnackPopUpPage());
 
