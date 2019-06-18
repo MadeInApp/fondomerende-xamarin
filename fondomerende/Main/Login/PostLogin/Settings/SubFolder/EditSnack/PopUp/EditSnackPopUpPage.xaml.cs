@@ -38,15 +38,18 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.PopUp
             Qta.Placeholder = null;
             Quantity = 0;
             var result = await snackService.GetSnacksAsync();
-            if (result.response.success)
+            if (result != null)
             {
-                for (int i = 0; i <= result.data.snacks.Count; i++)
+                if (result.response.success)
                 {
-                    if(result.data.snacks[i].id == EditSnackListPage.SelectedSnackID)
+                    for (int i = 0; i <= result.data.snacks.Count; i++)
                     {
-                        Qta.Placeholder = "Quantità: " +Convert.ToString(result.data.snacks[i].quantity);
-                        Quantity = result.data.snacks[i].quantity;
-                        return;
+                        if (result.data.snacks[i].id == EditSnackListPage.SelectedSnackID)
+                        {
+                            Qta.Placeholder = "Quantità: " + Convert.ToString(result.data.snacks[i].quantity);
+                            Quantity = result.data.snacks[i].quantity;
+                            return;
+                        }
                     }
                 }
             }
@@ -359,15 +362,17 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.PopUp
                 if (appoggioPrezzo != 0 || float.Parse(appoggioSnackPerScatola) != 0)
                 {
                     var res = await snackService.EditSnackAsync(snackID, appoggioNome, appoggioPrezzo, appoggioSnackPerScatola, appoggioScadenzaInGiorni, Int32.Parse(appoggioQta));
-                    if (res.response.success)
+                    if (res != null)
                     {
-                        await Navigation.PopPopupAsync();
+                        if (res.response.success)
+                        {
+                            await Navigation.PopPopupAsync();
+                        }
+                        else
+                        {
+                            await DisplayAlert("Fondo Merende", "Errore", "Ok");
+                        }
                     }
-                    else
-                    {
-                        await DisplayAlert("Fondo Merende", "Errore", "Ok");
-                    }
-                   
                 }
                 else
                 {
