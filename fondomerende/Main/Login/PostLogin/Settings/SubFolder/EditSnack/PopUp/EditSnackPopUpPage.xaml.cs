@@ -15,20 +15,21 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.PopUp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class EditSnackPopUpPage : Rg.Plugins.Popup.Pages.PopupPage
     {
+        ImageButton immagine;
+        LineEntry NomeSnack;
+        LineEntry PrezzoSnack;
+        LineEntry SnackPerBox;
+        LineEntry ExpInDays;
+        LineEntry Qta;
         EmbeddedImage img = new EmbeddedImage();
         SnackServiceManager snackService = new SnackServiceManager();
         int snackID = EditSnackListPage.SelectedSnackID;
-        string appoggio;
+        string appoggioNome, appoggioQta, appoggioPrezzo, appoggioSnackPerScatola, appoggioScadenzaInGiorni;
         bool Swapped = true;
         int Quantity;
         public EditSnackPopUpPage()
         {
             InitializeComponent();
-            NomeSnack.Placeholder = "Nome: " + EditSnackListPage.SelectedSnackName;
-            PrezzoSnack.Placeholder = "Prezzo: " + Convert.ToString(EditSnackListPage.SelectedSnackPrice);
-            SnackPerBox.Placeholder = "Snacks Per Scatola: " + Convert.ToString(EditSnackListPage.SelectedSnackPerBox);
-            ExpInDays.Placeholder = "Scadenza In Giorni: " + Convert.ToString(EditSnackListPage.SelectedSnackExpiration);
-            GetQta();
             PopupEditSnack();
         }
         public async void GetQta()
@@ -66,8 +67,8 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.PopUp
         }
         private void PopupEditSnack()
         {
-            double Altezza = 200;
-            double Larghezza = GetLarghezzaPagina() - 80;
+            double Altezza = 800;
+            double Larghezza = GetLarghezzaPagina() - 40;
             double banner = 50;
 
             var Round = new RoundedCornerView  //coso che stonda
@@ -102,14 +103,47 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.PopUp
                 FontAttributes = FontAttributes.Bold,
                 TextColor = Color.White,
             };
-            var entry = new LineEntry
-            {
 
-                Placeholder = "Quanto vuoi depositare?",
-                Keyboard = Keyboard.Numeric,
-                MaxLength = 5,
+
+            immagine = new ImageButton
+            {
+                Source = ImageSource.FromResource("fondomerende.image.fill_full_256x256.png"),
+                CornerRadius = 20,
+                Scale = 0.3,
+                HorizontalOptions = LayoutOptions.EndAndExpand,
+                VerticalOptions = LayoutOptions.StartAndExpand,
+            };
+
+            immagine.Clicked += Swap_Clicked;
+            NomeSnack = new LineEntry
+            {
+                Keyboard = Keyboard.Default,
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
-                HorizontalTextAlignment = TextAlignment.Center,
+                WidthRequest = 250,
+            };
+            PrezzoSnack = new LineEntry
+            {
+                Keyboard = Keyboard.Numeric,
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                WidthRequest = 250,
+            };
+            SnackPerBox = new LineEntry
+            {
+                Keyboard = Keyboard.Numeric,
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                WidthRequest = 250,
+            };
+            ExpInDays = new LineEntry
+            {
+                Keyboard = Keyboard.Numeric,
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                WidthRequest = 250,
+            };
+            Qta = new LineEntry
+            {
+                Keyboard = Keyboard.Numeric,
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                WidthRequest = 250,
             };
 
 
@@ -154,7 +188,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.PopUp
             stackBottoni.Children.Add(griglia);
             griglia.Children.Add((buttonCancel)); //inzia nella prima colonna
             griglia.Children.Add((buttonConfirm)); //inizia seconda colonna
-
+            
             Grid.SetColumn(buttonCancel, 0); //mi è toccato farlo qui
             Grid.SetColumn(buttonConfirm, 1);
 
@@ -171,21 +205,68 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.PopUp
                     stackBody.Children.Add(stackFondoiOS);
                     break;
             }
-            entry.TextChanged += Entrata;
+
+            
+            NomeSnack.TextChanged += EntrataNome;
+            PrezzoSnack.TextChanged += EntrataPrezzo;
+            SnackPerBox.TextChanged += EntrataSnackPerScatola;
+            ExpInDays.TextChanged += EntrataScadenzaInGiorni;
+            Qta.TextChanged += EntrataQta;
+
             buttonCancel.Clicked += Discard_Clicked;
             buttonConfirm.Clicked += Apply_Clicked;
-            stackBody.Children.Add(entry);
+
+            stackBody.Children.Add(immagine);
+            stackBody.Children.Add(NomeSnack);
+            stackBody.Children.Add(PrezzoSnack);
+            stackBody.Children.Add(SnackPerBox);
+            stackBody.Children.Add(ExpInDays);
+            stackBody.Children.Add(Qta);
+            immagine.BackgroundColor = Color.White;
+            NomeSnack.Placeholder = "Nome: " + EditSnackListPage.SelectedSnackName;
+            PrezzoSnack.Placeholder = "Prezzo: " + Convert.ToString(EditSnackListPage.SelectedSnackPrice);
+            SnackPerBox.Placeholder = "Snacks Per Scatola: " + Convert.ToString(EditSnackListPage.SelectedSnackPerBox);
+            ExpInDays.Placeholder = "Scadenza In Giorni: " + Convert.ToString(EditSnackListPage.SelectedSnackExpiration);
+            GetQta();
+
             stackBody.Children.Add(stackBottoni);
             Round.Children.Add(stackBody);
 
             EditSnackPopUp.Content = Round;
         }
 
-        public void Entrata(object sender, TextChangedEventArgs e)
+        public void EntrataNome(object sender, TextChangedEventArgs e)
         {
-            appoggio = e.NewTextValue;
+            appoggioNome = e.NewTextValue;
 
         }
+
+        public void EntrataPrezzo(object sender, TextChangedEventArgs e)
+        {
+            appoggioPrezzo = e.NewTextValue;
+
+        }
+
+        public void EntrataScadenzaInGiorni(object sender, TextChangedEventArgs e)
+        {
+            appoggioScadenzaInGiorni = e.NewTextValue;
+
+        }
+
+        public void EntrataSnackPerScatola(object sender, TextChangedEventArgs e)
+        {
+            appoggioSnackPerScatola = e.NewTextValue;
+
+        }
+
+        public void EntrataQta(object sender, TextChangedEventArgs e)
+        {
+            appoggioQta = e.NewTextValue;
+
+        }
+        
+
+
         protected override void OnAppearing()
         {
             base.OnAppearing();
@@ -261,26 +342,31 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.PopUp
 
         private async void Apply_Clicked(object sender, EventArgs e)
         {
-            if (NomeSnack.Text == null || PrezzoSnack.Text == null || SnackPerBox.Text == null || ExpInDays.Text == null || Qta.Text == null)
+            if (appoggioNome == null || appoggioPrezzo == null || appoggioSnackPerScatola == null || appoggioScadenzaInGiorni == null || appoggioQta == null)
             {
                 await DisplayAlert("Fondo Merende", "Riempi tutti i campi", "Ok");
             }
-            else if(Int32.Parse(PrezzoSnack.Text) == 0 || Int32.Parse(SnackPerBox.Text) == 0)
-            {
-                await DisplayAlert("Fondo Merende", "Il Prezzo e 'gli Snacks per scatola' devono essere maggiori di 0", "Ok");
-            }
             else
             {
-                var res = await snackService.EditSnackAsync(snackID, NomeSnack.Text, PrezzoSnack.Text, SnackPerBox.Text, ExpInDays.Text, Int32.Parse(Qta.Text));
-                if (res.response.success)
+                if (float.Parse(appoggioPrezzo) != 0 || float.Parse(appoggioSnackPerScatola) != 0)
                 {
-                    await Navigation.PopPopupAsync();
+                    var res = await snackService.EditSnackAsync(snackID, appoggioNome, appoggioPrezzo, appoggioSnackPerScatola, appoggioScadenzaInGiorni, Int32.Parse(appoggioQta));
+                    if (res.response.success)
+                    {
+                        await Navigation.PopPopupAsync();
+                    }
+                    else
+                    {
+                        await DisplayAlert("Fondo Merende", "Errore", "Ok");
+                    }
+                   
                 }
                 else
                 {
-                    await DisplayAlert("Fondo Merende", "Errore", "Ok");
+                    await DisplayAlert("Fondo Merende", "Il Prezzo e 'gli Snacks per scatola' devono essere maggiori di 0", "Ok");
                 }
             }
+           
         }
 
         private async void Discard_Clicked(object sender, EventArgs e)
@@ -292,7 +378,8 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.PopUp
         {
             if (Swapped == true)
             {
-                Swap.Source = ImageSource.FromResource("fondomerende.image.fill_clear_256x256.png");
+                
+                immagine.Source = ImageSource.FromResource("fondomerende.image.fill_clear_256x256.png");
                 NomeSnack.Placeholder = null;
                 PrezzoSnack.Placeholder = null;
                 SnackPerBox.Placeholder = null;
@@ -321,7 +408,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.PopUp
             }
             else
             {
-                Swap.Source = ImageSource.FromResource("fondomerende.image.fill_full_256x256.png");
+                immagine.Source = ImageSource.FromResource("fondomerende.image.fill_full_256x256.png");
                 NomeSnack.Text = null;
                 PrezzoSnack.Text = null;
                 SnackPerBox.Text = null;
