@@ -24,8 +24,9 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.PopUp
         EmbeddedImage img = new EmbeddedImage();
         SnackServiceManager snackService = new SnackServiceManager();
         int snackID = EditSnackListPage.SelectedSnackID;
-        string appoggioNome, appoggioQta, appoggioPrezzo, appoggioSnackPerScatola, appoggioScadenzaInGiorni;
+        string appoggioNome, appoggioQta, appoggioSnackPerScatola, appoggioScadenzaInGiorni;
         bool Swapped = true;
+        Decimal appoggioPrezzo;
         int Quantity;
         public EditSnackPopUpPage()
         {
@@ -243,7 +244,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.PopUp
 
         public void EntrataPrezzo(object sender, TextChangedEventArgs e)
         {
-            appoggioPrezzo = e.NewTextValue;
+            appoggioPrezzo = Convert.ToDecimal(e.NewTextValue);
 
         }
 
@@ -348,7 +349,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.PopUp
             }
             else
             {
-                if (float.Parse(appoggioPrezzo) != 0 || float.Parse(appoggioSnackPerScatola) != 0)
+                if (appoggioPrezzo != 0 || float.Parse(appoggioSnackPerScatola) != 0)
                 {
                     var res = await snackService.EditSnackAsync(snackID, appoggioNome, appoggioPrezzo, appoggioSnackPerScatola, appoggioScadenzaInGiorni, Int32.Parse(appoggioQta));
                     if (res.response.success)

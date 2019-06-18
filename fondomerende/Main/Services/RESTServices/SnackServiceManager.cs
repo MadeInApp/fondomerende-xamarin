@@ -90,14 +90,14 @@ namespace fondomerende.Main.Services.RESTServices
             return result;
         }
 
-        public async System.Threading.Tasks.Task<EditSnackDTO> EditSnackAsync(int idSnack, string snackName, string snackPrice, string snacksPerBox, string SnackExpiration, int Qta) //Servizio per mangiare uno snack
+        public async System.Threading.Tasks.Task<EditSnackDTO> EditSnackAsync(int idSnack, string snackName, Decimal snackPrice, string snacksPerBox, string SnackExpiration, int Qta) //Servizio per mangiare uno snack
 
         {
             var data = new Dictionary<string, string>();
             data.Add("commandName", "edit-snack");
             data.Add("id", Convert.ToString(idSnack));
             data.Add("name", snackName);
-            data.Add("price", snackPrice);
+            data.Add("price",( Convert.ToString(snackPrice)).Replace(",", "."));
             data.Add("snacks-per-box", snacksPerBox);
             data.Add("expiration-in-days", SnackExpiration);
             data.Add("quantity", Convert.ToString(Qta));
