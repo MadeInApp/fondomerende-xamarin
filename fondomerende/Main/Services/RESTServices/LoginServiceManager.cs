@@ -39,13 +39,13 @@ namespace fondomerende.Main.Services.RESTServices
             }
             catch (FlurlHttpTimeoutException ex)
             {
-                await App.Current.MainPage.DisplayAlert("Fondo Merende", "Connessione al server scaduta!", "OK");
+                await App.Current.MainPage.DisplayAlert("Fondo Merende", "Connessione al server scaduta", "OK");
             }
             catch (FlurlHttpException ex)
             {
-                await App.Current.MainPage.DisplayAlert("Fondo Merende", "Errore Http!", "OK");
+                await App.Current.MainPage.DisplayAlert("Fondo Merende", "Errore di rete", "OK");
             }
-            return null;
+            return result;
         }
 
     }

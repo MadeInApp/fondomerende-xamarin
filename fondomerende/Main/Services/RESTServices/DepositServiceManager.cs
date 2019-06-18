@@ -13,14 +13,27 @@ namespace fondomerende.Main.Services.RESTServices
     {
         public async System.Threading.Tasks.Task<DepositDTO> DepositAsync(Decimal DepAmount)
         {
-            var result = await "http://192.168.0.175:8888/fondomerende/public/process-request.php"
-            .WithCookie("auth-key", "metticiquellochetipare")
-            .WithCookie("user-token", UserManager.Instance.token)
-            .WithHeader("Content-Type", "application/x-www-form-urlencoded; param=value;charset=UTF-8")
-            .PostUrlEncodedAsync(new { commandName = "deposit", amount = DepAmount})
-            .ReceiveJson<DepositDTO>();
+            try
+            {
+                var result = await "http://192.168.0.175:8888/fondomerende/public/process-request.php"
+                    .WithCookie("auth-key", "metticiquellochetipare")
+                    .WithCookie("user-token", UserManager.Instance.token)
+                    .WithHeader("Content-Type", "application/x-www-form-urlencoded; param=value;charset=UTF-8")
+                    .PostUrlEncodedAsync(new { commandName = "deposit", amount = DepAmount })
+                    .ReceiveJson<DepositDTO>();
 
-            return result;
+                    return result;
+            }
+            catch (FlurlHttpTimeoutException ex)
+            {
+                await App.Current.MainPage.DisplayAlert("Fondo Merende", "Connessione al server scaduta", "OK");
+            }
+            catch (FlurlHttpException ex)
+            {
+                await App.Current.MainPage.DisplayAlert("Fondo Merende", "Errore di rete", "OK");
+            }
+            return null;
+          
         }
     }
 }

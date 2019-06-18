@@ -10,19 +10,24 @@ namespace fondomerende.Main.Services.RESTServices
     {
         public async System.Threading.Tasks.Task<LastActionDTO> GetLastActions()
         {
-
-            var response = await "http://192.168.0.175:8888/fondomerende/public/process-request.php?commandName=get-last-actions"
-                                .WithCookie("auth-key", "metticiquellochetipare")
-                                .WithCookie("user-token", Manager.UserManager.Instance.token)
-                                .GetJsonAsync<LastActionDTO>();
-
-            if (response.response.success == true)
+            try
             {
-
+                var response = await "http://192.168.0.175:8888/fondomerende/public/process-request.php?commandName=get-last-actions"
+                                    .WithCookie("auth-key", "metticiquellochetipare")
+                                    .WithCookie("user-token", Manager.UserManager.Instance.token)
+                                    .GetJsonAsync<LastActionDTO>();
+                return response;
             }
 
-            return response;
-
+            catch (FlurlHttpTimeoutException ex)
+            {
+                await App.Current.MainPage.DisplayAlert("Fondo Merende", "Connessione al server scaduta", "OK");
+            }
+            catch (FlurlHttpException ex)
+            {
+                await App.Current.MainPage.DisplayAlert("Fondo Merende", "Errore di rete", "OK");
+            }
+            return null;
         }
     }
 }

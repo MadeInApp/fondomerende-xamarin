@@ -55,25 +55,26 @@ namespace fondomerende.Main.Login.LoginPages
             wait = !wait;
                 if (!string.IsNullOrEmpty(usernameEntry.Text) && !string.IsNullOrEmpty(passwordEntry.Text))
                 {
-                 //   if (!wait)
-                  //  { 
-                        var response = await loginService.LoginAsync(usernameEntry.Text, passwordEntry.Text, remember);
-                        if (response.response.message == "Invalid login: wrong credentials.")
-                        {
-                            await DisplayAlert("Fondo Merende", "Username o Password Errati", "OK");
-                        }
-                        else if (response.response.success == true)
-                        {
+                    var response = await loginService.LoginAsync(usernameEntry.Text, passwordEntry.Text, remember);
+                    if(response == null)
+                    {
+                        
+                    }
+                    else if (response.response.message == "Invalid login: wrong credentials.")
+                    {
+                        await DisplayAlert("Fondo Merende", "Username o Password Errati", "OK");
+                    }
+                    else if (response.response.success == true)
+                    {
                            
-                            await userService.GetUserData();
-                            App.Current.MainPage = new MainPage();                                       
-                            wait = true;
-                        }
-                        else
-                        {
-                            await DisplayAlert("Fondo Merende", "Errore da investigare", "OK");
-                        }
-                    //}
+                        await userService.GetUserData();
+                        App.Current.MainPage = new MainPage();                                       
+                        wait = true;
+                    }
+                    else
+                    {
+                        await DisplayAlert("Fondo Merende", "Errore da investigare", "OK");
+                    }
                 }
                
                 else
@@ -106,18 +107,19 @@ namespace fondomerende.Main.Login.LoginPages
 
                 if (password == testpassword)
                 {
-
                     RegisterServiceManager registerService = new RegisterServiceManager();
                     var response = await registerService.RegisterAsync(username, password, friendly_name);
-                    if (response.response.success == true && response.response.status == 201)
+                    if (response == null)
+                    {
+
+                    }
+                    else  if (response.response.success == true && response.response.status == 201)
                     {
                         await userService.GetUserData();
                         App.Current.MainPage = new MainPage();
                     }
-
-                    if (response.response.success == false)
+                    else
                     {
-
                         if (response.response.status == 400)
                         {
                             await DisplayAlert("Fondo Merende", response.response.message, "OK");
@@ -135,7 +137,7 @@ namespace fondomerende.Main.Login.LoginPages
             }
             else
             {
-                await DisplayAlert("Fondo Merende", "Inserire i campi obbligatori", "OK");
+                await DisplayAlert("Fondo Merende", "Compila tutti i campi", "OK");
             }
         }
 
