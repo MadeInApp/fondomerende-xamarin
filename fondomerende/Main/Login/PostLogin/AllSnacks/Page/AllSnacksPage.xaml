@@ -22,41 +22,48 @@
                 BackgroundColor="#FFF8EB">
 
             <StackLayout 
-                    Orientation="Horizontal" 
-                    HeightRequest="45" 
-                    Margin="10,0,0,0">
-                <Grid>
+                Orientation="Horizontal" 
+                MinimumHeightRequest="30"
+                BackgroundColor="Red">
+                
+                <Grid 
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="CenterAndExpand">
 
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="3.3*" />
+                        <ColumnDefinition Width="3.3*" />
+                        <ColumnDefinition Width="3.3*" />
                     </Grid.ColumnDefinitions>
-                    
-                
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+
 
                     <ImageButton 
+                        BackgroundColor="Blue"
+                        Grid.Row="0"
                         Grid.Column="0"
-                        Margin="10,0,0,0"
                         CornerRadius="5"
-                        WidthRequest="35"
-                        HeightRequest="35"
+                        Margin="5"
+                        Aspect="AspectFill"
                         HorizontalOptions="StartAndExpand" 
                         VerticalOptions="StartAndExpand"
                         Source="{local2:EmbeddedImage Resource=fondomerende.image.list_264x264.png}"
-                        Scale="{OnIdiom Phone=0.8, Tablet=3}"
-                        BackgroundColor="Transparent"
                         Clicked="Swap_Clicked"
                         x:Name="Swap">
                     </ImageButton>
 
                     <ImageButton
+                        Grid.Row="0"
                         Grid.Column="1"
                         HorizontalOptions="CenterAndExpand" 
                         VerticalOptions="Center"
                         Source="{local2:EmbeddedImage Resource=fondomerende.image.star_empty.png}"
                         Scale="{OnIdiom Phone=0.8, Tablet=3}"
-                        BackgroundColor="Transparent"
+                        BackgroundColor="Green"
                         Clicked="favourite_Clicked"
                         x:Name="favourite"
                         IsVisible="True">
@@ -64,12 +71,13 @@
 
 
                     <forms:AnimationView
+                        Grid.Row="0"
                         Grid.Column="2"
                         x:Name="Wallet"
                         OnClick="WalletClicked"
                         Animation="star.json"
                         Loop="True"
-                        HorizontalOptions="CenterAndExpand"
+                        HorizontalOptions="EndAndExpand"
                         VerticalOptions="CenterAndExpand"
                         AutoPlay="True"
                         BackgroundColor="Aqua">
@@ -125,7 +133,7 @@
                         Grid.Row="0"
                         IsVisible="True" 
                         x:Name="ScrollView"  
-                        Padding="0,10,0,10">
+                        Padding="0,0,0,10">
 
                         <Grid HorizontalOptions="CenterAndExpand"
                             x:Name="GridView" 

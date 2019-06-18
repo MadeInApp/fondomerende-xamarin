@@ -23,11 +23,12 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
         SnackServiceManager snackServiceManager = new SnackServiceManager();
         List<SnackDataDTO> AllSnacks = new List<SnackDataDTO>();
         SnackDTO result;
+        Dictionary<string, int> numerotocchi = new Dictionary<string, int>();
         bool switchStar = false;
 
         public AllSnacksPage()
         {
-
+            numerotocchi.Add("numero", 0);
             InitializeComponent();
             GetSnacksMethod(false);
             Fade();
@@ -72,7 +73,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             {
                 for (int i = 0; i <= result.data.snacks.Count; i++)
                 {
-                   
+
                     ColorRandom c = new ColorRandom();
                     int box = 140;
 
@@ -104,7 +105,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                         RoundedCornerRadius = box / 2,
                         BorderColor = c.GetRandomColor(),
                         BorderWidth = 3,
-                        InputTransparent=true,
+                        InputTransparent = true,
                     };
 
                     var BordiSmussatiiOS = new RoundedCornerView
@@ -131,10 +132,16 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                     {
                         Orientation = StackOrientation.Vertical,
                     };
-
+                    
                     var tgr = new TapGestureRecognizer();
                     tgr.Tapped += Tgr_Tapped;
+
+                    Wallet.IsPlaying = false;
+
                     app.GestureRecognizers.Add(tgr);
+
+                    var tgr2 = new TapGestureRecognizer();
+
 
                     imageButton.Clicked += OnImageButtonClicked;
                     StackLayout.Children.Add(imageButton);
@@ -142,14 +149,14 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                     switch (Device.RuntimePlatform)
                     {
                         case Device.Android:
-                            
+
                             BordiSmussatiAndroid.Children.Add(StackLayout);
                             app.Children.Add(BordiSmussatiAndroid);
 
                             break;
 
                         default:
-                            
+
                             BordiSmussatiiOS.Children.Add(StackLayout);
                             app.Children.Add(BordiSmussatiiOS);
                             break;
@@ -164,7 +171,8 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
         private void Tgr_Tapped(object sender, EventArgs e)
         {
-            SnackDataDTO index = null;
+               SnackDataDTO index = null;
+            Wallet.IsPlaying = true;
             foreach (var item in (sender as StackLayout).Children)
             {
                 if(item is Label)
@@ -250,6 +258,10 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             await Navigation.PushPopupAsync(new DepositPopUp());
         }
 
+        public void Timer()
+        {
+
+        }
         private async void animation()
         {
             EmbeddedImage e = new EmbeddedImage();
