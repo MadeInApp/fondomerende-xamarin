@@ -31,6 +31,10 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.Page
             InitializeComponent();
             GetSnacksMethod();
 
+            MessagingCenter.Subscribe<EditSnackListPage>(this, "Close", async (value) =>
+            {
+                await Navigation.PopAsync();
+            });
             switch (Device.RuntimePlatform)                                                     //
             {                                                                                   //                                    
                                                                                                 //   Se il dispositivo è Android non mostra la Top Bar della Navigation Page,
@@ -61,7 +65,15 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.Page
         public async Task GetSnacksMethod()     //ottiene la lista degli snack e la applica alla ListView
         {
             var result = await SnackService.GetAllSnacksAsync();
-            ListView.ItemsSource = result.data.snacks;
+            if (result!= null)
+            {
+                ListView.ItemsSource = result.data.snacks;
+            }
+            else
+            {
+
+            }
+           
         }
 
         private async void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
