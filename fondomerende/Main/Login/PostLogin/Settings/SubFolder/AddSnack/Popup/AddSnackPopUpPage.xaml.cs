@@ -188,10 +188,10 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.Popup
             buttonCancel.Clicked += Discard_Clicked;
             buttonConfirm.Clicked += Apply_Clicked;
 
-            NomeSnack.Placeholder = "Nome: ";
-            PrezzoSnack.Placeholder = "Prezzo:";
-            SnackPerBox.Placeholder = "Snack per Scatola:";
-            ExpInDays.Placeholder = "Giorni di scadenza: ";
+            NomeSnack.Placeholder = "Nome";
+            PrezzoSnack.Placeholder = "Prezzo";
+            SnackPerBox.Placeholder = "Snack per Scatola";
+            ExpInDays.Placeholder = "Giorni di scadenza";
 
 
             stackBody.Children.Add(stackImgBtn);
