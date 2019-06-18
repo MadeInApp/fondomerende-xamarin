@@ -83,7 +83,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                         VerticalOptions = LayoutOptions.CenterAndExpand,
                         Scale = 3,
                         BackgroundColor = Color.White,
-                        Source = "http://192.168.0.175:8888/fondomerende/public/getphoto.php?name=" + result.data.snacks[i].friendly_name.Replace(" ", "&nbsp;") + "_500x500"
+                        Source = "http://192.168.0.175:8888/fondomerende/public/getphoto.php?name=" + result.data.snacks[i].friendly_name + "_500x500"
                     };
 
                     var imageButtoniOS = new ImageButton
@@ -132,8 +132,13 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
                     var app = new StackLayout
                     {
-                        Orientation = StackOrientation.Vertical
+                        Orientation = StackOrientation.Vertical,
+                        BackgroundColor = Color.Red
                     };
+
+                    var tgr = new TapGestureRecognizer();
+                    tgr.Tapped += Tgr_Tapped;
+                    app.GestureRecognizers.Add(tgr);
 
                     switch (Device.RuntimePlatform)
                     {
@@ -158,6 +163,27 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                     else Column1.Children.Add(app);
                 }
             }
+        }
+
+        private void Tgr_Tapped(object sender, EventArgs e)
+        {
+            SnackDataDTO index = null;
+            foreach (var item in (sender as StackLayout).Children)
+            {
+                if(item is Label)
+                {
+                    var snackName = (item as Label).Text;
+                    index = result.data.snacks.Single(obj => obj.friendly_name == snackName);
+                    break;
+                }
+                
+            }
+            if(index != null)
+            {
+                SelectedItemChangedEventArgs test = new SelectedItemChangedEventArgs(index);
+                ListView_ItemSelected(null, test);
+            }
+
         }
 
         private async void OnImageButtonClicked(object sender, EventArgs e)
@@ -230,40 +256,44 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
         private async void animation()
         {
             EmbeddedImage e = new EmbeddedImage();
-            e.Resource = "cup_cake_128x128.png";
+            e.Resource = "fondomerende.image.cup_cake_128x128.png";
 
             double ScreenHeight = Convert.ToInt32(App.Current.MainPage.Height);
             double ScreenWidth = Convert.ToInt32(App.Current.MainPage.Width);
 
-            var cupcake = new Image
+            var paolo = new Image   //il cupcake paolo
             {
                 Source = e.Resource,
                 Opacity = 0.6,
                 Scale = 1,
             };
-            Cane.Children.Add(cupcake);
+            
             
 
             Random randomWidth = new Random((int)DateTime.Now.Ticks);
             double casual;
             double spawncasuale;
 
-            for (int f = 0; f < 20; f++)
-            {
 
-                casual = randomWidth.Next(0, Convert.ToInt32(ScreenWidth));
-                casual -= ScreenWidth / 2;
-                spawncasuale = randomWidth.Next(0, Convert.ToInt32(ScreenWidth));
-                spawncasuale -= ScreenWidth / 4;
-                await paolo.TranslateTo(spawncasuale, -ScreenHeight/2, 0);
-                await Task.WhenAny<bool>
-                (
-                    paolo.RotateTo(360, 15000),
-                    paolo.TranslateTo(casual, ScreenHeight/2, 15000)
-                );
+            await paolo.TranslateTo(0, -ScreenHeight / 2, 0);
+            await paolo.TranslateTo(0, ScreenHeight, 10000);
+            Cane.Children.Add(paolo); 
+            //for (int f = 0; f < 20; f++)
+            //{
 
-                
-            }
+            //    casual = randomWidth.Next(0, Convert.ToInt32(ScreenWidth));
+            //    casual -= ScreenWidth / 2;
+            //    spawncasuale = randomWidth.Next(0, Convert.ToInt32(ScreenWidth));
+            //    spawncasuale -= ScreenWidth / 4;
+            //    await paolo.TranslateTo(spawncasuale, -ScreenHeight/2, 0);
+            //    await Task.WhenAny<bool>
+            //    (
+            //        paolo.RotateTo(360, 15000),
+            //        paolo.TranslateTo(casual, ScreenHeight/2, 15000)
+            //    );
+
+
+            //}
 
         }
 

@@ -82,7 +82,7 @@
                     x:Name="Cane">
                 <Grid
                     x:Name="griglia">
-                    <Image
+                    <!--<Image
                         Grid.Column="0"
                         Grid.Row="0"
                         x:Name="paolo"
@@ -91,7 +91,7 @@
                         Scale="1"
                         HorizontalOptions="CenterAndExpand"
                         VerticalOptions="CenterAndExpand">
-                    </Image>
+                    </Image>-->
                     <ScrollView 
                         Grid.Column="0"
                         Grid.Row="0"
