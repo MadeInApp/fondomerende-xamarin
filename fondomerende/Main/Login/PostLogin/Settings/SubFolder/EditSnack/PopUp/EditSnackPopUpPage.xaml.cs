@@ -178,7 +178,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.PopUp
             stackBody.Children.Add(stackBottoni);
             Round.Children.Add(stackBody);
 
-            Popuppage.Content = Round;
+            EditSnackPopUp.Content = Round;
         }
 
         public void Entrata(object sender, TextChangedEventArgs e)
