@@ -39,8 +39,8 @@ Global
 		{D5A89F33-DC74-4693-9FF0-F19EBF1BECB7}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
 		{D5A89F33-DC74-4693-9FF0-F19EBF1BECB7}.Release|Any CPU.ActiveCfg = Release|iPhoneSimulator
 		{D5A89F33-DC74-4693-9FF0-F19EBF1BECB7}.Release|Any CPU.Build.0 = Release|iPhoneSimulator
-		{D5A89F33-DC74-4693-9FF0-F19EBF1BECB7}.Release|iPhone.ActiveCfg = Release|iPhone
-		{D5A89F33-DC74-4693-9FF0-F19EBF1BECB7}.Release|iPhone.Build.0 = Release|iPhone
+		{D5A89F33-DC74-4693-9FF0-F19EBF1BECB7}.Release|iPhone.ActiveCfg = Debug|iPhone
+		{D5A89F33-DC74-4693-9FF0-F19EBF1BECB7}.Release|iPhone.Build.0 = Debug|iPhone
 		{D5A89F33-DC74-4693-9FF0-F19EBF1BECB7}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
 		{D5A89F33-DC74-4693-9FF0-F19EBF1BECB7}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
 		{C149CF93-012C-4A98-B1B2-5941DCB89D11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU

@@ -11,8 +11,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Main\image\**" />
     <Compile Remove="Main\Login\PostLogin\GraphicInterfaces\**" />
+    <EmbeddedResource Remove="Main\image\**" />
     <EmbeddedResource Remove="Main\Login\PostLogin\GraphicInterfaces\**" />
+    <None Remove="Main\image\**" />
     <None Remove="Main\Login\PostLogin\GraphicInterfaces\**" />
   </ItemGroup>
 
@@ -79,9 +82,7 @@
     <EmbeddedResource Include="Animated\star.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="image\add_icon_256x256.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
+    <EmbeddedResource Include="image\add_icon_256x256.png" />
     <EmbeddedResource Include="image\add_snack_icon.png" />
     <EmbeddedResource Include="image\BackGradientArRos.jpg" />
     <EmbeddedResource Include="image\BackGradientRosAr.jpg" />
