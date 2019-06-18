@@ -23,10 +23,10 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.PopUp
         public EditSnackPopUpPage()
         {
             InitializeComponent();
-            NomeSnack.Placeholder = EditSnackListPage.SelectedSnackName;
-            PrezzoSnack.Placeholder = Convert.ToString(EditSnackListPage.SelectedSnackPrice);
-            SnackPerBox.Placeholder = Convert.ToString(EditSnackListPage.SelectedSnackPerBox);
-            ExpInDays.Placeholder = Convert.ToString(EditSnackListPage.SelectedSnackExpiration);
+            NomeSnack.Placeholder = "Nome: " + EditSnackListPage.SelectedSnackName;
+            PrezzoSnack.Placeholder = "Prezzo: " + Convert.ToString(EditSnackListPage.SelectedSnackPrice);
+            SnackPerBox.Placeholder = "Snacks Per Scatola: " + Convert.ToString(EditSnackListPage.SelectedSnackPerBox);
+            ExpInDays.Placeholder = "Scadenza In Giorni: " + Convert.ToString(EditSnackListPage.SelectedSnackExpiration);
             GetQta();
             
         }
@@ -41,7 +41,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.PopUp
                 {
                     if(result.data.snacks[i].id == EditSnackListPage.SelectedSnackID)
                     {
-                        Qta.Placeholder = Convert.ToString(result.data.snacks[i].quantity);
+                        Qta.Placeholder = "Quantità: " +Convert.ToString(result.data.snacks[i].quantity);
                         Quantity = result.data.snacks[i].quantity;
                         return;
                     }
@@ -189,11 +189,11 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.PopUp
                 SnackPerBox.Text = null;
                 ExpInDays.Text = null;
                 Qta.Text = null;
-                NomeSnack.Placeholder = EditSnackListPage.SelectedSnackName;
-                PrezzoSnack.Placeholder = Convert.ToString(EditSnackListPage.SelectedSnackPrice);
-                SnackPerBox.Placeholder = Convert.ToString(EditSnackListPage.SelectedSnackPerBox);
-                ExpInDays.Placeholder = Convert.ToString(EditSnackListPage.SelectedSnackExpiration);
-                Qta.Placeholder = Convert.ToString(Quantity);
+                NomeSnack.Placeholder = "Nome: " + EditSnackListPage.SelectedSnackName;
+                PrezzoSnack.Placeholder = "Prezzo: " + Convert.ToString(EditSnackListPage.SelectedSnackPrice);
+                SnackPerBox.Placeholder = "Snacks Per Scatola: " + Convert.ToString(EditSnackListPage.SelectedSnackPerBox);
+                ExpInDays.Placeholder = "Scadenza In Giorni: " + Convert.ToString(EditSnackListPage.SelectedSnackExpiration);
+                Qta.Placeholder = "Quantità: " + Convert.ToString(Quantity);
                 Swapped = true;
             }
         }
