@@ -18,23 +18,35 @@ namespace fondomerende.Main.Services.RESTServices
             data.Add("name", username);
             data.Add("friendly-name", friendly_name);
             data.Add("password", passwordToLogin);
-
-            var result = await "http://192.168.0.175:8888/fondomerende/public/process-request.php"
-                .WithCookie("auth-key", "metticiquellochetipare")
-                .WithHeader("Content-Type", "application/x-www-form-urlencoded; param=value;charset=UTF-8")
-                .PostUrlEncodedAsync(data)
-                .ReceiveJson<RegisterDTO>();
-
-            if (result.response.success = true && result.response.status == 201)
+            try
             {
-                App.Current.MainPage = new LoginPage();
-                UserManager.Instance.token = result.data.token;
-                Preferences.Set("username", username);
-                Preferences.Set("password", passwordToLogin);
-                Preferences.Set("friendly-name", friendly_name);
-            }
+                var result = await "http://192.168.0.175:8888/fondomerende/public/process-request.php"
+               .WithCookie("auth-key", "metticiquellochetipare")
+               .WithHeader("Content-Type", "application/x-www-form-urlencoded; param=value;charset=UTF-8")
+               .PostUrlEncodedAsync(data)
+               .ReceiveJson<RegisterDTO>();
 
-            return result;
+                if (result.response.success = true && result.response.status == 201)
+                {
+                    App.Current.MainPage = new LoginPage();
+                    UserManager.Instance.token = result.data.token;
+                    Preferences.Set("username", username);
+                    Preferences.Set("password", passwordToLogin);
+                    Preferences.Set("friendly-name", friendly_name);
+                }
+
+                return result;
+            }
+            catch (FlurlHttpTimeoutException ex)
+            {
+                await App.Current.MainPage.DisplayAlert("Fondo Merende", "Connessione al server scaduta", "OK");
+            }
+            catch (FlurlHttpException ex)
+            {
+                await App.Current.MainPage.DisplayAlert("Fondo Merende", "Errore di rete", "OK");
+            }
+            return null;
+
         }
     }
 }

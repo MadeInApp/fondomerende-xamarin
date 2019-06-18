@@ -38,13 +38,10 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.Page
                     NavigationPage.SetHasNavigationBar(this, false);                            //
                     break;                                                                      //
                                                                                                 //
-                default:                                                                    //
+                default:                                                                        //
                     NavigationPage.SetHasNavigationBar(this, true);                             //
                     break;                                                                      //
             }                                                                                   //
-
-
-
 
             ListView.RefreshCommand = new Command(async () =>                                //
             {                                                                                //         
@@ -82,6 +79,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.Page
             SelectedSnackPrice = (e.SelectedItem as AllSnacksDataDTO).price;
             SelectedSnackExpiration = (e.SelectedItem as AllSnacksDataDTO).expiration_in_days;
             await Navigation.PushPopupAsync(new EditSnackPopUpPage());
+            GetSnacksMethod();
         }
 
     }

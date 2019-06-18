@@ -9,6 +9,7 @@
             mc:Ignorable="d"
             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
             x:Class="fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.Popup.EditUserPopUpPage"
+            x:Name="EditUserPopUp"
             HasKeyboardOffset="False">  
     <pages:PopupPage.Animation>
         <animations:ScaleAnimation 

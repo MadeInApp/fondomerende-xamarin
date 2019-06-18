@@ -19,6 +19,8 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup
 
     public partial class DepositPopUp : Rg.Plugins.Popup.Pages.PopupPage
     {
+        bool IsDone;
+        LineEntry entry;
         string appoggio;
         public DepositPopUp()
         {
@@ -78,17 +80,15 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup
                 FontAttributes = FontAttributes.Bold,
                 TextColor = Color.White,
             };
-            var entry = new LineEntry
+
+            entry = new LineEntry
             {
-                
                 Placeholder = "Quanto vuoi depositare?",
                 Keyboard = Keyboard.Numeric,
                 MaxLength = 5,
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 HorizontalTextAlignment = TextAlignment.Center,
             };
-           
-
 
             var stackBody = new StackLayout  //stack principale dove è contenuto l'interno di tutto (tranne round che stonda)
 
@@ -159,6 +159,17 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup
 
         public void Entrata(object sender, TextChangedEventArgs e)
         {
+             
+            if (entry.CursorPosition == 1 && IsDone)
+            {
+                entry.Text = entry.Text + ",";
+                IsDone = false;
+            }
+            if(entry.CursorPosition == 0)
+            {
+                IsDone = true;
+            }
+             
             appoggio = e.NewTextValue;
            
         }
@@ -256,17 +267,24 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup
             else
             {
                 var resultDep = await depositService.DepositAsync(Decimal.Parse(appoggio));
-                if (resultDep.response.success)
+                if (resultDep != null)
                 {
-                    await Navigation.PopPopupAsync();
-                }
-                else if(resultDep.response.message == "Execution error in UPDATE users_funds SET amount=amount+? WHERE user_id=?. Out of range value for column 'amount' at row 1.")
-                {
-                 await DisplayAlert("Fondo Merende", "Non puoi superare i €99.99 di fondo utente", "Ok");
+                    if (resultDep.response.success)
+                    {
+                        await Navigation.PopPopupAsync();
+                    }
+                    else if (resultDep.response.message == "Execution error in UPDATE users_funds SET amount=amount+? WHERE user_id=?. Out of range value for column 'amount' at row 1.")
+                    {
+                        await DisplayAlert("Fondo Merende", "Non puoi superare i €99.99 di fondo utente", "Ok");
+                    }
+                    else
+                    {
+                        await DisplayAlert("Fondo Merende", "Errore", "Ok");
+                    }
                 }
                 else
                 {
-                   await DisplayAlert("Fondo Merende", "Errore", "Ok");
+
                 }
             }
         }

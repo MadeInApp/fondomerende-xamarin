@@ -18,13 +18,26 @@ namespace fondomerende.Main.Services.RESTServices
                 data.Add("friendly-name", ChangeFriendlyName);
                 data.Add("password", ChangePassword);
             }
-            var result = await "http://192.168.0.175:8888/fondomerende/public/process-request.php"
-                .WithCookie("auth-key", "metticiquellochetipare")
-                .WithCookie("token", Manager.UserManager.Instance.token)
-                .PostUrlEncodedAsync(data)
-                .ReceiveJson<EditUserDTO>();
+            try
+            {
+                var result = await "http://192.168.0.175:8888/fondomerende/public/process-request.php"
+                    .WithCookie("auth-key", "metticiquellochetipare")
+                    .WithCookie("token", Manager.UserManager.Instance.token)
+                    .PostUrlEncodedAsync(data)
+                    .ReceiveJson<EditUserDTO>();
 
-            return result;
+                return result;
+            }
+
+            catch (FlurlHttpTimeoutException ex)
+            {
+                await App.Current.MainPage.DisplayAlert("Fondo Merende", "Connessione al server scaduta", "OK");
+            }
+            catch (FlurlHttpException ex)
+            {
+                await App.Current.MainPage.DisplayAlert("Fondo Merende", "Errore di rete", "OK");
+            }
+            return null;
         }
 
     }

@@ -13,6 +13,7 @@ using Xamarin.Forms.Xaml;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser;
 using fondomerende.Main.Login.LoginPages;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.Page;
+using fondomerende.Main.Utilities;
 
 namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.Popup
 {
@@ -23,13 +24,164 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.Popup
         EditUserServiceManager editUser = new EditUserServiceManager();
         SnackServiceManager snackService = new SnackServiceManager();
         private static bool click = false;
-
+        string appoggio;
 
 
         public EditUserPopUpPage()
         {
             InitializeComponent();
+            PopupEditUser();
         }
+
+        public static Color GetPrimaryAndroidColor()
+        {
+            return Color.FromHex("#f29e17");
+        }
+
+        public static double GetLarghezzaPagina()
+        {
+            return App.Current.MainPage.Width;
+        }
+
+        public static double GetAltezzaPagina()
+        {
+            return App.Current.MainPage.Height;
+        }
+        private void PopupEditUser()
+        {
+            double Altezza = 200;
+            double Larghezza = GetLarghezzaPagina() - 80;
+            double banner = 50;
+
+            var Round = new RoundedCornerView  //coso che stonda
+            {
+                RoundedCornerRadius = 20,
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                VerticalOptions = LayoutOptions.Center,
+                HeightRequest = Altezza,
+                WidthRequest = Larghezza,
+            };
+
+            var stackFondoAndroid = new StackLayout() //per android 
+            {
+                HeightRequest = banner,
+                WidthRequest = Larghezza,
+                BackgroundColor = GetPrimaryAndroidColor(),
+            };
+
+            var stackFondoiOS = new StackLayout()  //per ios 
+            {
+                HeightRequest = banner,
+                WidthRequest = Larghezza,
+                BackgroundColor = Color.Orange,
+            };
+
+            var fondomerende = new Label  //Label per Il titolo banner 
+            {
+                Text = "Fondo merende",
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                VerticalOptions = LayoutOptions.CenterAndExpand,
+                FontSize = 20,
+                FontAttributes = FontAttributes.Bold,
+                TextColor = Color.White,
+            };
+
+
+            var label = new Label
+            {
+                Text = "Inserire la vecchia Password per confermare",
+                VerticalOptions = LayoutOptions.StartAndExpand,
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+            };
+            var entry = new LineEntry
+            {
+                Keyboard = Keyboard.Default,
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                HorizontalTextAlignment = TextAlignment.Center,
+                IsPassword = true,
+                WidthRequest = 200,
+            };
+
+
+
+            var stackBody = new StackLayout  //stack principale dove è contenuto l'interno di tutto (tranne round che stonda)
+
+            {
+                HeightRequest = Altezza,
+                WidthRequest = Larghezza,
+                BackgroundColor = Color.White,
+            };
+
+            var stackBottoni = new StackLayout  //stack che contiene la gridlia dei bottoni
+            {
+                VerticalOptions = LayoutOptions.EndAndExpand,
+                WidthRequest = Larghezza,
+                HeightRequest = banner,
+                MinimumHeightRequest = banner,
+            };
+
+            var griglia = new Grid //griglia che contiene i bottoni
+            {
+
+            };
+
+            var buttonCancel = new Button
+            {
+                Text = "Annulla",
+                VerticalOptions = LayoutOptions.CenterAndExpand,
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                BackgroundColor = Color.Transparent,
+            };
+
+            var buttonConfirm = new Button
+            {
+                Text = "Conferma",
+                VerticalOptions = LayoutOptions.CenterAndExpand,
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                BackgroundColor = Color.Transparent,
+            };
+
+            stackBottoni.Children.Add(griglia);
+            griglia.Children.Add((buttonCancel)); //inzia nella prima colonna
+            griglia.Children.Add((buttonConfirm)); //inizia seconda colonna
+
+            Grid.SetColumn(buttonCancel, 0); //mi è toccato farlo qui
+            Grid.SetColumn(buttonConfirm, 1);
+
+
+
+            switch (Device.RuntimePlatform)
+            {
+                case Device.Android:
+                    stackFondoAndroid.Children.Add(fondomerende);
+                    stackBody.Children.Add(stackFondoAndroid);
+                    break;
+                default:
+                    stackFondoAndroid.Children.Add(fondomerende);
+                    stackBody.Children.Add(stackFondoiOS);
+                    break;
+            }
+
+            
+            entry.TextChanged += Entrata;
+
+            buttonCancel.Clicked += Discard_Clicked;
+            buttonConfirm.Clicked += Apply_Clicked;
+
+            stackBody.Children.Add(label);
+            stackBody.Children.Add(entry);
+            stackBody.Children.Add(stackBottoni);
+            Round.Children.Add(stackBody);
+
+            EditUserPopUp.Content = Round;
+        }
+
+        public void Entrata(object sender, TextChangedEventArgs e)
+        {
+            appoggio = e.NewTextValue;
+
+        }
+
         protected override void OnAppearing()
         {
             base.OnAppearing();
@@ -108,7 +260,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.Popup
         {
             string msgError = "Invalid name: " + EditUserPage.FriendlyName + " is already present in database users table at name column.";
             string oldPAssword = Preferences.Get("password", null);
-            if (oldPAssword.Equals(Password.Text))
+            if (oldPAssword.Equals(appoggio))
             {
                 var ans = await App.Current.MainPage.DisplayAlert("Fondo Merende", "Vuoi davvero cambiare  account?", "Si", "No");
                 if (ans)

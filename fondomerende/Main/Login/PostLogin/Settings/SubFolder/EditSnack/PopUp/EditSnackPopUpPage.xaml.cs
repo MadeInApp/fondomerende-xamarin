@@ -68,7 +68,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.PopUp
         }
         private void PopupEditSnack()
         {
-            double Altezza = 800;
+            double Altezza = GetAltezzaPagina()/1.2;
             double Larghezza = GetLarghezzaPagina() - 40;
             double banner = 50;
 
@@ -105,12 +105,19 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.PopUp
                 TextColor = Color.White,
             };
 
+            var stackImgBtn = new StackLayout() 
+            {
+                HeightRequest = 50,
+            };
 
             immagine = new ImageButton
             {
                 Source = ImageSource.FromResource("fondomerende.image.fill_full_256x256.png"),
                 CornerRadius = 20,
-                Scale = 0.3,
+                HeightRequest = 60,
+                BackgroundColor = Color.White,
+                Scale = 0.6,
+                Margin = new Thickness(0,0,0,400),
                 HorizontalOptions = LayoutOptions.EndAndExpand,
                 VerticalOptions = LayoutOptions.StartAndExpand,
             };
@@ -186,6 +193,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.PopUp
                 BackgroundColor = Color.Transparent,
             };
 
+
             stackBottoni.Children.Add(griglia);
             griglia.Children.Add((buttonCancel)); //inzia nella prima colonna
             griglia.Children.Add((buttonConfirm)); //inizia seconda colonna
@@ -216,14 +224,13 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.PopUp
 
             buttonCancel.Clicked += Discard_Clicked;
             buttonConfirm.Clicked += Apply_Clicked;
-
-            stackBody.Children.Add(immagine);
+            stackImgBtn.Children.Add(immagine);
+            stackBody.Children.Add(stackImgBtn);
             stackBody.Children.Add(NomeSnack);
             stackBody.Children.Add(PrezzoSnack);
             stackBody.Children.Add(SnackPerBox);
             stackBody.Children.Add(ExpInDays);
             stackBody.Children.Add(Qta);
-            immagine.BackgroundColor = Color.White;
             NomeSnack.Placeholder = "Nome: " + EditSnackListPage.SelectedSnackName;
             PrezzoSnack.Placeholder = "Prezzo: " + Convert.ToString(EditSnackListPage.SelectedSnackPrice);
             SnackPerBox.Placeholder = "Snacks Per Scatola: " + Convert.ToString(EditSnackListPage.SelectedSnackPerBox);

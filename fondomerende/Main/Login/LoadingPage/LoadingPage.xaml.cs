@@ -11,6 +11,7 @@ using fondomerende.PostLoginPages;
 using fondomerende.Main.Login.LoginPages;
 using fondomerende.Main.Utilities;
 using fondomerende.Main.Login.PostLogin;
+using System.Threading;
 
 namespace fondomerende.PostLoginPages
 {
@@ -42,8 +43,12 @@ namespace fondomerende.PostLoginPages
             LoginServiceManager login = new LoginServiceManager();
             var resultLogin = await login.LoginAsync(Preferences.Get("username", null), Preferences.Get("password", null), Preferences.Get("Logged",false));
             await userService.GetUserData();
-
-            if (resultLogin.response.success)
+            if(resultLogin == null)
+            {
+                Android.OS.Process.KillProcess(Android.OS.Process.MyPid());
+                Thread.CurrentThread.Abort();
+            }
+            else if (resultLogin.response.success)
             {
                 await userService.GetUserData();
                 App.Current.MainPage = new MainPage();
