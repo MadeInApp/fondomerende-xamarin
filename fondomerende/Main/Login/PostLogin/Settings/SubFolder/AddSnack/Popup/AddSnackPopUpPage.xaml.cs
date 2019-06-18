@@ -27,6 +27,8 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.Popup
 
         string appoggioNome,  appoggioSnackPerScatola, appoggioScadenzaInGiorni, appoggioPrezzo;
 
+        bool IsDone;
+
         public AddSnackPopUpPage()
         {
             InitializeComponent();
@@ -101,6 +103,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.Popup
             };
             PrezzoSnack = new LineEntry
             {
+                MaxLength = 5,
                 Keyboard = Keyboard.Numeric,
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 WidthRequest = 250,
@@ -214,6 +217,15 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.Popup
 
         public void EntrataPrezzo(object sender, TextChangedEventArgs e)
         {
+            if (PrezzoSnack.CursorPosition == 1 && IsDone)
+            {
+                PrezzoSnack.Text = PrezzoSnack.Text + ",";
+                IsDone = false;
+            }
+            if (PrezzoSnack.CursorPosition == 0)
+            {
+                IsDone = true;
+            }
             appoggioPrezzo = e.NewTextValue;
 
         }

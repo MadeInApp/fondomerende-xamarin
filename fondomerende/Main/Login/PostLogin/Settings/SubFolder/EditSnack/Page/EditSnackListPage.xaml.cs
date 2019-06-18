@@ -31,6 +31,10 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.Page
             InitializeComponent();
             GetSnacksMethod();
 
+            MessagingCenter.Subscribe<EditSnackListPage>(this, "Close", async (value) =>
+            {
+                await Navigation.PopAsync();
+            });
             switch (Device.RuntimePlatform)                                                     //
             {                                                                                   //                                    
                                                                                                 //   Se il dispositivo è Android non mostra la Top Bar della Navigation Page,
