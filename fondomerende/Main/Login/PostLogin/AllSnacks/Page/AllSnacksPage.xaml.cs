@@ -35,6 +35,8 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             animation();
 
 
+
+
             switch (Device.RuntimePlatform)                                                     //
             {                                                                                   //                                    
                                                                                                 //   Se il dispositivo è Android non mostra la Top Bar della Navigation Page,
@@ -54,15 +56,23 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             {                                                                                //         
                 await RefreshDataAsync();                                                    //
                 ListView.IsRefreshing = false;                                               //
-            });                                                                              //
-                                                                                             //
-                                                                                             // Pull to Refresh GetSnacksMethod()
+            });
+
+            MessagingCenter.Subscribe<AllSnacksPage>(this, "Animation", async (value) =>
+            {
+                WalletAnimation();
+            });
         }                                                                                    //
         public async Task RefreshDataAsync()                                                 //
         {                                                                                    //
             await GetSnacksMethod(true);                                                      //
         }                                                                                    //
 
+        private void WalletAnimation()
+        {
+            Wallet.Play();
+            Wallet.Speed = 3f;
+        }
 
 
         public async Task GetSnacksMethod(bool Loaded)     //ottiene la lista degli snack e la applica alla ListView
@@ -136,7 +146,6 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                     var tgr = new TapGestureRecognizer();
                     tgr.Tapped += Tgr_Tapped;
 
-                    Wallet.IsPlaying = false;
 
                     app.GestureRecognizers.Add(tgr);
 
@@ -239,14 +248,16 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
         {
             if (ScrollView.IsVisible == true)
             {
-                Swap.BackgroundColor = Color.Orange;
+                Swap.Play();
+                Swap.Speed = -0.7f;
 
                 ScrollView.IsVisible = false;
                 ListView.IsVisible = true;
             }
             else
             {
-                Swap.BackgroundColor = Color.Transparent;
+                Swap.Play();
+                Swap.Speed = 0.7f;
 
                 ListView.IsVisible = false;
                 ScrollView.IsVisible = true;

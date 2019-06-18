@@ -260,6 +260,5 @@
 
   <ItemGroup>
     <Folder Include="Exception\" />
-    <Folder Include="Main\Utilities\LottieAddictions\Android\" />
   </ItemGroup>
 </Project>
