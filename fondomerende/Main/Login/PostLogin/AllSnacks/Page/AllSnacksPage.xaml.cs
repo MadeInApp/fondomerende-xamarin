@@ -76,24 +76,16 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                     ColorRandom c = new ColorRandom();
                     int box = 140;
 
-                    var imageButtonAndroid = new ImageButton
-                    {
-                        Margin = new Thickness(0, 20, 0, 20),
-                        HorizontalOptions = LayoutOptions.CenterAndExpand,
-                        VerticalOptions = LayoutOptions.CenterAndExpand,
-                        Scale = 3,
-                        BackgroundColor = Color.White,
-                        Source = "http://192.168.0.175:8888/fondomerende/public/getphoto.php?name=" + result.data.snacks[i].friendly_name + "_500x500"
-                    };
-
-                    var imageButtoniOS = new ImageButton
+                    var imageButton = new ImageButton
                     {
                         Margin = new Thickness(0, 20, 0, 20),
                         HorizontalOptions = LayoutOptions.CenterAndExpand,
                         VerticalOptions = LayoutOptions.CenterAndExpand,
                         Scale = 2.6,
-                        Source = "http://192.168.0.175:8888/fondomerende/public/getphoto.php?name=" + result.data.snacks[i].friendly_name.Replace(" ", "&nbsp;") + "_500x500"
+                        BackgroundColor = Color.White,
+                        Source = "http://192.168.0.175:8888/fondomerende/public/getphoto.php?name=" + result.data.snacks[i].friendly_name + "_500x500"
                     };
+
 
                     var StackLayout = new StackLayout
                     {
@@ -110,6 +102,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                         RoundedCornerRadius = box / 2,
                         BorderColor = c.GetRandomColor(),
                         BorderWidth = 3,
+                        InputTransparent=true,
                     };
 
                     var BordiSmussatiiOS = new RoundedCornerView
@@ -140,19 +133,20 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                     tgr.Tapped += Tgr_Tapped;
                     app.GestureRecognizers.Add(tgr);
 
+                    imageButton.Clicked += OnImageButtonClicked;
+                    StackLayout.Children.Add(imageButton);
+
                     switch (Device.RuntimePlatform)
                     {
                         case Device.Android:
-                            imageButtonAndroid.Clicked += OnImageButtonClicked;
-                            StackLayout.Children.Add(imageButtonAndroid);
+                            
                             BordiSmussatiAndroid.Children.Add(StackLayout);
                             app.Children.Add(BordiSmussatiAndroid);
 
                             break;
 
                         default:
-                            imageButtoniOS.Clicked += OnImageButtonClicked;
-                            StackLayout.Children.Add(imageButtoniOS);
+                            
                             BordiSmussatiiOS.Children.Add(StackLayout);
                             app.Children.Add(BordiSmussatiiOS);
                             break;
@@ -248,7 +242,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             }
         }
 
-        private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        private async void WalletClicked(object sender, EventArgs e)
         {
             await Navigation.PushPopupAsync(new DepositPopUp());
         }
