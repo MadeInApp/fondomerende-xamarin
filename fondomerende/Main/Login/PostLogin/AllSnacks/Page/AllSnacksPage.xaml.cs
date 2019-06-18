@@ -23,11 +23,12 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
         SnackServiceManager snackServiceManager = new SnackServiceManager();
         List<SnackDataDTO> AllSnacks = new List<SnackDataDTO>();
         SnackDTO result;
+        Dictionary<string, int> numerotocchi = new Dictionary<string, int>();
         bool switchStar = false;
 
         public AllSnacksPage()
         {
-
+            numerotocchi.Add("numero", 0);
             InitializeComponent();
             GetSnacksMethod(false);
             Fade();
@@ -72,34 +73,28 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             {
                 for (int i = 0; i <= result.data.snacks.Count; i++)
                 {
-                   
+
                     ColorRandom c = new ColorRandom();
                     int box = 140;
 
-                    var imageButtonAndroid = new ImageButton
-                    {
-                        Margin = new Thickness(0, 20, 0, 20),
-                        HorizontalOptions = LayoutOptions.CenterAndExpand,
-                        VerticalOptions = LayoutOptions.CenterAndExpand,
-                        Scale = 3,
-                        BackgroundColor = Color.White,
-                        Source = "http://192.168.0.175:8888/fondomerende/public/getphoto.php?name=" + result.data.snacks[i].friendly_name.Replace(" ", "&nbsp;") + "_500x500"
-                    };
-
-                    var imageButtoniOS = new ImageButton
+                    var imageButton = new ImageButton
                     {
                         Margin = new Thickness(0, 20, 0, 20),
                         HorizontalOptions = LayoutOptions.CenterAndExpand,
                         VerticalOptions = LayoutOptions.CenterAndExpand,
                         Scale = 2.6,
-                        Source = "http://192.168.0.175:8888/fondomerende/public/getphoto.php?name=" + result.data.snacks[i].friendly_name.Replace(" ", "&nbsp;") + "_500x500"
+                        BackgroundColor = Color.White,
+                        InputTransparent = true,
+                        Source = "http://192.168.0.175:8888/fondomerende/public/getphoto.php?name=" + result.data.snacks[i].friendly_name + "_500x500"
                     };
+
 
                     var StackLayout = new StackLayout
                     {
                         WidthRequest = box,
                         HeightRequest = box,
                         BackgroundColor = Color.White,
+                        InputTransparent = true,
                     };
 
 
@@ -110,6 +105,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                         RoundedCornerRadius = box / 2,
                         BorderColor = c.GetRandomColor(),
                         BorderWidth = 3,
+                        InputTransparent = true,
                     };
 
                     var BordiSmussatiiOS = new RoundedCornerView
@@ -119,6 +115,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                         RoundedCornerRadius = box / 4,
                         BorderColor = c.GetRandomColor(),
                         BorderWidth = 1,
+                        InputTransparent = true,
                     };
 
                     var label = new Label
@@ -127,27 +124,39 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                         VerticalTextAlignment = TextAlignment.End,
                         Text = result.data.snacks[i].friendly_name,
                         FontSize = 12,
+                        InputTransparent = true,
                     };
 
 
                     var app = new StackLayout
                     {
-                        Orientation = StackOrientation.Vertical
+                        Orientation = StackOrientation.Vertical,
                     };
+                    
+                    var tgr = new TapGestureRecognizer();
+                    tgr.Tapped += Tgr_Tapped;
+
+                    Wallet.IsPlaying = false;
+
+                    app.GestureRecognizers.Add(tgr);
+
+                    var tgr2 = new TapGestureRecognizer();
+
+
+                    imageButton.Clicked += OnImageButtonClicked;
+                    StackLayout.Children.Add(imageButton);
 
                     switch (Device.RuntimePlatform)
                     {
                         case Device.Android:
-                            imageButtonAndroid.Clicked += OnImageButtonClicked;
-                            StackLayout.Children.Add(imageButtonAndroid);
+
                             BordiSmussatiAndroid.Children.Add(StackLayout);
                             app.Children.Add(BordiSmussatiAndroid);
 
                             break;
 
                         default:
-                            imageButtoniOS.Clicked += OnImageButtonClicked;
-                            StackLayout.Children.Add(imageButtoniOS);
+
                             BordiSmussatiiOS.Children.Add(StackLayout);
                             app.Children.Add(BordiSmussatiiOS);
                             break;
@@ -158,6 +167,28 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                     else Column1.Children.Add(app);
                 }
             }
+        }
+
+        private void Tgr_Tapped(object sender, EventArgs e)
+        {
+               SnackDataDTO index = null;
+            Wallet.IsPlaying = true;
+            foreach (var item in (sender as StackLayout).Children)
+            {
+                if(item is Label)
+                {
+                    var snackName = (item as Label).Text;
+                    index = result.data.snacks.Single(obj => obj.friendly_name == snackName);
+                    break;
+                }
+                
+            }
+            if(index != null)
+            {
+                SelectedItemChangedEventArgs test = new SelectedItemChangedEventArgs(index);
+                ListView_ItemSelected(null, test);
+            }
+
         }
 
         private async void OnImageButtonClicked(object sender, EventArgs e)
@@ -222,48 +253,56 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             }
         }
 
-        private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        private async void WalletClicked(object sender, EventArgs e)
         {
             await Navigation.PushPopupAsync(new DepositPopUp());
         }
 
+        public void Timer()
+        {
+
+        }
         private async void animation()
         {
             EmbeddedImage e = new EmbeddedImage();
-            e.Resource = "cup_cake_128x128.png";
+            e.Resource = "fondomerende.image.cup_cake_128x128.png";
 
             double ScreenHeight = Convert.ToInt32(App.Current.MainPage.Height);
             double ScreenWidth = Convert.ToInt32(App.Current.MainPage.Width);
 
-            var cupcake = new Image
+            var paolo = new Image   //il cupcake paolo
             {
                 Source = e.Resource,
                 Opacity = 0.6,
                 Scale = 1,
             };
-            Cane.Children.Add(cupcake);
+            
             
 
             Random randomWidth = new Random((int)DateTime.Now.Ticks);
             double casual;
             double spawncasuale;
 
-           for (int f = 0; f < 20; f++)
-            {
 
-                casual = randomWidth.Next(0, Convert.ToInt32(ScreenWidth));
-                casual -= ScreenWidth / 2;
-                spawncasuale = randomWidth.Next(0, Convert.ToInt32(ScreenWidth));
-                spawncasuale -= ScreenWidth / 4;
-                await paolo.TranslateTo(spawncasuale, -ScreenHeight/2, 0);
-                await Task.WhenAny<bool>
-                (
-                    paolo.RotateTo(360, 15000),
-                    paolo.TranslateTo(casual, ScreenHeight/2, 15000)
-                );
+            await paolo.TranslateTo(0, -ScreenHeight / 2, 0);
+            await paolo.TranslateTo(0, ScreenHeight, 10000);
+            Cane.Children.Add(paolo); 
+            //for (int f = 0; f < 20; f++)
+            //{
 
-                
-            }
+            //    casual = randomWidth.Next(0, Convert.ToInt32(ScreenWidth));
+            //    casual -= ScreenWidth / 2;
+            //    spawncasuale = randomWidth.Next(0, Convert.ToInt32(ScreenWidth));
+            //    spawncasuale -= ScreenWidth / 4;
+            //    await paolo.TranslateTo(spawncasuale, -ScreenHeight/2, 0);
+            //    await Task.WhenAny<bool>
+            //    (
+            //        paolo.RotateTo(360, 15000),
+            //        paolo.TranslateTo(casual, ScreenHeight/2, 15000)
+            //    );
+
+
+            //}
 
         }
 

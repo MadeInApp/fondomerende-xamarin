@@ -42,6 +42,10 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.About_and_UserSet
                     FundFund.Text = "Errore";
                 }
             }
+            else
+            {
+
+            }
         }
     }
 }

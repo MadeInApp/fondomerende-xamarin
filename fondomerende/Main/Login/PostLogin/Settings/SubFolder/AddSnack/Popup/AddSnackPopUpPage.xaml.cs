@@ -27,6 +27,8 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.Popup
 
         string appoggioNome,  appoggioSnackPerScatola, appoggioScadenzaInGiorni, appoggioPrezzo;
 
+        bool IsDone;
+
         public AddSnackPopUpPage()
         {
             InitializeComponent();
@@ -101,6 +103,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.Popup
             };
             PrezzoSnack = new LineEntry
             {
+                MaxLength = 5,
                 Keyboard = Keyboard.Numeric,
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 WidthRequest = 250,
@@ -214,6 +217,15 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.Popup
 
         public void EntrataPrezzo(object sender, TextChangedEventArgs e)
         {
+            if (PrezzoSnack.CursorPosition == 1 && IsDone)
+            {
+                PrezzoSnack.Text = PrezzoSnack.Text + ",";
+                IsDone = false;
+            }
+            if (PrezzoSnack.CursorPosition == 0)
+            {
+                IsDone = true;
+            }
             appoggioPrezzo = e.NewTextValue;
 
         }
@@ -351,15 +363,22 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.Popup
                 else
                 {
                     var result = await snackService.AddSnackAsync(Nome.Text, double.Parse(Prezzo.Text), int.Parse(SnackPerScatola.Text), int.Parse(ScadenzaInGiorni.Text), false);
-                    if (result.response.success)
+                    if (result != null)
                     {
+                        if (result.response.success)
+                        {
 
-                        await DisplayAlert("Fondo Merende", "SnackID: " + result.response.data.id, "Ok");
-                        Navigation.PopPopupAsync();
+                            await DisplayAlert("Fondo Merende", "SnackID: " + result.response.data.id, "Ok");
+                            Navigation.PopPopupAsync();
+                        }
+                        else
+                        {
+                            await DisplayAlert("Fondo Merende", "Snack già presente", "Ok");
+                        }
                     }
                     else
                     {
-                        await DisplayAlert("Fondo Merende", "Snack già presente", "Ok");
+
                     }
                 }
             }

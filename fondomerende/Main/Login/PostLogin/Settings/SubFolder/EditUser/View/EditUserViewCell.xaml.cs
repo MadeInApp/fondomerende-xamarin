@@ -64,17 +64,24 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View
         public async Task<string> GetUserFundsMethod()
         {
             var result =  await userFundsService.GetUserFunds();
-            if(result.response.success == true)
+            if(result != null)
             {
-                userFunds.Text = "€" + result.data.user_funds_amount;
-                if (float.Parse(result.data.user_funds_amount) <= 0)
+                if (result.response.success == true)
                 {
-                    userFunds.TextColor = Color.Red;
+                    userFunds.Text = "€" + result.data.user_funds_amount;
+                    if (float.Parse(result.data.user_funds_amount) <= 0)
+                    {
+                        userFunds.TextColor = Color.Red;
+                    }
+                }
+                else
+                {
+                    userFunds.Text = "Errore";
                 }
             }
             else
             {
-                userFunds.Text = "Errore";
+
             }
             return result.response.message;
         }

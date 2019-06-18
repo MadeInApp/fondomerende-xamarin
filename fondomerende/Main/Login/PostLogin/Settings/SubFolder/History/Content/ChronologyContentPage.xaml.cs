@@ -486,14 +486,20 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
         {
             LastActionServiceManager lastAction = new LastActionServiceManager();
             var result = await lastAction.GetLastActions();
-
-            if (result.response.success == true)
+            if (result != null)
             {
-                cronologia = result.data.actions;
+                if (result.response.success == true)
+                {
+                    cronologia = result.data.actions;
+                }
+                else
+                {
+                    await App.Current.MainPage.DisplayAlert("Fondo Merende", "Guarda, sta cosa non ha senso", "OK");
+                }
             }
             else
             {
-                await App.Current.MainPage.DisplayAlert("Fondo Merende", "Guarda, sta cosa non ha senso", "OK");
+
             }
         }
 

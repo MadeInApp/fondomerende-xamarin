@@ -32,14 +32,21 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.LogOut.View
             {
                 LogoutServiceManager logoutService = new LogoutServiceManager();
                 var response = await logoutService.LogoutAsync();
-                if (response.response.success == true)
+                if (response != null)
                 {
-                    App.Current.MainPage = new LoginPage();
-                    Preferences.Clear();
+                    if (response.response.success == true)
+                    {
+                        App.Current.MainPage = new LoginPage();
+                        Preferences.Clear();
+                    }
+                    else
+                    {
+                        await App.Current.MainPage.DisplayAlert("Fondo Merende", "Guarda, sta cosa non ha senso", "OK");
+                    }
                 }
                 else
                 {
-                    await App.Current.MainPage.DisplayAlert("Fondo Merende", "Guarda, sta cosa non ha senso", "OK");
+
                 }
             }
         }
