@@ -24,12 +24,213 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.Popup
         LineEntry PrezzoSnack;
         LineEntry SnackPerBox;
         LineEntry ExpInDays;
-        LineEntry Qta;
+
+        string appoggioNome,  appoggioSnackPerScatola, appoggioScadenzaInGiorni, appoggioPrezzo;
+
         public AddSnackPopUpPage()
         {
             InitializeComponent();
+            PopupAddSnack();
+        }
+        public static Color GetPrimaryAndroidColor()
+        {
+            return Color.FromHex("#f29e17");
         }
 
+        public static double GetLarghezzaPagina()
+        {
+            return App.Current.MainPage.Width;
+        }
+
+        public static double GetAltezzaPagina()
+        {
+            return App.Current.MainPage.Height;
+        }
+        private void PopupAddSnack()
+        {
+            double Altezza = GetAltezzaPagina() / 1.2;
+            double Larghezza = GetLarghezzaPagina() - 40;
+            double banner = 50;
+
+            var Round = new RoundedCornerView  //coso che stonda
+            {
+                RoundedCornerRadius = 20,
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                VerticalOptions = LayoutOptions.Center,
+                HeightRequest = Altezza,
+                WidthRequest = Larghezza,
+            };
+
+            var stackFondoAndroid = new StackLayout() //per android 
+            {
+                HeightRequest = banner,
+                WidthRequest = Larghezza,
+                BackgroundColor = GetPrimaryAndroidColor(),
+            };
+
+            var stackFondoiOS = new StackLayout()  //per ios 
+            {
+                HeightRequest = banner,
+                WidthRequest = Larghezza,
+                BackgroundColor = Color.Orange,
+            };
+
+            var fondomerende = new Label  //Label per Il titolo banner 
+            {
+                Text = "Fondo merende",
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                VerticalOptions = LayoutOptions.CenterAndExpand,
+                FontSize = 20,
+                FontAttributes = FontAttributes.Bold,
+                TextColor = Color.White,
+            };
+
+            var stackImgBtn = new StackLayout()
+            {
+                HeightRequest = 50,
+            };
+
+
+
+            //variabili in line entry//
+            NomeSnack = new LineEntry
+            {
+                Keyboard = Keyboard.Default,
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                WidthRequest = 250,
+            };
+            PrezzoSnack = new LineEntry
+            {
+                Keyboard = Keyboard.Numeric,
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                WidthRequest = 250,
+            };
+            SnackPerBox = new LineEntry
+            {
+                Keyboard = Keyboard.Numeric,
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                WidthRequest = 250,
+            };
+            ExpInDays = new LineEntry
+            {
+                Keyboard = Keyboard.Numeric,
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                WidthRequest = 250,
+            };
+            
+
+
+            var stackBody = new StackLayout  //stack principale dove è contenuto l'interno di tutto (tranne round che stonda)
+
+            {
+                HeightRequest = Altezza,
+                WidthRequest = Larghezza,
+                BackgroundColor = Color.White,
+            };
+
+            var stackBottoni = new StackLayout  //stack che contiene la gridlia dei bottoni
+            {
+                VerticalOptions = LayoutOptions.EndAndExpand,
+                WidthRequest = Larghezza,
+                HeightRequest = banner,
+                MinimumHeightRequest = banner,
+            };
+
+            var griglia = new Grid //griglia che contiene i bottoni
+            {
+
+            };
+
+            var buttonCancel = new Button
+            {
+                Text = "Annulla",
+                VerticalOptions = LayoutOptions.CenterAndExpand,
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                BackgroundColor = Color.Transparent,
+            };
+
+            var buttonConfirm = new Button
+            {
+                Text = "Conferma",
+                VerticalOptions = LayoutOptions.CenterAndExpand,
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                BackgroundColor = Color.Transparent,
+            };
+
+
+            stackBottoni.Children.Add(griglia);
+            griglia.Children.Add((buttonCancel)); //inzia nella prima colonna
+            griglia.Children.Add((buttonConfirm)); //inizia seconda colonna
+
+            Grid.SetColumn(buttonCancel, 0); //mi è toccato farlo qui
+            Grid.SetColumn(buttonConfirm, 1);
+
+
+
+            switch (Device.RuntimePlatform)
+            {
+                case Device.Android:
+                    stackFondoAndroid.Children.Add(fondomerende);
+                    stackBody.Children.Add(stackFondoAndroid);
+                    break;
+                default:
+                    stackFondoAndroid.Children.Add(fondomerende);
+                    stackBody.Children.Add(stackFondoiOS);
+                    break;
+            }
+
+
+            NomeSnack.TextChanged += EntrataNome;
+            PrezzoSnack.TextChanged += EntrataPrezzo;
+            SnackPerBox.TextChanged += EntrataSnackPerScatola;
+            ExpInDays.TextChanged += EntrataScadenzaInGiorni;
+
+            buttonCancel.Clicked += Discard_Clicked;
+            buttonConfirm.Clicked += Apply_Clicked;
+
+            NomeSnack.Placeholder = "Nome: ";
+            PrezzoSnack.Placeholder = "Prezzo:";
+            SnackPerBox.Placeholder = "Snack per Scatola:";
+            ExpInDays.Placeholder = "Giorni di scadenza: ";
+
+
+            stackBody.Children.Add(stackImgBtn);
+            stackBody.Children.Add(NomeSnack);
+            stackBody.Children.Add(PrezzoSnack);
+            stackBody.Children.Add(SnackPerBox);
+            stackBody.Children.Add(ExpInDays);
+
+            stackBody.Children.Add(stackBottoni);
+            Round.Children.Add(stackBody);
+
+            AddSnackPopUp.Content = Round;
+        }
+
+        public void EntrataNome(object sender, TextChangedEventArgs e)
+        {
+            appoggioNome = e.NewTextValue;
+
+        }
+
+        public void EntrataPrezzo(object sender, TextChangedEventArgs e)
+        {
+            appoggioPrezzo = e.NewTextValue;
+
+        }
+
+        public void EntrataScadenzaInGiorni(object sender, TextChangedEventArgs e)
+        {
+            appoggioScadenzaInGiorni = e.NewTextValue;
+
+        }
+
+        public void EntrataSnackPerScatola(object sender, TextChangedEventArgs e)
+        {
+            appoggioSnackPerScatola = e.NewTextValue;
+
+        }
+
+        
         protected override void OnAppearing()
         {
             base.OnAppearing();
@@ -110,24 +311,24 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.Popup
         {
             SnackServiceManager snackService = new SnackServiceManager();
 
-            if (Nome.Text == null)
+            if (appoggioNome == null)
             {
-                ErrorLabel.Text = "Inserire un nome";
+                await DisplayAlert("Fondo Merende", "Inserire un nome", "OK");
             }
      
-            if(Prezzo.Text == null)
+            if(appoggioPrezzo == null)
             {
-                ErrorLabel.Text = "Inserire un prezzo";
+                await DisplayAlert("Fondo Merende", "Inserire un prezzo", "OK");
             }
             
-            if(SnackPerScatola.Text == null)
+            if(appoggioSnackPerScatola == null)
             {
-                ErrorLabel.Text = "Inserire uno snack";
+                await DisplayAlert( "Fondo Merende","Inserire uno snack","OK");
             }
            
-            if (ScadenzaInGiorni.Text == null)
+            if (appoggioScadenzaInGiorni == null)
             {
-                ErrorLabel.Text = "Immettere un giorno di scadenza";
+                await DisplayAlert("Fondo Merende", "Inserire un giorno di scadenza", "OK");
             }
 
             else
@@ -135,7 +336,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.Popup
                 var ans = await DisplayAlert("Fondo Merende", "Lo Snack è contabile?", "Si", "No");
                 if (ans)
                 {
-                    var result = await snackService.AddSnackAsync(Nome.Text, double.Parse(Prezzo.Text), int.Parse(SnackPerScatola.Text), int.Parse(ScadenzaInGiorni.Text), true);
+                    var result = await snackService.AddSnackAsync(appoggioNome, double.Parse(appoggioPrezzo), int.Parse(appoggioSnackPerScatola), int.Parse(appoggioScadenzaInGiorni), true);
                     if (result.response.success)
                     {
 

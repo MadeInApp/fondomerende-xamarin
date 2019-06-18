@@ -10,6 +10,7 @@
             xmlns:local ="clr-namespace:fondomerende.Main.Utilities"
             xmlns:Graph="clr-namespace:fondomerende.Main.Utilities"
             x:Class="fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.Popup.AddSnackPopUpPage"
+            x:Name="AddSnackPopUp"
             HasKeyboardOffset="False">
 
     <!--You can set an animation in the xaml file or in the csharp code behind-->
