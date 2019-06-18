@@ -83,6 +83,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                         VerticalOptions = LayoutOptions.CenterAndExpand,
                         Scale = 2.6,
                         BackgroundColor = Color.White,
+                        InputTransparent = true,
                         Source = "http://192.168.0.175:8888/fondomerende/public/getphoto.php?name=" + result.data.snacks[i].friendly_name + "_500x500"
                     };
 
@@ -92,6 +93,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                         WidthRequest = box,
                         HeightRequest = box,
                         BackgroundColor = Color.White,
+                        InputTransparent = true,
                     };
 
 
@@ -112,6 +114,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                         RoundedCornerRadius = box / 4,
                         BorderColor = c.GetRandomColor(),
                         BorderWidth = 1,
+                        InputTransparent = true,
                     };
 
                     var label = new Label
@@ -120,13 +123,13 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                         VerticalTextAlignment = TextAlignment.End,
                         Text = result.data.snacks[i].friendly_name,
                         FontSize = 12,
+                        InputTransparent = true,
                     };
 
 
                     var app = new StackLayout
                     {
                         Orientation = StackOrientation.Vertical,
-                        BackgroundColor = Color.Red
                     };
 
                     var tgr = new TapGestureRecognizer();

@@ -86,7 +86,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\star.json" />
+    <AndroidAsset Include="Assets\star.json" />
     <AndroidAsset Include="Assets\Wallet.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </AndroidAsset>
