@@ -245,17 +245,17 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup
       
 
             DepositServiceManager depositService = new DepositServiceManager(); 
-            if (appoggio == null)
+            if (appoggio == null || appoggio == "")
             {
                 await DisplayAlert("Fondo Merende","Inserisci l'ammontare","OK");
             }
-            else if (Int32.Parse(appoggio) <= 0)
+            else if (float.Parse(appoggio) <= 0)
             {
                 await DisplayAlert("Fondo Merende", "L'ammontare deve essere maggiore di zero", "Ok");
             }
             else
             {
-                var resultDep = await depositService.DepositAsync(float.Parse(appoggio));
+                var resultDep = await depositService.DepositAsync(Decimal.Parse(appoggio));
                 if (resultDep.response.success)
                 {
                     await Navigation.PopPopupAsync();

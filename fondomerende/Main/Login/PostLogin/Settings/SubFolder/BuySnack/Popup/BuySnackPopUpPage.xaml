@@ -7,6 +7,7 @@
     x:Class="fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup.BuySnackPopUpPage"
     xmlns:local ="clr-namespace:fondomerende.Main.Utilities"
     xmlns:Graph="clr-namespace:fondomerende.Main.Utilities"
+    x:Name="PopupBuySnack"
     HasKeyboardOffset="False">
     <!--You can set an animation in the xaml file or in the csharp code behind-->
     <pages:PopupPage.Animation>
@@ -23,10 +24,7 @@
         </pages:PopupPage.Animation>
     <!--You can use any elements here which are extended from Xamarin.Forms.View-->
     <Graph:RoundedCornerView 
-        RoundedCornerRadius="20" 
-        HeightRequest="{OnPlatform Android=50, iOS=50}"
-        WidthRequest="{OnPlatform Android=200, iOS=200}"
-        Margin="{OnPlatform Android= '30,180,30,180', iOS = '30,275,30,275'}">
+        RoundedCornerRadius="20">
 
         <StackLayout BackgroundColor="White">
             <Label HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand" Text="Fondo Merende" FontAttributes="Bold" Margin="0,10,0,0">
