@@ -69,6 +69,12 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.Page
 
         private async void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
+            SelectedSnackID = 0;
+            SelectedSnackName = null;
+            SelectedSnackFriendlyName = null;
+            SelectedSnackPerBox = 0;
+            SelectedSnackPrice = 0;
+            SelectedSnackExpiration = 0;
             SelectedSnackID = (e.SelectedItem as AllSnacksDataDTO).id;
             SelectedSnackName = (e.SelectedItem as AllSnacksDataDTO).name;
             SelectedSnackFriendlyName = (e.SelectedItem as AllSnacksDataDTO).friendly_name;

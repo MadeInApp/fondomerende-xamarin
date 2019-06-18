@@ -105,8 +105,6 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
             string dataLabel = "";
             string[] strSplit = cronologia[posizione].Split();
             var fs = new FormattedString();
-           
-            fs.Spans.Add(new Span { Text = " a disposizione", TextColor = Color.Black });
             
 
             for (int i = 2; i < strSplit.Length; i++)
@@ -126,7 +124,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
                         fs.Spans.Add(new Span { Text = " " + strSplit[i], TextColor = Color.Black });
                     }          
             }
-            dataLabel = Convert.ToString(fs);
+            
 
             var stackPrincipale = new StackLayout
             {
@@ -180,7 +178,6 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
 
             var textAction = new Label
             {
-                Text = dataLabel,
                 VerticalOptions = LayoutOptions.Center,
                 FontSize = 12,
                 Opacity = 0.6,
@@ -188,6 +185,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
                 TextColor = Color.Black,
                 VerticalTextAlignment = TextAlignment.Center,
             };
+            textAction.FormattedText = fs; //per il testo colorato
 
             diametroMod = diametro + (diametro * sizeByName[strSplit[2]]);
 

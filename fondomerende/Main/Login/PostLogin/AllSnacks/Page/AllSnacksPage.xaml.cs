@@ -23,7 +23,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
         SnackServiceManager snackServiceManager = new SnackServiceManager();
         List<SnackDataDTO> AllSnacks = new List<SnackDataDTO>();
         SnackDTO result;
-        int marrocchino = 0;
+        bool switchStar = false;
 
         public AllSnacksPage()
         {
@@ -168,6 +168,20 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             // section.RemoveAt(1);
         }
 
+        private async void favourite_Clicked(object sender, EventArgs e)
+        {
+            switchStar = !switchStar;
+            if(switchStar)
+            {
+                favourite.Source = ImageSource.FromResource("fondomerende.image.star_fill.png");
+            }
+            else
+            {
+                favourite.Source = ImageSource.FromResource("fondomerende.image.star_empty.png");
+            }
+
+        }
+
 
         private async void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)     //quando uno snack è tappato si apre un prompt in cui viene chiesto se lo si vuole mangiare
         {
@@ -241,17 +255,33 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                 casual -= ScreenWidth / 2;
                 spawncasuale = randomWidth.Next(0, Convert.ToInt32(ScreenWidth));
                 spawncasuale -= ScreenWidth / 4;
-                await paolo.TranslateTo(spawncasuale, 0, 0);
+                await paolo.TranslateTo(spawncasuale, -ScreenHeight/2, 0);
                 await Task.WhenAny<bool>
                 (
                     paolo.RotateTo(360, 15000),
-                    paolo.TranslateTo(casual, ScreenHeight, 15000)
+                    paolo.TranslateTo(casual, ScreenHeight/2, 15000)
                 );
 
                 
             }
 
         }
+
+        public void Instagram()
+        {
+            var tapGestureRecognizer = new TapGestureRecognizer
+            {
+                NumberOfTapsRequired=2
+            };
+            tapGestureRecognizer.Tapped += SetFavourite;
+        }
+
+
+       private void SetFavourite(object sender,EventArgs e)
+       {
+            //if(Preferences.ContainsKey("Favourite")) => Preferences.Add("Favourite",); ;
+            //Preferences.Add("",);
+       }
         public async void Animazioni_infinite(Random randomWidth, double ScreenWidth,double ScreenHeight)
         {
             double casual;
@@ -262,6 +292,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                 i++;
             }
         }
+
     }
 
 }

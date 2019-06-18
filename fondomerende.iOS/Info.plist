@@ -28,8 +28,6 @@
 	<string>LaunchScreen</string>
 	<key>CFBundleName</key>
 	<string>fondomerende</string>
-	<key>XSAppIconAssets</key>
-	<string>AppIcons.xcassets/AppIcons.appiconset</string>
 	<key>CFBundleDocumentTypes</key>
 	<array>
 		<dict>

@@ -39,6 +39,17 @@
                         x:Name="Swap">
                 </ImageButton>
 
+                <ImageButton
+                    HorizontalOptions="CenterAndExpand" 
+                    VerticalOptions="Center"
+                    Source="{local2:EmbeddedImage Resource=fondomerende.image.star_empty.png}"
+                    Scale="{OnIdiom Phone=0.8, Tablet=3}"
+                    BackgroundColor="Transparent"
+                    Clicked="favourite_Clicked"
+                    x:Name="favourite"
+                    IsVisible="True">
+                </ImageButton>
+
                 <StackLayout 
                         Orientation="Horizontal" 
                         Margin="0,10,0,0">
