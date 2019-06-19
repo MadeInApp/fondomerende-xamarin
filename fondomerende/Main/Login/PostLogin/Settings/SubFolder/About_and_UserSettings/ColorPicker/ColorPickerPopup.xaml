@@ -8,21 +8,18 @@
                   x:Class="ColorPicker.ColorPickerPopup">
 
     <Frame BackgroundColor="White" VerticalOptions="Center" HorizontalOptions="Center">
-
         <StackLayout Spacing="5">
-
             <Grid BackgroundColor="White" HeightRequest="348" WidthRequest="250">
 
-                <skia:SKCanvasView x:Name="canvasView" PaintSurface="CanvasView_OnPaintSurface"/>
+                    <skia:SKCanvasView x:Name="canvasView" PaintSurface="CanvasView_OnPaintSurface"/>
 
-                <Grid.Effects>
-                    <tt1:TouchEffect Capture="True" TouchAction="OnTouchEffectAction" />
-                </Grid.Effects>
+                    <Grid.Effects>
+                        <tt1:TouchEffect Capture="True" TouchAction="OnTouchEffectAction" />
+                    </Grid.Effects>
 
-            </Grid>
-
-            <Button Text="Cancel" Clicked="OnClose" BackgroundColor="White" HorizontalOptions="End"></Button>
-        </StackLayout>
+                </Grid>
+                <Button Text="Cancel" Clicked="OnClose" BackgroundColor="White" HorizontalOptions="End"></Button>
+            </StackLayout>
     </Frame>
 
 

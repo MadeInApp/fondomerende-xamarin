@@ -10,6 +10,13 @@ using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration;
 using fondomerende.Main.Utilities;
+using fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.View;
+using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View;
+using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.View;
+using fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.View;
+using fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.View;
+using fondomerende.Main.Login.PostLogin.Settings.SubFolder.LogOut.View;
+using fondomerende.Main.Login.PostLogin.AllSnack.Page;
 
 namespace fondomerende.Main.Login.PostLogin
 {
@@ -24,9 +31,15 @@ namespace fondomerende.Main.Login.PostLogin
         {
 
             InitializeComponent();
+            MessagingCenter.Send(new EditUserViewCell()
+            {
 
+            }, "Refresh");
+            
             SnacksNavPage.IconImageSource = ImageSource.FromResource("fondomerende.image.vm_icon_64x64.png");
             SettingsNavPage.IconImageSource = ImageSource.FromResource("fondomerende.image.settings_icon_64x64.png");
+
+            
         }
     }
 }

@@ -14,11 +14,12 @@ namespace fondomerende.Main.Services.RESTServices
        
         public async System.Threading.Tasks.Task<UserFundsDTO> GetUserFunds()
         {
+            UserFundsDTO response = new UserFundsDTO();
             try
             {
 
 
-                var response = await "http://192.168.0.175:8888/fondomerende/public/process-request.php?commandName=get-user-funds"
+                response = await "http://192.168.0.175:8888/fondomerende/public/process-request.php?commandName=get-user-funds"
                                     .WithCookie("auth-key", "metticiquellochetipare")
                                     .WithCookie("user-token", Manager.UserManager.Instance.token)
                                     .GetJsonAsync<UserFundsDTO>();

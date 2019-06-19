@@ -15,6 +15,12 @@ using fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.Popup;
 using Rg.Plugins.Popup.Extensions;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.About_and_UserSettings.Page;
+using fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.View;
+using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.View;
+using fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.View;
+using fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.View;
+using fondomerende.Main.Login.PostLogin.Settings.SubFolder.LogOut.View;
+using fondomerende.Main.Login.PostLogin.AllSnack.Page;
 
 namespace fondomerende.Main.Login.PostLogin.Settings.Page
 {
@@ -44,7 +50,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.Page
                     break;
 
             }
-
+            
 
         }
 
@@ -83,32 +89,45 @@ namespace fondomerende.Main.Login.PostLogin.Settings.Page
 
         private async void ChangeUserSettings_Tapped(object sender, EventArgs e)
         {
+            
             await Navigation.PushAsync(new AboutPage());
+            
         }
 
         private async void EditSnackViewCell_Tapped(object sender, EventArgs e)
         {
+            
             await Navigation.PushAsync(new EditSnackListPage());
+            
+
         }
 
         private async void AddSnackCell_Tapped(object sender, EventArgs e)
         {
+            
             await Navigation.PushPopupAsync(new AddSnackPopUpPage());
+            
         }
 
         private async void ChronologyCell_Tapped(object sender, EventArgs e)
         {
+            
             await Navigation.PushAsync(new ChronologyContentPage());
+            
         }
 
         private async void BuySnack_Tapped(object sender, EventArgs e)
         {
+            
             await Navigation.PushAsync(new BuySnackListPage());
+            
         }
 
         private async void Deposit_Tapped(object sender, EventArgs e)
         {
+            
             await Navigation.PushPopupAsync(new DepositPopUp());
+            
         }
     }
 }

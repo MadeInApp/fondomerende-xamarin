@@ -112,7 +112,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View
                 }
                 else
                 {
-                    userFunds.Text = "Errore";
+                    userFunds.Text = result.response.message;
                 }
             }
             else
