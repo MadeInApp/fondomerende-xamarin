@@ -89,7 +89,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.Popup
 
             var label = new Label
             {
-                Text = "Inserire la vecchia Password per confermare",
+                Text = "Inserire la vecchia password",
                 VerticalOptions = LayoutOptions.StartAndExpand,
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
             };

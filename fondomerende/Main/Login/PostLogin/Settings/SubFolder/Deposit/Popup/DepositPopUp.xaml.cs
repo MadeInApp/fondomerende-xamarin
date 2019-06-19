@@ -20,6 +20,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup
 
     public partial class DepositPopUp : Rg.Plugins.Popup.Pages.PopupPage
     {
+        bool refresh;
         bool IsDone;
         LineEntry entry;
         string appoggio;
@@ -183,10 +184,13 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup
 
         protected override void OnDisappearing()
         {
-            MessagingCenter.Send(new EditUserViewCell()
+            if (refresh)
             {
+                MessagingCenter.Send(new EditUserViewCell()
+                {
 
-            }, "Refresh");
+                }, "Refresh");
+            }
             base.OnDisappearing();
         }
 
@@ -290,7 +294,8 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup
                 }
                 else
                 {
-
+                    refresh = false;
+                    await Navigation.PopPopupAsync();
                 }
             }
         }

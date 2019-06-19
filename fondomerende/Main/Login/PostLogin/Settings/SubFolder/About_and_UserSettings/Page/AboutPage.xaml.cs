@@ -1,5 +1,6 @@
 ﻿using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.Page;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.Popup;
+using fondomerende.Main.Login.PostLogin.Settings.SubFolder.Settaggio.PopUp;
 using FormsControls.Base;
 using Rg.Plugins.Popup.Extensions;
 using System;
@@ -35,6 +36,11 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.About_and_UserSet
         private void EditUserInfoViewCell_Tapped(object sender, EventArgs e)
         {
             Navigation.PushPopupAsync(new EditUserInfoPopUp());
+        }
+
+        private void ChangeColorViewCell_Tapped(object sender, EventArgs e)
+        {
+            Navigation.PushPopupAsync(new ChangeColorPopUp());
         }
     }
 }

@@ -22,6 +22,10 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.LogOut.View
         {
             InitializeComponent();
             SetImageColorPreferences();
+            MessagingCenter.Subscribe<LogoutViewCell>(this, "Refresh", async (value) =>
+            {
+                SetImageColorPreferences();
+            });
         }
 
         public async void LogoutCellTapped(object sender, EventArgs e)
@@ -50,9 +54,6 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.LogOut.View
                 }
             }
         }
-
-
-
 
 
         public void SetImageColorPreferences()

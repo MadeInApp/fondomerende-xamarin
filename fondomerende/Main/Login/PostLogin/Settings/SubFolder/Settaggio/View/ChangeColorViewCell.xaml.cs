@@ -7,16 +7,14 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace fondomerende.Main.Login.PostLogin.AllSnacks.View
+namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Settaggio.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class SnackViewCell : ViewCell
+    public partial class ChangeColorViewCell : ViewCell
     {
-        public SnackViewCell()
+        public ChangeColorViewCell()
         {
             InitializeComponent();
-           
-
         }
     }
 }

@@ -1,31 +1,29 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<ViewCell xmlns="http://xamarin.com/schemas/2014/forms" 
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ViewCell xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:controls="clr-namespace:Plugin.CrossPlatformTintedImage.Abstractions;assembly=Plugin.CrossPlatformTintedImage.Abstractions"
              xmlns:local="clr-namespace:fondomerende.Main.Utilities"
              mc:Ignorable="d"
-             x:Class="fondomerende.Main.Login.PostLogin.Settings.SubFolder.About_and_UserSettings.View.FondoFondoMerendeViewCell">
+             x:Class="fondomerende.Main.Login.PostLogin.Settings.SubFolder.Settaggio.View.ChangeColorViewCell">
     <ViewCell.View>
-        <!--Tasto aggiungi snack-->
         <StackLayout 
             Orientation="Horizontal" >
-            <Image 
-                x:Name="SnackIcon" 
+            <Image
+                x:Name="SettingIcon" 
                 VerticalOptions="Center" 
                 HorizontalOptions="Start"
                 Scale="0.8"
                 Margin="5,0,5,0"
-                Source="{local:EmbeddedImage Resource=fondomerende.image.fund_256x256.png}">
+                Source="{local:EmbeddedImage Resource=fondomerende.image.settings_icon_64x64.png}">
             </Image>
             <Label
                 HorizontalOptions="StartAndExpand"
-                VerticalOptions="CenterAndExpand"                    
-                x:Name="FundFund"
+                VerticalOptions="CenterAndExpand"                               
+                x:Name="SetSetting"
                 FontSize="14"
                 TextColor="Black"
-                Text="You Shouldn't be here.">
+                Text="Cambio del colore dinamico">
             </Label>
         </StackLayout>
     </ViewCell.View>

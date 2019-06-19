@@ -14,6 +14,7 @@
              xmlns:local5="clr-namespace:fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.View"
              xmlns:local6="clr-namespace:fondomerende.Main.Login.PostLogin.Settings.SubFolder.LogOut.View"
                         xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+                        xmlns:local1="clr-namespace:fondomerende.Main.Login.PostLogin.Settings.SubFolder.Settaggio.View"
                         x:Class="fondomerende.Main.Login.PostLogin.Settings.SubFolder.About_and_UserSettings.Page.AboutPage"
              Title="Impostazioni">
   <!--Pages can be added as references or inline-->
@@ -24,6 +25,7 @@
    
     <controls:AnimationPage.Content>
         <TableView
+            BackgroundColor="White"
             Intent="Settings" 
             HasUnevenRows="False"
             x:Name="tableView">
@@ -45,6 +47,20 @@
                         IsEnabled="True">
                     </local:EditUserInfoViewCell>
                 </TableSection>
+
+                <TableSection 
+                    Title="Settings"
+                    TextColor="{OnPlatform Android= #6495ed}"
+                    >
+                    <local1:ChangeColorViewCell
+                        Tapped="ChangeColorViewCell_Tapped"
+                        x:Name="ChangeColorViewCell"
+                        >
+                        
+                    </local1:ChangeColorViewCell>
+                    
+                </TableSection>
+                
                 <TableSection Title="Informazioni App">
                     <TextCell DetailColor="Transparent" Text="Version" x:Name="Version" IsEnabled="False"/>
                 </TableSection>

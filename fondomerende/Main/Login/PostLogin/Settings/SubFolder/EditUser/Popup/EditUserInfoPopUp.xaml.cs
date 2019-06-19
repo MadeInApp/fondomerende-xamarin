@@ -197,8 +197,8 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.Popup
             buttonCancel.Clicked += Discard_Clicked;
             buttonConfirm.Clicked += ApplyChanges_Clicked_1;
 
-            entryUsername.Placeholder = "Username: " + Preferences.Get("username", null);
-            entryFriendlyName.Placeholder = "Friendly Name: " + Preferences.Get("friendly-name", null);
+            entryUsername.Placeholder = Preferences.Get("username", null);
+            entryFriendlyName.Placeholder = Preferences.Get("friendly-name", null);
             entryNewPassword.Placeholder = "Nuova Password ";
 
 

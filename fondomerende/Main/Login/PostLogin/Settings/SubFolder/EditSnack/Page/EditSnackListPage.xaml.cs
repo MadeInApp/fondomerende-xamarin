@@ -47,20 +47,19 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.Page
                     break;                                                                      //
             }                                                                                   //
 
-            ListView.RefreshCommand = new Command(async () =>                                //
-            {                                                                                //         
-                await RefreshDataAsync();                                                    //
-                ListView.IsRefreshing = false;                                               //
-            });                                                                              //
-                                                                                             //
-                                                                                             // Pull to Refresh GetSnacksMethod()
-        }                                                                                    //
-        public async Task RefreshDataAsync()                                                 //
-        {                                                                                    //
-            await GetSnacksMethod();                                                         //
-        }                                                                                    //
-
-
+            ListView.RefreshCommand = new Command(async () =>                                
+            {                                                                                         
+                await RefreshDataAsync();                                                    
+                ListView.IsRefreshing = false;                                               
+            });                                                                              
+                                                                                             
+                                                                                                 
+        }                                                                                    
+                                                                                              
+        public async Task RefreshDataAsync()                                                 
+        {                                                                                    
+           await GetSnacksMethod();                                                                             
+        }                                                                                    
 
         public async Task GetSnacksMethod()     //ottiene la lista degli snack e la applica alla ListView
         {

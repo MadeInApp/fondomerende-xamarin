@@ -1,32 +1,45 @@
-﻿using fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page;
-using fondomerende.Main.Services.RESTServices;
+﻿using fondomerende.Main.Services.RESTServices;
 using fondomerende.Main.Utilities;
-using Rg.Plugins.Popup.Extensions;
-using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Rg.Plugins.Popup.Extensions;
+using Rg.Plugins.Popup.Services;
+using fondomerende.Main.Login.PostLogin.Settings.SubFolder;
+using fondomerende.Main.Login.PostLogin.Settings.Page;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-
-namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
-
-
+namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Settaggio.PopUp
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class BuySnackPopUpPage : Rg.Plugins.Popup.Pages.PopupPage
+    public partial class ChangeColorPopUp : Rg.Plugins.Popup.Pages.PopupPage
     {
-        LineEntry line;
         string appoggio;
-        SnackServiceManager snackService = new SnackServiceManager();
-        public BuySnackPopUpPage()
+        /*private double diametro = 40;
+        private double larghezzaLinea = 3;
+        private double altezzaLinea = 20;
+
+        private double diametroMod;
+
+        Dictionary<string, Color> colorByName = new Dictionary<string, Color>();
+        Dictionary<string, double> sizeByName = new Dictionary<string, double>();
+        Dictionary<string, string> dateByTime = new Dictionary<string, string>();
+        Dictionary<string, string> mangione = new Dictionary<string, string>();
+        Dictionary<Color, bool> colorReserved = new Dictionary<Color, bool>();
+        Dictionary<string, string> traduttore = new Dictionary<string, string>();*/
+
+
+        public ChangeColorPopUp()
         {
             InitializeComponent();
-            PopupBuy();
+            PopupChangeColor();
+
         }
+
+        
 
         public static Color GetPrimaryAndroidColor()
         {
@@ -42,9 +55,9 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
         {
             return App.Current.MainPage.Height;
         }
-        private void PopupBuy()
+        private void PopupChangeColor()
         {
-            double Altezza = 200;
+            double Altezza = GetAltezzaPagina() / 1.2;
             double Larghezza = GetLarghezzaPagina() - 80;
             double banner = 50;
 
@@ -80,14 +93,51 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
                 FontAttributes = FontAttributes.Bold,
                 TextColor = Color.White,
             };
-            line = new LineEntry
+
+
+
+            /*for (int i = 2; i < strSplit.Length; i++)
             {
 
-                Placeholder = "Quanti snck vuoi acquistare?",
-                Keyboard = Keyboard.Numeric,
-                HorizontalOptions = LayoutOptions.CenterAndExpand,
-                HorizontalTextAlignment = TextAlignment.Center,
+                if (i == 2)
+                {
+                    fs.Spans.Add(new Span { Text = strSplit[2], TextColor = colorByName[strSplit[2]] });
+                }
+
+                else if (traduttore.ContainsKey(strSplit[i]))
+                {
+                    fs.Spans.Add(new Span { Text = " " + traduttore[strSplit[i]], TextColor = Color.Black });
+                }
+                else
+                {
+                    fs.Spans.Add(new Span { Text = " " + strSplit[i], TextColor = Color.Black });
+                }
+            }
+
+            var cerchio = new RoundedCornerView
+            {
+                HeightRequest = diametro + ((diametro  * 2),
+                WidthRequest = diametro + ((diametro *  2),
+                MinimumHeightRequest = diametro + ((diametro *  2),
+                MinimumWidthRequest = diametro + ((diametro *  2),
+                RoundedCornerRadius = diametro + ((diametro *  2),
+                Margin = new Thickness(3, 0, 0, 0),
+                BorderColor = Color.Black,
+                BorderWidth = 3,
             };
+
+            var cerchioiOS = new RoundedCornerView
+            {
+                HeightRequest = diametro + ((diametro *  2),
+                WidthRequest = diametro + ((diametro *  2),
+                MinimumHeightRequest = diametro + ((diametro *  2),
+                MinimumWidthRequest = diametro + ((diametro * 2),
+                RoundedCornerRadius = (diametro + ((diametro *  2)) / 2,
+                Margin = new Thickness(3, 0, 0, 0),
+                BackgroundColor = colorByName,
+                BorderColor = Color.Black,
+                BorderWidth = 1,
+            };*/
 
 
 
@@ -148,14 +198,14 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
                     stackBody.Children.Add(stackFondoiOS);
                     break;
             }
-          //  entry.TextChanged += Entrata;
+
+
             buttonCancel.Clicked += Discard_Clicked;
             buttonConfirm.Clicked += Apply_Clicked;
-            stackBody.Children.Add(line);
             stackBody.Children.Add(stackBottoni);
             Round.Children.Add(stackBody);
 
-            PopupBuySnack.Content = Round;
+            ChangeColorPopUpPage.Content = Round;
         }
 
         public void Entrata(object sender, TextChangedEventArgs e)
@@ -163,6 +213,8 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
             appoggio = e.NewTextValue;
 
         }
+
+
         protected override void OnAppearing()
         {
             base.OnAppearing();
@@ -170,7 +222,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
 
         protected override void OnDisappearing()
         {
-            MessagingCenter.Send(new BuySnackListPage()
+            MessagingCenter.Send(new ChangeColorPopUp()
             {
 
             }, "Refresh");
@@ -239,39 +291,15 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
             return base.OnBackgroundClicked();
         }
 
-       private async void Apply_Clicked(object sender, EventArgs e)
+        private async void Apply_Clicked(object sender, EventArgs e)
         {
-            SnackServiceManager snackService = new SnackServiceManager();
+            
 
-            if(line.Text == null || line.Text=="")
-            {
-                await DisplayAlert("Fondo Merende", "Inserisci la quantità" , "OK");
-            }
-            else
-            {
-                var result = await snackService.BuySnackAsync(BuySnackListPage.SelectedSnackID, Int32.Parse(line.Text));
-                if (result != null)
-                {
-                    if (result.response.success)
-                    {
-                        await PopupNavigation.Instance.PopAsync();
-                    }
-                    else
-                    {
-                        await DisplayAlert("Fondo Merende", result.response.message, "Ok");
-                    }
-                }
-                else
-                {
-
-                }
-            }
-           
         }
 
         private async void Discard_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PopPopupAsync();
+            await PopupNavigation.Instance.PopAsync();
         }
     }
 }
