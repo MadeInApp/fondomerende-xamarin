@@ -34,12 +34,15 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View
             CerchioRc.BackgroundColor = Color.FromHex(Preferences.Get("Colore", "#CCCCCC"));
             MessagingCenter.Subscribe<EditUserViewCell>(this, "Refresh", async (value) =>
             {
-                await GetUserFundsMethod();
                 Cerchio.BackgroundColor = Color.FromHex(Preferences.Get("Colore", "#CCCCCC"));
                 CerchioRc.FillColor = Color.FromHex(Preferences.Get("Colore", "#CCCCCC"));
                 CerchioRc.BackgroundColor = Color.FromHex(Preferences.Get("Colore", "#CCCCCC"));
             });
 
+            MessagingCenter.Subscribe<EditUserViewCell>(this, "RefreshUF", async (value) =>
+            {
+                await GetUserFundsMethod();
+            });
 
         }
 

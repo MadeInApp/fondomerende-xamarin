@@ -14,6 +14,7 @@ using fondomerende.Main.Utilities;
 using Rg.Plugins.Popup.Extensions;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup;
 using Lottie.Forms;
+using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View;
 
 namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 {
@@ -412,6 +413,10 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             {
                
                 await snackServiceManager.EatAsync((e.SelectedItem as SnackDataDTO).id, 1);
+                MessagingCenter.Send(new EditUserViewCell()
+                {
+
+                }, "RefreshUserFunds");
                 await GetSnacksMethod(true);
             }
             else

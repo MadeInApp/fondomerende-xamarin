@@ -20,7 +20,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup
 
     public partial class DepositPopUp : Rg.Plugins.Popup.Pages.PopupPage
     {
-        bool refresh;
+        bool refresh = true;
         bool IsDone;
         LineEntry entry;
         string appoggio;
@@ -190,6 +190,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup
                 {
 
                 }, "Refresh");
+                refresh = true;
             }
             base.OnDisappearing();
         }
@@ -280,6 +281,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup
                         {
 
                         }, "Animation");
+                        refresh = true;
                         await Navigation.PopPopupAsync();
                         
                     }
