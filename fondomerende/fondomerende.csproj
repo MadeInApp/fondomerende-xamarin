@@ -82,57 +82,159 @@
     <EmbeddedResource Include="Animated\star.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="image\add_icon_256x256.png" />
-    <EmbeddedResource Include="image\add_snack_icon.png" />
-    <EmbeddedResource Include="image\BackGradientArRos.jpg" />
-    <EmbeddedResource Include="image\BackGradientRosAr.jpg" />
-    <EmbeddedResource Include="image\CheckBox_Checked_32x32.png" />
-    <EmbeddedResource Include="image\CheckBox_empty_32x32.png" />
-    <EmbeddedResource Include="image\Chronology_icon_256x256.png" />
-    <EmbeddedResource Include="image\close_icon_32x32.png" />
-    <EmbeddedResource Include="image\cup_cake_128x128.png" />
-    <EmbeddedResource Include="image\cup_cake_24x24.png" />
-    <EmbeddedResource Include="image\cup_cake_512x512.png" />
-    <EmbeddedResource Include="image\deposit_256x256.png" />
-    <EmbeddedResource Include="image\Donut_icon_512x512.png" />
-    <EmbeddedResource Include="image\Edit_Icon_32x32.png" />
-    <EmbeddedResource Include="image\edit_profile_256x256.png" />
-    <EmbeddedResource Include="image\Edit_snack_icon_256x256.png" />
-    <EmbeddedResource Include="image\Edit_snack_icon_32x32.png" />
-    <EmbeddedResource Include="image\Fill_256x256.png" />
-    <EmbeddedResource Include="image\fill_clear_256x256.png" />
-    <EmbeddedResource Include="image\fill_full_256x256.png" />
-    <EmbeddedResource Include="image\Fondo_Merende_logo.png" />
-    <EmbeddedResource Include="image\fund_256x256.png" />
-    <EmbeddedResource Include="image\History.png" />
-    <EmbeddedResource Include="image\history_icon_256x256.png" />
-    <EmbeddedResource Include="image\list_256x256.png" />
-    <EmbeddedResource Include="image\list_264x264.png" />
-    <EmbeddedResource Include="image\Livellodinamico.png" />
-    <EmbeddedResource Include="image\LoginBackground.png" />
-    <EmbeddedResource Include="image\LoginBackground_dinamico.png" />
-    <EmbeddedResource Include="image\LoginGradiente.png" />
-    <EmbeddedResource Include="image\Login_Animation.png" />
-    <EmbeddedResource Include="image\Login_Animation2.png" />
-    <EmbeddedResource Include="image\Login_Animation3.png" />
-    <EmbeddedResource Include="image\logout-img.png" />
-    <EmbeddedResource Include="image\logout_256x256.png" />
-    <EmbeddedResource Include="image\Logout_icon_256x256.png" />
-    <EmbeddedResource Include="image\macchinettaNew.png" />
-    <EmbeddedResource Include="image\macchinetta_merende.png" />
-    <EmbeddedResource Include="image\macchinetta_minimalist.jpg" />
-    <EmbeddedResource Include="image\pac-man.gif" />
-    <EmbeddedResource Include="image\roller.png" />
-    <EmbeddedResource Include="image\settings_icon_64x64.png" />
-    <EmbeddedResource Include="image\shopping_bag_256x256.png" />
-    <EmbeddedResource Include="image\shop_icon_256x256.png" />
-    <EmbeddedResource Include="image\star.png" />
-    <EmbeddedResource Include="image\star_empty.png" />
-    <EmbeddedResource Include="image\star_fill.png" />
-    <EmbeddedResource Include="image\vm_icon.png" />
-    <EmbeddedResource Include="image\vm_icon_51x51.png" />
-    <EmbeddedResource Include="image\vm_icon_64x64.png" />
-    <EmbeddedResource Include="image\x.png" />
+    <EmbeddedResource Include="image\add_icon_256x256.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="image\add_snack_icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="image\BackGradientArRos.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="image\BackGradientRosAr.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="image\CheckBox_Checked_32x32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="image\CheckBox_empty_32x32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="image\Chronology_icon_256x256.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="image\close_icon_32x32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="image\cup_cake_128x128.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="image\cup_cake_24x24.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="image\cup_cake_512x512.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="image\deposit_256x256.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="image\Donut_icon_512x512.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="image\Edit_Icon_32x32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="image\edit_profile_256x256.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="image\Edit_snack_icon_256x256.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="image\Edit_snack_icon_32x32.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="image\Fill_256x256.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="image\fill_clear_256x256.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="image\fill_full_256x256.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="image\Fondo_Merende_logo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="image\fund_256x256.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="image\History.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="image\history_icon_256x256.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="image\list_256x256.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="image\list_264x264.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="image\Livellodinamico.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="image\LoginBackground.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="image\LoginBackground_dinamico.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="image\LoginGradiente.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="image\Login_Animation.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="image\Login_Animation2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="image\Login_Animation3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="image\logout-img.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="image\logout_256x256.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="image\Logout_icon_256x256.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="image\macchinettaNew.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="image\macchinetta_merende.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="image\macchinetta_minimalist.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="image\pac-man.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="image\roller.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="image\settings_icon_64x64.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="image\shopping_bag_256x256.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="image\shop_icon_256x256.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="image\star.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="image\star_empty.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="image\star_fill.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="image\vm_icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="image\vm_icon_51x51.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="image\vm_icon_64x64.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="image\x.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>

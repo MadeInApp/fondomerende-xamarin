@@ -10,6 +10,10 @@ using fondomerende.Main.Services.RESTServices;
 using fondomerende.Main.Manager;
 using fondomerende.Main.Utilities;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.View;
+using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.View;
+using fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.View;
+using fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.View;
+using fondomerende.Main.Login.PostLogin.Settings.SubFolder.LogOut.View;
 
 namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View
 {
@@ -61,6 +65,26 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View
             CerchioRc.FillColor = color;
             CerchioRc.BackgroundColor = color;
             MessagingCenter.Send(new ChronologyViewCell()
+            {
+
+            }, "Refresh");
+
+            MessagingCenter.Send(new EditSnackViewCell()
+            {
+
+            }, "Refresh");
+
+            MessagingCenter.Send(new AddSnackViewCell()
+            {
+
+            }, "Refresh");
+
+            MessagingCenter.Send(new BuySnackViewCell()
+            {
+
+            }, "Refresh");
+
+            MessagingCenter.Send(new LogoutViewCell()
             {
 
             }, "Refresh");

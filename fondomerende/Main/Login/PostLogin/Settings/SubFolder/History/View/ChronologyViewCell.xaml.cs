@@ -20,7 +20,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.View
 
             MessagingCenter.Subscribe<ChronologyViewCell>(this, "Refresh", async (value) =>
             {
-                InizializeImage();
+                Tint();
             });
         }
         public void Tint()
