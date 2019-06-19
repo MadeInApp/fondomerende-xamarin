@@ -53,43 +53,45 @@ namespace ColorPicker
 	            new ColorPick("#64b5f6"),
 	            new ColorPick("#ff7000"),
 	            new ColorPick("#ff9f00"),
-	            new ColorPick("#ffb200"),
-	            new ColorPick("#cf9702"),
+                new ColorPick("#FFBF18"),
+                new ColorPick("#ffb200"),
 
-	            new ColorPick("#8c6e63"),
+                new ColorPick("#cf9702"),
+                new ColorPick("#84830b"),
+                new ColorPick("#8c6e63"),
 	            new ColorPick("#6e4c42"),
-	            new ColorPick("#d52f31"),
+                new ColorPick("#9B212A"),
+
+                new ColorPick("#d52f31"),
 	            new ColorPick("#ff1643"),
 	            new ColorPick("#f44236"),
-
-	            new ColorPick("#ec407a"),
+                new ColorPick("#ec407a"),
 	            new ColorPick("#ad1457"),
-	            new ColorPick("#6a1b9a"),
-	            new ColorPick("#ab48bf"),
+
+                new ColorPick("#6a1b9a"),
+                new ColorPick("#904b93"),
+                new ColorPick("#ab48bf"),
 	            new ColorPick("#b968c7"),
+                new ColorPick("#00695b"),
 
-	            new ColorPick("#00695b"),
-	            new ColorPick("#00887a"),
+                new ColorPick("#00887a"),
 	            new ColorPick("#4cb6ac"),
-	            new ColorPick("#307c32"),
-	            new ColorPick("#43a047"),
+                new ColorPick("#0bb6b0"),
+                new ColorPick("#307c32"),
+                new ColorPick("#43a047"),
 
-	            new ColorPick("#64dd16"),
+
+                new ColorPick("#64dd16"),
 	            new ColorPick("#0886c7"),
 	            new ColorPick("#5f7c8c"),
 	            new ColorPick("#b1bec6"),
 	            new ColorPick("#465a65"),
 
-	            new ColorPick("#607d8d"),
-	            new ColorPick("#FFBF18"),
-                new ColorPick("#38B54A"),
-                new ColorPick("#0b9906"),
-                new ColorPick("#9B212A"),
-
-                new ColorPick("#904b93"),
-                new ColorPick("#EA5454"),
-                new ColorPick("#84830b"),
-                new ColorPick("#0bb6b0"),
+	            
+                
+                
+                
+                
             };
 	    }
 
