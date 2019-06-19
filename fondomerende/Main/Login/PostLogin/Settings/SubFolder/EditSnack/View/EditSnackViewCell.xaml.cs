@@ -18,6 +18,10 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.View
         {
             InitializeComponent();
             SetImageColorPreferences();
+            MessagingCenter.Subscribe<EditSnackViewCell>(this, "Refresh", async (value) =>
+            {
+                SetImageColorPreferences();
+            });
         }
 
         private void ViewCell_Tapped(object sender, EventArgs e)

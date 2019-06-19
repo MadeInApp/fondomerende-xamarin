@@ -491,6 +491,8 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
                 if (result.response.success == true)
                 {
                     cronologia = result.data.actions;
+                    Fusione();
+                    LenghtLine(0);
                 }
                 else
                 {
@@ -499,15 +501,13 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
             }
             else
             {
-
+                await Navigation.PopAsync();
             }
         }
 
         public async void Aspetta()
         {
             await GetLastActions();
-            Fusione();
-            LenghtLine(0);
         }
     }
 }

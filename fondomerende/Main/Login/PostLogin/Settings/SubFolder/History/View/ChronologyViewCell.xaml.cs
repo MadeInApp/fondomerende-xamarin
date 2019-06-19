@@ -18,6 +18,10 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.View
             InitializeComponent();
             Tint();
 
+            MessagingCenter.Subscribe<ChronologyViewCell>(this, "Refresh", async (value) =>
+            {
+                Tint();
+            });
         }
         public void Tint()
         {

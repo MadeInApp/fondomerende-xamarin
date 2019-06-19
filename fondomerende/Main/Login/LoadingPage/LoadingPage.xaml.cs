@@ -42,7 +42,7 @@ namespace fondomerende.PostLoginPages
         {
             LoginServiceManager login = new LoginServiceManager();
             var resultLogin = await login.LoginAsync(Preferences.Get("username", null), Preferences.Get("password", null), Preferences.Get("Logged",false));
-            await userService.GetUserData();
+         //   await userService.GetUserData();
             if(resultLogin == null)
             {
                 Android.OS.Process.KillProcess(Android.OS.Process.MyPid());

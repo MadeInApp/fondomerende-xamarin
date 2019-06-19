@@ -11,6 +11,10 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.View
         {
             InitializeComponent();
             SetImageColorPreferences();
+            MessagingCenter.Subscribe<BuySnackViewCell>(this, "Refresh", async (value) =>
+            {
+                SetImageColorPreferences();
+            });
         }
 
         public void SetImageColorPreferences()
