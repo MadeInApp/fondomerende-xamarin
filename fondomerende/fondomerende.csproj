@@ -62,6 +62,7 @@
     <None Remove="image\macchinetta_merende.png" />
     <None Remove="image\macchinetta_minimalist.jpg" />
     <None Remove="image\pac-man.gif" />
+    <None Remove="image\paint-palette.png" />
     <None Remove="image\roller.png" />
     <None Remove="image\settings-work-tool.png" />
     <None Remove="image\settings_icon_64x64.png" />
@@ -203,6 +204,9 @@
     <EmbeddedResource Include="image\pac-man.gif">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="image\paint-palette.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="image\roller.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -246,6 +250,8 @@
     <PackageReference Include="Plugin.ImageCropper" Version="1.0.1" />
     <PackageReference Include="Rg.Plugins.Popup" Version="1.1.5.188" />
     <PackageReference Include="SkiaSharp" Version="1.68.0" />
+    <PackageReference Include="SkiaSharp.Views" Version="1.68.0" />
+    <PackageReference Include="SkiaSharp.Views.Forms" Version="1.68.0" />
     <PackageReference Include="Xamarin.Forms" Version="4.0.0.497661" />
     <PackageReference Include="Xamarin.Essentials" Version="1.1.0" />
     <PackageReference Include="XForms.Plugin.AnimationNavigationPage" Version="1.0.7" />
@@ -282,6 +288,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Main\Login\PostLogin\Settings\SubFolder\About_and_UserSettings\ColorPicker\ColorPickerPopup.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Main\Login\PostLogin\Settings\SubFolder\About_and_UserSettings\Page\AboutPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

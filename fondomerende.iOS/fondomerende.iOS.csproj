@@ -85,6 +85,8 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+    <Compile Include="PlatformSpecific\TouchEffect.cs" />
+    <Compile Include="PlatformSpecific\TouchRecognizer.cs" />
     <Compile Include="Renderer\AnimationViewRenderer.cs" />
     <Compile Include="Renderer\GradientColorStackRenderer.cs" />
     <Compile Include="Renderer\LineEntryRenderer.cs" />
