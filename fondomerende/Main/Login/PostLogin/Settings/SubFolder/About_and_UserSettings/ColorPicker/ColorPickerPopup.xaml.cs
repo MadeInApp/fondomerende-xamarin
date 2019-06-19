@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using ColorPicker.TouchTracking;
+using fondomerende.Main.Login.PostLogin.AllSnack.Page;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.View;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.View;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.View;
@@ -87,11 +88,6 @@ namespace ColorPicker
 	            new ColorPick("#b1bec6"),
 	            new ColorPick("#465a65"),
 
-	            
-                
-                
-                
-                
             };
 	    }
 
@@ -167,6 +163,10 @@ namespace ColorPicker
                 {
 
                 }, "Refresh");
+                MessagingCenter.Send(new AllSnacksPage()
+                {
+
+                }, "Animation");
 
                 await Navigation.PopPopupAsync();
 	        }
