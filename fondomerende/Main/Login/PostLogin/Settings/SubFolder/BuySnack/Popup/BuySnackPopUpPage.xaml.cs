@@ -1,6 +1,7 @@
 ﻿using fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page;
 using fondomerende.Main.Services.RESTServices;
 using fondomerende.Main.Utilities;
+using Rg.Plugins.Popup.Extensions;
 using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
@@ -18,6 +19,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class BuySnackPopUpPage : Rg.Plugins.Popup.Pages.PopupPage
     {
+        LineEntry line;
         string appoggio;
         SnackServiceManager snackService = new SnackServiceManager();
         public BuySnackPopUpPage()
@@ -78,7 +80,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
                 FontAttributes = FontAttributes.Bold,
                 TextColor = Color.White,
             };
-            var entry = new LineEntry
+            line = new LineEntry
             {
 
                 Placeholder = "Quanti snck vuoi acquistare?",
@@ -146,10 +148,10 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
                     stackBody.Children.Add(stackFondoiOS);
                     break;
             }
-            entry.TextChanged += Entrata;
+          //  entry.TextChanged += Entrata;
             buttonCancel.Clicked += Discard_Clicked;
             buttonConfirm.Clicked += Apply_Clicked;
-            stackBody.Children.Add(entry);
+            stackBody.Children.Add(line);
             stackBody.Children.Add(stackBottoni);
             Round.Children.Add(stackBody);
 
@@ -241,18 +243,22 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
         {
             SnackServiceManager snackService = new SnackServiceManager();
 
-            if(appoggio == null || appoggio=="")
+            if(line.Text == null || line.Text=="")
             {
                 await DisplayAlert("Fondo Merende", "Inserisci la quantità" , "OK");
             }
             else
             {
-                var result = await snackService.BuySnackAsync(BuySnackListPage.SelectedSnackID, Int32.Parse(appoggio));
+                var result = await snackService.BuySnackAsync(BuySnackListPage.SelectedSnackID, Int32.Parse(line.Text));
                 if (result != null)
                 {
                     if (result.response.success)
                     {
                         await PopupNavigation.Instance.PopAsync();
+                    }
+                    else
+                    {
+                        await DisplayAlert("Fondo Merende", result.response.message, "Ok");
                     }
                 }
                 else
@@ -265,7 +271,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
 
         private async void Discard_Clicked(object sender, EventArgs e)
         {
-           await PopupNavigation.Instance.PopAsync();
+            await Navigation.PopPopupAsync();
         }
     }
 }

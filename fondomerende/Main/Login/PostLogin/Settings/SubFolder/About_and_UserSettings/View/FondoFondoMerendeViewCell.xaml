@@ -25,7 +25,7 @@
                 x:Name="FundFund"
                 FontSize="14"
                 TextColor="Black"
-                Text="PlaceHolder">
+                Text="You Shouldn't be here.">
             </Label>
         </StackLayout>
     </ViewCell.View>

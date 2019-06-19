@@ -24,6 +24,7 @@
    
     <controls:AnimationPage.Content>
         <TableView
+            BackgroundColor="White"
             Intent="Settings" 
             HasUnevenRows="False"
             x:Name="tableView">

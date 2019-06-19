@@ -250,7 +250,6 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.Popup
 
         protected override void OnDisappearing()
         {
-            AddSnackPage.clicked = true;
             base.OnDisappearing();
         }
 
@@ -323,53 +322,23 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.Popup
         {
             SnackServiceManager snackService = new SnackServiceManager();
 
-            if (appoggioNome == null)
+            if (NomeSnack.Text == null || PrezzoSnack.Text == null || SnackPerBox.Text == null || ExpInDays.Text == null)
             {
-                await DisplayAlert("Fondo Merende", "Inserire un nome", "OK");
+                await DisplayAlert("Fondo Merende", "Compila tutti i campi", "OK");
             }
-     
-            if(appoggioPrezzo == null)
-            {
-                await DisplayAlert("Fondo Merende", "Inserire un prezzo", "OK");
-            }
-            
-            if(appoggioSnackPerScatola == null)
-            {
-                await DisplayAlert( "Fondo Merende","Inserire uno snack","OK");
-            }
-           
-            if (appoggioScadenzaInGiorni == null)
-            {
-                await DisplayAlert("Fondo Merende", "Inserire un giorno di scadenza", "OK");
-            }
-
             else
             {
                 var ans = await DisplayAlert("Fondo Merende", "Lo Snack è contabile?", "Si", "No");
                 if (ans)
                 {
-                    var result = await snackService.AddSnackAsync(appoggioNome, double.Parse(appoggioPrezzo), int.Parse(appoggioSnackPerScatola), int.Parse(appoggioScadenzaInGiorni), true);
-                    if (result.response.success)
-                    {
-
-                        await DisplayAlert("Fondo Merende", "SnackID: " + result.response.data.id, "Ok");
-                        Navigation.PopPopupAsync();
-                    }
-                    else
-                    {
-                        await DisplayAlert("Fondo Merende", "Snack già presente", "Ok");
-                    }
-                }
-                else
-                {
-                    var result = await snackService.AddSnackAsync(Nome.Text, double.Parse(Prezzo.Text), int.Parse(SnackPerScatola.Text), int.Parse(ScadenzaInGiorni.Text), false);
+                    var result = await snackService.AddSnackAsync(NomeSnack.Text, double.Parse(PrezzoSnack.Text), int.Parse(SnackPerBox.Text), int.Parse(ExpInDays.Text), true);
                     if (result != null)
                     {
                         if (result.response.success)
                         {
 
                             await DisplayAlert("Fondo Merende", "SnackID: " + result.response.data.id, "Ok");
-                            Navigation.PopPopupAsync();
+                            await Navigation.PopPopupAsync();
                         }
                         else
                         {
@@ -378,7 +347,28 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.Popup
                     }
                     else
                     {
+                        await PopupNavigation.Instance.PopAsync();
+                    }
+                }
+                else
+                {
+                    var result = await snackService.AddSnackAsync(NomeSnack.Text, double.Parse(PrezzoSnack.Text), int.Parse(SnackPerBox.Text), int.Parse(ExpInDays.Text), false);
+                    if (result != null)
+                    {
+                        if (result.response.success)
+                        {
 
+                            await DisplayAlert("Fondo Merende", "SnackID: " + result.response.data.id, "Ok");
+                            await Navigation.PopPopupAsync();
+                        }
+                        else
+                        {
+                            await DisplayAlert("Fondo Merende", "Snack già presente", "Ok");
+                        }
+                    }
+                    else
+                    {
+                        await PopupNavigation.Instance.PopAsync();
                     }
                 }
             }
