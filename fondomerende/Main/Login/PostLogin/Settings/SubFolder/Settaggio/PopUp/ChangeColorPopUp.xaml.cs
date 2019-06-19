@@ -18,7 +18,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Settaggio.PopUp
     public partial class ChangeColorPopUp : Rg.Plugins.Popup.Pages.PopupPage
     {
         string appoggio;
-        private double diametro = 40;
+        /*private double diametro = 40;
         private double larghezzaLinea = 3;
         private double altezzaLinea = 20;
 
@@ -29,7 +29,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Settaggio.PopUp
         Dictionary<string, string> dateByTime = new Dictionary<string, string>();
         Dictionary<string, string> mangione = new Dictionary<string, string>();
         Dictionary<Color, bool> colorReserved = new Dictionary<Color, bool>();
-        Dictionary<string, string> traduttore = new Dictionary<string, string>();
+        Dictionary<string, string> traduttore = new Dictionary<string, string>();*/
 
 
         public ChangeColorPopUp()
@@ -57,7 +57,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Settaggio.PopUp
         }
         private void PopupChangeColor()
         {
-            double Altezza = 200;
+            double Altezza = GetAltezzaPagina() / 1.2;
             double Larghezza = GetLarghezzaPagina() - 80;
             double banner = 50;
 
@@ -84,12 +84,19 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Settaggio.PopUp
                 BackgroundColor = Color.Orange,
             };
 
+            var fondomerende = new Label  //Label per Il titolo banner 
+            {
+                Text = "Fondo merende",
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                VerticalOptions = LayoutOptions.CenterAndExpand,
+                FontSize = 20,
+                FontAttributes = FontAttributes.Bold,
+                TextColor = Color.White,
+            };
 
-            string[] strSplit = cronologia[posizione].Split();
-            var fs = new FormattedString();
 
 
-            for (int i = 2; i < strSplit.Length; i++)
+            /*for (int i = 2; i < strSplit.Length; i++)
             {
 
                 if (i == 2)
@@ -109,11 +116,11 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Settaggio.PopUp
 
             var cerchio = new RoundedCornerView
             {
-                HeightRequest = diametro + ((diametro * sizeByName[strSplit[2]]) * 2),
-                WidthRequest = diametro + ((diametro * sizeByName[strSplit[2]]) * 2),
-                MinimumHeightRequest = diametro + ((diametro * sizeByName[strSplit[2]]) * 2),
-                MinimumWidthRequest = diametro + ((diametro * sizeByName[strSplit[2]]) * 2),
-                RoundedCornerRadius = diametro + ((diametro * sizeByName[strSplit[2]]) * 2),
+                HeightRequest = diametro + ((diametro  * 2),
+                WidthRequest = diametro + ((diametro *  2),
+                MinimumHeightRequest = diametro + ((diametro *  2),
+                MinimumWidthRequest = diametro + ((diametro *  2),
+                RoundedCornerRadius = diametro + ((diametro *  2),
                 Margin = new Thickness(3, 0, 0, 0),
                 BorderColor = Color.Black,
                 BorderWidth = 3,
@@ -121,16 +128,16 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Settaggio.PopUp
 
             var cerchioiOS = new RoundedCornerView
             {
-                HeightRequest = diametro + ((diametro * sizeByName[strSplit[2]]) * 2),
-                WidthRequest = diametro + ((diametro * sizeByName[strSplit[2]]) * 2),
-                MinimumHeightRequest = diametro + ((diametro * sizeByName[strSplit[2]]) * 2),
-                MinimumWidthRequest = diametro + ((diametro * sizeByName[strSplit[2]]) * 2),
-                RoundedCornerRadius = (diametro + ((diametro * sizeByName[strSplit[2]]) * 2)) / 2,
+                HeightRequest = diametro + ((diametro *  2),
+                WidthRequest = diametro + ((diametro *  2),
+                MinimumHeightRequest = diametro + ((diametro *  2),
+                MinimumWidthRequest = diametro + ((diametro * 2),
+                RoundedCornerRadius = (diametro + ((diametro *  2)) / 2,
                 Margin = new Thickness(3, 0, 0, 0),
-                BackgroundColor = colorByName[strSplit[2]],
+                BackgroundColor = colorByName,
                 BorderColor = Color.Black,
                 BorderWidth = 1,
-            };
+            };*/
 
 
 
@@ -288,11 +295,6 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Settaggio.PopUp
         {
             
 
-        }
-
-        private Task DisplayAlert(string v1, string v2, string v3)
-        {
-            throw new NotImplementedException();
         }
 
         private async void Discard_Clicked(object sender, EventArgs e)
