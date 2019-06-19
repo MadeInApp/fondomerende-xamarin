@@ -63,6 +63,7 @@
     <None Remove="image\macchinetta_minimalist.jpg" />
     <None Remove="image\pac-man.gif" />
     <None Remove="image\roller.png" />
+    <None Remove="image\settings-work-tool.png" />
     <None Remove="image\settings_icon_64x64.png" />
     <None Remove="image\shopping_bag_256x256.png" />
     <None Remove="image\shop_icon_256x256.png" />
@@ -123,6 +124,9 @@
     <EmbeddedResource Include="image\macchinetta_minimalist.jpg" />
     <EmbeddedResource Include="image\pac-man.gif" />
     <EmbeddedResource Include="image\roller.png" />
+    <EmbeddedResource Include="image\settings-work-tool.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="image\settings_icon_64x64.png" />
     <EmbeddedResource Include="image\shopping_bag_256x256.png" />
     <EmbeddedResource Include="image\shop_icon_256x256.png" />
@@ -233,6 +237,12 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Main\Login\LoadingPage\LoadingPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Main\Login\PostLogin\Settings\SubFolder\Settaggio\PopUp\ChangeColorPopUp.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Main\Login\PostLogin\Settings\SubFolder\Settaggio\View\ChangeColorViewCell.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="SettingsTableView.xaml">
