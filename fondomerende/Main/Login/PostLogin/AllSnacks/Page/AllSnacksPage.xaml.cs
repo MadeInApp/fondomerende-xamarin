@@ -411,13 +411,12 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
             if (ans == true)
             {
-               
                 await snackServiceManager.EatAsync((e.SelectedItem as SnackDataDTO).id, 1);
+                await GetSnacksMethod(true);
                 MessagingCenter.Send(new EditUserViewCell()
                 {
 
                 }, "RefreshUF");
-                await GetSnacksMethod(true);
             }
             else
             {
