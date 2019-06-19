@@ -13,6 +13,7 @@ using Rg.Plugins.Popup.Pages;
 using fondomerende.Main.Utilities;
 using Rg.Plugins.Popup.Extensions;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup;
+using Lottie.Forms;
 
 namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 {
@@ -138,19 +139,55 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                     };
 
 
+                    if (Check_Favourites(result.data.snacks[i].id))
+                    {
+                        var e ="fondomerende.image.star_fill";
+                    }
+                    else
+                    {
+                        var e ="fondomerende.image.star_empty";
+                    }
+
+
+                    var star = new Image
+                    {
+                        MinimumHeightRequest = 15,
+                        MinimumWidthRequest = 15,
+                        Margin = new Thickness(0, 20, 20, 0),
+                        Scale = 1,
+                        Source = ImageSource.FromResource(e),
+                        HorizontalOptions = LayoutOptions.EndAndExpand,
+                        VerticalOptions = LayoutOptions.StartAndExpand,
+                        BackgroundColor = Color.Red
+                    };
+
+                    var starAnimation = new AnimationView
+                    {
+                        Animation = "star.json",
+                        Loop = false,
+                        HorizontalOptions = LayoutOptions.FillAndExpand,
+                        VerticalOptions = LayoutOptions.FillAndExpand,
+                        AutoPlay = false,
+                        InputTransparent = true,
+                        IsVisible = false,
+                    };
+
+
                     var app = new StackLayout
                     {
                         Orientation = StackOrientation.Vertical,
                     };
-                    
+
+                    starAnimation.OnFinish += StopAnimation;
+
                     var tgr = new TapGestureRecognizer();
                     tgr.Tapped += Tgr_Tapped;
-
-
                     app.GestureRecognizers.Add(tgr);
 
                     var tgr2 = new TapGestureRecognizer();
-
+                    tgr2.NumberOfTapsRequired = 2;
+                    tgr2.Tapped += Tgr2_Tapped;
+                    app.GestureRecognizers.Add(tgr2);
 
                     imageButton.Clicked += OnImageButtonClicked;
                     StackLayout.Children.Add(imageButton);
@@ -160,6 +197,10 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                         case Device.Android:
 
                             BordiSmussatiAndroid.Children.Add(StackLayout);
+                            
+                            BordiSmussatiAndroid.Children.Add(starAnimation);
+                            app.Children.Add(star);
+
                             app.Children.Add(BordiSmussatiAndroid);
 
                             break;
@@ -167,6 +208,10 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                         default:
 
                             BordiSmussatiiOS.Children.Add(StackLayout);
+                            
+                            BordiSmussatiiOS.Children.Add(starAnimation);
+                            app.Children.Add(star);
+
                             app.Children.Add(BordiSmussatiiOS);
                             break;
                     }
@@ -178,10 +223,147 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             }
         }
 
+        private void StopAnimation(object sender, EventArgs e)
+        {
+            (sender as AnimationView).FadeTo(0, 300);
+        }
+
+        private bool Check_Favourites(int id)
+        {
+            string preferito = "";
+
+            string fav = Convert.ToString(id);
+            string getfav = Preferences.Get("Favourites", "");
+
+            string[] strSplit = getfav.Split(',');
+
+
+            for (int i = 0; i < strSplit.Length; i++)
+            {
+                
+                if(Convert.ToString(id) == strSplit[i])
+                { 
+                    preferito = strSplit[i];
+                    break;
+                }  
+            }
+            if (preferito != "") //se è gia presente
+            {
+                return false;
+            }
+            else //se non è presente
+            {
+                
+                return true;
+            }
+        }
+
+        private bool Check_FavouritesAndSet(int id)
+        {
+            string preferito = "";
+
+            string fav = Convert.ToString(id);
+            string getfav = Preferences.Get("Favourites", "");
+
+            string[] strSplit = getfav.Split(',');
+
+
+            for (int i = 0; i < strSplit.Length; i++)
+            {
+
+                if (Convert.ToString(id) == strSplit[i])
+                {
+                    preferito = strSplit[i];
+                    break;
+                }
+            }
+            if (preferito != "") //se è gia presente
+            {
+                string newpreferiti = "";
+
+                for (int i=0 ; i < strSplit.Length ; i++)
+                {
+                    if (strSplit[i] != fav)
+                    {
+                        newpreferiti += strSplit[i] + ",";
+                    }
+                }
+                Preferences.Set("Favourites",newpreferiti);
+                return false;
+            }
+            else //se non lo è
+            {
+                string concatena = fav + "," + getfav;
+                Preferences.Set("Favourites", concatena);
+                return true;
+            }
+        }
+        private void Tgr2_Tapped(object sender, EventArgs e)
+        {
+            SnackDataDTO index = null;
+            foreach (var item in (sender as StackLayout).Children)
+            {
+                if (item is Label)
+                {
+                    var snackName = (item as Label).Text;
+                    index = result.data.snacks.Single(obj => obj.friendly_name == snackName);
+                    break;
+                }
+
+            }
+            if (index != null)
+            {
+                string preferito="";
+
+                foreach(var app in (sender as StackLayout).Children)
+                {
+                    if(app is RoundedCornerView)
+                    {
+                        foreach (var an in (app as RoundedCornerView).Children)
+                        {
+                            if (an is AnimationView)
+                            {
+                                AnimationView ap = (AnimationView)an;
+
+                                //per le preferenze 
+                                if (Check_FavouritesAndSet(index.id))
+                                {
+                                    ap.IsVisible = true;
+                                    ap.FadeTo(1);
+                                    ap.Play();
+                                }
+                                else
+                                {
+                                    
+                                }
+
+                            }
+
+                            //if(an is Image)
+                            //{
+                            //    Image image = (Image)an;
+                            //    EmbeddedImage stella = new EmbeddedImage();
+                            //    if (Check_Favourites(index.id))
+                            //    {
+                            //        stella.Resource = "fondomerende.image.star_fill";
+                            //    }
+                            //    else
+                            //    {
+                            //        stella.Resource = "fondomerende.image.star_empty";
+                            //    }
+                               
+                               
+                            //    image.Source = stella.Resource;
+                            //}
+                        }      
+                    }
+                }
+            }
+        }
+
         private void Tgr_Tapped(object sender, EventArgs e)
         {
-               SnackDataDTO index = null;
-            Wallet.IsPlaying = true;
+            SnackDataDTO index = null;
             foreach (var item in (sender as StackLayout).Children)
             {
                 if(item is Label)
@@ -222,7 +404,6 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
         }
 
-
         private async void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)     //quando uno snack è tappato si apre un prompt in cui viene chiesto se lo si vuole mangiare
         {
             var ans = await DisplayAlert("Fondo Merende", "Vuoi davvero mangiare " + (e.SelectedItem as SnackDataDTO).friendly_name + "?", "Si", "No");
@@ -249,7 +430,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             if (ScrollView.IsVisible == true)
             {
                 Swap.Play();
-                Swap.Speed = -0.7f;
+                Swap.Speed = 0.7f;
 
                 ScrollView.IsVisible = false;
                 ListView.IsVisible = true;
@@ -267,11 +448,6 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
         private async void WalletClicked(object sender, EventArgs e)
         {
             await Navigation.PushPopupAsync(new DepositPopUp());
-        }
-
-        public void Timer()
-        {
-
         }
         private async void animation()
         {

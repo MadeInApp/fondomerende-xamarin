@@ -56,6 +56,8 @@
                 <lottie:AnimationView
                     Grid.Row="1"
                     Animation="data.json"
+                    HeightRequest="50"
+                    WidthRequest="50"
                     Loop="True"
                     HorizontalOptions="Center"
                     VerticalOptions="Center"

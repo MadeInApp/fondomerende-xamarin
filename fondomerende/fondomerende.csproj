@@ -21,7 +21,6 @@
 
   <ItemGroup>
     <None Remove="Animated\pac-man.gif" />
-    <None Remove="Animated\star.json" />
     <None Remove="image\add_icon_256x256.png" />
     <None Remove="image\add_snack_icon.png" />
     <None Remove="image\BackGradientArRos.jpg" />
