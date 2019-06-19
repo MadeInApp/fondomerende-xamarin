@@ -204,7 +204,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup
                 MessagingCenter.Send(new EditUserViewCell()
                 {
 
-                }, "Refresh");
+                }, "RefreshUF");
                 refresh = true;
             }
             base.OnDisappearing();

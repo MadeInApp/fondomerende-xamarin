@@ -416,7 +416,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                 MessagingCenter.Send(new EditUserViewCell()
                 {
 
-                }, "RefreshUserFunds");
+                }, "RefreshUF");
                 await GetSnacksMethod(true);
             }
             else
