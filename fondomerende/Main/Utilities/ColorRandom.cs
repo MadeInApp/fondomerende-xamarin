@@ -1,6 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Essentials;
+using fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.View;
 
 namespace fondomerende.Main.Utilities
 {
@@ -43,6 +44,8 @@ namespace fondomerende.Main.Utilities
             int numeroCasuale = random.Next(0, color.Length);
 
             Preferences.Set("Colore", GetHexString(color[numeroCasuale]));
+          
+
 
             return color[numeroCasuale];
         }

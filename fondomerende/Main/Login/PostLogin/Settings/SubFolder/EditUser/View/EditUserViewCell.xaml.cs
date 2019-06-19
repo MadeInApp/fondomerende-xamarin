@@ -9,6 +9,7 @@ using Xamarin.Forms.Xaml;
 using fondomerende.Main.Services.RESTServices;
 using fondomerende.Main.Manager;
 using fondomerende.Main.Utilities;
+using fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.View;
 
 namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View
 {
@@ -27,11 +28,12 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View
             Cerchio.BackgroundColor = Color.FromHex(Preferences.Get("Colore", "#CCCCCC"));
             CerchioRc.FillColor = Color.FromHex(Preferences.Get("Colore", "#CCCCCC"));
             CerchioRc.BackgroundColor = Color.FromHex(Preferences.Get("Colore", "#CCCCCC"));
-
             MessagingCenter.Subscribe<EditUserViewCell>(this, "Refresh", async (value) =>
             {
                 await GetUserFundsMethod();
             });
+
+
         }
 
 
@@ -58,6 +60,10 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View
             Cerchio.BackgroundColor = color;
             CerchioRc.FillColor = color;
             CerchioRc.BackgroundColor = color;
+            MessagingCenter.Send(new ChronologyViewCell()
+            {
+
+            }, "Refresh");
 
         }
 
