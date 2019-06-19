@@ -155,7 +155,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                         MinimumWidthRequest = 15,
                         Margin = new Thickness(0, 20, 20, 0),
                         Scale = 1,
-                        Source = ImageSource.FromResource(e),
+                   //     Source = ImageSource.FromResource(e),
                         HorizontalOptions = LayoutOptions.EndAndExpand,
                         VerticalOptions = LayoutOptions.StartAndExpand,
                         BackgroundColor = Color.Red
