@@ -23,8 +23,7 @@
 
             <StackLayout 
                 Orientation="Horizontal" 
-                MinimumHeightRequest="30"
-                BackgroundColor="Red">
+                MinimumHeightRequest="30">
                 
                 <Grid 
                     HorizontalOptions="FillAndExpand"
@@ -40,21 +39,21 @@
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
 
-
-
-                    <ImageButton 
-                        BackgroundColor="Blue"
+                    <forms:AnimationView
+                        Scale="2.5"
                         Grid.Row="0"
                         Grid.Column="0"
-                        CornerRadius="5"
-                        Margin="5"
-                        Aspect="AspectFill"
-                        HorizontalOptions="StartAndExpand" 
-                        VerticalOptions="StartAndExpand"
-                        Source="{local2:EmbeddedImage Resource=fondomerende.image.list_264x264.png}"
-                        Clicked="Swap_Clicked"
-                        x:Name="Swap">
-                    </ImageButton>
+                        HeightRequest="30"
+                        WidthRequest="30"
+                        Margin="10,0,0,0"
+                        OnClick="Swap_Clicked"
+                        Animation="listtogrid.json"
+                        Loop="False"
+                        x:Name="Swap"
+                        HorizontalOptions="StartAndExpand"
+                        VerticalOptions="CenterAndExpand"
+                        AutoPlay="False">
+                    </forms:AnimationView>
 
                     <ImageButton
                         Grid.Row="0"
@@ -63,24 +62,27 @@
                         VerticalOptions="Center"
                         Source="{local2:EmbeddedImage Resource=fondomerende.image.star_empty.png}"
                         Scale="{OnIdiom Phone=0.8, Tablet=3}"
-                        BackgroundColor="Green"
                         Clicked="favourite_Clicked"
                         x:Name="favourite"
+                        BackgroundColor="Transparent"
                         IsVisible="True">
                     </ImageButton>
 
 
                     <forms:AnimationView
+                        Scale="3"
                         Grid.Row="0"
                         Grid.Column="2"
+                        HeightRequest="25"
+                        WidthRequest="25"
+                        Margin="0,0,10,0"
                         x:Name="Wallet"
                         OnClick="WalletClicked"
-                        Animation="star.json"
-                        Loop="True"
+                        Animation="Wallet.json"
+                        Loop="False"
                         HorizontalOptions="EndAndExpand"
                         VerticalOptions="CenterAndExpand"
-                        AutoPlay="True"
-                        BackgroundColor="Aqua">
+                        AutoPlay="False">
                     </forms:AnimationView>
 
                 </Grid>
@@ -114,6 +116,7 @@
             </StackLayout>
 
             <StackLayout
+                VerticalOptions="Center"
                     BackgroundColor="#FFF8EB"
                     x:Name="Cane">
                 <Grid
@@ -129,6 +132,7 @@
                         VerticalOptions="CenterAndExpand">
                     </Image>-->
                     <ScrollView 
+                        VerticalOptions="StartAndExpand"
                         Grid.Column="0"
                         Grid.Row="0"
                         IsVisible="True" 

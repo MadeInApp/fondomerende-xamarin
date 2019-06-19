@@ -12,6 +12,7 @@ using Xamarin.Forms.Xaml;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View;
 using Xamarin.Forms.Internals;
 using fondomerende.Main.Utilities;
+using fondomerende.Main.Login.PostLogin.AllSnack.Page;
 
 namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup
 {
@@ -271,7 +272,12 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup
                 {
                     if (resultDep.response.success)
                     {
+                        MessagingCenter.Send(new AllSnacksPage()
+                        {
+
+                        }, "Animation");
                         await Navigation.PopPopupAsync();
+                        
                     }
                     else if (resultDep.response.message == "Execution error in UPDATE users_funds SET amount=amount+? WHERE user_id=?. Out of range value for column 'amount' at row 1.")
                     {
