@@ -138,15 +138,15 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                         FontSize = 12,
                         InputTransparent = true,
                     };
-
+                    string e;
 
                     if (Check_Favourites(result.data.snacks[i].id))
                     {
-                        var e ="fondomerende.image.star_fill";
+                        e ="fondomerende.image.star_fill";
                     }
                     else
                     {
-                        var e ="fondomerende.image.star_empty";
+                        e ="fondomerende.image.star_empty";
                     }
 
 
