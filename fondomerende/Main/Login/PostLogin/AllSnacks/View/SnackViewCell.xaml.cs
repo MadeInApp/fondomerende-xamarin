@@ -22,11 +22,12 @@ namespace fondomerende.Main.Login.PostLogin.AllSnacks.View
             pacMananimation = new AnimationView
             {
                 Animation = "pacman0.6.json",
-                Scale = 1.3,
+                Scale = 1.5,
                 Loop = true,
-                HorizontalOptions = LayoutOptions.StartAndExpand,
+                HorizontalOptions = LayoutOptions.FillAndExpand,
                 VerticalOptions = LayoutOptions.FillAndExpand,
                 AutoPlay = true,
+                HardwareAcceleration = true,
                 InputTransparent = true,
                 IsVisible = false,
                 Speed = 4,
@@ -43,13 +44,12 @@ namespace fondomerende.Main.Login.PostLogin.AllSnacks.View
         private async void pacManAnimate()
         {
             var mainDisplayInfo = DeviceDisplay.MainDisplayInfo;
-            
             pacMananimation.IsVisible = true;
-            pacMananimation.Margin = new Thickness(-400, 0, 0, 0);
+            pacMananimation.Margin = new Thickness(-mainDisplayInfo.Width/0.8, 0, 0, 0);
 
             await Task.WhenAny<bool>
             (
-             pacMananimation.TranslateTo(mainDisplayInfo.Width, 0, 5000)
+             pacMananimation.TranslateTo(mainDisplayInfo.Width/0.8, 0, Convert.ToUInt32((mainDisplayInfo.Width/0.8) / 0.096))
             );
 
         }

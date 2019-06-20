@@ -30,6 +30,7 @@ namespace fondomerende.Main.Login.PostLogin
         public MainPage()
         {
             InitializeComponent();
+   
             for (int i = 0; i < 10; i++)
             {
                 
