@@ -54,7 +54,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.Popup
         }
         private void PopupEditUserInfo()
         {
-            double Altezza = GetAltezzaPagina() / 1.2;
+            double Altezza = GetAltezzaPagina() / 1.65;
             double Larghezza = GetLarghezzaPagina() - 40;
             double banner = 50;
 
@@ -101,7 +101,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.Popup
             //variabili in line entry//
             entryUsername = new LineEntry
             {
-                
+                Margin = new Thickness(0, -60, 0, 0),
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 WidthRequest = 250,
                 IsSpellCheckEnabled = false,
@@ -111,7 +111,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.Popup
             };
             entryFriendlyName = new LineEntry
             {
-                
+                Margin = new Thickness(0, -30, 0, 0),
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 WidthRequest = 250,
                 IsSpellCheckEnabled = false,
@@ -121,6 +121,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.Popup
             };
             entryNewPassword = new LineEntry
             {
+                Margin = new Thickness(0, -30, 0, 0),
                 Keyboard = Keyboard.Default,
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 WidthRequest = 250,
@@ -131,8 +132,8 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.Popup
 
 
             var stackBody = new StackLayout  //stack principale dove è contenuto l'interno di tutto (tranne round che stonda)
-
             {
+                Spacing= 30,
                 HeightRequest = Altezza,
                 WidthRequest = Larghezza,
                 BackgroundColor = Color.White,
