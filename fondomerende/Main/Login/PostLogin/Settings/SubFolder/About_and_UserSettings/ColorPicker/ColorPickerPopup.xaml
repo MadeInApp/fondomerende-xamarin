@@ -8,38 +8,43 @@
             x:Class="ColorPicker.ColorPickerPopup"
             xmlns:local="clr-namespace:fondomerende.Main.Utilities">
 
+    
     <local:RoundedCornerView
                 RoundedCornerRadius = "20"
                 HorizontalOptions = "CenterAndExpand"
                 VerticalOptions = "Center"
-                HeightRequest = "440"
+                HeightRequest = "430"
                 WidthRequest = "250">
+        
         <StackLayout>
-
             <StackLayout 
                         VerticalOptions="Center"
                         HorizontalOptions="Center"
                         BackgroundColor="#f29e17"
                         WidthRequest="250"
                         HeightRequest="50"
-                        Spacing="0">
+                        Margin="0,0,0,-10">
 
-                <Label Text="Fondo Merende"
+                <Label 
+                           Text="Fondo Merende"
+                           Margin="0,5,0,0"
                            HorizontalOptions="Center"
                            VerticalOptions="Center"
                            BackgroundColor="#f29e17"
                            FontSize="20"
                            FontAttributes="Bold"
-                           TextColor="White">
+                           TextColor="White"
+                           >
                 </Label>
             </StackLayout>
 
-            <Frame BackgroundColor="White" CornerRadius="0">
+
+            <Frame BackgroundColor="White" >
 
                 <StackLayout>
                 
                 
-                    <Grid BackgroundColor="White" HeightRequest="390" WidthRequest="250">
+                    <Grid BackgroundColor="White" HeightRequest="430" WidthRequest="250">
 
                         <skia:SKCanvasView x:Name="canvasView" PaintSurface="CanvasView_OnPaintSurface"/>
 
