@@ -16,7 +16,6 @@
              xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
              xmlns:local1="clr-namespace:fondomerende.Main.Login.PostLogin.Settings.SubFolder.Settaggio.View"
              x:Class="fondomerende.Main.Login.PostLogin.Settings.SubFolder.About_and_UserSettings.Page.AboutPage"
-             BackgroundColor="White"
              Title="Impostazioni">
   <!--Pages can be added as references or inline-->
     

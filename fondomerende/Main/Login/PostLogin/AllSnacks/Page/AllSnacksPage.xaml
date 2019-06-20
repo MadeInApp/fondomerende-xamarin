@@ -23,8 +23,8 @@
 
             <StackLayout 
                 Orientation="Horizontal" 
-                MinimumHeightRequest="50">
-                
+                MinimumHeightRequest="40">
+
                 <Grid 
                     HorizontalOptions="FillAndExpand"
                     VerticalOptions="CenterAndExpand">
@@ -40,14 +40,14 @@
                     </Grid.RowDefinitions>
 
                     <forms:AnimationView
-                        Scale="2.5"
+                        Scale="3"
                         Grid.Row="0"
                         Grid.Column="0"
                         HeightRequest="40"
                         WidthRequest="40"
                         Margin="0,0,0,0"
                         OnClick="Swap_Clicked"
-                        Animation="listtogrid.json"
+                        Animation="list2grid.json"
                         Loop="False"
                         x:Name="Swap"
                         HorizontalOptions="StartAndExpand"
@@ -73,19 +73,21 @@
 
 
                     <forms:AnimationView
-                        Scale="2"
+                        Scale="2.5"
                         Grid.Row="0"
                         Grid.Column="2"
+                        MinimumHeightRequest="40"
+                        MinimumWidthRequest="40"
                         HeightRequest="40"
                         WidthRequest="40"
-                        Margin="0,0,10,0"
+                        Margin="0,0,10,12"
                         x:Name="Wallet"
                         OnClick="WalletClicked"
                         Animation="Wallet.json"
                         Loop="False"
                         HorizontalOptions="EndAndExpand"
-                        VerticalOptions="CenterAndExpand"
-                        AutoPlay="False">
+                        VerticalOptions="Center"
+                        AutoPlay="True">
                     </forms:AnimationView>
 
                 </Grid>

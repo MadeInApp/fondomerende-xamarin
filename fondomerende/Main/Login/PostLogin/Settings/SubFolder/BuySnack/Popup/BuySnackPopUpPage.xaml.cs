@@ -83,7 +83,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
             line = new LineEntry
             {
 
-                Placeholder = "Quanti snck vuoi acquistare?",
+                Placeholder = "Quanti snack vuoi acquistare?",
                 Keyboard = Keyboard.Numeric,
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 HorizontalTextAlignment = TextAlignment.Center,

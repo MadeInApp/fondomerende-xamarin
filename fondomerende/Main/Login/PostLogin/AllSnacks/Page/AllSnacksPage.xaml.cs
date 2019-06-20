@@ -74,7 +74,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
         private void WalletAnimation()
         {
             Wallet.Play();
-            Wallet.Speed = 3f;
+            Wallet.Speed = 1f;
         }
 
 
@@ -193,7 +193,6 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                     tgr2.Tapped += Tgr2_Tapped;
                     app.GestureRecognizers.Add(tgr2);
 
-                    imageButton.Clicked += OnImageButtonClicked;
                     StackLayout.Children.Add(imageButton);
 
                     switch (Device.RuntimePlatform)
@@ -303,6 +302,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                 return true;
             }
         }
+
         private void Tgr2_Tapped(object sender, EventArgs e)
         {
             SnackDataDTO index = null;
@@ -387,14 +387,6 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
         }
 
-        private async void OnImageButtonClicked(object sender, EventArgs e)
-        {
-            var a = sender;
-           // var ciao = sender.LoadFromXaml<>;
-            //string section = Convert.ToString(Column0.Children);
-            // section.RemoveAt(1);
-        }
-
         private async void favourite_Clicked(object sender, EventArgs e)
         {
             switchStar = !switchStar;
@@ -438,6 +430,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             await StackSnack.FadeTo(0, 0);
             await StackSnack.FadeTo(1, 1400);
         }
+
         private void Swap_Clicked(object sender, EventArgs e)
         {
             if (ScrollView.IsVisible == true)
@@ -462,6 +455,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
         {
             await Navigation.PushPopupAsync(new DepositPopUp());
         }
+
         private async void animation()
         {
             EmbeddedImage e = new EmbeddedImage();
@@ -472,7 +466,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
             var paolo = new Image   //il cupcake paolo
             {
-                Source = e.Resource,
+                Source = ImageSource.FromResource("fondomerende.image.cup_cake_128x128.png"),
                 Opacity = 0.6,
                 Scale = 1,
             };
@@ -506,12 +500,12 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
         }
 
-
-       private void SetFavourite(object sender,EventArgs e)
+        private void SetFavourite(object sender,EventArgs e)
        {
             //if(Preferences.ContainsKey("Favourite")) => Preferences.Add("Favourite",); ;
             //Preferences.Add("",);
        }
+
         public async void Animazioni_infinite(Random randomWidth, double ScreenWidth,double ScreenHeight)
         {
             double casual;
