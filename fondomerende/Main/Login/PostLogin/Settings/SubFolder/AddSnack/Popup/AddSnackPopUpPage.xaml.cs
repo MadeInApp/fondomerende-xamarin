@@ -103,7 +103,6 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.Popup
             };
             PrezzoSnack = new LineEntry
             {
-                MaxLength = 5,
                 Keyboard = Keyboard.Numeric,
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 WidthRequest = 250,
@@ -219,9 +218,19 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.Popup
         {
             if (PrezzoSnack.CursorPosition == 1 && IsDone)
             {
-                PrezzoSnack.Text = PrezzoSnack.Text + ",";
-                IsDone = false;
+                if (PrezzoSnack.Text.Substring(1, 1) == ",")
+                {
+                    PrezzoSnack.MaxLength = 4;
+                    IsDone = false;
+                }
+                else
+                {
+                    PrezzoSnack.MaxLength = 5;
+                    PrezzoSnack.Text = PrezzoSnack.Text + ",";
+                    IsDone = false;
+                }
             }
+
             if (PrezzoSnack.CursorPosition == 0)
             {
                 IsDone = true;
