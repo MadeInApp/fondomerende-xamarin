@@ -22,11 +22,12 @@ namespace fondomerende.Main.Login.PostLogin.AllSnacks.View
             pacMananimation = new AnimationView
             {
                 Animation = "pacman0.6.json",
-                Scale = 1.3,
+                Scale = 1.5,
                 Loop = true,
                 HorizontalOptions = LayoutOptions.StartAndExpand,
                 VerticalOptions = LayoutOptions.FillAndExpand,
                 AutoPlay = true,
+                HardwareAcceleration = true,
                 InputTransparent = true,
                 IsVisible = false,
                 Speed = 4,
