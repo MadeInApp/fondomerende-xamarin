@@ -23,7 +23,7 @@
 
             <StackLayout 
                 Orientation="Horizontal" 
-                MinimumHeightRequest="30">
+                MinimumHeightRequest="50">
                 
                 <Grid 
                     HorizontalOptions="FillAndExpand"
@@ -43,9 +43,9 @@
                         Scale="2.5"
                         Grid.Row="0"
                         Grid.Column="0"
-                        HeightRequest="30"
-                        WidthRequest="30"
-                        Margin="10,0,0,0"
+                        HeightRequest="40"
+                        WidthRequest="40"
+                        Margin="0,0,0,0"
                         OnClick="Swap_Clicked"
                         Animation="listtogrid.json"
                         Loop="False"
@@ -58,10 +58,13 @@
                     <ImageButton
                         Grid.Row="0"
                         Grid.Column="1"
+                        HeightRequest="40"
+                        WidthRequest="40"
+                        Aspect="Fill"
                         HorizontalOptions="CenterAndExpand" 
-                        VerticalOptions="Center"
+                        VerticalOptions="CenterAndExpand"
                         Source="{local2:EmbeddedImage Resource=fondomerende.image.star_empty.png}"
-                        Scale="{OnIdiom Phone=0.8, Tablet=3}"
+                        Scale="{OnIdiom Phone=0.9, Tablet=3}"
                         Clicked="favourite_Clicked"
                         x:Name="favourite"
                         BackgroundColor="Transparent"
@@ -70,11 +73,11 @@
 
 
                     <forms:AnimationView
-                        Scale="3"
+                        Scale="2"
                         Grid.Row="0"
                         Grid.Column="2"
-                        HeightRequest="25"
-                        WidthRequest="25"
+                        HeightRequest="40"
+                        WidthRequest="40"
                         Margin="0,0,10,0"
                         x:Name="Wallet"
                         OnClick="WalletClicked"
@@ -137,7 +140,7 @@
                         Grid.Row="0"
                         IsVisible="True" 
                         x:Name="ScrollView"  
-                        Padding="0,0,0,10">
+                        Padding="0,15,0,10">
 
                         <Grid HorizontalOptions="CenterAndExpand"
                             x:Name="GridView" 
