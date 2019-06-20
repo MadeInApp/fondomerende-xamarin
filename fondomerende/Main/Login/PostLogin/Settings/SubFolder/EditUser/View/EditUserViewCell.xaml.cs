@@ -14,6 +14,7 @@ using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.View;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.View;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.View;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.LogOut.View;
+using fondomerende.Main.Services.Models;
 
 namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View
 {
@@ -32,12 +33,16 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View
             Cerchio.BackgroundColor = Color.FromHex(Preferences.Get("Colore", "#CCCCCC"));
             CerchioRc.FillColor = Color.FromHex(Preferences.Get("Colore", "#CCCCCC"));
             CerchioRc.BackgroundColor = Color.FromHex(Preferences.Get("Colore", "#CCCCCC"));
+
+
             MessagingCenter.Subscribe<EditUserViewCell>(this, "Refresh", async (value) =>
             {
                 Cerchio.BackgroundColor = Color.FromHex(Preferences.Get("Colore", "#CCCCCC"));
                 CerchioRc.FillColor = Color.FromHex(Preferences.Get("Colore", "#CCCCCC"));
                 CerchioRc.BackgroundColor = Color.FromHex(Preferences.Get("Colore", "#CCCCCC"));
             });
+
+
 
             MessagingCenter.Subscribe<EditUserViewCell>(this, "RefreshUF", async (value) =>
             {
@@ -119,7 +124,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View
             {
 
             }
-            return result.response.message;
+            return null;
         }
     }
 }

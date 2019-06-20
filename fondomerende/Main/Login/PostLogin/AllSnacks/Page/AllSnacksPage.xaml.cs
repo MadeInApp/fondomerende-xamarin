@@ -14,7 +14,6 @@ using fondomerende.Main.Utilities;
 using Rg.Plugins.Popup.Extensions;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup;
 using Lottie.Forms;
-using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View;
 
 namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 {
@@ -87,7 +86,9 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                 {
 
                     ColorRandom c = new ColorRandom();
-                    int box = 140;
+                    var mainDisplayInfo = DeviceDisplay.MainDisplayInfo;
+                    double COSTANTE_BORDI = 10.28;
+                    double box = Convert.ToInt32(mainDisplayInfo.Width / COSTANTE_BORDI);
 
                     var imageButton = new ImageButton
                     {
@@ -138,28 +139,27 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                         FontSize = 12,
                         InputTransparent = true,
                     };
-                    string e;
 
+                    string e;
                     if (Check_Favourites(result.data.snacks[i].id))
                     {
-                        e ="fondomerende.image.star_fill";
+                        e = "fondomerende.image.star_empty.png";
                     }
                     else
                     {
-                        e ="fondomerende.image.star_empty";
+                        e = "fondomerende.image.star_fill.png";
                     }
-
 
                     var star = new Image
                     {
-                        MinimumHeightRequest = 15,
-                        MinimumWidthRequest = 15,
-                        Margin = new Thickness(0, 20, 20, 0),
+                        HeightRequest = 20,
+                        WidthRequest = 20,
+                        Margin = new Thickness(0, 15, 15, 0),
                         Scale = 1,
-                        //Source = ImageSource.FromResource(e),
+                        Aspect = Aspect.Fill,
+                        Source = ImageSource.FromResource(e),
                         HorizontalOptions = LayoutOptions.EndAndExpand,
                         VerticalOptions = LayoutOptions.StartAndExpand,
-                        BackgroundColor = Color.Red
                     };
 
                     var starAnimation = new AnimationView
@@ -200,7 +200,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                             BordiSmussatiAndroid.Children.Add(StackLayout);
                             
                             BordiSmussatiAndroid.Children.Add(starAnimation);
-                            app.Children.Add(star);
+                            BordiSmussatiAndroid.Children.Add(star);
 
                             app.Children.Add(BordiSmussatiAndroid);
 
@@ -211,7 +211,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                             BordiSmussatiiOS.Children.Add(StackLayout);
                             
                             BordiSmussatiiOS.Children.Add(starAnimation);
-                            app.Children.Add(star);
+                            BordiSmussatiiOS.Children.Add(star);
 
                             app.Children.Add(BordiSmussatiiOS);
                             break;
@@ -340,22 +340,22 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
                             }
 
-                            //if(an is Image)
-                            //{
-                            //    Image image = (Image)an;
-                            //    EmbeddedImage stella = new EmbeddedImage();
-                            //    if (Check_Favourites(index.id))
-                            //    {
-                            //        stella.Resource = "fondomerende.image.star_fill";
-                            //    }
-                            //    else
-                            //    {
-                            //        stella.Resource = "fondomerende.image.star_empty";
-                            //    }
-                               
-                               
-                            //    image.Source = stella.Resource;
-                            //}
+                            if (an is Image)
+                            {
+                                Image image = (Image)an;
+                                string a="";
+                                if (Check_Favourites(index.id))
+                                {
+                                    a = "fondomerende.image.star_empty.png";
+                                }
+                                else
+                                {
+                                    a = "fondomerende.image.star_fill.png";
+                                }
+
+
+                                image.Source = ImageSource.FromResource(a);
+                            }
                         }      
                     }
                 }
@@ -411,13 +411,12 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
             if (ans == true)
             {
-               
-                await snackServiceManager.BuySnackAsync((e.SelectedItem as SnackDataDTO).id, 1);
+                await snackServiceManager.EatAsync((e.SelectedItem as SnackDataDTO).id, 1);
+                await GetSnacksMethod(true);
                 MessagingCenter.Send(new EditUserViewCell()
                 {
 
                 }, "RefreshUF");
-                await GetSnacksMethod(true);
             }
             else
             {
@@ -496,15 +495,6 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
             //}
 
-        }
-
-        public void Instagram()
-        {
-            var tapGestureRecognizer = new TapGestureRecognizer
-            {
-                NumberOfTapsRequired=2
-            };
-            tapGestureRecognizer.Tapped += SetFavourite;
         }
 
 

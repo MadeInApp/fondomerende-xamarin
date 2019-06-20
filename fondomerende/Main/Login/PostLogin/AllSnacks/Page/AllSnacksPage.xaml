@@ -24,7 +24,7 @@
             <StackLayout 
                 Orientation="Horizontal" 
                 MinimumHeightRequest="30">
-                
+
                 <Grid 
                     HorizontalOptions="FillAndExpand"
                     VerticalOptions="CenterAndExpand">
@@ -86,7 +86,6 @@
                     </forms:AnimationView>
 
                 </Grid>
-                
             </StackLayout>
 
             <StackLayout
@@ -95,7 +94,6 @@
                     x:Name="Cane">
                 <Grid
                     x:Name="griglia">
-                    
                     <ScrollView 
                         VerticalOptions="StartAndExpand"
                         Grid.Column="0"
@@ -137,6 +135,7 @@
                     </ScrollView>
                 </Grid>
             </StackLayout>
+
 
 
             <ListView

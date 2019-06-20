@@ -8,7 +8,7 @@
   <ViewCell.View>
         <StackLayout
             Orientation="Horizontal"
-            HorizontalOptions="FillAndExpand">
+            HorizontalOptions="FillAndExpand" x:Name="Stack">
             <Image
                 Margin="20,0,0,0"
                 x:Name="GoogleImage_View"
