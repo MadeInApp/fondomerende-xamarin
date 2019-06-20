@@ -13,6 +13,7 @@ using fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup;
 using fondomerende.Main.Utilities;
 using FormsControls.Base;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View;
+using Lottie.Forms;
 
 namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page
 {
@@ -20,6 +21,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page
     public partial class BuySnackListPage : AnimationPage
     {
         bool tgrBool;
+        int idsnack = 0;
         public static int[] SelectedSnackIDArr;
         public static int SelectedSnackID;
         string snackName = null;
@@ -51,10 +53,10 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page
                     NavigationPage.SetHasNavigationBar(this, true);                             //
                     break;                                                                      //
             }                                                                                   //
-
-            
-
         }
+
+
+       
 
         public async Task GetSnacksMethod(bool Loaded)     //ottiene la lista degli snack e la applica alla ListView
         {
@@ -169,18 +171,25 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page
         }
 
 
-        private void Tgr_Tapped(object sender, EventArgs e)
+        private async void Tgr_Tapped(object sender, EventArgs e)
         {
+            var result = await SnackService.GetToBuySnacksAsync();
             ToBuyDataDTO index = null;
             foreach (var item in (sender as StackLayout).Children)
             {
                 if (item is Label)
                 {
                     snackName = (item as Label).Text;
-                    index = result.data.snacks.Single(obj => obj.friendly_name == snackName);
-                    return;
+                    foreach(var i in result.data.snacks)
+                    {
+                        if (i.friendly_name == snackName)
+                        {
+                            idsnack = i.id;
+                            index = i;
+                            break;
+                        }    
+                    } 
                 }
-
             }
             if (index != null)
             {
@@ -195,8 +204,8 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page
         {
             if(tgrBool)
             {
-                var resGetSnack = await SnackService.GetSnackAsync(snackName);
-                SelectedSnackID = resGetSnack.data.snack.id;
+                tgrBool = false;
+                SelectedSnackID = idsnack;
             }
             else
             {
@@ -205,7 +214,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page
             }
             await Navigation.PushPopupAsync(new BuySnackPopUpPage());
 
-        }*/
+        }
 
         private void Swap_Clicked(object sender, EventArgs e)
         {
