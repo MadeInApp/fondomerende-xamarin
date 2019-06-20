@@ -13,9 +13,9 @@
                 x:Name="SettingIcon" 
                 VerticalOptions="Center" 
                 HorizontalOptions="Start"
-                Scale="0.8"
+                Scale="0.6"
                 Margin="5,0,5,0"
-                Source="{local:EmbeddedImage Resource=fondomerende.image.settings_icon_64x64.png}">
+                Source="{local:EmbeddedImage Resource=fondomerende.image.paint-palette.png}">
             </Image>
             <Label
                 HorizontalOptions="StartAndExpand"

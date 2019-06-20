@@ -14,6 +14,7 @@ using fondomerende.Main.Utilities;
 using Rg.Plugins.Popup.Extensions;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup;
 using Lottie.Forms;
+using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View;
 
 namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 {
@@ -155,7 +156,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                         MinimumWidthRequest = 15,
                         Margin = new Thickness(0, 20, 20, 0),
                         Scale = 1,
-                        Source = ImageSource.FromResource(e),
+                        //Source = ImageSource.FromResource(e),
                         HorizontalOptions = LayoutOptions.EndAndExpand,
                         VerticalOptions = LayoutOptions.StartAndExpand,
                         BackgroundColor = Color.Red
@@ -412,6 +413,10 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             {
                
                 await snackServiceManager.EatAsync((e.SelectedItem as SnackDataDTO).id, 1);
+                MessagingCenter.Send(new EditUserViewCell()
+                {
+
+                }, "RefreshUF");
                 await GetSnacksMethod(true);
             }
             else

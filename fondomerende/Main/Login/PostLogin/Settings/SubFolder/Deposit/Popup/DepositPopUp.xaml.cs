@@ -13,6 +13,7 @@ using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View;
 using Xamarin.Forms.Internals;
 using fondomerende.Main.Utilities;
 using fondomerende.Main.Login.PostLogin.AllSnack.Page;
+using Java.Util.Prefs;
 
 namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup
 {
@@ -20,10 +21,12 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup
 
     public partial class DepositPopUp : Rg.Plugins.Popup.Pages.PopupPage
     {
-        bool refresh;
+        bool refresh = true;
         bool IsDone;
         LineEntry entry;
         string appoggio;
+        private object inizialeLabel_iOS;
+
         public DepositPopUp()
         {
             InitializeComponent();
@@ -161,13 +164,25 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup
 
         public void Entrata(object sender, TextChangedEventArgs e)
         {
-             
-            if (entry.CursorPosition == 1 && IsDone)
+            
+            
+
+            if (entry.CursorPosition == 1 &&  IsDone)
             {
-                entry.Text = entry.Text + ",";
-                IsDone = false;
+                if (entry.Text.Substring(1, 1) == ",")
+                {
+                    entry.MaxLength = 4;
+                    IsDone = false;
+                }
+                else
+                {
+                    
+                    entry.Text = entry.Text + ",";
+                    IsDone = false;
+                }
             }
-            if(entry.CursorPosition == 0)
+            
+            if(entry.CursorPosition == 0 )
             {
                 IsDone = true;
             }
@@ -189,7 +204,8 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup
                 MessagingCenter.Send(new EditUserViewCell()
                 {
 
-                }, "Refresh");
+                }, "RefreshUF");
+                refresh = true;
             }
             base.OnDisappearing();
         }
@@ -280,6 +296,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup
                         {
 
                         }, "Animation");
+                        refresh = true;
                         await Navigation.PopPopupAsync();
                         
                     }
