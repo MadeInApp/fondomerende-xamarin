@@ -54,7 +54,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.Popup
         }
         private void PopupEditUserInfo()
         {
-            double Altezza = GetAltezzaPagina() / 1.65;
+            double Altezza = GetAltezzaPagina() / 1.8;
             double Larghezza = GetLarghezzaPagina() - 40;
             double banner = 50;
 
@@ -133,7 +133,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.Popup
 
             var stackBody = new StackLayout  //stack principale dove è contenuto l'interno di tutto (tranne round che stonda)
             {
-                Spacing= 30,
+                Spacing= 45,
                 HeightRequest = Altezza,
                 WidthRequest = Larghezza,
                 BackgroundColor = Color.White,
