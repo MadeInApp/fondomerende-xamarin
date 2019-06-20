@@ -6,20 +6,29 @@
              mc:Ignorable="d"
              x:Class="fondomerende.Main.Login.PostLogin.AllSnacks.View.SnackViewCell">
   <ViewCell.View>
-        <StackLayout
-            Orientation="Horizontal"
-            HorizontalOptions="FillAndExpand" x:Name="Stack">
-            <Image
-                Margin="20,0,0,0"
-                x:Name="GoogleImage_View"
-                WidthRequest="40"
-                HeightRequest="40"
-                Source="{Binding name, StringFormat='http://192.168.0.175:8888/fondomerende/public/getphoto.php?name={0}'}">
-            </Image>
+        <Grid x:Name="Grid">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50" />
+            </Grid.RowDefinitions>
+            
             <StackLayout
-                HorizontalOptions="StartAndExpand"
-                VerticalOptions="CenterAndExpand"
-                Padding="15,0,0,0">
+                Orientation="Horizontal"
+                HorizontalOptions="FillAndExpand" 
+                Grid.Row="0"
+                HeightRequest="50"
+                x:Name="Stack">
+                <Image
+                    Margin="20,0,0,0"
+                    x:Name="GoogleImage_View"
+                    WidthRequest="40"
+                    HeightRequest="40"
+                    Source="{Binding name, StringFormat='http://192.168.0.175:8888/fondomerende/public/getphoto.php?name={0}'}">
+                </Image>
+                <StackLayout
+                    HorizontalOptions="StartAndExpand"
+                    VerticalOptions="CenterAndExpand"
+                    Padding="15,0,0,0">
                     <Label
                         x:Name="Nome"
                         Text="{Binding friendly_name}">
@@ -32,15 +41,16 @@
                         Opacity="0.6">
                     </Label>
                 </StackLayout>
-            <StackLayout 
-                Padding="0,0,15,0"
-                HorizontalOptions="EndAndExpand"
-                VerticalOptions="Center">
-                <Label
-                    x:Name="qta"
-                    Text="{Binding quantity}">
-                </Label>
+                <StackLayout 
+                    Padding="0,0,15,0"
+                    HorizontalOptions="EndAndExpand"
+                    VerticalOptions="Center">
+                    <Label
+                        x:Name="qta"
+                        Text="{Binding quantity}">
+                    </Label>
+                </StackLayout>
             </StackLayout>
-        </StackLayout>
-  </ViewCell.View>
+        </Grid>
+    </ViewCell.View>
 </ViewCell>

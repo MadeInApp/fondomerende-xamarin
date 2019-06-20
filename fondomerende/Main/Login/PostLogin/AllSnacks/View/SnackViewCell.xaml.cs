@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -22,26 +22,36 @@ namespace fondomerende.Main.Login.PostLogin.AllSnacks.View
             pacMananimation = new AnimationView
             {
                 Animation = "pacman0.6.json",
+                Scale = 1.5,
                 Loop = true,
                 HorizontalOptions = LayoutOptions.StartAndExpand,
                 VerticalOptions = LayoutOptions.FillAndExpand,
                 AutoPlay = true,
+                HardwareAcceleration = true,
                 InputTransparent = true,
-                IsVisible = true,
-                Margin = new Thickness(0,0,0,0)
+                IsVisible = false,
+                Speed = 4,
             };
 
-            PacManTraslate();
 
+            Grid.Children.Add(pacMananimation, 0, 0);
+            MessagingCenter.Subscribe<SnackViewCell>(this, "Animate", async (value) =>
+            {
+               pacManAnimate();
+            });
         }
 
-        async void PacManTraslate()
+        private async void pacManAnimate()
         {
-           Stack.Children.Add(pacMananimation);
-           await Task.WhenAny<bool>
+            var mainDisplayInfo = DeviceDisplay.MainDisplayInfo;
+            pacMananimation.IsVisible = true;
+            pacMananimation.Margin = new Thickness(-mainDisplayInfo.Width, 0, 0, 0);
+
+            await Task.WhenAny<bool>
             (
-             pacMananimation.TranslateTo(150,0, 10000)
+             pacMananimation.TranslateTo(mainDisplayInfo.Width, 0, Convert.ToUInt32(mainDisplayInfo.Width / 0.096))
             );
+
         }
     }
 }
