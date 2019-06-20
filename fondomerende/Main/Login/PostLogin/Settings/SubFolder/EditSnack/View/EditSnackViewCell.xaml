@@ -35,14 +35,6 @@
                     Source="{local:EmbeddedImage Resource=fondomerende.image.Edit_snack_icon_256x256.png}">
                 </controls:TintedImage>
                 
-                <!--<Image
-                    Source="{local:EmbeddedImage Resource=fondomerende.image.Edit_snack_icon_256x256.png}"
-                    Grid.Row="0"
-                    Grid.Column="0"      
-                     Scale="{OnPlatform Android=0.6, iOS=0.6}"
-                    Aspect="AspectFit">
-                </Image>-->
-
                 <StackLayout
                     HorizontalOptions="Start"
                     VerticalOptions="Center"
@@ -54,7 +46,6 @@
                         Text="Modifica Snack"
                         FontSize="14"
                         TextColor="Black">
-
                     </Label>
 
                     <Label
@@ -62,9 +53,7 @@
                         FontSize="12"
                         TextColor="#9c9c9c"
                         Margin="0,0,0,5">
-
                     </Label>
-
                 </StackLayout>
             </Grid>
         </StackLayout>
