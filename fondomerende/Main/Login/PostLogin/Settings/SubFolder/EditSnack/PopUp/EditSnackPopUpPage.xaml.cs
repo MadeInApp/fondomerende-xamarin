@@ -135,7 +135,6 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.PopUp
             };
             PrezzoSnack = new LineEntry
             {
-                MaxLength = 5,
                 Keyboard = Keyboard.Numeric,
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 WidthRequest = 250,
@@ -265,7 +264,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.PopUp
                 }
                 else
                 {
-
+                    PrezzoSnack.MaxLength = 5;
                     PrezzoSnack.Text = PrezzoSnack.Text + ",";
                     IsDone = false;
                 }

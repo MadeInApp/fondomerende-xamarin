@@ -90,7 +90,6 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup
             {
                 Placeholder = "Quanto vuoi depositare?",
                 Keyboard = Keyboard.Numeric,
-                MaxLength = 5,
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 HorizontalTextAlignment = TextAlignment.Center,
             };
@@ -176,7 +175,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup
                 }
                 else
                 {
-                    
+                    entry.MaxLength = 5;
                     entry.Text = entry.Text + ",";
                     IsDone = false;
                 }
