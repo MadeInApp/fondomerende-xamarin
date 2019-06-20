@@ -43,13 +43,12 @@ namespace fondomerende.Main.Login.PostLogin.AllSnacks.View
         private async void pacManAnimate()
         {
             var mainDisplayInfo = DeviceDisplay.MainDisplayInfo;
-            
             pacMananimation.IsVisible = true;
-            pacMananimation.Margin = new Thickness(-400, 0, 0, 0);
+            pacMananimation.Margin = new Thickness(-mainDisplayInfo.Width, 0, 0, 0);
 
             await Task.WhenAny<bool>
             (
-             pacMananimation.TranslateTo(mainDisplayInfo.Width, 0, 5000)
+             pacMananimation.TranslateTo(mainDisplayInfo.Width, 0, Convert.ToUInt32(mainDisplayInfo.Width / 0.096))
             );
 
         }

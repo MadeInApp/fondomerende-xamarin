@@ -205,7 +205,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page
             }
             await Navigation.PushPopupAsync(new BuySnackPopUpPage());
 
-        }*/
+        }
 
         private void Swap_Clicked(object sender, EventArgs e)
         {
