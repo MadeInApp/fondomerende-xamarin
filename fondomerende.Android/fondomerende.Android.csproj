@@ -87,12 +87,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidAsset Include="Assets\star.json" />
     <AndroidAsset Include="Assets\Loading.json" />
     <AndroidAsset Include="Assets\Wallet.json" />
     <AndroidAsset Include="Assets\data.json" />
     <AndroidAsset Include="Assets\WalletNew.json" />
     <AndroidAsset Include="Assets\listtogrid.json" />
+    <AndroidAsset Include="Assets\star.json" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml" />
