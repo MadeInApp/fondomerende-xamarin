@@ -12,12 +12,14 @@ using Rg.Plugins.Popup.Extensions;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup;
 using fondomerende.Main.Utilities;
 using FormsControls.Base;
+using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View;
 
 namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class BuySnackListPage : AnimationPage
     {
+        SnackServiceManager snackServiceManager = new SnackServiceManager();
         public static int[] SelectedSnackIDArr;
         public static int SelectedSnackID;
         public static bool Refresh = false;
@@ -54,9 +56,10 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page
         public async Task GetSnacksMethod(bool Loaded)     //ottiene la lista degli snack e la applica alla ListView
         {
            var result = await SnackService.GetToBuySnacksAsync();
+           ListView.ItemsSource = result.data.snacks;
             if (result != null)
             {
-                ListView.ItemsSource = result.data.snacks;
+                //ListView.ItemsSource = result.data.snacks;
                 if (!Loaded) //!WORKAROUND!   in questo modo si evita il crash ma la griglia non si aggiorna, urge investigazione sul vero problema
                 {
                     for (int i = 0; i <= result.data.snacks.Count; i++)
@@ -161,13 +164,34 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page
         }
 
 
-        private async void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        private async void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)     //quando uno snack è tappato si apre un prompt in cui viene chiesto se lo si vuole mangiare
+        {
+            var ans = await DisplayAlert("Fondo Merende", "Vuoi davvero mangiare " + (e.SelectedItem as SnackDataDTO).friendly_name + "?", "Si", "No");
+
+            if (ans == true)
+            {
+
+                await snackServiceManager.EatAsync((e.SelectedItem as SnackDataDTO).id, 1);
+                MessagingCenter.Send(new BuySnackPopUpPage()
+                {
+
+                }, "RefreshUF");
+                await GetSnacksMethod(true);
+            }
+            else
+            {
+                await GetSnacksMethod(true);
+            }
+        }
+
+
+        /*private async void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             await SnackService.GetToBuySnacksAsync();
             SelectedSnackID = (e.SelectedItem as ToBuyDataDTO).id;
             await Navigation.PushPopupAsync(new BuySnackPopUpPage());
 
-        }
+        }*/
 
         private void Swap_Clicked(object sender, EventArgs e)
         {

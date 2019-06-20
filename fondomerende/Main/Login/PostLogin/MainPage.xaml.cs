@@ -29,13 +29,14 @@ namespace fondomerende.Main.Login.PostLogin
         public string GetSnackName;
         public MainPage()
         {
-
-            InitializeComponent();
-            MessagingCenter.Send(new EditUserViewCell()
+            for (int i = 0; i < 10; i++)
             {
+                InitializeComponent();
+                MessagingCenter.Send(new EditUserViewCell()
+                {
 
-            }, "Refresh");
-            
+                }, "Refresh");
+            }
             SnacksNavPage.IconImageSource = ImageSource.FromResource("fondomerende.image.vm_icon_64x64.png");
             SettingsNavPage.IconImageSource = ImageSource.FromResource("fondomerende.image.settings_icon_64x64.png");
 
