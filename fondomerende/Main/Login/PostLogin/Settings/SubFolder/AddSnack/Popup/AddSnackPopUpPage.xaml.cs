@@ -50,7 +50,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.Popup
         }
         private void PopupAddSnack()
         {
-            double Altezza = GetAltezzaPagina() / 1.2;
+            double Altezza = GetAltezzaPagina() / 1.6;
             double Larghezza = GetLarghezzaPagina() - 40;
             double banner = 50;
 
