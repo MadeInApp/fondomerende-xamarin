@@ -12,14 +12,18 @@ using Rg.Plugins.Popup.Extensions;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup;
 using fondomerende.Main.Utilities;
 using FormsControls.Base;
+using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View;
 
 namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class BuySnackListPage : AnimationPage
     {
+        bool tgrBool;
         public static int[] SelectedSnackIDArr;
         public static int SelectedSnackID;
+        string snackName = null;
+        ToBuySnackDTO result;
         public static bool Refresh = false;
         SnackServiceManager SnackService = new SnackServiceManager();
         public ObservableCollection<string> Items { get; set; }
@@ -27,6 +31,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page
         public BuySnackListPage()
         {
             InitializeComponent();
+
             GetSnacksMethod(false);
             MessagingCenter.Subscribe<BuySnackListPage>(this, "Refresh", async (value) =>
             {
@@ -54,9 +59,10 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page
         public async Task GetSnacksMethod(bool Loaded)     //ottiene la lista degli snack e la applica alla ListView
         {
            var result = await SnackService.GetToBuySnacksAsync();
+           ListView.ItemsSource = result.data.snacks;
             if (result != null)
             {
-                ListView.ItemsSource = result.data.snacks;
+                //ListView.ItemsSource = result.data.snacks;
                 if (!Loaded) //!WORKAROUND!   in questo modo si evita il crash ma la griglia non si aggiorna, urge investigazione sul vero problema
                 {
                     for (int i = 0; i <= result.data.snacks.Count; i++)
@@ -71,12 +77,14 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page
                             HorizontalOptions = LayoutOptions.CenterAndExpand,
                             VerticalOptions = LayoutOptions.CenterAndExpand,
                             Scale = 3,
+                            InputTransparent = true,
                             BackgroundColor = Color.White,
                             Source = "http://192.168.0.175:8888/fondomerende/public/getphoto.php?name=" + result.data.snacks[i].friendly_name.Replace(" ", "&nbsp;")
                         };
 
                         var imageButtoniOS = new ImageButton
                         {
+                            InputTransparent = true,
                             Margin = new Thickness(0, 20, 0, 20),
                             HorizontalOptions = LayoutOptions.CenterAndExpand,
                             VerticalOptions = LayoutOptions.CenterAndExpand,
@@ -89,6 +97,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page
                             WidthRequest = box,
                             HeightRequest = box,
                             BackgroundColor = Color.White,
+                            InputTransparent = true,
                         };
 
 
@@ -98,6 +107,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page
                             WidthRequest = box,
                             RoundedCornerRadius = box / 2,
                             BorderColor = c.GetRandomColor(),
+                            InputTransparent = true,
                             BorderWidth = 3,
                         };
 
@@ -106,6 +116,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page
                             HeightRequest = box,
                             WidthRequest = box,
                             RoundedCornerRadius = box / 4,
+                            InputTransparent = true,
                             BorderColor = c.GetRandomColor(),
                             BorderWidth = 1,
                         };
@@ -116,6 +127,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page
                             VerticalTextAlignment = TextAlignment.End,
                             Text = result.data.snacks[i].friendly_name,
                             FontSize = 12,
+                            InputTransparent = true,
                         };
 
 
@@ -124,10 +136,13 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page
                             Orientation = StackOrientation.Vertical
                         };
 
+                        var tgr = new TapGestureRecognizer();
+                        tgr.Tapped += Tgr_Tapped;
+                        app.GestureRecognizers.Add(tgr);
+
                         switch (Device.RuntimePlatform)
                         {
                             case Device.Android:
-                                imageButtonAndroid.Clicked += OnImageButtonClicked;
                                 StackLayout.Children.Add(imageButtonAndroid);
                                 BordiSmussatiAndroid.Children.Add(StackLayout);
                                 app.Children.Add(BordiSmussatiAndroid);
@@ -135,7 +150,6 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page
                                 break;
 
                             default:
-                                imageButtoniOS.Clicked += OnImageButtonClicked;
                                 StackLayout.Children.Add(imageButtoniOS);
                                 BordiSmussatiiOS.Children.Add(StackLayout);
                                 app.Children.Add(BordiSmussatiiOS);
@@ -155,19 +169,43 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page
         }
 
 
-        async void OnImageButtonClicked(object sender, EventArgs e)
+        private void Tgr_Tapped(object sender, EventArgs e)
         {
-            Navigation.PushPopupAsync(new BuySnackPopUpPage());
-        }
+            ToBuyDataDTO index = null;
+            foreach (var item in (sender as StackLayout).Children)
+            {
+                if (item is Label)
+                {
+                    snackName = (item as Label).Text;
+                    index = result.data.snacks.Single(obj => obj.friendly_name == snackName);
+                    return;
+                }
 
+            }
+            if (index != null)
+            {
+                tgrBool = true;
+                SelectedItemChangedEventArgs test = new SelectedItemChangedEventArgs(index);
+                ListView_ItemSelected(null, test);
+            }
+
+        }
 
         private async void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            await SnackService.GetToBuySnacksAsync();
-            SelectedSnackID = (e.SelectedItem as ToBuyDataDTO).id;
+            if(tgrBool)
+            {
+                var resGetSnack = await SnackService.GetSnackAsync(snackName);
+                SelectedSnackID = resGetSnack.data.snack.id;
+            }
+            else
+            {
+                await SnackService.GetToBuySnacksAsync();
+                SelectedSnackID = (e.SelectedItem as ToBuyDataDTO).id;
+            }
             await Navigation.PushPopupAsync(new BuySnackPopUpPage());
 
-        }
+        }*/
 
         private void Swap_Clicked(object sender, EventArgs e)
         {
