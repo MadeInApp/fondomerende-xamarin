@@ -12,6 +12,7 @@ using Rg.Plugins.Popup.Extensions;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup;
 using fondomerende.Main.Utilities;
 using FormsControls.Base;
+using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View;
 
 namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page
 {
@@ -58,9 +59,10 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page
         public async Task GetSnacksMethod(bool Loaded)     //ottiene la lista degli snack e la applica alla ListView
         {
            var result = await SnackService.GetToBuySnacksAsync();
+           ListView.ItemsSource = result.data.snacks;
             if (result != null)
             {
-                ListView.ItemsSource = result.data.snacks;
+                //ListView.ItemsSource = result.data.snacks;
                 if (!Loaded) //!WORKAROUND!   in questo modo si evita il crash ma la griglia non si aggiorna, urge investigazione sul vero problema
                 {
                     for (int i = 0; i <= result.data.snacks.Count; i++)
@@ -203,7 +205,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page
             }
             await Navigation.PushPopupAsync(new BuySnackPopUpPage());
 
-        }
+        }*/
 
         private void Swap_Clicked(object sender, EventArgs e)
         {
