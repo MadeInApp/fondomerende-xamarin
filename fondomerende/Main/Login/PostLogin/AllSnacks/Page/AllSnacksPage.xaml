@@ -101,19 +101,15 @@
                         IsVisible="True" 
                         x:Name="ScrollView"  
                         Padding="0,0,0,10">
-
                         <Grid HorizontalOptions="CenterAndExpand"
                             x:Name="GridView" 
                             ColumnSpacing="20">
-
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*" />
                             </Grid.RowDefinitions>
-
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
-
                             <StackLayout 
                                     Grid.Column="0" 
                                     x:Name="Column0"
@@ -121,7 +117,6 @@
                                     HorizontalOptions="StartAndExpand"
                                     Margin="5,0,10,0">
                             </StackLayout>
-
                             <StackLayout 
                                     Grid.Column="1" 
                                     x:Name="Column1"
@@ -129,14 +124,10 @@
                                     HorizontalOptions="EndAndExpand"
                                     Margin="10,0,5,0">
                             </StackLayout>
-
                         </Grid>
-
                     </ScrollView>
                 </Grid>
             </StackLayout>
-
-
 
             <ListView
                 Margin="0,0,0,0"
@@ -150,15 +141,11 @@
                 BackgroundColor="#FFF8EB"
                 HasUnevenRows="True">
                 <ListView.ItemTemplate>
-
-                    <DataTemplate>
-
+                    <DataTemplate x:Name="DataTemp">
                         <local1:SnackViewCell 
-                        x:Name="SnackCell">
+                            x:Name="Snack">
                         </local1:SnackViewCell>
-
                     </DataTemplate>
-
                 </ListView.ItemTemplate>
             </ListView>
         </StackLayout>
