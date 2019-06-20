@@ -94,6 +94,7 @@
     <AndroidAsset Include="Assets\WalletNew.json" />
     <AndroidAsset Include="Assets\listtogrid.json" />
     <AndroidAsset Include="Assets\list2grid.json" />
+    <AndroidAsset Include="Assets\pacman0.6.json" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml" />
