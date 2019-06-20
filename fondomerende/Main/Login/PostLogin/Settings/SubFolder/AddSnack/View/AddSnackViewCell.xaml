@@ -26,12 +26,12 @@
                     Grid.Row="0"
                     Grid.Column="0"
                     x:Name="SnackIcon" 
-                    Scale="{OnPlatform Android=0.9, Default=1}"
+                    Scale="0.9"
                     VerticalOptions="Center" 
                     HorizontalOptions="Center" 
-                    Aspect="AspectFit"
-                    Margin="5,0,8,0"
-                    Source="{local:EmbeddedImage Resource=fondomerende.image.add_snack_icon.png}">
+                    Margin="7,0,9,0"
+                    Source="{local:EmbeddedImage Resource=fondomerende.image.add_icon_256x256.png}"
+                    TintColor="Aquamarine">
                 </controls:TintedImage>
                 
                 <!--<Image
