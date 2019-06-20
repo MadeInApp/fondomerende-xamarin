@@ -25,13 +25,14 @@ namespace fondomerende.Main.Login.PostLogin
     [DesignTimeVisible(true)]
     public partial class MainPage : TabbedPage
     {
-
+        
         public string GetSnackName;
         public MainPage()
         {
+            InitializeComponent();
             for (int i = 0; i < 10; i++)
             {
-                InitializeComponent();
+                
                 MessagingCenter.Send(new EditUserViewCell()
                 {
 
