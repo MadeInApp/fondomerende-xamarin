@@ -13,6 +13,10 @@ namespace fondomerende
         public App()
         {
             InitializeComponent();
+#if DEBUG
+            HotReloader.Current.Run(this);
+#endif
+
 
             if (Preferences.Get("Logged", false))
             {
