@@ -89,8 +89,8 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
                     ColorRandom c = new ColorRandom();
                     var mainDisplayInfo = DeviceDisplay.MainDisplayInfo;
-                    double COSTANTE_BORDI = 10.28;
-                    double box = Convert.ToInt32(mainDisplayInfo.Width / COSTANTE_BORDI);
+
+                    double box = 140;
 
                     var imageButton = new ImageButton
                     {
@@ -167,6 +167,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                     var starAnimation = new AnimationView
                     {
                         Animation = "star.json",
+                        Scale = 1.3,
                         Loop = false,
                         HorizontalOptions = LayoutOptions.FillAndExpand,
                         VerticalOptions = LayoutOptions.FillAndExpand,
@@ -225,6 +226,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                 }
             }
         }
+
 
         private void StopAnimation(object sender, EventArgs e)
         {

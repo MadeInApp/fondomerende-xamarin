@@ -88,13 +88,14 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\Loading.json" />
-    <AndroidAsset Include="Assets\Wallet.json" />
     <AndroidAsset Include="Assets\data.json" />
     <AndroidAsset Include="Assets\WalletNew.json" />
     <AndroidAsset Include="Assets\listtogrid.json" />
     <AndroidAsset Include="Assets\list2grid.json" />
     <AndroidAsset Include="Assets\pacman0.6.json" />
     <AndroidAsset Include="Assets\star.json" />
+    <AndroidAsset Include="Assets\listtogrid.json" />
+    <AndroidAsset Include="Assets\Wallet.json" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml" />
