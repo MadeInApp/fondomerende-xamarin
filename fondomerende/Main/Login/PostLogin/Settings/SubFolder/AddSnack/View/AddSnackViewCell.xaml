@@ -29,6 +29,7 @@
                     Scale="{OnPlatform Android=0.5, Default=0.6}"
                     VerticalOptions="Center" 
                     HorizontalOptions="Center" 
+                    Margin="7,0,9,0"
                     Aspect="AspectFit"
                     Source="{local:EmbeddedImage Resource=fondomerende.image.add_icon_256x256.png}"
                     TintColor="Aquamarine">
