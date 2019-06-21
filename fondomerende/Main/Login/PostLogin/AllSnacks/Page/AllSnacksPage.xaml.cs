@@ -17,7 +17,7 @@ using Lottie.Forms;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View;
 using fondomerende.Main.Login.PostLogin.AllSnacks.View;
 using System.Threading;
-using System.Timers;
+using MultiGestureViewPlugin;
 
 namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 {
@@ -220,6 +220,12 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                         IsVisible = visibilità,
                     };
 
+                    var longpress = new MultiGestureView
+                    {
+                        LongPressVibrationDuration=300,
+                    };
+
+
                     starAnimation.OnFinish += StopAnimation;
 
                     var tgr = new TapGestureRecognizer();
@@ -258,6 +264,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                     }
 
                     app.Children.Add(label);
+                    // longpress.Content = app;
 
                     if (addfav && favourites)
                     {
@@ -516,33 +523,38 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             await Navigation.PushPopupAsync(new DepositPopUp());
         }
 
-        private async void animation()
+        private void animation()
         {
 
             var mainDisplayWidth = DeviceDisplay.MainDisplayInfo.Width;
             var mainDisplayHeight = DeviceDisplay.MainDisplayInfo.Height;
             int numeroMuffin = Convert.ToInt32(mainDisplayWidth) / 256;
           
-            var paolo = new Image   //il cupcake paolo
+            for(int i=0; i < numeroMuffin; i++)
             {
-                VerticalOptions = LayoutOptions.StartAndExpand,
-                Source = ImageSource.FromResource("fondomerende.image.cup_cake_128x128.png"),
-                Opacity = 0.6,
-                Scale = 1,
-            };
+ 
+                var paolo = new Image   //il cupcake paolo
+                {
+                    VerticalOptions = LayoutOptions.StartAndExpand,
+                    Source = ImageSource.FromResource("fondomerende.image.cup_cake_128x128.png"),
+                    Opacity = 0.6,
+                    Scale = 1,
+                };
 
-            Paolo.Children.Add(paolo);
+                Paolo.Children.Add(paolo);
 
-            Anima(paolo);
+                Anima(paolo);
+            }
+            
         }
 
         private async Task Anima(Image sender)
         {
             Random random = new Random((int)DateTime.Now.Ticks);
-
             double casualWidth;
             double spawncasuale;
             double randomRotation;
+            uint randomTime;
 
             var ScreenHeight = App.Current.MainPage.Height;
             var ScreenWidth = App.Current.MainPage.Width;
@@ -562,16 +574,18 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                 spawncasuale = random.Next(0, Convert.ToInt32(ScreenWidth));
                 spawncasuale -= ScreenWidth / 4;
 
+                randomTime = Convert.ToUInt32(random.Next(15000, 20000));
+
                 randomRotation = random.Next(180, 1080);
 
                 await sender.RotateTo(0);
-                await sender.TranslateTo(spawncasuale, -100, 0);
+                await sender.TranslateTo(spawncasuale, 0, 0);
                 
                 await Task.WhenAny<bool>
 
                 (
-                    sender.RotateTo(randomRotation, 15000),
-                    sender.TranslateTo(casualWidth, ScreenHeight, 15000)
+                    sender.RotateTo(randomRotation, randomTime),
+                    sender.TranslateTo(casualWidth, ScreenHeight, randomTime)
                 );
 
 

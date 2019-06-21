@@ -8,6 +8,7 @@ using Android.Widget;
 using Android.OS;
 using Plugin.CrossPlatformTintedImage.Android;
 using Lottie.Forms.Droid;
+using MultiGestureViewPlugin;
 
 namespace fondomerende.Droid
 {
