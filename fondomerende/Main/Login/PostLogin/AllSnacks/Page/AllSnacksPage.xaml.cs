@@ -66,8 +66,9 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             {
                 HeightRequest = 50,
                 HorizontalOptions = LayoutOptions.StartAndExpand,
-                VerticalOptions = LayoutOptions.CenterAndExpand,
+                VerticalOptions = LayoutOptions.StartAndExpand,
                 Animation = "list2grid_alt.json",
+                Margin = new Thickness(0,0,0,10)
             };
             Swap.OnClick += Swap_Clicked;
             GridView1.Children.Add(Swap, 0, 0);
@@ -504,7 +505,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             {
                 Swap.Play();
                 // Swap.Speed = 0.7f;
-                Swap.FlowDirection = FlowDirection.LeftToRight;
+                Swap.Speed = 1;
                 ScrollSnackView.IsVisible = false;
                 ListView.IsVisible = true;
             }
@@ -512,7 +513,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             {
                 Swap.Play();
                 Swap.FlowDirection = FlowDirection.RightToLeft;
-
+                Swap.Speed = -1;
                 ListView.IsVisible = false;
                 ScrollSnackView.IsVisible = true;
             }

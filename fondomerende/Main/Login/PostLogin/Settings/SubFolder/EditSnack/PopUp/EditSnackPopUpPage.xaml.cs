@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using fondomerende.Main.Utilities;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using fondomerende.Main.Login.PostLogin.AllSnack.Page;
 
 namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.PopUp
 {
@@ -353,7 +354,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.PopUp
 
         private async void Apply_Clicked(object sender, EventArgs e)
         {
-            if (appoggioNome == null || PrezzoSnack.Text == null || appoggioSnackPerScatola == null || appoggioScadenzaInGiorni == null || appoggioQta == null)
+            if (appoggioNome == null || PrezzoSnack.Text == null || appoggioSnackPerScatola == null || appoggioScadenzaInGiorni == null || Qta.Text == null)
             {
                 await DisplayAlert("Fondo Merende", "Riempi tutti i campi", "Ok");
             }
@@ -366,6 +367,10 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.PopUp
                     {
                         if (res.response.success)
                         {
+                            MessagingCenter.Send(new AllSnacksPage()
+                            {
+
+                            }, "RefreshGetSnacks");
                             MessagingCenter.Send(new EditSnackListPage()
                             {
 
