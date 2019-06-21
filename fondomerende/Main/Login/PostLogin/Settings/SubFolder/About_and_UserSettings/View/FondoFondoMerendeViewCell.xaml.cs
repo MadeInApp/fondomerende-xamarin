@@ -27,13 +27,13 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.About_and_UserSet
             {
                 if (result.response.success)
                 {
-                    FundFund.Text = "il Fondo merende ha €" + Convert.ToString(result.data.fund_funds_amount) + "a disposizione";
+                    FundFund.Text = "il Fondo merende ha €" + Convert.ToString(result.data.fund_funds_amount) + " a disposizione";
                     if (result.data.fund_funds_amount <= 0)
                     {
                         var fs = new FormattedString();
                         fs.Spans.Add(new Span { Text = "il Fondo merende ha €", TextColor = Color.Black });
                         fs.Spans.Add(new Span { Text = Convert.ToString(result.data.fund_funds_amount), TextColor = Color.Red });
-                        fs.Spans.Add(new Span { Text = "  a disposizione", TextColor = Color.Black });
+                        fs.Spans.Add(new Span { Text = " a disposizione", TextColor = Color.Black });
                         FundFund.FormattedText = fs;
                     }
                 }

@@ -33,38 +33,9 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.PopUp
         {
             InitializeComponent();
             PopupEditSnack();
+            Qta.Placeholder = "Quantità";
         }
-        public async void GetQta()
-        {
-            Qta.Placeholder = null;
-            Quantity = 0;
-            var result = await snackService.GetSnacksAsync();
-            if (result != null)
-            {
-                if (result.response.success)
-                {
-                    for (int i = 0; i <= result.data.snacks.Count; i++)
-                    {
-                        if (result.data.snacks[i].id == EditSnackListPage.SelectedSnackID)
-                        {
-                            if(result.data.snacks[i].quantity <= 0)
-                            {
-                                Qta.Placeholder = "Quantità:" + "0";
-                                Quantity = 0;
-                                break;
-                            }
-                            else
-                            {
-                                Qta.Placeholder = "Quantità: " + Convert.ToString(result.data.snacks[i].quantity);
-                                Quantity = result.data.snacks[i].quantity;
-                                break;
-                            }
-                           
-                        }
-                    }
-                }
-            }
-        }
+  
 
         public static Color GetPrimaryAndroidColor()
         {
@@ -234,7 +205,6 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.PopUp
             PrezzoSnack.TextChanged += EntrataPrezzo;
             SnackPerBox.TextChanged += EntrataSnackPerScatola;
             ExpInDays.TextChanged += EntrataScadenzaInGiorni;
-            Qta.TextChanged += EntrataQta;
 
             buttonCancel.Clicked += Discard_Clicked;
             buttonConfirm.Clicked += Apply_Clicked;
@@ -249,8 +219,6 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.PopUp
             PrezzoSnack.Placeholder = "Prezzo: " + Convert.ToString(EditSnackListPage.SelectedSnackPrice);
             SnackPerBox.Placeholder = "Snacks Per Scatola: " + Convert.ToString(EditSnackListPage.SelectedSnackPerBox);
             ExpInDays.Placeholder = "Scadenza In Giorni: " + Convert.ToString(EditSnackListPage.SelectedSnackExpiration);
-            GetQta();
-
             stackBody.Children.Add(stackBottoni);
             Round.Children.Add(stackBody);
 
@@ -393,7 +361,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.PopUp
             {
                 if (Convert.ToDouble(PrezzoSnack.Text) != 0 || float.Parse(appoggioSnackPerScatola) != 0)
                 {
-                    var res = await snackService.EditSnackAsync(snackID, appoggioNome, PrezzoSnack.Text, appoggioSnackPerScatola, appoggioScadenzaInGiorni, Int32.Parse(appoggioQta));
+                    var res = await snackService.EditSnackAsync(snackID, appoggioNome, PrezzoSnack.Text, appoggioSnackPerScatola, appoggioScadenzaInGiorni,Int32.Parse(Qta.Text));
                     if (res != null)
                     {
                         if (res.response.success)

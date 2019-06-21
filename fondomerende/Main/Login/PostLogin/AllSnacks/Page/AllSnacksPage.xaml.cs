@@ -16,6 +16,8 @@ using fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup;
 using Lottie.Forms;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View;
 using fondomerende.Main.Login.PostLogin.AllSnacks.View;
+using System.Threading;
+using System.Timers;
 
 namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 {
@@ -516,53 +518,64 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
         private async void animation()
         {
+
             var mainDisplayWidth = DeviceDisplay.MainDisplayInfo.Width;
             var mainDisplayHeight = DeviceDisplay.MainDisplayInfo.Height;
-            int numeroMuffin = Convert.ToInt32(mainDisplayWidth)/384;
-
-            for(int i = 0; i< numeroMuffin; i++)
+            int numeroMuffin = Convert.ToInt32(mainDisplayWidth) / 256;
+          
+            var paolo = new Image   //il cupcake paolo
             {
-                var paolo = new Image   //il cupcake paolo
-                {
-                    VerticalOptions = LayoutOptions.StartAndExpand,
-                    Source = ImageSource.FromResource("fondomerende.image.cup_cake_128x128.png"),
-                    Opacity = 0.6,
-                    Scale = 1,
-                };
+                VerticalOptions = LayoutOptions.StartAndExpand,
+                Source = ImageSource.FromResource("fondomerende.image.cup_cake_128x128.png"),
+                Opacity = 0.6,
+                Scale = 1,
+            };
+
+            Paolo.Children.Add(paolo);
+
+            Anima(paolo);
+        }
+
+        private async Task Anima(Image sender)
+        {
+            Random random = new Random((int)DateTime.Now.Ticks);
+
+            double casualWidth;
+            double spawncasuale;
+            double randomRotation;
+
+            var ScreenHeight = App.Current.MainPage.Height;
+            var ScreenWidth = App.Current.MainPage.Width;
 
 
+            //await sender.TranslateTo(0, -ScreenHeight / 2, 0);
+            //await sender.TranslateTo(0, ScreenHeight, 10000);
 
-                Random randomWidth = new Random((int)DateTime.Now.Ticks);
-                double casual;
-                double spawncasuale;
 
-                PaoloGrid.Children.Add(paolo);
+            for (int f = 0; f < 20; f++)
+            {
 
-                Grid.SetColumn(paolo, 0);
-                Grid.SetRow(paolo, 0);
+                casualWidth = random.Next(0, Convert.ToInt32(ScreenWidth));
+                casualWidth -= ScreenWidth / 2;
 
-                await paolo.TranslateTo(0, -mainDisplayHeight / 2, 0);
-                await paolo.TranslateTo(0, mainDisplayHeight, 10000);
 
+                spawncasuale = random.Next(0, Convert.ToInt32(ScreenWidth));
+                spawncasuale -= ScreenWidth / 4;
+
+                randomRotation = random.Next(180, 1080);
+
+                await sender.RotateTo(0);
+                await sender.TranslateTo(spawncasuale, -100, 0);
                 
-                //for (int f = 0; f < 20; f++)
-                //{
+                await Task.WhenAny<bool>
 
-                //    casual = randomWidth.Next(0, Convert.ToInt32(ScreenWidth));
-                //    casual -= ScreenWidth / 2;
-                //    spawncasuale = randomWidth.Next(0, Convert.ToInt32(ScreenWidth));
-                //    spawncasuale -= ScreenWidth / 4;
-                //    await paolo.TranslateTo(spawncasuale, -ScreenHeight/2, 0);
-                //    await Task.WhenAny<bool>
-                //    (
-                //        paolo.RotateTo(360, 15000),
-                //        paolo.TranslateTo(casual, ScreenHeight/2, 15000)
-                //    );
+                (
+                    sender.RotateTo(randomRotation, 15000),
+                    sender.TranslateTo(casualWidth, ScreenHeight, 15000)
+                );
 
 
-                //}
             }
-
         }
 
         private void SetFavourite(object sender,EventArgs e)
