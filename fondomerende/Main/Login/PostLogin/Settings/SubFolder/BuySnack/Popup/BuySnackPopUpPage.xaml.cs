@@ -347,7 +347,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
                 }
                 else
                 {
-                    var result = await snackService.BuySnackAsync(BuySnackListPage.SelectedSnackID, Int32.Parse(line.Text));
+                    var result = await snackService.BuySnackAsync(BuySnackListPage.SelectedSnackID, Convert.ToInt32(line.Text));
                     if (result != null)
                     {
                         if (result.response.success)

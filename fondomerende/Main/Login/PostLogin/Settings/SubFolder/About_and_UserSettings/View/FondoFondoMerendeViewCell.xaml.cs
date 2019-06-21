@@ -33,13 +33,13 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.About_and_UserSet
                         var fs = new FormattedString();
                         fs.Spans.Add(new Span { Text = "il Fondo merende ha €", TextColor = Color.Black });
                         fs.Spans.Add(new Span { Text = Convert.ToString(result.data.fund_funds_amount), TextColor = Color.Red });
-                        fs.Spans.Add(new Span { Text = " a disposizione", TextColor = Color.Black });
+                        fs.Spans.Add(new Span { Text = "  a disposizione", TextColor = Color.Black });
                         FundFund.FormattedText = fs;
                     }
                 }
                 else
                 {
-                    FundFund.Text = "Errore";
+                    FundFund.Text = "Al momento non disponibile";
                 }
             }
             else
