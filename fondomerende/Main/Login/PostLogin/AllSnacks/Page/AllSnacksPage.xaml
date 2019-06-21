@@ -63,6 +63,7 @@
 
 
                         <forms:AnimationView
+                            Scale="1.3"
                             Grid.Row="0"
                             Grid.Column="2"
                             MinimumHeightRequest="40"
@@ -72,7 +73,7 @@
                             Margin="0,0,10,12"
                             x:Name="Wallet"
                             OnClick="WalletClicked"
-                            Animation="WalletNew.json"
+                            Animation="Pig.json"
                             Loop="False"
                             HorizontalOptions="EndAndExpand"
                             VerticalOptions="CenterAndExpand"
