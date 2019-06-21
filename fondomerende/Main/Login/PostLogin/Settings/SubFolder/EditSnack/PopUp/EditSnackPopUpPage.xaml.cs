@@ -361,7 +361,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.PopUp
             {
                 if (Convert.ToDouble(PrezzoSnack.Text) != 0 || float.Parse(appoggioSnackPerScatola) != 0)
                 {
-                    var res = await snackService.EditSnackAsync(snackID, appoggioNome, PrezzoSnack.Text, appoggioSnackPerScatola, appoggioScadenzaInGiorni, Int32.Parse(appoggioQta));
+                    var res = await snackService.EditSnackAsync(snackID, appoggioNome, PrezzoSnack.Text, appoggioSnackPerScatola, appoggioScadenzaInGiorni,Int32.Parse(Qta.Text));
                     if (res != null)
                     {
                         if (res.response.success)
