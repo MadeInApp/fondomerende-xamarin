@@ -97,6 +97,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.Popup
             //variabili in line entry//
             NomeSnack = new LineEntry
             {
+                Margin = new Thickness(0,-40,0,0),
                 Keyboard = Keyboard.Default,
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 WidthRequest = 250,
