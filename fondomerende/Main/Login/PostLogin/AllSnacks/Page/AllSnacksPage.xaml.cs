@@ -40,7 +40,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             animation();
             MessagingCenter.Subscribe<AllSnacksPage>(this, "RefreshGetSnacks", async (arg) =>
             {
-                GetSnacksMethod(false);
+                GetSnacksMethod(false,false);
             });
 
 
