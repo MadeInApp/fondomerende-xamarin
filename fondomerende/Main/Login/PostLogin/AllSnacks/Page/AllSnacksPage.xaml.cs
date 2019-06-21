@@ -23,6 +23,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AllSnacksPage : ContentPage
     {
+        public static string selectedItemBinding { get; set; }
         SnackServiceManager snackServiceManager = new SnackServiceManager();
         List<SnackDataDTO> AllSnacks = new List<SnackDataDTO>();
         SnackDTO result;
@@ -33,23 +34,28 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
         {
             numerotocchi.Add("numero", 0);
             InitializeComponent();
-            GetSnacksMethod(false);
+            GetSnacksMethod(false,false);
+            GetSnacksMethod(false,true);
             Fade();
             animation();
+            MessagingCenter.Subscribe<AllSnacksPage>(this, "RefreshGetSnacks", async (arg) =>
+            {
+                GetSnacksMethod(false,false);
+            });
 
 
 
 
-            switch (Device.RuntimePlatform)                                                     //
-            {                                                                                   //                                    
-                                                                                                //   Se il dispositivo è Android non mostra la Top Bar della Navigation Page,
-                case Device.Android:                                                            //      Se è iOS invece si (perchè senza è una schifezza)
-                    NavigationPage.SetHasNavigationBar(this, false);                            //
-                    break;                                                                      //
-                                                                                                //
-                default:                                                                        //
-                    NavigationPage.SetHasNavigationBar(this, true);                             //
-                    break;                                                                      //
+            switch (Device.RuntimePlatform)                                                    //\\
+            {                                                                                  // \\                                    
+                                                                                               //  \\ Se il dispositivo è Android non mostra la Top Bar della Navigation Page,
+                case Device.Android:                                                           //   \\   Se è iOS invece si (perchè senza è una schifezza)
+                    NavigationPage.SetHasNavigationBar(this, false);                           //    \\
+                    break;                                                                           //
+                                                                                                    //
+                default:                                                                           //
+                    NavigationPage.SetHasNavigationBar(this, true);                               //
+                    break;                                                                       //
             }                                                                                   //
 
 
@@ -65,11 +71,16 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             {
                 WalletAnimation();
             });
-        }                                                                                    //
-        public async Task RefreshDataAsync()                                                 //
-        {                                                                                    //
-            await GetSnacksMethod(true);                                                      //
-        }                                                                                    //
+        }                                                                                         //
+        public async Task RefreshDataAsync()                                                    //
+        {                                                                                      //
+            await GetSnacksMethod(true,false);                                                      //
+        }
+
+        public async Task RefreshFavouriteDataAsync()                                                    //
+        {                                                                                      //
+            await GetSnacksMethod(true, true);                                                      //
+        }              
 
         private void WalletAnimation()
         {
@@ -78,14 +89,22 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
         }
 
 
-        public async Task GetSnacksMethod(bool Loaded)     //ottiene la lista degli snack e la applica alla ListView
+        public async Task GetSnacksMethod(bool Loaded,bool favourites)     //ottiene la lista degli snack e la applica alla ListView
         {
+            
             result = await snackServiceManager.GetSnacksAsync();
             ListView.ItemsSource = result.data.snacks;
+            int FavIndex = 0;
             if (!Loaded) //!WORKAROUND!   in questo modo si evita il crash ma la griglia non si aggiorna, urge investigazione sul vero problema
             {
                 for (int i = 0; i <= result.data.snacks.Count; i++)
                 {
+                    bool addfav = false; //variabile di appoggio
+
+                    if (favourites && !Check_Favourites(result.data.snacks[i].id))
+                    {
+                        addfav = true;
+                    }
 
                     ColorRandom c = new ColorRandom();
                     var mainDisplayInfo = DeviceDisplay.MainDisplayInfo;
@@ -220,12 +239,23 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                     }
 
                     app.Children.Add(label);
-                    if (i % 2 == 0) Column0.Children.Add(app);
-                    else Column1.Children.Add(app);
+
+                    if (addfav && favourites)
+                    {
+                        if (FavIndex % 2 == 0) Column0Fav.Children.Add(app);
+                        else Column1Fav.Children.Add(app);
+
+                        FavIndex++;
+                    }
+                    else
+                    {
+                        if (i % 2 == 0) Column0.Children.Add(app);
+                        else Column1.Children.Add(app);
+                    }
+                    
                 }
             }
         }
-
 
         private void StopAnimation(object sender, EventArgs e)
         {
@@ -289,7 +319,8 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                 {
                     if (strSplit[i] != fav)
                     {
-                        newpreferiti += strSplit[i] + ",";
+                        if (getfav == "") newpreferiti += strSplit[i];
+                        else newpreferiti += strSplit[i] + ",";
                     }
                 }
                 Preferences.Set("Favourites",newpreferiti);
@@ -392,10 +423,17 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             switchStar = !switchStar;
             if(switchStar)
             {
+                await RefreshFavouriteDataAsync();
+                ScrollSnackView.IsVisible = false;
+                ScrollFavourites.IsVisible = true;
                 favourite.Source = ImageSource.FromResource("fondomerende.image.star_fill.png");
+
             }
             else
             {
+                await RefreshDataAsync();
+                ScrollSnackView.IsVisible = true;
+                ScrollFavourites.IsVisible = false;
                 favourite.Source = ImageSource.FromResource("fondomerende.image.star_empty.png");
             }
 
@@ -413,6 +451,9 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                 {
 
                 }, "RefreshUF");
+
+
+                selectedItemBinding = (e.SelectedItem as SnackDataDTO).friendly_name;
 
                 MessagingCenter.Send(new SnackViewCell()
                 {
@@ -433,12 +474,12 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
         private void Swap_Clicked(object sender, EventArgs e)
         {
-            if (ScrollView.IsVisible == true)
+            if (ScrollSnackView.IsVisible == true)
             {
                 Swap.Play();
                 Swap.Speed = 0.7f;
 
-                ScrollView.IsVisible = false;
+                ScrollSnackView.IsVisible = false;
                 ListView.IsVisible = true;
             }
             else
@@ -447,7 +488,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                 Swap.Speed = 0.7f;
 
                 ListView.IsVisible = false;
-                ScrollView.IsVisible = true;
+                ScrollSnackView.IsVisible = true;
             }
         }
 
@@ -458,45 +499,52 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
         private async void animation()
         {
-            EmbeddedImage e = new EmbeddedImage();
-            e.Resource = "fondomerende.image.cup_cake_128x128.png";
+            var mainDisplayWidth = DeviceDisplay.MainDisplayInfo.Width;
+            var mainDisplayHeight = DeviceDisplay.MainDisplayInfo.Height;
+            int numeroMuffin = Convert.ToInt32(mainDisplayWidth)/384;
 
-            double ScreenHeight = Convert.ToInt32(App.Current.MainPage.Height);
-            double ScreenWidth = Convert.ToInt32(App.Current.MainPage.Width);
-
-            var paolo = new Image   //il cupcake paolo
+            for(int i = 0; i< numeroMuffin; i++)
             {
-                Source = ImageSource.FromResource("fondomerende.image.cup_cake_128x128.png"),
-                Opacity = 0.6,
-                Scale = 1,
-            };
-            
-            
-
-            Random randomWidth = new Random((int)DateTime.Now.Ticks);
-            double casual;
-            double spawncasuale;
+                var paolo = new Image   //il cupcake paolo
+                {
+                    VerticalOptions = LayoutOptions.StartAndExpand,
+                    Source = ImageSource.FromResource("fondomerende.image.cup_cake_128x128.png"),
+                    Opacity = 0.6,
+                    Scale = 1,
+                };
 
 
-            await paolo.TranslateTo(0, -ScreenHeight / 2, 0);
-            await paolo.TranslateTo(0, ScreenHeight, 10000);
-            Cane.Children.Add(paolo); 
-            //for (int f = 0; f < 20; f++)
-            //{
 
-            //    casual = randomWidth.Next(0, Convert.ToInt32(ScreenWidth));
-            //    casual -= ScreenWidth / 2;
-            //    spawncasuale = randomWidth.Next(0, Convert.ToInt32(ScreenWidth));
-            //    spawncasuale -= ScreenWidth / 4;
-            //    await paolo.TranslateTo(spawncasuale, -ScreenHeight/2, 0);
-            //    await Task.WhenAny<bool>
-            //    (
-            //        paolo.RotateTo(360, 15000),
-            //        paolo.TranslateTo(casual, ScreenHeight/2, 15000)
-            //    );
+                Random randomWidth = new Random((int)DateTime.Now.Ticks);
+                double casual;
+                double spawncasuale;
+
+                PaoloGrid.Children.Add(paolo);
+
+                Grid.SetColumn(paolo, 0);
+                Grid.SetRow(paolo, 0);
+
+                await paolo.TranslateTo(0, -mainDisplayHeight / 2, 0);
+                await paolo.TranslateTo(0, mainDisplayHeight, 10000);
+
+                
+                //for (int f = 0; f < 20; f++)
+                //{
+
+                //    casual = randomWidth.Next(0, Convert.ToInt32(ScreenWidth));
+                //    casual -= ScreenWidth / 2;
+                //    spawncasuale = randomWidth.Next(0, Convert.ToInt32(ScreenWidth));
+                //    spawncasuale -= ScreenWidth / 4;
+                //    await paolo.TranslateTo(spawncasuale, -ScreenHeight/2, 0);
+                //    await Task.WhenAny<bool>
+                //    (
+                //        paolo.RotateTo(360, 15000),
+                //        paolo.TranslateTo(casual, ScreenHeight/2, 15000)
+                //    );
 
 
-            //}
+                //}
+            }
 
         }
 
@@ -506,17 +554,10 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             //Preferences.Add("",);
        }
 
-        public async void Animazioni_infinite(Random randomWidth, double ScreenWidth,double ScreenHeight)
+        private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
+            
         {
-            double casual;
-            int i = 0;
-            while (i<100)
-            {
-                
-                i++;
-            }
         }
-
     }
 
 }
