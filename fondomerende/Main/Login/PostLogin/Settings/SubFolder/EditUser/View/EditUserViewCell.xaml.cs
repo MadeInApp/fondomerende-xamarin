@@ -129,7 +129,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View
                         userFunds.TextColor = Color.Red;
                     }
                 }
-                else
+                else if (!result.response.success)
                 {
                     userFunds.Text = "Errore";
                 }
