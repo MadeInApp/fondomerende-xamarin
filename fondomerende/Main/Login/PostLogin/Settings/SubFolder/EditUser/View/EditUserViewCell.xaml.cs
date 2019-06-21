@@ -30,6 +30,15 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View
             First_letter();
             GetUserFundsMethod();
             friendly_name.Text = InformationFriendlyName();
+
+            if (friendly_name.Text.Length > 9)
+            {
+                string appoggio = friendly_name.Text;
+                friendly_name.Text = "";
+                friendly_name.Text += appoggio.Substring(0, 9);
+                friendly_name.Text += "...";
+            }
+
             Cerchio.BackgroundColor = Color.FromHex(Preferences.Get("Colore", "#CCCCCC"));
             CerchioRc.FillColor = Color.FromHex(Preferences.Get("Colore", "#CCCCCC"));
             CerchioRc.BackgroundColor = Color.FromHex(Preferences.Get("Colore", "#CCCCCC"));
@@ -56,12 +65,17 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View
         {
             string firstLetter = "";
 
-            string[] strSplit = Preferences.Get("friendly-name", "").Split();
 
+
+            firstLetter = Preferences.Get("friendly-name", "").Substring(0, 1);
+
+            /*
             foreach (string res in strSplit)
             {
                 firstLetter = (res.Substring(0, 1));
             }
+
+            */
             inizialeLabel.Text = firstLetter;
             inizialeLabel_iOS.Text = firstLetter;
         }
