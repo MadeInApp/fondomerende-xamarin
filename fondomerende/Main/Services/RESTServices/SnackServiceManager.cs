@@ -193,14 +193,14 @@ namespace fondomerende.Main.Services.RESTServices
             return null;
         }
 
-        public async System.Threading.Tasks.Task<EatDTO> BuySnackAsync(int idsnack, int quantity)
+        public async System.Threading.Tasks.Task<EatDTO> BuySnackAsync(int idsnack, int quantita)
         {
             try
             {
                 var result = await "http://192.168.0.175:8888/fondomerende/public/process-request.php"
                 .WithCookie("auth-key", "metticiquellochetipare")
                 .WithCookie("user-token", UserManager.Instance.token)
-                .PostUrlEncodedAsync(new { commandName = "buy", id = idsnack, quantity = quantity })
+                .PostUrlEncodedAsync(new { commandName = "buy", id = idsnack, quantity = quantita })
                 .ReceiveJson<EatDTO>(); //ri uso il DTO di Eat perchè sono Lazyaf
 
                 return result;
