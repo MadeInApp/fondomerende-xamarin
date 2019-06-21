@@ -99,6 +99,8 @@
     <EmbeddedResource Include="Renderer\pacman0.6.json" />
     <BundleResource Include="Renderer\star.json" />
     <BundleResource Include="Renderer\Wallet.json" />
+    <BundleResource Include="Renderer\PiggyBank.json" />
+    <BundleResource Include="Renderer\Pig.json" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\Contents.json">

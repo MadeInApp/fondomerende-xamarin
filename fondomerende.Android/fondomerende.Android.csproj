@@ -98,6 +98,8 @@
     <AndroidAsset Include="Assets\star.json" />
     <AndroidAsset Include="Assets\Wallet.json" />
     <AndroidAsset Include="Assets\list2grid_alt.json" />
+    <AndroidAsset Include="Assets\PiggyBank.json" />
+    <AndroidAsset Include="Assets\Pig.json" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml" />
