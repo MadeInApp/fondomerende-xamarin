@@ -81,13 +81,13 @@ namespace fondomerende.Main.Services.RESTServices
         // iniziato ma devo aspettare l'input dall'utente
         public async System.Threading.Tasks.Task<GetSnackDTO> GetSnackAsync(string GetSnackName)  // Servizio per Ottenere informazioni su uno snack in particolare (non usato per ora)
         {
+            string lol = "http://192.168.0.175:8888/fondomerende/public/process-request.php?commandName=get-snack-data&name=" + GetSnackName;
             try
             {
-                var result = await "http://192.168.0.175:8888/fondomerende/public/process-request.php?commandName=get-snack-data&name="
+                var result = await lol
                                     .WithCookie("auth-key", "metticiquellochetipare")
                                     .WithCookie("user-token", UserManager.Instance.token)
-                                    .PostUrlEncodedAsync(new { commandName = "get-snack-data", name = GetSnackName })
-                                    .ReceiveJson<GetSnackDTO>();
+                                    .GetJsonAsync<GetSnackDTO>();
                 return result;
             }
             catch (FlurlHttpTimeoutException ex)

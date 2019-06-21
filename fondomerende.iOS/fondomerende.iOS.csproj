@@ -96,10 +96,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <BundleResource Include="Renderer\Loading.json" />
     <BundleResource Include="Renderer\data.json" />
-    <BundleResource Include="Renderer\listtogrid.json" />
     <EmbeddedResource Include="Renderer\pacman0.6.json" />
     <BundleResource Include="Renderer\star.json" />
-    <BundleResource Include="Renderer\listtogrid.json" />
     <BundleResource Include="Renderer\Wallet.json" />
   </ItemGroup>
   <ItemGroup>
