@@ -16,123 +16,183 @@
              Title="{OnPlatform iOS='Snacks'}">
 
     <ContentPage.Content>
-
-        <StackLayout
+        <Grid
+            x:Name="PaoloGrid">
+            <StackLayout
+                Grid.Row="0"
+                Grid.Column="0"
                 x:Name="StackSnack"
                 BackgroundColor="#FFF8EB">
 
-            <StackLayout 
-                Orientation="Horizontal" 
-                MinimumHeightRequest="40">
+                <StackLayout 
+                    Orientation="Horizontal" 
+                    MinimumHeightRequest="40">
 
-                <Grid 
-                    HorizontalOptions="FillAndExpand"
-                    VerticalOptions="CenterAndExpand">
+                    <Grid 
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="CenterAndExpand">
 
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="3.3*" />
-                        <ColumnDefinition Width="3.3*" />
-                        <ColumnDefinition Width="3.3*" />
-                    </Grid.ColumnDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3.3*" />
+                            <ColumnDefinition Width="3.3*" />
+                            <ColumnDefinition Width="3.3*" />
+                        </Grid.ColumnDefinitions>
 
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*" />
-                    </Grid.RowDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
 
-                    <forms:AnimationView
-                        Scale="3"
-                        Grid.Row="0"
-                        Grid.Column="0"
-                        HeightRequest="40"
-                        WidthRequest="40"
-                        Margin="0,0,0,0"
-                        OnClick="Swap_Clicked"
-                        Animation="list2grid.json"
-                        Loop="False"
-                        x:Name="Swap"
-                        HorizontalOptions="StartAndExpand"
-                        VerticalOptions="CenterAndExpand"
-                        AutoPlay="False">
-                    </forms:AnimationView>
+                        <forms:AnimationView
+                            Scale="3"
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            HeightRequest="40"
+                            WidthRequest="40"
+                            Margin="0,0,0,0"
+                            OnClick="Swap_Clicked"
+                            Animation="list2grid.json"
+                            Loop="False"
+                            x:Name="Swap"
+                            HorizontalOptions="StartAndExpand"
+                            VerticalOptions="CenterAndExpand"
+                            AutoPlay="False">
+                        </forms:AnimationView>
 
-                    <ImageButton
-                        Grid.Row="0"
-                        Grid.Column="1"
-                        HeightRequest="40"
-                        WidthRequest="40"
-                        Aspect="Fill"
-                        HorizontalOptions="CenterAndExpand" 
-                        VerticalOptions="CenterAndExpand"
-                        Source="{local2:EmbeddedImage Resource=fondomerende.image.star_empty.png}"
-                        Scale="{OnIdiom Phone=0.9, Tablet=3}"
-                        Clicked="favourite_Clicked"
-                        x:Name="favourite"
-                        BackgroundColor="Transparent"
-                        IsVisible="True">
-                    </ImageButton>
+                        <ImageButton
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            HeightRequest="40"
+                            WidthRequest="40"
+                            Aspect="Fill"
+                            HorizontalOptions="CenterAndExpand" 
+                            VerticalOptions="CenterAndExpand"
+                            Source="{local2:EmbeddedImage Resource=fondomerende.image.star_empty.png}"
+                            Scale="{OnIdiom Phone=0.9, Tablet=3}"
+                            Clicked="favourite_Clicked"
+                            x:Name="favourite"
+                            BackgroundColor="Transparent"
+                            IsVisible="True">
+                        </ImageButton>
 
 
-                    <forms:AnimationView
-                        Scale="2.5"
-                        Grid.Row="0"
-                        Grid.Column="2"
-                        MinimumHeightRequest="40"
-                        MinimumWidthRequest="40"
-                        HeightRequest="40"
-                        WidthRequest="40"
-                        Margin="0,0,10,12"
-                        x:Name="Wallet"
-                        OnClick="WalletClicked"
-                        Animation="Wallet.json"
-                        Loop="False"
-                        HorizontalOptions="EndAndExpand"
-                        VerticalOptions="Center"
-                        AutoPlay="True">
-                    </forms:AnimationView>
+                        <forms:AnimationView
+                            Scale="2.5"
+                            Grid.Row="0"
+                            Grid.Column="2"
+                            MinimumHeightRequest="40"
+                            MinimumWidthRequest="40"
+                            HeightRequest="40"
+                            WidthRequest="40"
+                            Margin="0,0,10,12"
+                            x:Name="Wallet"
+                            OnClick="WalletClicked"
+                            Animation="Wallet.json"
+                            Loop="False"
+                            HorizontalOptions="EndAndExpand"
+                            VerticalOptions="Center"
+                            AutoPlay="True">
+                        </forms:AnimationView>
 
-                </Grid>
-            </StackLayout>
+                    </Grid>
+                </StackLayout>
 
-            <StackLayout
-                VerticalOptions="Center"
+                <StackLayout
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    VerticalOptions="Center"
                     BackgroundColor="#FFF8EB"
                     x:Name="Cane">
-                <Grid
-                    x:Name="griglia">
-                    <ScrollView 
-                        VerticalOptions="StartAndExpand"
-                        Grid.Column="0"
-                        Grid.Row="0"
-                        IsVisible="True" 
-                        x:Name="ScrollView"  
-                        Padding="0,0,0,10">
+                    <Grid
+                        x:Name="griglia">
+                        <ScrollView 
+                            VerticalOptions="StartAndExpand"
+                            Grid.Column="0"
+                            Grid.Row="0"
+                            IsVisible="True" 
+                            x:Name="ScrollSnackView"  
+                            Padding="0,0,0,10">
 
-                        <Grid HorizontalOptions="CenterAndExpand"
-                            x:Name="GridView" 
-                            ColumnSpacing="20">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*" />
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <StackLayout 
-                                    Grid.Column="0" 
-                                    x:Name="Column0"
-                                    Spacing="40"
-                                    HorizontalOptions="StartAndExpand"
-                                    Margin="5,0,10,0">
-                            </StackLayout>
-                            <StackLayout 
-                                    Grid.Column="1" 
-                                    x:Name="Column1"
-                                    Spacing="40"
-                                    HorizontalOptions="EndAndExpand"
-                                    Margin="10,0,5,0">
-                            </StackLayout>
-                        </Grid>
-                    </ScrollView>
-                </Grid>
+                            <Grid HorizontalOptions="CenterAndExpand"
+                                x:Name="GridView" 
+                                ColumnSpacing="20">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <StackLayout 
+                                        Grid.Column="0" 
+                                        x:Name="Column0"
+                                        Spacing="40"
+                                        HorizontalOptions="StartAndExpand"
+                                        Margin="5,0,10,0">
+                                </StackLayout>
+                                <StackLayout 
+                                        Grid.Column="1" 
+                                        x:Name="Column1"
+                                        Spacing="40"
+                                        HorizontalOptions="EndAndExpand"
+                                        Margin="10,0,5,0">
+                                </StackLayout>
+                            </Grid>
+                        </ScrollView>
+
+                        <ScrollView 
+                            VerticalOptions="StartAndExpand"
+                            Grid.Column="0"
+                            Grid.Row="0"
+                            IsVisible="False" 
+                            x:Name="ScrollFavourites"  
+                            Padding="0,0,0,10">
+
+                            <Grid HorizontalOptions="CenterAndExpand"
+                                x:Name="GridFavView" 
+                                ColumnSpacing="20">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <StackLayout 
+                                        Grid.Column="0" 
+                                        x:Name="Column0Fav"
+                                        Spacing="40"
+                                        HorizontalOptions="StartAndExpand"
+                                        Margin="5,0,10,0">
+                                </StackLayout>
+                                <StackLayout 
+                                        Grid.Column="1" 
+                                        x:Name="Column1Fav"
+                                        Spacing="40"
+                                        HorizontalOptions="EndAndExpand"
+                                        Margin="10,0,5,0">
+                                </StackLayout>
+                            </Grid>
+                        </ScrollView>
+                    </Grid>
+                </StackLayout>
+
+                <ListView
+                    Margin="0,0,0,0"
+                    x:Name="ListView"
+                    VerticalOptions="Start"
+                    IsPullToRefreshEnabled="true"
+                    RefreshCommand="{Binding RefreshCommand}"
+                    ItemSelected="ListView_ItemSelected"
+                    IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                    IsVisible="False"
+                    BackgroundColor="#FFF8EB"
+                    HasUnevenRows="True">
+                    <ListView.ItemTemplate>
+                        <DataTemplate x:Name="DataTemp">
+                            <local1:SnackViewCell 
+                                x:Name="Snack">
+                            </local1:SnackViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
             </StackLayout>
 
             <ListView
@@ -156,5 +216,6 @@
                 </ListView.ItemTemplate>
             </ListView>
         </StackLayout>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
