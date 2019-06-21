@@ -29,6 +29,7 @@
                     MinimumHeightRequest="40">
 
                     <Grid 
+                        x:Name="GridView1"
                         HorizontalOptions="FillAndExpand"
                         VerticalOptions="CenterAndExpand">
 
@@ -39,24 +40,10 @@
                         </Grid.ColumnDefinitions>
 
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="*" />
+                            <RowDefinition Height="50"/>
                         </Grid.RowDefinitions>
 
-                        <forms:AnimationView
-                            Scale="3"
-                            Grid.Row="0"
-                            Grid.Column="0"
-                            HeightRequest="40"
-                            WidthRequest="40"
-                            Margin="0,0,0,0"
-                            OnClick="Swap_Clicked"
-                            Animation="list2grid.json"
-                            Loop="False"
-                            x:Name="Swap"
-                            HorizontalOptions="StartAndExpand"
-                            VerticalOptions="CenterAndExpand"
-                            AutoPlay="False">
-                        </forms:AnimationView>
+
 
                         <ImageButton
                             Grid.Row="0"
