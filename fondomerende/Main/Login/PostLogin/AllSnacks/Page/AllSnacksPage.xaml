@@ -182,6 +182,13 @@
                     </ListView.ItemTemplate>
                 </ListView>
             </StackLayout>
+            
+            <StackLayout
+                Grid.Row="0"
+                Grid.Column="0"
+                x:Name="Paolo"
+                InputTransparent="True">
+            </StackLayout>
         </Grid>
     </ContentPage.Content>
 </ContentPage>
