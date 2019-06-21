@@ -43,7 +43,7 @@ namespace fondomerende.Main.Services.RESTServices
             }
             catch (FlurlHttpException ex)
             {
-                await App.Current.MainPage.DisplayAlert("Fondo Merende", "Errore di rete", "OK");
+                await App.Current.MainPage.DisplayAlert("Fondo Merende", result.response.message, "OK");
             }
             return result;
         }

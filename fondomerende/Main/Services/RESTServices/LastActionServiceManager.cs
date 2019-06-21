@@ -10,9 +10,10 @@ namespace fondomerende.Main.Services.RESTServices
     {
         public async System.Threading.Tasks.Task<LastActionDTO> GetLastActions()
         {
+            LastActionDTO response = null;
             try
             {
-                var response = await "http://192.168.0.175:8888/fondomerende/public/process-request.php?commandName=get-last-actions"
+                response = await "http://192.168.0.175:8888/fondomerende/public/process-request.php?commandName=get-last-actions"
                                     .WithCookie("auth-key", "metticiquellochetipare")
                                     .WithCookie("user-token", Manager.UserManager.Instance.token)
                                     .GetJsonAsync<LastActionDTO>();
@@ -25,7 +26,7 @@ namespace fondomerende.Main.Services.RESTServices
             }
             catch (FlurlHttpException ex)
             {
-                await App.Current.MainPage.DisplayAlert("Fondo Merende", "Errore di rete", "OK");
+                await App.Current.MainPage.DisplayAlert("Fondo Merende", response.response.message, "OK");
             }
             return null;
         }
