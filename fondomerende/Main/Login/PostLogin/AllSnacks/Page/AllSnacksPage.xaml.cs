@@ -23,13 +23,14 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AllSnacksPage : ContentPage
     {
+        double priceBinding;
         public static string selectedItemBinding { get; set; }
         SnackServiceManager snackServiceManager = new SnackServiceManager();
         List<SnackDataDTO> AllSnacks = new List<SnackDataDTO>();
         SnackDTO result;
         Dictionary<string, int> numerotocchi = new Dictionary<string, int>();
         bool switchStar = false;
-
+        AnimationView Swap;
         public AllSnacksPage()
         {
             numerotocchi.Add("numero", 0);
@@ -59,6 +60,14 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             }                                                                                   //
 
 
+            Swap = new AnimationView
+            {
+                HorizontalOptions = LayoutOptions.StartAndExpand,
+                VerticalOptions = LayoutOptions.CenterAndExpand,
+                Animation = "list2grid.json",
+            };
+            Swap.OnClick += Swap_Clicked;
+            GridView1.Children.Add(Swap, 0, 0);
 
 
             ListView.RefreshCommand = new Command(async () =>                                //
@@ -71,6 +80,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             {
                 WalletAnimation();
             });
+
         }                                                                                         //
         public async Task RefreshDataAsync()                                                    //
         {                                                                                      //
@@ -89,10 +99,12 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
         }
 
 
+
+
         public async Task GetSnacksMethod(bool Loaded,bool favourites)     //ottiene la lista degli snack e la applica alla ListView
         {
-            
             result = await snackServiceManager.GetSnacksAsync();
+           
             ListView.ItemsSource = result.data.snacks;
             int FavIndex = 0;
             if (!Loaded) //!WORKAROUND!   in questo modo si evita il crash ma la griglia non si aggiorna, urge investigazione sul vero problema
@@ -481,15 +493,15 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             if (ScrollSnackView.IsVisible == true)
             {
                 Swap.Play();
-                Swap.Speed = 0.7f;
-
+                // Swap.Speed = 0.7f;
+                Swap.FlowDirection = FlowDirection.LeftToRight;
                 ScrollSnackView.IsVisible = false;
                 ListView.IsVisible = true;
             }
             else
             {
                 Swap.Play();
-                Swap.Speed = 0.7f;
+                Swap.FlowDirection = FlowDirection.RightToLeft;
 
                 ListView.IsVisible = false;
                 ScrollSnackView.IsVisible = true;
