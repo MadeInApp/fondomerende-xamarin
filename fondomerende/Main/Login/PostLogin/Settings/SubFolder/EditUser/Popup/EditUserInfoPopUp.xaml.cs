@@ -101,8 +101,9 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.Popup
             //variabili in line entry//
             entryUsername = new LineEntry
             {
-                Margin = new Thickness(0, -60, 0, 0),
+                Margin= new Thickness(0,-40,0,0),
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
+                VerticalOptions = LayoutOptions.StartAndExpand,
                 WidthRequest = 250,
                 IsSpellCheckEnabled = false,
                 IsTextPredictionEnabled = false,
@@ -111,9 +112,9 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.Popup
             };
             entryFriendlyName = new LineEntry
             {
-                Margin = new Thickness(0, -30, 0, 0),
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 WidthRequest = 250,
+                VerticalOptions = LayoutOptions.StartAndExpand,
                 IsSpellCheckEnabled = false,
                 IsTextPredictionEnabled = false,
                 Keyboard = Keyboard.Plain,
@@ -121,8 +122,8 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.Popup
             };
             entryNewPassword = new LineEntry
             {
-                Margin = new Thickness(0, -30, 0, 0),
                 Keyboard = Keyboard.Default,
+                VerticalOptions = LayoutOptions.StartAndExpand,
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 WidthRequest = 250,
                 IsPassword = true,
@@ -133,7 +134,6 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.Popup
 
             var stackBody = new StackLayout  //stack principale dove è contenuto l'interno di tutto (tranne round che stonda)
             {
-                Spacing= 45,
                 HeightRequest = Altezza,
                 WidthRequest = Larghezza,
                 BackgroundColor = Color.White,
@@ -154,6 +154,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.Popup
 
             var buttonCancel = new Button
             {
+
                 Text = "Annulla",
                 VerticalOptions = LayoutOptions.CenterAndExpand,
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
