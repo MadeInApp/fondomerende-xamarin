@@ -19,7 +19,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnacks.View
         bool AlmostDone;
         AnimationView pacMananimation;
         private static Timer aTimer;
-        
+
         public SnackViewCell()
         {
             InitializeComponent();
@@ -42,7 +42,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnacks.View
             Grid.Children.Add(pacMananimation, 0, 0);
             MessagingCenter.Subscribe<SnackViewCell>(this, "Animate", async (arg) =>
             {
-                if(Nome.Text == AllSnacksPage.selectedItemBinding)
+                if (Nome.Text == AllSnacksPage.selectedItemBinding)
                 {
                     pacManAnimate();
                 }
@@ -54,22 +54,16 @@ namespace fondomerende.Main.Login.PostLogin.AllSnacks.View
             var mainDisplayInfo = DeviceDisplay.MainDisplayInfo;
             pacMananimation.IsVisible = true;
             pacMananimation.Margin = new Thickness(-mainDisplayInfo.Width / 0.8, 0, 0, 0);
-            aTimer = new System.Timers.Timer();
-            aTimer.Interval = (mainDisplayInfo.Width / 0.8) / 0.096;
-            aTimer.Start();
-            aTimer.Elapsed += OnTimedEvent;
             await Task.WhenAny<bool>
             (
-             pacMananimation.TranslateTo(mainDisplayInfo.Width / 0.8, 0, Convert.ToUInt32((mainDisplayInfo.Width / 0.8) / 0.096))
+             pacMananimation.TranslateTo((mainDisplayInfo.Width / 0.8)-((mainDisplayInfo.Width/0.8) / 6), 0, Convert.ToUInt32(((mainDisplayInfo.Width / 0.8) / 0.096)))
             );
-            aTimer.Stop();
-           
-        }
-            private void OnTimedEvent(Object source, System.Timers.ElapsedEventArgs e)
-            {
-                qta.Text = Convert.ToString(Int32.Parse(qta.Text) - 1);
-            }
-        
+            QtaRefresh();
 
         }
+        async void QtaRefresh()
+        {
+          qta.Text = Convert.ToString(Int32.Parse(qta.Text) - 1);
+        }
     }
+}
