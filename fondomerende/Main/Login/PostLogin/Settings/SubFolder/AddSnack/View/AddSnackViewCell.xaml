@@ -26,24 +26,15 @@
                     Grid.Row="0"
                     Grid.Column="0"
                     x:Name="SnackIcon" 
-                    Scale="0.75"
+                    Scale="{OnPlatform Android=0.5, Default=0.6}"
                     VerticalOptions="Center" 
                     HorizontalOptions="Center" 
                     Margin="7,0,9,0"
+                    Aspect="AspectFit"
                     Source="{local:EmbeddedImage Resource=fondomerende.image.add_icon_256x256.png}"
                     TintColor="Aquamarine">
                 </controls:TintedImage>
-                
-                <!--<Image
-                    Margin="2,0,0,0"
-                    Source="{local:EmbeddedImage Resource=fondomerende.image.add_icon_256x256.png}"
-                    Grid.Row="0"
-                    Grid.Column="0"
-                    Scale="{OnPlatform Android=0.3, iOS=0.6}"
-                    x:Name ="LogoutButton"
-                    Aspect="AspectFit">
-                11 11 0.9
-                </Image>-->
+  
 
                 <StackLayout
                     HorizontalOptions="Start"
