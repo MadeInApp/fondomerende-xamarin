@@ -142,6 +142,7 @@
                 ItemSelected="ListView_ItemSelected"
                 IsRefreshing="{Binding IsBusy, Mode=OneWay}"
                 IsVisible="False"
+                ItemTapped="ListView_ItemTapped"
                 BackgroundColor="#FFF8EB"
                 HasUnevenRows="True">
                 <ListView.ItemTemplate>

@@ -23,6 +23,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AllSnacksPage : ContentPage
     {
+        public static string selectedItemBinding { get; set; }
         SnackServiceManager snackServiceManager = new SnackServiceManager();
         List<SnackDataDTO> AllSnacks = new List<SnackDataDTO>();
         SnackDTO result;
@@ -36,7 +37,10 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             GetSnacksMethod(false);
             Fade();
             animation();
-
+            MessagingCenter.Subscribe<AllSnacksPage>(this, "RefreshGetSnacks", async (arg) =>
+            {
+                GetSnacksMethod(false);
+            });
 
 
 
@@ -422,6 +426,9 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
                 }, "RefreshUF");
 
+
+                selectedItemBinding = (e.SelectedItem as SnackDataDTO).friendly_name;
+
                 MessagingCenter.Send(new SnackViewCell()
                 {
                     
@@ -523,6 +530,10 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             }
         }
 
+        private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            
+        }
     }
 
 }
