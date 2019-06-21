@@ -45,6 +45,7 @@
     <None Remove="image\fund_256x256.png" />
     <None Remove="image\History.png" />
     <None Remove="image\history_icon_256x256.png" />
+    <None Remove="image\icons8-add.png" />
     <None Remove="image\list_256x256.png" />
     <None Remove="image\list_264x264.png" />
     <None Remove="image\Livellodinamico.png" />
@@ -151,6 +152,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="image\history_icon_256x256.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="image\icons8-add.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="image\list_256x256.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
