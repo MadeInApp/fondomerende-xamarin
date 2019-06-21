@@ -47,9 +47,19 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.PopUp
                     {
                         if (result.data.snacks[i].id == EditSnackListPage.SelectedSnackID)
                         {
-                            Qta.Placeholder = "Quantità: " + Convert.ToString(result.data.snacks[i].quantity);
-                            Quantity = result.data.snacks[i].quantity;
-                            break;
+                            if(result.data.snacks[i].quantity <= 0)
+                            {
+                                Qta.Placeholder = "Quantità:" + "0";
+                                Quantity = 0;
+                                break;
+                            }
+                            else
+                            {
+                                Qta.Placeholder = "Quantità: " + Convert.ToString(result.data.snacks[i].quantity);
+                                Quantity = result.data.snacks[i].quantity;
+                                break;
+                            }
+                           
                         }
                     }
                 }

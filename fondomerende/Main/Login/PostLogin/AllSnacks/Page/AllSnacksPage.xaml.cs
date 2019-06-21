@@ -62,9 +62,10 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
             Swap = new AnimationView
             {
+                HeightRequest = 50,
                 HorizontalOptions = LayoutOptions.StartAndExpand,
                 VerticalOptions = LayoutOptions.CenterAndExpand,
-                Animation = "list2grid.json",
+                Animation = "list2grid_alt.json",
             };
             Swap.OnClick += Swap_Clicked;
             GridView1.Children.Add(Swap, 0, 0);
