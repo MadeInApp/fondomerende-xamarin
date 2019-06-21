@@ -216,6 +216,34 @@ namespace fondomerende.Main.Services.RESTServices
             return null;
         }
 
+        public async System.Threading.Tasks.Task<EatDTO> BuySnackAsync2(int idsnack, int quantity, string priceSnack, string Exp)
+        {
 
+            var data = new Dictionary<string, string>();
+            data.Add("commandName", "buy");
+            data.Add("id", Convert.ToString(idsnack));
+            data.Add("price", priceSnack.Replace(",", "."));
+            data.Add("expiration-in-days", Exp);
+            data.Add("quantity", Convert.ToString(quantity));
+            try
+            {
+                var result = await "http://192.168.0.175:8888/fondomerende/public/process-request.php"
+                .WithCookie("auth-key", "metticiquellochetipare")
+                .WithCookie("user-token", UserManager.Instance.token)
+                .PostUrlEncodedAsync(data)
+                .ReceiveJson<EatDTO>(); //ri uso il DTO di Eat perchè sono Lazyaf
+
+                return result;
+            }
+            catch (FlurlHttpTimeoutException ex)
+            {
+                await App.Current.MainPage.DisplayAlert("Fondo Merende", "Connessione al server scaduta", "OK");
+            }
+            catch (FlurlHttpException ex)
+            {
+                await App.Current.MainPage.DisplayAlert("Fondo Merende", "Errore di rete", "OK");
+            }
+            return null;
+        }
     }
 }

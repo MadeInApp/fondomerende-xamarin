@@ -1,4 +1,5 @@
 ﻿using fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page;
+using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.Page;
 using fondomerende.Main.Services.RESTServices;
 using fondomerende.Main.Utilities;
 using Rg.Plugins.Popup.Extensions;
@@ -19,8 +20,17 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class BuySnackPopUpPage : Rg.Plugins.Popup.Pages.PopupPage
     {
+        ImageButton immagine;
         LineEntry line;
+        double Altezza, Larghezza;
+        RoundedCornerView Round;
+        StackLayout stackBody;
+        LineEntry prezzo;
+        LineEntry scadenza;
+        Button buttonCancel, buttonConfirm;
+        bool isDone, swap=false;
         string appoggio;
+        
         SnackServiceManager snackService = new SnackServiceManager();
         public BuySnackPopUpPage()
         {
@@ -44,11 +54,11 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
         }
         private void PopupBuy()
         {
-            double Altezza = 200;
-            double Larghezza = GetLarghezzaPagina() - 80;
+            Altezza = 200;
+            Larghezza = GetLarghezzaPagina() - 80;
             double banner = 50;
 
-            var Round = new RoundedCornerView  //coso che stonda
+            Round = new RoundedCornerView  //coso che stonda
             {
                 RoundedCornerRadius = 20,
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
@@ -57,11 +67,16 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
                 WidthRequest = Larghezza,
             };
 
+            
+
+
+
             var stackFondoAndroid = new StackLayout() //per android 
             {
                 HeightRequest = banner,
                 WidthRequest = Larghezza,
                 BackgroundColor = GetPrimaryAndroidColor(),
+                Orientation = StackOrientation.Horizontal,
             };
 
             var stackFondoiOS = new StackLayout()  //per ios 
@@ -69,6 +84,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
                 HeightRequest = banner,
                 WidthRequest = Larghezza,
                 BackgroundColor = Color.Orange,
+                Orientation = StackOrientation.Horizontal,
             };
 
             var fondomerende = new Label  //Label per Il titolo banner 
@@ -82,16 +98,38 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
             };
             line = new LineEntry
             {
-
                 Placeholder = "Quanti snack vuoi acquistare?",
                 Keyboard = Keyboard.Numeric,
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                HorizontalTextAlignment = TextAlignment.Center,
+                
+            };
+
+            prezzo = new LineEntry
+            {
+                Placeholder = "Inserire il prezzo",
+                Keyboard = Keyboard.Numeric,
+                WidthRequest = 250,
+                IsVisible = false,
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                HorizontalTextAlignment = TextAlignment.Center,
+            };
+
+            scadenza = new LineEntry
+            {
+                Placeholder = "Inserire la scadenza",
+                Keyboard = Keyboard.Numeric,
+                WidthRequest = 250,
+                IsVisible = false,
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 HorizontalTextAlignment = TextAlignment.Center,
             };
 
 
+            prezzo.TextChanged += EntrataPrezzo;
 
-            var stackBody = new StackLayout  //stack principale dove è contenuto l'interno di tutto (tranne round che stonda)
+
+            stackBody = new StackLayout  //stack principale dove è contenuto l'interno di tutto (tranne round che stonda)
 
             {
                 HeightRequest = Altezza,
@@ -112,7 +150,20 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
 
             };
 
-            var buttonCancel = new Button
+
+            immagine = new ImageButton
+            {
+                Source = ImageSource.FromResource("fondomerende.image.settings_icon_64x64.png"),
+                CornerRadius = 20,
+                Scale = 1,
+                BackgroundColor = Color.Transparent,
+                Margin = new Thickness (0,0,15,0),
+                Aspect = Aspect.AspectFit,
+            };
+
+            immagine.Clicked += Immagine_Clicked;
+
+            buttonCancel = new Button
             {
                 Text = "Annulla",
                 VerticalOptions = LayoutOptions.CenterAndExpand,
@@ -120,7 +171,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
                 BackgroundColor = Color.Transparent,
             };
 
-            var buttonConfirm = new Button
+             buttonConfirm = new Button
             {
                 Text = "Conferma",
                 VerticalOptions = LayoutOptions.CenterAndExpand,
@@ -141,17 +192,26 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
             {
                 case Device.Android:
                     stackFondoAndroid.Children.Add(fondomerende);
+                    stackFondoAndroid.Children.Add(immagine);
                     stackBody.Children.Add(stackFondoAndroid);
                     break;
                 default:
                     stackFondoAndroid.Children.Add(fondomerende);
+                    stackFondoAndroid.Children.Add(immagine);
                     stackBody.Children.Add(stackFondoiOS);
                     break;
             }
           //  entry.TextChanged += Entrata;
+
+
             buttonCancel.Clicked += Discard_Clicked;
             buttonConfirm.Clicked += Apply_Clicked;
+
+            
             stackBody.Children.Add(line);
+            stackBody.Children.Add(prezzo);
+            stackBody.Children.Add(scadenza);
+
             stackBody.Children.Add(stackBottoni);
             Round.Children.Add(stackBody);
 
@@ -239,32 +299,102 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
             return base.OnBackgroundClicked();
         }
 
-       private async void Apply_Clicked(object sender, EventArgs e)
-        {
-            SnackServiceManager snackService = new SnackServiceManager();
 
-            if(line.Text == null || line.Text=="")
+        private async void Immagine_Clicked(object sender, EventArgs e)
+        {
+            swap = true;
+            Altezza = GetAltezzaPagina() / 2.2;
+            Round.HeightRequest = Altezza;
+            immagine.IsVisible = false;
+            prezzo.IsVisible = true;
+            scadenza.IsVisible = true;
+        }
+
+
+        public void EntrataPrezzo(object sender, TextChangedEventArgs e)
+        {
+            if (prezzo.CursorPosition == 1 && isDone)
             {
-                await DisplayAlert("Fondo Merende", "Inserisci la quantità" , "OK");
-            }
-            else
-            {
-                var result = await snackService.BuySnackAsync(BuySnackListPage.SelectedSnackID, Int32.Parse(line.Text));
-                if (result != null)
+                if (prezzo.Text.Substring(1, 1) == ",")
                 {
-                    if (result.response.success)
-                    {
-                        await PopupNavigation.Instance.PopAsync();
-                    }
-                    else
-                    {
-                        await DisplayAlert("Fondo Merende", result.response.message, "Ok");
-                    }
+                    prezzo.MaxLength = 4;
+                    isDone = false;
                 }
                 else
                 {
-
+                    prezzo.MaxLength = 5;
+                    prezzo.Text = prezzo.Text + ",";
+                    isDone = false;
                 }
+            }
+
+            if (prezzo.CursorPosition == 0)
+            {
+                isDone = true;
+            }
+        }
+
+
+
+        private async void Apply_Clicked(object sender, EventArgs e)
+        { 
+            SnackServiceManager snackService = new SnackServiceManager();
+            if (swap == false)
+            {
+                if (line.Text == null || line.Text == "")
+                {
+                    await DisplayAlert("Fondo Merende", "Inserisci la quantità", "OK");
+                }
+                else
+                {
+                    var result = await snackService.BuySnackAsync(BuySnackListPage.SelectedSnackID, Int32.Parse(line.Text));
+                    if (result != null)
+                    {
+                        if (result.response.success)
+                        {
+                            await PopupNavigation.Instance.PopAsync();
+                        }
+                        else
+                        {
+                            await DisplayAlert("Fondo Merende", result.response.message, "Ok");
+                        }
+                    }
+                    else
+                    {
+
+                    }
+                }
+            }
+            if(swap == true )
+            {
+                if (line.Text == null || line.Text == "")
+                {
+                    await DisplayAlert("Fondo Merende", "Inserisci la quantità", "OK");
+                }
+                if(prezzo.Text == null || prezzo.Text == "")
+                {
+                    await DisplayAlert("Fondo Merende", "Inserisci il prezzo", "OK");
+                }
+                if(scadenza.Text == null ||  scadenza.Text == "")
+                {
+                    await DisplayAlert("Fondo Merende", "Inserisci i giorni di scadenza", "OK");
+                }
+                else
+                {
+                    var result = await snackService.BuySnackAsync2(BuySnackListPage.SelectedSnackID, Int32.Parse(line.Text),prezzo.Text, scadenza.Text);
+                    if (result != null)
+                    {
+                        if (result.response.success)
+                        {
+                            await PopupNavigation.Instance.PopAsync();
+                        }
+                        else
+                        {
+                            await DisplayAlert("Fondo Merende", result.response.message, "Ok");
+                        }
+                    }
+                }
+
             }
            
         }
