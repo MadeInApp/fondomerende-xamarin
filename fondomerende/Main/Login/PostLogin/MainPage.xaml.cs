@@ -30,14 +30,6 @@ namespace fondomerende.Main.Login.PostLogin
         public MainPage()
         {
             InitializeComponent();
-            for (int i = 0; i < 2; i++)
-            {
-                
-                MessagingCenter.Send(new EditUserViewCell()
-                {
-
-                }, "Refresh");
-            }
             SnacksNavPage.IconImageSource = ImageSource.FromResource("fondomerende.image.vm_icon_64x64.png");
             SettingsNavPage.IconImageSource = ImageSource.FromResource("fondomerende.image.settings_icon_64x64.png");
 
