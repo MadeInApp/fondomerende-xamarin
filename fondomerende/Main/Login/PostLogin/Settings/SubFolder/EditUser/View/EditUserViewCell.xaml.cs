@@ -56,12 +56,17 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View
         {
             string firstLetter = "";
 
-            string[] strSplit = Preferences.Get("friendly-name", "").Split();
 
+
+            firstLetter = Preferences.Get("friendly-name", "").Substring(0, 1);
+
+            /*
             foreach (string res in strSplit)
             {
                 firstLetter = (res.Substring(0, 1));
             }
+
+            */
             inizialeLabel.Text = firstLetter;
             inizialeLabel_iOS.Text = firstLetter;
         }
