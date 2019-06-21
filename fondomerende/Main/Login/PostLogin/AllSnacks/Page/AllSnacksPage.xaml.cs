@@ -100,10 +100,13 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                 for (int i = 0; i <= result.data.snacks.Count; i++)
                 {
                     bool addfav = false; //variabile di appoggio
-
+                    bool visibilità = true;
                     if (favourites && !Check_Favourites(result.data.snacks[i].id))
                     {
                         addfav = true;
+                    }else if(favourites && Check_Favourites(result.data.snacks[i].id))
+                    {
+                        visibilità = false;
                     }
 
                     ColorRandom c = new ColorRandom();
@@ -199,6 +202,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                     var app = new StackLayout
                     {
                         Orientation = StackOrientation.Vertical,
+                        IsVisible = visibilità,
                     };
 
                     starAnimation.OnFinish += StopAnimation;
