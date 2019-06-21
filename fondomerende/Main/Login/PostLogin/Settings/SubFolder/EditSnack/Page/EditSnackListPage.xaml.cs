@@ -18,6 +18,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.Page
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class EditSnackListPage : AnimationPage
     {
+        public static int SelectedSnackLength;
         public static int SelectedSnackID;
         public static string SelectedSnackName;
         public static string SelectedSnackFriendlyName;
@@ -67,6 +68,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.Page
             if (result!= null)
             {
                 ListView.ItemsSource = result.data.snacks;
+                SelectedSnackLength = result.data.snacks.Count;
             }
             else
             {
@@ -83,6 +85,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.Page
             SelectedSnackPerBox = 0;
             SelectedSnackPrice = 0;
             SelectedSnackExpiration = 0;
+         
             SelectedSnackID = (e.SelectedItem as AllSnacksDataDTO).id;
             SelectedSnackName = (e.SelectedItem as AllSnacksDataDTO).name;
             SelectedSnackFriendlyName = (e.SelectedItem as AllSnacksDataDTO).friendly_name;
