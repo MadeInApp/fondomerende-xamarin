@@ -7,13 +7,19 @@ using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using fondomerende.Main.Login.PostLogin.AllSnack.Page;
+using System.Collections;
+using System.Timers;
 
 namespace fondomerende.Main.Login.PostLogin.AllSnacks.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SnackViewCell : ViewCell
     {
+        bool AlmostDone;
         AnimationView pacMananimation;
+        private static Timer aTimer;
+
         public SnackViewCell()
         {
             InitializeComponent();
@@ -33,11 +39,13 @@ namespace fondomerende.Main.Login.PostLogin.AllSnacks.View
                 Speed = 4,
             };
 
-
             Grid.Children.Add(pacMananimation, 0, 0);
-            MessagingCenter.Subscribe<SnackViewCell>(this, "Animate", async (value) =>
+            MessagingCenter.Subscribe<SnackViewCell>(this, "Animate", async (arg) =>
             {
-               pacManAnimate();
+                if (Nome.Text == AllSnacksPage.selectedItemBinding)
+                {
+                    pacManAnimate();
+                }
             });
         }
 
@@ -45,13 +53,17 @@ namespace fondomerende.Main.Login.PostLogin.AllSnacks.View
         {
             var mainDisplayInfo = DeviceDisplay.MainDisplayInfo;
             pacMananimation.IsVisible = true;
-            pacMananimation.Margin = new Thickness(-mainDisplayInfo.Width/0.8, 0, 0, 0);
-
+            pacMananimation.Margin = new Thickness(-mainDisplayInfo.Width / 0.8, 0, 0, 0);
             await Task.WhenAny<bool>
             (
-             pacMananimation.TranslateTo(mainDisplayInfo.Width/0.8, 0, Convert.ToUInt32((mainDisplayInfo.Width/0.8) / 0.096))
+             pacMananimation.TranslateTo((mainDisplayInfo.Width / 0.8)-((mainDisplayInfo.Width/0.8) / 6), 0, Convert.ToUInt32(((mainDisplayInfo.Width / 0.8) / 0.096)))
             );
+            QtaRefresh();
 
+        }
+        async void QtaRefresh()
+        {
+          qta.Text = Convert.ToString(Int32.Parse(qta.Text) - 1);
         }
     }
 }
