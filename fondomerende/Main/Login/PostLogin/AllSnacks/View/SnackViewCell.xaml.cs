@@ -56,10 +56,10 @@ namespace fondomerende.Main.Login.PostLogin.AllSnacks.View
             pacMananimation.Margin = new Thickness(-mainDisplayInfo.Width / 0.8, 0, 0, 0);
             await Task.WhenAny<bool>
             (
-             pacMananimation.TranslateTo((mainDisplayInfo.Width / 0.8)-((mainDisplayInfo.Width/0.8) / 6), 0, Convert.ToUInt32(((mainDisplayInfo.Width / 0.8) / 0.096)))
+             pacMananimation.TranslateTo((mainDisplayInfo.Width / 0.8)-((mainDisplayInfo.Width/0.8) / 4.40), 0, Convert.ToUInt32(((mainDisplayInfo.Width / 0.8) / 0.096)))
             );
             QtaRefresh();
-
+            await pacMananimation.TranslateTo((mainDisplayInfo.Width / 0.8), 0, Convert.ToUInt32(((mainDisplayInfo.Width / 0.8) / 0.40)));
         }
         async void QtaRefresh()
         {
