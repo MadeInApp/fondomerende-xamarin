@@ -22,7 +22,7 @@ namespace fondomerende.iOS
             TintedImageRenderer.Init();
             FormsControls.Touch.Main.Init();
             LoadApplication(new App());
-            IQKeyboardManager.shared.enable = true
+            IQKeyboardManager.IQKeyboardManager.SharedManager.Enable = true;
 
             return base.FinishedLaunching(app, options);
         }
