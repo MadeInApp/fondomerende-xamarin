@@ -6,7 +6,7 @@
             xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
             xmlns:tt1="clr-namespace:ColorPicker.TouchTracking;assembly=fondomerende "
             x:Class="ColorPicker.ColorPickerPopup"
-            xmlns:local="clr-namespace:fondomerende.Main.Utilities">
+            xmlns:local="clr-namespace:fondomerende.Main.Utilities" >
 
     
     <local:RoundedCornerView
@@ -18,28 +18,27 @@
         
         <StackLayout>
             <StackLayout 
-                        VerticalOptions="Center"
-                        HorizontalOptions="Center"
-                        BackgroundColor="#f29e17"
-                        WidthRequest="250"
-                        HeightRequest="50"
-                        Margin="0,0,0,-10">
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                BackgroundColor="#f29e17"
+                WidthRequest="250"
+                HeightRequest="50"
+                Margin="0,0,0,-10">
 
-                <Label 
-                           Text="Fondo Merende"
-                           Margin="0,5,0,0"
-                           HorizontalOptions="Center"
-                           VerticalOptions="Center"
-                           BackgroundColor="#f29e17"
-                           FontSize="20"
-                           FontAttributes="Bold"
-                           TextColor="White"
-                           >
-                </Label>
+                    <Label 
+                        Text="Fondo Merende"
+                        Margin="0,5,0,0"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        BackgroundColor="#f29e17"
+                        FontSize="20"
+                        FontAttributes="Bold"
+                        TextColor="White">
+                     </Label>
             </StackLayout>
 
 
-            <Frame BackgroundColor="White" >
+            <Frame BackgroundColor="White" HasShadow="False">
 
                 <StackLayout>
                 
