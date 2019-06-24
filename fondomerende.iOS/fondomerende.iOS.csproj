@@ -101,6 +101,7 @@
     <BundleResource Include="Renderer\Wallet.json" />
     <BundleResource Include="Renderer\PiggyBank.json" />
     <BundleResource Include="Renderer\Pig.json" />
+    <BundleResource Include="Renderer\EatLoading.json" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\Contents.json">

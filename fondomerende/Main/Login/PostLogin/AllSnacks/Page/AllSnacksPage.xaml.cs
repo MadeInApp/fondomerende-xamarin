@@ -33,17 +33,18 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
         Dictionary<string, int> numerotocchi = new Dictionary<string, int>();
         bool switchStar = false;
         AnimationView Swap;
+        bool hold = false;
         public AllSnacksPage()
         {
             numerotocchi.Add("numero", 0);
             InitializeComponent();
-            GetSnacksMethod(false,false);
-            GetSnacksMethod(false,true);
+            GetSnacksMethod(false, false);
+            GetSnacksMethod(false, true);
             Fade();
             animation();
             MessagingCenter.Subscribe<AllSnacksPage>(this, "RefreshGetSnacks", async (arg) =>
             {
-                GetSnacksMethod(false,false);
+                GetSnacksMethod(false, false);
             });
 
 
@@ -55,7 +56,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                 case Device.Android:                                                           //   \\   Se è iOS invece si (perchè senza è una schifezza)
                     NavigationPage.SetHasNavigationBar(this, false);                           //    \\
                     break;                                                                           //
-                                                                                                    //
+                                                                                                     //
                 default:                                                                           //
                     NavigationPage.SetHasNavigationBar(this, true);                               //
                     break;                                                                       //
@@ -68,7 +69,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                 HorizontalOptions = LayoutOptions.StartAndExpand,
                 VerticalOptions = LayoutOptions.StartAndExpand,
                 Animation = "list2grid_alt.json",
-                Margin = new Thickness(0,0,0,10)
+                Margin = new Thickness(0, 0, 0, 10)
             };
             Swap.OnClick += Swap_Clicked;
             GridView1.Children.Add(Swap, 0, 0);
@@ -88,13 +89,13 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
         }                                                                                         //
         public async Task RefreshDataAsync()                                                    //
         {                                                                                      //
-            await GetSnacksMethod(true,false);                                                      //
+            await GetSnacksMethod(true, false);                                                      //
         }
 
         public async Task RefreshFavouriteDataAsync()                                                    //
         {                                                                                      //
             await GetSnacksMethod(true, true);                                                      //
-        }              
+        }
 
         private void WalletAnimation()
         {
@@ -105,10 +106,10 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
 
 
-        public async Task GetSnacksMethod(bool Loaded,bool favourites)     //ottiene la lista degli snack e la applica alla ListView
+        public async Task GetSnacksMethod(bool Loaded, bool favourites)     //ottiene la lista degli snack e la applica alla ListView
         {
             result = await snackServiceManager.GetSnacksAsync();
-           
+
             ListView.ItemsSource = result.data.snacks;
             int FavIndex = 0;
             if (!Loaded) //!WORKAROUND!   in questo modo si evita il crash ma la griglia non si aggiorna, urge investigazione sul vero problema
@@ -120,7 +121,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                     if (favourites && !Check_Favourites(result.data.snacks[i].id))
                     {
                         addfav = true;
-                    }else if(favourites && Check_Favourites(result.data.snacks[i].id))
+                    } else if (favourites && Check_Favourites(result.data.snacks[i].id))
                     {
                         visibilità = false;
                     }
@@ -205,7 +206,19 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                     var starAnimation = new AnimationView
                     {
                         Animation = "star.json",
-                        Scale = 1.3,
+                        Scale = 1,
+                        Loop = false,
+                        HorizontalOptions = LayoutOptions.FillAndExpand,
+                        VerticalOptions = LayoutOptions.FillAndExpand,
+                        AutoPlay = false,
+                        InputTransparent = true,
+                        IsVisible = false,
+                    };
+
+                    var eatAnimation = new AnimationView
+                    {
+                        Animation = "eatLoading.json",
+                        Scale = 1,
                         Loop = false,
                         HorizontalOptions = LayoutOptions.FillAndExpand,
                         VerticalOptions = LayoutOptions.FillAndExpand,
@@ -223,14 +236,14 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
                     var longpress = new MultiGestureView
                     {
-                        LongPressVibrationDuration=300,
+                        LongPressVibrationDuration = 300,
                     };
 
 
                     starAnimation.OnFinish += StopAnimation;
 
                     var tgr = new TapGestureRecognizer();
-                    tgr.Tapped += Tgr_Tapped;
+                    tgr.Tapped += HoldAsync;
                     app.GestureRecognizers.Add(tgr);
 
                     var tgr2 = new TapGestureRecognizer();
@@ -245,7 +258,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                         case Device.Android:
 
                             BordiSmussatiAndroid.Children.Add(StackLayout);
-                            
+
                             BordiSmussatiAndroid.Children.Add(starAnimation);
                             BordiSmussatiAndroid.Children.Add(star);
 
@@ -256,7 +269,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                         default:
 
                             BordiSmussatiiOS.Children.Add(StackLayout);
-                            
+
                             BordiSmussatiiOS.Children.Add(starAnimation);
                             BordiSmussatiiOS.Children.Add(star);
 
@@ -279,7 +292,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                         if (i % 2 == 0) Column0.Children.Add(app);
                         else Column1.Children.Add(app);
                     }
-                    
+
                 }
             }
         }
@@ -301,12 +314,12 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
             for (int i = 0; i < strSplit.Length; i++)
             {
-                
-                if(Convert.ToString(id) == strSplit[i])
-                { 
+
+                if (Convert.ToString(id) == strSplit[i])
+                {
                     preferito = strSplit[i];
                     break;
-                }  
+                }
             }
             if (preferito != "") //se è gia presente
             {
@@ -314,7 +327,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             }
             else //se non è presente
             {
-                
+
                 return true;
             }
         }
@@ -342,7 +355,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             {
                 string newpreferiti = "";
 
-                for (int i=0 ; i < strSplit.Length ; i++)
+                for (int i = 0; i < strSplit.Length; i++)
                 {
                     if (strSplit[i] != fav)
                     {
@@ -350,7 +363,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                         else newpreferiti += strSplit[i] + ",";
                     }
                 }
-                Preferences.Set("Favourites",newpreferiti);
+                Preferences.Set("Favourites", newpreferiti);
                 return false;
             }
             else //se non lo è
@@ -376,11 +389,11 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             }
             if (index != null)
             {
-                string preferito="";
+                string preferito = "";
 
-                foreach(var app in (sender as StackLayout).Children)
+                foreach (var app in (sender as StackLayout).Children)
                 {
-                    if(app is RoundedCornerView)
+                    if (app is RoundedCornerView)
                     {
                         foreach (var an in (app as RoundedCornerView).Children)
                         {
@@ -397,7 +410,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                                 }
                                 else
                                 {
-                                    
+
                                 }
 
                             }
@@ -405,7 +418,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                             if (an is Image)
                             {
                                 Image image = (Image)an;
-                                string a="";
+                                string a = "";
                                 if (Check_Favourites(index.id))
                                 {
                                     a = "fondomerende.image.star_empty.png";
@@ -418,7 +431,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
                                 image.Source = ImageSource.FromResource(a);
                             }
-                        }      
+                        }
                     }
                 }
             }
@@ -429,15 +442,15 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             SnackDataDTO index = null;
             foreach (var item in (sender as StackLayout).Children)
             {
-                if(item is Label)
+                if (item is Label)
                 {
                     var snackName = (item as Label).Text;
                     index = result.data.snacks.Single(obj => obj.friendly_name == snackName);
                     break;
                 }
-                
+
             }
-            if(index != null)
+            if (index != null)
             {
                 SelectedItemChangedEventArgs test = new SelectedItemChangedEventArgs(index);
                 ListView_ItemSelected(null, test);
@@ -448,7 +461,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
         private async void favourite_Clicked(object sender, EventArgs e)
         {
             switchStar = !switchStar;
-            if(switchStar)
+            if (switchStar)
             {
                 await RefreshFavouriteDataAsync();
                 ScrollSnackView.IsVisible = false;
@@ -473,7 +486,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             if (ans == true)
             {
                 await snackServiceManager.EatAsync((e.SelectedItem as SnackDataDTO).id, 1);
-               // await GetSnacksMethod(true);
+                // await GetSnacksMethod(true);
                 MessagingCenter.Send(new EditUserViewCell()
                 {
 
@@ -484,12 +497,12 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
                 MessagingCenter.Send(new SnackViewCell()
                 {
-                    
+
                 }, "Animate");
             }
             else
             {
-              //  await GetSnacksMethod(true);
+                //  await GetSnacksMethod(true);
             }
         }
 
@@ -530,10 +543,10 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             var mainDisplayWidth = DeviceDisplay.MainDisplayInfo.Width;
             var mainDisplayHeight = DeviceDisplay.MainDisplayInfo.Height;
             int numeroMuffin = Convert.ToInt32(mainDisplayWidth) / 256;
-          
-            for(int i=0; i < numeroMuffin; i++)
+
+            for (int i = 0; i < numeroMuffin; i++)
             {
- 
+
                 var paolo = new Image   //il cupcake paolo
                 {
                     VerticalOptions = LayoutOptions.StartAndExpand,
@@ -546,7 +559,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
                 Anima(paolo);
             }
-            
+
         }
 
         private async Task Anima(Image sender)
@@ -581,7 +594,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
                 await sender.RotateTo(0);
                 await sender.TranslateTo(spawncasuale, 0, 0);
-                
+
                 await Task.WhenAny<bool>
 
                 (
@@ -593,16 +606,56 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             }
         }
 
-        private void SetFavourite(object sender,EventArgs e)
-       {
+        private void SetFavourite(object sender, EventArgs e)
+        {
             //if(Preferences.ContainsKey("Favourite")) => Preferences.Add("Favourite",); ;
             //Preferences.Add("",);
-       }
+        }
 
-        private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
-            
+        private async Task HoldAsync(object sender, EventArgs e)
         {
+            int i = 0;
+            while (hold)
+            {
+                i++;
+                if (i == 0) // la prima cosa che succede se viene premuto il tasto
+                {
+                    SnackDataDTO index = null;
+                    foreach (var item in (sender as StackLayout).Children)
+                    {
+                        if (item is Label)
+                        {
+                            var snackName = (item as Label).Text;
+                            index = result.data.snacks.Single(obj => obj.friendly_name == snackName);
+                            break;
+                        }
+
+                    }
+                    if (index != null)
+                    {
+
+                        foreach (var app in (sender as StackLayout).Children)
+                        {
+                            if (app is RoundedCornerView)
+                            {
+                                foreach (var an in (app as RoundedCornerView).Children)
+                                {
+
+                                    if (an is AnimationView)
+                                    {
+                                        AnimationView ap = (AnimationView)an;
+                                        if (ap.Animation == "eatLoading.json")
+                                        {
+                                            ap.Play();
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                await Task.Delay(10);
+            }
         }
     }
-
 }
