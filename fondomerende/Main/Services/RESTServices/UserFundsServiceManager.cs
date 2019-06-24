@@ -11,18 +11,17 @@ namespace fondomerende.Main.Services.RESTServices
     class UserFundsServiceManager
     {
 
-       
+
         public async System.Threading.Tasks.Task<UserFundsDTO> GetUserFunds()
         {
-            UserFundsDTO response = null;
             try
             {
 
 
-             response = await "http://192.168.0.175:8888/fondomerende/public/process-request.php?commandName=get-user-funds"
-                                    .WithCookie("auth-key", "metticiquellochetipare")
-                                    .WithCookie("user-token", Manager.UserManager.Instance.token)
-                                    .GetJsonAsync<UserFundsDTO>();
+                var response = await "http://192.168.0.175:8888/fondomerende/public/process-request.php?commandName=get-user-funds"
+                                      .WithCookie("auth-key", "metticiquellochetipare")
+                                      .WithCookie("user-token", Manager.UserManager.Instance.token)
+                                      .GetJsonAsync<UserFundsDTO>();
 
                 return response;
             }
@@ -32,17 +31,16 @@ namespace fondomerende.Main.Services.RESTServices
             }
             catch (FlurlHttpException ex)
             {
-                await App.Current.MainPage.DisplayAlert("Fondo Merende", response.response.message, "OK");
+                await App.Current.MainPage.DisplayAlert("Fondo Merende", "Errore di rete", "OK");
             }
             return null;
         }
 
         public async System.Threading.Tasks.Task<FundFundsDTO> GetFundsFundAsync()
         {
-            FundFundsDTO response = null;
             try
             {
-                response = await "http://192.168.0.175:8888/fondomerende/public/process-request.php?commandName=get-fund-funds"
+                var response = await "http://192.168.0.175:8888/fondomerende/public/process-request.php?commandName=get-fund-funds"
                                     .WithCookie("auth-key", "metticiquellochetipare")
                                     .WithCookie("user-token", Manager.UserManager.Instance.token)
                                     .GetJsonAsync<FundFundsDTO>();
@@ -55,7 +53,7 @@ namespace fondomerende.Main.Services.RESTServices
             }
             catch (FlurlHttpException ex)
             {
-                await App.Current.MainPage.DisplayAlert("Fondo Merende", response.response.message, "OK");
+                await App.Current.MainPage.DisplayAlert("Fondo Merende", "Errore di rete", "OK");
             }
             return null;
         }

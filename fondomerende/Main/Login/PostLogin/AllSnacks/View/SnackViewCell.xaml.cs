@@ -23,27 +23,26 @@ namespace fondomerende.Main.Login.PostLogin.AllSnacks.View
         public SnackViewCell()
         {
             InitializeComponent();
-
-
-            pacMananimation = new AnimationView
-            {
-                Animation = "pacman0.6.json",
-                Scale = 1.6,
-                Loop = true,
-                HorizontalOptions = LayoutOptions.StartAndExpand,
-                VerticalOptions = LayoutOptions.FillAndExpand,
-                AutoPlay = true,
-                HardwareAcceleration = true,
-                InputTransparent = true,
-                IsVisible = false,
-                Speed = 4,
-            };
-
-            Grid.Children.Add(pacMananimation);
+         
             MessagingCenter.Subscribe<SnackViewCell>(this, "Animate", async (arg) =>
             {
                 if (Nome.Text == AllSnacksPage.selectedItemBinding)
                 {
+                    pacMananimation = new AnimationView
+                    {
+                        Animation = "pacman0.6.json",
+                        Scale = 1.6,
+                        Loop = true,
+                        HorizontalOptions = LayoutOptions.StartAndExpand,
+                        VerticalOptions = LayoutOptions.FillAndExpand,
+                        AutoPlay = true,
+                        HardwareAcceleration = true,
+                        InputTransparent = true,
+                        IsVisible = false,
+                        Speed = 4,
+                    };
+
+                    Grid.Children.Add(pacMananimation);
                     pacManAnimate();
                 }
             });

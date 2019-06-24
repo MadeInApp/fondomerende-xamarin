@@ -305,7 +305,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup
                     }
                     else
                     {
-                        await DisplayAlert("Fondo Merende", "Errore", "Ok");
+                        await DisplayAlert("Fondo Merende", resultDep.response.message, "Ok");
                     }
                 }
                 else

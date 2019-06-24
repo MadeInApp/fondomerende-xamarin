@@ -298,7 +298,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.Popup
                     }
                     else if (risp.response.message != null)
                     {
-                        await DisplayAlert("Fondo Merende","Errore", "Ok");
+                        await DisplayAlert("Fondo Merende",risp.response.message, "Ok");
                         await Navigation.PopPopupAsync();
                     }
                 }

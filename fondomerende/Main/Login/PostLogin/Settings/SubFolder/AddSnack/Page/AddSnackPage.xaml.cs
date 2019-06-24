@@ -47,7 +47,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.Page
                     }
                     else
                     {
-                        await DisplayAlert("Fondo Merende", "Errore", "Ok");
+                        await DisplayAlert("Fondo Merende", result.response.message, "Ok");
                     }
                 }
                 else

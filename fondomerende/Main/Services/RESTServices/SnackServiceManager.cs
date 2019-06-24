@@ -14,10 +14,9 @@ namespace fondomerende.Main.Services.RESTServices
     {
         public async System.Threading.Tasks.Task<SnackDTO> GetSnacksAsync() //  Servizio per Ottenere informazioni sugli snack mangiabili
         {
-            SnackDTO result = null;
             try
             {
-                     result = await "http://192.168.0.175:8888/fondomerende/public/process-request.php?commandName=get-to-eat-and-user-funds"
+                var result = await "http://192.168.0.175:8888/fondomerende/public/process-request.php?commandName=get-to-eat-and-user-funds"
                                 .WithCookie("auth-key", "metticiquellochetipare")
                                 .WithCookie("user-token", UserManager.Instance.token)
                                 .GetJsonAsync<SnackDTO>();
@@ -30,17 +29,16 @@ namespace fondomerende.Main.Services.RESTServices
             }
             catch (FlurlHttpException ex)
             {
-                await App.Current.MainPage.DisplayAlert("Fondo Merende", result.response.message, "OK");
+                await App.Current.MainPage.DisplayAlert("Fondo Merende", "Errore di rete", "OK");
             }
             return null;
         }
 
         public async System.Threading.Tasks.Task<ToBuySnackDTO> GetToBuySnacksAsync() //  Servizio per Ottenere informazioni sugli snack mangiabili
         {
-            ToBuySnackDTO result = null;
             try
             {
-                 result = await "http://192.168.0.175:8888/fondomerende/public/process-request.php?commandName=get-to-buy-and-fund-funds"
+                var result = await "http://192.168.0.175:8888/fondomerende/public/process-request.php?commandName=get-to-buy-and-fund-funds"
                                 .WithCookie("auth-key", "metticiquellochetipare")
                                 .WithCookie("user-token", UserManager.Instance.token)
                                 .GetJsonAsync<ToBuySnackDTO>();
@@ -53,17 +51,16 @@ namespace fondomerende.Main.Services.RESTServices
             }
             catch (FlurlHttpException ex)
             {
-                await App.Current.MainPage.DisplayAlert("Fondo Merende", result.response.message, "OK");
+                await App.Current.MainPage.DisplayAlert("Fondo Merende", "Errore di rete", "OK");
             }
             return null;
         }
 
         public async System.Threading.Tasks.Task<AllSnacksDTO> GetAllSnacksAsync() //  Servizio per Ottenere informazioni sugli snack mangiabili
         {
-            AllSnacksDTO result = null;
             try
             {
-                 result = await "http://192.168.0.175:8888/fondomerende/public/process-request.php?commandName=get-snacks-data"
+                var result = await "http://192.168.0.175:8888/fondomerende/public/process-request.php?commandName=get-snacks-data"
                                 .WithCookie("auth-key", "metticiquellochetipare")
                                 .WithCookie("user-token", UserManager.Instance.token)
                                 .GetJsonAsync<AllSnacksDTO>();
@@ -75,7 +72,7 @@ namespace fondomerende.Main.Services.RESTServices
             }
             catch (FlurlHttpException ex)
             {
-                await App.Current.MainPage.DisplayAlert("Fondo Merende", result.response.message, "OK");
+                await App.Current.MainPage.DisplayAlert("Fondo Merende", "Errore di rete", "OK");
             }
             return null;
         }
@@ -84,11 +81,10 @@ namespace fondomerende.Main.Services.RESTServices
         // iniziato ma devo aspettare l'input dall'utente
         public async System.Threading.Tasks.Task<GetSnackDTO> GetSnackAsync(string GetSnackName)  // Servizio per Ottenere informazioni su uno snack in particolare (non usato per ora)
         {
-            GetSnackDTO result = null;
             string lol = "http://192.168.0.175:8888/fondomerende/public/process-request.php?commandName=get-snack-data&name=" + GetSnackName;
             try
             {
-                                result = await lol
+                var result = await lol
                                     .WithCookie("auth-key", "metticiquellochetipare")
                                     .WithCookie("user-token", UserManager.Instance.token)
                                     .GetJsonAsync<GetSnackDTO>();
@@ -100,7 +96,7 @@ namespace fondomerende.Main.Services.RESTServices
             }
             catch (FlurlHttpException ex)
             {
-                await App.Current.MainPage.DisplayAlert("Fondo Merende", result.response.message, "OK");
+                await App.Current.MainPage.DisplayAlert("Fondo Merende", "Errore di rete", "OK");
             }
             return null;
 
@@ -108,7 +104,6 @@ namespace fondomerende.Main.Services.RESTServices
 
         public async System.Threading.Tasks.Task<AddSnackDTO> AddSnackAsync(string nome, Double prezzo, int snackPerBox, int scadenzaGiorni, bool contabile) //Servizio per aggiungere snacks (non usato per ora)
         {
-            AddSnackDTO result = null;
             var data = new Dictionary<string, string>();
             data.Add("commandName", "add-snack");
             data.Add("name", nome);
@@ -119,7 +114,7 @@ namespace fondomerende.Main.Services.RESTServices
 
             try
             {
-                result = await "http://192.168.0.175:8888/fondomerende/public/process-request.php"
+                var result = await "http://192.168.0.175:8888/fondomerende/public/process-request.php"
                                     .WithCookie("auth-key", "metticiquellochetipare")
                                     .WithCookie("user-token", UserManager.Instance.token)
                                     .PostUrlEncodedAsync(data)
@@ -132,7 +127,7 @@ namespace fondomerende.Main.Services.RESTServices
             }
             catch (FlurlHttpException ex)
             {
-                await App.Current.MainPage.DisplayAlert("Fondo Merende", result.response.message, "OK");
+                await App.Current.MainPage.DisplayAlert("Fondo Merende", "Errore di rete", "OK");
             }
             return null;
         }
@@ -143,11 +138,11 @@ namespace fondomerende.Main.Services.RESTServices
         }
 
         public async System.Threading.Tasks.Task<EatDTO> EatAsync(int idsnack, int quantity_snack) //Servizio per mangiare uno snack
+
         {
-            EatDTO result = null;
             try
             {
-                result = await "http://192.168.0.175:8888/fondomerende/public/process-request.php"
+                var result = await "http://192.168.0.175:8888/fondomerende/public/process-request.php"
                 .WithCookie("auth-key", "metticiquellochetipare")
                 .WithCookie("user-token", UserManager.Instance.token)
                 .PostUrlEncodedAsync(new { commandName = "eat", id = idsnack, quantity = quantity_snack })
@@ -161,25 +156,25 @@ namespace fondomerende.Main.Services.RESTServices
             }
             catch (FlurlHttpException ex)
             {
-                await App.Current.MainPage.DisplayAlert("Fondo Merende", result.response.message, "OK");
+                await App.Current.MainPage.DisplayAlert("Fondo Merende", "Errore di rete", "OK");
             }
             return null;
         }
 
         public async System.Threading.Tasks.Task<EditSnackDTO> EditSnackAsync(int idSnack, string snackName, string snackPrice, string snacksPerBox, string SnackExpiration, int Qta) //Servizio per mangiare uno snack
+
         {
-            EditSnackDTO result = null;
             var data = new Dictionary<string, string>();
             data.Add("commandName", "edit-snack");
             data.Add("id", Convert.ToString(idSnack));
             data.Add("name", snackName);
-            data.Add("price",snackPrice.Replace(",", "."));
+            data.Add("price", snackPrice.Replace(",", "."));
             data.Add("snacks-per-box", snacksPerBox);
             data.Add("expiration-in-days", SnackExpiration);
             data.Add("quantity", Convert.ToString(Qta));
             try
             {
-               result = await "http://192.168.0.175:8888/fondomerende/public/process-request.php"
+                var result = await "http://192.168.0.175:8888/fondomerende/public/process-request.php"
                 .WithCookie("auth-key", "metticiquellochetipare")
                 .WithCookie("user-token", UserManager.Instance.token)
                 .PostUrlEncodedAsync(data)
@@ -193,17 +188,16 @@ namespace fondomerende.Main.Services.RESTServices
             }
             catch (FlurlHttpException ex)
             {
-                await App.Current.MainPage.DisplayAlert("Fondo Merende", result.response.message, "OK");
+                await App.Current.MainPage.DisplayAlert("Fondo Merende", "Errore di rete", "OK");
             }
             return null;
         }
 
         public async System.Threading.Tasks.Task<EatDTO> BuySnackAsync(int idsnack, int quantita)
         {
-            EatDTO result = null;
             try
             {
-                result = await "http://192.168.0.175:8888/fondomerende/public/process-request.php"
+                var result = await "http://192.168.0.175:8888/fondomerende/public/process-request.php"
                 .WithCookie("auth-key", "metticiquellochetipare")
                 .WithCookie("user-token", UserManager.Instance.token)
                 .PostUrlEncodedAsync(new { commandName = "buy", id = idsnack, quantity = quantita })
@@ -217,14 +211,14 @@ namespace fondomerende.Main.Services.RESTServices
             }
             catch (FlurlHttpException ex)
             {
-                await App.Current.MainPage.DisplayAlert("Fondo Merende", result.response.message, "OK");
+                await App.Current.MainPage.DisplayAlert("Fondo Merende", "Errore di rete", "OK");
             }
             return null;
         }
 
         public async System.Threading.Tasks.Task<EatDTO> BuySnackAsync2(int idsnack, int quantity, string priceSnack, string Exp)
         {
-            EatDTO result = null;
+
             var data = new Dictionary<string, string>();
             data.Add("commandName", "buy");
             data.Add("id", Convert.ToString(idsnack));
@@ -233,7 +227,7 @@ namespace fondomerende.Main.Services.RESTServices
             data.Add("quantity", Convert.ToString(quantity));
             try
             {
-                result = await "http://192.168.0.175:8888/fondomerende/public/process-request.php"
+                var result = await "http://192.168.0.175:8888/fondomerende/public/process-request.php"
                 .WithCookie("auth-key", "metticiquellochetipare")
                 .WithCookie("user-token", UserManager.Instance.token)
                 .PostUrlEncodedAsync(data)
@@ -247,7 +241,7 @@ namespace fondomerende.Main.Services.RESTServices
             }
             catch (FlurlHttpException ex)
             {
-                await App.Current.MainPage.DisplayAlert("Fondo Merende", result.response.message, "OK");
+                await App.Current.MainPage.DisplayAlert("Fondo Merende", "Errore di rete", "OK");
             }
             return null;
         }

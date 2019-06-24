@@ -13,7 +13,6 @@ namespace fondomerende.Main.Services.RESTServices
     {
         public async System.Threading.Tasks.Task<RegisterDTO> RegisterAsync(string username, string passwordToLogin, string friendly_name) //Servizio di Registrazione
         {
-            RegisterDTO result = null;
             var data = new Dictionary<string, string>();
             data.Add("commandName", "add-user");
             data.Add("name", username);
@@ -21,7 +20,7 @@ namespace fondomerende.Main.Services.RESTServices
             data.Add("password", passwordToLogin);
             try
             {
-                result = await "http://192.168.0.175:8888/fondomerende/public/process-request.php"
+                var result = await "http://192.168.0.175:8888/fondomerende/public/process-request.php"
                .WithCookie("auth-key", "metticiquellochetipare")
                .WithHeader("Content-Type", "application/x-www-form-urlencoded; param=value;charset=UTF-8")
                .PostUrlEncodedAsync(data)
@@ -44,7 +43,7 @@ namespace fondomerende.Main.Services.RESTServices
             }
             catch (FlurlHttpException ex)
             {
-                await App.Current.MainPage.DisplayAlert("Fondo Merende", result.response.message, "OK");
+                await App.Current.MainPage.DisplayAlert("Fondo Merende", "Errore di rete", "OK");
             }
             return null;
 

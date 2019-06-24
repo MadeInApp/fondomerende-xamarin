@@ -12,31 +12,30 @@ namespace fondomerende.Main.Services.RESTServices
         public string token = Manager.UserManager.Instance.token;
         public async System.Threading.Tasks.Task<LogoutDTO> LogoutAsync()   //Servizio di Log Out
         {
-            LogoutDTO result = null;
             try
             {
-              result = await "http://192.168.0.175:8888/fondomerende/public/process-request.php"
-                            .WithCookie("auth-key", "metticiquellochetipare")
-                            .WithCookie("token", token)
-                            .PostUrlEncodedAsync(new { commandName = "logout" })
-                            .ReceiveJson<LogoutDTO>();
-           
+                var result = await "http://192.168.0.175:8888/fondomerende/public/process-request.php"
+                               .WithCookie("auth-key", "metticiquellochetipare")
+                               .WithCookie("token", token)
+                               .PostUrlEncodedAsync(new { commandName = "logout" })
+                               .ReceiveJson<LogoutDTO>();
 
-                       if(result.response.success == true)
-                       {
-                            Preferences.Clear();
-                       }
-                       return result;
+
+                if (result.response.success == true)
+                {
+                    Preferences.Clear();
+                }
+                return result;
             }
-           
-             catch (FlurlHttpTimeoutException ex)
-             {
+
+            catch (FlurlHttpTimeoutException ex)
+            {
                 await App.Current.MainPage.DisplayAlert("Fondo Merende", "Connessione al server scaduta", "OK");
-             }
-             catch (FlurlHttpException ex)
-             {
-                await App.Current.MainPage.DisplayAlert("Fondo Merende", result.response.message, "OK");
-             }
+            }
+            catch (FlurlHttpException ex)
+            {
+                await App.Current.MainPage.DisplayAlert("Fondo Merende", "Errore di rete", "OK");
+            }
 
             return null;
         }

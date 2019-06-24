@@ -11,7 +11,6 @@ namespace fondomerende.Main.Services.RESTServices
 
         public async System.Threading.Tasks.Task<EditUserDTO> EditUserAsync(string ChangeUsername, string ChangeFriendlyName, string ChangePassword)
         {
-            EditUserDTO result = null;
             var data = new Dictionary<string, string>();
             {
                 data.Add("commandName", "edit-user");
@@ -21,7 +20,7 @@ namespace fondomerende.Main.Services.RESTServices
             }
             try
             {
-               result = await "http://192.168.0.175:8888/fondomerende/public/process-request.php"
+                var result = await "http://192.168.0.175:8888/fondomerende/public/process-request.php"
                     .WithCookie("auth-key", "metticiquellochetipare")
                     .WithCookie("token", Manager.UserManager.Instance.token)
                     .PostUrlEncodedAsync(data)
@@ -36,7 +35,7 @@ namespace fondomerende.Main.Services.RESTServices
             }
             catch (FlurlHttpException ex)
             {
-                await App.Current.MainPage.DisplayAlert("Fondo Merende", result.response.message, "OK");
+                await App.Current.MainPage.DisplayAlert("Fondo Merende", "Errore di rete", "OK");
             }
             return null;
         }
