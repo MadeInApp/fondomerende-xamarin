@@ -32,9 +32,13 @@
     <CodesignExtraArgs />
     <CodesignResourceRules />
     <CodesignEntitlements />
-    <OptimizePNGs>true</OptimizePNGs>
-    <MtouchExtraArgs>-v -v -v -v </MtouchExtraArgs>
+    <OptimizePNGs>false</OptimizePNGs>
+    <MtouchExtraArgs>
+    </MtouchExtraArgs>
     <MtouchFastDev>true</MtouchFastDev>
+    <MtouchProfiling>false</MtouchProfiling>
+    <IOSDebugOverWiFi>true</IOSDebugOverWiFi>
+    <DeviceSpecificBuild>false</DeviceSpecificBuild>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>none</DebugType>
@@ -87,7 +91,6 @@
     <Compile Include="AppDelegate.cs" />
     <Compile Include="PlatformSpecific\TouchEffect.cs" />
     <Compile Include="PlatformSpecific\TouchRecognizer.cs" />
-    <Compile Include="Renderer\AnimationViewRenderer.cs" />
     <Compile Include="Renderer\GradientColorStackRenderer.cs" />
     <Compile Include="Renderer\LineEntryRenderer.cs" />
     <Compile Include="Renderer\RoundedCornerViewRenderer.cs" />

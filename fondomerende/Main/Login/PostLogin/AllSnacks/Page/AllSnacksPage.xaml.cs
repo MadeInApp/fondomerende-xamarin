@@ -69,7 +69,8 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                 HorizontalOptions = LayoutOptions.StartAndExpand,
                 VerticalOptions = LayoutOptions.StartAndExpand,
                 Animation = "list2grid_alt.json",
-                Margin = new Thickness(0, 0, 0, 10)
+                Margin = new Thickness(0,0,0,10),
+                AutoPlay = false,
             };
             Swap.OnClick += Swap_Clicked;
             GridView1.Children.Add(Swap, 0, 0);
@@ -502,7 +503,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             }
             else
             {
-                //  await GetSnacksMethod(true);
+              await GetSnacksMethod(true, false);
             }
         }
 

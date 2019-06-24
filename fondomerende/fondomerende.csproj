@@ -1,13 +1,16 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿  <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <TargetFramework>netstandard2.0</TargetFramework>
     <ProduceAssemblyReference>true</ProduceAssemblyReference>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <DebugType>pdbonly</DebugType>
     <DebugSymbols>true</DebugSymbols>
+
   </PropertyGroup>
 
   <ItemGroup>
@@ -377,6 +380,7 @@
     <Reference Include="Xamarin.iOS">
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\ReferenceAssemblies\Microsoft\Framework\Xamarin.iOS\v1.0\Xamarin.iOS.dll</HintPath>
     </Reference>
+    
   </ItemGroup>
 
   <ItemGroup>

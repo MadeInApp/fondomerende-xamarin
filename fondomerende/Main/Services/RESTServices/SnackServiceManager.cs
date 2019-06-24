@@ -168,7 +168,7 @@ namespace fondomerende.Main.Services.RESTServices
             data.Add("commandName", "edit-snack");
             data.Add("id", Convert.ToString(idSnack));
             data.Add("name", snackName);
-            data.Add("price",snackPrice.Replace(",", "."));
+            data.Add("price", snackPrice.Replace(",", "."));
             data.Add("snacks-per-box", snacksPerBox);
             data.Add("expiration-in-days", SnackExpiration);
             data.Add("quantity", Convert.ToString(Qta));

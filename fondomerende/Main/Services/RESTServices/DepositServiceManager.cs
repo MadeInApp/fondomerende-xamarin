@@ -22,7 +22,7 @@ namespace fondomerende.Main.Services.RESTServices
                     .PostUrlEncodedAsync(new { commandName = "deposit", amount = DepAmount })
                     .ReceiveJson<DepositDTO>();
 
-                    return result;
+                return result;
             }
             catch (FlurlHttpTimeoutException ex)
             {
@@ -33,7 +33,7 @@ namespace fondomerende.Main.Services.RESTServices
                 await App.Current.MainPage.DisplayAlert("Fondo Merende", "Errore di rete", "OK");
             }
             return null;
-          
+
         }
     }
 }
