@@ -256,4 +256,8 @@
   <ItemGroup>
     <BundleResource Include="Resources\vending-machine.png" />
   </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Resources\list2grid.json" />
+    <AndroidAsset Include="Resources\list2grid_alt.json" />
+  </ItemGroup>
 </Project>
