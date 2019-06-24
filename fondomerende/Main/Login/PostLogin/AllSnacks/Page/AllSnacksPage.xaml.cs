@@ -2,23 +2,18 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Essentials;
 using Xamarin.Forms.Xaml;
 using fondomerende.Main.Services.Models;
-using fondomerende.Main.Manager;
-using Rg.Plugins.Popup.Pages;
 using fondomerende.Main.Utilities;
 using Rg.Plugins.Popup.Extensions;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup;
 using Lottie.Forms;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View;
 using fondomerende.Main.Login.PostLogin.AllSnacks.View;
-using System.Threading;
 using MultiGestureViewPlugin;
-using Android.Content;
 
 namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 {

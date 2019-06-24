@@ -45,7 +45,7 @@ namespace fondomerende.PostLoginPages
          //   await userService.GetUserData();
             if(resultLogin == null)
             {
-                Android.OS.Process.KillProcess(Android.OS.Process.MyPid());
+                //Android.OS.Process.KillProcess(Android.OS.Process.MyPid());
                 Thread.CurrentThread.Abort();
             }
             else if (resultLogin.response.success)
