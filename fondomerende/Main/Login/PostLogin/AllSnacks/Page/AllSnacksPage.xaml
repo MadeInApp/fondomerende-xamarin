@@ -170,13 +170,13 @@
                     ItemSelected="ListView_ItemSelected"
                     IsRefreshing="{Binding IsBusy, Mode=OneWay}"
                     IsVisible="False"
-                    ItemTapped="ListView_ItemTapped"
+                    SelectionMode="Single" 
                     BackgroundColor="#FFF8EB"
                     HasUnevenRows="True">
                     <ListView.ItemTemplate>
                         <DataTemplate x:Name="DataTemp">
                             <local1:SnackViewCell 
-                            x:Name="Snack">
+                            x:Name="SnackViewCellSource">
                             </local1:SnackViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>

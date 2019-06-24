@@ -19,11 +19,10 @@ namespace fondomerende.Main.Login.PostLogin.AllSnacks.View
         bool AlmostDone;
         AnimationView pacMananimation;
         private static Timer aTimer;
-
+        
         public SnackViewCell()
         {
             InitializeComponent();
-         
             MessagingCenter.Subscribe<SnackViewCell>(this, "Animate", async (arg) =>
             {
                 if (Nome.Text == AllSnacksPage.selectedItemBinding)
@@ -50,17 +49,17 @@ namespace fondomerende.Main.Login.PostLogin.AllSnacks.View
 
         private async void pacManAnimate()
         {
-            double pacmanwidth = 120;
-            var mainDisplayInfo = App.Current.MainPage.Width;
+            double pacmanwidth = pacMananimation.Width;
+            var mainDisplayInfo = DeviceDisplay.MainDisplayInfo.Width;
             pacMananimation.IsVisible = true;
            
-            await pacMananimation.TranslateTo(Convert.ToInt32(-mainDisplayInfo + pacmanwidth), 0, 0);
+            await pacMananimation.TranslateTo(-mainDisplayInfo/2, 0, 0);
             await Task.WhenAny<bool>
             (
-             pacMananimation.TranslateTo(Convert.ToInt32(mainDisplayInfo - pacmanwidth*2) , 0, 7000)
+             pacMananimation.TranslateTo((mainDisplayInfo/2 - (mainDisplayInfo/6)) , 0, 7000)
             );
             QtaRefresh();
-             await pacMananimation.TranslateTo(Convert.ToInt32(mainDisplayInfo), 0, 4000);
+            await pacMananimation.TranslateTo((mainDisplayInfo), 0, 7000);
         }
         async void QtaRefresh()
         {
