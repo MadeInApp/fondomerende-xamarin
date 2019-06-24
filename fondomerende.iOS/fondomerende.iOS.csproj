@@ -24,8 +24,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
-    <MtouchArch>i386, x86_64</MtouchArch>
-    <MtouchLink>Full</MtouchLink>
+    <MtouchArch>
+    </MtouchArch>
+    <MtouchLink>SdkOnly</MtouchLink>
     <MtouchDebug>true</MtouchDebug>
     <CodesignKey>iPhone Developer</CodesignKey>
     <CodesignProvision />
@@ -39,6 +40,8 @@
     <MtouchProfiling>false</MtouchProfiling>
     <IOSDebugOverWiFi>true</IOSDebugOverWiFi>
     <DeviceSpecificBuild>false</DeviceSpecificBuild>
+    <MtouchSdkVersion>12.2</MtouchSdkVersion>
+    <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>none</DebugType>
