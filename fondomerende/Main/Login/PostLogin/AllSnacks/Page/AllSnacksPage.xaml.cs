@@ -24,7 +24,8 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AllSnacksPage
     {
-        double priceBinding;
+        public static double priceBinding;
+
         public static string selectedItemBinding { get; set; }
         SnackServiceManager snackServiceManager = new SnackServiceManager();
         List<SnackDataDTO> AllSnacks = new List<SnackDataDTO>();
@@ -55,7 +56,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                 case Device.Android:                                                           //   \\   Se è iOS invece si (perchè senza è una schifezza)
                     NavigationPage.SetHasNavigationBar(this, false);                           //    \\
                     break;                                                                           //
-                                                                                                     //
+                                                                                                    //
                 default:                                                                           //
                     NavigationPage.SetHasNavigationBar(this, true);                               //
                     break;                                                                       //
@@ -75,10 +76,10 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             GridView1.Children.Add(Swap, 0, 0);
 
 
-            ListView.RefreshCommand = new Command(async () =>                                //
-            {                                                                                //         
-                await RefreshDataAsync();                                                    //
-                ListView.IsRefreshing = false;                                               //
+            ListView.RefreshCommand = new Command(async () =>                                
+            {                                                                                  
+                await RefreshDataAsync();                                                    
+                ListView.IsRefreshing = false;                                               
             });
 
             MessagingCenter.Subscribe<AllSnacksPage>(this, "Animation", async (value) =>
@@ -89,13 +90,13 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
         }                                                                                         //
         public async Task RefreshDataAsync()                                                    //
         {                                                                                      //
-            await GetSnacksMethod(true, false);                                                      //
+            await GetSnacksMethod(true,false);                                                      //
         }
 
         public async Task RefreshFavouriteDataAsync()                                                    //
         {                                                                                      //
             await GetSnacksMethod(true, true);                                                      //
-        }
+        }              
 
         private void WalletAnimation()
         {
@@ -109,13 +110,14 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
         public async Task GetSnacksMethod(bool Loaded, bool favourites)     //ottiene la lista degli snack e la applica alla ListView
         {
             result = await snackServiceManager.GetSnacksAsync();
-
+           
             ListView.ItemsSource = result.data.snacks;
             int FavIndex = 0;
             if (!Loaded) //!WORKAROUND!   in questo modo si evita il crash ma la griglia non si aggiorna, urge investigazione sul vero problema
             {
                 for (int i = 0; i <= result.data.snacks.Count; i++)
                 {
+                   
                     bool addfav = false; //variabile di appoggio
                     bool visibilità = true;
                     if (favourites && !Check_Favourites(result.data.snacks[i].id))
@@ -485,27 +487,26 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
         private async void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)     //quando uno snack è tappato si apre un prompt in cui viene chiesto se lo si vuole mangiare
         {
             var ans = await DisplayAlert("Fondo Merende", "Vuoi davvero mangiare " + (e.SelectedItem as SnackDataDTO).friendly_name + "?", "Si", "No");
-
             if (ans == true)
             {
                 await snackServiceManager.EatAsync((e.SelectedItem as SnackDataDTO).id, 1);
-                // await GetSnacksMethod(true);
+               // await GetSnacksMethod(true);
                 MessagingCenter.Send(new EditUserViewCell()
                 {
 
                 }, "RefreshUF");
-
-
                 selectedItemBinding = (e.SelectedItem as SnackDataDTO).friendly_name;
 
                 MessagingCenter.Send(new SnackViewCell()
                 {
 
                 }, "Animate");
+
+                ListView.SelectionMode = ListViewSelectionMode.Single;
             }
             else
             {
-              await GetSnacksMethod(true, false);
+               
             }
         }
 
@@ -615,6 +616,9 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             //Preferences.Add("",);
         }
 
-        
+        private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
+            
+        {
+        }
     }
 }

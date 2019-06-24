@@ -38,7 +38,7 @@
                         x:Name="Prezzo"
                         Text="{Binding price, StringFormat= '€{0}'}"
                         FontSize="14"
-                        Opacity="0">
+                        Opacity="50">
                     </Label>
                 </StackLayout>
                 <StackLayout 

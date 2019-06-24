@@ -29,12 +29,12 @@ namespace fondomerende.Main.Services.RESTServices
             }
             catch (FlurlHttpException ex)
             {
-                await App.Current.MainPage.DisplayAlert("Fondo Merende", "Errore di rete", "OK");
+                await App.Current.MainPage.DisplayAlert("Get Snacks", ex.InnerException.Message, "OK");
             }
             return null;
         }
 
-        public async System.Threading.Tasks.Task<ToBuySnackDTO> GetToBuySnacksAsync() //  Servizio per Ottenere informazioni sugli snack mangiabili
+        public async System.Threading.Tasks.Task<ToBuySnackDTO> GetToBuySnacksAsync() //  Servizio per Ottenere informazioni sugli snack da mangiare
         {
             try
             {
@@ -51,7 +51,7 @@ namespace fondomerende.Main.Services.RESTServices
             }
             catch (FlurlHttpException ex)
             {
-                await App.Current.MainPage.DisplayAlert("Fondo Merende", "Errore di rete", "OK");
+                await App.Current.MainPage.DisplayAlert("Fondo Merende", ex.InnerException.Message, "OK");
             }
             return null;
         }
@@ -72,7 +72,7 @@ namespace fondomerende.Main.Services.RESTServices
             }
             catch (FlurlHttpException ex)
             {
-                await App.Current.MainPage.DisplayAlert("Fondo Merende", "Errore di rete", "OK");
+                await App.Current.MainPage.DisplayAlert("Fondo Merende", ex.InnerException.Message, "OK");
             }
             return null;
         }
@@ -96,7 +96,7 @@ namespace fondomerende.Main.Services.RESTServices
             }
             catch (FlurlHttpException ex)
             {
-                await App.Current.MainPage.DisplayAlert("Fondo Merende", "Errore di rete", "OK");
+                await App.Current.MainPage.DisplayAlert("Fondo Merende", ex.InnerException.Message, "OK");
             }
             return null;
 
@@ -127,7 +127,7 @@ namespace fondomerende.Main.Services.RESTServices
             }
             catch (FlurlHttpException ex)
             {
-                await App.Current.MainPage.DisplayAlert("Fondo Merende", "Errore di rete", "OK");
+                await App.Current.MainPage.DisplayAlert("Fondo Merende", ex.InnerException.Message, "OK");
             }
             return null;
         }
@@ -156,7 +156,7 @@ namespace fondomerende.Main.Services.RESTServices
             }
             catch (FlurlHttpException ex)
             {
-                await App.Current.MainPage.DisplayAlert("Fondo Merende", "Errore di rete", "OK");
+                await App.Current.MainPage.DisplayAlert("Eat", ex.InnerException.Message, "OK");
             }
             return null;
         }
@@ -188,7 +188,7 @@ namespace fondomerende.Main.Services.RESTServices
             }
             catch (FlurlHttpException ex)
             {
-                await App.Current.MainPage.DisplayAlert("Fondo Merende", "Errore di rete", "OK");
+                await App.Current.MainPage.DisplayAlert("Fondo Merende", ex.InnerException.Message, "OK");
             }
             return null;
         }
@@ -211,7 +211,7 @@ namespace fondomerende.Main.Services.RESTServices
             }
             catch (FlurlHttpException ex)
             {
-                await App.Current.MainPage.DisplayAlert("Fondo Merende", "Errore di rete", "OK");
+                await App.Current.MainPage.DisplayAlert("Fondo Merende", ex.InnerException.Message, "OK");
             }
             return null;
         }
@@ -241,7 +241,7 @@ namespace fondomerende.Main.Services.RESTServices
             }
             catch (FlurlHttpException ex)
             {
-                await App.Current.MainPage.DisplayAlert("Fondo Merende", "Errore di rete", "OK");
+                await App.Current.MainPage.DisplayAlert("Fondo Merende", ex.InnerException.Message, "OK");
             }
             return null;
         }
