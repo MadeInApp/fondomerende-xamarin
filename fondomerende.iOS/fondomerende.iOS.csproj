@@ -100,13 +100,19 @@
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <BundleResource Include="Renderer\Loading.json" />
-    <BundleResource Include="Renderer\data.json" />
-    <EmbeddedResource Include="Renderer\pacman0.6.json" />
-    <BundleResource Include="Renderer\star.json" />
     <BundleResource Include="Renderer\Wallet.json" />
     <BundleResource Include="Renderer\PiggyBank.json" />
-    <BundleResource Include="Renderer\Pig.json" />
+    <EmbeddedResource Include="Resources\pacman0.6.json" />
+    <BundleResource Include="Resources\star.json" />
+    <BundleResource Include="Resources\Pig.json" />
+    <BundleResource Include="Resources\data.json" />
+    <BundleResource Include="Resources\Loading.json" />
+    <BundleResource Include="Resources\list2grid_alt.json">
+      <LogicalName>fondomerende.iOS.Resources.list2grid_alt.json</LogicalName>
+    </BundleResource>
+    <BundleResource Include="Resources\list2grid.json">
+      <LogicalName>fondomerende.iOS.Resources.list2grid.json</LogicalName>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\Contents.json">
@@ -255,5 +261,9 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\vending-machine.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Renderer\list2grid.json" />
+    <AndroidAsset Include="Renderer\list2grid_alt.json" />
   </ItemGroup>
 </Project>
