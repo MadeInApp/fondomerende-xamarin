@@ -167,7 +167,6 @@
                     VerticalOptions="Start"
                     IsPullToRefreshEnabled="true"
                     RefreshCommand="{Binding RefreshCommand}"
-                    ItemSelected="ListView_ItemSelected"
                     IsRefreshing="{Binding IsBusy, Mode=OneWay}"
                     IsVisible="False"
                     SelectionMode="Single" 

@@ -107,6 +107,7 @@
     <BundleResource Include="Resources\Pig.json" />
     <BundleResource Include="Resources\data.json" />
     <BundleResource Include="Resources\Loading.json" />
+    <BundleResource Include="Resources\LoadingEating.json" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\Contents.json">

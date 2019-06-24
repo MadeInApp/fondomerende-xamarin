@@ -14,6 +14,7 @@ using Lottie.Forms;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View;
 using fondomerende.Main.Login.PostLogin.AllSnacks.View;
 using System.Threading;
+using MR.Gestures;
 
 namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 {
@@ -22,7 +23,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
     public partial class AllSnacksPage
     {
         public static double priceBinding;
-
+        int eatLoading = 0; 
         public static string selectedItemBinding { get; set; }
         SnackServiceManager snackServiceManager = new SnackServiceManager();
         List<SnackDataDTO> AllSnacks = new List<SnackDataDTO>();
@@ -30,7 +31,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
         Dictionary<string, int> numerotocchi = new Dictionary<string, int>();
         bool switchStar = false;
         AnimationView Swap;
-        bool hold = false;
+        bool mangiato = false;
         public AllSnacksPage()
         {
             numerotocchi.Add("numero", 0);
@@ -142,7 +143,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                     };
 
 
-                    var StackLayout = new StackLayout
+                    var StackLayout = new MR.Gestures.StackLayout
                     {
                         WidthRequest = box,
                         HeightRequest = box,
@@ -171,7 +172,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                         InputTransparent = true,
                     };
 
-                    var label = new Label
+                    var label = new MR.Gestures.Label
                     {
                         HorizontalTextAlignment = TextAlignment.Center,
                         VerticalTextAlignment = TextAlignment.End,
@@ -190,7 +191,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                         e = "fondomerende.image.star_fill.png";
                     }
 
-                    var star = new Image
+                    var star = new MR.Gestures.Image
                     {
                         HeightRequest = 20,
                         WidthRequest = 20,
@@ -216,8 +217,9 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
                     var eatAnimation = new AnimationView
                     {
-                        Animation = "eatLoading.json",
+                        Animation = "LoadingEating.json",
                         Scale = 1,
+                        Rotation = 180,
                         Loop = false,
                         HorizontalOptions = LayoutOptions.FillAndExpand,
                         VerticalOptions = LayoutOptions.FillAndExpand,
@@ -227,26 +229,13 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                     };
 
 
-                    var app = new StackLayout
+                    var app = new MR.Gestures.StackLayout
                     {
                         Orientation = StackOrientation.Vertical,
                         IsVisible = visibilità,
                     };
-
-                    var boxview = new BoxView
-                    {
-                        BackgroundColor = Color.Transparent,
-                        HeightRequest = box,
-                        WidthRequest = box,
-                    };
                     
                     starAnimation.OnFinish += StopAnimation;
-
-                  
-                    var tgr2 = new TapGestureRecognizer();
-                    tgr2.NumberOfTapsRequired = 2;
-                    tgr2.Tapped += Tgr2_Tapped;
-                    app.GestureRecognizers.Add(tgr2);
 
                     StackLayout.Children.Add(imageButton);
 
@@ -258,6 +247,8 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
                             BordiSmussatiAndroid.Children.Add(starAnimation);
                             BordiSmussatiAndroid.Children.Add(star);
+                            BordiSmussatiAndroid.Children.Add(eatAnimation);
+
 
                             app.Children.Add(BordiSmussatiAndroid);
 
@@ -269,13 +260,25 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
                             BordiSmussatiiOS.Children.Add(starAnimation);
                             BordiSmussatiiOS.Children.Add(star);
+                            BordiSmussatiiOS.Children.Add(eatAnimation);
+
 
                             app.Children.Add(BordiSmussatiiOS);
                             break;
                     }
 
                     app.Children.Add(label);
-                    // longpress.Content = app;
+
+
+                    app.LongPressed += Stack_LongPressed;
+                    app.LongPressing += Stack_LongPressing;
+
+                    var tgr2 = new TapGestureRecognizer();
+                    tgr2.NumberOfTapsRequired = 2;
+                    tgr2.Tapped += Tgr2_Tapped;
+                    app.GestureRecognizers.Add(tgr2);
+
+
 
                     if (addfav && favourites)
                     {
@@ -379,11 +382,11 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
         private void Tgr2_Tapped(object sender, EventArgs e)
         {
             SnackDataDTO index = null;
-            foreach (var item in (sender as StackLayout).Children)
+            foreach (var item in (sender as MR.Gestures.StackLayout).Children)
             {
-                if (item is Label)
+                if (item is MR.Gestures.Label)
                 {
-                    var snackName = (item as Label).Text;
+                    var snackName = (item as MR.Gestures.Label).Text;
                     index = result.data.snacks.Single(obj => obj.friendly_name == snackName);
                     break;
                 }
@@ -393,7 +396,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             {
                 string preferito = "";
 
-                foreach (var app in (sender as StackLayout).Children)
+                foreach (var app in (sender as MR.Gestures.StackLayout).Children)
                 {
                     if (app is RoundedCornerView)
                     {
@@ -417,9 +420,9 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
                             }
 
-                            if (an is Image)
+                            if (an is MR.Gestures.Image)
                             {
-                                Image image = (Image)an;
+                                MR.Gestures.Image image = (MR.Gestures.Image)an;
                                 string a = "";
                                 if (Check_Favourites(index.id))
                                 {
@@ -442,11 +445,11 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
         private void Tgr_Tapped(object sender, EventArgs e)
         {
             SnackDataDTO index = null;
-            foreach (var item in (sender as StackLayout).Children)
+            foreach (var item in (sender as MR.Gestures.StackLayout).Children)
             {
-                if (item is Label)
+                if (item is MR.Gestures.Label)
                 {
-                    var snackName = (item as Label).Text;
+                    var snackName = (item as MR.Gestures.Label).Text;
                     index = result.data.snacks.Single(obj => obj.friendly_name == snackName);
                     break;
                 }
@@ -468,6 +471,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                 await RefreshFavouriteDataAsync();
                 ScrollSnackView.IsVisible = false;
                 ScrollFavourites.IsVisible = true;
+                ListView.IsVisible = false;
                 favourite.Source = ImageSource.FromResource("fondomerende.image.star_fill.png");
 
             }
@@ -475,36 +479,34 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             {
                 await RefreshDataAsync();
                 ScrollSnackView.IsVisible = true;
+                ListView.IsVisible = false;
                 ScrollFavourites.IsVisible = false;
                 favourite.Source = ImageSource.FromResource("fondomerende.image.star_empty.png");
             }
 
         }
 
-        private async void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)     //quando uno snack è tappato si apre un prompt in cui viene chiesto se lo si vuole mangiare
+        private async Task ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)     //quando uno snack è tappato si apre un prompt in cui viene chiesto se lo si vuole mangiare
         {
-            var ans = await DisplayAlert("Fondo Merende", "Vuoi davvero mangiare " + (e.SelectedItem as SnackDataDTO).friendly_name + "?", "Si", "No");
-            if (ans == true)
+            EatDTO response = await snackServiceManager.EatAsync((e.SelectedItem as SnackDataDTO).id, 1);
+            if (response.response.success == true)
             {
-                await snackServiceManager.EatAsync((e.SelectedItem as SnackDataDTO).id, 1);
-               // await GetSnacksMethod(true);
-                MessagingCenter.Send(new EditUserViewCell()
-                {
-
-                }, "RefreshUF");
-                selectedItemBinding = (e.SelectedItem as SnackDataDTO).friendly_name;
-
-                MessagingCenter.Send(new SnackViewCell()
-                {
-
-                }, "Animate");
-
-                ListView.SelectionMode = ListViewSelectionMode.Single;
+                mangiato = true;
             }
-            else
+
+            // await GetSnacksMethod(true);
+            MessagingCenter.Send(new EditUserViewCell()
             {
-               
-            }
+
+            }, "RefreshUF");
+            selectedItemBinding = (e.SelectedItem as SnackDataDTO).friendly_name;
+
+            MessagingCenter.Send(new SnackViewCell()
+            {
+
+            }, "Animate");
+
+            ListView.SelectionMode = ListViewSelectionMode.Single;
         }
 
         private async void Fade()
@@ -548,7 +550,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             for (int i = 0; i < numeroMuffin; i++)
             {
 
-                var paolo = new Image   //il cupcake paolo
+                var paolo = new MR.Gestures.Image   //il cupcake paolo
                 {
                     VerticalOptions = LayoutOptions.StartAndExpand,
                     Source = ImageSource.FromResource("fondomerende.image.cup_cake_128x128.png"),
@@ -563,7 +565,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
         }
 
-        private async Task Anima(Image sender)
+        private async Task Anima(MR.Gestures.Image sender)
         {
             Random random = new Random((int)DateTime.Now.Ticks);
             double casualWidth;
@@ -609,13 +611,113 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
         private void SetFavourite(object sender, EventArgs e)
         {
-            //if(Preferences.ContainsKey("Favourite")) => Preferences.Add("Favourite",); ;
+            //if(Preferences.ContainsKey("Favourite")) => Preferences.Add("Favourite");
             //Preferences.Add("",);
         }
 
-        private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
-            
+        private void Stack_LongPressed(object sender, LongPressEventArgs e)
         {
+            SnackDataDTO index = null;
+            foreach (var item in (sender as MR.Gestures.StackLayout).Children)
+            {
+                if (item is MR.Gestures.Label)
+                {
+                    var snackName = (item as MR.Gestures.Label).Text;
+                    index = result.data.snacks.Single(obj => obj.friendly_name == snackName);
+                    break;
+                }
+
+            }
+            if (index != null)
+            {
+                string preferito = "";
+
+                foreach (var app in (sender as MR.Gestures.StackLayout).Children)
+                {
+                    if (app is RoundedCornerView)
+                    {
+                        foreach (var an in (app as RoundedCornerView).Children)
+                        {
+                            if (an is AnimationView)
+                            {
+                                AnimationView ap = (AnimationView)an;
+
+                                if (ap.Animation == "LoadingEating.json")
+                                {
+                                    ap.Speed = -13f;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            eatLoading = 0;
+        }
+
+        private async void Stack_LongPressing(object sender, LongPressEventArgs e)
+        {
+            eatLoading = 0;
+            SnackDataDTO index = null;
+            foreach (var item in (sender as MR.Gestures.StackLayout).Children)
+            {
+                if (item is MR.Gestures.Label)
+                {
+                    var snackName = (item as MR.Gestures.Label).Text;
+                    index = result.data.snacks.Single(obj => obj.friendly_name == snackName);
+                    break;
+                }
+
+            }
+            if (index != null)
+            {
+                string preferito = "";
+
+                foreach (var app in (sender as MR.Gestures.StackLayout).Children)
+                {
+                    if (app is RoundedCornerView)
+                    {
+                        foreach (var an in (app as RoundedCornerView).Children)
+                        {
+                            if (an is AnimationView)
+                            {
+                                AnimationView ap = (AnimationView)an;
+
+                                if (ap.Animation == "LoadingEating.json")
+                                {
+                                    SelectedItemChangedEventArgs test = new SelectedItemChangedEventArgs(index);
+                                    bool verifica=false;
+                                    ap.Speed = 5f;
+                                    ap.Play();
+                                    ap.OnFinish += (s, d) =>
+                                    {
+                                        verifica = Stack_LongFinish(ap);
+                                    };
+
+                                    if (verifica)
+                                    {
+                                        await ListView_ItemSelected(null, test);
+                                        if (mangiato)
+                                        {
+                                            mangiato = false;
+                                            //Vibration.Vibrate(200);
+                                        }   
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        private bool Stack_LongFinish(object sender)
+        {
+            eatLoading = -1;
+            if ((sender as AnimationView).Speed > 0)
+            {
+                return true; 
+            }
+            return false;
         }
     }
 }

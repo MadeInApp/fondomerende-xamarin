@@ -106,6 +106,7 @@
     <AndroidAsset Include="Assets\PiggyBank.json" />
     <AndroidAsset Include="Assets\Pig.json" />
     <AndroidAsset Include="Assets\EatLoading.json" />
+    <AndroidAsset Include="Assets\LoadingEating.json" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml" />
