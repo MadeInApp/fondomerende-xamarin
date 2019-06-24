@@ -31,7 +31,10 @@ namespace fondomerende.Main.Services.RESTServices
             }
             catch (FlurlHttpException ex)
             {
-                await App.Current.MainPage.DisplayAlert("Fondo Merende", ex.InnerException.Message, "OK");
+                if(ex.InnerException.Message != "Collection was modified; enumeration operation may not execute.")
+                {
+                    await App.Current.MainPage.DisplayAlert("Get User Funds", ex.InnerException.Message, "OK");
+                }
             }
             return null;
         }

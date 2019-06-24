@@ -34,7 +34,7 @@ namespace fondomerende.Main.Services.RESTServices
             return null;
         }
 
-        public async System.Threading.Tasks.Task<ToBuySnackDTO> GetToBuySnacksAsync() //  Servizio per Ottenere informazioni sugli snack mangiabili
+        public async System.Threading.Tasks.Task<ToBuySnackDTO> GetToBuySnacksAsync() //  Servizio per Ottenere informazioni sugli snack da mangiare
         {
             try
             {
