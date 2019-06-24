@@ -10,24 +10,23 @@ using Xamarin.Forms;
 using System.Threading.Tasks;
 using System.ComponentModel;
 using fondomerende.Main.Login.LoginPages;
+using Xamarin.Forms.Internals;
 
 namespace fondomerende.Main.Services.RESTServices
 {
     class LoginServiceManager
     {
+        [Preserve(AllMembers = true)]
         public async System.Threading.Tasks.Task<LoginDTO> LoginAsync(string username, string passwordToLogin, bool remember) //Servizio di Log In
         {
-            var data = new Dictionary<string, string>();
-            data.Add("commandName", "login");
-            data.Add("name", username);
-            data.Add("password", passwordToLogin);
-
+            string data = "metticiquellochetipare";
+            LoginDTO result = null;
             try
             {
-               var result = await "http://192.168.0.175:8888/fondomerende/public/process-request.php"
-                    .WithCookie("auth-key", "metticiquellochetipare")
+                result = await "http://192.168.0.175:8888/fondomerende/public/process-request.php"
+                    .WithCookie("auth-key", data)
                     .WithHeader("Content-Type", "application/x-www-form-urlencoded; param=value;charset=UTF-8")
-                    .PostUrlEncodedAsync(data)
+                    .PostUrlEncodedAsync(new { commandName = "login", name = username, password = passwordToLogin })
                     .ReceiveJson<LoginDTO>();
 
                 if (result.response.success == true)
@@ -46,9 +45,9 @@ namespace fondomerende.Main.Services.RESTServices
             }
             catch (FlurlHttpException ex)
             {
-                await App.Current.MainPage.DisplayAlert("Login", "Errore", "OK");
+                await App.Current.MainPage.DisplayAlert("Fondo Merende",ex.InnerException.Message, "OK");
             }
-            return null;
+            return result;
         }
 
     }
