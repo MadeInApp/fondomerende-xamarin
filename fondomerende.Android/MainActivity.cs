@@ -8,7 +8,6 @@ using Android.Widget;
 using Android.OS;
 using Plugin.CrossPlatformTintedImage.Android;
 using Lottie.Forms.Droid;
-using MultiGestureViewPlugin;
 
 namespace fondomerende.Droid
 {
@@ -24,7 +23,6 @@ namespace fondomerende.Droid
             Rg.Plugins.Popup.Popup.Init(this, savedInstanceState);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
-            AnimationViewRenderer.Init();
             TintedImageRenderer.Init();
             FormsControls.Droid.Main.Init(this);
             LoadApplication(new App());

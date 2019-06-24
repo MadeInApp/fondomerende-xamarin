@@ -14,7 +14,7 @@ using fondomerende.Main.Login.LoginPages;
 
 namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.LogOut.View
 {
-
+    [XamlCompilation(XamlCompilationOptions.Compile)]
     [DesignTimeVisible(true)]
     public partial class LogoutViewCell : ViewCell
     {
