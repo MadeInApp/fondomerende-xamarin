@@ -108,6 +108,12 @@
     <BundleResource Include="Resources\data.json" />
     <BundleResource Include="Resources\Loading.json" />
     <BundleResource Include="Resources\LoadingEating.json" />
+    <BundleResource Include="Resources\list2grid_alt.json">
+      <LogicalName>fondomerende.iOS.Resources.list2grid_alt.json</LogicalName>
+    </BundleResource>
+    <BundleResource Include="Resources\list2grid.json">
+      <LogicalName>fondomerende.iOS.Resources.list2grid.json</LogicalName>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\Contents.json">
@@ -258,8 +264,6 @@
     <BundleResource Include="Resources\vending-machine.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidAsset Include="Resources\list2grid.json" />
-    <AndroidAsset Include="Resources\list2grid_alt.json" />
     <AndroidAsset Include="Renderer\list2grid.json" />
     <AndroidAsset Include="Renderer\list2grid_alt.json" />
   </ItemGroup>
