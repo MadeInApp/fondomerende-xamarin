@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Xamarin.Forms;
-using static Android.Content.Res.Resources;
+﻿using Xamarin.Forms;
 
 namespace fondomerende.Main.Utilities
 {

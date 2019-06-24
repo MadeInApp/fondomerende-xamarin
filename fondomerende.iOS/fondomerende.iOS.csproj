@@ -24,8 +24,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
-    <MtouchArch>i386, x86_64</MtouchArch>
-    <MtouchLink>Full</MtouchLink>
+    <MtouchArch>
+    </MtouchArch>
+    <MtouchLink>SdkOnly</MtouchLink>
     <MtouchDebug>true</MtouchDebug>
     <CodesignKey>iPhone Developer</CodesignKey>
     <CodesignProvision />
@@ -39,6 +40,8 @@
     <MtouchProfiling>false</MtouchProfiling>
     <IOSDebugOverWiFi>true</IOSDebugOverWiFi>
     <DeviceSpecificBuild>false</DeviceSpecificBuild>
+    <MtouchSdkVersion>12.2</MtouchSdkVersion>
+    <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>none</DebugType>
@@ -97,14 +100,13 @@
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <BundleResource Include="Renderer\Loading.json" />
-    <BundleResource Include="Renderer\data.json" />
-    <EmbeddedResource Include="Renderer\pacman0.6.json" />
-    <BundleResource Include="Renderer\star.json" />
     <BundleResource Include="Renderer\Wallet.json" />
     <BundleResource Include="Renderer\PiggyBank.json" />
-    <BundleResource Include="Renderer\Pig.json" />
-    <BundleResource Include="Renderer\EatLoading.json" />
+    <EmbeddedResource Include="Resources\pacman0.6.json" />
+    <BundleResource Include="Resources\star.json" />
+    <BundleResource Include="Resources\Pig.json" />
+    <BundleResource Include="Resources\data.json" />
+    <BundleResource Include="Resources\Loading.json" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\Contents.json">
@@ -253,5 +255,11 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\vending-machine.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Resources\list2grid.json" />
+    <AndroidAsset Include="Resources\list2grid_alt.json" />
+    <AndroidAsset Include="Renderer\list2grid.json" />
+    <AndroidAsset Include="Renderer\list2grid_alt.json" />
   </ItemGroup>
 </Project>

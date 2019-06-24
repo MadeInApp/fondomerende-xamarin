@@ -1,19 +1,13 @@
-﻿using fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page;
-using fondomerende.Main.Services.RESTServices;
+﻿using fondomerende.Main.Services.RESTServices;
 using Rg.Plugins.Popup.Services;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Rg.Plugins.Popup.Extensions;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View;
-using Xamarin.Forms.Internals;
 using fondomerende.Main.Utilities;
 using fondomerende.Main.Login.PostLogin.AllSnack.Page;
-using Java.Util.Prefs;
 
 namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup
 {
