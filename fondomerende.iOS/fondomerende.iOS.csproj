@@ -259,5 +259,7 @@
   <ItemGroup>
     <AndroidAsset Include="Resources\list2grid.json" />
     <AndroidAsset Include="Resources\list2grid_alt.json" />
+    <AndroidAsset Include="Renderer\list2grid.json" />
+    <AndroidAsset Include="Renderer\list2grid_alt.json" />
   </ItemGroup>
 </Project>
