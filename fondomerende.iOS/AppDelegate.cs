@@ -5,7 +5,6 @@ using Foundation;
 using Plugin.CrossPlatformTintedImage.iOS;
 using UIKit;
 using Lottie.Forms.iOS.Renderers;
-using IQKeyboardManager;
 
 namespace fondomerende.iOS
 {
@@ -23,8 +22,6 @@ namespace fondomerende.iOS
             TintedImageRenderer.Init();
             FormsControls.Touch.Main.Init();
             LoadApplication(new App());
-            IQKeyboardManager.SharedManager.Enable = true;
-
             return base.FinishedLaunching(app, options);
         }
     }
