@@ -9,11 +9,13 @@ using Xamarin.Forms;
 using Xamarin.Essentials;
 using fondomerende.Main.Utilities;
 using fondomerende.Main.Login.PostLogin;
+using Xamarin.Forms.Xaml;
 
 namespace fondomerende.Main.Login.LoginPages
 {
     // Learn more about making custom code visible in the Xamarin.Forms previewer
     // by visiting https://aka.ms/xamarinforms-previewer
+    [XamlCompilation(XamlCompilationOptions.Compile)]
     [DesignTimeVisible(true)]
     public partial class LoginPage : ContentPage
     {

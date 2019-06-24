@@ -6,10 +6,11 @@ using fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content;
 using FormsControls.Base;
 using fondomerende.Main.Utilities;
 using Plugin.CrossPlatformTintedImage.Abstractions;
+using Xamarin.Forms.Xaml;
 
 namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.View
 {
-
+    [XamlCompilation(XamlCompilationOptions.Compile)]
     [DesignTimeVisible(true)]
     public partial class ChronologyViewCell : ViewCell
     {

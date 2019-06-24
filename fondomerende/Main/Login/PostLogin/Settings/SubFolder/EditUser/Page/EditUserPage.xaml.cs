@@ -14,6 +14,7 @@ using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.Popup;
 
 namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.Page
 {
+    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class EditUserPage : ContentPage
     {
         public static string username = "";

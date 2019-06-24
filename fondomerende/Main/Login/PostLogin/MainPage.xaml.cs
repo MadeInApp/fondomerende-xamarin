@@ -17,9 +17,11 @@ using fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.View;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.View;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.LogOut.View;
 using fondomerende.Main.Login.PostLogin.AllSnack.Page;
+using Xamarin.Forms.Xaml;
 
 namespace fondomerende.Main.Login.PostLogin
 {
+    [XamlCompilation(XamlCompilationOptions.Compile)]
     // Learn more about making custom code visible in the Xamarin.Forms previewer
     // by visiting https://aka.ms/xamarinforms-previewer
     [DesignTimeVisible(true)]
