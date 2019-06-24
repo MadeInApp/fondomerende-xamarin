@@ -17,13 +17,12 @@ using Lottie.Forms;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View;
 using fondomerende.Main.Login.PostLogin.AllSnacks.View;
 using System.Threading;
-using MultiGestureViewPlugin;
 
 namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 {
 
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class AllSnacksPage : ContentPage
+    public partial class AllSnacksPage
     {
         double priceBinding;
         public static string selectedItemBinding { get; set; }
@@ -235,18 +234,16 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                         IsVisible = visibilità,
                     };
 
-                    var longpress = new MultiGestureView
+                    var boxview = new BoxView
                     {
-                        LongPressVibrationDuration = 300,
+                        BackgroundColor = Color.Transparent,
+                        HeightRequest = box,
+                        WidthRequest = box,
                     };
-
-
+                    
                     starAnimation.OnFinish += StopAnimation;
 
-                    var tgr = new TapGestureRecognizer();
-                    tgr.Tapped += HoldAsync;
-                    app.GestureRecognizers.Add(tgr);
-
+                  
                     var tgr2 = new TapGestureRecognizer();
                     tgr2.NumberOfTapsRequired = 2;
                     tgr2.Tapped += Tgr2_Tapped;
@@ -297,6 +294,11 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                 }
             }
         }
+
+        //private void whilePressing(object sender, LongPressEventArgs e)
+        //{
+        //    throw new NotImplementedException();
+        //}
 
         private void StopAnimation(object sender, EventArgs e)
         {
@@ -613,50 +615,6 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             //Preferences.Add("",);
         }
 
-        private async Task HoldAsync(object sender, EventArgs e)
-        {
-            int i = 0;
-            while (hold)
-            {
-                i++;
-                if (i == 0) // la prima cosa che succede se viene premuto il tasto
-                {
-                    SnackDataDTO index = null;
-                    foreach (var item in (sender as StackLayout).Children)
-                    {
-                        if (item is Label)
-                        {
-                            var snackName = (item as Label).Text;
-                            index = result.data.snacks.Single(obj => obj.friendly_name == snackName);
-                            break;
-                        }
-
-                    }
-                    if (index != null)
-                    {
-
-                        foreach (var app in (sender as StackLayout).Children)
-                        {
-                            if (app is RoundedCornerView)
-                            {
-                                foreach (var an in (app as RoundedCornerView).Children)
-                                {
-
-                                    if (an is AnimationView)
-                                    {
-                                        AnimationView ap = (AnimationView)an;
-                                        if (ap.Animation == "eatLoading.json")
-                                        {
-                                            ap.Play();
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-                await Task.Delay(10);
-            }
-        }
+        
     }
 }
