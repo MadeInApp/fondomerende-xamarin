@@ -58,7 +58,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnacks.View
              pacMananimation.TranslateTo(((mainDisplayInfo*34)/100) , 0, 5000,Easing.Linear)
             );
             QtaRefresh();
-          //  await pacMananimation.TranslateTo(mainDisplayInfo - ((mainDisplayInfo * 34) / 100), 0, 2500);
+             await pacMananimation.TranslateTo(((mainDisplayInfo * 66) / 100), 0, 2500);
         }
         async void QtaRefresh()
         {
