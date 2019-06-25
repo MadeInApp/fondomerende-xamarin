@@ -286,9 +286,9 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
         protected override bool OnBackButtonPressed()
         {
             // Return true if you don't want to close this popup page when a back button is pressed
+            base.OnBackButtonPressed();
             return false;
         }
-
         // Invoked when background is clicked
         protected override bool OnBackgroundClicked()
         {

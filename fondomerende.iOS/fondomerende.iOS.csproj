@@ -246,19 +246,13 @@
     <PackageReference Include="Xam.Plugin.MultiGestureView">
       <Version>1.0.2</Version>
     </PackageReference>
-    <PackageReference Include="Xamarin.Forms" Version="4.0.0.497661" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.1.0" />
+    <PackageReference Include="Xamarin.Forms" Version="4.1.0.496342-pre2" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.2.0-pre" />
     <PackageReference Include="Xamarin.HotReload">
-      <Version>1.4.10</Version>
-    </PackageReference>
-    <PackageReference Include="Xamarin.IQKeyboardManager">
-      <Version>1.4.1</Version>
+      <Version>1.4.12</Version>
     </PackageReference>
     <PackageReference Include="XForms.Plugin.AnimationNavigationPage">
       <Version>1.0.7</Version>
-    </PackageReference>
-    <PackageReference Include="Xamarin.IQKeyboardManager">
-      <Version>1.4.1</Version>
     </PackageReference>
     <PackageReference Include="IQKeyboardManager.Touch">
       <Version>4.0.1</Version>
