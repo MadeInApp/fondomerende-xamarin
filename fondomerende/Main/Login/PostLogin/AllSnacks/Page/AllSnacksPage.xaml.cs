@@ -218,7 +218,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                     var eatAnimation = new AnimationView
                     {
                         Animation = "LoadingEating.json",
-                        Scale = 1,
+                        Scale = 1.4,
                         Rotation = 180,
                         Loop = false,
                         HorizontalOptions = LayoutOptions.FillAndExpand,
@@ -495,14 +495,12 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                     mangiato = true;
                 }
             }
-            
+            selectedItemBinding = (e.SelectedItem as SnackDataDTO).friendly_name;
 
-            // await GetSnacksMethod(true);
             MessagingCenter.Send(new EditUserViewCell()
             {
 
             }, "RefreshUF");
-            selectedItemBinding = (e.SelectedItem as SnackDataDTO).friendly_name;
 
             MessagingCenter.Send(new SnackViewCell()
             {
@@ -525,6 +523,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                 Swap.Play();
                 // Swap.Speed = 0.7f;
                 Swap.Speed = 1;
+                ScrollFavourites.IsVisible = false;
                 ScrollSnackView.IsVisible = false;
                 ListView.IsVisible = true;
             }
@@ -534,6 +533,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                 Swap.FlowDirection = FlowDirection.RightToLeft;
                 Swap.Speed = -1;
                 ListView.IsVisible = false;
+                ScrollFavourites.IsVisible = false;
                 ScrollSnackView.IsVisible = true;
             }
         }
@@ -659,6 +659,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
         private async void Stack_LongPressing(object sender, LongPressEventArgs e)
         {
+            bool verifica = false;
             eatLoading = 0;
             SnackDataDTO index = null;
             foreach (var item in (sender as MR.Gestures.StackLayout).Children)
@@ -687,24 +688,15 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
                                 if (ap.Animation == "LoadingEating.json")
                                 {
-                                    SelectedItemChangedEventArgs test = new SelectedItemChangedEventArgs(index);
-                                    bool verifica=false;
+                                    ap.IsVisible = true;
+                                    ap.FadeTo(1);
                                     ap.Speed = 5f;
                                     ap.Play();
-                                    ap.OnFinish += (s, d) =>
+                                    ap.OnFinish += async (s, d) =>
                                     {
-                                        verifica = Stack_LongFinish(ap);
+                                        await Stack_LongFinish(ap,index);
                                     };
 
-                                    if (verifica)
-                                    {
-                                        ListView_ItemSelected(null, test);
-                                        if (mangiato)
-                                        {
-                                            mangiato = false;
-                                            //Vibration.Vibrate(200);
-                                        }   
-                                    }
                                 }
                             }
                         }
@@ -713,16 +705,25 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             }
         }
 
-        private bool Stack_LongFinish(object sender)
+        private async Task Stack_LongFinish(object sender,SnackDataDTO index)
         {
             eatLoading = -1;
             if ((sender as AnimationView).Speed > 0)
             {
-                return true; 
+                (sender as AnimationView).FadeTo(0,300);
+                EatDTO response = await snackServiceManager.EatAsync(index.id, 1);
+
+                // refresh 
+                MessagingCenter.Send(new EditUserViewCell()
+                {
+
+                }, "RefreshUF");
+
+                if (response.response.success == true)
+                {
+                    Vibration.Vibrate(100);
+                }
             }
-            return false;
         }
-
-
     }
 }
