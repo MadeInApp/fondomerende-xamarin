@@ -31,7 +31,6 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
         Dictionary<string, int> numerotocchi = new Dictionary<string, int>();
         bool switchStar = false;
         AnimationView Swap;
-        bool mangiato = false;
         public AllSnacksPage()
         {
             numerotocchi.Add("numero", 0);
@@ -298,10 +297,17 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             }
         }
 
-        //private void whilePressing(object sender, LongPressEventArgs e)
-        //{
-        //    throw new NotImplementedException();
-        //}
+        public async Task refreshFavAsync()
+        {
+            Column1Fav.Children.Clear();
+            Column0Fav.Children.Clear();
+
+            GetSnacksMethod(false, true);
+            
+            
+            
+            //Column1Fav.Children.Remove;
+        }
 
         private void StopAnimation(object sender, EventArgs e)
         {
@@ -438,6 +444,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                     }
                 }
             }
+            refreshFavAsync();
         }
 
         private void Tgr_Tapped(object sender, EventArgs e)
@@ -471,7 +478,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                 ScrollFavourites.IsVisible = true;
                 ListView.IsVisible = false;
                 favourite.Source = ImageSource.FromResource("fondomerende.image.star_fill.png");
-
+                
             }
             else
             {
@@ -490,10 +497,6 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             if(ans == true)
             {
                 EatDTO response = await snackServiceManager.EatAsync((e.SelectedItem as SnackDataDTO).id, 1);
-                if (response.response.success == true)
-                {
-                    mangiato = true;
-                }
             }
             selectedItemBinding = (e.SelectedItem as SnackDataDTO).friendly_name;
 
@@ -726,9 +729,15 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
                 }, "RefreshUF");
 
-                if (response.response.success == true)
+                 if (response.response.success == true)
                 {
                     Vibration.Vibrate(100);
+                }
+                else
+                {
+                    Vibration.Vibrate(40);
+                    await Task.Delay(20);
+                    Vibration.Vibrate(40);
                 }
             }
         }
