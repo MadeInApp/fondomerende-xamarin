@@ -35,15 +35,6 @@
                     Source="{local:EmbeddedImage Resource=fondomerende.image.History.png}"
                     TintColor="Blue">
                 </controls:TintedImage>
-                
-                <!--<Image
-                    Source="{local:EmbeddedImage Resource=fondomerende.image.Chronology_icon_256x256.png}"
-                    Grid.Row="0"
-                    Grid.Column="0"      
-                    Scale="{OnPlatform Android=0.6, iOS=0.6}"
-                    x:Name ="ChronologyButton"
-                    Aspect="AspectFit">
-                </Image>-->
 
                 <StackLayout
                     HorizontalOptions="Start"
