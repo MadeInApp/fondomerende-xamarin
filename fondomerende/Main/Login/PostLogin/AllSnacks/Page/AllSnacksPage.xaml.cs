@@ -66,12 +66,12 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                 HeightRequest = 50,
                 HorizontalOptions = LayoutOptions.StartAndExpand,
                 VerticalOptions = LayoutOptions.StartAndExpand,
-                Animation = "list2grid.json",
+                Animation = "list2grid_alt.json",
                 Margin = new Thickness(0,0,0,10),
                 AutoPlay = false,
             };
-            Swap.OnClick += Swap_Clicked;
-            GridView1.Children.Add(Swap, 0, 0);
+            //Swap.OnClick += Swap_Clicked;
+            //GridView1.Children.Add(Swap, 0, 0);
 
 
             ListView.RefreshCommand = new Command(async () =>                                
@@ -85,15 +85,15 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                 WalletAnimation();
             });
 
-        }                                                                                         //
-        public async Task RefreshDataAsync()                                                    //
-        {                                                                                      //
-            await GetSnacksMethod(true,false);                                                      //
+        }                                                                                         
+        public async Task RefreshDataAsync()                                                    
+        {                                                                                      
+            await GetSnacksMethod(true,false);                                                      
         }
 
-        public async Task RefreshFavouriteDataAsync()                                                    //
-        {                                                                                      //
-            await GetSnacksMethod(true, true);                                                      //
+        public async Task RefreshFavouriteDataAsync()                                                    
+        {                                                                                      
+            await GetSnacksMethod(true, true);                                                      
         }              
 
         private void WalletAnimation()
@@ -519,19 +519,24 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
         {
             if (ScrollSnackView.IsVisible == true)
             {
+                ListToGrid.BackgroundColor = Color.OrangeRed;
+                ScrollSnackView.IsVisible = false;
+                ListView.IsVisible = true;
+                /*
                 Swap.Play();
                 // Swap.Speed = 0.7f;
                 Swap.Speed = 1;
-                ScrollSnackView.IsVisible = false;
-                ListView.IsVisible = true;
+                */
             }
             else
             {
-                Swap.Play();
-                Swap.FlowDirection = FlowDirection.RightToLeft;
-                Swap.Speed = -1;
+                ListToGrid.BackgroundColor = Color.Transparent;
                 ListView.IsVisible = false;
                 ScrollSnackView.IsVisible = true;
+                /* Swap.Play();
+                 Swap.FlowDirection = FlowDirection.RightToLeft;
+                 Swap.Speed = -1;
+                  */
             }
         }
 

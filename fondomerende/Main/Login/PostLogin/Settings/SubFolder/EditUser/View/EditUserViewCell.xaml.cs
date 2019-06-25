@@ -56,6 +56,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View
             MessagingCenter.Subscribe<EditUserViewCell>(this, "RefreshUF", async (value) =>
             {
                 await GetUserFundsMethod();
+
             });
 
         }
@@ -127,6 +128,10 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View
                     if (float.Parse(result.data.user_funds_amount) <= 0)
                     {
                         userFunds.TextColor = Color.Red;
+                    }
+                    else
+                    {
+                        userFunds.TextColor = Color.Black;
                     }
                 }
                 else if (!result.response.success)
