@@ -8,8 +8,8 @@ using Lottie.Forms.iOS.Renderers;
 
 namespace fondomerende.iOS
 {
-    // The UIApplicationDelegate for the application. This class is responsible for launching the 
-    // User Interface of the application, as well as listening (and optionally responding) to 
+    // The UIApplicationDelegate for the application. This class is responsible for launching the
+    // User Interface of the application, as well as listening (and optionally responding) to
     // application events from iOS.
     [Register("AppDelegate")]
     public partial class AppDelegate : global::Xamarin.Forms.Platform.iOS.FormsApplicationDelegate
@@ -22,8 +22,6 @@ namespace fondomerende.iOS
             TintedImageRenderer.Init();
             FormsControls.Touch.Main.Init();
             LoadApplication(new App());
-            IQKeyboardManager.IQKeyboardManager.SharedManager.Enable = true;
-
             return base.FinishedLaunching(app, options);
         }
     }
