@@ -114,7 +114,6 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             {
                 for (int i = 0; i <= result.data.snacks.Count; i++)
                 {
-                   
                     bool addfav = false; //variabile di appoggio
                     bool visibilità = true;
                     if (favourites && !Check_Favourites(result.data.snacks[i].id))
@@ -214,6 +213,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                         IsVisible = false,
                     };
 
+
                     var eatAnimation = new AnimationView
                     {
                         Animation = "LoadingEating.json",
@@ -297,16 +297,30 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             }
         }
 
-        public async Task refreshFavAsync()
+        public async Task refreshRemoveFavAsync()
         {
-            Column1Fav.Children.Clear();
             Column0Fav.Children.Clear();
+            Column1Fav.Children.Clear();
 
             GetSnacksMethod(false, true);
-            
-            
-            
-            //Column1Fav.Children.Remove;
+        }
+
+       
+
+        public async Task refreshAddFavAsync(object sender)
+        {
+            var nipote = new MR.Gestures.StackLayout { };
+            nipote = (sender as MR.Gestures.StackLayout);
+            int grid1 = Column1Fav.Children.Count;
+            int grid0 = Column0Fav.Children.Count;
+
+            if(grid0 == grid1)
+            {
+                Column0Fav.Children.Add(nipote as MR.Gestures.StackLayout);
+            }else if (grid0>grid1)
+            {
+                Column0Fav.Children.Add(nipote as MR.Gestures.StackLayout);
+            }
         }
 
         private void StopAnimation(object sender, EventArgs e)
@@ -431,10 +445,12 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                                 if (Check_Favourites(index.id))
                                 {
                                     a = "fondomerende.image.star_empty.png";
+                                    refreshRemoveFavAsync();
                                 }
                                 else
                                 {
                                     a = "fondomerende.image.star_fill.png";
+                                    refreshAddFavAsync(sender);
                                 }
 
 
@@ -444,7 +460,6 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                     }
                 }
             }
-            refreshFavAsync();
         }
 
         private void Tgr_Tapped(object sender, EventArgs e)
