@@ -278,6 +278,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                     tgr2.Tapped += Tgr2_Tapped;
                     app.GestureRecognizers.Add(tgr2);
 
+                    app.DoubleTapped += Tgr2_Tapped;
 
 
                     if (addfav && favourites)
@@ -405,17 +406,14 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                             if (an is AnimationView)
                             {
                                 AnimationView ap = (AnimationView)an;
-
-                                //per le preferenze 
-                                if (Check_FavouritesAndSet(index.id))
+                                if (ap.Animation == "star.json")
                                 {
-                                    ap.IsVisible = true;
-                                    ap.FadeTo(1);
-                                    ap.Play();
-                                }
-                                else
-                                {
-
+                                    if (Check_FavouritesAndSet(index.id))
+                                    {
+                                        ap.IsVisible = true;
+                                        ap.FadeTo(1);
+                                        ap.Play();
+                                    }
                                 }
 
                             }
@@ -486,13 +484,18 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
         }
 
-        private async Task ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)     //quando uno snack è tappato si apre un prompt in cui viene chiesto se lo si vuole mangiare
+        private async void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)     //quando uno snack è tappato si apre un prompt in cui viene chiesto se lo si vuole mangiare
         {
-            EatDTO response = await snackServiceManager.EatAsync((e.SelectedItem as SnackDataDTO).id, 1);
-            if (response.response.success == true)
+            var ans = await DisplayAlert("Fondo Merende", "Vuoi davvero mangiare " + (e.SelectedItem as SnackDataDTO).friendly_name + "?", "Si", "No");
+            if(ans == true)
             {
-                mangiato = true;
+                EatDTO response = await snackServiceManager.EatAsync((e.SelectedItem as SnackDataDTO).id, 1);
+                if (response.response.success == true)
+                {
+                    mangiato = true;
+                }
             }
+            
 
             // await GetSnacksMethod(true);
             MessagingCenter.Send(new EditUserViewCell()
@@ -695,7 +698,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
                                     if (verifica)
                                     {
-                                        await ListView_ItemSelected(null, test);
+                                        ListView_ItemSelected(null, test);
                                         if (mangiato)
                                         {
                                             mangiato = false;
@@ -719,5 +722,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             }
             return false;
         }
+
+
     }
 }
