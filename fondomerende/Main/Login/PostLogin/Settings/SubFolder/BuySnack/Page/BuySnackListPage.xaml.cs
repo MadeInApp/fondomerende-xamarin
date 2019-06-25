@@ -35,6 +35,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page
             InitializeComponent();
 
             GetSnacksMethod(false);
+
             MessagingCenter.Subscribe<BuySnackListPage>(this, "Refresh", async (value) =>
             {
                 await GetSnacksMethod(true);

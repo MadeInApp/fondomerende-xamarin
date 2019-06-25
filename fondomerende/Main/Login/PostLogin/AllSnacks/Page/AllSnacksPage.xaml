@@ -22,16 +22,18 @@
                 Grid.Row="0"
                 Grid.Column="0"
                 x:Name="StackSnack"
-                BackgroundColor="#FFF8EB">
+                BackgroundColor="#ffcc00" HeightRequest="50">
 
                 <StackLayout 
                     Orientation="Horizontal" 
-                    MinimumHeightRequest="40">
+                    BackgroundColor="#ffb121"
+                    HeightRequest="45">
 
                     <Grid 
                         x:Name="GridView1"
                         HorizontalOptions="FillAndExpand"
-                        VerticalOptions="CenterAndExpand">
+                        VerticalOptions="CenterAndExpand"
+                        BackgroundColor="#ffcc00" HeightRequest="50">
 
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="3.3*" />
@@ -40,10 +42,25 @@
                         </Grid.ColumnDefinitions>
 
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
 
-
+                        <ImageButton
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            HeightRequest="40"
+                            WidthRequest="40"
+                            Margin="10,10,0,12"
+                            CornerRadius="5"
+                            HorizontalOptions="StartAndExpand" 
+                            VerticalOptions="CenterAndExpand"
+                            Source="{local2:EmbeddedImage Resource=fondomerende.image.list_264x264.png}"
+                            Scale="{OnIdiom Phone=0.9, Tablet=3}"
+                            Clicked="Swap_Clicked"
+                            x:Name="ListToGrid"
+                            BackgroundColor="Transparent"
+                            IsVisible="True">
+                        </ImageButton>
 
                         <ImageButton
                             Grid.Row="0"
@@ -60,8 +77,6 @@
                             BackgroundColor="Transparent"
                             IsVisible="True">
                         </ImageButton>
-
-
                         <forms:AnimationView
                             Scale="1.3"
                             Grid.Row="0"
@@ -79,7 +94,6 @@
                             VerticalOptions="CenterAndExpand"
                             AutoPlay="True">
                         </forms:AnimationView>
-
                     </Grid>
                 </StackLayout>
 
@@ -87,7 +101,7 @@
                     Grid.Row="0"
                     Grid.Column="0"
                     VerticalOptions="Center"
-                    BackgroundColor="#FFF8EB"
+                    BackgroundColor="#ffcc00"
                     x:Name="Cane">
                     <Grid
                         x:Name="griglia">
@@ -97,11 +111,15 @@
                             Grid.Row="0"
                             IsVisible="True" 
                             x:Name="ScrollSnackView"  
-                            Padding="0,0,0,10">
+                            Padding="0,0,0,0"
+                            BackgroundColor="#FFF8EB">
 
-                            <Grid HorizontalOptions="CenterAndExpand"
+                            <Grid 
+                                HorizontalOptions="CenterAndExpand"
                                 x:Name="GridView" 
-                                ColumnSpacing="20">
+                                ColumnSpacing="20"
+                                Margin="0,0,0,0"
+                                BackgroundColor="#FFF8EB">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="*" />
                                 </Grid.RowDefinitions>
@@ -109,18 +127,18 @@
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <StackLayout 
-                                        Grid.Column="0" 
-                                        x:Name="Column0"
-                                        Spacing="40"
-                                        HorizontalOptions="StartAndExpand"
-                                        Margin="5,0,10,0">
+                                    Grid.Column="0" 
+                                    x:Name="Column0"
+                                    Spacing="40"
+                                    HorizontalOptions="StartAndExpand"
+                                    Margin="5,10,10,0">
                                 </StackLayout>
                                 <StackLayout 
-                                        Grid.Column="1" 
-                                        x:Name="Column1"
-                                        Spacing="40"
-                                        HorizontalOptions="EndAndExpand"
-                                        Margin="10,0,5,0">
+                                    Grid.Column="1" 
+                                    x:Name="Column1"
+                                    Spacing="40"
+                                    HorizontalOptions="EndAndExpand"
+                                    Margin="10,10,5,0">
                                 </StackLayout>
                             </Grid>
                         </ScrollView>
@@ -164,7 +182,8 @@
                 <ListView
                     Margin="0,0,0,0"
                     x:Name="ListView"
-                    VerticalOptions="Start"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand"
                     IsPullToRefreshEnabled="true"
                     RefreshCommand="{Binding RefreshCommand}"
                     IsRefreshing="{Binding IsBusy, Mode=OneWay}"

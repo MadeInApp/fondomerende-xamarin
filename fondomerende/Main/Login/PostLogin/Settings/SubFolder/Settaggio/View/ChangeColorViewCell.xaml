@@ -23,7 +23,7 @@
                 x:Name="SetSetting"
                 FontSize="14"
                 TextColor="Black"
-                Text="Cambio del colore dinamico">
+                Text="Cambia tema icone!">
             </Label>
         </StackLayout>
     </ViewCell.View>

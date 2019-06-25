@@ -20,6 +20,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class BuySnackPopUpPage : Rg.Plugins.Popup.Pages.PopupPage
     {
+        bool OneClick = false;
         ImageButton immagine;
         LineEntry line;
         double Altezza, Larghezza;
@@ -66,10 +67,6 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
                 HeightRequest = Altezza,
                 WidthRequest = Larghezza,
             };
-
-            
-
-
 
             var stackFondoAndroid = new StackLayout() //per android 
             {
@@ -221,7 +218,6 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
         public void Entrata(object sender, TextChangedEventArgs e)
         {
             appoggio = e.NewTextValue;
-
         }
         protected override void OnAppearing()
         {
@@ -234,6 +230,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
             {
 
             }, "Refresh");
+               
             base.OnDisappearing();
         }
 
@@ -289,13 +286,14 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
         protected override bool OnBackButtonPressed()
         {
             // Return true if you don't want to close this popup page when a back button is pressed
-            return base.OnBackButtonPressed();
+            return false;
         }
 
         // Invoked when background is clicked
         protected override bool OnBackgroundClicked()
         {
             // Return false if you don't want to close this popup page when a background of the popup page is clicked
+ 
             return base.OnBackgroundClicked();
         }
 
@@ -401,6 +399,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
 
         private async void Discard_Clicked(object sender, EventArgs e)
         {
+            Discard.IsEnabled = false;
             await Navigation.PopPopupAsync();
         }
     }
