@@ -15,6 +15,7 @@ using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View;
 using fondomerende.Main.Login.PostLogin.AllSnacks.View;
 using System.Threading;
 using MR.Gestures;
+using UIKit;
 
 namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 {
@@ -24,6 +25,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
     {
         public static double priceBinding;
         int eatLoading = 0; 
+
         public static string selectedItemBinding { get; set; }
         SnackServiceManager snackServiceManager = new SnackServiceManager();
         List<SnackDataDTO> AllSnacks = new List<SnackDataDTO>();
@@ -717,6 +719,8 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
         private async Task Stack_LongFinish(object sender,SnackDataDTO index)
         {
+            var notification = new UINotificationFeedbackGenerator();
+            notification.Prepare();
             eatLoading = -1;
             if ((sender as AnimationView).Speed > 0)
             {
@@ -731,13 +735,28 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
                  if (response.response.success == true)
                 {
-                    Vibration.Vibrate(100);
+                    if (Device.RuntimePlatform == Device.iOS)
+                    {
+                        notification.NotificationOccurred(UINotificationFeedbackType.Success);
+                    }
+                    else
+                    {
+                        Vibration.Vibrate(100);
+                    }
                 }
                 else
                 {
-                    Vibration.Vibrate(40);
-                    await Task.Delay(20);
-                    Vibration.Vibrate(40);
+                    if(Device.RuntimePlatform == Device.iOS)
+                    {
+                        notification.NotificationOccurred(UINotificationFeedbackType.Error);
+                    }
+                   else
+                    {
+                        Vibration.Vibrate(40);
+                        await Task.Delay(20);
+                        Vibration.Vibrate(40);
+                    }
+                   
                 }
             }
         }

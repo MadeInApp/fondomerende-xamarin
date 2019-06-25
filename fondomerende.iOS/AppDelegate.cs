@@ -22,7 +22,10 @@ namespace fondomerende.iOS
             TintedImageRenderer.Init();
             FormsControls.Touch.Main.Init();
             LoadApplication(new App());
+            var notification = new UINotificationFeedbackGenerator();
+            notification.Prepare();
             return base.FinishedLaunching(app, options);
+            
         }
     }
 }

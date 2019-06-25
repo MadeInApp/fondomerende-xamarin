@@ -226,11 +226,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
 
         protected override void OnDisappearing()
         {
-            MessagingCenter.Send(new BuySnackListPage()
-            {
-
-            }, "Refresh");
-               
+  
             base.OnDisappearing();
         }
 
@@ -258,6 +254,11 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
         protected override void OnDisappearingAnimationEnd()
         {
             base.OnDisappearingAnimationEnd();
+            MessagingCenter.Send(new BuySnackListPage()
+            {
+
+            }, "Refresh");
+
         }
 
         protected override Task OnAppearingAnimationBeginAsync()
@@ -287,7 +288,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
         {
             // Return true if you don't want to close this popup page when a back button is pressed
             base.OnBackButtonPressed();
-            return false;
+            return base.OnBackButtonPressed();
         }
         // Invoked when background is clicked
         protected override bool OnBackgroundClicked()
@@ -400,7 +401,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
         private async void Discard_Clicked(object sender, EventArgs e)
         {
             Discard.IsEnabled = false;
-            await Navigation.PopPopupAsync();
+            await Navigation.PopAllPopupAsync();
         }
     }
 }

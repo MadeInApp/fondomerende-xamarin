@@ -53,12 +53,9 @@ namespace fondomerende.Main.Login.PostLogin.AllSnacks.View
             var mainDisplayInfo = DeviceDisplay.MainDisplayInfo.Width;
             pacMananimation.IsVisible = true;
             await pacMananimation.TranslateTo(-mainDisplayInfo/2, 0, 0);
-            await Task.WhenAny<bool>
-            (
-             pacMananimation.TranslateTo(((mainDisplayInfo*34)/100) , 0, 5000,Easing.Linear)
-            );
+            pacMananimation.TranslationX -= (mainDisplayInfo * 66) / 100;
             QtaRefresh();
-          //  await pacMananimation.TranslateTo(mainDisplayInfo - ((mainDisplayInfo * 34) / 100), 0, 2500);
+             await pacMananimation.TranslateTo(((mainDisplayInfo * 66) / 100), 0, 2500);
         }
         async void QtaRefresh()
         {
