@@ -169,7 +169,6 @@
                     RefreshCommand="{Binding RefreshCommand}"
                     IsRefreshing="{Binding IsBusy, Mode=OneWay}"
                     IsVisible="False"
-                    SelectionMode="Single" 
                     BackgroundColor="#FFF8EB"
                     HasUnevenRows="True">
                     <ListView.ItemTemplate>

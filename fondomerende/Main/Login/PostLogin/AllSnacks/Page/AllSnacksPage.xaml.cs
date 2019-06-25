@@ -66,7 +66,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                 HeightRequest = 50,
                 HorizontalOptions = LayoutOptions.StartAndExpand,
                 VerticalOptions = LayoutOptions.StartAndExpand,
-                Animation = "Pig.json",
+                Animation = "list2grid.json",
                 Margin = new Thickness(0,0,0,10),
                 AutoPlay = false,
             };

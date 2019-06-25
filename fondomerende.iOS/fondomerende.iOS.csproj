@@ -33,7 +33,7 @@
     <CodesignExtraArgs />
     <CodesignResourceRules />
     <CodesignEntitlements />
-    <OptimizePNGs>true</OptimizePNGs>
+    <OptimizePNGs>false</OptimizePNGs>
     <MtouchExtraArgs>
     </MtouchExtraArgs>
     <MtouchFastDev>true</MtouchFastDev>
@@ -107,7 +107,6 @@
     <BundleResource Include="Resources\Pig.json" />
     <BundleResource Include="Resources\data.json" />
     <BundleResource Include="Resources\Loading.json" />
-    <BundleResource Include="Resources\LoadingEating.json" />
     <BundleResource Include="Resources\list2grid_alt.json">
       <LogicalName>fondomerende.iOS.Resources.list2grid_alt.json</LogicalName>
     </BundleResource>
@@ -235,8 +234,8 @@
     <PackageReference Include="Com.Airbnb.Xamarin.Forms.Lottie">
       <Version>2.7.1</Version>
     </PackageReference>
-    <PackageReference Include="MR.Gestures">
-      <Version>2.1.0</Version>
+    <PackageReference Include="IQKeyboardManager.Touch">
+      <Version>4.0.1</Version>
     </PackageReference>
     <PackageReference Include="Plugin.CrossPlatformTintedImage">
       <Version>1.0.0</Version>
@@ -244,10 +243,16 @@
     <PackageReference Include="Rg.Plugins.Popup">
       <Version>1.1.5.188</Version>
     </PackageReference>
+    <PackageReference Include="Xam.Plugin.MultiGestureView">
+      <Version>1.0.2</Version>
+    </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="4.0.0.497661" />
     <PackageReference Include="Xamarin.Essentials" Version="1.1.0" />
     <PackageReference Include="Xamarin.HotReload">
       <Version>1.4.10</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.IQKeyboardManager">
+      <Version>1.4.1</Version>
     </PackageReference>
     <PackageReference Include="XForms.Plugin.AnimationNavigationPage">
       <Version>1.0.7</Version>
