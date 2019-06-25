@@ -149,6 +149,7 @@
                             Grid.Row="0"
                             IsVisible="False" 
                             x:Name="ScrollFavourites"  
+                              BackgroundColor="#FFF8EB"
                             Padding="0,0,0,10">
 
                             <Grid HorizontalOptions="CenterAndExpand"
