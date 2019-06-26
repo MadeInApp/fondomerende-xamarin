@@ -5,9 +5,11 @@ using System.Threading.Tasks;
 using Rg.Plugins.Popup.Extensions;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View;
 using fondomerende.Main.Utilities;
 using fondomerende.Main.Login.PostLogin.AllSnack.Page;
+using Rg.Plugins.Popup.Pages;
 
 namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup
 {
@@ -152,7 +154,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup
             stackBody.Children.Add(stackBottoni);
             Round.Children.Add(stackBody);
 
-            Popuppage.Content = Round;
+            DepositPop.Content = Round;
         }
 
         public void Entrata(object sender, TextChangedEventArgs e)

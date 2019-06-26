@@ -13,6 +13,7 @@ using fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup;
 using Lottie.Forms;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View;
 using fondomerende.Main.Login.PostLogin.AllSnacks.View;
+using System.Threading;
 using MR.Gestures;
 
 namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
@@ -22,16 +23,17 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
     {
         public static double priceBinding;
         int eatLoading = 0;
+
         public static string selectedItemBinding { get; set; }
         SnackServiceManager snackServiceManager = new SnackServiceManager();
         List<SnackDataDTO> AllSnacks = new List<SnackDataDTO>();
         SnackDTO result;
         Dictionary<string, int> numerotocchi = new Dictionary<string, int>();
-        bool switchGrid = false;
         bool switchStar = false;
         AnimationView Swap;
 
         string previousFavourite;
+
         object[] Snackarray = new object[100];
         object[] SnackFavarray;
 
@@ -310,6 +312,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
 
 
+
         public async Task refreshFavAsync()
         {
             if (previousFavourite != Preferences.Get("Favourites", ""))
@@ -501,7 +504,6 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                 await refreshFavAsync();
                 ScrollSnackView.IsVisible = false;
                 ScrollFavourites.IsVisible = true;
-                switchGrid = false;
                 ListView.IsVisible = false;
                 favourite.Source = ImageSource.FromResource("fondomerende.image.star_fill.png");
             }
@@ -529,6 +531,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             {
 
             }, "RefreshUF");
+            
 
             MessagingCenter.Send(new SnackViewCell()
             {
@@ -546,16 +549,15 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
         private void Swap_Clicked(object sender, EventArgs e)
         {
-            switchGrid = !switchGrid;
-            if (switchGrid == true)
+            if (ScrollSnackView.IsVisible == true)
             {
                 ListToGrid.BackgroundColor = Color.OrangeRed;
                 ScrollSnackView.IsVisible = false;
                 ListView.IsVisible = true;
-                switchStar = false;
-                ScrollFavourites.IsVisible = false;
-                ListView.IsVisible = true;
 
+                ScrollFavourites.IsVisible = false;
+                ScrollSnackView.IsVisible = false;
+                ListView.IsVisible = true;
                 favourite.Source = ImageSource.FromResource("fondomerende.image.star_empty.png");
             }
             else
@@ -564,10 +566,6 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                 ListView.IsVisible = false;
                 ScrollFavourites.IsVisible = false;
                 ScrollSnackView.IsVisible = true;
-                /* Swap.Play();
-                 Swap.FlowDirection = FlowDirection.RightToLeft;
-                 Swap.Speed = -1;
-                  */
             }
         }
 
@@ -643,12 +641,6 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
 
             }
-        }
-
-        private void SetFavourite(object sender, EventArgs e)
-        {
-            //if(Preferences.ContainsKey("Favourite")) => Preferences.Add("Favourite");
-            //Preferences.Add("",);
         }
 
         private void Stack_LongPressed(object sender, LongPressEventArgs e)
@@ -739,7 +731,6 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
         private async Task Stack_LongFinish(object sender, SnackDataDTO index)
         {
-           
             eatLoading = -1;
             if ((sender as AnimationView).Speed > 0)
             {
@@ -756,10 +747,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                 {
                     if (Device.RuntimePlatform == Device.iOS)
                     {
-                        MessagingCenter.Send(new EditSnackDTO()
-                        {
-
-                        }, "RefreshUF");
+                       
                     }
                     else
                     {
@@ -768,232 +756,19 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                 }
                 else
                 {
-                    Vibration.Vibrate(40);
-                    await Task.Delay(20);
-                    Vibration.Vibrate(40);
+                    if (Device.RuntimePlatform == Device.iOS)
+                    {
+                        
+                    }
+                    else
+                    {
+                        Vibration.Vibrate(40);
+                        await Task.Delay(20);
+                        Vibration.Vibrate(40);
+                    }
+
                 }
             }
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
