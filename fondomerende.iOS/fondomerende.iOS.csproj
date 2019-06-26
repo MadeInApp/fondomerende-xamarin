@@ -112,6 +112,7 @@
     <BundleResource Include="Resources\list2grid.json">
       <LogicalName>fondomerende.iOS.Resources.list2grid.json</LogicalName>
     </BundleResource>
+    <BundleResource Include="Resources\LoadingEating.json" />
     <BundleResource Include="Resources\pacman0.6.json" />
   </ItemGroup>
   <ItemGroup>

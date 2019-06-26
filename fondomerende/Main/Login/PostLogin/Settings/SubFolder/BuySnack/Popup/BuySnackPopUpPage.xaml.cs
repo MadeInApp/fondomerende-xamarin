@@ -192,9 +192,9 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
                     stackFondoAndroid.Children.Add(immagine);
                     stackBody.Children.Add(stackFondoAndroid);
                     break;
-                default:
-                    stackFondoAndroid.Children.Add(fondomerende);
-                    stackFondoAndroid.Children.Add(immagine);
+                case Device.iOS:
+                    stackFondoiOS.Children.Add(fondomerende);
+                    stackBody.Children.Add(stackFondoiOS);
                     stackBody.Children.Add(stackFondoiOS);
                     break;
             }

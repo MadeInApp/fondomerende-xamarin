@@ -176,8 +176,8 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.Popup
                     stackFondoAndroid.Children.Add(fondomerende);
                     stackBody.Children.Add(stackFondoAndroid);
                     break;
-                default:
-                    stackFondoAndroid.Children.Add(fondomerende);
+                case Device.iOS:
+                    stackFondoiOS.Children.Add(fondomerende);
                     stackBody.Children.Add(stackFondoiOS);
                     break;
             }
