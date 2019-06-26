@@ -55,7 +55,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
         }
         private void PopupBuy()
         {
-            Altezza = 200;
+            Altezza = (GetAltezzaPagina() * 30) / 100;
             Larghezza = GetLarghezzaPagina() - 80;
             double banner = 50;
 
@@ -96,6 +96,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
             line = new LineEntry
             {
                 Placeholder = "Quanti snack vuoi acquistare?",
+                WidthRequest = 250,
                 Keyboard = Keyboard.Numeric,
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 HorizontalTextAlignment = TextAlignment.Center,
@@ -129,6 +130,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
             stackBody = new StackLayout  //stack principale dove è contenuto l'interno di tutto (tranne round che stonda)
 
             {
+                Spacing = 10,
                 HeightRequest = Altezza,
                 WidthRequest = Larghezza,
                 BackgroundColor = Color.White,
@@ -150,9 +152,9 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
 
             immagine = new ImageButton
             {
-                Source = ImageSource.FromResource("fondomerende.image.settings_icon_64x64.png"),
+                Source = ImageSource.FromResource("fondomerende.image.Edit_Icon_32x32.png"),
                 CornerRadius = 20,
-                Scale = 1,
+                Scale = 1.5,
                 BackgroundColor = Color.Transparent,
                 Margin = new Thickness (0,0,15,0),
                 Aspect = Aspect.AspectFit,
@@ -194,8 +196,9 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
                     break;
                 case Device.iOS:
                     stackFondoiOS.Children.Add(fondomerende);
+                    stackFondoiOS.Children.Add(immagine);
                     stackBody.Children.Add(stackFondoiOS);
-                    stackBody.Children.Add(stackFondoiOS);
+                    
                     break;
             }
           //  entry.TextChanged += Entrata;
@@ -302,8 +305,9 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
         private async void Immagine_Clicked(object sender, EventArgs e)
         {
             swap = true;
-            Altezza = GetAltezzaPagina() / 2.2;
+            Altezza = (GetAltezzaPagina()*40)/100;
             Round.HeightRequest = Altezza;
+            stackBody.Spacing = 20;
             immagine.IsVisible = false;
             prezzo.IsVisible = true;
             scadenza.IsVisible = true;
