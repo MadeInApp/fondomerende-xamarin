@@ -749,7 +749,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
                 if (response.response.success == true)
                 {
-                    if (Xamarin.Essentials.DeviceInfo.Manufacturer == "Apple")
+                    if (Device.RuntimePlatform == Device.iOS)
                     {
                         notification.NotificationOccurred(UINotificationFeedbackType.Success);
                     }
