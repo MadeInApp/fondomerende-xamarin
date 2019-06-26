@@ -16,8 +16,6 @@ using fondomerende.Main.Login.PostLogin.AllSnacks.View;
 using System.Threading;
 using MR.Gestures;
 using UIKit;
-
-namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 {
 
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -34,6 +32,8 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
         bool switchStar = false;
         AnimationView Swap;
 
+        string previousFavourite;
+
         object[] Snackarray = new object[100];
         object[] SnackFavarray; 
 
@@ -43,6 +43,9 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             InitializeComponent();
             GetSnacksMethod(false, false);
             GetSnacksMethod(false, true);
+
+            previousFavourite = Preferences.Get("Favourites", "");
+
             Fade();
             animation();
             MessagingCenter.Subscribe<AllSnacksPage>(this, "RefreshGetSnacks", async (arg) =>
@@ -59,7 +62,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                 case Device.Android:                                                           //   \\   Se è iOS invece si (perchè senza è una schifezza)
                     NavigationPage.SetHasNavigationBar(this, false);                           //    \\
                     break;                                                                           //
-                                                                                                     //
+                                                                                                    //
                 default:                                                                           //
                     NavigationPage.SetHasNavigationBar(this, true);                               //
                     break;                                                                       //
@@ -307,24 +310,20 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             }
         }
 
-        public async Task refreshRemoveFavAsync()
-        {
-            Column0Fav.Children.Clear();
-            Column1Fav.Children.Clear();
-
-            GetSnacksMethod(false, true);
-        }
-
        
 
 
-        public async Task refreshAddFavAsync(object sender)
+        public async Task refreshFavAsync()
         {
-            int grid0 = Column0Fav.Children.Count;
-            int grid1 = Column1Fav.Children.Count;
+            if (previousFavourite != Preferences.Get("Favourites",""))
+            {
+                previousFavourite = Preferences.Get("Favourites", "");
+                Column0Fav.Children.Clear();
+                Column1Fav.Children.Clear();
 
-            if(grid0==grid1) Column0Fav.Children.Add(sender as MR.Gestures.StackLayout);
-            else Column1Fav.Children.Add(sender as MR.Gestures.StackLayout);
+                GetSnacksMethod(false, true);
+            }
+            
         }
 
         private void StopAnimation(object sender, EventArgs e)
@@ -490,11 +489,11 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             switchStar = !switchStar;
             if (switchStar)
             {
+                await refreshFavAsync();
                 ScrollSnackView.IsVisible = false;
                 ScrollFavourites.IsVisible = true;
                 ListView.IsVisible = false;
-                favourite.Source = ImageSource.FromResource("fondomerende.image.star_fill.png");
-
+                favourite.Source = ImageSource.FromResource("fondomerende.image.star_fill.png"); 
             }
             else
             {
