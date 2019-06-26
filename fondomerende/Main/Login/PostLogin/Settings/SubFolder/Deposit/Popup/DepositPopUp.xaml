@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <pages:PopupPage
              xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
              xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
@@ -9,7 +9,7 @@
              mc:Ignorable="d"
              xmlns:local ="clr-namespace:fondomerende.Main.Utilities"
              xmlns:Graph="clr-namespace:fondomerende.Main.Utilities"
-             x:Name="Popuppage"
+             x:Name="DepositPop"
              x:Class="fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup.DepositPopUp"
              HasKeyboardOffset="False">
     <pages:PopupPage.Animation>
