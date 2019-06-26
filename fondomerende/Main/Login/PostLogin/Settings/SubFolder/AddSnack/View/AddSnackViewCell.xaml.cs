@@ -26,7 +26,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.View
 
         public void SetImageColorPreferences()
         {
-            SnackIcon.TintColor = Color.FromHex(Preferences.Get("Colore", "#000000"));
+            AddIcon.TintColor = Color.FromHex(Preferences.Get("Colore", "#000000"));
         }
     }
 }
