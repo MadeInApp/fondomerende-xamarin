@@ -130,8 +130,14 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View
             {
 
             }
+
+            if (userFunds.Text == "Errore")
+            {
+                await GetUserFundsMethod();
+            }
             return null;
         }
+        
     }
 }
 

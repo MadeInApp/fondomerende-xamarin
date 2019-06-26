@@ -412,7 +412,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             }
         }
 
-        private void Tgr2_Tapped(object sender, EventArgs e)
+        private async void Tgr2_Tapped(object sender, EventArgs e)
         {
             SnackDataDTO index = null;
             foreach (var item in (sender as MR.Gestures.StackLayout).Children)
@@ -498,15 +498,16 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             switchStar = !switchStar;
             if (switchStar)
             {
+                await refreshFavAsync();
                 ScrollSnackView.IsVisible = false;
                 ScrollFavourites.IsVisible = true;
                 switchGrid = false;
                 ListView.IsVisible = false;
                 favourite.Source = ImageSource.FromResource("fondomerende.image.star_fill.png");
-
             }
             else
             {
+                await refreshSnackAsync();
                 ScrollSnackView.IsVisible = true;
                 ListView.IsVisible = false;
                 ScrollFavourites.IsVisible = false;
