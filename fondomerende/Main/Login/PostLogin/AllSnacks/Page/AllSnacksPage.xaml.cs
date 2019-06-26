@@ -16,8 +16,9 @@ using fondomerende.Main.Login.PostLogin.AllSnacks.View;
 using System.Threading;
 using MR.Gestures;
 using UIKit;
-{
 
+namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
+{ 
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AllSnacksPage
     {
