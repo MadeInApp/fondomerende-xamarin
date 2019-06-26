@@ -327,6 +327,18 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             
         }
 
+        public async Task refreshSnackAsync()
+        {
+            if (previousFavourite != Preferences.Get("Favourites", ""))
+            {
+                previousFavourite = Preferences.Get("Favourites", "");
+                Column0.Children.Clear();
+                Column1.Children.Clear();
+                GetSnacksMethod(false, false);
+            }
+
+        }
+
         private void StopAnimation(object sender, EventArgs e)
         {
             (sender as AnimationView).FadeTo(0, 300);
@@ -491,6 +503,8 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             if (switchStar)
             {
                 await refreshFavAsync();
+
+                ListToGrid.BackgroundColor = Color.Transparent;
                 ScrollSnackView.IsVisible = false;
                 ScrollFavourites.IsVisible = true;
                 ListView.IsVisible = false;
@@ -498,6 +512,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             }
             else
             {
+                await refreshSnackAsync();
                 ScrollSnackView.IsVisible = true;
                 ListView.IsVisible = false;
                 ScrollFavourites.IsVisible = false;
@@ -541,14 +556,11 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                 ListToGrid.BackgroundColor = Color.OrangeRed;
                 ScrollSnackView.IsVisible = false;
                 ListView.IsVisible = true;
-                /*
-                Swap.Play();
-                // Swap.Speed = 0.7f;
-                Swap.Speed = 1;
-                */
+
                 ScrollFavourites.IsVisible = false;
                 ScrollSnackView.IsVisible = false;
                 ListView.IsVisible = true;
+                favourite.Source = ImageSource.FromResource("fondomerende.image.star_empty.png");
             }
             else
             {
@@ -556,10 +568,6 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                 ListView.IsVisible = false;
                 ScrollFavourites.IsVisible = false;
                 ScrollSnackView.IsVisible = true;
-                /* Swap.Play();
-                 Swap.FlowDirection = FlowDirection.RightToLeft;
-                 Swap.Speed = -1;
-                  */
             }
         }
 
@@ -635,12 +643,6 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
 
             }
-        }
-
-        private void SetFavourite(object sender, EventArgs e)
-        {
-            //if(Preferences.ContainsKey("Favourite")) => Preferences.Add("Favourite");
-            //Preferences.Add("",);
         }
 
         private void Stack_LongPressed(object sender, LongPressEventArgs e)
