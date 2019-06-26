@@ -15,19 +15,16 @@ using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View;
 using fondomerende.Main.Login.PostLogin.AllSnacks.View;
 using System.Threading;
 using MR.Gestures;
-using UIKit;
+using fondomerende.Main.Manager;
 
 namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 {
 
-namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
-{ 
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AllSnacksPage
     {
         public static double priceBinding;
         int eatLoading = 0;
-
         public static string selectedItemBinding { get; set; }
         SnackServiceManager snackServiceManager = new SnackServiceManager();
         List<SnackDataDTO> AllSnacks = new List<SnackDataDTO>();
@@ -36,10 +33,8 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
         bool switchStar = false;
         AnimationView Swap;
 
-        string previousFavourite;
-
         object[] Snackarray = new object[100];
-        object[] SnackFavarray; 
+        object[] SnackFavarray;
 
         public AllSnacksPage()
         {
@@ -47,9 +42,6 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             InitializeComponent();
             GetSnacksMethod(false, false);
             GetSnacksMethod(false, true);
-
-            previousFavourite = Preferences.Get("Favourites", "");
-
             Fade();
             animation();
             MessagingCenter.Subscribe<AllSnacksPage>(this, "RefreshGetSnacks", async (arg) =>
@@ -66,7 +58,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                 case Device.Android:                                                           //   \\   Se è iOS invece si (perchè senza è una schifezza)
                     NavigationPage.SetHasNavigationBar(this, false);                           //    \\
                     break;                                                                           //
-                                                                                                    //
+                                                                                                     //
                 default:                                                                           //
                     NavigationPage.SetHasNavigationBar(this, true);                               //
                     break;                                                                       //
@@ -314,32 +306,15 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             }
         }
 
-       
 
 
-        public async Task refreshFavAsync()
+        public async Task refreshAddFavAsync(object sender)
         {
-            if (previousFavourite != Preferences.Get("Favourites",""))
-            {
-                previousFavourite = Preferences.Get("Favourites", "");
-                Column0Fav.Children.Clear();
-                Column1Fav.Children.Clear();
+            int grid0 = Column0Fav.Children.Count;
+            int grid1 = Column1Fav.Children.Count;
 
-                GetSnacksMethod(false, true);
-            }
-            
-        }
-
-        public async Task refreshSnackAsync()
-        {
-            if (previousFavourite != Preferences.Get("Favourites", ""))
-            {
-                previousFavourite = Preferences.Get("Favourites", "");
-                Column0.Children.Clear();
-                Column1.Children.Clear();
-                GetSnacksMethod(false, false);
-            }
-
+            if (grid0 == grid1) Column0Fav.Children.Add(sender as MR.Gestures.StackLayout);
+            else Column1Fav.Children.Add(sender as MR.Gestures.StackLayout);
         }
 
         private void StopAnimation(object sender, EventArgs e)
@@ -505,17 +480,14 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             switchStar = !switchStar;
             if (switchStar)
             {
-                await refreshFavAsync();
-
-                ListToGrid.BackgroundColor = Color.Transparent;
                 ScrollSnackView.IsVisible = false;
                 ScrollFavourites.IsVisible = true;
                 ListView.IsVisible = false;
-                favourite.Source = ImageSource.FromResource("fondomerende.image.star_fill.png"); 
+                favourite.Source = ImageSource.FromResource("fondomerende.image.star_fill.png");
+
             }
             else
             {
-                await refreshSnackAsync();
                 ScrollSnackView.IsVisible = true;
                 ListView.IsVisible = false;
                 ScrollFavourites.IsVisible = false;
@@ -559,11 +531,14 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                 ListToGrid.BackgroundColor = Color.OrangeRed;
                 ScrollSnackView.IsVisible = false;
                 ListView.IsVisible = true;
-
+                /*
+                Swap.Play();
+                // Swap.Speed = 0.7f;
+                Swap.Speed = 1;
+                */
                 ScrollFavourites.IsVisible = false;
                 ScrollSnackView.IsVisible = false;
                 ListView.IsVisible = true;
-                favourite.Source = ImageSource.FromResource("fondomerende.image.star_empty.png");
             }
             else
             {
@@ -571,6 +546,10 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                 ListView.IsVisible = false;
                 ScrollFavourites.IsVisible = false;
                 ScrollSnackView.IsVisible = true;
+                /* Swap.Play();
+                 Swap.FlowDirection = FlowDirection.RightToLeft;
+                 Swap.Speed = -1;
+                  */
             }
         }
 
@@ -648,6 +627,12 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             }
         }
 
+        private void SetFavourite(object sender, EventArgs e)
+        {
+            //if(Preferences.ContainsKey("Favourite")) => Preferences.Add("Favourite");
+            //Preferences.Add("",);
+        }
+
         private void Stack_LongPressed(object sender, LongPressEventArgs e)
         {
             SnackDataDTO index = null;
@@ -689,6 +674,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
         private async void Stack_LongPressing(object sender, LongPressEventArgs e)
         {
+            bool verifica = false;
             eatLoading = 0;
             SnackDataDTO index = null;
             foreach (var item in (sender as MR.Gestures.StackLayout).Children)
@@ -703,6 +689,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             }
             if (index != null)
             {
+                string preferito = "";
 
                 foreach (var app in (sender as MR.Gestures.StackLayout).Children)
                 {
@@ -734,8 +721,6 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
         private async Task Stack_LongFinish(object sender, SnackDataDTO index)
         {
-            var notification = new UINotificationFeedbackGenerator();
-            notification.Prepare();
             eatLoading = -1;
             if ((sender as AnimationView).Speed > 0)
             {
@@ -750,28 +735,13 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
                 if (response.response.success == true)
                 {
-                    if (Device.RuntimePlatform == Device.iOS)
-                    {
-                        notification.NotificationOccurred(UINotificationFeedbackType.Success);
-                    }
-                    else
-                    {
-                        Vibration.Vibrate(100);
-                    }
+                    Vibration.Vibrate(100);
                 }
                 else
                 {
-                    if (Device.RuntimePlatform == Device.iOS)
-                    {
-                        notification.NotificationOccurred(UINotificationFeedbackType.Error);
-                    }
-                    else
-                    {
-                        Vibration.Vibrate(40);
-                        await Task.Delay(20);
-                        Vibration.Vibrate(40);
-                    }
-
+                    Vibration.Vibrate(40);
+                    await Task.Delay(20);
+                    Vibration.Vibrate(40);
                 }
             }
         }
