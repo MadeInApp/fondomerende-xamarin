@@ -6,6 +6,7 @@ using Plugin.CrossPlatformTintedImage.iOS;
 using UIKit;
 using Lottie.Forms.iOS.Renderers;
 using KeyboardOverlap.Forms.Plugin.iOSUnified;
+using Xamarin.Forms;
 
 namespace fondomerende.iOS
 {
@@ -26,6 +27,17 @@ namespace fondomerende.iOS
             LoadApplication(new App());
             var notification = new UINotificationFeedbackGenerator();
             notification.Prepare();
+
+            MessagingCenter.Subscribe<AppDelegate>(this, "HapticSuccess", (value) =>
+            {
+                notification.NotificationOccurred(UINotificationFeedbackType.Success);
+            });
+
+            MessagingCenter.Subscribe<AppDelegate>(this, "HapticError", (value) =>
+            {
+                notification.NotificationOccurred(UINotificationFeedbackType.Error);
+            });
+
             return base.FinishedLaunching(app, options);
             
         }
