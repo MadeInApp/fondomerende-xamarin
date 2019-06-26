@@ -43,7 +43,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup
         }
         private void PopupDeposita()
         {
-            double Altezza = 200;
+            double Altezza = (GetAltezzaPagina()*30)/100;
             double Larghezza = GetLarghezzaPagina() - 80;
             double banner = 50;
 

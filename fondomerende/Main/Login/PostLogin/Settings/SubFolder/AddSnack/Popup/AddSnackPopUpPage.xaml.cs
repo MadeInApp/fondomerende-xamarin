@@ -50,7 +50,15 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.Popup
         }
         private void PopupAddSnack()
         {
-            double Altezza = GetAltezzaPagina() / 1.6;
+            /*switch(Device.RuntimePlatform)
+            {
+                case (Device.Android):
+                    double Altezza = (GetAltezzaPagina()*60)/100;
+                    break;
+                    
+            }*/
+            
+            double Altezza = (GetAltezzaPagina() * 40) / 100;
             double Larghezza = GetLarghezzaPagina() - 40;
             double banner = 50;
 
@@ -120,12 +128,13 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.Popup
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 WidthRequest = 250,
             };
-            
+
 
 
             var stackBody = new StackLayout  //stack principale dove è contenuto l'interno di tutto (tranne round che stonda)
 
             {
+                Spacing = 10,
                 HeightRequest = Altezza,
                 WidthRequest = Larghezza,
                 BackgroundColor = Color.White,
