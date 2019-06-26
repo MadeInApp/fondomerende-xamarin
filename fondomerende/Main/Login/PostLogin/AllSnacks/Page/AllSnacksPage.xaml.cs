@@ -13,13 +13,10 @@ using fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup;
 using Lottie.Forms;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View;
 using fondomerende.Main.Login.PostLogin.AllSnacks.View;
-using System.Threading;
 using MR.Gestures;
-using fondomerende.Main.Manager;
 
 namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 {
-
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AllSnacksPage
     {
@@ -741,6 +738,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
         private async Task Stack_LongFinish(object sender, SnackDataDTO index)
         {
+           
             eatLoading = -1;
             if ((sender as AnimationView).Speed > 0)
             {
@@ -755,7 +753,17 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
                 if (response.response.success == true)
                 {
-                    Vibration.Vibrate(100);
+                    if (Device.RuntimePlatform == Device.iOS)
+                    {
+                        MessagingCenter.Send(new EditSnackDTO()
+                        {
+
+                        }, "RefreshUF");
+                    }
+                    else
+                    {
+                        Vibration.Vibrate(100);
+                    }
                 }
                 else
                 {
