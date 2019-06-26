@@ -414,7 +414,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             }
         }
 
-        private void Tgr2_Tapped(object sender, EventArgs e)
+        private async void Tgr2_Tapped(object sender, EventArgs e)
         {
             SnackDataDTO index = null;
             foreach (var item in (sender as MR.Gestures.StackLayout).Children)
@@ -501,8 +501,6 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             if (switchStar)
             {
                 await refreshFavAsync();
-
-                ListToGrid.BackgroundColor = Color.Transparent;
                 ScrollSnackView.IsVisible = false;
                 ScrollFavourites.IsVisible = true;
                 ListView.IsVisible = false;
@@ -532,6 +530,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             {
 
             }, "RefreshUF");
+            
 
             MessagingCenter.Send(new SnackViewCell()
             {

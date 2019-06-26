@@ -1,4 +1,6 @@
-﻿using fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page;
+﻿using fondomerende.Main.Login.PostLogin.AllSnack.Page;
+using fondomerende.Main.Login.PostLogin.Settings.Page;
+using fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.Page;
 using fondomerende.Main.Services.RESTServices;
 using fondomerende.Main.Utilities;
@@ -256,12 +258,11 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
         // Invoked after an animation disappearing
         protected override void OnDisappearingAnimationEnd()
         {
-            base.OnDisappearingAnimationEnd();
             MessagingCenter.Send(new BuySnackListPage()
             {
 
-            }, "Refresh");
-
+            }, "Close");
+            base.OnDisappearingAnimationEnd();
         }
 
         protected override Task OnAppearingAnimationBeginAsync()

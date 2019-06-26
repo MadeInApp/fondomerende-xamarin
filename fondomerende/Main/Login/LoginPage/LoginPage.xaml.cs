@@ -102,39 +102,58 @@ namespace fondomerende.Main.Login.LoginPages
             //var a = await snackService.GetSnacksAsync();
             if (!string.IsNullOrEmpty(usernameEntryR.Text) && !string.IsNullOrEmpty(friendlyNameEntryR.Text) && !string.IsNullOrEmpty(passwordEntryR.Text) && !string.IsNullOrEmpty(testPasswordEntryR.Text))
             {
-                password = passwordEntryR.Text;
-                testpassword = testPasswordEntryR.Text;
-                username = usernameEntryR.Text;
-                friendly_name = friendlyNameEntryR.Text;
-
-                if (password == testpassword)
+                bool nondeveaverespazi = true;
+                string[] friend = friendlyNameEntryR.Text.Split();
+                foreach(var a in friend)
                 {
-                    RegisterServiceManager registerService = new RegisterServiceManager();
-                    var response = await registerService.RegisterAsync(username, password, friendly_name);
-                    if (response == null)
+                    if(a == "")
                     {
+                        nondeveaverespazi = false;
+                        break;
+                    }
 
-                    }
-                    else  if (response.response.success == true && response.response.status == 201)
+                }
+
+                if (nondeveaverespazi)
+                {
+                    password = passwordEntryR.Text;
+                    testpassword = testPasswordEntryR.Text;
+                    username = usernameEntryR.Text;
+                    friendly_name = friendlyNameEntryR.Text;
+
+                    if (password == testpassword)
                     {
-                        await userService.GetUserData();
-                        App.Current.MainPage = new MainPage();
-                    }
-                    else
-                    {
-                        if (response.response.status == 400)
+                        RegisterServiceManager registerService = new RegisterServiceManager();
+                        var response = await registerService.RegisterAsync(username, password, friendly_name);
+                        if (response == null)
                         {
-                            await DisplayAlert("Fondo Merende", response.response.message, "OK");
+
+                        }
+                        else if (response.response.success == true && response.response.status == 201)
+                        {
+                            await userService.GetUserData();
+                            App.Current.MainPage = new MainPage();
                         }
                         else
                         {
-                            await DisplayAlert("Fondo Merende", "Registrazione fallita", "OK");
+                            if (response.response.status == 400)
+                            {
+                                await DisplayAlert("Fondo Merende", response.response.message, "OK");
+                            }
+                            else
+                            {
+                                await DisplayAlert("Fondo Merende", "Registrazione fallita", "OK");
+                            }
                         }
+                    }
+                    else
+                    {
+                        await DisplayAlert("Fondo Merende", "Le password non combaciano", "OK");
                     }
                 }
                 else
                 {
-                    await DisplayAlert("Fondo Merende", "Le password non combaciano", "OK");
+                    await DisplayAlert("Fondo Merende", "Il friendly name non può contenere spazi", "OK");
                 }
             }
             else
