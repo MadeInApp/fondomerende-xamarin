@@ -528,6 +528,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             {
 
             }, "RefreshUF");
+            
 
             MessagingCenter.Send(new SnackViewCell()
             {
