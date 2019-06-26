@@ -58,7 +58,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.Popup
                     
             }*/
             
-            double Altezza = (GetAltezzaPagina() * 40) / 100;
+            double Altezza = (GetAltezzaPagina() * 50) / 100;
             double Larghezza = GetLarghezzaPagina() - 40;
             double banner = 50;
 
@@ -105,25 +105,29 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.Popup
             //variabili in line entry//
             NomeSnack = new LineEntry
             {
-                Margin = new Thickness(0,-40,0,0),
+                Margin = new Thickness(0, -35, 0, 0),
                 Keyboard = Keyboard.Default,
+                VerticalOptions = LayoutOptions.StartAndExpand,
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 WidthRequest = 250,
             };
             PrezzoSnack = new LineEntry
             {
+                Margin = new Thickness(0, 10, 0, 0),
                 Keyboard = Keyboard.Numeric,
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 WidthRequest = 250,
             };
             SnackPerBox = new LineEntry
             {
+                Margin = new Thickness(0, 10, 0, 0),
                 Keyboard = Keyboard.Numeric,
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 WidthRequest = 250,
             };
             ExpInDays = new LineEntry
             {
+                Margin = new Thickness(0, 10, 0, 0),
                 Keyboard = Keyboard.Numeric,
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 WidthRequest = 250,
@@ -134,7 +138,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.Popup
             var stackBody = new StackLayout  //stack principale dove è contenuto l'interno di tutto (tranne round che stonda)
 
             {
-                Spacing = 10,
+                VerticalOptions = LayoutOptions.StartAndExpand,
                 HeightRequest = Altezza,
                 WidthRequest = Larghezza,
                 BackgroundColor = Color.White,
