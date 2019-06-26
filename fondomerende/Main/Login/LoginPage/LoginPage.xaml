@@ -83,7 +83,6 @@
                     Grid.Row="1"
                     Grid.Column="0"
                     x:Name="usernameEntry"
-                    Text="Giulio1234"
                     Placeholder="Username"
                     IsSpellCheckEnabled="False"
                     IsTextPredictionEnabled="False"
@@ -94,7 +93,6 @@
                     Grid.Row="2"
                     Grid.Column="0"
                     x:Name="passwordEntry"
-                    Text="1234"
                     Placeholder="Password"
                     IsPassword="True"
                     IsTextPredictionEnabled="False">
