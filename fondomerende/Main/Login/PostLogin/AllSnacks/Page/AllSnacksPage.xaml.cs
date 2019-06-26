@@ -35,6 +35,10 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
         Dictionary<string, int> numerotocchi = new Dictionary<string, int>();
         bool switchStar = false;
         AnimationView Swap;
+
+        object[] Snackarray = new object[100];
+        object[] SnackFavarray; 
+
         public AllSnacksPage()
         {
             numerotocchi.Add("numero", 0);
@@ -111,9 +115,11 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
         public async Task GetSnacksMethod(bool Loaded, bool favourites)     //ottiene la lista degli snack e la applica alla ListView
         {
             result = await snackServiceManager.GetSnacksAsync();
-
+            SnackFavarray = new object[result.data.snacks.Count];
             ListView.ItemsSource = result.data.snacks;
             int FavIndex = 0;
+            int index = 0;
+
             if (!Loaded) //!WORKAROUND!   in questo modo si evita il crash ma la griglia non si aggiorna, urge investigazione sul vero problema
             {
                 for (int i = 0; i <= result.data.snacks.Count; i++)
@@ -222,7 +228,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                     var eatAnimation = new AnimationView
                     {
                         Animation = "LoadingEating.json",
-                        Scale = 1.4,
+                        Scale = 1.2,
                         Rotation = 180,
                         Loop = false,
                         HorizontalOptions = LayoutOptions.FillAndExpand,
@@ -277,10 +283,6 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                     app.LongPressed += Stack_LongPressed;
                     app.LongPressing += Stack_LongPressing;
 
-                    var tgr2 = new TapGestureRecognizer();
-                    tgr2.NumberOfTapsRequired = 2;
-                    tgr2.Tapped += Tgr2_Tapped;
-                    app.GestureRecognizers.Add(tgr2);
 
                     app.DoubleTapped += Tgr2_Tapped;
 
@@ -290,12 +292,17 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                         if (FavIndex % 2 == 0) Column0Fav.Children.Add(app);
                         else Column1Fav.Children.Add(app);
 
+
+                        Snackarray[FavIndex] = app;
                         FavIndex++;
                     }
                     else
                     {
                         if (i % 2 == 0) Column0.Children.Add(app);
                         else Column1.Children.Add(app);
+
+                        SnackFavarray[index] = app;
+                        index++;
                     }
 
                 }
@@ -310,23 +317,16 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             GetSnacksMethod(false, true);
         }
 
+       
 
 
         public async Task refreshAddFavAsync(object sender)
         {
-            var nipote = new MR.Gestures.StackLayout { };
-            nipote = (sender as MR.Gestures.StackLayout);
-            int grid1 = Column1Fav.Children.Count;
             int grid0 = Column0Fav.Children.Count;
+            int grid1 = Column1Fav.Children.Count;
 
-            if (grid0 == grid1)
-            {
-                Column0Fav.Children.Add(nipote as MR.Gestures.StackLayout);
-            }
-            else if (grid0 > grid1)
-            {
-                Column0Fav.Children.Add(nipote as MR.Gestures.StackLayout);
-            }
+            if(grid0==grid1) Column0Fav.Children.Add(sender as MR.Gestures.StackLayout);
+            else Column1Fav.Children.Add(sender as MR.Gestures.StackLayout);
         }
 
         private void StopAnimation(object sender, EventArgs e)
@@ -451,12 +451,10 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                                 if (Check_Favourites(index.id))
                                 {
                                     a = "fondomerende.image.star_empty.png";
-                                    refreshRemoveFavAsync();
                                 }
                                 else
                                 {
                                     a = "fondomerende.image.star_fill.png";
-                                    refreshAddFavAsync(sender);
                                 }
 
 
@@ -494,7 +492,6 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             switchStar = !switchStar;
             if (switchStar)
             {
-                await RefreshFavouriteDataAsync();
                 ScrollSnackView.IsVisible = false;
                 ScrollFavourites.IsVisible = true;
                 ListView.IsVisible = false;
@@ -503,7 +500,6 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             }
             else
             {
-                await RefreshDataAsync();
                 ScrollSnackView.IsVisible = true;
                 ListView.IsVisible = false;
                 ScrollFavourites.IsVisible = false;
@@ -721,13 +717,12 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                                 {
                                     ap.IsVisible = true;
                                     ap.FadeTo(1);
-                                    ap.Speed = 5f;
+                                    ap.Speed = 9.5f;
                                     ap.Play();
                                     ap.OnFinish += async (s, d) =>
                                     {
                                         await Stack_LongFinish(ap, index);
                                     };
-
                                 }
                             }
                         }
