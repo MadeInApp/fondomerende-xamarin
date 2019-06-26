@@ -5,6 +5,7 @@ using Foundation;
 using Plugin.CrossPlatformTintedImage.iOS;
 using UIKit;
 using Lottie.Forms.iOS.Renderers;
+using KeyboardOverlap.Forms.Plugin.iOSUnified;
 
 namespace fondomerende.iOS
 {
@@ -18,6 +19,7 @@ namespace fondomerende.iOS
         {
             Rg.Plugins.Popup.Popup.Init();
             global::Xamarin.Forms.Forms.Init();
+            KeyboardOverlapRenderer.Init();
             AnimationViewRenderer.Init();
             TintedImageRenderer.Init();
             FormsControls.Touch.Main.Init();

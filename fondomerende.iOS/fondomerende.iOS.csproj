@@ -102,7 +102,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <BundleResource Include="Renderer\Wallet.json" />
     <BundleResource Include="Renderer\PiggyBank.json" />
-    <EmbeddedResource Include="Resources\pacman0.6.json" />
     <BundleResource Include="Resources\star.json" />
     <BundleResource Include="Resources\Pig.json" />
     <BundleResource Include="Resources\data.json" />
@@ -113,6 +112,7 @@
     <BundleResource Include="Resources\list2grid.json">
       <LogicalName>fondomerende.iOS.Resources.list2grid.json</LogicalName>
     </BundleResource>
+    <BundleResource Include="Resources\pacman0.6.json" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\Contents.json">
@@ -256,6 +256,12 @@
     </PackageReference>
     <PackageReference Include="IQKeyboardManager.Touch">
       <Version>4.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.IQKeyboardManager">
+      <Version>1.4.1</Version>
+    </PackageReference>
+    <PackageReference Include="Xam.Plugins.Forms.KeyboardOverlap">
+      <Version>1.0.0.4</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

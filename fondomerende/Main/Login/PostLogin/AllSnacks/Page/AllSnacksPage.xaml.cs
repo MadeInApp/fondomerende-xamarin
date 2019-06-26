@@ -16,6 +16,8 @@ using fondomerende.Main.Login.PostLogin.AllSnacks.View;
 using System.Threading;
 using MR.Gestures;
 using UIKit;
+using Xamarin.Forms.Internals;
+using DeviceInfo = Xamarin.Forms.Internals.DeviceInfo;
 
 namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 {
@@ -747,7 +749,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
                 if (response.response.success == true)
                 {
-                    if (Device.RuntimePlatform == Device.iOS)
+                    if (Xamarin.Essentials.DeviceInfo.Manufacturer == "Apple")
                     {
                         notification.NotificationOccurred(UINotificationFeedbackType.Success);
                     }
