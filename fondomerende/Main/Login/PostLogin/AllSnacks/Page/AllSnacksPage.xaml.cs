@@ -16,6 +16,8 @@ using fondomerende.Main.Login.PostLogin.AllSnacks.View;
 using System.Threading;
 using MR.Gestures;
 using UIKit;
+
+namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 {
 
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -683,7 +685,6 @@ using UIKit;
 
         private async void Stack_LongPressing(object sender, LongPressEventArgs e)
         {
-            bool verifica = false;
             eatLoading = 0;
             SnackDataDTO index = null;
             foreach (var item in (sender as MR.Gestures.StackLayout).Children)
@@ -698,7 +699,6 @@ using UIKit;
             }
             if (index != null)
             {
-                string preferito = "";
 
                 foreach (var app in (sender as MR.Gestures.StackLayout).Children)
                 {
