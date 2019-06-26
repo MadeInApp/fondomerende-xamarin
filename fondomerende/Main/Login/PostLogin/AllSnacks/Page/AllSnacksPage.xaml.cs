@@ -30,6 +30,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
         List<SnackDataDTO> AllSnacks = new List<SnackDataDTO>();
         SnackDTO result;
         Dictionary<string, int> numerotocchi = new Dictionary<string, int>();
+        bool switchGrid = false;
         bool switchStar = false;
         AnimationView Swap;
 
@@ -507,6 +508,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                 ListToGrid.BackgroundColor = Color.Transparent;
                 ScrollSnackView.IsVisible = false;
                 ScrollFavourites.IsVisible = true;
+                switchGrid = false;
                 ListView.IsVisible = false;
                 favourite.Source = ImageSource.FromResource("fondomerende.image.star_fill.png"); 
             }
@@ -551,15 +553,16 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
         private void Swap_Clicked(object sender, EventArgs e)
         {
-            if (ScrollSnackView.IsVisible == true)
+            switchGrid = !switchGrid;
+            if (switchGrid == true)
             {
                 ListToGrid.BackgroundColor = Color.OrangeRed;
                 ScrollSnackView.IsVisible = false;
                 ListView.IsVisible = true;
-
+                switchStar = false;
                 ScrollFavourites.IsVisible = false;
-                ScrollSnackView.IsVisible = false;
                 ListView.IsVisible = true;
+
                 favourite.Source = ImageSource.FromResource("fondomerende.image.star_empty.png");
             }
             else

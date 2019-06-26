@@ -23,15 +23,14 @@
                 </Grid.ColumnDefinitions>
 
                 <controls:TintedImage 
-                   Grid.Row="0"
+                    Grid.Row="0"
                     Grid.Column="0"
                     x:Name="SnackIcon" 
                     Scale="{OnPlatform Android=0.5, Default=0.6}"
                     VerticalOptions="Center" 
                     HorizontalOptions="Center" 
                     Aspect="AspectFit"
-                    Source="{local:EmbeddedImage Resource=fondomerende.image.icons8-add.png}"
-                    TintColor="Aquamarine">
+                    Source="{local:EmbeddedImage Resource=fondomerende.image.add-snack-icon.png}">
                 </controls:TintedImage>
                 <StackLayout
                     Margin="10,0,0,0"

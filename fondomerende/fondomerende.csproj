@@ -24,8 +24,8 @@
 
   <ItemGroup>
     <None Remove="Animated\pac-man.gif" />
+    <None Remove="image\add-snack-icon.png" />
     <None Remove="image\add_icon_256x256.png" />
-    <None Remove="image\add_snack_icon.png" />
     <None Remove="image\BackGradientArRos.jpg" />
     <None Remove="image\BackGradientRosAr.jpg" />
     <None Remove="image\CheckBox_Checked_32x32.png" />
@@ -48,7 +48,6 @@
     <None Remove="image\fund_256x256.png" />
     <None Remove="image\History.png" />
     <None Remove="image\history_icon_256x256.png" />
-    <None Remove="image\icons8-add.png" />
     <None Remove="image\list_256x256.png" />
     <None Remove="image\list_264x264.png" />
     <None Remove="image\Livellodinamico.png" />
@@ -84,10 +83,10 @@
     <EmbeddedResource Include="Animated\pac-man.gif">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="image\add_icon_256x256.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <EmbeddedResource Include="image\add-snack-icon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="image\add_snack_icon.png">
+    <EmbeddedResource Include="image\add_icon_256x256.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="image\BackGradientArRos.jpg">
@@ -155,9 +154,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="image\history_icon_256x256.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="image\icons8-add.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="image\list_256x256.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
