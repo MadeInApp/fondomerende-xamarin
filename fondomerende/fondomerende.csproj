@@ -388,9 +388,6 @@
     <Reference Include="Xamarin.iOS">
       <HintPath>..\..\..\..\..\..\Library\Frameworks\Xamarin.iOS.framework\Versions\12.10.0.157\lib\mono\Xamarin.iOS\Xamarin.iOS.dll</HintPath>
     </Reference>
-    <Reference Include="Xamarin.iOS">
-      <HintPath>..\..\..\..\..\..\Library\Frameworks\Xamarin.iOS.framework\Versions\12.10.0.153\lib\mono\Xamarin.iOS\Xamarin.iOS.dll</HintPath>
-    </Reference>
   </ItemGroup>
 
   <ItemGroup>
