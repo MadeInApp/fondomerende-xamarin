@@ -1,20 +1,19 @@
-﻿using fondomerende.Main.Services.RESTServices;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Xamarin.Forms;
-using Xamarin.Essentials;
-using Xamarin.Forms.Xaml;
-using fondomerende.Main.Services.Models;
-using fondomerende.Main.Utilities;
-using Rg.Plugins.Popup.Extensions;
-using fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup;
-using Lottie.Forms;
-using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View;
 using fondomerende.Main.Login.PostLogin.AllSnacks.View;
-using System.Threading;
+using fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup;
+using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View;
+using fondomerende.Main.Services.Models;
+using fondomerende.Main.Services.RESTServices;
+using fondomerende.Main.Utilities;
+using Lottie.Forms;
 using MR.Gestures;
+using Rg.Plugins.Popup.Extensions;
+using Xamarin.Essentials;
+using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
 namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 {
@@ -62,7 +61,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                 case Device.Android:                                                           //   \\   Se è iOS invece si (perchè senza è una schifezza)
                     NavigationPage.SetHasNavigationBar(this, false);                   ///     //    \\         \                
                     break;                                                               ////// ////// ///////////|
-                                                                                       ///     //     //        /       
+                                                                                         ///     //     //        /       
                 default:                                                                       //    //
                     NavigationPage.SetHasNavigationBar(this, true);                            //   //
                     break;                                                                     // //
@@ -737,7 +736,6 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             {
                 (sender as AnimationView).FadeTo(0, 300);
                 EatDTO response = await snackServiceManager.EatAsync(index.id, 1);
-
                 // refresh 
                 MessagingCenter.Send(new EditUserViewCell()
                 {
@@ -748,18 +746,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                 {
                     if (Device.RuntimePlatform == Device.iOS)
                     {
-                       
-                    }
-                    else
-                    {
-                        Vibration.Vibrate(100);
-                    }
-                }
-                else
-                {
-                    if (Device.RuntimePlatform == Device.iOS)
-                    {
-                        
+                        DependencyService.Get<HapticFeedbackGen>().HapticFeedbackGenSuccessAsync();
                     }
                     else
                     {
@@ -767,7 +754,6 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                         await Task.Delay(20);
                         Vibration.Vibrate(40);
                     }
-
                 }
             }
         }

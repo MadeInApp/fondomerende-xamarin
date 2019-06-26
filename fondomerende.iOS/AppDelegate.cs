@@ -14,12 +14,18 @@ namespace fondomerende.iOS
     // User Interface of the application, as well as listening (and optionally responding) to
     // application events from iOS.
     [Register("AppDelegate")]
-    public partial class AppDelegate : global::Xamarin.Forms.Platform.iOS.FormsApplicationDelegate
+    public class AppDelegate : global::Xamarin.Forms.Platform.iOS.FormsApplicationDelegate
     {
+        public static string FolderPath { get; private set; }
+
+        public static AppDelegate instance { get; private set; }
+        UINotificationFeedbackGenerator _UINotificationFeedbackGenerator;
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+            
             Rg.Plugins.Popup.Popup.Init();
-            global::Xamarin.Forms.Forms.Init();
+            Forms.Init();
+            AppDelegate.instance = this;
             KeyboardOverlapRenderer.Init();
             AnimationViewRenderer.Init();
             TintedImageRenderer.Init();
@@ -27,16 +33,7 @@ namespace fondomerende.iOS
             LoadApplication(new App());
             var notification = new UINotificationFeedbackGenerator();
             notification.Prepare();
-
-            MessagingCenter.Subscribe<AppDelegate>(this, "HapticSuccess", (value) =>
-            {
-                notification.NotificationOccurred(UINotificationFeedbackType.Success);
-            });
-
-            MessagingCenter.Subscribe<AppDelegate>(this, "HapticError", (value) =>
-            {
-                notification.NotificationOccurred(UINotificationFeedbackType.Error);
-            });
+            notification.NotificationOccurred(UINotificationFeedbackType.Success);
 
             return base.FinishedLaunching(app, options);
             
