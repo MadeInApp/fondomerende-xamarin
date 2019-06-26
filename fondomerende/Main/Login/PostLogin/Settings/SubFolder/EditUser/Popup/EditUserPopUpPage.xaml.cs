@@ -156,8 +156,8 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.Popup
                     stackFondoAndroid.Children.Add(fondomerende);
                     stackBody.Children.Add(stackFondoAndroid);
                     break;
-                default:
-                    stackFondoAndroid.Children.Add(fondomerende);
+                case Device.iOS:
+                    stackFondoiOS.Children.Add(fondomerende);
                     stackBody.Children.Add(stackFondoiOS);
                     break;
             }

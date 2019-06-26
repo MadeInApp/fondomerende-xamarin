@@ -15,8 +15,7 @@ using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View;
 using fondomerende.Main.Login.PostLogin.AllSnacks.View;
 using System.Threading;
 using MR.Gestures;
-
-namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
+using UIKit;
 {
 
     [XamlCompilation(XamlCompilationOptions.Compile)]
