@@ -40,7 +40,10 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page
             {
                 await GetSnacksMethod(true);
             });
-
+            MessagingCenter.Subscribe<BuySnackListPage>(this, "Close", async (arg) =>
+            {
+                Navigation.PopAsync();
+            });
 
 
             switch (Device.RuntimePlatform)                                                     //

@@ -24,11 +24,12 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
-    <MtouchArch>i386, x86_64</MtouchArch>
+    <MtouchArch>
+    </MtouchArch>
     <MtouchLink>SdkOnly</MtouchLink>
     <MtouchDebug>true</MtouchDebug>
-    <CodesignKey>iPhone Developer: Lapo Paolacci (QJ6USGRNMC)</CodesignKey>
-    <CodesignProvision>VS: WildCard Development</CodesignProvision>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignProvision />
     <CodesignExtraArgs />
     <CodesignResourceRules />
     <CodesignEntitlements />
@@ -51,8 +52,6 @@
     <MtouchLink>None</MtouchLink>
     <MtouchArch>x86_64</MtouchArch>
     <ConsolePause>false</ConsolePause>
-    <CodesignProvision>VS: WildCard Development</CodesignProvision>
-    <CodesignKey>iPhone Developer: Lapo Paolacci (QJ6USGRNMC)</CodesignKey>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
     <DebugSymbols>true</DebugSymbols>
@@ -64,10 +63,10 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
     <MtouchArch>ARM64</MtouchArch>
-    <CodesignKey>iPhone Developer: Lapo Paolacci (QJ6USGRNMC)</CodesignKey>
+    <CodesignKey>iPhone Developer: nicetrymodder@gmail.com (3FDBAXSV73)</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <CodesignProvision>VS: WildCard Development</CodesignProvision>
+    <CodesignProvision>iOS Team Provisioning Profile: stefanove.fondomerende</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>none</DebugType>
@@ -78,10 +77,10 @@
     <MtouchArch>
     </MtouchArch>
     <ConsolePause>false</ConsolePause>
-    <CodesignKey>iPhone Developer: Lapo Paolacci (QJ6USGRNMC)</CodesignKey>
+    <CodesignKey>iPhone Developer</CodesignKey>
     <CodesignEntitlements>
     </CodesignEntitlements>
-    <CodesignProvision>VS: WildCard Development</CodesignProvision>
+    <CodesignProvision />
     <CodesignExtraArgs />
     <CodesignResourceRules />
     <MtouchDebug>true</MtouchDebug>
@@ -116,6 +115,7 @@
     </BundleResource>
     <BundleResource Include="Resources\LoadingEating.json" />
     <BundleResource Include="Resources\pacman0.6.json" />
+    <Compile Include="PlatformSpecific\HapticFeedBack.cs" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="AppIcons.xcassets\AppIcons.appiconset\Contents.json">
