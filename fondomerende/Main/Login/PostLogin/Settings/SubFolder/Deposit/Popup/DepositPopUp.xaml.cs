@@ -335,7 +335,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup
             }
             else
             {
-                var resultDep = await depositService.DepositAsync(Decimal.Parse(appoggio));
+                var resultDep = await depositService.DepositAsync(appoggio);
                 if (resultDep != null)
                 {
                     if (resultDep.response.success)
