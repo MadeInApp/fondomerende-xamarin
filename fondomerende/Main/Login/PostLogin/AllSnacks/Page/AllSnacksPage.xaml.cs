@@ -60,8 +60,8 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                                                                                                //  \\ Se il dispositivo è Android non mostra la Top Bar della Navigation Page,
                 case Device.Android:                                                           //   \\   Se è iOS invece si (perchè senza è una schifezza)
                     NavigationPage.SetHasNavigationBar(this, false);                   ///     //    \\         \                
-                    break;                                                               ////// ////// ///////////|
-                                                                                         ///     //     //        /       
+                    break;                                                              ////// ////// ///////////|
+                                                                                       ///     //     //        /       
                 default:                                                                       //    //
                     NavigationPage.SetHasNavigationBar(this, true);                            //   //
                     break;                                                                     // //
@@ -752,6 +752,17 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                         Vibration.Vibrate(40);
                         await Task.Delay(20);
                         Vibration.Vibrate(40);
+                    }
+                }
+                else
+                {
+                    if (Device.RuntimePlatform == Device.iOS)
+                    {
+                        DependencyService.Get<HapticFeedbackGen>().HapticFeedbackGenErrorAsync();
+                    }
+                    else
+                    {
+                        Vibration.Vibrate(80);
                     }
                 }
             }
