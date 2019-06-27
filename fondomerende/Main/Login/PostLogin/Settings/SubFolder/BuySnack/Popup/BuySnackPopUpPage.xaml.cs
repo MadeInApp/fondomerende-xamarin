@@ -139,7 +139,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
                 WidthRequest = 220,
                 FontSize = 18,
                 HeightRequest = 35,
-                Margin = new Thickness(0,5,0,0),
+                Margin = new Thickness(0,15,0,0),
                 Keyboard = Keyboard.Numeric,
                 VerticalOptions = LayoutOptions.StartAndExpand,
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
