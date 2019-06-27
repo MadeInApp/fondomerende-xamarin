@@ -20,6 +20,7 @@ namespace fondomerende.iOS
         {
             Rg.Plugins.Popup.Popup.Init();
             Forms.Init();
+            KeyboardOverlapRenderer.Init();
             AnimationViewRenderer.Init();
             TintedImageRenderer.Init();
             FormsControls.Touch.Main.Init();

@@ -12,6 +12,8 @@ using Plugin.CrossPlatformTintedImage.Abstractions;
 using fondomerende.Main.Login;
 using fondomerende.Main.Login.LoginPages;
 using fondomerende;
+using Xamarin.Forms.PlatformConfiguration.WindowsSpecific;
+using MasterDetailPage = Xamarin.Forms.PlatformConfiguration.WindowsSpecific.MasterDetailPage;
 
 namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.LogOut.View
 {
@@ -40,7 +42,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.LogOut.View
                 if (response != null)
                 {
 
-                    Application.Current.MainPage = new LoginPage();
+                    App.Current.MainPage.Navigation.PushAsync(new LoginPage());
                     Preferences.Clear();
                 }
                 else
