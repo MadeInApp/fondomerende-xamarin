@@ -269,6 +269,9 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
         {      
             string firstLetter = "";
 
+            //error control
+            app = app.Replace(" ","");
+            
             
             firstLetter = (app.Substring(0, 1));
             if (app == "added") firstLetter = "@";

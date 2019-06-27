@@ -48,7 +48,7 @@
                     </local:EditUserInfoViewCell>
                 </TableSection>
 
-                <!--<TableSection 
+                <TableSection 
                     Title="Settings"
                     TextColor="{OnPlatform Android= #6495ed}"
                     >
@@ -57,7 +57,7 @@
                         x:Name="ChangeColorViewCell">
                         
                     </local1:ChangeColorViewCell>
-                </TableSection>-->
+                </TableSection>
 
                 <TableSection Title="Informazioni App" TextColor="{OnPlatform Android= #6495ed}">
                     <TextCell DetailColor="Transparent" Text="Version" x:Name="Version" IsEnabled="False"/>

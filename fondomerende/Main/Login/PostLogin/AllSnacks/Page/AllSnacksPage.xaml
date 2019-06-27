@@ -22,18 +22,18 @@
                 Grid.Row="0"
                 Grid.Column="0"
                 x:Name="StackSnack"
-                BackgroundColor="#ffcc00" HeightRequest="50">
+                HeightRequest="50">
 
                 <StackLayout 
                     Orientation="Horizontal" 
-                    BackgroundColor="#ffb121"
+                    BackgroundColor="#ffb121"   
                     HeightRequest="45">
-
+                                    <!--è un bel colore"#ffb121"-->
                     <Grid 
                         x:Name="GridView1"
                         HorizontalOptions="FillAndExpand"
                         VerticalOptions="CenterAndExpand"
-                        BackgroundColor="#ffcc00" HeightRequest="50">
+                        HeightRequest="50">
 
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="3.3*" />
@@ -102,7 +102,6 @@
                     Grid.Row="0"
                     Grid.Column="0"
                     VerticalOptions="Center"
-                    BackgroundColor="#ffcc00"
                     x:Name="Cane">
                     <Grid
                         x:Name="griglia">
@@ -153,33 +152,44 @@
                             BackgroundColor="#FFF8EB"
                             Padding="0,0,0,10">
 
-                            <Grid
+                            <StackLayout>
+                                <Grid
                                 HorizontalOptions="CenterAndExpand"
                                 ColumnSpacing="20"
                                 Margin="0,0,0,0"
                                 x:Name="GridFavView">
-                                
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="*" />
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <StackLayout 
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <StackLayout 
                                         Grid.Column="0" 
                                         x:Name="Column0Fav"
                                         Spacing="40"
                                         HorizontalOptions="StartAndExpand"
                                         Margin="5,10,10,0">
-                                </StackLayout>
-                                <StackLayout 
+                                    </StackLayout>
+                                    <StackLayout 
                                         Grid.Column="1" 
                                         x:Name="Column1Fav"
                                         Spacing="40"
                                         HorizontalOptions="EndAndExpand"
                                         Margin="10,10,5,0">
+                                    </StackLayout>
+                                </Grid>
+
+                                <StackLayout
+                                    HorizontalOptions="CenterAndExpand"
+                                    VerticalOptions="CenterAndExpand"
+                                    IsVisible="False"
+                                    >
+
                                 </StackLayout>
-                            </Grid>
+                            </StackLayout>
+                            
                         </ScrollView>
                     </Grid>
                 </StackLayout>
