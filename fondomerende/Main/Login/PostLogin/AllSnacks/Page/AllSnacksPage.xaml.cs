@@ -303,7 +303,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                         Orientation = StackOrientation.Vertical,
                         IsVisible = visibilità,
                     };
-
+                    starAnimation.OnFinish -= StopAnimation;
                     starAnimation.OnFinish += StopAnimation;
 
                     StackLayout.Children.Add(imageButton);
@@ -339,10 +339,12 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                     app.Children.Add(label);
 
 
+                    app.LongPressed -= Stack_LongPressed;
+                    app.LongPressing -= Stack_LongPressing;
                     app.LongPressed += Stack_LongPressed;
                     app.LongPressing += Stack_LongPressing;
 
-
+                    app.DoubleTapped -= Tgr2_Tapped;
                     app.DoubleTapped += Tgr2_Tapped;
 
 
@@ -811,7 +813,12 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                                     ap.FadeTo(1);
                                     ap.Speed = 9.5f;
                                     ap.Play();
+                                    
                                     ap.OnFinish += async (s, d) =>
+                                    {
+                                        await Stack_LongFinish(ap, index);
+                                    };
+                                    ap.OnFinish -= async (s, d) =>
                                     {
                                         await Stack_LongFinish(ap, index);
                                     };
@@ -828,6 +835,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             eatLoading = -1;
             if ((sender as AnimationView).Speed > 0)
             {
+                (sender as AnimationView).Speed = 0;
                 (sender as AnimationView).FadeTo(0, 300);
                 EatDTO response = await snackServiceManager.EatAsync(index.id, 1);
                 // refresh 
