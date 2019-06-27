@@ -156,8 +156,6 @@
 
 
             <!--Parte Register-->
-            <ScrollView 
-                InputTransparent="true">
                 <StackLayout
                   Grid.Row="0"
                   Grid.Column="0"
@@ -310,7 +308,6 @@
                         </Button>
                     </Grid>
                 </StackLayout>
-            </ScrollView>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

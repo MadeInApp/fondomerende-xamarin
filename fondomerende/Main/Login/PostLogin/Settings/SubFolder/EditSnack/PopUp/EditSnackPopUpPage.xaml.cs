@@ -54,7 +54,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.PopUp
         }
         private void PopupEditSnack()
         {
-            double Altezza = GetAltezzaPagina()/1.3;
+            double Altezza = GetAltezzaPagina()/1.55;
             double Larghezza = GetLarghezzaPagina() - 40;
             double banner = 50;
 
@@ -114,30 +114,35 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.PopUp
                 Keyboard = Keyboard.Default,
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 WidthRequest = 250,
+                Margin = new Thickness (0,10,0,10),
             };
             PrezzoSnack = new LineEntry
             {
                 Keyboard = Keyboard.Numeric,
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 WidthRequest = 250,
+                Margin = new Thickness(0, 10, 0, 10),
             };
             SnackPerBox = new LineEntry
             {
                 Keyboard = Keyboard.Numeric,
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 WidthRequest = 250,
+                Margin = new Thickness(0, 10, 0, 10),
             };
             ExpInDays = new LineEntry
             {
                 Keyboard = Keyboard.Numeric,
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 WidthRequest = 250,
+                Margin = new Thickness(0, 10, 0, 10),
             };
             Qta = new LineEntry
             {
                 Keyboard = Keyboard.Numeric,
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 WidthRequest = 250,
+                Margin = new Thickness(0, 10, 0, 10),
             };
 
 
