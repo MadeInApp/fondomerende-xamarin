@@ -30,7 +30,7 @@ namespace fondomerende.Main.Services.RESTServices
 					data.Add("password", passwordToLogin);
 				}
 
-				result = await "http://fondomerende.madeinapp.net/api"
+                result = await Services.Concatenazione()
                     .WithCookie("auth-key", key)
                     .WithHeader("Content-Type", "application/x-www-form-urlencoded; param=value;charset=UTF-8")
                     .PostUrlEncodedAsync(data)

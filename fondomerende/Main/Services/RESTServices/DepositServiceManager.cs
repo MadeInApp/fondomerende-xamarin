@@ -21,8 +21,8 @@ namespace fondomerende.Main.Services.RESTServices
 					data.Add("amount", DepAmount.ToString());
 				}
 
-                var result = await "http://fondomerende.madeinapp.net/api"
-                    .WithCookie("auth-key", Services.GetAuthKey())
+                var result = await Services.Concatenazione()
+                    .WithCookie("auth-key", "MEt085D5zxZXK7FES6qMHOrBbuzGPGwBlYzt1cwAJux")
                     .WithCookie("user-token", UserManager.Instance.token)
                     .WithHeader("Content-Type", "application/x-www-form-urlencoded; param=value;charset=UTF-8")
                     .PostUrlEncodedAsync(data)
