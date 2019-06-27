@@ -10,9 +10,10 @@ namespace fondomerende.Main.Services.RESTServices
     {
         public async System.Threading.Tasks.Task<LastActionDTO> GetLastActions()
         {
+            string urlString = Services.Concatenazione() + "?command-name=get-last-actions";
             try
             {
-                var response = await "http://fondomerende.madeinapp.net/api/process-request.php?command-name=get-last-actions"
+                var response = await urlString
                                     .WithCookie("auth-key", "MEt085D5zxZXK7FES6qMHOrBbuzGPGwBlYzt1cwAJux")
                                     .WithCookie("user-token", Manager.UserManager.Instance.token)
                                     .GetJsonAsync<LastActionDTO>();

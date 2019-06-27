@@ -15,9 +15,10 @@ namespace fondomerende.Main.Services.RESTServices
         //Servizio per ricevere i dati utente
         public async System.Threading.Tasks.Task<UserDTO> GetUserData()
         {
+            string urlString = Services.Concatenazione() + "/process-request.php?command-name=get-user-data";
             try
             {
-                var response = await "http://fondomerende.madeinapp.net/api/process-request.php?command-name=get-user-data"
+                var response = await urlString
                                 .WithCookie("auth-key", "MEt085D5zxZXK7FES6qMHOrBbuzGPGwBlYzt1cwAJux")
                                 .WithCookie("user-token", UserManager.Instance.token)
                                 .GetJsonAsync<UserDTO>();

@@ -20,7 +20,7 @@ namespace fondomerende.Main.Services.RESTServices
             }
             try
             {
-                var result = await "http://fondomerende.madeinapp.net/api"
+                var result = await Services.Concatenazione()
                     .WithCookie("auth-key", "MEt085D5zxZXK7FES6qMHOrBbuzGPGwBlYzt1cwAJux")
                     .WithCookie("token", Manager.UserManager.Instance.token)
                     .PostUrlEncodedAsync(data)

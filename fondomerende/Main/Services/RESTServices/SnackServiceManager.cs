@@ -14,9 +14,10 @@ namespace fondomerende.Main.Services.RESTServices
     {
         public async System.Threading.Tasks.Task<SnackDTO> GetSnacksAsync() //  Servizio per Ottenere informazioni sugli snack mangiabili
         {
+            string urlString = Services.Concatenazione() + "?command-name=get-to-eat-and-user-funds";
             try
             {
-                var result = await "http://fondomerende.madeinapp.net/api?command-name=get-to-eat-and-user-funds"
+                var result = await urlString
                                 .WithCookie("auth-key", "MEt085D5zxZXK7FES6qMHOrBbuzGPGwBlYzt1cwAJux")
                                 .WithCookie("user-token", UserManager.Instance.token)
                                 .GetJsonAsync<SnackDTO>();
@@ -36,9 +37,10 @@ namespace fondomerende.Main.Services.RESTServices
 
         public async System.Threading.Tasks.Task<ToBuySnackDTO> GetToBuySnacksAsync() //  Servizio per Ottenere informazioni sugli snack da mangiare
         {
+            string urlString = Services.Concatenazione() + "?command-name=get-to-buy-and-fund-funds";
             try
             {
-                var result = await "http://fondomerende.madeinapp.net/api?command-name=get-to-buy-and-fund-funds"
+                var result = await urlString
                                 .WithCookie("auth-key", "MEt085D5zxZXK7FES6qMHOrBbuzGPGwBlYzt1cwAJux")
                                 .WithCookie("user-token", UserManager.Instance.token)
                                 .GetJsonAsync<ToBuySnackDTO>();
@@ -58,9 +60,10 @@ namespace fondomerende.Main.Services.RESTServices
 
         public async System.Threading.Tasks.Task<AllSnacksDTO> GetAllSnacksAsync() //  Servizio per Ottenere informazioni sugli snack mangiabili
         {
+            string urlString = Services.Concatenazione() + "?command-name=get-snacks-data";
             try
             {
-                var result = await "http://fondomerende.madeinapp.net/api?command-name=get-snacks-data"
+                var result = await urlString
                                 .WithCookie("auth-key", "MEt085D5zxZXK7FES6qMHOrBbuzGPGwBlYzt1cwAJux")
                                 .WithCookie("user-token", UserManager.Instance.token)
                                 .GetJsonAsync<AllSnacksDTO>();
@@ -81,10 +84,10 @@ namespace fondomerende.Main.Services.RESTServices
         // iniziato ma devo aspettare l'input dall'utente
         public async System.Threading.Tasks.Task<GetSnackDTO> GetSnackAsync(string GetSnackName)  // Servizio per Ottenere informazioni su uno snack in particolare (non usato per ora)
         {
-            string lol = "http://fondomerende.madeinapp.net/api?command-name=get-snack-data&name=" + GetSnackName;
+            string urlString = Services.Concatenazione() + "?command-name=get-snack-data&name=" + GetSnackName;
             try
             {
-                var result = await lol
+                var result = await urlString
                                     .WithCookie("auth-key", "MEt085D5zxZXK7FES6qMHOrBbuzGPGwBlYzt1cwAJux")
                                     .WithCookie("user-token", UserManager.Instance.token)
                                     .GetJsonAsync<GetSnackDTO>();
@@ -114,7 +117,7 @@ namespace fondomerende.Main.Services.RESTServices
 
             try
             {
-                var result = await "http://fondomerende.madeinapp.net/api"
+                var result = await Services.Concatenazione()
                                     .WithCookie("auth-key", "MEt085D5zxZXK7FES6qMHOrBbuzGPGwBlYzt1cwAJux")
                                     .WithCookie("user-token", UserManager.Instance.token)
                                     .PostUrlEncodedAsync(data)
@@ -150,7 +153,7 @@ namespace fondomerende.Main.Services.RESTServices
 				}
 
 
-				var result = await "http://fondomerende.madeinapp.net/api"
+				var result = await Services.Concatenazione()
                 .WithCookie("auth-key", "MEt085D5zxZXK7FES6qMHOrBbuzGPGwBlYzt1cwAJux")
                 .WithCookie("user-token", UserManager.Instance.token)
                 .PostUrlEncodedAsync(data)
@@ -182,7 +185,7 @@ namespace fondomerende.Main.Services.RESTServices
             data.Add("quantity", Convert.ToString(Qta));
             try
             {
-                var result = await "http://fondomerende.madeinapp.net/api"
+                var result = await Services.Concatenazione()
                 .WithCookie("auth-key", "MEt085D5zxZXK7FES6qMHOrBbuzGPGwBlYzt1cwAJux")
                 .WithCookie("user-token", UserManager.Instance.token)
                 .PostUrlEncodedAsync(data)
@@ -212,7 +215,7 @@ namespace fondomerende.Main.Services.RESTServices
 					data.Add("quantity", quantita.ToString());
 				}
 
-				var result = await "http://fondomerende.madeinapp.net/api"
+                var result = await Services.Concatenazione()
                 .WithCookie("auth-key", "MEt085D5zxZXK7FES6qMHOrBbuzGPGwBlYzt1cwAJux")
                 .WithCookie("user-token", UserManager.Instance.token)
                 .PostUrlEncodedAsync(data)
@@ -242,7 +245,7 @@ namespace fondomerende.Main.Services.RESTServices
             data.Add("quantity", Convert.ToString(quantity));
             try
             {
-                var result = await "http://fondomerende.madeinapp.net/api"
+                var result = await Services.Concatenazione()
                 .WithCookie("auth-key", "MEt085D5zxZXK7FES6qMHOrBbuzGPGwBlYzt1cwAJux")
                 .WithCookie("user-token", UserManager.Instance.token)
                 .PostUrlEncodedAsync(data)

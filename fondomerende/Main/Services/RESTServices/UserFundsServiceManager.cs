@@ -14,9 +14,10 @@ namespace fondomerende.Main.Services.RESTServices
 
         public async System.Threading.Tasks.Task<UserFundsDTO> GetUserFunds()
         {
+            string urlString = Services.Concatenazione() + "/process-request.php?command-name=get-user-funds";
             try
             {
-            var response = await "http://fondomerende.madeinapp.net/api/process-request.php?command-name=get-user-funds"
+            var response = await urlString
                     .WithCookie("auth-key", "MEt085D5zxZXK7FES6qMHOrBbuzGPGwBlYzt1cwAJux")
                     .WithCookie("user-token", Manager.UserManager.Instance.token)
                     .GetJsonAsync<UserFundsDTO>();
@@ -38,9 +39,10 @@ namespace fondomerende.Main.Services.RESTServices
 
         public async System.Threading.Tasks.Task<FundFundsDTO> GetFundsFundAsync()
         {
+            string urlString = Services.Concatenazione() + "/process-request.php?command-name=get-fund-funds";
             try
             {
-                var response = await "http://fondomerende.madeinapp.net/api/process-request.php?command-name=get-fund-funds"
+                var response = await urlString
                                     .WithCookie("auth-key", "MEt085D5zxZXK7FES6qMHOrBbuzGPGwBlYzt1cwAJux")
                                     .WithCookie("user-token", Manager.UserManager.Instance.token)
                                     .GetJsonAsync<FundFundsDTO>();
