@@ -17,8 +17,8 @@ namespace fondomerende.Main.Services.RESTServices
         {
             try
             {
-                var response = await "http://192.168.0.175:8888/fondomerende/public/process-request.php?commandName=get-user-data"
-                                .WithCookie("auth-key", "metticiquellochetipare")
+                var response = await "http://fondomerende.madeinapp.net/api/process-request.php?command-name=get-user-data"
+                                .WithCookie("auth-key", "MEt085D5zxZXK7FES6qMHOrBbuzGPGwBlYzt1cwAJux")
                                 .WithCookie("user-token", UserManager.Instance.token)
                                 .GetJsonAsync<UserDTO>();
 

@@ -14,10 +14,14 @@ namespace fondomerende.Main.Services.RESTServices
         {
             try
             {
-                var result = await "http://192.168.0.175:8888/fondomerende/public/process-request.php"
-                               .WithCookie("auth-key", "metticiquellochetipare")
+				var data = new Dictionary<string, string>();
+				{
+					data.Add("command-name", "logout");
+				}
+				var result = await "http://fondomerende.madeinapp.net/api"
+                               .WithCookie("auth-key", "MEt085D5zxZXK7FES6qMHOrBbuzGPGwBlYzt1cwAJux")
                                .WithCookie("token", token)
-                               .PostUrlEncodedAsync(new { commandName = "logout" })
+                               .PostUrlEncodedAsync(data)
                                .ReceiveJson<LogoutDTO>();
 
 

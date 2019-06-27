@@ -14,7 +14,7 @@
                 x:Name="GoogleImage_View"
                 WidthRequest="40"
                 HeightRequest="40"
-                Source="{Binding friendly_name, StringFormat='http://192.168.0.175:8888/fondomerende/public/getphoto.php?name={0}'}">
+                Source="{Binding friendly_name, StringFormat='http://fondomerende.madeinapp.net/api/getphoto.php?name={0}'}">
             </Image>
             <StackLayout
                 HorizontalOptions="StartAndExpand"

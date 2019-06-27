@@ -63,7 +63,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View
         public void First_letter()        //Grafica
         {
             string firstLetter = "";
-            firstLetter = Preferences.Get("friendly-name", "").Substring(0, 1);
+            firstLetter = Preferences.Get("friendly-name", " ").Substring(0, 1);
             inizialeLabel.Text = firstLetter;
             inizialeLabel_iOS.Text = firstLetter;
         }

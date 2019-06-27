@@ -149,7 +149,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                         Scale = 2.6,
                         BackgroundColor = Color.White,
                         InputTransparent = true,
-                        Source = "http://192.168.0.175:8888/fondomerende/public/getphoto.php?name=" + result.data.snacks[i].friendly_name,
+                        Source = "http://fondomerende.madeinapp.net/api/getphoto.php?name=" + result.data.snacks[i].friendly_name,
                     };
 
 

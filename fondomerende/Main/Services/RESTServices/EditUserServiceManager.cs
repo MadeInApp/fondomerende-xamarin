@@ -13,15 +13,15 @@ namespace fondomerende.Main.Services.RESTServices
         {
             var data = new Dictionary<string, string>();
             {
-                data.Add("commandName", "edit-user");
+                data.Add("command-name", "edit-user");
                 data.Add("name", ChangeUsername);
                 data.Add("friendly-name", ChangeFriendlyName);
                 data.Add("password", ChangePassword);
             }
             try
             {
-                var result = await "http://192.168.0.175:8888/fondomerende/public/process-request.php"
-                    .WithCookie("auth-key", "metticiquellochetipare")
+                var result = await "http://fondomerende.madeinapp.net/api"
+                    .WithCookie("auth-key", "MEt085D5zxZXK7FES6qMHOrBbuzGPGwBlYzt1cwAJux")
                     .WithCookie("token", Manager.UserManager.Instance.token)
                     .PostUrlEncodedAsync(data)
                     .ReceiveJson<EditUserDTO>();
