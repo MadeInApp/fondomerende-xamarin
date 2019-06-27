@@ -13,7 +13,6 @@ namespace fondomerende.Main.Services.RESTServices
     {
         public async System.Threading.Tasks.Task<DepositDTO> DepositAsync(Decimal DepAmount)
         {
-            string urlString = Services.Concatenazione() + "?command-name=deposit";
 			try
 			{
 				var data = new Dictionary<string, string>();
@@ -26,7 +25,7 @@ namespace fondomerende.Main.Services.RESTServices
                     .WithCookie("auth-key", Services.GetAuthKey())
                     .WithCookie("user-token", UserManager.Instance.token)
                     .WithHeader("Content-Type", "application/x-www-form-urlencoded; param=value;charset=UTF-8")
-                    .PostUrlEncodedAsync(new { amount = DepAmount})
+                    .PostUrlEncodedAsync(data)
                     .ReceiveJson<DepositDTO>();
 
                 return result;
