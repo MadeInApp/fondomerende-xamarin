@@ -54,7 +54,18 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.PopUp
         }
         private void PopupEditSnack()
         {
-            double Altezza = (GetAltezzaPagina()*60)/100;
+            double Altezza = 0;
+            switch (Device.RuntimePlatform)
+            {
+
+                case Device.Android:
+                    Altezza = (GetAltezzaPagina() * 70) / 100;
+                    break;
+                case Device.iOS:
+                    Altezza = (GetAltezzaPagina() * 60) / 100;
+                    break;
+            }
+            
             double Larghezza = GetLarghezzaPagina() - 40;
             double banner = 50;
 
