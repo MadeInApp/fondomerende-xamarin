@@ -523,8 +523,9 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             if (ans == true)
             {
                 EatDTO response = await snackServiceManager.EatAsync((e.SelectedItem as SnackDataDTO).id, 1);
+                selectedItemBinding = (e.SelectedItem as SnackDataDTO).friendly_name;
                 MessagingCenter.Send(new EditUserViewCell()
-                {
+                {   
 
                 }, "RefreshUF");
 
