@@ -100,7 +100,8 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
                 Placeholder = "Quanti snack vuoi acquistare?",
                 WidthRequest = 250,
                 Keyboard = Keyboard.Numeric,
-                Margin = new Thickness(0, 5, 0, 5),
+                Margin = new Thickness(0, 5, 0, 0),
+                VerticalOptions = LayoutOptions.StartAndExpand,
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 HorizontalTextAlignment = TextAlignment.Center,
                 
@@ -112,7 +113,8 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
                 Keyboard = Keyboard.Numeric,
                 WidthRequest = 250,
                 IsVisible = false,
-                Margin = new Thickness(0, 5, 0, 5),
+                VerticalOptions = LayoutOptions.StartAndExpand,
+                Margin = new Thickness(0, 5, 0, 0),
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 HorizontalTextAlignment = TextAlignment.Center,
             };
@@ -122,8 +124,9 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
                 Placeholder = "Inserire la scadenza",
                 Keyboard = Keyboard.Numeric,
                 WidthRequest = 250,
-                Margin = new Thickness(0, 5, 0, 5),
+                Margin = new Thickness(0, 5, 0, 0),
                 IsVisible = false,
+                VerticalOptions = LayoutOptions.StartAndExpand,
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 HorizontalTextAlignment = TextAlignment.Center,
             };
@@ -134,8 +137,9 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
             {
                 Placeholder = "Quanti snack vuoi acquistare?",
                 WidthRequest = 220,
-                Margin = new Thickness(0,5,0,5),
+                Margin = new Thickness(0,5,0,0),
                 Keyboard = Keyboard.Numeric,
+                VerticalOptions = LayoutOptions.StartAndExpand,
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 HorizontalTextAlignment = TextAlignment.Center,
 
@@ -146,7 +150,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
                 Placeholder = "Inserire il prezzo",
                 Keyboard = Keyboard.Numeric,
                 WidthRequest = 220,
-                Margin = new Thickness(0, 5, 0, 5),
+                VerticalOptions = LayoutOptions.StartAndExpand,
                 IsVisible = false,
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 HorizontalTextAlignment = TextAlignment.Center,
@@ -157,7 +161,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
                 Placeholder = "Inserire la scadenza",
                 Keyboard = Keyboard.Numeric,
                 WidthRequest = 220,
-                Margin = new Thickness(0, 5, 0, 5),
+                VerticalOptions = LayoutOptions.StartAndExpand,
                 IsVisible = false,
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 HorizontalTextAlignment = TextAlignment.Center,
@@ -170,7 +174,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
             stackBody = new StackLayout  //stack principale dove è contenuto l'interno di tutto (tranne round che stonda)
 
             {
-                Spacing = 10,
+                Spacing=10,
                 HeightRequest = Altezza,
                 WidthRequest = Larghezza,
                 BackgroundColor = Color.White,
