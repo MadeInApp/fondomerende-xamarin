@@ -58,7 +58,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.Popup
                     
             }*/
             
-            double Altezza = (GetAltezzaPagina() * 50) / 100;
+            double Altezza = (GetAltezzaPagina() * 60) / 100;
             double Larghezza = GetLarghezzaPagina() - 40;
             double banner = 50;
 
@@ -105,7 +105,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.Popup
             //variabili in line entry//
             NomeSnack = new LineEntry
             {
-                Margin = new Thickness(0, -35, 0, 0),
+                Margin = new Thickness(0, -40, 0, -15),
                 Keyboard = Keyboard.Default,
                 VerticalOptions = LayoutOptions.StartAndExpand,
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
