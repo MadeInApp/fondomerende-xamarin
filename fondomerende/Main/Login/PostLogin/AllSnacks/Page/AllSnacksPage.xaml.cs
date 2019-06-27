@@ -745,7 +745,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                 {
                     if (Device.RuntimePlatform == Device.iOS)
                     {
-                        DependencyService.Get<HapticFeedbackGen>().HapticFeedbackGenSuccessAsync();
+                        DependencyService.Get<HapticFeedbackGen>().HapticFeedbackGenSuccess();
                     }
                     else
                     {
