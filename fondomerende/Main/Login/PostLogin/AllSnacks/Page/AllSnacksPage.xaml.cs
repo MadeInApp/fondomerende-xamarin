@@ -393,6 +393,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
         {
             if (previousFavourite != Preferences.Get("Favourites", ""))
             {
+                ScrollFavourites.IsVisible = true;
                 EmptyStackFav.IsVisible = false;
                 previousFavourite = Preferences.Get("Favourites", "");
                 Column0Fav.Children.Clear();
@@ -403,6 +404,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
             if (Column0Fav.Children.Count == 0 && Column1Fav.Children.Count == 0)
             {
+                ScrollFavourites.IsVisible = false;
                 EmptyStackFav.IsVisible = true;
             }
 
@@ -435,6 +437,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                 Column0.Children.Clear();
                 Column1.Children.Clear();
                 GetSnacksMethod(false, false);
+                
             }
 
         }
@@ -700,7 +703,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                 {
                     VerticalOptions = LayoutOptions.StartAndExpand,
                     Source = ImageSource.FromResource("fondomerende.image.cup_cake_128x128.png"),
-                    Opacity = 0.6,
+                    Opacity = 0.2,
                     Scale = 1,
                 };
 

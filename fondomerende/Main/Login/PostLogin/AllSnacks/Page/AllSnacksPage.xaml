@@ -157,46 +157,44 @@
                             x:Name="ScrollFavourites"
                             Padding="0,0,0,10">
 
-                            <StackLayout
-                                Margin="20,0,20,0">
-                                <Grid
+
+                            <Grid
                                 HorizontalOptions="CenterAndExpand"
                                 ColumnSpacing="20"
                                 Margin="0,0,0,0"
                                 x:Name="GridFavView">
 
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="*" />
-                                    </Grid.RowDefinitions>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*" />
-                                    </Grid.ColumnDefinitions>
-                                    <StackLayout 
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <StackLayout 
                                         Grid.Column="0" 
                                         x:Name="Column0Fav"
                                         Spacing="40"
                                         HorizontalOptions="StartAndExpand"
                                         Margin="5,10,10,0">
-                                    </StackLayout>
-                                    <StackLayout 
+                                </StackLayout>
+                                <StackLayout 
                                         Grid.Column="1" 
                                         x:Name="Column1Fav"
                                         Spacing="40"
                                         HorizontalOptions="EndAndExpand"
                                         Margin="10,10,5,0">
-                                    </StackLayout>
-                                </Grid>
-
-                                <StackLayout
-                                    Opacity="0.7"
-                                    HorizontalOptions="Fill"
-                                    VerticalOptions="Fill"
-                                    IsVisible="False"
-                                    x:Name="EmptyStackFav">
                                 </StackLayout>
-                            </StackLayout>
-                            
+                            </Grid>
                         </ScrollView>
+
+                        <StackLayout
+                            InputTransparent="True"
+                            Opacity="0.4"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="FillAndExpand"
+                            IsVisible="False"
+                            x:Name="EmptyStackFav">
+                        </StackLayout>
                     </Grid>
                 </StackLayout>
 
