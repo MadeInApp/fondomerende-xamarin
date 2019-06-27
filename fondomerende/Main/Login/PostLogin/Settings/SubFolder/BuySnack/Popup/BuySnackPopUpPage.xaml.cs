@@ -100,6 +100,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
                 Placeholder = "Quanti snack vuoi acquistare?",
                 WidthRequest = 250,
                 Keyboard = Keyboard.Numeric,
+                Margin = new Thickness(0, 0, 0, -20),
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 HorizontalTextAlignment = TextAlignment.Center,
                 
@@ -131,6 +132,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
             {
                 Placeholder = "Quanti snack vuoi acquistare?",
                 WidthRequest = 250,
+                Margin = new Thickness(0,0,0,-20),
                 Keyboard = Keyboard.Numeric,
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 HorizontalTextAlignment = TextAlignment.Center,
