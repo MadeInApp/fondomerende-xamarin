@@ -535,7 +535,14 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
                 }, "Animate");
             }
-           
+            else
+            {
+                MessagingCenter.Send(new AllSnacksPage()
+                {
+
+                }, "RefreshGetSnacks");
+            }
+            selectedItemBinding = (e.SelectedItem as SnackDataDTO).friendly_name;
 
           
 
