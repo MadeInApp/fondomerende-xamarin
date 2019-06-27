@@ -11,6 +11,7 @@ using Xamarin.Forms.Xaml;
 using Plugin.CrossPlatformTintedImage.Abstractions;
 using fondomerende.Main.Login;
 using fondomerende.Main.Login.LoginPages;
+using fondomerende;
 
 namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.LogOut.View
 {
@@ -38,15 +39,13 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.LogOut.View
                 var response = await logoutService.LogoutAsync();
                 if (response != null)
                 {
-                    if (response.response.success == true)
-                    {
-                        App.Current.MainPage = new LoginPage();
-                        Preferences.Clear();
-                    }
-                    else
-                    {
-                        await App.Current.MainPage.DisplayAlert("Fondo Merende", "Guarda, sta cosa non ha senso", "OK");
-                    }
+
+                    Application.Current.MainPage = new LoginPage;
+                    Preferences.Clear();
+                }
+                else
+                {
+                    await App.Current.MainPage.DisplayAlert("Fondo Merende", "Guarda, sta cosa non ha senso", "OK");
                 }
                 else
                 {
