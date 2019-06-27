@@ -1,4 +1,4 @@
-  <Project Sdk="Microsoft.NET.Sdk">
+﻿  <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -255,6 +255,7 @@
     <PackageReference Include="Xam.Plugin.MultiGestureView" Version="1.0.2" />
     <PackageReference Include="Xamarin.Forms" Version="4.1.0.496342-pre2" />
     <PackageReference Include="Xamarin.Essentials" Version="1.2.0-pre" />
+    <PackageReference Include="Xamarin.HotReload" Version="1.4.12" />
     <PackageReference Include="XForms.Plugin.AnimationNavigationPage" Version="1.0.7" />
     <PackageReference Include="XFControls" Version="1.0.0.6">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

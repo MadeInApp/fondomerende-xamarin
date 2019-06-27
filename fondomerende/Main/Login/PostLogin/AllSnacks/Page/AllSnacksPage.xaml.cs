@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using fondomerende.Main.Login.PostLogin.AllSnacks.View;
+using fondomerende.Main.Login.PostLogin.Settings.SubFolder.About_and_UserSettings.View;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.View;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.View;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup;
@@ -10,6 +11,7 @@ using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.View;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.View;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.LogOut.View;
+using fondomerende.Main.Login.PostLogin.Settings.SubFolder.Settaggio.View;
 using fondomerende.Main.Services.Models;
 using fondomerende.Main.Services.RESTServices;
 using fondomerende.Main.Utilities;
@@ -67,9 +69,9 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             {                                                                                  // \\                                    
                                                                                                //  \\ Se il dispositivo è Android non mostra la Top Bar della Navigation Page,
                 case Device.Android:                                                           //   \\   Se è iOS invece si (perchè senza è una schifezza)
-                    NavigationPage.SetHasNavigationBar(this, false);                   ///     //    \\         \                
+                    NavigationPage.SetHasNavigationBar(this, false);                    ///     //    \\         \                
                     break;                                                               ////// ////// ///////////|
-                                                                                         ///     //     //        /       
+                                                                                        ///     //     //        /       
                 default:                                                                       //    //
                     NavigationPage.SetHasNavigationBar(this, true);                            //   //
                     break;                                                                     // //
@@ -104,6 +106,12 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             {
 
             }, "Refresh");
+
+            MessagingCenter.Send(new FondoFondoMerendeViewCell()
+            {
+
+            }, "Refresh");
+
 
             MessagingCenter.Send(new EditSnackViewCell()
             {
@@ -163,6 +171,16 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             }, "Refresh");
 
             MessagingCenter.Send(new BuySnackViewCell()
+            {
+
+            }, "Refresh");
+
+            MessagingCenter.Send(new ChangeColorViewCell()
+            {
+
+            }, "Refresh");
+
+            MessagingCenter.Send(new EditUserInfoViewCell()
             {
 
             }, "Refresh");
@@ -377,6 +395,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
         {
             if (previousFavourite != Preferences.Get("Favourites", ""))
             {
+                ScrollFavourites.IsVisible = true;
                 EmptyStackFav.IsVisible = false;
                 previousFavourite = Preferences.Get("Favourites", "");
                 Column0Fav.Children.Clear();
@@ -387,6 +406,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
             if (Column0Fav.Children.Count == 0 && Column1Fav.Children.Count == 0)
             {
+                ScrollFavourites.IsVisible = false;
                 EmptyStackFav.IsVisible = true;
             }
 
@@ -419,6 +439,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                 Column0.Children.Clear();
                 Column1.Children.Clear();
                 GetSnacksMethod(false, false);
+                
             }
 
         }
@@ -684,7 +705,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                 {
                     VerticalOptions = LayoutOptions.StartAndExpand,
                     Source = ImageSource.FromResource("fondomerende.image.cup_cake_128x128.png"),
-                    Opacity = 0.6,
+                    Opacity = 0.2,
                     Scale = 1,
                 };
 

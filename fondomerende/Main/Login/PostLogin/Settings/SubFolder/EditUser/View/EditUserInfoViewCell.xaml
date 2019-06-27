@@ -10,14 +10,14 @@
     <ViewCell.View>
         <StackLayout 
             Orientation="Horizontal" >
-            <Image
+            <controls:TintedImage 
                 x:Name="SnackIcon" 
                 VerticalOptions="Center" 
                 HorizontalOptions="Start"
                 Scale="0.8"
                 Margin="5,0,5,0"
                 Source="{local:EmbeddedImage Resource=fondomerende.image.edit_profile_256x256.png}">
-            </Image>
+            </controls:TintedImage>
             <Label
                 HorizontalOptions="StartAndExpand"
                 VerticalOptions="CenterAndExpand"                               
