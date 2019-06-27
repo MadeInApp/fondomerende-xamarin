@@ -40,17 +40,17 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.LogOut.View
                 if (response != null)
                 {
 
-                    Application.Current.MainPage = new LoginPage;
+                    Application.Current.MainPage = new LoginPage();
                     Preferences.Clear();
                 }
                 else
                 {
                     await App.Current.MainPage.DisplayAlert("Fondo Merende", "Guarda, sta cosa non ha senso", "OK");
                 }
-                else
-                {
+            }
+            else
+            {
 
-                }
             }
         }
 
