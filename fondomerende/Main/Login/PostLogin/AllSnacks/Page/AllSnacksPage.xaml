@@ -19,14 +19,15 @@
         <Grid
             x:Name="PaoloGrid">
             <StackLayout
+                BackgroundColor="#fff0df"
                 Grid.Row="0"
                 Grid.Column="0"
                 x:Name="StackSnack"
                 HeightRequest="50">
 
                 <StackLayout 
-                    Orientation="Horizontal" 
-                    BackgroundColor="#ffb121"   
+                    Orientation="Horizontal"
+                    BackgroundColor="#fdb663"
                     HeightRequest="45">
                                     <!--è un bel colore"#ffb121"-->
                     <Grid 
@@ -99,11 +100,15 @@
                 </StackLayout>
 
                 <StackLayout
+                    Margin="0,-5,0,0"
+                    Spacing="0"
                     Grid.Row="0"
                     Grid.Column="0"
-                    VerticalOptions="Center"
+                    VerticalOptions="StartAndExpand"
                     x:Name="Cane">
+                    
                     <Grid
+                        VerticalOptions="Start"
                         x:Name="griglia">
                         <ScrollView 
                             VerticalOptions="StartAndExpand"
@@ -111,21 +116,21 @@
                             Grid.Row="0"
                             IsVisible="True" 
                             x:Name="ScrollSnackView"  
-                            Padding="0,0,0,0"
-                            BackgroundColor="#FFF8EB">
+                            Padding="0,0,0,0">
 
                             <Grid 
                                 HorizontalOptions="CenterAndExpand"
                                 x:Name="GridView" 
                                 ColumnSpacing="20"
-                                Margin="0,0,0,0"
-                                BackgroundColor="#FFF8EB">
+                                Margin="0,0,0,0">
+                                
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="*" />
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
+                                
                                 <StackLayout 
                                     Grid.Column="0" 
                                     x:Name="Column0"
@@ -133,6 +138,7 @@
                                     HorizontalOptions="StartAndExpand"
                                     Margin="5,10,10,0">
                                 </StackLayout>
+                                
                                 <StackLayout 
                                     Grid.Column="1" 
                                     x:Name="Column1"
@@ -148,11 +154,11 @@
                             Grid.Column="0"
                             Grid.Row="0"
                             IsVisible="False" 
-                            x:Name="ScrollFavourites"  
-                            BackgroundColor="#FFF8EB"
+                            x:Name="ScrollFavourites"
                             Padding="0,0,0,10">
 
-                            <StackLayout>
+                            <StackLayout
+                                Margin="20,0,20,0">
                                 <Grid
                                 HorizontalOptions="CenterAndExpand"
                                 ColumnSpacing="20"
@@ -182,11 +188,11 @@
                                 </Grid>
 
                                 <StackLayout
-                                    HorizontalOptions="CenterAndExpand"
-                                    VerticalOptions="CenterAndExpand"
+                                    Opacity="0.7"
+                                    HorizontalOptions="Fill"
+                                    VerticalOptions="Fill"
                                     IsVisible="False"
                                     x:Name="EmptyStackFav">
-
                                 </StackLayout>
                             </StackLayout>
                             
@@ -206,6 +212,7 @@
                     ItemSelected="ListView_ItemSelected"
                     BackgroundColor="#FFF8EB"
                     HasUnevenRows="True">
+                    
                     <ListView.ItemTemplate>
                         <DataTemplate x:Name="DataTemp">
                             <local1:SnackViewCell 
