@@ -69,9 +69,9 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             {                                                                                  // \\                                    
                                                                                                //  \\ Se il dispositivo è Android non mostra la Top Bar della Navigation Page,
                 case Device.Android:                                                           //   \\   Se è iOS invece si (perchè senza è una schifezza)
-                    NavigationPage.SetHasNavigationBar(this, false);                   ///     //    \\         \                
+                    NavigationPage.SetHasNavigationBar(this, false);                    ///     //    \\         \                
                     break;                                                               ////// ////// ///////////|
-                                                                                         ///     //     //        /       
+                                                                                        ///     //     //        /       
                 default:                                                                       //    //
                     NavigationPage.SetHasNavigationBar(this, true);                            //   //
                     break;                                                                     // //
@@ -171,11 +171,6 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             }, "Refresh");
 
             MessagingCenter.Send(new BuySnackViewCell()
-            {
-
-            }, "Refresh");
-
-            MessagingCenter.Send(new FondoFondoMerendeViewCell()
             {
 
             }, "Refresh");
