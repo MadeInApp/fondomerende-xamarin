@@ -100,7 +100,8 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
                 Placeholder = "Quanti snack vuoi acquistare?",
                 WidthRequest = 250,
                 Keyboard = Keyboard.Numeric,
-                Margin = new Thickness(0, 0, 0, -30),
+                Margin = new Thickness(0, 5, 0, 0),
+                VerticalOptions = LayoutOptions.StartAndExpand,
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 HorizontalTextAlignment = TextAlignment.Center,
                 
@@ -112,7 +113,8 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
                 Keyboard = Keyboard.Numeric,
                 WidthRequest = 250,
                 IsVisible = false,
-                Margin = new Thickness(0, 10, 0, 10),
+                VerticalOptions = LayoutOptions.StartAndExpand,
+                Margin = new Thickness(0, 5, 0, 0),
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 HorizontalTextAlignment = TextAlignment.Center,
             };
@@ -122,8 +124,9 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
                 Placeholder = "Inserire la scadenza",
                 Keyboard = Keyboard.Numeric,
                 WidthRequest = 250,
-                Margin = new Thickness(0, 10, 0, 10),
+                Margin = new Thickness(0, 5, 0, 0),
                 IsVisible = false,
+                VerticalOptions = LayoutOptions.StartAndExpand,
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 HorizontalTextAlignment = TextAlignment.Center,
             };
@@ -134,8 +137,11 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
             {
                 Placeholder = "Quanti snack vuoi acquistare?",
                 WidthRequest = 250,
-                Margin = new Thickness(0,10,0,-30),
+                FontSize = 18,
+                HeightRequest = 35,
+                Margin = new Thickness(0,10,0,0),
                 Keyboard = Keyboard.Numeric,
+                VerticalOptions = LayoutOptions.StartAndExpand,
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 HorizontalTextAlignment = TextAlignment.Center,
 
@@ -146,7 +152,9 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
                 Placeholder = "Inserire il prezzo",
                 Keyboard = Keyboard.Numeric,
                 WidthRequest = 250,
-                Margin = new Thickness(0, 10, 0, 10),
+                FontSize = 18,
+                HeightRequest = 35,
+                VerticalOptions = LayoutOptions.StartAndExpand,
                 IsVisible = false,
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 HorizontalTextAlignment = TextAlignment.Center,
@@ -157,7 +165,9 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
                 Placeholder = "Inserire la scadenza",
                 Keyboard = Keyboard.Numeric,
                 WidthRequest = 250,
-                Margin = new Thickness(0, 10, 0, 10),
+                FontSize = 18,
+                HeightRequest = 35,
+                VerticalOptions = LayoutOptions.StartAndExpand,
                 IsVisible = false,
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 HorizontalTextAlignment = TextAlignment.Center,
@@ -170,7 +180,6 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
             stackBody = new StackLayout  //stack principale dove è contenuto l'interno di tutto (tranne round che stonda)
 
             {
-                Spacing = 10,
                 HeightRequest = Altezza,
                 WidthRequest = Larghezza,
                 BackgroundColor = Color.White,
@@ -233,6 +242,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
 
                     stackFondoAndroid.Children.Add(fondomerende);
                     stackFondoAndroid.Children.Add(immagine);
+                    stackBody.Children.Add(stackFondoAndroid);
                     immagine.Clicked += Immagine_ClickedAndroid;
                     prezzoAndroid.TextChanged += EntrataPrezzoAndroid;
                     buttonCancel.Clicked += Discard_Clicked;
@@ -241,8 +251,8 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
                     stackBody.Children.Add(prezzoAndroid);
                     stackBody.Children.Add(scadenzaAndroid);
 
+
                     stackBody.Children.Add(stackBottoni);
-                    stackBody.Children.Add(stackFondoAndroid);
                     Round.Children.Add(stackBody);
                     break;
 
@@ -250,6 +260,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
                 case Device.iOS:
                     stackFondoiOS.Children.Add(fondomerende);
                     stackFondoiOS.Children.Add(immagine);
+                    stackBody.Children.Add(stackFondoiOS);
                     immagine.Clicked += Immagine_ClickediOs;
                     prezzoAndroid.TextChanged += EntrataPrezzoiOs;
                     buttonCancel.Clicked += Discard_Clicked;
@@ -258,8 +269,8 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
                     stackBody.Children.Add(prezzoiOs);
                     stackBody.Children.Add(scadenzaiOs);
 
+
                     stackBody.Children.Add(stackBottoni);
-                    stackBody.Children.Add(stackFondoiOS);
                     Round.Children.Add(stackBody);
 
                     break;
@@ -359,7 +370,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
         private async void Immagine_ClickedAndroid(object sender, EventArgs e)
         {
             swap = true;
-            Altezza = (GetAltezzaPagina()*40)/100;
+            Altezza = (GetAltezzaPagina()*50)/100;
             Round.HeightRequest = Altezza;
             stackBody.Spacing = 20;
             immagine.IsVisible = false;
@@ -370,7 +381,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
         private async void Immagine_ClickediOs(object sender, EventArgs e)
         {
             swap = true;
-            Altezza = (GetAltezzaPagina() * 40) / 100;
+            Altezza = (GetAltezzaPagina() * 50) / 100;
             Round.HeightRequest = Altezza;
             stackBody.Spacing = 20;
             immagine.IsVisible = false;

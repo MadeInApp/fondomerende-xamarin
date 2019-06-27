@@ -58,7 +58,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.Popup
                     
             }*/
             
-            double Altezza = (GetAltezzaPagina() * 50) / 100;
+            double Altezza = (GetAltezzaPagina() * 60) / 100;
             double Larghezza = GetLarghezzaPagina() - 40;
             double banner = 50;
 
@@ -95,17 +95,17 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.Popup
                 TextColor = Color.White,
             };
 
-            var stackImgBtn = new StackLayout()
+            /*var stackImgBtn = new StackLayout()
             {
                 HeightRequest = 50,
-            };
+            };*/
 
 
 
             //variabili in line entry//
             NomeSnack = new LineEntry
             {
-                Margin = new Thickness(0, -35, 0, 0),
+                Margin = new Thickness(0, 15, 0, 0),
                 Keyboard = Keyboard.Default,
                 VerticalOptions = LayoutOptions.StartAndExpand,
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
@@ -113,22 +113,22 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.Popup
             };
             PrezzoSnack = new LineEntry
             {
-                Margin = new Thickness(0, 10, 0, 0),
                 Keyboard = Keyboard.Numeric,
+                VerticalOptions = LayoutOptions.StartAndExpand,
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 WidthRequest = 250,
             };
             SnackPerBox = new LineEntry
             {
-                Margin = new Thickness(0, 10, 0, 0),
                 Keyboard = Keyboard.Numeric,
+                VerticalOptions = LayoutOptions.StartAndExpand,
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 WidthRequest = 250,
             };
             ExpInDays = new LineEntry
             {
-                Margin = new Thickness(0, 10, 0, 0),
                 Keyboard = Keyboard.Numeric,
+                VerticalOptions = LayoutOptions.StartAndExpand,
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 WidthRequest = 250,
             };
@@ -210,7 +210,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.Popup
             ExpInDays.Placeholder = "Giorni di scadenza";
 
 
-            stackBody.Children.Add(stackImgBtn);
+            //stackBody.Children.Add(stackImgBtn);
             stackBody.Children.Add(NomeSnack);
             stackBody.Children.Add(PrezzoSnack);
             stackBody.Children.Add(SnackPerBox);

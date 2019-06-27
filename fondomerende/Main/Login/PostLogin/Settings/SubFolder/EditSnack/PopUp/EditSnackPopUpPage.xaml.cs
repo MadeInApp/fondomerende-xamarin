@@ -54,7 +54,18 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.PopUp
         }
         private void PopupEditSnack()
         {
-            double Altezza = GetAltezzaPagina()/1.55;
+            double Altezza = 0;
+            switch (Device.RuntimePlatform)
+            {
+
+                case Device.Android:
+                    Altezza = (GetAltezzaPagina() * 70) / 100;
+                    break;
+                case Device.iOS:
+                    Altezza = (GetAltezzaPagina() * 60) / 100;
+                    break;
+            }
+            
             double Larghezza = GetLarghezzaPagina() - 40;
             double banner = 50;
 
@@ -113,36 +124,36 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.PopUp
             {
                 Keyboard = Keyboard.Default,
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
+                VerticalOptions = LayoutOptions.StartAndExpand,
                 WidthRequest = 250,
-                Margin = new Thickness (0,10,0,10),
             };
             PrezzoSnack = new LineEntry
             {
                 Keyboard = Keyboard.Numeric,
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
+                VerticalOptions = LayoutOptions.StartAndExpand,
                 WidthRequest = 250,
-                Margin = new Thickness(0, 10, 0, 10),
             };
             SnackPerBox = new LineEntry
             {
                 Keyboard = Keyboard.Numeric,
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
+                VerticalOptions = LayoutOptions.StartAndExpand,
                 WidthRequest = 250,
-                Margin = new Thickness(0, 10, 0, 10),
             };
             ExpInDays = new LineEntry
             {
                 Keyboard = Keyboard.Numeric,
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
+                VerticalOptions = LayoutOptions.StartAndExpand,
                 WidthRequest = 250,
-                Margin = new Thickness(0, 10, 0, 10),
             };
             Qta = new LineEntry
             {
                 Keyboard = Keyboard.Numeric,
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
+                VerticalOptions = LayoutOptions.StartAndExpand,
                 WidthRequest = 250,
-                Margin = new Thickness(0, 10, 0, 10),
             };
 
 
@@ -150,6 +161,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.PopUp
             var stackBody = new StackLayout  //stack principale dove è contenuto l'interno di tutto (tranne round che stonda)
 
             {
+                Spacing = 10,
                 HeightRequest = Altezza,
                 WidthRequest = Larghezza,
                 BackgroundColor = Color.White,

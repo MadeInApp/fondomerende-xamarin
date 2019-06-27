@@ -24,8 +24,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
-    <MtouchArch>
-    </MtouchArch>
+    <MtouchArch>i386, x86_64</MtouchArch>
     <MtouchLink>SdkOnly</MtouchLink>
     <MtouchDebug>true</MtouchDebug>
     <CodesignKey>iPhone Developer</CodesignKey>
@@ -262,9 +261,6 @@
     </PackageReference>
     <PackageReference Include="Xamarin.IQKeyboardManager">
       <Version>1.4.1</Version>
-    </PackageReference>
-    <PackageReference Include="Xam.Plugins.Forms.KeyboardOverlap">
-      <Version>1.0.0.4</Version>
     </PackageReference>
     <PackageReference Include="SkiaSharp">
       <Version>1.68.0</Version>

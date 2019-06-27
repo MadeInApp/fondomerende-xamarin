@@ -11,14 +11,14 @@ namespace fondomerende.Main.Services.RESTServices
 {
     class DepositServiceManager
     {
-        public async System.Threading.Tasks.Task<DepositDTO> DepositAsync(Decimal DepAmount)
+        public async System.Threading.Tasks.Task<DepositDTO> DepositAsync(String DepAmount)
         {
 			try
 			{
 				var data = new Dictionary<string, string>();
 				{
 					data.Add("command-name", "deposit");
-					data.Add("amount", DepAmount.ToString());
+					data.Add("amount", DepAmount.Replace(",","."));
 				}
 
                 var result = await Services.Concatenazione()

@@ -54,7 +54,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.Popup
         }
         private void PopupEditUserInfo()
         {
-            double Altezza = GetAltezzaPagina() / 1.8;
+            double Altezza = (GetAltezzaPagina()*45)/ 100;
             double Larghezza = GetLarghezzaPagina() - 40;
             double banner = 50;
 

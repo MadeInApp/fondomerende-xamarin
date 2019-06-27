@@ -15,6 +15,8 @@ using fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.View;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.View;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.LogOut.View;
 using fondomerende.Main.Services.Models;
+using fondomerende.Main.Login.PostLogin.Settings.SubFolder.About_and_UserSettings.View;
+using fondomerende.Main.Login.PostLogin.Settings.SubFolder.Settaggio.View;
 
 namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View
 {
@@ -82,10 +84,27 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View
 
             }, "Refresh");
 
+            MessagingCenter.Send(new FondoFondoMerendeViewCell()
+            {
+
+            }, "Refresh");
+
+
+            MessagingCenter.Send(new EditUserInfoViewCell()
+            {
+
+            }, "Refresh");
+
             MessagingCenter.Send(new EditSnackViewCell()
             {
 
             }, "Refresh");
+
+            MessagingCenter.Send(new ChangeColorViewCell()
+            {
+
+            }, "Refresh");
+
 
             MessagingCenter.Send(new AddSnackViewCell()
             {

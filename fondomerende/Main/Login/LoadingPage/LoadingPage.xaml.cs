@@ -12,6 +12,11 @@ using fondomerende.Main.Login.LoginPages;
 using fondomerende.Main.Utilities;
 using fondomerende.Main.Login.PostLogin;
 using System.Threading;
+using fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.View;
+using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.View;
+using fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.View;
+using fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.View;
+using fondomerende.Main.Login.PostLogin.Settings.SubFolder.LogOut.View;
 
 namespace fondomerende.PostLoginPages
 {
@@ -36,6 +41,31 @@ namespace fondomerende.PostLoginPages
                 LoadingLabel.FontSize = 14;
             }
             LoadingLabel.Text = rPhrase;
+
+            MessagingCenter.Send(new ChronologyViewCell()
+            {
+
+            }, "Refresh");
+
+            MessagingCenter.Send(new EditSnackViewCell()
+            {
+
+            }, "Refresh");
+
+            MessagingCenter.Send(new AddSnackViewCell()
+            {
+
+            }, "Refresh");
+
+            MessagingCenter.Send(new BuySnackViewCell()
+            {
+
+            }, "Refresh");
+
+            MessagingCenter.Send(new LogoutViewCell()
+            {
+
+            }, "Refresh");
         }
 
         public async void LogIn()
@@ -45,8 +75,7 @@ namespace fondomerende.PostLoginPages
          //   await userService.GetUserData();
             if(resultLogin == null)
             {
-                //Android.OS.Process.KillProcess(Android.OS.Process.MyPid());
-                Thread.CurrentThread.Abort();
+                App.Current.MainPage.DisplayAlert("Fondo Merende", "Connessione Al Fondo Merende fallita", "Ok");
             }
             else if (resultLogin.response.success)
             {

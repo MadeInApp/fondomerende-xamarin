@@ -3,8 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using fondomerende.Main.Login.PostLogin.AllSnacks.View;
+using fondomerende.Main.Login.PostLogin.Settings.SubFolder.About_and_UserSettings.View;
+using fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.View;
+using fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.View;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup;
+using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.View;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View;
+using fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.View;
+using fondomerende.Main.Login.PostLogin.Settings.SubFolder.LogOut.View;
+using fondomerende.Main.Login.PostLogin.Settings.SubFolder.Settaggio.View;
 using fondomerende.Main.Services.Models;
 using fondomerende.Main.Services.RESTServices;
 using fondomerende.Main.Utilities;
@@ -62,9 +69,9 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             {                                                                                  // \\                                    
                                                                                                //  \\ Se il dispositivo è Android non mostra la Top Bar della Navigation Page,
                 case Device.Android:                                                           //   \\   Se è iOS invece si (perchè senza è una schifezza)
-                    NavigationPage.SetHasNavigationBar(this, false);                   ///     //    \\         \                
+                    NavigationPage.SetHasNavigationBar(this, false);                    ///     //    \\         \                
                     break;                                                               ////// ////// ///////////|
-                                                                                         ///     //     //        /       
+                                                                                        ///     //     //        /       
                 default:                                                                       //    //
                     NavigationPage.SetHasNavigationBar(this, true);                            //   //
                     break;                                                                     // //
@@ -95,6 +102,37 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                 WalletAnimation();
             });
 
+            MessagingCenter.Send(new ChronologyViewCell()
+            {
+
+            }, "Refresh");
+
+            MessagingCenter.Send(new FondoFondoMerendeViewCell()
+            {
+
+            }, "Refresh");
+
+
+            MessagingCenter.Send(new EditSnackViewCell()
+            {
+
+            }, "Refresh");
+
+            MessagingCenter.Send(new AddSnackViewCell()
+            {
+
+            }, "Refresh2");
+
+            MessagingCenter.Send(new BuySnackViewCell()
+            {
+
+            }, "Refresh");
+
+            MessagingCenter.Send(new LogoutViewCell()
+            {
+
+            }, "Refresh");
+
         }
         public async Task RefreshDataAsync()
         {
@@ -117,6 +155,42 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
         public async Task GetSnacksMethod(bool Loaded, bool favourites)     //ottiene la lista degli snack e la applica alla ListView
         {
+            MessagingCenter.Send(new ChronologyViewCell()
+            {
+
+            }, "Refresh");
+
+            MessagingCenter.Send(new EditSnackViewCell()
+            {
+
+            }, "Refresh");
+
+            MessagingCenter.Send(new AddSnackViewCell()
+            {
+
+            }, "Refresh");
+
+            MessagingCenter.Send(new BuySnackViewCell()
+            {
+
+            }, "Refresh");
+
+            MessagingCenter.Send(new ChangeColorViewCell()
+            {
+
+            }, "Refresh");
+
+            MessagingCenter.Send(new EditUserInfoViewCell()
+            {
+
+            }, "Refresh");
+
+            MessagingCenter.Send(new LogoutViewCell()
+            {
+
+            }, "Refresh");
+
+
             result = await snackServiceManager.GetSnacksAsync();
             SnackFavarray = new object[result.data.snacks.Count];
             ListView.ItemsSource = result.data.snacks;

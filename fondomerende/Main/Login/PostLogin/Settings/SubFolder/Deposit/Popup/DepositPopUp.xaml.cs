@@ -96,6 +96,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup
                 HeightRequest = 35,
                 Margin = new Thickness(0, 15, 0, 0),
                 Keyboard = Keyboard.Numeric,
+                FontSize = 18,
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 HorizontalTextAlignment = TextAlignment.Center,
             };
@@ -334,7 +335,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup
             }
             else
             {
-                var resultDep = await depositService.DepositAsync(Decimal.Parse(appoggio));
+                var resultDep = await depositService.DepositAsync(appoggio);
                 if (resultDep != null)
                 {
                     if (resultDep.response.success)

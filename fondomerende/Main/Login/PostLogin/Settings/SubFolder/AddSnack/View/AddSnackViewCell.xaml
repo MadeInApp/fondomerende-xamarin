@@ -26,6 +26,7 @@
                     Grid.Row="0"
                     Grid.Column="0"
                     x:Name="AddIcon" 
+                    TintColor="{Binding LoadTint}"
                     Scale="{OnPlatform Android=0.5, Default=0.6}"
                     VerticalOptions="Center" 
                     HorizontalOptions="Center" 
