@@ -14,7 +14,7 @@ namespace fondomerende.Main.Services.RESTServices
 
         public async System.Threading.Tasks.Task<UserFundsDTO> GetUserFunds()
         {
-            string urlString = Services.Concatenazione() + "/process-request.php?command-name=get-user-funds";
+            string urlString = Services.Concatenazione("?command-name=get-user-funds");
             try
             {
             var response = await urlString

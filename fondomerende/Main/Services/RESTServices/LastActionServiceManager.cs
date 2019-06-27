@@ -10,7 +10,7 @@ namespace fondomerende.Main.Services.RESTServices
     {
         public async System.Threading.Tasks.Task<LastActionDTO> GetLastActions()
         {
-            string urlString = Services.Concatenazione() + "?command-name=get-last-actions";
+            string urlString = Services.Concatenazione("?command-name=get-last-actions");
             try
             {
                 var response = await urlString

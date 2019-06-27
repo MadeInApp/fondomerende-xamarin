@@ -15,7 +15,7 @@ namespace fondomerende.Main.Services.RESTServices
         //Servizio per ricevere i dati utente
         public async System.Threading.Tasks.Task<UserDTO> GetUserData()
         {
-            string urlString = Services.Concatenazione() + "/process-request.php?command-name=get-user-data";
+            string urlString = Services.Concatenazione("?command-name=get-user-data");
             try
             {
                 var response = await urlString

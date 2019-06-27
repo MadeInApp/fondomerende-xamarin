@@ -14,7 +14,7 @@ namespace fondomerende.Main.Services.RESTServices
     {
         public async System.Threading.Tasks.Task<SnackDTO> GetSnacksAsync() //  Servizio per Ottenere informazioni sugli snack mangiabili
         {
-            string urlString = Services.Concatenazione() + "?command-name=get-to-eat-and-user-funds";
+            string urlString = Services.Concatenazione("?command-name=get-to-eat-and-user-funds");
             try
             {
                 var result = await urlString

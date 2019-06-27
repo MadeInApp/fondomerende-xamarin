@@ -9,14 +9,14 @@ namespace fondomerende.Main.Services
 {
     static class Services
     {
-        private static bool test = true;
+        public static bool test = true;
         
         private readonly static string protocollo = "http://";
         private readonly static string basePath = "fondomerende.madeinapp.net/api";
         private readonly static string authkey = "MEt085D5zxZXK7FES6qMHOrBbuzGPGwBlYzt1cwAJux";
         private static string token = UserManager.Instance.token;
         private readonly static string content = "application/x-www-form-urlencoded; param=value;charset=UTF-8";
-        private readonly static string basePathTest = "192.168.0.175:8888/fondomerende/public";
+        private readonly static string basePathTest = "192.168.0.175:8888/fondomerende/public/process-request.php";
         private readonly static string authkeyTest = "metticiquellochetipare";
 
         public static string GetAuthKey()
@@ -24,13 +24,13 @@ namespace fondomerende.Main.Services
             if (test) return authkeyTest;
             else return authkey;
         }
-        public static string Concatenazione()
+        public static string Concatenazione(string get = "")
         {
             if (test)
             {
-                return protocollo + basePathTest;
+                return protocollo + basePathTest + get;
             }
-            return protocollo + basePath;
+            return protocollo + basePath + get;
         }
         public static string LoginUrlRequest()
         {
