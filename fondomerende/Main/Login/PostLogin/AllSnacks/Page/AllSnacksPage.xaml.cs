@@ -148,7 +148,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                         Scale = 2.6,
                         BackgroundColor = Color.White,
                         InputTransparent = true,
-                        Source = "http://192.168.0.175:8888/fondomerende/public/getphoto.php?name=" + result.data.snacks[i].friendly_name,
+                        Source = "http://fondomerende.madeinapp.net/api/getphoto.php?name=" + result.data.snacks[i].friendly_name,
                     };
 
 
@@ -552,19 +552,28 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             if (ans == true)
             {
                 EatDTO response = await snackServiceManager.EatAsync((e.SelectedItem as SnackDataDTO).id, 1);
+                selectedItemBinding = (e.SelectedItem as SnackDataDTO).friendly_name;
+                MessagingCenter.Send(new EditUserViewCell()
+                {   
+
+                }, "RefreshUF");
+
+
+                MessagingCenter.Send(new SnackViewCell()
+                {
+
+                }, "Animate");
+            }
+            else
+            {
+                MessagingCenter.Send(new AllSnacksPage()
+                {
+
+                }, "RefreshGetSnacks");
             }
             selectedItemBinding = (e.SelectedItem as SnackDataDTO).friendly_name;
 
-            MessagingCenter.Send(new EditUserViewCell()
-            {
-
-            }, "RefreshUF");
-            
-
-            MessagingCenter.Send(new SnackViewCell()
-            {
-
-            }, "Animate");
+          
 
             ListView.SelectionMode = ListViewSelectionMode.Single;
         }
@@ -781,6 +790,17 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                         Vibration.Vibrate(40);
                         await Task.Delay(100);
                         Vibration.Vibrate(40);
+                    }
+                }
+                else
+                {
+                    if (Device.RuntimePlatform == Device.iOS)
+                    {
+                        DependencyService.Get<HapticFeedbackGen>().HapticFeedbackGenErrorAsync();
+                    }
+                    else
+                    {
+                        Vibration.Vibrate(80);
                     }
                 }
             }

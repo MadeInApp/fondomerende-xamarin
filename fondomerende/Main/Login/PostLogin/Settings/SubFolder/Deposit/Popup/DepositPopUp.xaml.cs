@@ -19,7 +19,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup
     {
         bool refresh = true;
         bool IsDone;
-        LineEntry entry;
+        LineEntry entryAndroid, entryiOs;
         string appoggio;
         private object inizialeLabel_iOS;
 
@@ -82,9 +82,19 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup
                 TextColor = Color.White,
             };
 
-            entry = new LineEntry
+            entryAndroid = new LineEntry
             {
                 Placeholder = "Quanto vuoi depositare?",
+                Keyboard = Keyboard.Numeric,
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                HorizontalTextAlignment = TextAlignment.Center,
+            };
+
+            entryiOs = new LineEntry
+            {
+                Placeholder = "Quanto vuoi depositare?",
+                HeightRequest = 35,
+                Margin = new Thickness(0, 15, 0, 0),
                 Keyboard = Keyboard.Numeric,
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 HorizontalTextAlignment = TextAlignment.Center,
@@ -141,43 +151,53 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup
                 case Device.Android:
                     stackFondoAndroid.Children.Add(fondomerende);
                     stackBody.Children.Add(stackFondoAndroid);
+                    entryAndroid.TextChanged += EntrataAndroid;
+                    stackBody.Children.Add(entryAndroid);
+                    buttonCancel.Clicked += Discard_Clicked;
+                    buttonConfirm.Clicked += Apply_Clicked;
+
+                    stackBody.Children.Add(stackBottoni);
                     break;
                 case Device.iOS:
+
+
                     stackFondoiOS.Children.Add(fondomerende);
                     stackBody.Children.Add(stackFondoiOS);
+                    entryiOs.TextChanged += EntrataiOs;
+                    stackBody.Children.Add(entryiOs);
+                    buttonCancel.Clicked += Discard_Clicked;
+                    buttonConfirm.Clicked += Apply_Clicked;
+
+                    stackBody.Children.Add(stackBottoni);
                     break;
             }
-            entry.TextChanged += Entrata;
-            buttonCancel.Clicked += Discard_Clicked;
-            buttonConfirm.Clicked += Apply_Clicked;
-            stackBody.Children.Add(entry);
-            stackBody.Children.Add(stackBottoni);
+            
             Round.Children.Add(stackBody);
 
             DepositPop.Content = Round;
         }
 
-        public void Entrata(object sender, TextChangedEventArgs e)
+        public void EntrataAndroid(object sender, TextChangedEventArgs e)
         {
             
             
 
-            if (entry.CursorPosition == 1 &&  IsDone)
+            if (entryAndroid.CursorPosition == 1 &&  IsDone)
             {
-                if (entry.Text.Substring(1, 1) == ",")
+                if (entryAndroid.Text.Substring(1, 1) == ",")
                 {
-                    entry.MaxLength = 4;
+                    entryAndroid.MaxLength = 4;
                     IsDone = false;
                 }
                 else
                 {
-                    entry.MaxLength = 5;
-                    entry.Text = entry.Text + ",";
+                    entryAndroid.MaxLength = 5;
+                    entryAndroid.Text = entryAndroid.Text + ",";
                     IsDone = false;
                 }
             }
             
-            if(entry.CursorPosition == 0 )
+            if(entryAndroid.CursorPosition == 0 )
             {
                 IsDone = true;
             }
@@ -185,6 +205,38 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup
             appoggio = e.NewTextValue;
            
         }
+
+
+        public void EntrataiOs(object sender, TextChangedEventArgs e)
+        {
+
+
+
+            if (entryiOs.CursorPosition == 1 && IsDone)
+            {
+                if (entryiOs.Text.Substring(1, 1) == ",")
+                {
+                    entryiOs.MaxLength = 4;
+                    IsDone = false;
+                }
+                else
+                {
+                    entryiOs.MaxLength = 5;
+                    entryiOs.Text = entryiOs.Text + ",";
+                    IsDone = false;
+                }
+            }
+
+            if (entryiOs.CursorPosition == 0)
+            {
+                IsDone = true;
+            }
+
+            appoggio = e.NewTextValue;
+
+        }
+
+
 
         protected override void OnAppearing()
         {

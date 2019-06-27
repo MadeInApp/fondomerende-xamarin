@@ -85,7 +85,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page
                             Scale = 3,
                             InputTransparent = true,
                             BackgroundColor = Color.White,
-                            Source = "http://192.168.0.175:8888/fondomerende/public/getphoto.php?name=" + result.data.snacks[i].friendly_name.Replace(" ", "&nbsp;")
+                            Source = "http://fondomerende.madeinapp.net/api/getphoto.php?name=" + result.data.snacks[i].friendly_name.Replace(" ", "&nbsp;")
                         };
 
                         var imageButtoniOS = new ImageButton
@@ -95,7 +95,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page
                             HorizontalOptions = LayoutOptions.CenterAndExpand,
                             VerticalOptions = LayoutOptions.CenterAndExpand,
                             Scale = 2.6,
-                            Source = "http://192.168.0.175:8888/fondomerende/public/getphoto.php?name=" + result.data.snacks[i].friendly_name.Replace(" ", "&nbsp;")
+                            Source = "http://fondomerende.madeinapp.net/api/getphoto.php?name=" + result.data.snacks[i].friendly_name.Replace(" ", "&nbsp;")
                         };
 
                         var StackLayout = new StackLayout

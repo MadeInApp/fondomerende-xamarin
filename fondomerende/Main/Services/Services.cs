@@ -10,8 +10,8 @@ namespace fondomerende.Main.Services
     static class Services
     {
         private readonly static string protocollo = "http://";
-        private readonly static string basePath = "192.168.0.175:8888/fondomerende/public/process-request.php";
-        private readonly static string authkey = "metticiquellochetipare";
+        private readonly static string basePath = "fondomerende.madeinapp.net/api";
+        private readonly static string authkey = "MEt085D5zxZXK7FES6qMHOrBbuzGPGwBlYzt1cwAJux";
         private static string token = UserManager.Instance.token;
         private readonly static string content = "application/x-www-form-urlencoded; param=value;charset=UTF-8";
 
@@ -24,7 +24,7 @@ namespace fondomerende.Main.Services
             string app = Concatenazione();
             Cookie authKey = new Cookie("auth-key", Services.authkey);
 
-            app.WithCookie("auth-key", "metticiquellochetipare")
+            app.WithCookie("auth-key", "MEt085D5zxZXK7FES6qMHOrBbuzGPGwBlYzt1cwAJux")
                .WithHeader("Content-Type", "application/x-www-form-urlencoded; param=value;charset=UTF-8");
             return app;
         }

@@ -23,6 +23,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnacks.View
         public SnackViewCell()
         {
             InitializeComponent();
+            
             MessagingCenter.Subscribe<SnackViewCell>(this, "Animate", async (arg) =>
             {
                 if (Nome.Text == AllSnacksPage.selectedItemBinding)
@@ -58,11 +59,17 @@ namespace fondomerende.Main.Login.PostLogin.AllSnacks.View
              pacMananimation.TranslateTo(((mainDisplayInfo*34)/100) , 0, 5000,Easing.Linear)
             );
             QtaRefresh();
-             await pacMananimation.TranslateTo(((mainDisplayInfo * 66) / 100), 0, 2500);
+            MessagingCenter.Send(new AllSnacksPage()
+            {
+
+            }, "RefreshGetSnacks");
+            await pacMananimation.TranslateTo(((mainDisplayInfo * 66) / 100), 0, 2500);
+            
         }
         async void QtaRefresh()
         {
           qta.Text = Convert.ToString(Int32.Parse(qta.Text) - 1);
         }
+        
     }
 }

@@ -19,14 +19,21 @@ namespace fondomerende.Main.Services.RESTServices
         [Preserve(AllMembers = true)]
         public async System.Threading.Tasks.Task<LoginDTO> LoginAsync(string username, string passwordToLogin, bool remember) //Servizio di Log In
         {
-            string data = "metticiquellochetipare";
+            string key = "MEt085D5zxZXK7FES6qMHOrBbuzGPGwBlYzt1cwAJux";
             LoginDTO result = null;
             try
             {
-                result = await "http://192.168.0.175:8888/fondomerende/public/process-request.php"
-                    .WithCookie("auth-key", data)
+				var data = new Dictionary<string, string>();
+				{
+					data.Add("command-name", "login");
+					data.Add("name", username);
+					data.Add("password", passwordToLogin);
+				}
+
+				result = await "http://fondomerende.madeinapp.net/api"
+                    .WithCookie("auth-key", key)
                     .WithHeader("Content-Type", "application/x-www-form-urlencoded; param=value;charset=UTF-8")
-                    .PostUrlEncodedAsync(new { commandName = "login", name = username, password = passwordToLogin })
+                    .PostUrlEncodedAsync(data)
                     .ReceiveJson<LoginDTO>();
 
                 if (result.response.success == true)

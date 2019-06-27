@@ -14,14 +14,14 @@ namespace fondomerende.Main.Services.RESTServices
         public async System.Threading.Tasks.Task<RegisterDTO> RegisterAsync(string username, string passwordToLogin, string friendly_name) //Servizio di Registrazione
         {
             var data = new Dictionary<string, string>();
-            data.Add("commandName", "add-user");
+            data.Add("command-name", "add-user");
             data.Add("name", username);
             data.Add("friendly-name", friendly_name);
             data.Add("password", passwordToLogin);
             try
             {
-                var result = await "http://192.168.0.175:8888/fondomerende/public/process-request.php"
-               .WithCookie("auth-key", "metticiquellochetipare")
+                var result = await "http://fondomerende.madeinapp.net/api"
+               .WithCookie("auth-key", "MEt085D5zxZXK7FES6qMHOrBbuzGPGwBlYzt1cwAJux")
                .WithHeader("Content-Type", "application/x-www-form-urlencoded; param=value;charset=UTF-8")
                .PostUrlEncodedAsync(data)
                .ReceiveJson<RegisterDTO>();
