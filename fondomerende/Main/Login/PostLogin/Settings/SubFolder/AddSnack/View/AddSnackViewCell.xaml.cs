@@ -18,6 +18,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.View
         {
             InitializeComponent();
             SetImageColorPreferences();
+            var LoadTint = Color.FromHex(Preferences.Get("Colore", "#000000"));
             MessagingCenter.Subscribe<AddSnackViewCell>(this, "Refresh", async (value) =>
             {
                 SetImageColorPreferences();
