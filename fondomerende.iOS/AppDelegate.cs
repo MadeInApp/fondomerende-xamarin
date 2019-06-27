@@ -18,7 +18,6 @@ namespace fondomerende.iOS
     {
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
-            KeyboardOverlapRenderer.Init();
             Rg.Plugins.Popup.Popup.Init();
             Forms.Init();
             AnimationViewRenderer.Init();
