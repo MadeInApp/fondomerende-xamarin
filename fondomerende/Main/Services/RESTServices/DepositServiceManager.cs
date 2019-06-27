@@ -18,7 +18,7 @@ namespace fondomerende.Main.Services.RESTServices
 				var data = new Dictionary<string, string>();
 				{
 					data.Add("command-name", "deposit");
-					data.Add("amount", DepAmount);
+					data.Add("amount", DepAmount.Replace(",","."));
 				}
 
                 var result = await Services.Concatenazione()
