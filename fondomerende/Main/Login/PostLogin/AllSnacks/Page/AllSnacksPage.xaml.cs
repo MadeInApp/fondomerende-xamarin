@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using fondomerende.Main.Login.PostLogin.AllSnacks.View;
+using fondomerende.Main.Login.PostLogin.Settings.SubFolder.About_and_UserSettings.View;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.View;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.View;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup;
@@ -10,6 +11,7 @@ using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.View;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.View;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.LogOut.View;
+using fondomerende.Main.Login.PostLogin.Settings.SubFolder.Settaggio.View;
 using fondomerende.Main.Services.Models;
 using fondomerende.Main.Services.RESTServices;
 using fondomerende.Main.Utilities;
@@ -105,6 +107,12 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
             }, "Refresh");
 
+            MessagingCenter.Send(new FondoFondoMerendeViewCell()
+            {
+
+            }, "Refresh");
+
+
             MessagingCenter.Send(new EditSnackViewCell()
             {
 
@@ -163,6 +171,21 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             }, "Refresh");
 
             MessagingCenter.Send(new BuySnackViewCell()
+            {
+
+            }, "Refresh");
+
+            MessagingCenter.Send(new FondoFondoMerendeViewCell()
+            {
+
+            }, "Refresh");
+
+            MessagingCenter.Send(new ChangeColorViewCell()
+            {
+
+            }, "Refresh");
+
+            MessagingCenter.Send(new EditUserInfoViewCell()
             {
 
             }, "Refresh");
