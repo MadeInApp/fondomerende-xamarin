@@ -19,7 +19,7 @@ namespace fondomerende.Main.Services.RESTServices
         [Preserve(AllMembers = true)]
         public async System.Threading.Tasks.Task<LoginDTO> LoginAsync(string username, string passwordToLogin, bool remember) //Servizio di Log In
         {
-            string key = "MEt085D5zxZXK7FES6qMHOrBbuzGPGwBlYzt1cwAJux";
+            string key = Services.GetAuthKey();
             LoginDTO result = null;
             try
             {
@@ -52,7 +52,7 @@ namespace fondomerende.Main.Services.RESTServices
             }
             catch (FlurlHttpException ex)
             {
-                await App.Current.MainPage.DisplayAlert("Fondo Merende",ex.InnerException.Message, "OK");
+                await App.Current.MainPage.DisplayAlert("Login",ex.InnerException.Message, "OK");
             }
             return result;
         }

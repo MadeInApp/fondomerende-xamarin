@@ -21,7 +21,7 @@ namespace fondomerende.Main.Services.RESTServices
             try
             {
                 var result = await Services.Concatenazione()
-               .WithCookie("auth-key", "MEt085D5zxZXK7FES6qMHOrBbuzGPGwBlYzt1cwAJux")
+               .WithCookie("auth-key", Services.GetAuthKey())
                .WithHeader("Content-Type", "application/x-www-form-urlencoded; param=value;charset=UTF-8")
                .PostUrlEncodedAsync(data)
                .ReceiveJson<RegisterDTO>();

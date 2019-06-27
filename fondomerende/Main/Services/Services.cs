@@ -16,7 +16,7 @@ namespace fondomerende.Main.Services
         private readonly static string authkey = "MEt085D5zxZXK7FES6qMHOrBbuzGPGwBlYzt1cwAJux";
         private static string token = UserManager.Instance.token;
         private readonly static string content = "application/x-www-form-urlencoded; param=value;charset=UTF-8";
-        private readonly static string basePathTest = "192.168.0.175:8888";
+        private readonly static string basePathTest = "192.168.0.175:8888/fondomerende/public";
         private readonly static string authkeyTest = "metticiquellochetipare";
 
         public static string GetAuthKey()

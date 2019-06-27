@@ -19,7 +19,7 @@ namespace fondomerende.Main.Services.RESTServices
 					data.Add("command-name", "logout");
 				}
 				var result = await Services.Concatenazione()
-                               .WithCookie("auth-key", "MEt085D5zxZXK7FES6qMHOrBbuzGPGwBlYzt1cwAJux")
+                               .WithCookie("auth-key", Services.GetAuthKey())
                                .WithCookie("token", token)
                                .PostUrlEncodedAsync(data)
                                .ReceiveJson<LogoutDTO>();

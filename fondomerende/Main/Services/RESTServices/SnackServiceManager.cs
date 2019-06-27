@@ -18,7 +18,7 @@ namespace fondomerende.Main.Services.RESTServices
             try
             {
                 var result = await urlString
-                                .WithCookie("auth-key", "MEt085D5zxZXK7FES6qMHOrBbuzGPGwBlYzt1cwAJux")
+                                .WithCookie("auth-key", Services.GetAuthKey())
                                 .WithCookie("user-token", UserManager.Instance.token)
                                 .GetJsonAsync<SnackDTO>();
                 return result;
@@ -41,7 +41,7 @@ namespace fondomerende.Main.Services.RESTServices
             try
             {
                 var result = await urlString
-                                .WithCookie("auth-key", "MEt085D5zxZXK7FES6qMHOrBbuzGPGwBlYzt1cwAJux")
+                                .WithCookie("auth-key", Services.GetAuthKey())
                                 .WithCookie("user-token", UserManager.Instance.token)
                                 .GetJsonAsync<ToBuySnackDTO>();
                 return result;
@@ -64,7 +64,7 @@ namespace fondomerende.Main.Services.RESTServices
             try
             {
                 var result = await urlString
-                                .WithCookie("auth-key", "MEt085D5zxZXK7FES6qMHOrBbuzGPGwBlYzt1cwAJux")
+                                .WithCookie("auth-key", Services.GetAuthKey())
                                 .WithCookie("user-token", UserManager.Instance.token)
                                 .GetJsonAsync<AllSnacksDTO>();
                 return result;
@@ -88,7 +88,7 @@ namespace fondomerende.Main.Services.RESTServices
             try
             {
                 var result = await urlString
-                                    .WithCookie("auth-key", "MEt085D5zxZXK7FES6qMHOrBbuzGPGwBlYzt1cwAJux")
+                                    .WithCookie("auth-key", Services.GetAuthKey())
                                     .WithCookie("user-token", UserManager.Instance.token)
                                     .GetJsonAsync<GetSnackDTO>();
                 return result;
@@ -118,7 +118,7 @@ namespace fondomerende.Main.Services.RESTServices
             try
             {
                 var result = await Services.Concatenazione()
-                                    .WithCookie("auth-key", "MEt085D5zxZXK7FES6qMHOrBbuzGPGwBlYzt1cwAJux")
+                                    .WithCookie("auth-key", Services.GetAuthKey())
                                     .WithCookie("user-token", UserManager.Instance.token)
                                     .PostUrlEncodedAsync(data)
                                     .ReceiveJson<AddSnackDTO>();
@@ -154,7 +154,7 @@ namespace fondomerende.Main.Services.RESTServices
 
 
 				var result = await Services.Concatenazione()
-                .WithCookie("auth-key", "MEt085D5zxZXK7FES6qMHOrBbuzGPGwBlYzt1cwAJux")
+                .WithCookie("auth-key", Services.GetAuthKey())
                 .WithCookie("user-token", UserManager.Instance.token)
                 .PostUrlEncodedAsync(data)
                 .ReceiveJson<EatDTO>();
@@ -186,7 +186,7 @@ namespace fondomerende.Main.Services.RESTServices
             try
             {
                 var result = await Services.Concatenazione()
-                .WithCookie("auth-key", "MEt085D5zxZXK7FES6qMHOrBbuzGPGwBlYzt1cwAJux")
+                .WithCookie("auth-key", Services.GetAuthKey())
                 .WithCookie("user-token", UserManager.Instance.token)
                 .PostUrlEncodedAsync(data)
                 .ReceiveJson<EditSnackDTO>();
@@ -216,7 +216,7 @@ namespace fondomerende.Main.Services.RESTServices
 				}
 
                 var result = await Services.Concatenazione()
-                .WithCookie("auth-key", "MEt085D5zxZXK7FES6qMHOrBbuzGPGwBlYzt1cwAJux")
+                .WithCookie("auth-key", Services.GetAuthKey())
                 .WithCookie("user-token", UserManager.Instance.token)
                 .PostUrlEncodedAsync(data)
                 .ReceiveJson<EatDTO>(); //ri uso il DTO di Eat perchè sono Lazyaf
@@ -246,7 +246,7 @@ namespace fondomerende.Main.Services.RESTServices
             try
             {
                 var result = await Services.Concatenazione()
-                .WithCookie("auth-key", "MEt085D5zxZXK7FES6qMHOrBbuzGPGwBlYzt1cwAJux")
+                .WithCookie("auth-key", Services.GetAuthKey())
                 .WithCookie("user-token", UserManager.Instance.token)
                 .PostUrlEncodedAsync(data)
                 .ReceiveJson<EatDTO>(); //ri uso il DTO di Eat perchè sono Lazyaf

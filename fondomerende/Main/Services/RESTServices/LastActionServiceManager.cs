@@ -14,7 +14,7 @@ namespace fondomerende.Main.Services.RESTServices
             try
             {
                 var response = await urlString
-                                    .WithCookie("auth-key", "MEt085D5zxZXK7FES6qMHOrBbuzGPGwBlYzt1cwAJux")
+                                    .WithCookie("auth-key", Services.GetAuthKey())
                                     .WithCookie("user-token", Manager.UserManager.Instance.token)
                                     .GetJsonAsync<LastActionDTO>();
                 return response;
