@@ -185,7 +185,7 @@
                                     HorizontalOptions="CenterAndExpand"
                                     VerticalOptions="CenterAndExpand"
                                     IsVisible="False"
-                                    >
+                                    x:Name="EmptyStackFav">
 
                                 </StackLayout>
                             </StackLayout>

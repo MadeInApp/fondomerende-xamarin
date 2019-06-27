@@ -40,8 +40,11 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
         {
             numerotocchi.Add("numero", 0);
             InitializeComponent();
+
+
             GetSnacksMethod(false, false);
-            GetSnacksMethod(false, true);
+            CreateFavouritesLabel();
+            refreshFavAsync();
 
             previousFavourite = Preferences.Get("Favourites", "");
 
@@ -316,6 +319,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
         {
             if (previousFavourite != Preferences.Get("Favourites", ""))
             {
+                EmptyStackFav.IsVisible = false;
                 previousFavourite = Preferences.Get("Favourites", "");
                 Column0Fav.Children.Clear();
                 Column1Fav.Children.Clear();
@@ -325,31 +329,28 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
             if (Column0Fav.Children.Count == 0 && Column1Fav.Children.Count == 0)
             {
-
-                var testo = new FormattedString();
-
-                testo.Spans.Add(new Span { Text = "Aggiungi nuovi ", TextColor = Color.Black });
-                testo.Spans.Add(new Span { Text = "Preferiti ", TextColor = Color.FromHex("#ffb121") });
-
-                var label = new MR.Gestures.Label
-                {
-                    HorizontalOptions = LayoutOptions.CenterAndExpand,
-                    VerticalOptions = LayoutOptions.CenterAndExpand,
-                    FontSize = 20,
-                    FormattedText = testo
-                };
-
-                var stack = new MR.Gestures.StackLayout
-                {
-                    HorizontalOptions = LayoutOptions.CenterAndExpand,
-                    VerticalOptions = LayoutOptions.CenterAndExpand,
-                    BackgroundColor = Color.Transparent,
-                };
-
-                stack.Children.Add(label);
-                ScrollFavourites.Content = label;
+                EmptyStackFav.IsVisible = true;
             }
 
+        }
+
+        public void CreateFavouritesLabel()
+        {
+            var testo = new FormattedString();
+
+            testo.Spans.Add(new Span { Text = "Aggiungi nuovi ", TextColor = Color.Black });
+            testo.Spans.Add(new Span { Text = "Preferiti ", TextColor = Color.FromHex("#ffb121") });
+
+            var label = new MR.Gestures.Label
+            {
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                VerticalOptions = LayoutOptions.CenterAndExpand,
+                FontSize = 20,
+                FormattedText = testo
+            };
+
+
+            EmptyStackFav.Children.Add(label);
         }
 
         public async Task refreshSnackAsync()

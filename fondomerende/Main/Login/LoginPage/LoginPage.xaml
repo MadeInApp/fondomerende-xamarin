@@ -156,7 +156,8 @@
 
 
             <!--Parte Register-->
-            <ScrollView InputTransparent="true">
+            <ScrollView 
+                InputTransparent="true">
                 <StackLayout
                   Grid.Row="0"
                   Grid.Column="0"
