@@ -523,19 +523,20 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             if (ans == true)
             {
                 EatDTO response = await snackServiceManager.EatAsync((e.SelectedItem as SnackDataDTO).id, 1);
+                MessagingCenter.Send(new EditUserViewCell()
+                {
+
+                }, "RefreshUF");
+
+
+                MessagingCenter.Send(new SnackViewCell()
+                {
+
+                }, "Animate");
             }
             selectedItemBinding = (e.SelectedItem as SnackDataDTO).friendly_name;
 
-            MessagingCenter.Send(new EditUserViewCell()
-            {
-
-            }, "RefreshUF");
-            
-
-            MessagingCenter.Send(new SnackViewCell()
-            {
-
-            }, "Animate");
+          
 
             ListView.SelectionMode = ListViewSelectionMode.Single;
         }
