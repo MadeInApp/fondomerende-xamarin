@@ -136,10 +136,10 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
             lineiOs = new LineEntry
             {
                 Placeholder = "Quanti snack vuoi acquistare?",
-                WidthRequest = 220,
+                WidthRequest = 250,
                 FontSize = 18,
                 HeightRequest = 35,
-                Margin = new Thickness(0,15,0,0),
+                Margin = new Thickness(0,10,0,0),
                 Keyboard = Keyboard.Numeric,
                 VerticalOptions = LayoutOptions.StartAndExpand,
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
@@ -151,7 +151,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
             {
                 Placeholder = "Inserire il prezzo",
                 Keyboard = Keyboard.Numeric,
-                WidthRequest = 220,
+                WidthRequest = 250,
                 FontSize = 18,
                 HeightRequest = 35,
                 VerticalOptions = LayoutOptions.StartAndExpand,
@@ -164,7 +164,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
             {
                 Placeholder = "Inserire la scadenza",
                 Keyboard = Keyboard.Numeric,
-                WidthRequest = 220,
+                WidthRequest = 250,
                 FontSize = 18,
                 HeightRequest = 35,
                 VerticalOptions = LayoutOptions.StartAndExpand,
@@ -180,7 +180,6 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
             stackBody = new StackLayout  //stack principale dove è contenuto l'interno di tutto (tranne round che stonda)
 
             {
-                Spacing=10,
                 HeightRequest = Altezza,
                 WidthRequest = Larghezza,
                 BackgroundColor = Color.White,
