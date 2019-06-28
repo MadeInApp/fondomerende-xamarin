@@ -30,7 +30,8 @@ namespace fondomerende.Main.Services.RESTServices
             }
             catch (FlurlHttpException ex)
             {
-                await App.Current.MainPage.DisplayAlert("Get Snacks", ex.InnerException.Message, "OK");
+                System.Console.WriteLine(ex.InnerException);
+                //  await App.Current.MainPage.DisplayAlert("Get Snacks", ex.InnerException.Message, "OK");
             }
             return null;
         }
