@@ -405,7 +405,6 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
         {
             if (previousFavourite != Preferences.Get("Favourites", ""))
             {
-                previousFavourite = Preferences.Get("Favourites", "");
                 Column0.Children.Clear();
                 Column1.Children.Clear();
                 GetSnacksMethod(false, false);
@@ -642,7 +641,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             if (swapped)
             {
                 switchStar = false;
-                ListToGrid.BackgroundColor = Color.OrangeRed;
+                ListToGrid.BackgroundColor = Color.FromHex("#f29e17");
                 ScrollSnackView.IsVisible = false;
                 ListView.IsVisible = true;
                 EmptyStackFav.FadeTo(0, 0);
@@ -832,7 +831,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                                 {
                                     ap.IsVisible = true;
                                     
-                                    ap.ScaleTo(1);
+                                    ap.ScaleTo(1.2);
                                     ap.FadeTo(1);
                                     ap.Speed = 9.5f;
                                     ap.Play();

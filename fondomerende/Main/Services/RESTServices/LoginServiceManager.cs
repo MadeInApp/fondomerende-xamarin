@@ -29,7 +29,7 @@ namespace fondomerende.Main.Services.RESTServices
 					data.Add("name", username);
 					data.Add("password", passwordToLogin);
 				}
-
+                   
                 result = await Services.Concatenazione()
                     .WithCookie("auth-key", key)
                     .WithHeader("Content-Type", "application/x-www-form-urlencoded; param=value;charset=UTF-8")
