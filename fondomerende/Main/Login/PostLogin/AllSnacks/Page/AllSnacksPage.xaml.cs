@@ -327,13 +327,8 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
                     app.Children.Add(label);
 
-
-                    app.LongPressed -= Stack_LongPressed;
-                    app.LongPressing -= Stack_LongPressing;
                     app.LongPressed += Stack_LongPressed;
                     app.LongPressing += Stack_LongPressing;
-
-                    app.DoubleTapped -= Tgr2_Tapped;
                     app.DoubleTapped += Tgr2_Tapped;
 
 
@@ -749,6 +744,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
         private void Stack_LongPressed(object sender, LongPressEventArgs e)
         {
+   
             SnackDataDTO index = null;
             foreach (var item in (sender as MR.Gestures.StackLayout).Children)
             {
@@ -776,7 +772,24 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
                                 if (ap.Animation == "LoadingEating.json")
                                 {
-                                    ap.Speed = -13f;
+
+                                    switch (Device.RuntimePlatform)                                                    
+                                    {                                                                                                                      
+                                                                                                                       
+                                        case Device.Android:                                                           
+                                            ap.Speed = -13f;   
+                                            break;                                                              
+                                                                                                                        
+                                        case Device.iOS:
+                                            ap.Pause();
+                                            ap.ScaleTo(0, 250);
+                                            ap.FadeTo(0, 150);
+                                            ap.Progress = 0;
+
+                                            break;                                                                     
+                                    }                                                                                  
+
+                                    
                                 }
                             }
                         }
@@ -818,15 +831,13 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                                 if (ap.Animation == "LoadingEating.json")
                                 {
                                     ap.IsVisible = true;
+                                    
+                                    ap.ScaleTo(1);
                                     ap.FadeTo(1);
                                     ap.Speed = 9.5f;
                                     ap.Play();
                                     
                                     ap.OnFinish += async (s, d) =>
-                                    {
-                                        await Stack_LongFinish(ap, index);
-                                    };
-                                    ap.OnFinish -= async (s, d) =>
                                     {
                                         await Stack_LongFinish(ap, index);
                                     };

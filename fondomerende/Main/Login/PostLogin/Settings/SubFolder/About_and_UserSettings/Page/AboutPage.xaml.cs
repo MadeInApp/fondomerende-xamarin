@@ -27,7 +27,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.About_and_UserSet
         {
 
             InitializeComponent();
-            
+            PaoloAbilita.On = Preferences.Get("Paolo", false);
             Pts.On = Services.Services.test;
             _colorPickerPopup = new ColorPickerPopup();
             _colorPickerPopup.ColorChanged += ColorPickerPopupOnColorChanged;

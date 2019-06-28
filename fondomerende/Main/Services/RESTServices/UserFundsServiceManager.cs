@@ -31,8 +31,9 @@ namespace fondomerende.Main.Services.RESTServices
             {
                 if(ex.InnerException.Message != "Collection was modified; enumeration operation may not execute.")
                 {
-                    await App.Current.MainPage.DisplayAlert("Get User Funds", ex.InnerException.Message, "OK");
+                    
                 }
+
             }
             return null;
         }
