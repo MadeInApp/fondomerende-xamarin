@@ -8,7 +8,7 @@
           xmlns:controls="clr-namespace:Plugin.CrossPlatformTintedImage.Abstractions;assembly=Plugin.CrossPlatformTintedImage.Abstractions"
              x:Class="fondomerende.Main.Login.PostLogin.Settings.SubFolder.Settaggio.View.ChangeColorViewCell">
     <ViewCell.View>
-        <StackLayout Opacity="{OnPlatform iOS=0.5}"
+        <StackLayout Opacity="{OnPlatform iOS=0.5,Android=1}"
             Orientation="Horizontal" >
             <controls:TintedImage
                 x:Name="SettingIcon" 
