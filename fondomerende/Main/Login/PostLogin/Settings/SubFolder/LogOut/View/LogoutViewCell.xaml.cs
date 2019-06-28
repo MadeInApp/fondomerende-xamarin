@@ -42,7 +42,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.LogOut.View
                 if (response != null)
                 {
 
-                    App.Current.MainPage = new NavigationPage(new LoginPage());
+                    App.Current.MainPage = new LoginPage();
                     Preferences.Clear();
                 }
                 else

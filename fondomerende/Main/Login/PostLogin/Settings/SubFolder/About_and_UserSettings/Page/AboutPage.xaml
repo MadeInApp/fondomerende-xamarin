@@ -49,17 +49,19 @@
                 </TableSection>
 
                 <TableSection 
-                    Title="Settings"
+                    Title="App"
                     TextColor="{OnPlatform Android= #6495ed}"
                     >
-                    <local1:ChangeColorViewCell
+                    <local1:ChangeColorViewCell IsEnabled="false"
                         Tapped="ChangeColorViewCell_Tapped"
                         x:Name="ChangeColorViewCell">
-                        
                     </local1:ChangeColorViewCell>
+                    <SwitchCell Text="Abilita Pac-Man" OnColor="Red" On="false" IsEnabled="{OnPlatform iOS=false}" x:Name="Pm" OnChanged="OnPmChanged"/>
+                    <SwitchCell Text="Pioggia di Muffins" OnColor="#CE8636" On="false" IsEnabled="true" x:Name="PaoloAbilita" OnChanged="OnPaoloChanged"/>
+                    <SwitchCell Text="Passa al Server di test" OnColor="Red" On="false" OnChanged="Pts_Changed" x:Name="Pts"/>
                 </TableSection>
-
-                <TableSection Title="Informazioni App" TextColor="{OnPlatform Android= #6495ed}">
+                <TableSection Title="Informazioni" TextColor="{OnPlatform Android= #6495ed}">
+                 <TextCell DetailColor="Transparent" Text="'Sviluppata' da Giulio, Stefano e Daniel" x:Name="Developed" IsEnabled="False"/>
                     <TextCell DetailColor="Transparent" Text="Version" x:Name="Version" IsEnabled="False"/>
                 </TableSection>
             </TableRoot>

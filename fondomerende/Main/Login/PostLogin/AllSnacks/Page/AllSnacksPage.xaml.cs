@@ -28,8 +28,9 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
     public partial class AllSnacksPage
     {
         public static double priceBinding;
+        bool paoloBool = Preferences.Get("Paolo",false);
         int eatLoading = 0;
-
+        public static bool EnablePacman;
         public static string selectedItemBinding { get; set; }
         SnackServiceManager snackServiceManager = new SnackServiceManager();
         List<SnackDataDTO> AllSnacks = new List<SnackDataDTO>();
@@ -59,9 +60,16 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
             Fade();
             animation();
+
+            MessagingCenter.Subscribe<AllSnacksPage>(this, "PaoloStart", async (arg) =>
+            {
+                paoloBool = Preferences.Get("Paolo", false);
+                animation();
+            });
+
             MessagingCenter.Subscribe<AllSnacksPage>(this, "RefreshGetSnacks", async (arg) =>
             {
-                GetSnacksMethod(false, false);
+                GetSnacksMethod(true, false);
             });
 
 
@@ -153,42 +161,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
         public async Task GetSnacksMethod(bool Loaded, bool favourites)     //ottiene la lista degli snack e la applica alla ListView
         {
-            MessagingCenter.Send(new ChronologyViewCell()
-            {
-
-            }, "Refresh");
-
-            MessagingCenter.Send(new EditSnackViewCell()
-            {
-
-            }, "Refresh");
-
-            MessagingCenter.Send(new AddSnackViewCell()
-            {
-
-            }, "Refresh");
-
-            MessagingCenter.Send(new BuySnackViewCell()
-            {
-
-            }, "Refresh");
-
-            MessagingCenter.Send(new ChangeColorViewCell()
-            {
-
-            }, "Refresh");
-
-            MessagingCenter.Send(new EditUserInfoViewCell()
-            {
-
-            }, "Refresh");
-
-            MessagingCenter.Send(new LogoutViewCell()
-            {
-
-            }, "Refresh");
-
-
+          
             result = await snackServiceManager.GetSnacksAsync();
             SnackFavarray = new object[result.data.snacks.Count];
             ListView.ItemsSource = result.data.snacks;
@@ -319,7 +292,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                         Orientation = StackOrientation.Vertical,
                         IsVisible = visibilità,
                     };
-
+                    starAnimation.OnFinish -= StopAnimation;
                     starAnimation.OnFinish += StopAnimation;
 
                     StackLayout.Children.Add(imageButton);
@@ -355,10 +328,12 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                     app.Children.Add(label);
 
 
+                    app.LongPressed -= Stack_LongPressed;
+                    app.LongPressing -= Stack_LongPressing;
                     app.LongPressed += Stack_LongPressed;
                     app.LongPressing += Stack_LongPressing;
 
-
+                    app.DoubleTapped -= Tgr2_Tapped;
                     app.DoubleTapped += Tgr2_Tapped;
 
 
@@ -635,29 +610,29 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             {
                 EatDTO response = await snackServiceManager.EatAsync((e.SelectedItem as SnackDataDTO).id, 1);
                 selectedItemBinding = (e.SelectedItem as SnackDataDTO).friendly_name;
+                if(EnablePacman)
+                {
+                    MessagingCenter.Send(new SnackViewCell()
+                    {
+
+                    }, "Animate");
+                }
+                else
+                {
+                    GetSnacksMethod(true,false) ;
+                }
                 MessagingCenter.Send(new EditUserViewCell()
                 {   
 
                 }, "RefreshUF");
 
 
-                MessagingCenter.Send(new SnackViewCell()
-                {
-
-                }, "Animate");
+              
             }
             else
             {
-                MessagingCenter.Send(new AllSnacksPage()
-                {
-
-                }, "RefreshGetSnacks");
+                GetSnacksMethod(true, false);
             }
-            selectedItemBinding = (e.SelectedItem as SnackDataDTO).friendly_name;
-
-          
-
-            ListView.SelectionMode = ListViewSelectionMode.Single;
         }
 
         private async void Fade()
@@ -702,21 +677,28 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             var mainDisplayWidth = DeviceDisplay.MainDisplayInfo.Width;
             var mainDisplayHeight = DeviceDisplay.MainDisplayInfo.Height;
             int numeroMuffin = Convert.ToInt32(mainDisplayWidth) / 256;
-
-            for (int i = 0; i < numeroMuffin; i++)
+            if(paoloBool)
             {
-
-                var paolo = new MR.Gestures.Image   //il cupcake paolo
+                Paolo.Opacity = 100;
+                for (int i = 0; i < numeroMuffin; i++)
                 {
-                    VerticalOptions = LayoutOptions.StartAndExpand,
-                    Source = ImageSource.FromResource("fondomerende.image.cup_cake_128x128.png"),
-                    Opacity = 0.2,
-                    Scale = 1,
-                };
 
-                Paolo.Children.Add(paolo);
+                    var paolo = new MR.Gestures.Image   //il cupcake paolo
+                    {
+                        VerticalOptions = LayoutOptions.StartAndExpand,
+                        Source = ImageSource.FromResource("fondomerende.image.cup_cake_128x128.png"),
+                        Opacity = 0.2,
+                        Scale = 1,
+                    };
 
-                Anima(paolo);
+                        Paolo.Children.Add(paolo);
+                        Anima(paolo);
+               
+                }
+            }
+            else
+            {
+                Paolo.Opacity = 0;
             }
 
         }
@@ -839,7 +821,12 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                                     ap.FadeTo(1);
                                     ap.Speed = 9.5f;
                                     ap.Play();
+                                    
                                     ap.OnFinish += async (s, d) =>
+                                    {
+                                        await Stack_LongFinish(ap, index);
+                                    };
+                                    ap.OnFinish -= async (s, d) =>
                                     {
                                         await Stack_LongFinish(ap, index);
                                     };
@@ -853,11 +840,21 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
         private async Task Stack_LongFinish(object sender, SnackDataDTO index)
         {
+            EatDTO response = null;
             eatLoading = -1;
             if ((sender as AnimationView).Speed > 0)
             {
+                (sender as AnimationView).Speed = 0;
                 (sender as AnimationView).FadeTo(0, 300);
-                EatDTO response = await snackServiceManager.EatAsync(index.id, 1);
+                try
+                {
+                    response = await snackServiceManager.EatAsync(index.id, 1);
+                }
+                catch(Exception e)
+                {
+                    await DisplayAlert("Fondo Merende", "Lo Snack è esuarito", "OK");
+                }
+                
                 // refresh 
                 MessagingCenter.Send(new EditUserViewCell()
                 {
@@ -866,17 +863,22 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
                 if (response.response.success == true)
                 {
+                    
+
                     if (Device.RuntimePlatform == Device.iOS)
                     {
                         DependencyService.Get<HapticFeedbackGen>().HapticFeedbackGenSuccessAsync();
                     }
+                    
                     else
                     {
                         Vibration.Vibrate(40);
                         await Task.Delay(100);
                         Vibration.Vibrate(40);
                     }
+      
                 }
+                
                 else
                 {
                     if (Device.RuntimePlatform == Device.iOS)

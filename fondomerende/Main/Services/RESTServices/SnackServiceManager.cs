@@ -30,7 +30,8 @@ namespace fondomerende.Main.Services.RESTServices
             }
             catch (FlurlHttpException ex)
             {
-                await App.Current.MainPage.DisplayAlert("Get Snacks", ex.InnerException.Message, "OK");
+                System.Console.WriteLine(ex.InnerException);
+                //  await App.Current.MainPage.DisplayAlert("Get Snacks", ex.InnerException.Message, "OK");
             }
             return null;
         }
@@ -168,6 +169,14 @@ namespace fondomerende.Main.Services.RESTServices
             catch (FlurlHttpException ex)
             {
                 await App.Current.MainPage.DisplayAlert("Eat", ex.InnerException.Message, "OK");
+            }
+            catch(System.InvalidOperationException ex)
+            {
+                if(ex.Message == "System.InvalidOperationException: Sequence contains no matching element occurred")
+                {
+                    await App.Current.MainPage.DisplayAlert("Fondo Merende", "Snack Esauriti", "OK");
+                }
+               
             }
             return null;
         }

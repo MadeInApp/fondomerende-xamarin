@@ -230,7 +230,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.Popup
 
         public void EntrataPrezzo(object sender, TextChangedEventArgs e)
         {
-            if (PrezzoSnack.CursorPosition == 1 && IsDone)
+            if (PrezzoSnack.CursorPosition == 1 && IsDone && PrezzoSnack.Text != "")
             {
                 if (PrezzoSnack.Text.Substring(1, 1) == ",")
                 {
@@ -386,7 +386,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.Popup
                         }
                         else
                         {
-                            await DisplayAlert("Fondo Merende", "Snack già presente", "Ok");
+                            await DisplayAlert("Fondo Merende", result.response.message, "Ok");
                         }
                     }
                     else

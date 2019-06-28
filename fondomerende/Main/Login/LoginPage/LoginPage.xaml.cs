@@ -30,6 +30,11 @@ namespace fondomerende.Main.Login.LoginPages
         public LoginPage()
         {
             InitializeComponent();
+            if(Services.Services.test)
+            {
+                usernameEntry.Text = "Giulio1234";
+                passwordEntry.Text = "1234";
+            }
             NavigationPage.SetHasNavigationBar(this, false);
             Donut_Background();
             LoginFade();
