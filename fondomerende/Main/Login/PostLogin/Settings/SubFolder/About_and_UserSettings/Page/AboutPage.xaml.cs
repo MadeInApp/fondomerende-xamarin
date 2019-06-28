@@ -27,6 +27,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.About_and_UserSet
         {
 
             InitializeComponent();
+            
             Pts.On = Services.Services.test;
             _colorPickerPopup = new ColorPickerPopup();
             _colorPickerPopup.ColorChanged += ColorPickerPopupOnColorChanged;
@@ -90,6 +91,27 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.About_and_UserSet
         private async void OnPmChanged(object sender, EventArgs e)
         {
             AllSnacksPage.EnablePacman = Pm.On;
+        }
+
+        private void OnPaoloChanged(object sender, EventArgs e)
+        {
+            if(PaoloAbilita.On)
+            {
+                Preferences.Set("Paolo", true);
+                 MessagingCenter.Send(new AllSnacksPage()
+                {
+
+                }, "PaoloStart");
+
+            }
+            else
+            {
+                Preferences.Set("Paolo", false);
+                MessagingCenter.Send(new AllSnacksPage()
+                {
+
+                }, "PaoloStart");
+            }
         }
     }
 }
