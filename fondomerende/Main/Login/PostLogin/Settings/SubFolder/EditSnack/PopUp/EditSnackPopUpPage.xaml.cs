@@ -16,7 +16,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.PopUp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class EditSnackPopUpPage : Rg.Plugins.Popup.Pages.PopupPage
     {
-        bool IsDone;
+        bool IsDone = false;
         ImageButton immagine;
         LineEntry NomeSnack;
         LineEntry PrezzoSnack;
@@ -251,25 +251,26 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.PopUp
 
         public void EntrataPrezzo(object sender, TextChangedEventArgs e)
         {
-            if(PrezzoSnack.CursorPosition == 1 && IsDone)
-            {
-                if (PrezzoSnack.Text.Substring(1, 1) == ",")
+                if (PrezzoSnack.CursorPosition == 1 && IsDone == true)
                 {
-                    PrezzoSnack.MaxLength = 4;
-                    IsDone = false;
+                    if (PrezzoSnack.Text.Substring(1, 1) == ",")
+                    {
+                        PrezzoSnack.MaxLength = 4;
+                        IsDone = false;
+                    }
+                    else
+                    {
+                        PrezzoSnack.MaxLength = 5;
+                        PrezzoSnack.Text = PrezzoSnack.Text + ",";
+                        IsDone = false;
+                    }
                 }
-                else
+                if (PrezzoSnack.CursorPosition == 2) IsDone = false;
+                if (PrezzoSnack.CursorPosition == 0)
                 {
-                    PrezzoSnack.MaxLength = 5;
-                    PrezzoSnack.Text = PrezzoSnack.Text + ",";
-                    IsDone = false;
+                    IsDone = true;
                 }
-            }
-
-            if (PrezzoSnack.CursorPosition == 0)
-            {
-                IsDone = true;
-            }
+            
         }
 
         public void EntrataScadenzaInGiorni(object sender, TextChangedEventArgs e)
