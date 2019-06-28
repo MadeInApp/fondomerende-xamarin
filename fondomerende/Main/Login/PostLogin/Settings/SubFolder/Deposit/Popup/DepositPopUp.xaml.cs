@@ -228,8 +228,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup
                     IsDone = false;
                 }
             }
-
-            if (entryiOs.CursorPosition == 0)
+            else
             {
                 IsDone = true;
             }

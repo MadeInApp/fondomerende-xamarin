@@ -245,7 +245,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.Popup
                 }
             }
 
-            if (PrezzoSnack.CursorPosition == 0)
+            else (PrezzoSnack.CursorPosition == 0)
             {
                 IsDone = true;
             }
