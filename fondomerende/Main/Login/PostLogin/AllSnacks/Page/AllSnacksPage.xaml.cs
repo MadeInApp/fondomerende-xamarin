@@ -36,7 +36,9 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
         SnackDTO result;
         Dictionary<string, int> numerotocchi = new Dictionary<string, int>();
         bool switchStar = false;
+        bool swapped = false;
         AnimationView Swap;
+        bool miserve = false;
 
         string previousFavourite;
 
@@ -50,8 +52,8 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
 
             GetSnacksMethod(false, false);
+            GetSnacksMethod(false, true);
             CreateFavouritesLabel();
-            refreshFavAsync();
 
             previousFavourite = Preferences.Get("Favourites", "");
 
@@ -69,11 +71,11 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             {                                                                                  // \\                                    
                                                                                                //  \\ Se il dispositivo è Android non mostra la Top Bar della Navigation Page,
                 case Device.Android:                                                           //   \\   Se è iOS invece si (perchè senza è una schifezza)
-                    NavigationPage.SetHasNavigationBar(this, false);                    ///     //    \\         \                
-                    break;                                                               ////// ////// ///////////|
-                                                                                        ///     //     //        /       
-                default:                                                                       //    //
-                    NavigationPage.SetHasNavigationBar(this, true);                            //   //
+                    NavigationPage.SetHasNavigationBar(this, false);                    //    //    \\         \                
+                    break;                                                               //////////////////////|
+                                                                                        //     //    //         /       
+                default:                                                                       //   //
+                    NavigationPage.SetHasNavigationBar(this, true);                            //  //
                     break;                                                                     // //
             }                                                                                  ////
 
@@ -112,7 +114,6 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
             }, "Refresh");
 
-
             MessagingCenter.Send(new EditSnackViewCell()
             {
 
@@ -149,9 +150,6 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             Wallet.Play();
             Wallet.Speed = 1f;
         }
-
-
-
 
         public async Task GetSnacksMethod(bool Loaded, bool favourites)     //ottiene la lista degli snack e la applica alla ListView
         {
@@ -386,28 +384,31 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             }
         }
 
-
-
-
-        public async Task refreshFavAsync()
+        public async Task refreshFavAsync(bool app)
         {
             if (previousFavourite != Preferences.Get("Favourites", ""))
             {
-                ScrollFavourites.IsVisible = true;
-                EmptyStackFav.IsVisible = false;
+                EmptyStackFav.FadeTo(0, 0); // nasconde la scritta aggiungi snack
                 previousFavourite = Preferences.Get("Favourites", "");
+                ScrollFavourites.IsVisible = true;
                 Column0Fav.Children.Clear();
                 Column1Fav.Children.Clear();
 
                 GetSnacksMethod(false, true);
             }
 
+            if(app) HideLabel();
+
+        }
+
+        private async Task HideLabel()
+        {
+            await Task.Delay(500);
             if (Column0Fav.Children.Count == 0 && Column1Fav.Children.Count == 0)
             {
+                EmptyStackFav.FadeTo(0.5, 1000);
                 ScrollFavourites.IsVisible = false;
-                EmptyStackFav.IsVisible = true;
             }
-
         }
 
         public void CreateFavouritesLabel()
@@ -422,11 +423,12 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 VerticalOptions = LayoutOptions.CenterAndExpand,
                 FontSize = 20,
-                FormattedText = testo
+                FormattedText = testo,
             };
 
 
             EmptyStackFav.Children.Add(label);
+            EmptyStackFav.FadeTo(0);
         }
 
         public async Task refreshSnackAsync()
@@ -437,9 +439,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                 Column0.Children.Clear();
                 Column1.Children.Clear();
                 GetSnacksMethod(false, false);
-                
             }
-
         }
 
         private void StopAnimation(object sender, EventArgs e)
@@ -605,17 +605,21 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             switchStar = !switchStar;
             if (switchStar)
             {
-                await refreshFavAsync();
+                await refreshFavAsync(true);
+                swapped = false;
+
                 ScrollSnackView.IsVisible = false;
                 ScrollFavourites.IsVisible = true;
                 ListView.IsVisible = false;
                 favourite.Source = ImageSource.FromResource("fondomerende.image.star_fill.png");
-                
-                
+                ListToGrid.BackgroundColor = Color.Transparent;
+
             }
             else
             {
                 await refreshSnackAsync();
+                refreshFavAsync(false);
+                EmptyStackFav.FadeTo(0, 0);
                 ScrollSnackView.IsVisible = true;
                 ListView.IsVisible = false;
                 ScrollFavourites.IsVisible = false;
@@ -664,11 +668,14 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
         private void Swap_Clicked(object sender, EventArgs e)
         {
-            if (ScrollSnackView.IsVisible == true)
+            swapped = !swapped;
+            if (swapped)
             {
+                switchStar = false;
                 ListToGrid.BackgroundColor = Color.OrangeRed;
                 ScrollSnackView.IsVisible = false;
                 ListView.IsVisible = true;
+                EmptyStackFav.FadeTo(0, 0);
 
                 ScrollFavourites.IsVisible = false;
                 ScrollSnackView.IsVisible = false;

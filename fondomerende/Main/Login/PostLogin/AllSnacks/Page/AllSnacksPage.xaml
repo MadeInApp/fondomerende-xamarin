@@ -27,7 +27,7 @@
 
                 <StackLayout 
                     Orientation="Horizontal"
-                    BackgroundColor="#fdb663"
+                    BackgroundColor="#f9cb2a"
                     HeightRequest="45">
                                     <!--è un bel colore"#ffb121"-->
                     <Grid 
@@ -51,7 +51,7 @@
                             Grid.Column="0"
                             HeightRequest="40"
                             WidthRequest="40"
-                            Margin="10,10,0,12"
+                            Margin="8,10,0,12"
                             CornerRadius="5"
                             HorizontalOptions="StartAndExpand" 
                             VerticalOptions="CenterAndExpand"
@@ -192,14 +192,14 @@
                             Opacity="0.4"
                             HorizontalOptions="FillAndExpand"
                             VerticalOptions="FillAndExpand"
-                            IsVisible="False"
+                            IsVisible="True"
                             x:Name="EmptyStackFav">
                         </StackLayout>
                     </Grid>
                 </StackLayout>
 
                 <ListView
-                    Margin="0,0,0,0"
+                    Margin="0,-30,0,0"
                     x:Name="ListView"
                     HorizontalOptions="CenterAndExpand"
                     VerticalOptions="StartAndExpand"
@@ -225,6 +225,7 @@
                 Grid.Row="0"
                 Grid.Column="0"
                 x:Name="Paolo"
+                
                 InputTransparent="True">
             </StackLayout>
         </Grid>
