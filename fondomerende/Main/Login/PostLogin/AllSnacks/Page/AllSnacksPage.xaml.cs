@@ -29,7 +29,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
     {
         public static double priceBinding;
         int eatLoading = 0;
-
+        public static bool EnablePacman;
         public static string selectedItemBinding { get; set; }
         SnackServiceManager snackServiceManager = new SnackServiceManager();
         List<SnackDataDTO> AllSnacks = new List<SnackDataDTO>();
@@ -59,7 +59,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             animation();
             MessagingCenter.Subscribe<AllSnacksPage>(this, "RefreshGetSnacks", async (arg) =>
             {
-                GetSnacksMethod(false, false);
+                GetSnacksMethod(true, false);
             });
 
 
@@ -155,42 +155,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
         public async Task GetSnacksMethod(bool Loaded, bool favourites)     //ottiene la lista degli snack e la applica alla ListView
         {
-            MessagingCenter.Send(new ChronologyViewCell()
-            {
-
-            }, "Refresh");
-
-            MessagingCenter.Send(new EditSnackViewCell()
-            {
-
-            }, "Refresh");
-
-            MessagingCenter.Send(new AddSnackViewCell()
-            {
-
-            }, "Refresh");
-
-            MessagingCenter.Send(new BuySnackViewCell()
-            {
-
-            }, "Refresh");
-
-            MessagingCenter.Send(new ChangeColorViewCell()
-            {
-
-            }, "Refresh");
-
-            MessagingCenter.Send(new EditUserInfoViewCell()
-            {
-
-            }, "Refresh");
-
-            MessagingCenter.Send(new LogoutViewCell()
-            {
-
-            }, "Refresh");
-
-
+          
             result = await snackServiceManager.GetSnacksAsync();
             SnackFavarray = new object[result.data.snacks.Count];
             ListView.ItemsSource = result.data.snacks;
@@ -633,29 +598,29 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             {
                 EatDTO response = await snackServiceManager.EatAsync((e.SelectedItem as SnackDataDTO).id, 1);
                 selectedItemBinding = (e.SelectedItem as SnackDataDTO).friendly_name;
+                if(EnablePacman)
+                {
+                    MessagingCenter.Send(new SnackViewCell()
+                    {
+
+                    }, "Animate");
+                }
+                else
+                {
+                    GetSnacksMethod(true,false) ;
+                }
                 MessagingCenter.Send(new EditUserViewCell()
                 {   
 
                 }, "RefreshUF");
 
 
-                MessagingCenter.Send(new SnackViewCell()
-                {
-
-                }, "Animate");
+              
             }
             else
             {
-                MessagingCenter.Send(new AllSnacksPage()
-                {
-
-                }, "RefreshGetSnacks");
+                GetSnacksMethod(true, false);
             }
-            selectedItemBinding = (e.SelectedItem as SnackDataDTO).friendly_name;
-
-          
-
-            ListView.SelectionMode = ListViewSelectionMode.Single;
         }
 
         private async void Fade()

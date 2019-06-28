@@ -44,6 +44,10 @@ namespace fondomerende.Main.Services.RESTServices
                     Preferences.Set("Logged", remember);
                     Preferences.Set("token", result.data.token);
                 }
+                else if(result == null)
+                {
+                    await App.Current.MainPage.DisplayAlert("Fondo Merende", "Impossibile connettersi al server", "Ok");
+                }
                 return result;
             }
             catch (FlurlHttpTimeoutException ex)

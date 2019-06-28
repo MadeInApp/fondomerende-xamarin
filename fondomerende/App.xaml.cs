@@ -5,6 +5,7 @@ using Xamarin.Essentials;
 using fondomerende.PostLoginPages;
 using fondomerende.Main.Services.RESTServices;
 using fondomerende.Main.Login.LoginPages;
+using fondomerende.Main.Services;
 
 namespace fondomerende
 {
@@ -14,12 +15,13 @@ namespace fondomerende
         {
             InitializeComponent();
 
-            if (Preferences.Get("Logged", false))
+            if (Preferences.Get("Logged", false) && Services.test == false)
             {
                 MainPage = new LoadingPage();
             }
             else
             {
+                Preferences.Clear();
                 MainPage = new NavigationPage(new LoginPage());
             }
 

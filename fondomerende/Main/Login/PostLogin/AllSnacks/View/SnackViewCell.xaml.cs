@@ -19,6 +19,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnacks.View
         bool AlmostDone;
         AnimationView pacMananimation;
         private static Timer aTimer;
+        public static bool EnablePacman;
         
         public SnackViewCell()
         {
@@ -26,24 +27,31 @@ namespace fondomerende.Main.Login.PostLogin.AllSnacks.View
             
             MessagingCenter.Subscribe<SnackViewCell>(this, "Animate", async (arg) =>
             {
-                if (Nome.Text == AllSnacksPage.selectedItemBinding)
+                if (EnablePacman)
                 {
-                    pacMananimation = new AnimationView
+                    if (Nome.Text == AllSnacksPage.selectedItemBinding)
                     {
-                        Animation = "pacman0.6.json",
-                        Scale = 1.6,
-                        Loop = true,
-                        HorizontalOptions = LayoutOptions.StartAndExpand,
-                        VerticalOptions = LayoutOptions.FillAndExpand,
-                        AutoPlay = true,
-                        HardwareAcceleration = true,
-                        InputTransparent = true,
-                        IsVisible = false,
-                        Speed = 4,
-                    };
+                        pacMananimation = new AnimationView
+                        {
+                            Animation = "pacman0.6.json",
+                            Scale = 1.6,
+                            Loop = true,
+                            HorizontalOptions = LayoutOptions.StartAndExpand,
+                            VerticalOptions = LayoutOptions.FillAndExpand,
+                            AutoPlay = true,
+                            HardwareAcceleration = true,
+                            InputTransparent = true,
+                            IsVisible = false,
+                            Speed = 4,
+                        };
 
-                    Grid.Children.Add(pacMananimation);
-                    pacManAnimate();
+                        Grid.Children.Add(pacMananimation);
+                        pacManAnimate();
+                    }
+                }
+                else
+                {
+                    await QtaRefresh();
                 }
             });
         }
@@ -66,7 +74,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnacks.View
             await pacMananimation.TranslateTo(((mainDisplayInfo * 66) / 100), 0, 2500);
             
         }
-        async void QtaRefresh()
+        async Task QtaRefresh()
         {
           qta.Text = Convert.ToString(Int32.Parse(qta.Text) - 1);
         }
