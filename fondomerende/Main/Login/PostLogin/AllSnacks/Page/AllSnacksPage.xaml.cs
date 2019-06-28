@@ -781,11 +781,8 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                                             break;                                                              
                                                                                                                         
                                         case Device.iOS:
-                                            ap.Pause();
                                             ap.ScaleTo(0, 250);
                                             ap.FadeTo(0, 150);
-                                            ap.Progress = 0;
-
                                             break;                                                                     
                                     }                                                                                  
 
@@ -832,7 +829,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                                 {
                                     ap.IsVisible = true;
                                     
-                                    ap.ScaleTo(1);
+                                    ap.ScaleTo(1,0);
                                     ap.FadeTo(1);
                                     ap.Speed = 9.5f;
                                     ap.Play();
