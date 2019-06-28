@@ -405,7 +405,6 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
         {
             if (previousFavourite != Preferences.Get("Favourites", ""))
             {
-                previousFavourite = Preferences.Get("Favourites", "");
                 Column0.Children.Clear();
                 Column1.Children.Clear();
                 GetSnacksMethod(false, false);
@@ -642,7 +641,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             if (swapped)
             {
                 switchStar = false;
-                ListToGrid.BackgroundColor = Color.OrangeRed;
+                ListToGrid.BackgroundColor = Color.FromHex("#f29e17");
                 ScrollSnackView.IsVisible = false;
                 ListView.IsVisible = true;
                 EmptyStackFav.FadeTo(0, 0);
@@ -771,23 +770,6 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                                 {
                                     AnimationView ap = (AnimationView)an;
 
-                                if (ap.Animation == "LoadingEating.json")
-                                {
-
-                                    switch (Device.RuntimePlatform)                                                    
-                                    {                                                                                                                      
-                                                                                                                       
-                                        case Device.Android:                                                           
-                                            ap.Speed = -13f;   
-                                            break;                                                              
-                                                                                                                        
-                                        case Device.iOS:
-                                            ap.ScaleTo(0, 250);
-                                            ap.FadeTo(0, 150);
-                                            break;                                                                     
-                                    }                                                                                  
-
-                                    
                                     if (ap.Animation == "LoadingEating.json")
                                     {
 
@@ -799,25 +781,43 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                                                 break;
 
                                             case Device.iOS:
-                                                ap.Pause();
                                                 ap.ScaleTo(0, 250);
                                                 ap.FadeTo(0, 150);
-                                                ap.Progress = 0;
-
                                                 break;
                                         }
 
 
+                                        if (ap.Animation == "LoadingEating.json")
+                                        {
+
+                                            switch (Device.RuntimePlatform)
+                                            {
+
+                                                case Device.Android:
+                                                    ap.Speed = -13f;
+                                                    break;
+
+                                                case Device.iOS:
+                                                    ap.Pause();
+                                                    ap.ScaleTo(0, 250);
+                                                    ap.FadeTo(0, 150);
+                                                    ap.Progress = 0;
+
+                                                    break;
+                                            }
+
+
+                                        }
                                     }
                                 }
                             }
                         }
                     }
+                    eatLoading = 0;
                 }
-                eatLoading = 0;
             }catch(Exception Ex)
             {
-                System.Console.WriteLine(Ex.InnerException.Message);
+                
             }
         }
 
@@ -852,16 +852,6 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                                 {
                                     AnimationView ap = (AnimationView)an;
 
-                                if (ap.Animation == "LoadingEating.json")
-                                {
-                                    ap.IsVisible = true;
-                                    
-                                    ap.ScaleTo(1,0);
-                                    ap.FadeTo(1);
-                                    ap.Speed = 9.5f;
-                                    ap.Play();
-                                    
-                                    ap.OnFinish += async (s, d) =>
                                     if (ap.Animation == "LoadingEating.json")
                                     {
                                         ap.IsVisible = true;
@@ -875,6 +865,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                                         {
                                             await Stack_LongFinish(ap, index);
                                         };
+                                        
                                     }
                                 }
                             }
@@ -882,7 +873,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                     }
                 }
             }
-            catch ( Exception Ex)
+            catch (Exception Ex)
             {
                 await DisplayAlert("Fondo Merende", "Snack Esaurito!", "Ok");
             }

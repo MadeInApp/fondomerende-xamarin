@@ -50,13 +50,12 @@
 
                 <TableSection 
                     Title="App"
-                    TextColor="{OnPlatform Android= #6495ed}"
-                    >
-                    <local1:ChangeColorViewCell IsEnabled="false"
+                    TextColor="{OnPlatform Android= #6495ed}">
+                    <local1:ChangeColorViewCell IsEnabled="{OnPlatform iOS = false, Android = true}"
                         Tapped="ChangeColorViewCell_Tapped"
                         x:Name="ChangeColorViewCell">
                     </local1:ChangeColorViewCell>
-                    <SwitchCell Text="Abilita Pac-Man" OnColor="{OnPlatform iOS = Red}" On="false" IsEnabled="{OnPlatform iOS=false}" x:Name="Pm" OnChanged="OnPmChanged"/>
+                    <SwitchCell Text="Pac-Man" OnColor="{OnPlatform iOS = Red}" On="false" IsEnabled="{OnPlatform iOS=false}" x:Name="Pm" OnChanged="OnPmChanged"/>
                     <SwitchCell Text="Pioggia di Muffins" OnColor="{OnPlatform iOS = #CE8636}" On="false" IsEnabled="true" x:Name="PaoloAbilita" OnChanged="OnPaoloChanged"/>
                     <SwitchCell Text="Passa al Server di test" OnColor="{OnPlatform iOS = Red}" On="false" OnChanged="Pts_Changed" x:Name="Pts"/>
                 </TableSection>

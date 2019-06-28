@@ -22,12 +22,11 @@
                 BackgroundColor="#fff0df"
                 Grid.Row="0"
                 Grid.Column="0"
-                x:Name="StackSnack"
-                HeightRequest="50">
+                x:Name="StackSnack">
 
                 <StackLayout 
                     Orientation="Horizontal"
-                    BackgroundColor="#f9cb2a"
+                    BackgroundColor="{OnPlatform Android=#f9cb2a, Default= #f9bb15}"
                     HeightRequest="45">
                                     <!--è un bel colore"#ffb121"-->
                     <Grid 
@@ -188,10 +187,11 @@
                         </ScrollView>
 
                         <StackLayout
+                            Margin="0,20,0,0"
                             InputTransparent="True"
                             Opacity="0.4"
-                            HorizontalOptions="FillAndExpand"
-                            VerticalOptions="FillAndExpand"
+                            HorizontalOptions="CenterAndExpand"
+                            VerticalOptions="CenterAndExpand"
                             IsVisible="True"
                             x:Name="EmptyStackFav">
                         </StackLayout>
@@ -199,7 +199,7 @@
                 </StackLayout>
 
                 <ListView
-                    Margin="0,-30,0,0"
+                    Margin="0,-40,0,0"
                     x:Name="ListView"
                     HorizontalOptions="CenterAndExpand"
                     VerticalOptions="StartAndExpand"
@@ -225,7 +225,6 @@
                 Grid.Row="0"
                 Grid.Column="0"
                 x:Name="Paolo"
-                
                 InputTransparent="True">
             </StackLayout>
         </Grid>
