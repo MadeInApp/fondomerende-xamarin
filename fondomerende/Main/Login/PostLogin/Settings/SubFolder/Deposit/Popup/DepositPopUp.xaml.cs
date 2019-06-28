@@ -10,6 +10,7 @@ using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View;
 using fondomerende.Main.Utilities;
 using fondomerende.Main.Login.PostLogin.AllSnack.Page;
 using Rg.Plugins.Popup.Pages;
+using Xamarin.Essentials;
 
 namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup
 {
@@ -198,7 +199,6 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup
                 }
             }
             
-            //if(entryAndroid.CursorPosition == 0 )
             else
             {
                 IsDone = true;
@@ -228,8 +228,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup
                     IsDone = false;
                 }
             }
-
-            if (entryiOs.CursorPosition == 0)
+            else
             {
                 IsDone = true;
             }
@@ -345,6 +344,17 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup
                         {
 
                         }, "Animation");
+                        if (Device.RuntimePlatform == Device.iOS)
+                        {
+                            DependencyService.Get<HapticFeedbackGen>().HapticFeedbackGenSuccessAsync();
+                        }
+
+                        else
+                        {
+                            Vibration.Vibrate(40);
+                            await Task.Delay(100);
+                            Vibration.Vibrate(40);
+                        }
                         refresh = true;
                         await Navigation.PopPopupAsync();
                         

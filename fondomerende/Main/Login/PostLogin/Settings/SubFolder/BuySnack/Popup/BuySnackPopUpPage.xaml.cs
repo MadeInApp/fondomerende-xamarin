@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -392,7 +393,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
 
         public void EntrataPrezzoAndroid(object sender, TextChangedEventArgs e)
         {
-            if (prezzoAndroid.CursorPosition == 1 && isDone)
+            if (prezzoAndroid.CursorPosition == 1 && isDone && prezzoAndroid.Text != "")
             {
                 if (prezzoAndroid.Text.Substring(1, 1) == ",")
                 {
@@ -407,14 +408,14 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
                 }
             }
 
-            if (prezzoAndroid.CursorPosition == 0)
+            else
             {
                 isDone = true;
             }
         }
         public void EntrataPrezzoiOs(object sender, TextChangedEventArgs e)
         {
-            if (prezzoiOs.CursorPosition == 1 && isDone)
+            if (prezzoiOs.CursorPosition == 1 && isDone && prezzoiOs.Text != "")
             {
                 if (prezzoiOs.Text.Substring(1, 1) == ",")
                 {
@@ -429,7 +430,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
                 }
             }
 
-            if (prezzoiOs.CursorPosition == 0)
+            else
             {
                 isDone = true;
             }
@@ -453,7 +454,12 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
                     {
                         if (result.response.success)
                         {
+                            Vibration.Vibrate(40);
+                            await Task.Delay(100);
+                            Vibration.Vibrate(40);
+                            
                             await PopupNavigation.Instance.PopAsync();
+
                         }
                         else
                         {
@@ -487,6 +493,9 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
                     {
                         if (result.response.success)
                         {
+                            Vibration.Vibrate(40);
+                            await Task.Delay(100);
+                            Vibration.Vibrate(40);
                             await PopupNavigation.Instance.PopAsync();
                         }
                         else
@@ -517,6 +526,9 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
                     {
                         if (result.response.success)
                         {
+                            
+                            DependencyService.Get<HapticFeedbackGen>().HapticFeedbackGenSuccessAsync();
+                            
                             await PopupNavigation.Instance.PopAsync();
                         }
                         else
@@ -551,6 +563,8 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
                     {
                         if (result.response.success)
                         {
+                            DependencyService.Get<HapticFeedbackGen>().HapticFeedbackGenSuccessAsync();
+                            
                             await PopupNavigation.Instance.PopAsync();
                         }
                         else
