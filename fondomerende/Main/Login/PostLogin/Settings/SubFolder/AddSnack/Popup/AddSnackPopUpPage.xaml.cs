@@ -12,6 +12,7 @@ using Xamarin.Forms.Xaml;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.Page;
 using fondomerende.Main.Login.PostLogin.Settings.Page;
 using fondomerende.Main.Utilities;
+using Xamarin.Essentials;
 
 namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.Popup
 {
@@ -360,6 +361,17 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.Popup
                         {
 
                             await DisplayAlert("Fondo Merende", "SnackID: " + result.response.data.id, "Ok");
+                            if (Device.RuntimePlatform == Device.iOS)
+                            {
+                                DependencyService.Get<HapticFeedbackGen>().HapticFeedbackGenSuccessAsync();
+                            }
+
+                            else
+                            {
+                                Vibration.Vibrate(40);
+                                await Task.Delay(100);
+                                Vibration.Vibrate(40);
+                            }
                             await Navigation.PopPopupAsync();
                         }
                         else

@@ -10,6 +10,7 @@ using fondomerende.Main.Utilities;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using fondomerende.Main.Login.PostLogin.AllSnack.Page;
+using Xamarin.Essentials;
 
 namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.PopUp
 {
@@ -386,6 +387,17 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.PopUp
                     {
                         if (res.response.success)
                         {
+                            if (Device.RuntimePlatform == Device.iOS)
+                            {
+                                DependencyService.Get<HapticFeedbackGen>().HapticFeedbackGenSuccessAsync();
+                            }
+
+                            else
+                            {
+                                Vibration.Vibrate(40);
+                                await Task.Delay(100);
+                                Vibration.Vibrate(40);
+                            }
                             MessagingCenter.Send(new AllSnacksPage()
                             {
 
