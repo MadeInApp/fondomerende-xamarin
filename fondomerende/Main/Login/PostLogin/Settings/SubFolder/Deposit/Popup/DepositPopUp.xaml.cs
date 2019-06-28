@@ -214,7 +214,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup
 
 
 
-            if (entryiOs.CursorPosition == 1 && IsDone && entryAndroid.Text != "")
+            if (entryiOs.CursorPosition == 1 && IsDone && entryiOs.Text != "")
             {
                 if (entryiOs.Text.Substring(1, 1) == ",")
                 {

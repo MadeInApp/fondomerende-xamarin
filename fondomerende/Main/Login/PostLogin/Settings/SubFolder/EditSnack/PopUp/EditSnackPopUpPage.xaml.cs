@@ -251,7 +251,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.PopUp
 
         public void EntrataPrezzo(object sender, TextChangedEventArgs e)
         {
-                if (PrezzoSnack.CursorPosition == 1 && IsDone == true && entryAndroid.Text != "")
+                if (PrezzoSnack.CursorPosition == 1 && IsDone == true && PrezzoSnack.Text != "")
                 {
                     if (PrezzoSnack.Text.Substring(1, 1) == ",")
                     {
