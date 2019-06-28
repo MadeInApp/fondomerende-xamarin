@@ -198,7 +198,6 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup
                 }
             }
             
-            //if(entryAndroid.CursorPosition == 0 )
             else
             {
                 IsDone = true;
