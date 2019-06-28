@@ -741,167 +741,175 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
             }
         }
-
+        
         private void Stack_LongPressed(object sender, LongPressEventArgs e)
         {
-   
-            SnackDataDTO index = null;
-            foreach (var item in (sender as MR.Gestures.StackLayout).Children)
+            try
             {
-                if (item is MR.Gestures.Label)
+                SnackDataDTO index = null;
+                foreach (var item in (sender as MR.Gestures.StackLayout).Children)
                 {
-                    var snackName = (item as MR.Gestures.Label).Text;
-                    index = result.data.snacks.Single(obj => obj.friendly_name == snackName);
-                    break;
-                }
-
-            }
-            if (index != null)
-            {
-                string preferito = "";
-
-                foreach (var app in (sender as MR.Gestures.StackLayout).Children)
-                {
-                    if (app is RoundedCornerView)
+                    if (item is MR.Gestures.Label)
                     {
-                        foreach (var an in (app as RoundedCornerView).Children)
+                        var snackName = (item as MR.Gestures.Label).Text;
+                        index = result.data.snacks.Single(obj => obj.friendly_name == snackName);
+                        break;
+                    }
+
+                }
+                if (index != null)
+                {
+                    string preferito = "";
+
+                    foreach (var app in (sender as MR.Gestures.StackLayout).Children)
+                    {
+                        if (app is RoundedCornerView)
                         {
-                            if (an is AnimationView)
+                            foreach (var an in (app as RoundedCornerView).Children)
                             {
-                                AnimationView ap = (AnimationView)an;
-
-                                if (ap.Animation == "LoadingEating.json")
+                                if (an is AnimationView)
                                 {
+                                    AnimationView ap = (AnimationView)an;
 
-                                    switch (Device.RuntimePlatform)                                                    
-                                    {                                                                                                                      
-                                                                                                                       
-                                        case Device.Android:                                                           
-                                            ap.Speed = -13f;   
-                                            break;                                                              
-                                                                                                                        
-                                        case Device.iOS:
-                                            ap.Pause();
-                                            ap.ScaleTo(0, 250);
-                                            ap.FadeTo(0, 150);
-                                            ap.Progress = 0;
+                                    if (ap.Animation == "LoadingEating.json")
+                                    {
 
-                                            break;                                                                     
-                                    }                                                                                  
+                                        switch (Device.RuntimePlatform)
+                                        {
 
-                                    
+                                            case Device.Android:
+                                                ap.Speed = -13f;
+                                                break;
+
+                                            case Device.iOS:
+                                                ap.Pause();
+                                                ap.ScaleTo(0, 250);
+                                                ap.FadeTo(0, 150);
+                                                ap.Progress = 0;
+
+                                                break;
+                                        }
+
+
+                                    }
                                 }
                             }
                         }
                     }
                 }
+                eatLoading = 0;
+            }catch(Exception Ex)
+            {
+                System.Console.WriteLine(Ex.InnerException.Message);
             }
-            eatLoading = 0;
         }
 
         private async void Stack_LongPressing(object sender, LongPressEventArgs e)
         {
-            bool verifica = false;
-            eatLoading = 0;
-            SnackDataDTO index = null;
-            foreach (var item in (sender as MR.Gestures.StackLayout).Children)
+            try
             {
-                if (item is MR.Gestures.Label)
+                bool verifica = false;
+                eatLoading = 0;
+                SnackDataDTO index = null;
+                foreach (var item in (sender as MR.Gestures.StackLayout).Children)
                 {
-                    var snackName = (item as MR.Gestures.Label).Text;
-                    index = result.data.snacks.Single(obj => obj.friendly_name == snackName);
-                    break;
-                }
-
-            }
-            if (index != null)
-            {
-                string preferito = "";
-
-                foreach (var app in (sender as MR.Gestures.StackLayout).Children)
-                {
-                    if (app is RoundedCornerView)
+                    if (item is MR.Gestures.Label)
                     {
-                        foreach (var an in (app as RoundedCornerView).Children)
-                        {
-                            if (an is AnimationView)
-                            {
-                                AnimationView ap = (AnimationView)an;
+                        var snackName = (item as MR.Gestures.Label).Text;
+                        index = result.data.snacks.Single(obj => obj.friendly_name == snackName);
+                        break;
+                    }
 
-                                if (ap.Animation == "LoadingEating.json")
+                }
+                if (index != null)
+                {
+                    string preferito = "";
+
+                    foreach (var app in (sender as MR.Gestures.StackLayout).Children)
+                    {
+                        if (app is RoundedCornerView)
+                        {
+                            foreach (var an in (app as RoundedCornerView).Children)
+                            {
+                                if (an is AnimationView)
                                 {
-                                    ap.IsVisible = true;
-                                    
-                                    ap.ScaleTo(1);
-                                    ap.FadeTo(1);
-                                    ap.Speed = 9.5f;
-                                    ap.Play();
-                                    
-                                    ap.OnFinish += async (s, d) =>
+                                    AnimationView ap = (AnimationView)an;
+
+                                    if (ap.Animation == "LoadingEating.json")
                                     {
-                                        await Stack_LongFinish(ap, index);
-                                    };
+                                        ap.IsVisible = true;
+
+                                        ap.ScaleTo(1);
+                                        ap.FadeTo(1);
+                                        ap.Speed = 9.5f;
+                                        ap.Play();
+
+                                        ap.OnFinish += async (s, d) =>
+                                        {
+                                            await Stack_LongFinish(ap, index);
+                                        };
+                                    }
                                 }
                             }
                         }
                     }
                 }
+            }
+            catch ( Exception Ex)
+            {
+                await DisplayAlert("Fondo Merende", "Snack Esaurito!", "Ok");
             }
         }
 
         private async Task Stack_LongFinish(object sender, SnackDataDTO index)
         {
-            EatDTO response = null;
-            eatLoading = -1;
-            if ((sender as AnimationView).Speed > 0)
-            {
-                (sender as AnimationView).Speed = 0;
-                (sender as AnimationView).FadeTo(0, 300);
-                try
+            
+                eatLoading = -1;
+                if ((sender as AnimationView).Speed > 0)
                 {
-                    response = await snackServiceManager.EatAsync(index.id, 1);
-                }
-                catch(Exception e)
-                {
-                    await DisplayAlert("Fondo Merende", "Lo Snack è esuarito", "OK");
-                }
-                
-                // refresh 
-                MessagingCenter.Send(new EditUserViewCell()
-                {
+                    (sender as AnimationView).Speed = 0;
+                    (sender as AnimationView).FadeTo(0, 300);
+                    EatDTO response = await snackServiceManager.EatAsync(index.id, 1);
 
-                }, "RefreshUF");
 
-                if (response.response.success == true)
-                {
-                    
-
-                    if (Device.RuntimePlatform == Device.iOS)
+                    // refresh 
+                    MessagingCenter.Send(new EditUserViewCell()
                     {
-                        DependencyService.Get<HapticFeedbackGen>().HapticFeedbackGenSuccessAsync();
+
+                    }, "RefreshUF");
+
+                    if (response.response.success == true)
+                    {
+
+
+                        if (Device.RuntimePlatform == Device.iOS)
+                        {
+                            DependencyService.Get<HapticFeedbackGen>().HapticFeedbackGenSuccessAsync();
+                        }
+
+                        else
+                        {
+                            Vibration.Vibrate(40);
+                            await Task.Delay(100);
+                            Vibration.Vibrate(40);
+                        }
+
                     }
-                    
+
                     else
                     {
-                        Vibration.Vibrate(40);
-                        await Task.Delay(100);
-                        Vibration.Vibrate(40);
-                    }
-      
-                }
-                
-                else
-                {
-                    if (Device.RuntimePlatform == Device.iOS)
-                    {
-                        DependencyService.Get<HapticFeedbackGen>().HapticFeedbackGenErrorAsync();
-                    }
-                    else
-                    {
-                        Vibration.Vibrate(80);
+                        if (Device.RuntimePlatform == Device.iOS)
+                        {
+                            DependencyService.Get<HapticFeedbackGen>().HapticFeedbackGenErrorAsync();
+                        }
+                        else
+                        {
+                            Vibration.Vibrate(80);
+                        }
                     }
                 }
             }
+            
         }
+
     }
-}
