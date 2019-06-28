@@ -818,12 +818,21 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
         private async Task Stack_LongFinish(object sender, SnackDataDTO index)
         {
+            EatDTO response = null;
             eatLoading = -1;
             if ((sender as AnimationView).Speed > 0)
             {
                 (sender as AnimationView).Speed = 0;
                 (sender as AnimationView).FadeTo(0, 300);
-                EatDTO response = await snackServiceManager.EatAsync(index.id, 1);
+                try
+                {
+                    response = await snackServiceManager.EatAsync(index.id, 1);
+                }
+                catch(Exception e)
+                {
+                    await DisplayAlert("Fondo Merende", "Lo Snack è esuarito", "OK");
+                }
+                
                 // refresh 
                 MessagingCenter.Send(new EditUserViewCell()
                 {
@@ -832,17 +841,22 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
                 if (response.response.success == true)
                 {
+                    
+
                     if (Device.RuntimePlatform == Device.iOS)
                     {
                         DependencyService.Get<HapticFeedbackGen>().HapticFeedbackGenSuccessAsync();
                     }
+                    
                     else
                     {
                         Vibration.Vibrate(40);
                         await Task.Delay(100);
                         Vibration.Vibrate(40);
                     }
+      
                 }
+                
                 else
                 {
                     if (Device.RuntimePlatform == Device.iOS)

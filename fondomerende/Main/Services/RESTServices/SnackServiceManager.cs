@@ -170,6 +170,14 @@ namespace fondomerende.Main.Services.RESTServices
             {
                 await App.Current.MainPage.DisplayAlert("Eat", ex.InnerException.Message, "OK");
             }
+            catch(System.InvalidOperationException ex)
+            {
+                if(ex.Message == "System.InvalidOperationException: Sequence contains no matching element occurred")
+                {
+                    await App.Current.MainPage.DisplayAlert("Fondo Merende", "Snack Esauriti", "OK");
+                }
+               
+            }
             return null;
         }
 

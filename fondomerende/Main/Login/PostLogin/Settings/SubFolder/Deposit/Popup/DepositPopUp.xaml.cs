@@ -183,7 +183,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup
             
             
 
-            if (entryAndroid.CursorPosition == 1 &&  IsDone)
+            if (entryAndroid.CursorPosition == 1 &&  IsDone && entryAndroid.Text != "")
             {
                 if (entryAndroid.Text.Substring(1, 1) == ",")
                 {
@@ -198,7 +198,8 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup
                 }
             }
             
-            if(entryAndroid.CursorPosition == 0 )
+            //if(entryAndroid.CursorPosition == 0 )
+            else
             {
                 IsDone = true;
             }
@@ -213,7 +214,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup
 
 
 
-            if (entryiOs.CursorPosition == 1 && IsDone)
+            if (entryiOs.CursorPosition == 1 && IsDone && entryAndroid.Text != "")
             {
                 if (entryiOs.Text.Substring(1, 1) == ",")
                 {
