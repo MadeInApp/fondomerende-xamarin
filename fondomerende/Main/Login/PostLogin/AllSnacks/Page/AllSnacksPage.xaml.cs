@@ -28,6 +28,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
     public partial class AllSnacksPage
     {
         public static double priceBinding;
+        bool paoloBool = Preferences.Get("Paolo",false);
         int eatLoading = 0;
         public static bool EnablePacman;
         public static string selectedItemBinding { get; set; }
@@ -57,6 +58,13 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
             Fade();
             animation();
+
+            MessagingCenter.Subscribe<AllSnacksPage>(this, "PaoloStart", async (arg) =>
+            {
+                paoloBool = Preferences.Get("Paolo", false);
+                animation();
+            });
+
             MessagingCenter.Subscribe<AllSnacksPage>(this, "RefreshGetSnacks", async (arg) =>
             {
                 GetSnacksMethod(true, false);
@@ -662,21 +670,28 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             var mainDisplayWidth = DeviceDisplay.MainDisplayInfo.Width;
             var mainDisplayHeight = DeviceDisplay.MainDisplayInfo.Height;
             int numeroMuffin = Convert.ToInt32(mainDisplayWidth) / 256;
-
-            for (int i = 0; i < numeroMuffin; i++)
+            if(paoloBool)
             {
-
-                var paolo = new MR.Gestures.Image   //il cupcake paolo
+                Paolo.Opacity = 100;
+                for (int i = 0; i < numeroMuffin; i++)
                 {
-                    VerticalOptions = LayoutOptions.StartAndExpand,
-                    Source = ImageSource.FromResource("fondomerende.image.cup_cake_128x128.png"),
-                    Opacity = 0.2,
-                    Scale = 1,
-                };
 
-                Paolo.Children.Add(paolo);
+                    var paolo = new MR.Gestures.Image   //il cupcake paolo
+                    {
+                        VerticalOptions = LayoutOptions.StartAndExpand,
+                        Source = ImageSource.FromResource("fondomerende.image.cup_cake_128x128.png"),
+                        Opacity = 0.2,
+                        Scale = 1,
+                    };
 
-                Anima(paolo);
+                        Paolo.Children.Add(paolo);
+                        Anima(paolo);
+               
+                }
+            }
+            else
+            {
+                Paolo.Opacity = 0;
             }
 
         }
