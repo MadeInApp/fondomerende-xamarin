@@ -772,21 +772,8 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
                                     if (ap.Animation == "LoadingEating.json")
                                     {
-
-                                        //switch (Device.RuntimePlatform)
-                                        //{
-
-                                            //case Device.Android:
-                                                ap.Speed = -13f;
-                                                //break;
-
-                                            /*case Device.iOS:
-                                                ap.ScaleTo(0, 250);
-                                                ap.FadeTo(0, 150);*/
-                                               // break;
-                                        //}
-
-
+                                        ap.Speed = -13f;
+                                           
                                         if (ap.Animation == "LoadingEating.json")
                                         {
 
