@@ -22,9 +22,9 @@ namespace fondomerende.Main.Login.LoginPages
         UserServiceManager userService = new UserServiceManager();
         LoginServiceManager loginService = new LoginServiceManager();
         private string username, password, testpassword, friendly_name;
-        private bool remember = false;
+        public bool remember = true;
         private bool wait = false;
-        bool clicked = false;
+        bool clicked = true;
 
 
         public LoginPage()
@@ -45,13 +45,13 @@ namespace fondomerende.Main.Login.LoginPages
             if (clicked == true)
             {
                 clicked = false;
-                remember = !remember;
+                remember = false;
                 RememberMe_Button.BackgroundColor = Color.Transparent;   
             }
             else
             {
                 clicked = true;
-                remember = !remember;
+                remember = true;
                 RememberMe_Button.BackgroundColor = Color.WhiteSmoke;
             }
 
