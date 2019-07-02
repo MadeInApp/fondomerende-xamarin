@@ -2,6 +2,7 @@
 using fondomerende.Main.Login.PostLogin.Settings.Page;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.Page;
+using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View;
 using fondomerende.Main.Services.RESTServices;
 using fondomerende.Main.Utilities;
 using Rg.Plugins.Popup.Extensions;
@@ -454,6 +455,10 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
                     {
                         if (result.response.success)
                         {
+                            MessagingCenter.Send(new AllSnacksPage()
+                            {
+
+                            }, "RefreshGetSnacks");
                             Vibration.Vibrate(40);
                             await Task.Delay(100);
                             Vibration.Vibrate(40);

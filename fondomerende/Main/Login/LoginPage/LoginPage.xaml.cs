@@ -73,7 +73,6 @@ namespace fondomerende.Main.Login.LoginPages
                     }
                     else if (response.response.success == true)
                     {
-                           
                         await userService.GetUserData();
                         App.Current.MainPage = new MainPage();                                       
                         wait = true;

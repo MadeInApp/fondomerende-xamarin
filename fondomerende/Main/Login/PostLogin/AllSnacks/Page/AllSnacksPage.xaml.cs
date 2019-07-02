@@ -773,18 +773,18 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                                     if (ap.Animation == "LoadingEating.json")
                                     {
 
-                                        switch (Device.RuntimePlatform)
-                                        {
+                                        //switch (Device.RuntimePlatform)
+                                        //{
 
-                                            case Device.Android:
+                                            //case Device.Android:
                                                 ap.Speed = -13f;
-                                                break;
+                                                //break;
 
-                                            case Device.iOS:
+                                            /*case Device.iOS:
                                                 ap.ScaleTo(0, 250);
-                                                ap.FadeTo(0, 150);
-                                                break;
-                                        }
+                                                ap.FadeTo(0, 150);*/
+                                               // break;
+                                        //}
 
 
                                         if (ap.Animation == "LoadingEating.json")
@@ -798,11 +798,8 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                                                     break;
 
                                                 case Device.iOS:
-                                                    ap.Pause();
-                                                    ap.ScaleTo(0, 250);
-                                                    ap.FadeTo(0, 150);
-                                                    ap.Progress = 0;
-
+                                                    ap.FadeTo(0, 10);
+                                                    ap.Speed = -50f;
                                                     break;
                                             }
 

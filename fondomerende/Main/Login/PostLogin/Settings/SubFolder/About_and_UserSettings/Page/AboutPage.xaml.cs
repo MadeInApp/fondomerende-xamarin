@@ -75,6 +75,8 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.About_and_UserSet
                var Qst = await DisplayAlert("Fondo Merende", "Passare al server di test?", "Si", "No");
                 if(Qst)
                 {
+
+
                     var Ans = await DisplayAlert("FondoTest", "L'App passerà al server di test fino alla chiusura ed i preferiti andranno persi, sicuro di voler procedere?", "Si", "No");
                     if(Ans)
                     {
