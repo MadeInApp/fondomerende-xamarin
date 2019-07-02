@@ -450,6 +450,13 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
                 }
                 else
                 {
+                   
+                    if(lineAndroid.Text.Contains(","))
+                    {
+                        int aiuto = lineAndroid.Text.IndexOf(",");
+                        lineAndroid.Text = lineAndroid.Text.Substring(0, aiuto);
+                    }
+                    
                     var result = await snackService.BuySnackAsync(BuySnackListPage.SelectedSnackID, Convert.ToInt32(lineAndroid.Text));
                     if (result != null)
                     {
@@ -493,11 +500,20 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
                 }
                 else
                 {
+                    if (lineAndroid.Text.Contains(","))
+                    {
+                        int aiuto = lineAndroid.Text.IndexOf(",");
+                        lineAndroid.Text = lineAndroid.Text.Substring(0, aiuto);
+                    }
                     var result = await snackService.BuySnackAsync2(BuySnackListPage.SelectedSnackID, Int32.Parse(lineAndroid.Text),prezzoAndroid.Text, scadenzaAndroid.Text);
                     if (result != null)
                     {
                         if (result.response.success)
                         {
+                            MessagingCenter.Send(new AllSnacksPage()
+                            {
+
+                            }, "RefreshGetSnacks");
                             Vibration.Vibrate(40);
                             await Task.Delay(100);
                             Vibration.Vibrate(40);
@@ -520,6 +536,11 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
             SnackServiceManager snackService = new SnackServiceManager();
             if (swap == false)
             {
+                if (lineiOs.Text.Contains(","))
+                {
+                    int aiuto = lineiOs.Text.IndexOf(",");
+                    lineiOs.Text = lineiOs.Text.Substring(0, aiuto);
+                }
                 if (lineiOs.Text == null || lineiOs.Text == "")
                 {
                     await DisplayAlert("Fondo Merende", "Inserisci la quantità", "OK");
@@ -531,7 +552,10 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
                     {
                         if (result.response.success)
                         {
-                            
+                            MessagingCenter.Send(new AllSnacksPage()
+                            {
+
+                            }, "RefreshGetSnacks");
                             DependencyService.Get<HapticFeedbackGen>().HapticFeedbackGenSuccessAsync();
                             
                             await PopupNavigation.Instance.PopAsync();
@@ -561,6 +585,11 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
                 {
                     await DisplayAlert("Fondo Merende", "Inserisci i giorni di scadenza", "OK");
                 }
+                if (lineiOs.Text.Contains(","))
+                {
+                    int aiuto = lineiOs.Text.IndexOf(",");
+                    lineiOs.Text = lineiOs.Text.Substring(0, aiuto);
+                }
                 else
                 {
                     var result = await snackService.BuySnackAsync2(BuySnackListPage.SelectedSnackID, Int32.Parse(lineiOs.Text), prezzoiOs.Text, scadenzaiOs.Text);
@@ -568,6 +597,10 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
                     {
                         if (result.response.success)
                         {
+                            MessagingCenter.Send(new AllSnacksPage()
+                            {
+
+                            }, "RefreshGetSnacks");
                             DependencyService.Get<HapticFeedbackGen>().HapticFeedbackGenSuccessAsync();
                             
                             await PopupNavigation.Instance.PopAsync();

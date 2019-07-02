@@ -45,13 +45,13 @@ namespace fondomerende.Main.Login.LoginPages
             if (clicked == true)
             {
                 clicked = false;
-                remember = !remember;
+                remember = false;
                 RememberMe_Button.BackgroundColor = Color.Transparent;   
             }
             else
             {
                 clicked = true;
-                remember = !remember;
+                remember = true;
                 RememberMe_Button.BackgroundColor = Color.WhiteSmoke;
             }
 
