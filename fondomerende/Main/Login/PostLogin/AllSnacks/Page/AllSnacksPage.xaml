@@ -123,7 +123,6 @@
                             IsVisible="True" 
                             x:Name="ScrollSnackView"  
                             Padding="0,0,0,10">
-                            <!--errori probabilmente sotto  va ridefinita la circonferenza degli snack ho cambiato il margin da 10 a 20-->
                             <Grid 
                                 HorizontalOptions="CenterAndExpand"
                                 x:Name="GridView" 
@@ -154,7 +153,6 @@
                                 </StackLayout>
                             </Grid>
 
-                            <!--errori probabilmente sopra  -->
                         </ScrollView>
 
                         <ScrollView 
