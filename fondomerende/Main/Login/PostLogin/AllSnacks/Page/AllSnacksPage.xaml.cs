@@ -112,6 +112,10 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                 WalletAnimation();
                 
             });
+            MessagingCenter.Subscribe<AllSnacksPage>(this, "RefreshGriglia", async (value) =>
+            {
+                await refreshSnackAsync();
+            });
 
             MessagingCenter.Send(new ChronologyViewCell()
             {
@@ -378,10 +382,10 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
         private async Task HideLabel()
         {
-            await Task.Delay(500);
+            //await Task.Delay(500);
             if (Column0Fav.Children.Count == 0 && Column1Fav.Children.Count == 0)
             {
-                EmptyStackFav.FadeTo(0.5, 1000);
+                EmptyStackFav.FadeTo(0.5, 500);
                 ScrollFavourites.IsVisible = false;
             }
         }
