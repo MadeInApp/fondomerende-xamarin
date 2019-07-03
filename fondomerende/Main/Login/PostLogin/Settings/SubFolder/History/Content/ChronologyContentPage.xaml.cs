@@ -208,6 +208,8 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
             ContentLayout.Children.Add(stackPrincipale);
         }
 
+
+        //probabile problema della cronologia//
         public void AddTimeLine(int posizione)
         {
             string[] strSplit = cronologia[posizione].Split();
@@ -227,7 +229,6 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
                 HeightRequest = altezzaLinea+ (altezzaLinea * LenghtLine(posizione)),
                 WidthRequest = larghezzaLinea,
                 Margin = new Thickness(paddingLinea, 0, 0, 0),
-                //BackgroundColor = Color.Black, //colorByName[strSplit[2]],
             };
 
             var app = new StackLayout
@@ -253,6 +254,8 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
             {
                 StartColor = colorByName[strSplit[2]],
                 EndColor = NextColor(posizione),
+                //aggiunto secondo consiglio di giulio//
+                BackgroundColor = Color.Black,
             };
 
             gradiente.Children.Add(app);

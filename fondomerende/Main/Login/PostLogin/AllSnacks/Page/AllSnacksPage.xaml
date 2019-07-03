@@ -44,7 +44,9 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="50"/>
                         </Grid.RowDefinitions>
-
+                        
+                        
+                        
                         <ImageButton
                             Grid.Row="0"
                             Grid.Column="0"
@@ -62,6 +64,9 @@
                             IsVisible="True">
                         </ImageButton>
 
+                        
+                        
+                        
                         <ImageButton
                             Grid.Row="0"
                             Grid.Column="1"
@@ -98,6 +103,8 @@
                     </Grid>
                 </StackLayout>
 
+                
+
                 <StackLayout
                     Margin="0,-5,0,0"
                     Spacing="0"
@@ -116,7 +123,7 @@
                             IsVisible="True" 
                             x:Name="ScrollSnackView"  
                             Padding="0,0,0,0">
-
+                            <!--errori probabilmente sotto  va ridefinita la circonferenza degli snack ho cambiato il margin da 10 a 20-->
                             <Grid 
                                 HorizontalOptions="CenterAndExpand"
                                 x:Name="GridView" 
@@ -135,7 +142,7 @@
                                     x:Name="Column0"
                                     Spacing="40"
                                     HorizontalOptions="StartAndExpand"
-                                    Margin="5,10,10,0">
+                                    Margin="5,10,20,0">
                                 </StackLayout>
                                 
                                 <StackLayout 
@@ -143,9 +150,11 @@
                                     x:Name="Column1"
                                     Spacing="40"
                                     HorizontalOptions="EndAndExpand"
-                                    Margin="10,10,5,0">
+                                    Margin="20,10,5,0">
                                 </StackLayout>
                             </Grid>
+
+                            <!--errori probabilmente sopra  -->
                         </ScrollView>
 
                         <ScrollView 
@@ -197,7 +206,8 @@
                         </StackLayout>
                     </Grid>
                 </StackLayout>
-
+                
+                
                 <ListView
                     Margin="0,-40,0,0"
                     x:Name="ListView"

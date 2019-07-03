@@ -75,18 +75,18 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
 
 
-            switch (Device.RuntimePlatform)                                           //      ||\\
-            {                                                                         //      || \\                                    
-                                                                                      //      ||  \\ Se il dispositivo è Android non mostra la Top Bar della Navigation Page,
-                case Device.Android:                                                  //      ||   \\   Se è iOS invece si (perchè senza è una schifezza)
-                    NavigationPage.SetHasNavigationBar(this, false);                  //      ||    \\         \                
+            switch (Device.RuntimePlatform)   //                                              ||\\
+            {              //                                                                 || \\                                    
+                                                                   //                         ||  \\ Se il dispositivo è Android non mostra la Top Bar della Navigation Page,
+                case Device.Android: //                                             \\        ||   \\   Se è iOS invece si (perchè senza è una schifezza)
+                    NavigationPage.SetHasNavigationBar(this, false);//                \\      ||    \\         \                
                     break;                                                               //////////////////////|
                                                                                       //      ||    //         /       
-                default:                                                              //      ||   //
-                    NavigationPage.SetHasNavigationBar(this, true);                   //      ||  //
-                    break;                                                            //      || //
-            }                                                                         //      ||//
-
+                default:                                                            //        ||   //
+                    NavigationPage.SetHasNavigationBar(this, true);//                         ||  //
+                    break;  //                                                                || //
+            }               //                                                                ||//
+                                                                                         
 
             Swap = new AnimationView
             {
@@ -186,8 +186,10 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                     ColorRandom c = new ColorRandom();
                     var mainDisplayInfo = DeviceDisplay.MainDisplayInfo;
 
-                    double box = 140;
+                    double boxAltezza = 140;
 
+                    //aggiunto ora dopo va visto//
+                    double boxLarghezza = 100;
                     var imageButton = new ImageButton
                     {
                         Margin = new Thickness(0, 20, 0, 20),
@@ -202,8 +204,8 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
                     var StackLayout = new MR.Gestures.StackLayout
                     {
-                        WidthRequest = box,
-                        HeightRequest = box,
+                        WidthRequest = boxAltezza,
+                        HeightRequest = boxLarghezza,
                         BackgroundColor = Color.White,
                         InputTransparent = true,
                     };
@@ -211,9 +213,9 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
                     var BordiSmussatiAndroid = new RoundedCornerView
                     {
-                        HeightRequest = box,
-                        WidthRequest = box,
-                        RoundedCornerRadius = box / 2,
+                        HeightRequest = boxAltezza,
+                        WidthRequest = boxLarghezza,
+                        RoundedCornerRadius = boxAltezza / 2,
                         BorderColor = c.GetRandomColor(),
                         BorderWidth = 3,
                         InputTransparent = true,
@@ -221,9 +223,9 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
                     var BordiSmussatiiOS = new RoundedCornerView
                     {
-                        HeightRequest = box,
-                        WidthRequest = box,
-                        RoundedCornerRadius = box / 4,
+                        HeightRequest = boxAltezza,
+                        WidthRequest = boxLarghezza,
+                        RoundedCornerRadius = boxAltezza / 4,
                         BorderColor = c.GetRandomColor(),
                         BorderWidth = 1,
                         InputTransparent = true,
