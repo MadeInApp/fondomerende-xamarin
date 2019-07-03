@@ -187,10 +187,10 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                     ColorRandom c = new ColorRandom();
                     var mainDisplayInfo = DeviceDisplay.MainDisplayInfo;
 
-                    double boxAltezza = 120;
+                    double boxAltezza = 140;
 
                     //aggiunto ora dopo va visto//
-                    double boxLarghezza = 120;
+                    double boxLarghezza = 140;
                     var imageButton = new ImageButton
                     {
                         Margin = new Thickness(0, 20, 0, 20),

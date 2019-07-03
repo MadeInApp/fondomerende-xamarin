@@ -74,7 +74,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page
                     {
 
                         ColorRandom c = new ColorRandom();
-                        int box = 120;
+                        int box = 140;
 
                         var imageButtonAndroid = new ImageButton
                         {

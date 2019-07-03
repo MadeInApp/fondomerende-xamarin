@@ -122,7 +122,7 @@
                             Grid.Row="0"
                             IsVisible="True" 
                             x:Name="ScrollSnackView"  
-                            Padding="0,0,0,0">
+                            Padding="0,0,0,10">
                             <!--errori probabilmente sotto  va ridefinita la circonferenza degli snack ho cambiato il margin da 10 a 20-->
                             <Grid 
                                 HorizontalOptions="CenterAndExpand"
@@ -140,7 +140,7 @@
                                 <StackLayout 
                                     Grid.Column="0" 
                                     x:Name="Column0"
-                                    Spacing="30"
+                                    Spacing="40"
                                     HorizontalOptions="StartAndExpand"
                                     Margin="5,10,10,0">
                                 </StackLayout>
@@ -148,7 +148,7 @@
                                 <StackLayout 
                                     Grid.Column="1" 
                                     x:Name="Column1"
-                                    Spacing="30"
+                                    Spacing="40"
                                     HorizontalOptions="EndAndExpand"
                                     Margin="10,10,5,0">
                                 </StackLayout>
