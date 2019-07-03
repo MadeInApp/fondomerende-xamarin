@@ -110,6 +110,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             MessagingCenter.Subscribe<AllSnacksPage>(this, "Animation", async (value) =>
             {
                 WalletAnimation();
+                
             });
 
             MessagingCenter.Send(new ChronologyViewCell()

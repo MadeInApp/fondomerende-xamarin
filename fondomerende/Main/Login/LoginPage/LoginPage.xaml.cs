@@ -10,6 +10,14 @@ using Xamarin.Essentials;
 using fondomerende.Main.Utilities;
 using fondomerende.Main.Login.PostLogin;
 using Xamarin.Forms.Xaml;
+using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View;
+using fondomerende.Main.Login.PostLogin.AllSnack.Page;
+using fondomerende.Main.Login.PostLogin.Settings.Page;
+using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.View;
+using fondomerende.Main.Login.PostLogin.Settings.SubFolder.Settaggio.View;
+using fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.View;
+using fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.View;
+using fondomerende.Main.Login.PostLogin.Settings.SubFolder.LogOut.View;
 
 namespace fondomerende.Main.Login.LoginPages
 {
@@ -38,6 +46,7 @@ namespace fondomerende.Main.Login.LoginPages
             NavigationPage.SetHasNavigationBar(this, false);
             Donut_Background();
             LoginFade();
+            
         }
 
         private void RememberMeButton_Clicked(object sender, EventArgs e) //Ricorda nome utente e pw (da fixare)
@@ -74,8 +83,14 @@ namespace fondomerende.Main.Login.LoginPages
                     else if (response.response.success == true)
                     {
                         await userService.GetUserData();
-                        App.Current.MainPage = new MainPage();                                       
-                        wait = true;
+                        App.Current.MainPage = new MainPage();
+                        MessagingCenter.Send(new EditUserViewCell()
+                        {
+
+                        }, "RefreshUF");
+
+
+                    wait = true;
                     }
                     else
                     {
@@ -138,6 +153,10 @@ namespace fondomerende.Main.Login.LoginPages
                         {
                             await userService.GetUserData();
                             App.Current.MainPage = new MainPage();
+                            MessagingCenter.Send(new EditUserViewCell()
+                            {
+
+                            }, "RefreshUF");
                         }
                         else
                         {

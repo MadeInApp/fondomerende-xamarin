@@ -34,7 +34,6 @@ namespace fondomerende.Main.Login.PostLogin.Settings.Page
 
         public InformationPage()
         {
-            
             InitializeComponent();
             EditUserViewCell.BindingContext = friendly_name;
         
