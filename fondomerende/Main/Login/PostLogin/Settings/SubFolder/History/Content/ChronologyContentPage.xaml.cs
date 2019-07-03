@@ -228,8 +228,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
                 HorizontalOptions = LayoutOptions.Center,
                 HeightRequest = altezzaLinea+ (altezzaLinea * LenghtLine(posizione)),
                 WidthRequest = larghezzaLinea,
-                Margin = new Thickness(paddingLinea, 0, 0, 0),
-            };
+                Margin = new Thickness(paddingLinea, 0, 0, 0),            };
 
             var app = new StackLayout
             {
@@ -252,10 +251,10 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
 
             var gradiente = new GradientColorStack
             {
-                StartColor = colorByName[strSplit[2]],
-                EndColor = NextColor(posizione),
-                //aggiunto secondo consiglio di giulio//
-                BackgroundColor = Color.Black,
+                //E' causato da queste due righe//
+                //StartColor = colorByName[strSplit[2]],
+                //EndColor = NextColor(posizione),
+                BackgroundColor = colorByName[strSplit[2]],
             };
 
             gradiente.Children.Add(app);

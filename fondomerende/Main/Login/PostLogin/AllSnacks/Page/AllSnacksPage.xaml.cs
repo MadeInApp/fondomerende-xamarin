@@ -186,10 +186,10 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                     ColorRandom c = new ColorRandom();
                     var mainDisplayInfo = DeviceDisplay.MainDisplayInfo;
 
-                    double boxAltezza = 140;
+                    double boxAltezza = 120;
 
                     //aggiunto ora dopo va visto//
-                    double boxLarghezza = 100;
+                    double boxLarghezza = 120;
                     var imageButton = new ImageButton
                     {
                         Margin = new Thickness(0, 20, 0, 20),
@@ -219,6 +219,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                         BorderColor = c.GetRandomColor(),
                         BorderWidth = 3,
                         InputTransparent = true,
+                        Margin = new Thickness(10,10,10,0)
                     };
 
                     var BordiSmussatiiOS = new RoundedCornerView
@@ -229,6 +230,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                         BorderColor = c.GetRandomColor(),
                         BorderWidth = 1,
                         InputTransparent = true,
+                        Margin = new Thickness(10, 10, 10, 0)
                     };
 
                     var label = new MR.Gestures.Label

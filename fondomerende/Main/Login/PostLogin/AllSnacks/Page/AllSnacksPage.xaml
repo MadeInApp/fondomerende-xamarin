@@ -140,17 +140,17 @@
                                 <StackLayout 
                                     Grid.Column="0" 
                                     x:Name="Column0"
-                                    Spacing="40"
+                                    Spacing="30"
                                     HorizontalOptions="StartAndExpand"
-                                    Margin="5,10,20,0">
+                                    Margin="5,10,10,0">
                                 </StackLayout>
                                 
                                 <StackLayout 
                                     Grid.Column="1" 
                                     x:Name="Column1"
-                                    Spacing="40"
+                                    Spacing="30"
                                     HorizontalOptions="EndAndExpand"
-                                    Margin="20,10,5,0">
+                                    Margin="10,10,5,0">
                                 </StackLayout>
                             </Grid>
 

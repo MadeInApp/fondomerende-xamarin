@@ -104,6 +104,7 @@ namespace fondomerende.Main.Login.LoginPages
         {
             //SnackServiceManager snackService = new SnackServiceManager();
             //var a = await snackService.GetSnacksAsync();
+            
             if (!string.IsNullOrEmpty(usernameEntryR.Text) && !string.IsNullOrEmpty(friendlyNameEntryR.Text) && !string.IsNullOrEmpty(passwordEntryR.Text) && !string.IsNullOrEmpty(testPasswordEntryR.Text))
             {
                 bool nondeveaverespazi = true;
@@ -117,7 +118,7 @@ namespace fondomerende.Main.Login.LoginPages
                     }
 
                 }
-
+                
                 if (nondeveaverespazi)
                 {
                     password = passwordEntryR.Text;
