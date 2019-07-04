@@ -53,14 +53,15 @@
 
                     <Grid HorizontalOptions="CenterAndExpand"
                             x:Name="GridView" 
-                            ColumnSpacing="20">
+                            ColumnSpacing="20"
+                          Margin="0,0,0,0">
 
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
 
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
                         <StackLayout 

@@ -191,10 +191,8 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                     ColorRandom c = new ColorRandom();
                     var mainDisplayInfo = DeviceDisplay.MainDisplayInfo;
 
-                    double boxAltezza = 140;
+                    double box = 140;
 
-                    //aggiunto ora dopo va visto//
-                    double boxLarghezza = 140;
                     var imageButton = new ImageButton
                     {
                         Margin = new Thickness(0, 20, 0, 20),
@@ -209,8 +207,8 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
                     var StackLayout = new MR.Gestures.StackLayout
                     {
-                        WidthRequest = boxAltezza,
-                        HeightRequest = boxLarghezza,
+                        WidthRequest = box,
+                        HeightRequest = box,
                         BackgroundColor = Color.White,
                         InputTransparent = true,
                     };
@@ -218,9 +216,9 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
                     var BordiSmussatiAndroid = new RoundedCornerView
                     {
-                        HeightRequest = boxAltezza,
-                        WidthRequest = boxLarghezza,
-                        RoundedCornerRadius = boxAltezza / 2,
+                        HeightRequest = box,
+                        WidthRequest = box,
+                        RoundedCornerRadius = box / 2,
                         BorderColor = c.GetRandomColor(),
                         BorderWidth = 3,
                         InputTransparent = true,
@@ -229,9 +227,9 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
                     var BordiSmussatiiOS = new RoundedCornerView
                     {
-                        HeightRequest = boxAltezza,
-                        WidthRequest = boxLarghezza,
-                        RoundedCornerRadius = boxAltezza / 4,
+                        HeightRequest = box,
+                        WidthRequest = box,
+                        RoundedCornerRadius = box / 4,
                         BorderColor = c.GetRandomColor(),
                         BorderWidth = 1,
                         InputTransparent = true,
