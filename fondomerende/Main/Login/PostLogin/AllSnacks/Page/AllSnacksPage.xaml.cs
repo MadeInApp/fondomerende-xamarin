@@ -388,7 +388,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
         private async Task HideLabel()
         {
-            //await Task.Delay(500);
+            await Task.Delay(100);
             if (Column0Fav.Children.Count == 0 && Column1Fav.Children.Count == 0)
             {
                 EmptyStackFav.FadeTo(0.5, 500);
