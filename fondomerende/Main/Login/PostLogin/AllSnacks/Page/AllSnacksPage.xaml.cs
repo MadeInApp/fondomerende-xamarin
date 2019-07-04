@@ -114,8 +114,16 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             });
             MessagingCenter.Subscribe<AllSnacksPage>(this, "RefreshGriglia", async (value) =>
             {
+                Column0.Children.Clear();
+                Column1.Children.Clear();
+                GetSnacksMethod(false, false);
                 await refreshSnackAsync();
+                ScrollSnackView.IsVisible = true;
+                ListView.IsVisible = false;
+                ScrollFavourites.IsVisible = false;
+                favourite.Source = ImageSource.FromResource("fondomerende.image.star_empty.png");
             });
+
 
             MessagingCenter.Send(new ChronologyViewCell()
             {
@@ -627,8 +635,6 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
                 }, "RefreshUF");
 
-
-              
             }
             else
             {

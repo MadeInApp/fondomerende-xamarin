@@ -13,6 +13,7 @@ using fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.Page;
 using fondomerende.Main.Login.PostLogin.Settings.Page;
 using fondomerende.Main.Utilities;
 using Xamarin.Essentials;
+using fondomerende.Main.Login.PostLogin.AllSnack.Page;
 
 namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.Popup
 {
@@ -372,6 +373,10 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.Popup
                                 await Task.Delay(100);
                                 Vibration.Vibrate(40);
                             }
+                            MessagingCenter.Send(new AllSnacksPage()
+                            {
+
+                            }, "RefreshGriglia");
                             await Navigation.PopPopupAsync();
                         }
                         else

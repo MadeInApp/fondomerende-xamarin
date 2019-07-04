@@ -469,7 +469,10 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
                             Vibration.Vibrate(40);
                             await Task.Delay(100);
                             Vibration.Vibrate(40);
-                            
+                            MessagingCenter.Send(new AllSnacksPage()
+                            {
+
+                            }, "RefreshGriglia");
                             await PopupNavigation.Instance.PopAsync();
 
                         }
@@ -517,6 +520,10 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
                             Vibration.Vibrate(40);
                             await Task.Delay(100);
                             Vibration.Vibrate(40);
+                            MessagingCenter.Send(new AllSnacksPage()
+                            {
+
+                            }, "RefreshGriglia");
                             await PopupNavigation.Instance.PopAsync();
                         }
                         else
@@ -557,7 +564,10 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
 
                             }, "RefreshGetSnacks");
                             DependencyService.Get<HapticFeedbackGen>().HapticFeedbackGenSuccessAsync();
-                            
+                            MessagingCenter.Send(new AllSnacksPage()
+                            {
+
+                            }, "RefreshGriglia");
                             await PopupNavigation.Instance.PopAsync();
                         }
                         else
@@ -602,7 +612,10 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
 
                             }, "RefreshGetSnacks");
                             DependencyService.Get<HapticFeedbackGen>().HapticFeedbackGenSuccessAsync();
-                            
+                            MessagingCenter.Send(new AllSnacksPage()
+                            {
+
+                            }, "RefreshGriglia");
                             await PopupNavigation.Instance.PopAsync();
                         }
                         else
