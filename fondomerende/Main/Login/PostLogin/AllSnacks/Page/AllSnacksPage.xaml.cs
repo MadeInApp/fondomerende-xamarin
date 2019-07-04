@@ -878,7 +878,6 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             }
             catch (Exception Ex)
             {
-                await DisplayAlert("Fondo Merende", "Snack Esaurito!", "Ok");
                 MessagingCenter.Send(new AllSnacksPage()
                 {
 
