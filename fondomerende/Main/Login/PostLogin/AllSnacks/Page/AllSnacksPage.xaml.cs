@@ -21,6 +21,7 @@ using Rg.Plugins.Popup.Extensions;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using ListView = Xamarin.Forms.ListView;
 
 namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 {
@@ -117,11 +118,10 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                 Column0.Children.Clear();
                 Column1.Children.Clear();
                 GetSnacksMethod(false, false);
-                await refreshSnackAsync();
                 ScrollSnackView.IsVisible = true;
                 ListView.IsVisible = false;
                 ScrollFavourites.IsVisible = false;
-                favourite.Source = ImageSource.FromResource("fondomerende.image.star_empty.png");
+                //favourite.Source = ImageSource.FromResource("fondomerende.image.star_empty.png");
             });
 
 
@@ -878,63 +878,67 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             }
             catch (Exception Ex)
             {
-                await DisplayAlert("Fondo Merende", "Snack Esaurito!", "Ok");
+                //await DisplayAlert("Fondo Merende", "Snack Esaurito!", "Ok");
+                MessagingCenter.Send(new AllSnacksPage()
+                {
+
+                }, "RefreshGriglia");
             }
         }
 
         private async Task Stack_LongFinish(object sender, SnackDataDTO index)
         {
             
-                eatLoading = -1;
-                if ((sender as AnimationView).Speed > 0)
-                {
-                    (sender as AnimationView).Speed = 0;
-                    (sender as AnimationView).FadeTo(0, 300);
-                    EatDTO response = await snackServiceManager.EatAsync(index.id, 1);
+            eatLoading = -1;
+            if ((sender as AnimationView).Speed > 0)
+            {
+                (sender as AnimationView).Speed = 0;
+                (sender as AnimationView).FadeTo(0, 300);
+                EatDTO response = await snackServiceManager.EatAsync(index.id, 1);
 
 
-                    // refresh 
-                    MessagingCenter.Send(new EditUserViewCell()
-                    {
-
-                    }, "RefreshUF");
-                MessagingCenter.Send(new AllSnacksPage()
+                // refresh 
+                MessagingCenter.Send(new EditUserViewCell()
                 {
 
-                }, "RefreshGetSnacks");
+                }, "RefreshUF");
+                
 
                 if (response.response.success == true)
+                {
+                    if (Device.RuntimePlatform == Device.iOS)
                     {
-
-
-                        if (Device.RuntimePlatform == Device.iOS)
-                        {
-                            DependencyService.Get<HapticFeedbackGen>().HapticFeedbackGenSuccessAsync();
-                        }
-
-                        else
-                        {
-                            Vibration.Vibrate(40);
-                            await Task.Delay(100);
-                            Vibration.Vibrate(40);
-                        }
-
+                        DependencyService.Get<HapticFeedbackGen>().HapticFeedbackGenSuccessAsync();
                     }
 
                     else
                     {
-                        if (Device.RuntimePlatform == Device.iOS)
-                        {
-                            DependencyService.Get<HapticFeedbackGen>().HapticFeedbackGenErrorAsync();
-                        }
-                        else
-                        {
-                            Vibration.Vibrate(80);
-                        }
+                        Vibration.Vibrate(40);
+                        await Task.Delay(100);
+                        Vibration.Vibrate(40);
                     }
+                    MessagingCenter.Send(new AllSnacksPage()
+                    {
+
+                    }, "RefreshGetSnacks");
+                    
+                }
+
+                else
+                {
+                    if (Device.RuntimePlatform == Device.iOS)
+                    {
+                        DependencyService.Get<HapticFeedbackGen>().HapticFeedbackGenErrorAsync();
+                    }
+                    else
+                    {
+                        Vibration.Vibrate(80);
+                    }
+                    
                 }
             }
-            
         }
-
+            
     }
+
+}
