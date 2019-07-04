@@ -878,7 +878,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             }
             catch (Exception Ex)
             {
-                //await DisplayAlert("Fondo Merende", "Snack Esaurito!", "Ok");
+                await DisplayAlert("Fondo Merende", "Snack Esaurito!", "Ok");
                 MessagingCenter.Send(new AllSnacksPage()
                 {
 
@@ -898,10 +898,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
 
                 // refresh 
-                MessagingCenter.Send(new EditUserViewCell()
-                {
-
-                }, "RefreshUF");
+                
                 
 
                 if (response.response.success == true)
@@ -921,7 +918,10 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                     {
 
                     }, "RefreshGetSnacks");
-                    
+                    MessagingCenter.Send(new EditUserViewCell()
+                    {
+
+                    }, "RefreshUF");
                 }
 
                 else
