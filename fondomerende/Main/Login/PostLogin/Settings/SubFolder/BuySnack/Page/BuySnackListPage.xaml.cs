@@ -136,7 +136,13 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page
                             FontSize = 12,
                             InputTransparent = true,
                         };
-
+                        /*if (label.Text.Length > 18)
+                        {
+                            string appoggio = label.Text;
+                            label.Text = "";
+                            label.Text += appoggio.Substring(0, 18);
+                            label.Text += "...";
+                        }*/
 
                         var app = new StackLayout
                         {

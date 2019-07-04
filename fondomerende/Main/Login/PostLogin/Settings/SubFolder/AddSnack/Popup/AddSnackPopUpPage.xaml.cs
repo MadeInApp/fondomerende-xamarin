@@ -226,7 +226,16 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.Popup
 
         public void EntrataNome(object sender, TextChangedEventArgs e)
         {
-            appoggioNome = e.NewTextValue;
+
+           // if (NomeSnack.Text.Length > 9)
+            //{
+            //    string appoggio = NomeSnack.Text;
+            //    NomeSnack.Text = "";
+            //    NomeSnack.Text += appoggio.Substring(0, 9);
+            //    NomeSnack.Text += "...";
+                appoggioNome = NomeSnack.Text;
+           // }
+            
 
         }
 

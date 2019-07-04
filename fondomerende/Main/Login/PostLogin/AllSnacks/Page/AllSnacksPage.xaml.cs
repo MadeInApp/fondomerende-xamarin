@@ -252,7 +252,13 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                         FontSize = 12,
                         InputTransparent = true,
                     };
-
+                    /*if (label.Text.Length > 18)
+                    {
+                        string appoggio = label.Text;
+                        label.Text = "";
+                        label.Text += appoggio.Substring(0, 18);
+                        label.Text += "...";
+                    }*/
                     string e;
                     if (Check_Favourites(result.data.snacks[i].id))
                     {
@@ -892,8 +898,12 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                     {
 
                     }, "RefreshUF");
+                MessagingCenter.Send(new AllSnacksPage()
+                {
 
-                    if (response.response.success == true)
+                }, "RefreshGetSnacks");
+
+                if (response.response.success == true)
                     {
 
 
