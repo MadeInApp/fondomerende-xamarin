@@ -382,10 +382,6 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.Popup
                                 await Task.Delay(100);
                                 Vibration.Vibrate(40);
                             }
-                            MessagingCenter.Send(new AllSnacksPage()
-                            {
-
-                            }, "RefreshGriglia");
                             await Navigation.PopPopupAsync();
                         }
                         else
