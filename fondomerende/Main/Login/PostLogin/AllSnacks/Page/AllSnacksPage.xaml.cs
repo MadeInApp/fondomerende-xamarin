@@ -896,9 +896,6 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                 (sender as AnimationView).FadeTo(0, 300);
                 EatDTO response = await snackServiceManager.EatAsync(index.id, 1);
 
-
-                // refresh 
-                
                 
 
                 if (response.response.success == true)
@@ -922,6 +919,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                     {
 
                     }, "RefreshUF");
+                    GetSnacksMethod(true, false);
                 }
 
                 else
