@@ -31,6 +31,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
         public static double priceBinding;
         bool paoloBool = Preferences.Get("Paolo",false);
         int eatLoading = 0;
+        bool swiciato = false;
         public static bool EnablePacman;
         public static string selectedItemBinding { get; set; }
         SnackServiceManager snackServiceManager = new SnackServiceManager();
@@ -117,7 +118,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             {
                 Column0.Children.Clear();
                 Column1.Children.Clear();
-                if (Device.RuntimePlatform == Device.iOS) await Task.Delay(500);
+                if (Device.RuntimePlatform == Device.iOS)await Task.Delay(500);
                 GetSnacksMethod(false, false);
                 if (Device.RuntimePlatform == Device.iOS) await Task.Delay(500);
                 ScrollSnackView.IsVisible = true;
@@ -598,12 +599,13 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
         private async void favourite_Clicked(object sender, EventArgs e)
         {
+            
             switchStar = !switchStar;
             if (switchStar)
             {
+                swiciato = true;
                 await refreshFavAsync(true);
                 swapped = false;
-
                 ScrollSnackView.IsVisible = false;
                 ScrollFavourites.IsVisible = true;
                 ListView.IsVisible = false;
@@ -613,6 +615,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             }
             else
             {
+                swiciato = false;
                 await refreshSnackAsync();
                 refreshFavAsync(false);
                 EmptyStackFav.FadeTo(0, 0);
@@ -885,11 +888,26 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             catch (Exception Ex)
             {
 
-
-                MessagingCenter.Send(new AllSnacksPage()
+                if (swiciato = false)
                 {
+                    MessagingCenter.Send(new AllSnacksPage()
+                    {
 
-                }, "RefreshGriglia");
+                    }, "RefreshGriglia");
+                }
+                else
+                {
+                    Column0Fav.Children.Clear();
+                    Column1Fav.Children.Clear();
+                    if (Device.RuntimePlatform == Device.iOS) await Task.Delay(500);
+                    GetSnacksMethod(false, true);
+                    if (Device.RuntimePlatform == Device.iOS) await Task.Delay(500);
+                    await refreshFavAsync(true);
+                    ScrollSnackView.IsVisible = false;
+                    ScrollFavourites.IsVisible = true;
+                    ListView.IsVisible = false;
+                    favourite.Source = ImageSource.FromResource("fondomerende.image.star_fill.png");
+                }
             }
         }
 
@@ -930,7 +948,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
                         else
                         {
-                            await DisplayAlert("Fondo Merende", "Controllare il proprio fondo ", "Ok");
+                            await DisplayAlert("Fondo Merende", "C'è stato un problema", "Ok");
                             Vibration.Vibrate(80);
                         }
                         break;
@@ -952,7 +970,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
                         else
                         {
-                            await DisplayAlert("Fondo Merende", "Controllare il proprio fondo ", "Ok");
+                            await DisplayAlert("Fondo Merende", "C'è stato un problema", "Ok");
                             DependencyService.Get<HapticFeedbackGen>().HapticFeedbackGenErrorAsync();
                         }
                         break;
