@@ -878,6 +878,8 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             }
             catch (Exception Ex)
             {
+
+
                 MessagingCenter.Send(new AllSnacksPage()
                 {
 
@@ -892,46 +894,60 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             if ((sender as AnimationView).Speed > 0)
             {
                 (sender as AnimationView).Speed = 0;
-                (sender as AnimationView).FadeTo(0, 300);
+                (sender as AnimationView).FadeTo(0, 100);
                 EatDTO response = await snackServiceManager.EatAsync(index.id, 1);
 
+
+                //Non chiederti perche ho fatto cio so soltanto che crash molto meno in entrambi i dispositivi//
+                switch (Device.RuntimePlatform)
+                {
+
+                    case Device.Android:
+                        MessagingCenter.Send(new EditUserViewCell()
+                        {
+
+                        }, "RefreshUF");
+                        if (response.response.success == true)
+                        {
+                            
+                            Vibration.Vibrate(40);
+                            await Task.Delay(100);
+                            Vibration.Vibrate(40);
+                            MessagingCenter.Send(new AllSnacksPage()
+                            {
+
+                            }, "RefreshGetSnacks");
+                            
+                            GetSnacksMethod(true, false);
+                        }
+
+                        else
+                        {
+                            Vibration.Vibrate(80);
+                        }
+                        break;
+                    case Device.iOS:
+                        if (response.response.success == true)
+                        {
+                            DependencyService.Get<HapticFeedbackGen>().HapticFeedbackGenSuccessAsync();
+                            
+                            MessagingCenter.Send(new AllSnacksPage()
+                            {
+
+                            }, "RefreshGetSnacks");
+                            MessagingCenter.Send(new EditUserViewCell()
+                            {
+
+                            }, "RefreshUF");
+                            GetSnacksMethod(true, false);
+                        }
+
+                        else
+                        {
+                            DependencyService.Get<HapticFeedbackGen>().HapticFeedbackGenErrorAsync();
+                        }
+                        break;
                 
-
-                if (response.response.success == true)
-                {
-                    if (Device.RuntimePlatform == Device.iOS)
-                    {
-                        DependencyService.Get<HapticFeedbackGen>().HapticFeedbackGenSuccessAsync();
-                    }
-
-                    else
-                    {
-                        Vibration.Vibrate(40);
-                        await Task.Delay(100);
-                        Vibration.Vibrate(40);
-                    }
-                    MessagingCenter.Send(new AllSnacksPage()
-                    {
-
-                    }, "RefreshGetSnacks");
-                    MessagingCenter.Send(new EditUserViewCell()
-                    {
-
-                    }, "RefreshUF");
-                    GetSnacksMethod(true, false);
-                }
-
-                else
-                {
-                    if (Device.RuntimePlatform == Device.iOS)
-                    {
-                        DependencyService.Get<HapticFeedbackGen>().HapticFeedbackGenErrorAsync();
-                    }
-                    else
-                    {
-                        Vibration.Vibrate(80);
-                    }
-                    
                 }
             }
         }
