@@ -106,7 +106,14 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             ListView.RefreshCommand = new Command(async () =>
             {
                 await RefreshDataAsync();
+                MessagingCenter.Send(new AllSnacksPage()
+                {
+
+                }, "RefreshGriglia");
                 ListView.IsRefreshing = false;
+                ListView.IsVisible = true;
+                ScrollFavourites.IsVisible = false;
+                ScrollSnackView.IsVisible = false;
             });
 
             MessagingCenter.Subscribe<AllSnacksPage>(this, "Animation", async (value) =>
@@ -949,7 +956,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
                         else
                         {
-                            await DisplayAlert("Fondo Merende", "Fondo insufficente, ricaricare", "Ok");
+                            await DisplayAlert("Fondo Merende", "Errore", "Ok");
                             Vibration.Vibrate(80);
                         }
                         break;
