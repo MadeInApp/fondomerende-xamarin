@@ -65,6 +65,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.About_and_UserSet
 
         private void ChangeColorViewCell_Tapped(object sender, EventArgs e)
         {
+            if(Device.RuntimePlatform == Device.Android)
             Navigation.PushPopupAsync(new ColorPickerPopup());
         }
 

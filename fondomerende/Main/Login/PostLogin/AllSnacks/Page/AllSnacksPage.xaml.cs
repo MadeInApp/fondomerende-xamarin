@@ -117,11 +117,14 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             {
                 Column0.Children.Clear();
                 Column1.Children.Clear();
+                if (Device.RuntimePlatform == Device.iOS) await Task.Delay(500);
                 GetSnacksMethod(false, false);
+                if (Device.RuntimePlatform == Device.iOS) await Task.Delay(500);
                 ScrollSnackView.IsVisible = true;
                 ListView.IsVisible = false;
                 ScrollFavourites.IsVisible = false;
-                //favourite.Source = ImageSource.FromResource("fondomerende.image.star_empty.png");
+
+                favourite.Source = ImageSource.FromResource("fondomerende.image.star_empty.png");
             });
 
 
@@ -252,6 +255,9 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                         FontSize = 12,
                         InputTransparent = true,
                     };
+
+                    //se lo vuoi aggiungere è un limite di caratteri per il nome dello snack mettendo dopo i 3 punti di sospensione//
+
                     /*if (label.Text.Length > 18)
                     {
                         string appoggio = label.Text;
@@ -907,6 +913,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                         {
 
                         }, "RefreshUF");
+
                         if (response.response.success == true)
                         {
                             
@@ -917,12 +924,13 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                             {
 
                             }, "RefreshGetSnacks");
-                            
+                            RefreshDataAsync();
                             GetSnacksMethod(true, false);
                         }
 
                         else
                         {
+                            await DisplayAlert("Fondo Merende", "Controllare il proprio fondo ", "Ok");
                             Vibration.Vibrate(80);
                         }
                         break;
@@ -930,7 +938,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                         if (response.response.success == true)
                         {
                             DependencyService.Get<HapticFeedbackGen>().HapticFeedbackGenSuccessAsync();
-                            
+                            RefreshDataAsync();
                             MessagingCenter.Send(new AllSnacksPage()
                             {
 
@@ -944,6 +952,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
                         else
                         {
+                            await DisplayAlert("Fondo Merende", "Controllare il proprio fondo ", "Ok");
                             DependencyService.Get<HapticFeedbackGen>().HapticFeedbackGenErrorAsync();
                         }
                         break;
