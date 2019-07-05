@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -624,6 +624,26 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
         }
 
+        public void CreateFavouritesLabel()
+        {
+            var testo = new FormattedString();
+
+            testo.Spans.Add(new Span { Text = "Aggiungi nuovi ", TextColor = Color.Black });
+            testo.Spans.Add(new Span { Text = "Preferiti ", TextColor = Color.FromHex("#ffb121") });
+            
+            var label = new MR.Gestures.Label
+            {
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                VerticalOptions = LayoutOptions.CenterAndExpand,
+                FontSize = 20,
+                FormattedText = testo,
+            };
+
+
+            EmptyStackFav.Children.Add(label);
+            EmptyStackFav.FadeTo(0);
+        }
+
         private async void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)     //quando uno snack è tappato si apre un prompt in cui viene chiesto se lo si vuole mangiare
         {
             var ans = await DisplayAlert("Fondo Merende", "Vuoi davvero mangiare " + (e.SelectedItem as SnackDataDTO).friendly_name + "?", "Si", "No");
@@ -640,7 +660,9 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                 }
                 else
                 {
+                    if(Device.RuntimePlatform == Device.Android) Task.Delay(200);
                     GetSnacksMethod(true,false) ;
+                    if (Device.RuntimePlatform == Device.Android) Task.Delay(200);
                 }
                 MessagingCenter.Send(new EditUserViewCell()
                 {   
@@ -650,7 +672,9 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             }
             else
             {
+                if (Device.RuntimePlatform == Device.Android) Task.Delay(200);
                 GetSnacksMethod(true, false);
+                if (Device.RuntimePlatform == Device.Android) Task.Delay(200);
             }
         }
 
@@ -710,8 +734,8 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                         Scale = 1,
                     };
 
-                        Paolo.Children.Add(paolo);
-                        Anima(paolo);
+                    Paolo.Children.Add(paolo);
+                    Anima(paolo);
                
                 }
             }
@@ -829,7 +853,6 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                 
             }
         }
-
         private async void Stack_LongPressing(object sender, LongPressEventArgs e)
         {
             try
@@ -884,7 +907,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             }
             catch (Exception Ex)
             {
-                /*qui ce qualquadra che non cosa*/
+
                 if (switchStar)
                 {
                     Column0.Children.Clear();
@@ -901,7 +924,6 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                     ScrollSnackView.IsVisible = false;
                     ScrollFavourites.IsVisible = true;
                     ListView.IsVisible = false;
-                    
                 }
                 else
                 {
@@ -911,6 +933,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                     GetSnacksMethod(false, true);
                     if (Device.RuntimePlatform == Device.iOS) await Task.Delay(500);
                     await refreshFavAsync(true);
+                    
                     MessagingCenter.Send(new AllSnacksPage()
                     {
 

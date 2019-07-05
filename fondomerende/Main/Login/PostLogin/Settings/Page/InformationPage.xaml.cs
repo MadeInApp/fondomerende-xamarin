@@ -1,4 +1,4 @@
-﻿using fondomerende.Main.Services.RESTServices;
+using fondomerende.Main.Services.RESTServices;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -88,45 +88,33 @@ namespace fondomerende.Main.Login.PostLogin.Settings.Page
 
         private async void ChangeUserSettings_Tapped(object sender, EventArgs e)
         {
-            
             await Navigation.PushAsync(new AboutPage());
-            
         }
 
         private async void EditSnackViewCell_Tapped(object sender, EventArgs e)
         {
-            
             await Navigation.PushAsync(new EditSnackListPage());
-            
 
         }
 
         private async void AddSnackCell_Tapped(object sender, EventArgs e)
         {
-            
             await Navigation.PushPopupAsync(new AddSnackPopUpPage());
-            
         }
 
         private async void ChronologyCell_Tapped(object sender, EventArgs e)
         {
-            
             await Navigation.PushAsync(new ChronologyContentPage());
-            
         }
 
         private async void BuySnack_Tapped(object sender, EventArgs e)
         {
-            
             await Navigation.PushAsync(new BuySnackListPage());
-            
         }
 
         private async void Deposit_Tapped(object sender, EventArgs e)
         {
-            
             await Navigation.PushPopupAsync(new DepositPopUp());
-            
         }
     }
 }
