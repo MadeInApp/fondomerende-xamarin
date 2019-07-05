@@ -887,6 +887,11 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                 /*qui ce qualquadra che non cosa*/
                 if (switchStar)
                 {
+                    Column0.Children.Clear();
+                    Column1.Children.Clear();
+                    if (Device.RuntimePlatform == Device.iOS) await Task.Delay(500);
+                    GetSnacksMethod(false, false);
+                    if (Device.RuntimePlatform == Device.iOS) await Task.Delay(500);
                     Column0Fav.Children.Clear();
                     Column1Fav.Children.Clear();
                     if (Device.RuntimePlatform == Device.iOS) await Task.Delay(500);
@@ -900,6 +905,12 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                 }
                 else
                 {
+                    Column0Fav.Children.Clear();
+                    Column1Fav.Children.Clear();
+                    if (Device.RuntimePlatform == Device.iOS) await Task.Delay(500);
+                    GetSnacksMethod(false, true);
+                    if (Device.RuntimePlatform == Device.iOS) await Task.Delay(500);
+                    await refreshFavAsync(true);
                     MessagingCenter.Send(new AllSnacksPage()
                     {
 
@@ -947,7 +958,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
                         else
                         {
-                            await DisplayAlert("Fondo Merende", "C'è stato un problema", "Ok");
+                            await DisplayAlert("Fondo Merende", "Fondo insufficente, ricaricare", "Ok");
                             Vibration.Vibrate(80);
                         }
                         break;
