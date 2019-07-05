@@ -888,7 +888,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             catch (Exception Ex)
             {
 
-                if (swiciato = false)
+                if (favourite.Source == ImageSource.FromResource("fondomerende.image.star_empty.png"))
                 {
                     MessagingCenter.Send(new AllSnacksPage()
                     {
