@@ -99,10 +99,6 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                 Margin = new Thickness(0, 0, 0, 10),
                 AutoPlay = false,
             };
-            //Swap.OnClick += Swap_Clicked;
-            //GridView1.Children.Add(Swap, 0, 0);
-
-
             ListView.RefreshCommand = new Command(async () =>
             {
                 await RefreshDataAsync();
@@ -128,9 +124,6 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                 if (Device.RuntimePlatform == Device.iOS)await Task.Delay(500);
                 GetSnacksMethod(false, false);
                 if (Device.RuntimePlatform == Device.iOS) await Task.Delay(500);
-                ScrollSnackView.IsVisible = true;
-                ListView.IsVisible = false;
-                ScrollFavourites.IsVisible = false;
                 EmptyStackFav.FadeTo(0, 0);
                 favourite.Source = ImageSource.FromResource("fondomerende.image.star_empty.png");
             });
