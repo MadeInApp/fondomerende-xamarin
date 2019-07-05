@@ -31,7 +31,6 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
         public static double priceBinding;
         bool paoloBool = Preferences.Get("Paolo",false);
         int eatLoading = 0;
-        bool swiciato = false;
         public static bool EnablePacman;
         public static string selectedItemBinding { get; set; }
         SnackServiceManager snackServiceManager = new SnackServiceManager();
@@ -603,7 +602,6 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             switchStar = !switchStar;
             if (switchStar)
             {
-                swiciato = true;
                 await refreshFavAsync(true);
                 swapped = false;
                 ScrollSnackView.IsVisible = false;
@@ -615,7 +613,6 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             }
             else
             {
-                swiciato = false;
                 await refreshSnackAsync();
                 refreshFavAsync(false);
                 EmptyStackFav.FadeTo(0, 0);
@@ -887,15 +884,8 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             }
             catch (Exception Ex)
             {
-
-                if (favourite.Source == ImageSource.FromResource("fondomerende.image.star_empty.png"))
-                {
-                    MessagingCenter.Send(new AllSnacksPage()
-                    {
-
-                    }, "RefreshGriglia");
-                }
-                else
+                /*qui ce qualquadra che non cosa*/
+                if (switchStar)
                 {
                     Column0Fav.Children.Clear();
                     Column1Fav.Children.Clear();
@@ -906,7 +896,14 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                     ScrollSnackView.IsVisible = false;
                     ScrollFavourites.IsVisible = true;
                     ListView.IsVisible = false;
-                    favourite.Source = ImageSource.FromResource("fondomerende.image.star_fill.png");
+                    
+                }
+                else
+                {
+                    MessagingCenter.Send(new AllSnacksPage()
+                    {
+
+                    }, "RefreshGriglia");
                 }
             }
         }
@@ -944,6 +941,8 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                             }, "RefreshGetSnacks");
                             RefreshDataAsync();
                             GetSnacksMethod(true, false);
+                            await Task.Delay(100);
+
                         }
 
                         else
@@ -966,6 +965,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
                             }, "RefreshUF");
                             GetSnacksMethod(true, false);
+                            await Task.Delay(100);
                         }
 
                         else
