@@ -42,6 +42,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
         AnimationView Swap;
         bool miserve = false;
 
+
         string previousFavourite;
 
         object[] Snackarray = new object[100];
@@ -123,7 +124,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                 ScrollSnackView.IsVisible = true;
                 ListView.IsVisible = false;
                 ScrollFavourites.IsVisible = false;
-
+                EmptyStackFav.FadeTo(0, 0);
                 favourite.Source = ImageSource.FromResource("fondomerende.image.star_empty.png");
             });
 
@@ -386,14 +387,12 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             if (previousFavourite != Preferences.Get("Favourites", ""))
             {
                 EmptyStackFav.FadeTo(0, 0); // nasconde la scritta aggiungi snack
-                previousFavourite = Preferences.Get("Favourites", "");
                 ScrollFavourites.IsVisible = true;
                 Column0Fav.Children.Clear();
                 Column1Fav.Children.Clear();
 
                 GetSnacksMethod(false, true);
             }
-
             if(app) HideLabel();
 
         }
@@ -624,26 +623,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
         }
 
-        public void CreateFavouritesLabel()
-        {
-            var testo = new FormattedString();
-
-            testo.Spans.Add(new Span { Text = "Aggiungi nuovi ", TextColor = Color.Black });
-            testo.Spans.Add(new Span { Text = "Preferiti ", TextColor = Color.FromHex("#ffb121") });
-            
-            var label = new MR.Gestures.Label
-            {
-                HorizontalOptions = LayoutOptions.CenterAndExpand,
-                VerticalOptions = LayoutOptions.CenterAndExpand,
-                FontSize = 20,
-                FormattedText = testo,
-            };
-
-
-            EmptyStackFav.Children.Add(label);
-            EmptyStackFav.FadeTo(0);
-        }
-
+        
         private async void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)     //quando uno snack è tappato si apre un prompt in cui viene chiesto se lo si vuole mangiare
         {
             var ans = await DisplayAlert("Fondo Merende", "Vuoi davvero mangiare " + (e.SelectedItem as SnackDataDTO).friendly_name + "?", "Si", "No");
@@ -915,11 +895,6 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                     if (Device.RuntimePlatform == Device.iOS) await Task.Delay(500);
                     GetSnacksMethod(false, false);
                     if (Device.RuntimePlatform == Device.iOS) await Task.Delay(500);
-                    Column0Fav.Children.Clear();
-                    Column1Fav.Children.Clear();
-                    if (Device.RuntimePlatform == Device.iOS) await Task.Delay(500);
-                    GetSnacksMethod(false, true);
-                    if (Device.RuntimePlatform == Device.iOS) await Task.Delay(500);
                     await refreshFavAsync(true);
                     ScrollSnackView.IsVisible = false;
                     ScrollFavourites.IsVisible = true;
@@ -927,13 +902,6 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                 }
                 else
                 {
-                    Column0Fav.Children.Clear();
-                    Column1Fav.Children.Clear();
-                    if (Device.RuntimePlatform == Device.iOS) await Task.Delay(500);
-                    GetSnacksMethod(false, true);
-                    if (Device.RuntimePlatform == Device.iOS) await Task.Delay(500);
-                    await refreshFavAsync(true);
-                    
                     MessagingCenter.Send(new AllSnacksPage()
                     {
 
