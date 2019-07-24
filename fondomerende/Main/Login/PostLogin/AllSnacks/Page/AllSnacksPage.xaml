@@ -44,7 +44,9 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="50"/>
                         </Grid.RowDefinitions>
-
+                        
+                        
+                        
                         <ImageButton
                             Grid.Row="0"
                             Grid.Column="0"
@@ -62,6 +64,9 @@
                             IsVisible="True">
                         </ImageButton>
 
+                        
+                        
+                        
                         <ImageButton
                             Grid.Row="0"
                             Grid.Column="1"
@@ -98,6 +103,8 @@
                     </Grid>
                 </StackLayout>
 
+                
+
                 <StackLayout
                     Margin="0,-5,0,0"
                     Spacing="0"
@@ -115,8 +122,7 @@
                             Grid.Row="0"
                             IsVisible="True" 
                             x:Name="ScrollSnackView"  
-                            Padding="0,0,0,0">
-
+                            Padding="0,0,0,10">
                             <Grid 
                                 HorizontalOptions="CenterAndExpand"
                                 x:Name="GridView" 
@@ -146,6 +152,7 @@
                                     Margin="10,10,5,0">
                                 </StackLayout>
                             </Grid>
+
                         </ScrollView>
 
                         <ScrollView 
@@ -197,7 +204,8 @@
                         </StackLayout>
                     </Grid>
                 </StackLayout>
-
+                
+                
                 <ListView
                     Margin="0,-40,0,0"
                     x:Name="ListView"

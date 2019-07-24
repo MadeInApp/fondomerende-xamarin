@@ -406,6 +406,10 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.PopUp
                             {
 
                             }, "Close");
+                            MessagingCenter.Send(new AllSnacksPage()
+                            {
+
+                            }, "RefreshGriglia");
                             await Navigation.PopPopupAsync();
                         }
                         else

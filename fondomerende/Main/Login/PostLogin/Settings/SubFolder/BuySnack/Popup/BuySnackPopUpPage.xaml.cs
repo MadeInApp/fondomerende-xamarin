@@ -1,7 +1,8 @@
-﻿using fondomerende.Main.Login.PostLogin.AllSnack.Page;
+using fondomerende.Main.Login.PostLogin.AllSnack.Page;
 using fondomerende.Main.Login.PostLogin.Settings.Page;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.Page;
+using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View;
 using fondomerende.Main.Services.RESTServices;
 using fondomerende.Main.Utilities;
 using Rg.Plugins.Popup.Extensions;
@@ -244,7 +245,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
                     stackFondoAndroid.Children.Add(fondomerende);
                     stackFondoAndroid.Children.Add(immagine);
                     stackBody.Children.Add(stackFondoAndroid);
-                    immagine.Clicked += Immagine_ClickedAndroid;
+                    immagine.Clicked += Immagine_Clicked;
                     prezzoAndroid.TextChanged += EntrataPrezzoAndroid;
                     buttonCancel.Clicked += Discard_Clicked;
                     buttonConfirm.Clicked += Apply_ClickedAndroid;
@@ -262,7 +263,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
                     stackFondoiOS.Children.Add(fondomerende);
                     stackFondoiOS.Children.Add(immagine);
                     stackBody.Children.Add(stackFondoiOS);
-                    immagine.Clicked += Immagine_ClickediOs;
+                    immagine.Clicked += Immagine_Clicked;
                     prezzoAndroid.TextChanged += EntrataPrezzoiOs;
                     buttonCancel.Clicked += Discard_Clicked;
                     buttonConfirm.Clicked += Apply_ClickediOs;
@@ -368,27 +369,30 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
         }
 
 
-        private async void Immagine_ClickedAndroid(object sender, EventArgs e)
+        private async void Immagine_Clicked(object sender, EventArgs e)
         {
             swap = true;
-            Altezza = (GetAltezzaPagina()*50)/100;
-            Round.HeightRequest = Altezza;
-            stackBody.Spacing = 20;
-            immagine.IsVisible = false;
-            prezzoAndroid.IsVisible = true;
-            scadenzaAndroid.IsVisible = true;
+            switch (Device.RuntimePlatform)
+            {
+                case Device.Android:
+                    Altezza = (GetAltezzaPagina() * 50) / 100;
+                    Round.HeightRequest = Altezza;
+                    stackBody.Spacing = 20;
+                    immagine.IsVisible = false;
+                    prezzoAndroid.IsVisible = true;
+                    scadenzaAndroid.IsVisible = true;
+                    break;
+                case Device.iOS:
+                    Altezza = (GetAltezzaPagina() * 50) / 100;
+                    Round.HeightRequest = Altezza;
+                    stackBody.Spacing = 20;
+                    immagine.IsVisible = false;
+                    prezzoiOs.IsVisible = true;
+                    scadenzaiOs.IsVisible = true;
+                    break;
+            }
         }
-
-        private async void Immagine_ClickediOs(object sender, EventArgs e)
-        {
-            swap = true;
-            Altezza = (GetAltezzaPagina() * 50) / 100;
-            Round.HeightRequest = Altezza;
-            stackBody.Spacing = 20;
-            immagine.IsVisible = false;
-            prezzoiOs.IsVisible = true;
-            scadenzaiOs.IsVisible = true;
-        }
+        
 
 
         public void EntrataPrezzoAndroid(object sender, TextChangedEventArgs e)
@@ -449,15 +453,29 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
                 }
                 else
                 {
+                   
+                    if(lineAndroid.Text.Contains(","))
+                    {
+                        int aiuto = lineAndroid.Text.IndexOf(",");
+                        lineAndroid.Text = lineAndroid.Text.Substring(0, aiuto);
+                    }
+                    
                     var result = await snackService.BuySnackAsync(BuySnackListPage.SelectedSnackID, Convert.ToInt32(lineAndroid.Text));
                     if (result != null)
                     {
                         if (result.success)
                         {
+                            MessagingCenter.Send(new AllSnacksPage()
+                            {
+
+                            }, "RefreshGetSnacks");
                             Vibration.Vibrate(40);
                             await Task.Delay(100);
                             Vibration.Vibrate(40);
-                            
+                            MessagingCenter.Send(new AllSnacksPage()
+                            {
+
+                            }, "RefreshGriglia");
                             await PopupNavigation.Instance.PopAsync();
 
                         }
@@ -488,14 +506,27 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
                 }
                 else
                 {
+                    if (lineAndroid.Text.Contains(","))
+                    {
+                        int aiuto = lineAndroid.Text.IndexOf(",");
+                        lineAndroid.Text = lineAndroid.Text.Substring(0, aiuto);
+                    }
                     var result = await snackService.BuySnackAsync2(BuySnackListPage.SelectedSnackID, Int32.Parse(lineAndroid.Text),prezzoAndroid.Text, scadenzaAndroid.Text);
                     if (result != null)
                     {
                         if (result.success)
                         {
+                            MessagingCenter.Send(new AllSnacksPage()
+                            {
+
+                            }, "RefreshGetSnacks");
                             Vibration.Vibrate(40);
                             await Task.Delay(100);
                             Vibration.Vibrate(40);
+                            MessagingCenter.Send(new AllSnacksPage()
+                            {
+
+                            }, "RefreshGriglia");
                             await PopupNavigation.Instance.PopAsync();
                         }
                         else
@@ -512,68 +543,83 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
 
         private async void Apply_ClickediOs(object sender, EventArgs e)
         {
-            SnackServiceManager snackService = new SnackServiceManager();
-            if (swap == false)
+            try
             {
-                if (lineiOs.Text == null || lineiOs.Text == "")
+                SnackServiceManager snackService = new SnackServiceManager();
+                if (swap == false)
                 {
-                    await DisplayAlert("Fondo Merende", "Inserisci la quantità", "OK");
-                }
-                else
-                {
-                    var result = await snackService.BuySnackAsync(BuySnackListPage.SelectedSnackID, Convert.ToInt32(lineiOs.Text));
-                    if (result != null)
+                    if (lineiOs.Text.Contains(","))
                     {
-                        if (result.success)
+                        int aiuto = lineiOs.Text.IndexOf(",");
+                        lineiOs.Text = lineiOs.Text.Substring(0, aiuto);
+                    }
+                    
+                    else
+                    {
+                        var result = await snackService.BuySnackAsync(BuySnackListPage.SelectedSnackID, Convert.ToInt32(lineiOs.Text));
+                        if (result != null)
                         {
-                            
-                            DependencyService.Get<HapticFeedbackGen>().HapticFeedbackGenSuccessAsync();
-                            
-                            await PopupNavigation.Instance.PopAsync();
+                            if (result.response.success)
+                            {
+                                MessagingCenter.Send(new AllSnacksPage()
+                                {
+
+                                }, "RefreshGetSnacks");
+                                DependencyService.Get<HapticFeedbackGen>().HapticFeedbackGenSuccessAsync();
+                                MessagingCenter.Send(new AllSnacksPage()
+                                {
+
+                                }, "RefreshGriglia");
+                                await PopupNavigation.Instance.PopAsync();
+                            }
+                            else
+                            {
+                                await DisplayAlert("Fondo Merende", result.response.message, "Ok");
+                            }
                         }
                         else
                         {
-                            await DisplayAlert("Fondo Merende", result.message, "Ok");
+
                         }
+                    }
+                }
+                if (swap == true)
+                {
+                    
+                    if (lineiOs.Text.Contains(","))
+                    {
+                        int aiuto = lineiOs.Text.IndexOf(",");
+                        lineiOs.Text = lineiOs.Text.Substring(0, aiuto);
                     }
                     else
                     {
+                        var result = await snackService.BuySnackAsync2(BuySnackListPage.SelectedSnackID, Int32.Parse(lineiOs.Text), prezzoiOs.Text, scadenzaiOs.Text);
+                        if (result != null)
+                        {
+                            if (result.response.success)
+                            {
+                                MessagingCenter.Send(new AllSnacksPage()
+                                {
 
+                                }, "RefreshGetSnacks");
+                                DependencyService.Get<HapticFeedbackGen>().HapticFeedbackGenSuccessAsync();
+                                MessagingCenter.Send(new AllSnacksPage()
+                                {
+
+                                }, "RefreshGriglia");
+                                await PopupNavigation.Instance.PopAsync();
+                            }
+                            else
+                            {
+                                await DisplayAlert("Fondo Merende", result.response.message, "Ok");
+                            }
+                        }
                     }
+
                 }
-            }
-            if (swap == true)
+            }catch(Exception ex)
             {
-                if (lineiOs.Text == null || lineiOs.Text == "")
-                {
-                    await DisplayAlert("Fondo Merende", "Inserisci la quantità", "OK");
-                }
-                if (prezzoiOs.Text == null || prezzoiOs.Text == "")
-                {
-                    await DisplayAlert("Fondo Merende", "Inserisci il prezzo", "OK");
-                }
-                if (scadenzaiOs.Text == null || scadenzaiOs.Text == "")
-                {
-                    await DisplayAlert("Fondo Merende", "Inserisci i giorni di scadenza", "OK");
-                }
-                else
-                {
-                    var result = await snackService.BuySnackAsync2(BuySnackListPage.SelectedSnackID, Int32.Parse(lineiOs.Text), prezzoiOs.Text, scadenzaiOs.Text);
-                    if (result != null)
-                    {
-                        if (result.success)
-                        {
-                            DependencyService.Get<HapticFeedbackGen>().HapticFeedbackGenSuccessAsync();
-                            
-                            await PopupNavigation.Instance.PopAsync();
-                        }
-                        else
-                        {
-                            await DisplayAlert("Fondo Merende", result.message, "Ok");
-                        }
-                    }
-                }
-
+                await DisplayAlert("Fondo Merende", "Riempire tutti i campi", "Ok");
             }
 
         }

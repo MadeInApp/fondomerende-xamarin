@@ -33,7 +33,10 @@ namespace fondomerende.Main.Utilities
                 "Fà così freddo che sono arriavti i pinguì",
                 "Non dimenticarti di mangiare",
                 "Le macchinette conquisteranno il mondo...",
-                "Eat an apple, don't miss it"
+                "Eat an apple, don't miss it",
+                "Tutto ebbe inizio con un aperitivo: il crodo primordiale",
+                "Puoi cambiare il colore anche dalle impostazioni",
+                "Effettuando il Log out perderai tutte le preferenze"
             };
             int numeroCasuale = random.Next(0, Phrase.Length);
             return Phrase[numeroCasuale];

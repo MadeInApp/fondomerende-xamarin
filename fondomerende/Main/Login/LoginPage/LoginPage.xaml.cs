@@ -10,6 +10,14 @@ using Xamarin.Essentials;
 using fondomerende.Main.Utilities;
 using fondomerende.Main.Login.PostLogin;
 using Xamarin.Forms.Xaml;
+using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View;
+using fondomerende.Main.Login.PostLogin.AllSnack.Page;
+using fondomerende.Main.Login.PostLogin.Settings.Page;
+using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.View;
+using fondomerende.Main.Login.PostLogin.Settings.SubFolder.Settaggio.View;
+using fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.View;
+using fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.View;
+using fondomerende.Main.Login.PostLogin.Settings.SubFolder.LogOut.View;
 
 namespace fondomerende.Main.Login.LoginPages
 {
@@ -22,9 +30,9 @@ namespace fondomerende.Main.Login.LoginPages
         UserServiceManager userService = new UserServiceManager();
         LoginServiceManager loginService = new LoginServiceManager();
         private string username, password, testpassword, friendly_name;
-        private bool remember = true;
+        public bool remember = true;
         private bool wait = false;
-        bool clicked = false;
+        bool clicked = true;
 
 
         public LoginPage()
@@ -38,6 +46,7 @@ namespace fondomerende.Main.Login.LoginPages
             NavigationPage.SetHasNavigationBar(this, false);
             Donut_Background();
             LoginFade();
+            
         }
 
         private void RememberMeButton_Clicked(object sender, EventArgs e) //Ricorda nome utente e pw (da fixare)
@@ -45,13 +54,13 @@ namespace fondomerende.Main.Login.LoginPages
             if (clicked == true)
             {
                 clicked = false;
-                remember = !remember;
+                remember = false;
                 RememberMe_Button.BackgroundColor = Color.Transparent;   
             }
             else
             {
                 clicked = true;
-                remember = !remember;
+                remember = true;
                 RememberMe_Button.BackgroundColor = Color.WhiteSmoke;
             }
 
@@ -73,10 +82,15 @@ namespace fondomerende.Main.Login.LoginPages
                     }
                     else if (response.success == true)
                     {
-                           
                         await userService.GetUserData();
-                        App.Current.MainPage = new MainPage();                                       
-                        wait = true;
+                        App.Current.MainPage = new MainPage();
+                        MessagingCenter.Send(new EditUserViewCell()
+                        {
+
+                        }, "RefreshUF");
+
+
+                    wait = true;
                     }
                     else
                     {
@@ -105,6 +119,7 @@ namespace fondomerende.Main.Login.LoginPages
         {
             //SnackServiceManager snackService = new SnackServiceManager();
             //var a = await snackService.GetSnacksAsync();
+            
             if (!string.IsNullOrEmpty(usernameEntryR.Text) && !string.IsNullOrEmpty(friendlyNameEntryR.Text) && !string.IsNullOrEmpty(passwordEntryR.Text) && !string.IsNullOrEmpty(testPasswordEntryR.Text))
             {
                 bool nondeveaverespazi = true;
@@ -118,7 +133,7 @@ namespace fondomerende.Main.Login.LoginPages
                     }
 
                 }
-
+                
                 if (nondeveaverespazi)
                 {
                     password = passwordEntryR.Text;
@@ -138,6 +153,10 @@ namespace fondomerende.Main.Login.LoginPages
                         {
                             await userService.GetUserData();
                             App.Current.MainPage = new MainPage();
+                            MessagingCenter.Send(new EditUserViewCell()
+                            {
+
+                            }, "RefreshUF");
                         }
                         else
                         {

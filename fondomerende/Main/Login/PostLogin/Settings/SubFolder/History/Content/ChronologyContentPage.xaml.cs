@@ -208,6 +208,8 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
             ContentLayout.Children.Add(stackPrincipale);
         }
 
+
+        //probabile problema della cronologia//
         public void AddTimeLine(int posizione)
         {
             string[] strSplit = cronologia[posizione].Split();
@@ -227,7 +229,6 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
                 HeightRequest = altezzaLinea+ (altezzaLinea * LenghtLine(posizione)),
                 WidthRequest = larghezzaLinea,
                 Margin = new Thickness(paddingLinea, 0, 0, 0),
-                //BackgroundColor = Color.Black, //colorByName[strSplit[2]],
             };
 
             var app = new StackLayout
@@ -251,8 +252,10 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
 
             var gradiente = new GradientColorStack
             {
-                StartColor = colorByName[strSplit[2]],
-                EndColor = NextColor(posizione),
+                //E' causato da queste due righe//
+                //StartColor = colorByName[strSplit[2]],
+                //EndColor = NextColor(posizione),
+                BackgroundColor = colorByName[strSplit[2]],
             };
 
             gradiente.Children.Add(app);
@@ -313,7 +316,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
                 {
                     Color colorapp = c.GetRandomColor();
 
-                    while (colorapp == Color.FromHex(Xamarin.Essentials.Preferences.Get("Colore", "#000002")) || colorapp == LastColor(i))
+                    while (colorapp == Color.FromHex(Xamarin.Essentials.Preferences.Get("Colore", "#CCCCCC")) || colorapp == LastColor(i))
                     {
                         colorapp = c.GetRandomColor();
                     }
@@ -321,7 +324,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
 
                     if ((strSplit[2]).Equals(Xamarin.Essentials.Preferences.Get("friendly-name", " ")))
                     {
-                        colorapp = Color.FromHex(Xamarin.Essentials.Preferences.Get("Colore", "#000002"));
+                        colorapp = Color.FromHex(Xamarin.Essentials.Preferences.Get("Colore", "#CCCCCC"));
 
                         if (!colorByName.ContainsKey(Xamarin.Essentials.Preferences.Get("friendly-name", " ")))
                         {
@@ -459,19 +462,6 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
                 multipler += ris.Days*24;
                 if (multipler > 600) multipler = 60;
             }
-
-            //for(int i = 0; i < current.Length; i++)
-            //{
-            //    app[i] = Math.Abs(current[i] - next[i]);
-            //}
-
-            
-
-            //if (app[4] != 0) multipler += app[4] * 1;
-            //else if (app[3] != 0) multipler += app[3] * 0.5;
-            //else if (app[2] != 0) multipler += app[2] * 0.25;
-            //else if (app[1] != 0) multipler += app[1] * 0.025;
-            //else if (app[0] != 0) multipler += app[0] * 0.0025;
             return multipler;
         }
 

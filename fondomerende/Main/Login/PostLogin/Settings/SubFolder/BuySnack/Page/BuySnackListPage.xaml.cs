@@ -68,7 +68,6 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page
            ListView.ItemsSource = result.data.snacks;
             if (result != null)
             {
-                //ListView.ItemsSource = result.data.snacks;
                 if (!Loaded) //!WORKAROUND!   in questo modo si evita il crash ma la griglia non si aggiorna, urge investigazione sul vero problema
                 {
                     for (int i = 0; i <= result.data.snacks.Count; i++)
@@ -115,6 +114,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page
                             BorderColor = c.GetRandomColor(),
                             InputTransparent = true,
                             BorderWidth = 3,
+                            Margin = new Thickness(10, 10, 10, 0)
                         };
 
                         var BordiSmussatiiOS = new RoundedCornerView
@@ -125,6 +125,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page
                             InputTransparent = true,
                             BorderColor = c.GetRandomColor(),
                             BorderWidth = 1,
+                            Margin = new Thickness(10, 10, 10, 0)
                         };
 
                         var label = new Label
@@ -135,7 +136,13 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page
                             FontSize = 12,
                             InputTransparent = true,
                         };
-
+                        /*if (label.Text.Length > 18)
+                        {
+                            string appoggio = label.Text;
+                            label.Text = "";
+                            label.Text += appoggio.Substring(0, 18);
+                            label.Text += "...";
+                        }*/
 
                         var app = new StackLayout
                         {
