@@ -267,7 +267,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.Popup
                 {
                     var risp = await editUser.EditUserAsync(EditUserInfoPopUp.username, EditUserInfoPopUp.FriendlyName, EditUserInfoPopUp.passwordNuova);
 
-                    if (risp.response.success == true)
+                    if (risp.success == true)
                     {
 
                         await PopupNavigation.Instance.PopAsync();
@@ -277,7 +277,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.Popup
                             var response = await logoutService.LogoutAsync();
                             if (response != null)
                             {
-                                if (response.response.success == true)
+                                if (response.success == true)
                                 {
                                     await Navigation.PopAllPopupAsync();
                                     App.Current.MainPage = new LoginPage();
@@ -296,9 +296,9 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.Popup
 
 
                     }
-                    else if (risp.response.message != null)
+                    else if (risp.message != null)
                     {
-                        await DisplayAlert("Fondo Merende",risp.response.message, "Ok");
+                        await DisplayAlert("Fondo Merende",risp.message, "Ok");
                         await Navigation.PopPopupAsync();
                     }
                 }

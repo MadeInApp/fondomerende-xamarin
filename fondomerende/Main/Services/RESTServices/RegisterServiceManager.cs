@@ -26,7 +26,7 @@ namespace fondomerende.Main.Services.RESTServices
                .PostUrlEncodedAsync(data)
                .ReceiveJson<RegisterDTO>();
 
-                if (result.response.success = true && result.response.status == 201)
+                if (result.success = true && result.status == 201)
                 {
                     App.Current.MainPage = new LoginPage();
                     UserManager.Instance.token = result.data.token;

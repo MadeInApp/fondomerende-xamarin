@@ -67,11 +67,11 @@ namespace fondomerende.Main.Login.LoginPages
                     {
                         
                     }
-                    else if (response.response.message == "Invalid login: wrong credentials.")
+                    else if (response.message == "Invalid login: wrong credentials.")
                     {
                         await DisplayAlert("Fondo Merende", "Username o Password Errati", "OK");
                     }
-                    else if (response.response.success == true)
+                    else if (response.success == true)
                     {
                            
                         await userService.GetUserData();
@@ -134,16 +134,16 @@ namespace fondomerende.Main.Login.LoginPages
                         {
 
                         }
-                        else if (response.response.success == true && response.response.status == 201)
+                        else if (response.success == true && response.status == 201)
                         {
                             await userService.GetUserData();
                             App.Current.MainPage = new MainPage();
                         }
                         else
                         {
-                            if (response.response.status == 400)
+                            if (response.status == 400)
                             {
-                                await DisplayAlert("Fondo Merende", response.response.message, "OK");
+                                await DisplayAlert("Fondo Merende", response.message, "OK");
                             }
                             else
                             {

@@ -6,7 +6,9 @@ namespace fondomerende.Main.Services.Models
 {
     class RegisterDTO
     {
-        public ResponseDTO response { get; set; }
+        public bool success { get; set; }
+        public int status { get; set; }
+        public string message { get; set; }
         public RegisterDataDTO data { get; set; }
     }
 }

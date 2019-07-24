@@ -25,7 +25,7 @@ namespace fondomerende.Main.Services.RESTServices
                                .ReceiveJson<LogoutDTO>();
 
 
-                if (result.response.success == true)
+                if (result.success == true)
                 {
                     Preferences.Clear();
                 }

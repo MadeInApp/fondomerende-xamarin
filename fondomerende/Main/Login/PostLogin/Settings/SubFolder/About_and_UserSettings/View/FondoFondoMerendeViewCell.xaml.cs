@@ -34,7 +34,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.About_and_UserSet
             var result = await userFundsService.GetFundsFundAsync();
             if (result != null)
             {
-                if (result.response.success)
+                if (result.success)
                 {
                     FundFund.Text = "il Fondo merende ha €" + Convert.ToString(result.data.fund_funds_amount) + " a disposizione";
                     if (result.data.fund_funds_amount <= 0)

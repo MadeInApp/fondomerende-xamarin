@@ -40,7 +40,7 @@ namespace fondomerende.Main.Services.RESTServices
 
         public async System.Threading.Tasks.Task<FundFundsDTO> GetFundsFundAsync()
         {
-            string urlString = Services.Concatenazione() + "/process-request.php?command-name=get-fund-funds";
+            string urlString = Services.Concatenazione() + "?command-name=get-fund-funds";
             try
             {
                 var response = await urlString

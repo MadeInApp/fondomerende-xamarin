@@ -338,7 +338,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup
                 var resultDep = await depositService.DepositAsync(appoggio);
                 if (resultDep != null)
                 {
-                    if (resultDep.response.success)
+                    if (resultDep.success)
                     {
                         MessagingCenter.Send(new AllSnacksPage()
                         {
@@ -359,13 +359,13 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup
                         await Navigation.PopPopupAsync();
                         
                     }
-                    else if (resultDep.response.message == "Execution error in UPDATE users_funds SET amount=amount+? WHERE user_id=?. Out of range value for column 'amount' at row 1.")
+                    else if (resultDep.message == "Execution error in UPDATE users_funds SET amount=amount+? WHERE user_id=?. Out of range value for column 'amount' at row 1.")
                     {
                         await DisplayAlert("Fondo Merende", "Non puoi superare i €99.99 di fondo utente", "Ok");
                     }
                     else
                     {
-                        await DisplayAlert("Fondo Merende", resultDep.response.message, "Ok");
+                        await DisplayAlert("Fondo Merende", resultDep.message, "Ok");
                     }
                 }
                 else

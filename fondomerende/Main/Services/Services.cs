@@ -9,11 +9,11 @@ namespace fondomerende.Main.Services
 {
     static class Services
     {
-        public static bool test = true;
+        public static bool test = false;
         
         private readonly static string protocollo = "http://";
         private readonly static string basePath = "fondomerende.madeinapp.net/api";
-        private readonly static string authkey = "MEt085D5zxZXK7FES6qMHOrBbuzGPGwBlYzt1cwAJux";
+        private readonly static string authkey = "pxzkCBlHelBYCWho5qMk0kxaA2H8SAph8W";
         private static string token = UserManager.Instance.token;
         private readonly static string content = "application/x-www-form-urlencoded; param=value;charset=UTF-8";
         private readonly static string basePathTest = "192.168.0.175:8888/fondomerende/public/process-request.php";

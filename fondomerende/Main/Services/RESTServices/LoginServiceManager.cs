@@ -36,7 +36,7 @@ namespace fondomerende.Main.Services.RESTServices
                     .PostUrlEncodedAsync(data)
                     .ReceiveJson<LoginDTO>();
 
-                if (result.response.success == true)
+                if (result.success == true)
                 {
                     UserManager.Instance.token = result.data.token;
                     Preferences.Set("username", username);

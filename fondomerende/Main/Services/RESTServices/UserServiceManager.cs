@@ -23,7 +23,7 @@ namespace fondomerende.Main.Services.RESTServices
                                 .WithCookie("user-token", UserManager.Instance.token)
                                 .GetJsonAsync<UserDTO>();
 
-                if (response.response.success == true)
+                if (response.success == true)
                 {
                     Preferences.Set("friendly-name", response.data.userList.friendly_name);
                 }

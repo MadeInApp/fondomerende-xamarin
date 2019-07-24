@@ -7,7 +7,9 @@ namespace fondomerende.Main.Services.Models
 {
     class AllSnacksDTO
     {
-        public ResponseDTO response { get; set; }
+        public bool success { get; set; }
+        public int status { get; set; }
+        public string message { get; set; }
         public AllSnackDataArrayDTO data { get; set; }
 
         public static implicit operator AllSnacksDTO(HttpResponseMessage v)

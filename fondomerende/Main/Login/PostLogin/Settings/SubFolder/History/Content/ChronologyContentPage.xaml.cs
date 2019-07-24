@@ -491,7 +491,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
             var result = await lastAction.GetLastActions();
             if (result != null)
             {
-                if (result.response.success == true)
+                if (result.success == true)
                 {
                     cronologia = result.data.actions;
                     Fusione();

@@ -68,7 +68,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.Page
                 var response = await logoutService.LogoutAsync();
                 if (response != null)
                 {
-                    if (response.response.success == true)
+                    if (response.success == true)
                     {
                         App.Current.MainPage = new LoginPage();
                         Preferences.Clear();

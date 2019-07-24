@@ -896,7 +896,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
                     }, "RefreshUF");
 
-                    if (response.response.success == true)
+                    if (response.success == true)
                     {
 
 

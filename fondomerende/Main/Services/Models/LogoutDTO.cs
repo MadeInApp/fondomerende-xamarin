@@ -6,6 +6,8 @@ namespace fondomerende.Main.Services.Models
 {
     class LogoutDTO
     {
-        public ResponseDTO response { get; set; }
+        public bool success { get; set; }
+        public int status { get; set; }
+        public string message { get; set; }
     }
 }

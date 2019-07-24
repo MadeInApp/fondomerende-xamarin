@@ -77,7 +77,7 @@ namespace fondomerende.PostLoginPages
             {
                 App.Current.MainPage.DisplayAlert("Fondo Merende", "Connessione Al Fondo Merende fallita", "Ok");
             }
-            else if (resultLogin.response.success)
+            else if (resultLogin.success)
             {
                 await userService.GetUserData();
                 App.Current.MainPage = new MainPage();

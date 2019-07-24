@@ -452,7 +452,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
                     var result = await snackService.BuySnackAsync(BuySnackListPage.SelectedSnackID, Convert.ToInt32(lineAndroid.Text));
                     if (result != null)
                     {
-                        if (result.response.success)
+                        if (result.success)
                         {
                             Vibration.Vibrate(40);
                             await Task.Delay(100);
@@ -463,7 +463,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
                         }
                         else
                         {
-                            await DisplayAlert("Fondo Merende", result.response.message, "Ok");
+                            await DisplayAlert("Fondo Merende", result.message, "Ok");
                         }
                     }
                     else
@@ -491,7 +491,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
                     var result = await snackService.BuySnackAsync2(BuySnackListPage.SelectedSnackID, Int32.Parse(lineAndroid.Text),prezzoAndroid.Text, scadenzaAndroid.Text);
                     if (result != null)
                     {
-                        if (result.response.success)
+                        if (result.success)
                         {
                             Vibration.Vibrate(40);
                             await Task.Delay(100);
@@ -500,7 +500,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
                         }
                         else
                         {
-                            await DisplayAlert("Fondo Merende", result.response.message, "Ok");
+                            await DisplayAlert("Fondo Merende", result.message, "Ok");
                         }
                     }
                 }
@@ -524,7 +524,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
                     var result = await snackService.BuySnackAsync(BuySnackListPage.SelectedSnackID, Convert.ToInt32(lineiOs.Text));
                     if (result != null)
                     {
-                        if (result.response.success)
+                        if (result.success)
                         {
                             
                             DependencyService.Get<HapticFeedbackGen>().HapticFeedbackGenSuccessAsync();
@@ -533,7 +533,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
                         }
                         else
                         {
-                            await DisplayAlert("Fondo Merende", result.response.message, "Ok");
+                            await DisplayAlert("Fondo Merende", result.message, "Ok");
                         }
                     }
                     else
@@ -561,7 +561,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
                     var result = await snackService.BuySnackAsync2(BuySnackListPage.SelectedSnackID, Int32.Parse(lineiOs.Text), prezzoiOs.Text, scadenzaiOs.Text);
                     if (result != null)
                     {
-                        if (result.response.success)
+                        if (result.success)
                         {
                             DependencyService.Get<HapticFeedbackGen>().HapticFeedbackGenSuccessAsync();
                             
@@ -569,7 +569,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
                         }
                         else
                         {
-                            await DisplayAlert("Fondo Merende", result.response.message, "Ok");
+                            await DisplayAlert("Fondo Merende", result.message, "Ok");
                         }
                     }
                 }

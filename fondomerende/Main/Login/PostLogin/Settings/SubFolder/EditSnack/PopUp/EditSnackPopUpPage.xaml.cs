@@ -385,7 +385,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.PopUp
                     var res = await snackService.EditSnackAsync(snackID, appoggioNome, PrezzoSnack.Text, appoggioSnackPerScatola, appoggioScadenzaInGiorni,Int32.Parse(Qta.Text));
                     if (res != null)
                     {
-                        if (res.response.success)
+                        if (res.success)
                         {
                             if (Device.RuntimePlatform == Device.iOS)
                             {
@@ -410,7 +410,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.PopUp
                         }
                         else
                         {
-                            await DisplayAlert("Fondo Merende", res.response.message, "Ok");
+                            await DisplayAlert("Fondo Merende", res.message, "Ok");
                         }
                     }
                 }

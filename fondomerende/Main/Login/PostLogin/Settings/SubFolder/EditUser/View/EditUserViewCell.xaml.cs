@@ -128,7 +128,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View
             var result =  await userFundsService.GetUserFunds();
             if(result != null)
             {
-                if (result.response.success)
+                if (result.success)
                 {
                     userFunds.Text = "€" + result.data.user_funds_amount;
                     if (float.Parse(result.data.user_funds_amount) <= 0)
@@ -140,7 +140,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View
                         userFunds.TextColor = Color.Black;
                     }
                 }
-                else if (!result.response.success)
+                else if (!result.success)
                 {
                     userFunds.Text = "Errore";
                 }

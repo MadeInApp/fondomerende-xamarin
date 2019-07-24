@@ -7,8 +7,9 @@ namespace fondomerende.Main.Services.Models
 {
     class UserFundsDTO
     {
-        public ResponseDTO response { get; set; }
-
+        public bool success { get; set; }
+        public int status { get; set; }
+        public string message { get; set; }
         public UserFundsDataDTO data { get; set; }
     }
 }

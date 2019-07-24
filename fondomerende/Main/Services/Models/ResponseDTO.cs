@@ -5,7 +5,7 @@ using System.Text;
 
 namespace fondomerende.Main.Services.Models
 {
-    [JsonObject("response")]
+    
     class ResponseDTO
     {
 
