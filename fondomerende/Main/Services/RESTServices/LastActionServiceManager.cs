@@ -1,4 +1,5 @@
 ﻿using Flurl.Http;
+using fondomerende.Main.Manager;
 using fondomerende.Main.Services.Models;
 using System;
 using System.Collections.Generic;
@@ -10,12 +11,12 @@ namespace fondomerende.Main.Services.RESTServices
     {
         public async System.Threading.Tasks.Task<LastActionDTO> GetLastActions()
         {
-            string urlString = Services.Concatenazione("?command-name=get-last-actions");
+            string urlString = Services.Concatenazione("?command-name=get-actions&limit=30");
             try
             {
                 var response = await urlString
                                     .WithCookie("auth-key", Services.GetAuthKey())
-                                    .WithCookie("user-token", Manager.UserManager.Instance.token)
+                                    .WithCookie("user-token", UserManager.Instance.token)
                                     .GetJsonAsync<LastActionDTO>();
                 return response;
             }

@@ -931,7 +931,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
                         }, "RefreshUF");
 
-                        if (response.response.success == true)
+                        if (response.success == true)
                         {
                             
                             Vibration.Vibrate(40);
@@ -954,7 +954,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                         }
                         break;
                     case Device.iOS:
-                        if (response.response.success == true)
+                        if (response.success == true)
                         {
                             DependencyService.Get<HapticFeedbackGen>().HapticFeedbackGenSuccessAsync();
                             RefreshDataAsync();

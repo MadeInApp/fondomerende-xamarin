@@ -559,7 +559,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
                         var result = await snackService.BuySnackAsync(BuySnackListPage.SelectedSnackID, Convert.ToInt32(lineiOs.Text));
                         if (result != null)
                         {
-                            if (result.response.success)
+                            if (result.success)
                             {
                                 MessagingCenter.Send(new AllSnacksPage()
                                 {
@@ -569,12 +569,12 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
                                 MessagingCenter.Send(new AllSnacksPage()
                                 {
 
-                                }, "RefreshGriglia");
+                                }, "RefreshGriglia"); 
                                 await PopupNavigation.Instance.PopAsync();
                             }
                             else
                             {
-                                await DisplayAlert("Fondo Merende", result.response.message, "Ok");
+                                await DisplayAlert("Fondo Merende", result.message, "Ok");   
                             }
                         }
                         else
@@ -596,7 +596,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
                         var result = await snackService.BuySnackAsync2(BuySnackListPage.SelectedSnackID, Int32.Parse(lineiOs.Text), prezzoiOs.Text, scadenzaiOs.Text);
                         if (result != null)
                         {
-                            if (result.response.success)
+                            if (result.success)
                             {
                                 MessagingCenter.Send(new AllSnacksPage()
                                 {
@@ -611,7 +611,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
                             }
                             else
                             {
-                                await DisplayAlert("Fondo Merende", result.response.message, "Ok");
+                                await DisplayAlert("Fondo Merende", result.message, "Ok");
                             }
                         }
                     }
