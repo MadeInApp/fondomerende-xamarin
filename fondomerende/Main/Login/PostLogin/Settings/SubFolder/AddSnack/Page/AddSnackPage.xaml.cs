@@ -41,13 +41,13 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.Page
                 var result = await snackService.AddSnackAsync(Nome.Text, double.Parse(Prezzo.Text), int.Parse(SnackPerScatola.Text), int.Parse(ScadenzaInGiorni.Text), true);
                 if (result != null)
                 {
-                    if (result.response.success)
+                    if (result.success)
                     {
-                        await DisplayAlert("Fondo Merende", "SnackID: " + result.response.data.id, "Ok");
+                        await DisplayAlert("Fondo Merende", "Lo Snack è stato aggiunto", "Ok");
                     }
                     else
                     {
-                        await DisplayAlert("Fondo Merende", result.response.message, "Ok");
+                        await DisplayAlert("Fondo Merende", "Lo Snack non è stato aggiunto", "Ok");
                     }
                 }
                 else

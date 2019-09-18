@@ -34,16 +34,16 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
         public ChronologyContentPage()
         {          
             InitializeComponent();
-            switch (Device.RuntimePlatform)             //Se il dispositivo è Android non mostra la Top Bar della Navigation Page, se è iOS la mostra
-            {
-                default:
-                    NavigationPage.SetHasNavigationBar(this, true);
-                    break;
-                case Device.Android:
-                    NavigationPage.SetHasNavigationBar(this, false);
-                    break;
+            //switch (Device.RuntimePlatform)             //Se il dispositivo è Android non mostra la Top Bar della Navigation Page, se è iOS la mostra
+            //{
+            //    default:
+            //        NavigationPage.SetHasNavigationBar(this, true);
+            //        break;
+            //    case Device.Android:
+            //        NavigationPage.SetHasNavigationBar(this, false);
+            //        break;
 
-            }
+            //}
             Aspetta();
             
         }

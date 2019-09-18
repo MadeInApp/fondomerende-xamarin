@@ -367,10 +367,10 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.Popup
                     var result = await snackService.AddSnackAsync(NomeSnack.Text, double.Parse(PrezzoSnack.Text), int.Parse(SnackPerBox.Text), int.Parse(ExpInDays.Text), true);
                     if (result != null)
                     {
-                        if (result.response.success)
+                        if (result.success)
                         {
 
-                            await DisplayAlert("Fondo Merende", "SnackID: " + result.response.data.id, "Ok");
+                            await DisplayAlert("Fondo Merende", "Lo snack è stato aggiunto", "Ok");
                             if (Device.RuntimePlatform == Device.iOS)
                             {
                                 DependencyService.Get<HapticFeedbackGen>().HapticFeedbackGenSuccessAsync();
@@ -399,15 +399,15 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.Popup
                     var result = await snackService.AddSnackAsync(NomeSnack.Text, double.Parse(PrezzoSnack.Text), int.Parse(SnackPerBox.Text), int.Parse(ExpInDays.Text), false);
                     if (result != null)
                     {
-                        if (result.response.success)
+                        if (result.success)
                         {
 
-                            await DisplayAlert("Fondo Merende", "SnackID: " + result.response.data.id, "Ok");
+                            await DisplayAlert("Fondo Merende", "SnackID: " + result.data.id, "Ok");
                             await Navigation.PopPopupAsync();
                         }
                         else
                         {
-                            await DisplayAlert("Fondo Merende", result.response.message, "Ok");
+                            await DisplayAlert("Fondo Merende", result.message, "Ok");
                         }
                     }
                     else

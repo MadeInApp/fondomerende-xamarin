@@ -21,10 +21,7 @@ namespace fondomerende.Main.Manager
         {
             get
             {
-                if (_instance == null)
-                {
-                    _instance = new UserManager();
-                }
+                if (_instance == null) _instance = new UserManager();
                 return _instance;
             }
         }

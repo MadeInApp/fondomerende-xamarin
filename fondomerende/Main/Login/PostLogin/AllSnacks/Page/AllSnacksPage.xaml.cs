@@ -15,8 +15,8 @@ using fondomerende.Main.Login.PostLogin.Settings.SubFolder.Settaggio.View;
 using fondomerende.Main.Services.Models;
 using fondomerende.Main.Services.RESTServices;
 using fondomerende.Main.Utilities;
+using Java.Net;
 using Lottie.Forms;
-using MR.Gestures;
 using Rg.Plugins.Popup.Extensions;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -52,11 +52,10 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
         {
             numerotocchi.Add("numero", 0);
             InitializeComponent();
-
-
-            GetSnacksMethod(false, false);
-            GetSnacksMethod(false, true);
+            // GridView.RowDefinitions = DeviceDisplay.MainDisplayInfo.Width/2;
+            Aspetta();
             CreateFavouritesLabel();
+
 
             previousFavourite = Preferences.Get("Favourites", "");
 
@@ -77,17 +76,17 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
 
 
-            switch (Device.RuntimePlatform)   //                                              ||\\
-            {              //                                                                 || \\                                    
-                                                                   //                         ||  \\ Se il dispositivo è Android non mostra la Top Bar della Navigation Page,
-                case Device.Android: //                                             \\        ||   \\   Se è iOS invece si (perchè senza è una schifezza)
-                    NavigationPage.SetHasNavigationBar(this, false);//                \\      ||    \\        \                
-                    break;     //                                                      ||||||||||||||||\/\/|    |
-                                                                                      //      ||    //        /       
-                default:                                                            //        ||   //
-                    NavigationPage.SetHasNavigationBar(this, true);//                         ||  //
-                    break;  //                                                                || //
-            }               //                                                                ||//
+            //switch (Device.RuntimePlatform)   //                                              ||\\
+            //{              //                                                                 || \\                                    
+            //                                                       //                         ||  \\ Se il dispositivo è Android non mostra la Top Bar della Navigation Page,
+            //    case Device.Android: //                                             \\        ||   \\   Se è iOS invece si (perchè senza è una schifezza)
+            //        NavigationPage.SetHasNavigationBar(this, false);//                \\      ||    \\        \                
+            //        break;     //                                                      ||||||||||||||||\/\/|    |
+            //                                                                          //      ||    //        /       
+            //    default:                                                            //        ||   //
+            //        NavigationPage.SetHasNavigationBar(this, true);//                         ||  //
+            //        break;  //                                                                || //
+            //}               //                                                                ||//
                                                                                          
 
             Swap = new AnimationView
@@ -175,6 +174,12 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             Wallet.Play();
             Wallet.Speed = 1f;
         }
+        private async Task Aspetta()
+        {
+            await GetSnacksMethod(false, false);
+            await GetSnacksMethod(false, true);
+        }
+        
 
         public async Task GetSnacksMethod(bool Loaded, bool favourites)     //ottiene la lista degli snack e la applica alla ListView
         {
@@ -203,25 +208,31 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                     ColorRandom c = new ColorRandom();
                     var mainDisplayInfo = DeviceDisplay.MainDisplayInfo;
 
-                    double box = 140;
+                    
 
-                    var imageButton = new ImageButton
+                    double latoCubo = App.Current.MainPage.Width/2;
+
+                    double box = 170;
+
+                    var star19 = new Image
                     {
-                        Margin = new Thickness(0, 20, 0, 20),
-                        HorizontalOptions = LayoutOptions.CenterAndExpand,
-                        VerticalOptions = LayoutOptions.CenterAndExpand,
-                        Scale = 2.6,
-                        BackgroundColor = Color.White,
-                        InputTransparent = true,
-                        Source = "http://fondomerende.madeinapp.net/api/getphoto.php?name=" + result.data.snacks[i].friendly_name,
+                        Aspect = Aspect.AspectFill,
+                        Source = ImageSource.FromResource("fondomerende.image.Star19.png"),
+                        Margin = new Thickness(10), 
                     };
 
-
-                    var StackLayout = new MR.Gestures.StackLayout
+                    var imageSnack = new Image
                     {
+                        Aspect = Aspect.AspectFill,
+                        Margin = new Thickness(20),
+                        Source = ImageSource.FromUri(new Uri("http://192.168.1.191:8888/public/getphoto.php?name=" + result.data.snacks[i].friendly_name))
+                    };
+
+                    var stackLayout = new StackLayout
+                    { 
                         WidthRequest = box,
                         HeightRequest = box,
-                        BackgroundColor = Color.White,
+                        BackgroundColor = Color.FromHex("#ece0ce"),
                         InputTransparent = true,
                     };
 
@@ -248,7 +259,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                         Margin = new Thickness(10, 10, 10, 0)
                     };
 
-                    var label = new MR.Gestures.Label
+                    var label = new Label
                     {
                         HorizontalTextAlignment = TextAlignment.Center,
                         VerticalTextAlignment = TextAlignment.End,
@@ -276,7 +287,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                         e = "fondomerende.image.star_fill.png";
                     }
 
-                    var star = new MR.Gestures.Image
+                    var star = new Image
                     {
                         HeightRequest = 20,
                         WidthRequest = 20,
@@ -315,49 +326,53 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                     };
 
 
-                    var app = new MR.Gestures.StackLayout
+                    var app = new StackLayout
                     {
                         Orientation = StackOrientation.Vertical,
                         IsVisible = visibilità,
+                        BackgroundColor = Color.Red,
                     };
                     starAnimation.OnFinish -= StopAnimation;
                     starAnimation.OnFinish += StopAnimation;
 
-                    StackLayout.Children.Add(imageButton);
+                    
 
-                    switch (Device.RuntimePlatform)
-                    {
-                        case Device.Android:
+                    //switch (Device.RuntimePlatform)
+                    //{
+                    //    case Device.Android:
 
-                            BordiSmussatiAndroid.Children.Add(StackLayout);
+                    //        BordiSmussatiAndroid.Children.Add(stackLayout);
 
-                            BordiSmussatiAndroid.Children.Add(starAnimation);
-                            BordiSmussatiAndroid.Children.Add(star);
-                            BordiSmussatiAndroid.Children.Add(eatAnimation);
-
-
-                            app.Children.Add(BordiSmussatiAndroid);
-
-                            break;
-
-                        default:
-
-                            BordiSmussatiiOS.Children.Add(StackLayout);
-
-                            BordiSmussatiiOS.Children.Add(starAnimation);
-                            BordiSmussatiiOS.Children.Add(star);
-                            BordiSmussatiiOS.Children.Add(eatAnimation);
+                    //        BordiSmussatiAndroid.Children.Add(starAnimation);
+                    //        BordiSmussatiAndroid.Children.Add(star);
+                    //        BordiSmussatiAndroid.Children.Add(eatAnimation);
 
 
-                            app.Children.Add(BordiSmussatiiOS);
-                            break;
-                    }
+                    //        app.Children.Add(BordiSmussatiAndroid);
+
+                    //        break;
+
+                    //    default:
+
+                    //        BordiSmussatiiOS.Children.Add(stackLayout);
+
+                    //        BordiSmussatiiOS.Children.Add(starAnimation);
+                    //        BordiSmussatiiOS.Children.Add(star);
+                    //        BordiSmussatiiOS.Children.Add(eatAnimation);
+
+
+                    //        app.Children.Add(BordiSmussatiiOS);
+                    //        break;
+                    //}
+                    stackLayout.Children.Add(star19);
+
+                    stackLayout.Children.Add(imageSnack);
+                    app.Children.Add(stackLayout);
 
                     app.Children.Add(label);
 
-                    app.LongPressed += Stack_LongPressed;
-                    app.LongPressing += Stack_LongPressing;
-                    app.DoubleTapped += Tgr2_Tapped;
+                    TapGestureRecognizer tg1 = new TapGestureRecognizer();
+                    tg1.Tapped += Tgr_Tapped;
 
 
                     if (addfav && favourites)
@@ -577,11 +592,11 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
         private void Tgr_Tapped(object sender, EventArgs e)
         {
             SnackDataDTO index = null;
-            foreach (var item in (sender as MR.Gestures.StackLayout).Children)
+            foreach (var item in (sender as StackLayout).Children)
             {
-                if (item is MR.Gestures.Label)
+                if (item is Label)
                 {
-                    var snackName = (item as MR.Gestures.Label).Text;
+                    var snackName = (item as Label).Text;
                     index = result.data.snacks.Single(obj => obj.friendly_name == snackName);
                     break;
                 }
@@ -770,216 +785,216 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             }
         }
         
-        private void Stack_LongPressed(object sender, LongPressEventArgs e)
-        {
-            try
-            {
-                SnackDataDTO index = null;
-                foreach (var item in (sender as MR.Gestures.StackLayout).Children)
-                {
-                    if (item is MR.Gestures.Label)
-                    {
-                        var snackName = (item as MR.Gestures.Label).Text;
-                        index = result.data.snacks.Single(obj => obj.friendly_name == snackName);
-                        break;
-                    }
+        //private void Stack_LongPressed(object sender, LongPressEventArgs e)
+        //{
+        //    try
+        //    {
+        //        SnackDataDTO index = null;
+        //        foreach (var item in (sender as MR.Gestures.StackLayout).Children)
+        //        {
+        //            if (item is MR.Gestures.Label)
+        //            {
+        //                var snackName = (item as MR.Gestures.Label).Text;
+        //                index = result.data.snacks.Single(obj => obj.friendly_name == snackName);
+        //                break;
+        //            }
 
-                }
-                if (index != null)
-                {
-                    string preferito = "";
+        //        }
+        //        if (index != null)
+        //        {
+        //            string preferito = "";
 
-                    foreach (var app in (sender as MR.Gestures.StackLayout).Children)
-                    {
-                        if (app is RoundedCornerView)
-                        {
-                            foreach (var an in (app as RoundedCornerView).Children)
-                            {
-                                if (an is AnimationView)
-                                {
-                                    AnimationView ap = (AnimationView)an;
+        //            foreach (var app in (sender as MR.Gestures.StackLayout).Children)
+        //            {
+        //                if (app is RoundedCornerView)
+        //                {
+        //                    foreach (var an in (app as RoundedCornerView).Children)
+        //                    {
+        //                        if (an is AnimationView)
+        //                        {
+        //                            AnimationView ap = (AnimationView)an;
 
-                                    if (ap.Animation == "LoadingEating.json")
-                                    {
-                                        ap.Speed = -13f;
+        //                            if (ap.Animation == "LoadingEating.json")
+        //                            {
+        //                                ap.Speed = -13f;
                                            
-                                        if (ap.Animation == "LoadingEating.json")
-                                        {
+        //                                if (ap.Animation == "LoadingEating.json")
+        //                                {
 
-                                            switch (Device.RuntimePlatform)
-                                            {
+        //                                    switch (Device.RuntimePlatform)
+        //                                    {
 
-                                                case Device.Android:
-                                                    ap.Speed = -13f;
-                                                    break;
+        //                                        case Device.Android:
+        //                                            ap.Speed = -13f;
+        //                                            break;
 
-                                                case Device.iOS:
-                                                    ap.FadeTo(0, 10);
-                                                    ap.Speed = -50f;
-                                                    break;
-                                            }
+        //                                        case Device.iOS:
+        //                                            ap.FadeTo(0, 10);
+        //                                            ap.Speed = -50f;
+        //                                            break;
+        //                                    }
 
 
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    eatLoading = 0;
-                }
-            }catch(Exception Ex)
-            {
+        //                                }
+        //                            }
+        //                        }
+        //                    }
+        //                }
+        //            }
+        //            eatLoading = 0;
+        //        }
+        //    }catch(Exception Ex)
+        //    {
                 
-            }
-        }
-        private async void Stack_LongPressing(object sender, LongPressEventArgs e)
-        {
-            try
-            {
-                bool verifica = false;
-                eatLoading = 0;
-                SnackDataDTO index = null;
-                foreach (var item in (sender as MR.Gestures.StackLayout).Children)
-                {
-                    if (item is MR.Gestures.Label)
-                    {
-                        var snackName = (item as MR.Gestures.Label).Text;
-                        index = result.data.snacks.Single(obj => obj.friendly_name == snackName);
-                        break;
-                    }
+        //    }
+        //}
+        //private async void Stack_LongPressing(object sender, LongPressEventArgs e)
+        //{
+        //    try
+        //    {
+        //        bool verifica = false;
+        //        eatLoading = 0;
+        //        SnackDataDTO index = null;
+        //        foreach (var item in (sender as MR.Gestures.StackLayout).Children)
+        //        {
+        //            if (item is MR.Gestures.Label)
+        //            {
+        //                var snackName = (item as MR.Gestures.Label).Text;
+        //                index = result.data.snacks.Single(obj => obj.friendly_name == snackName);
+        //                break;
+        //            }
 
-                }
-                if (index != null)
-                {
-                    string preferito = "";
+        //        }
+        //        if (index != null)
+        //        {
+        //            string preferito = "";
 
-                    foreach (var app in (sender as MR.Gestures.StackLayout).Children)
-                    {
-                        if (app is RoundedCornerView)
-                        {
-                            foreach (var an in (app as RoundedCornerView).Children)
-                            {
-                                if (an is AnimationView)
-                                {
-                                    AnimationView ap = (AnimationView)an;
+        //            foreach (var app in (sender as MR.Gestures.StackLayout).Children)
+        //            {
+        //                if (app is RoundedCornerView)
+        //                {
+        //                    foreach (var an in (app as RoundedCornerView).Children)
+        //                    {
+        //                        if (an is AnimationView)
+        //                        {
+        //                            AnimationView ap = (AnimationView)an;
 
-                                    if (ap.Animation == "LoadingEating.json")
-                                    {
-                                        ap.IsVisible = true;
+        //                            if (ap.Animation == "LoadingEating.json")
+        //                            {
+        //                                ap.IsVisible = true;
 
-                                        ap.ScaleTo(1);
-                                        ap.FadeTo(1);
-                                        ap.Speed = 9.5f;
-                                        ap.Play();
+        //                                ap.ScaleTo(1);
+        //                                ap.FadeTo(1);
+        //                                ap.Speed = 9.5f;
+        //                                ap.Play();
 
-                                        ap.OnFinish += async (s, d) =>
-                                        {
-                                            await Stack_LongFinish(ap, index);
-                                        };
+        //                                ap.OnFinish += async (s, d) =>
+        //                                {
+        //                                    await Stack_LongFinish(ap, index);
+        //                                };
                                         
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            catch (Exception Ex)
-            {
+        //                            }
+        //                        }
+        //                    }
+        //                }
+        //            }
+        //        }
+        //    }
+        //    catch (Exception Ex)
+        //    {
 
-                if (switchStar)
-                {
-                    Column0.Children.Clear();
-                    Column1.Children.Clear();
-                    if (Device.RuntimePlatform == Device.iOS) await Task.Delay(500);
-                    GetSnacksMethod(false, false);
-                    if (Device.RuntimePlatform == Device.iOS) await Task.Delay(500);
-                    await refreshFavAsync(true);
-                    ScrollSnackView.IsVisible = false;
-                    ScrollFavourites.IsVisible = true;
-                    ListView.IsVisible = false;
-                }
-                else
-                {
-                    MessagingCenter.Send(new AllSnacksPage()
-                    {
+        //        if (switchStar)
+        //        {
+        //            Column0.Children.Clear();
+        //            Column1.Children.Clear();
+        //            if (Device.RuntimePlatform == Device.iOS) await Task.Delay(500);
+        //            GetSnacksMethod(false, false);
+        //            if (Device.RuntimePlatform == Device.iOS) await Task.Delay(500);
+        //            await refreshFavAsync(true);
+        //            ScrollSnackView.IsVisible = false;
+        //            ScrollFavourites.IsVisible = true;
+        //            ListView.IsVisible = false;
+        //        }
+        //        else
+        //        {
+        //            MessagingCenter.Send(new AllSnacksPage()
+        //            {
 
-                    }, "RefreshGriglia");
-                }
-            }
-        }
+        //            }, "RefreshGriglia");
+        //        }
+        //    }
+        //}
 
-        private async Task Stack_LongFinish(object sender, SnackDataDTO index)
-        {
+        //private async Task Stack_LongFinish(object sender, SnackDataDTO index)
+        //{
             
-            eatLoading = -1;
-            if ((sender as AnimationView).Speed > 0)
-            {
-                (sender as AnimationView).Speed = 0;
-                (sender as AnimationView).FadeTo(0, 100);
-                EatDTO response = await snackServiceManager.EatAsync(index.id, 1);
+        //    eatLoading = -1;
+        //    if ((sender as AnimationView).Speed > 0)
+        //    {
+        //        (sender as AnimationView).Speed = 0;
+        //        (sender as AnimationView).FadeTo(0, 100);
+        //        EatDTO response = await snackServiceManager.EatAsync(index.id, 1);
 
 
-                //Non chiederti perche ho fatto cio so soltanto che crash molto meno in entrambi i dispositivi//
-                switch (Device.RuntimePlatform)
-                {
+        //        //Non chiederti perche ho fatto cio so soltanto che crash molto meno in entrambi i dispositivi//
+        //        switch (Device.RuntimePlatform)
+        //        {
 
-                    case Device.Android:
-                        MessagingCenter.Send(new EditUserViewCell()
-                        {
+        //            case Device.Android:
+        //                MessagingCenter.Send(new EditUserViewCell()
+        //                {
 
-                        }, "RefreshUF");
+        //                }, "RefreshUF");
 
-                        if (response.success == true)
-                        {
+        //                if (response.success == true)
+        //                {
                             
-                            Vibration.Vibrate(40);
-                            await Task.Delay(100);
-                            Vibration.Vibrate(40);
-                            MessagingCenter.Send(new AllSnacksPage()
-                            {
+        //                    Vibration.Vibrate(40);
+        //                    await Task.Delay(100);
+        //                    Vibration.Vibrate(40);
+        //                    MessagingCenter.Send(new AllSnacksPage()
+        //                    {
 
-                            }, "RefreshGetSnacks");
-                            RefreshDataAsync();
-                            GetSnacksMethod(true, false);
-                            await Task.Delay(100);
+        //                    }, "RefreshGetSnacks");
+        //                    RefreshDataAsync();
+        //                    GetSnacksMethod(true, false);
+        //                    await Task.Delay(100);
 
-                        }
+        //                }
 
-                        else
-                        {
-                            await DisplayAlert("Fondo Merende", "Errore", "Ok");
-                            Vibration.Vibrate(80);
-                        }
-                        break;
-                    case Device.iOS:
-                        if (response.success == true)
-                        {
-                            DependencyService.Get<HapticFeedbackGen>().HapticFeedbackGenSuccessAsync();
-                            RefreshDataAsync();
-                            MessagingCenter.Send(new AllSnacksPage()
-                            {
+        //                else
+        //                {
+        //                    await DisplayAlert("Fondo Merende", "Errore", "Ok");
+        //                    Vibration.Vibrate(80);
+        //                }
+        //                break;
+        //            case Device.iOS:
+        //                if (response.success == true)
+        //                {
+        //                    DependencyService.Get<HapticFeedbackGen>().HapticFeedbackGenSuccessAsync();
+        //                    RefreshDataAsync();
+        //                    MessagingCenter.Send(new AllSnacksPage()
+        //                    {
 
-                            }, "RefreshGetSnacks");
-                            MessagingCenter.Send(new EditUserViewCell()
-                            {
+        //                    }, "RefreshGetSnacks");
+        //                    MessagingCenter.Send(new EditUserViewCell()
+        //                    {
 
-                            }, "RefreshUF");
-                            GetSnacksMethod(true, false);
-                            await Task.Delay(100);
-                        }
+        //                    }, "RefreshUF");
+        //                    GetSnacksMethod(true, false);
+        //                    await Task.Delay(100);
+        //                }
 
-                        else
-                        {
-                            await DisplayAlert("Fondo Merende", "C'è stato un problema", "Ok");
-                            DependencyService.Get<HapticFeedbackGen>().HapticFeedbackGenErrorAsync();
-                        }
-                        break;
+        //                else
+        //                {
+        //                    await DisplayAlert("Fondo Merende", "C'è stato un problema", "Ok");
+        //                    DependencyService.Get<HapticFeedbackGen>().HapticFeedbackGenErrorAsync();
+        //                }
+        //                break;
                 
-                }
-            }
-        }
+        //        }
+        //    }
+        //}
             
     }
 

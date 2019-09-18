@@ -36,17 +36,17 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.Page
             {
                 await Navigation.PopAsync();
             });
-            switch (Device.RuntimePlatform)                                                     //
-            {                                                                                   //                                    
-                                                                                                //   Se il dispositivo è Android non mostra la Top Bar della Navigation Page,
-                case Device.Android:                                                            //      Se è iOS invece si (perchè senza è una schifezza)
-                    NavigationPage.SetHasNavigationBar(this, false);                            //
-                    break;                                                                      //
-                                                                                                //
-                default:                                                                        //
-                    NavigationPage.SetHasNavigationBar(this, true);                             //
-                    break;                                                                      //
-            }                                                                                   //
+            //switch (Device.RuntimePlatform)                                                     //
+            //{                                                                                   //                                    
+            //                                                                                    //   Se il dispositivo è Android non mostra la Top Bar della Navigation Page,
+            //    case Device.Android:                                                            //      Se è iOS invece si (perchè senza è una schifezza)
+            //        NavigationPage.SetHasNavigationBar(this, false);                            //
+            //        break;                                                                      //
+            //                                                                                    //
+            //    default:                                                                        //
+            //        NavigationPage.SetHasNavigationBar(this, true);                             //
+            //        break;                                                                      //
+            //}                                                                                   //
 
             ListView.RefreshCommand = new Command(async () =>                                
             {                                                                                         

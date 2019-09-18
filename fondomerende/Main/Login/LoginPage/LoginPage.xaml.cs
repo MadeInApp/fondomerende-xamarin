@@ -74,7 +74,7 @@ namespace fondomerende.Main.Login.LoginPages
                     var response = await loginService.LoginAsync(usernameEntry.Text, passwordEntry.Text, remember);
                     if(response == null)
                     {
-                        
+                        await DisplayAlert("Fondo Merende", "Errore di connessione", "OK");
                     }
                     else if (response.message == "Invalid login: wrong credentials.")
                     {
@@ -197,11 +197,9 @@ namespace fondomerende.Main.Login.LoginPages
         {
             await Donut.RotateTo(10, 0);
             await Donut.ScaleTo(1.5, 0);
-            while (true)
-            { 
-                await Donut.TranslateTo(20, -800, 100000);
-                await Donut.TranslateTo(-20, 0, 1);
-            }
+            await Donut.TranslateTo(20, -800, 100000);
+            await Donut.TranslateTo(-20, 0, 1);
+            
 
 
         }

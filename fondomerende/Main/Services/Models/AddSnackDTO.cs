@@ -8,6 +8,10 @@ namespace fondomerende.Main.Services.Models
 {
     public class AddSnackDTO
     {
-        public AddSnackResponseDTO response { get; set; }
+        public bool success { get; set; }
+        public int status { get; set; }
+        public string message { get; set; }
+
+        public AddSnackResponseDTO data { get; set; }
     }
 }

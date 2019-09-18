@@ -37,18 +37,18 @@ namespace fondomerende.Main.Login.PostLogin.Settings.Page
             InitializeComponent();
             EditUserViewCell.BindingContext = friendly_name;
         
-            switch (Device.RuntimePlatform)             //Se il dispositivo è Android non mostra la Top Bar della Navigation Page, se è iOS la mostra
-            {
-                default:
-                    NavigationPage.SetHasNavigationBar(this, true);
-                    break;
-                case Device.Android:
-                    NavigationPage.SetHasNavigationBar(this, false);
-                   // var section = tableView.Root[0];
-                   // section.RemoveAt(1);
-                    break;
+            //switch (Device.RuntimePlatform)             //Se il dispositivo è Android non mostra la Top Bar della Navigation Page, se è iOS la mostra
+            //{
+            //    default:
+            //        NavigationPage.SetHasNavigationBar(this, true);
+            //        break;
+            //    case Device.Android:
+            //        NavigationPage.SetHasNavigationBar(this, false);
+            //       // var section = tableView.Root[0];
+            //       // section.RemoveAt(1);
+            //        break;
 
-            }
+            //}
             
 
         }

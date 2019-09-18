@@ -13,7 +13,7 @@
              xmlns:local1="clr-namespace:fondomerende.Main.Login.PostLogin.AllSnacks.View"
              ios:Page.UseSafeArea="True"
              xmlns:Gradient="clr-namespace:fondomerende.Main.Utilities"
-             Title="{OnPlatform iOS='Snacks'}">
+             Title="Snacks">
 
     <ContentPage.Content>
         <Grid
@@ -139,17 +139,17 @@
                                 <StackLayout 
                                     Grid.Column="0" 
                                     x:Name="Column0"
-                                    Spacing="40"
+                                    Spacing="25"
                                     HorizontalOptions="StartAndExpand"
-                                    Margin="5,10,10,0">
+                                    Margin="0,5,0,0">
                                 </StackLayout>
                                 
                                 <StackLayout 
                                     Grid.Column="1" 
                                     x:Name="Column1"
-                                    Spacing="40"
+                                    Spacing="25"
                                     HorizontalOptions="EndAndExpand"
-                                    Margin="10,10,5,0">
+                                    Margin="0,5,0,0">
                                 </StackLayout>
                             </Grid>
 

@@ -26,10 +26,7 @@ namespace fondomerende.Main.Services
         }
         public static string Concatenazione(string get = "")
         {
-            if (test)
-            {
-                return protocollo + basePathTest + get;
-            }
+            if (test) return protocollo + basePathTest + get;
             return protocollo + basePath + get;
         }
         public static string LoginUrlRequest()
