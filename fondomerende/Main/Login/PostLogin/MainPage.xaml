@@ -27,7 +27,7 @@
     </NavigationPage>
 
     <NavigationPage 
-        Title="{OnPlatform iOS=Impostazioni}"
+        Title="{OnPlatform iOS=Azioni}"
         x:Name="DepositNavPage"
         ios:NavigationPage.PrefersLargeTitles="False"
         ios:NavigationPage.IsNavigationBarTranslucent="True"

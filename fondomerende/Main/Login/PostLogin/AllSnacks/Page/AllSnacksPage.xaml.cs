@@ -218,7 +218,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                     {
                         Aspect = Aspect.AspectFill,
                         Source = ImageSource.FromResource("fondomerende.image.Star19.png"),
-                        Margin = new Thickness(10), 
+                        Margin = new Thickness(5), 
                     };
 
                     var imageSnack = new Image
@@ -226,8 +226,8 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                         WidthRequest = 30,
                         HeightRequest = 30,
                         Aspect = Aspect.AspectFill,
-                        Margin = new Thickness(20),
-                        Source = ImageSource.FromUri(new Uri("http://192.168.0.191:8888/fondomerende/public/getphoto.php?name=" + result.data.snacks[i].friendly_name))
+                        Margin = new Thickness(35),
+                        Source = ImageSource.FromUri(new Uri("https://192.168.0.191:8888/fondomerende/public/getphoto.php?name=" + result.data.snacks[i].friendly_name))
                     };
 
                     var stackGrid = new StackLayout
