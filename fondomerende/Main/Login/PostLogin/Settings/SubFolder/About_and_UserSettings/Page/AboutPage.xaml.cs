@@ -32,16 +32,16 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.About_and_UserSet
             _colorPickerPopup = new ColorPickerPopup();
             _colorPickerPopup.ColorChanged += ColorPickerPopupOnColorChanged;
             Version.Text = "Version:" + "0.8Beta";
-            switch (Device.RuntimePlatform)             //Se il dispositivo è Android non mostra la Top Bar della Navigation Page, se è iOS la mostra
-            {
-                default:
-                    NavigationPage.SetHasNavigationBar(this, true);
-                    break;
-                case Device.Android:
-                    NavigationPage.SetHasNavigationBar(this, false);
-                    break;
+            //switch (Device.RuntimePlatform)             //Se il dispositivo è Android non mostra la Top Bar della Navigation Page, se è iOS la mostra
+            //{
+            //    default:
+            //        NavigationPage.SetHasNavigationBar(this, true);
+            //        break;
+            //    case Device.Android:
+            //        NavigationPage.SetHasNavigationBar(this, false);
+            //        break;
 
-            }
+            //}
         }
 
         private void ColorPickerPopupOnColorChanged(object sender, ColorChangedEventArgs args)

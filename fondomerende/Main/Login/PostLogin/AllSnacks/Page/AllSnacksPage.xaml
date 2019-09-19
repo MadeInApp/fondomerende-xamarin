@@ -13,7 +13,7 @@
              xmlns:local1="clr-namespace:fondomerende.Main.Login.PostLogin.AllSnacks.View"
              ios:Page.UseSafeArea="True"
              xmlns:Gradient="clr-namespace:fondomerende.Main.Utilities"
-             Title="Snacks">
+             Title="Merende">
 
     <ContentPage.Content>
         <Grid
@@ -26,28 +26,27 @@
 
                 <StackLayout 
                     Orientation="Horizontal"
-                    BackgroundColor="{OnPlatform Android=#f9cb2a, Default= #f9bb15}"
+                    BackgroundColor= "WhiteSmoke"  
                     HeightRequest="45">
-                                    <!--è un bel colore"#ffb121"-->
-                    <Grid 
-                        x:Name="GridView1"
-                        HorizontalOptions="FillAndExpand"
-                        VerticalOptions="CenterAndExpand"
-                        HeightRequest="50">
+                    
+                    <!--"{OnPlatform Android=#f9cb2a, Default= #f9bb15}"-->
+                    <!--è un bel colore"#ffb121"-->
+                    
 
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="3.3*" />
-                            <ColumnDefinition Width="3.3*" />
-                            <ColumnDefinition Width="3.3*" />
-                        </Grid.ColumnDefinitions>
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            VerticalTextAlignment="Center"
+                            HorizontalTextAlignment="Start" 
+                            Margin="15,0,0,0"
+                            Text="Snacks"
+                            FontSize="18"
+                            FontAttributes="Bold"
+                            TextColor="{OnPlatform Android=#f29e17}">
+                            
+                        </Label>
 
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="50"/>
-                        </Grid.RowDefinitions>
-                        
-                        
-                        
-                        <ImageButton
+                        <!--<ImageButton
                             Grid.Row="0"
                             Grid.Column="0"
                             HeightRequest="40"
@@ -62,18 +61,17 @@
                             x:Name="ListToGrid"
                             BackgroundColor="Transparent"
                             IsVisible="True">
-                        </ImageButton>
+                        </ImageButton>-->
 
                         
                         
                         
                         <ImageButton
-                            Grid.Row="0"
-                            Grid.Column="1"
                             HeightRequest="40"
                             WidthRequest="40"
                             Aspect="Fill"
-                            HorizontalOptions="CenterAndExpand" 
+                            Margin="0,0,15,0"
+                            HorizontalOptions="EndAndExpand" 
                             VerticalOptions="CenterAndExpand"
                             Source="{local2:EmbeddedImage Resource=fondomerende.image.star_empty.png}"
                             Scale="{OnIdiom Phone=0.9, Tablet=3}"
@@ -83,7 +81,7 @@
                             IsVisible="True">
                         </ImageButton>
                         
-                        <forms:AnimationView
+                        <!--<forms:AnimationView
                             Scale="2"
                             Grid.Row="0"
                             Grid.Column="2"
@@ -99,8 +97,8 @@
                             HorizontalOptions="EndAndExpand"
                             VerticalOptions="CenterAndExpand"
                             AutoPlay="True">
-                        </forms:AnimationView>
-                    </Grid>
+                        </forms:AnimationView>-->
+
                 </StackLayout>
 
                 

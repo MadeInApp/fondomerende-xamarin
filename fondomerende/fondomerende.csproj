@@ -36,6 +36,7 @@
     <None Remove="image\cup_cake_24x24.png" />
     <None Remove="image\cup_cake_512x512.png" />
     <None Remove="image\deposit_256x256.png" />
+    <None Remove="image\Deposit_icon_64x64.png" />
     <None Remove="image\Donut_icon_512x512.png" />
     <None Remove="image\Edit_Icon_32x32.png" />
     <None Remove="image\edit_profile_256x256.png" />
@@ -119,6 +120,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="image\deposit_256x256.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="image\Deposit_icon_64x64.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="image\Donut_icon_512x512.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -294,6 +298,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Main\Login\PostLogin\Deposit\Page\DepositPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Main\Login\PostLogin\Settings\SubFolder\About_and_UserSettings\Page\AboutPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

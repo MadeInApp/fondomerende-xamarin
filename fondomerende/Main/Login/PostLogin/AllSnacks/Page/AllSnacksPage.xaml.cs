@@ -171,8 +171,8 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
         private void WalletAnimation()
         {
-            Wallet.Play();
-            Wallet.Speed = 1f;
+            //Wallet.Play();
+            //Wallet.Speed = 1f;
         }
         private async Task Aspetta()
         {
@@ -223,12 +223,15 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
                     var imageSnack = new Image
                     {
+                        WidthRequest = 70,
+                        HeightRequest = 70,
+                        BackgroundColor = Color.Aqua,
                         Aspect = Aspect.AspectFill,
                         Margin = new Thickness(20),
-                        Source = ImageSource.FromUri(new Uri("http://192.168.1.191:8888/public/getphoto.php?name=" + result.data.snacks[i].friendly_name))
+                        Source = ImageSource.FromUri(new Uri("http://192.168.0.191:8888/fondomerende/public/getphoto.php?name=" + result.data.snacks[i].friendly_name))
                     };
 
-                    var stackLayout = new StackLayout
+                    var stackGrid = new StackLayout
                     { 
                         WidthRequest = box,
                         HeightRequest = box,
@@ -236,6 +239,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                         InputTransparent = true,
                     };
 
+                    var griglia = new Grid() { };
 
                     var BordiSmussatiAndroid = new RoundedCornerView
                     {
@@ -263,20 +267,13 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                     {
                         HorizontalTextAlignment = TextAlignment.Center,
                         VerticalTextAlignment = TextAlignment.End,
+                        Margin = new Thickness(0,0,0,5),
                         Text = result.data.snacks[i].friendly_name,
-                        FontSize = 12,
+                        FontAttributes = FontAttributes.Bold,
+                        FontSize = 16,
                         InputTransparent = true,
                     };
 
-                    //se lo vuoi aggiungere è un limite di caratteri per il nome dello snack mettendo dopo i 3 punti di sospensione//
-
-                    /*if (label.Text.Length > 18)
-                    {
-                        string appoggio = label.Text;
-                        label.Text = "";
-                        label.Text += appoggio.Substring(0, 18);
-                        label.Text += "...";
-                    }*/
                     string e;
                     if (Check_Favourites(result.data.snacks[i].id))
                     {
@@ -311,7 +308,6 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                         IsVisible = false,
                     };
 
-
                     var eatAnimation = new AnimationView
                     {
                         Animation = "LoadingEating.json",
@@ -335,44 +331,25 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                     starAnimation.OnFinish -= StopAnimation;
                     starAnimation.OnFinish += StopAnimation;
 
-                    
 
-                    //switch (Device.RuntimePlatform)
-                    //{
-                    //    case Device.Android:
+                    griglia.Children.Add(star19);
+                    griglia.Children.Add(imageSnack);
+                    griglia.Children.Add(starAnimation);
 
-                    //        BordiSmussatiAndroid.Children.Add(stackLayout);
-
-                    //        BordiSmussatiAndroid.Children.Add(starAnimation);
-                    //        BordiSmussatiAndroid.Children.Add(star);
-                    //        BordiSmussatiAndroid.Children.Add(eatAnimation);
-
-
-                    //        app.Children.Add(BordiSmussatiAndroid);
-
-                    //        break;
-
-                    //    default:
-
-                    //        BordiSmussatiiOS.Children.Add(stackLayout);
-
-                    //        BordiSmussatiiOS.Children.Add(starAnimation);
-                    //        BordiSmussatiiOS.Children.Add(star);
-                    //        BordiSmussatiiOS.Children.Add(eatAnimation);
-
-
-                    //        app.Children.Add(BordiSmussatiiOS);
-                    //        break;
-                    //}
-                    stackLayout.Children.Add(star19);
-
-                    stackLayout.Children.Add(imageSnack);
-                    app.Children.Add(stackLayout);
-
+                    stackGrid.Children.Add(griglia);
+                    app.Children.Add(stackGrid);
                     app.Children.Add(label);
 
-                    TapGestureRecognizer tg1 = new TapGestureRecognizer();
-                    tg1.Tapped += Tgr_Tapped;
+
+                    //TapGestureRecognizer tg1 = new TapGestureRecognizer();
+                    //tg1.NumberOfTapsRequired = 1;
+                    //tg1.Tapped += Tgr_Tapped;
+                    //app.GestureRecognizers.Add(tg1);
+
+                    TapGestureRecognizer tg2 = new TapGestureRecognizer();
+                    tg2.NumberOfTapsRequired = 2;
+                    tg2.Tapped += Tgr2_Tapped;
+                    app.GestureRecognizers.Add(tg2);
 
 
                     if (addfav && favourites)
@@ -532,11 +509,11 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
         private async void Tgr2_Tapped(object sender, EventArgs e)
         {
             SnackDataDTO index = null;
-            foreach (var item in (sender as MR.Gestures.StackLayout).Children)
+            foreach (var item in (sender as StackLayout).Children)
             {
-                if (item is MR.Gestures.Label)
+                if (item is Label)
                 {
-                    var snackName = (item as MR.Gestures.Label).Text;
+                    var snackName = (item as Label).Text;
                     index = result.data.snacks.Single(obj => obj.friendly_name == snackName);
                     break;
                 }
@@ -546,30 +523,35 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             {
                 string preferito = "";
 
-                foreach (var app in (sender as MR.Gestures.StackLayout).Children)
+                foreach (var app in (sender as StackLayout).Children)
                 {
-                    if (app is RoundedCornerView)
+                    if (app is StackLayout)
                     {
-                        foreach (var an in (app as RoundedCornerView).Children)
+                        foreach (var an in (app as StackLayout).Children)
                         {
-                            if (an is AnimationView)
+                            if (an is Grid)
                             {
-                                AnimationView ap = (AnimationView)an;
-                                if (ap.Animation == "star.json")
+                                foreach (var ans in (app as Grid).Children)
                                 {
-                                    if (Check_FavouritesAndSet(index.id))
+                                    if (ans is AnimationView)
                                     {
-                                        ap.IsVisible = true;
-                                        ap.FadeTo(1);
-                                        ap.Play();
+                                        AnimationView ap = (AnimationView)an;
+                                        if (ap.Animation == "star.json")
+                                        {
+                                            if (Check_FavouritesAndSet(index.id))
+                                            {
+                                                ap.IsVisible = true;
+                                                ap.FadeTo(1);
+                                                ap.Play();
+                                            }
+                                        }
                                     }
                                 }
-
                             }
 
-                            if (an is MR.Gestures.Image)
+                            if (an is Image)
                             {
-                                MR.Gestures.Image image = (MR.Gestures.Image)an;
+                                Image image = (Image)an;
                                 string a = "";
                                 if (Check_Favourites(index.id))
                                 {
@@ -622,7 +604,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                 ScrollFavourites.IsVisible = true;
                 ListView.IsVisible = false;
                 favourite.Source = ImageSource.FromResource("fondomerende.image.star_fill.png");
-                ListToGrid.BackgroundColor = Color.Transparent;
+                //ListToGrid.BackgroundColor = Color.Transparent;
 
             }
             else
@@ -685,7 +667,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             if (swapped)
             {
                 switchStar = false;
-                ListToGrid.BackgroundColor = Color.FromHex("#f29e17");
+                //ListToGrid.BackgroundColor = Color.FromHex("#f29e17");
                 ScrollSnackView.IsVisible = false;
                 ListView.IsVisible = true;
                 EmptyStackFav.FadeTo(0, 0);
@@ -697,7 +679,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             }
             else
             {
-                ListToGrid.BackgroundColor = Color.Transparent;
+                //ListToGrid.BackgroundColor = Color.Transparent;
                 ListView.IsVisible = false;
                 ScrollFavourites.IsVisible = false;
                 ScrollSnackView.IsVisible = true;
