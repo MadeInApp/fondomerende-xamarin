@@ -223,9 +223,8 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
                     var imageSnack = new Image
                     {
-                        WidthRequest = 70,
-                        HeightRequest = 70,
-                        BackgroundColor = Color.Aqua,
+                        WidthRequest = 30,
+                        HeightRequest = 30,
                         Aspect = Aspect.AspectFill,
                         Margin = new Thickness(20),
                         Source = ImageSource.FromUri(new Uri("http://192.168.0.191:8888/fondomerende/public/getphoto.php?name=" + result.data.snacks[i].friendly_name))
@@ -326,7 +325,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                     {
                         Orientation = StackOrientation.Vertical,
                         IsVisible = visibilità,
-                        BackgroundColor = Color.Red,
+                        BackgroundColor = Color.AntiqueWhite,
                     };
                     starAnimation.OnFinish -= StopAnimation;
                     starAnimation.OnFinish += StopAnimation;
@@ -334,6 +333,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
                     griglia.Children.Add(star19);
                     griglia.Children.Add(imageSnack);
+                    griglia.Children.Add(star);
                     griglia.Children.Add(starAnimation);
 
                     stackGrid.Children.Add(griglia);
@@ -341,10 +341,10 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                     app.Children.Add(label);
 
 
-                    //TapGestureRecognizer tg1 = new TapGestureRecognizer();
-                    //tg1.NumberOfTapsRequired = 1;
-                    //tg1.Tapped += Tgr_Tapped;
-                    //app.GestureRecognizers.Add(tg1);
+                    TapGestureRecognizer tg1 = new TapGestureRecognizer();
+                    tg1.NumberOfTapsRequired = 1;
+                    tg1.Tapped += Tgr_Tapped;
+                    app.GestureRecognizers.Add(tg1);
 
                     TapGestureRecognizer tg2 = new TapGestureRecognizer();
                     tg2.NumberOfTapsRequired = 2;
@@ -506,6 +506,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             }
         }
 
+
         private async void Tgr2_Tapped(object sender, EventArgs e)
         {
             SnackDataDTO index = null;
@@ -531,7 +532,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                         {
                             if (an is Grid)
                             {
-                                foreach (var ans in (app as Grid).Children)
+                                foreach (var ans in (an as Grid).Children)
                                 {
                                     if (ans is AnimationView)
                                     {
@@ -571,7 +572,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             }
         }
 
-        private void Tgr_Tapped(object sender, EventArgs e)
+        private async void Tgr_Tapped(object sender, EventArgs e)
         {
             SnackDataDTO index = null;
             foreach (var item in (sender as StackLayout).Children)
@@ -589,7 +590,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                 SelectedItemChangedEventArgs test = new SelectedItemChangedEventArgs(index);
                 ListView_ItemSelected(null, test);
             }
-
+            
         }
 
         private async void favourite_Clicked(object sender, EventArgs e)
@@ -628,7 +629,11 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             {
                 EatDTO response = await snackServiceManager.EatAsync((e.SelectedItem as SnackDataDTO).id, 1);
                 selectedItemBinding = (e.SelectedItem as SnackDataDTO).friendly_name;
-                if(EnablePacman)
+
+                if (response.success) await DisplayAlert("Fondo Merende", "Lo snack è stato mangiato", "Ok");
+                else await DisplayAlert("Fondo Merende", "Lo snack non è stato mangiato", "Ok");
+
+                if (EnablePacman)
                 {
                     MessagingCenter.Send(new SnackViewCell()
                     {
@@ -723,7 +728,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
         }
 
-        private async Task Anima(MR.Gestures.Image sender)
+        private async Task Anima(Image sender)
         {
             Random random = new Random((int)DateTime.Now.Ticks);
             double casualWidth;

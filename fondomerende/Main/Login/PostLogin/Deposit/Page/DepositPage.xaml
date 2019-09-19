@@ -4,13 +4,87 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             xmlns:local="clr-namespace:fondomerende.Main.Utilities"
              x:Class="fondomerende.Main.Login.PostLogin.Deposit.Page.DepositPage"
              Title="Deposita e Azioni">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Deposita e Azioni!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <ScrollView
+                IsVisible="True">
+                <Grid
+                    HorizontalOptions="Center"
+                    VerticalOptions="Start"
+                    Margin="20"
+                    ColumnSpacing="20"
+                    RowSpacing="10">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackLayout
+                        HeightRequest="170"
+                        WidthRequest="170"
+                        BackgroundColor="Transparent"
+                        Grid.Column="0"
+                        Grid.Row="0">
+
+                        <Grid>
+                            <Image
+                                BackgroundColor="Azure"
+                                Aspect="AspectFill"
+                                Scale="0.75"
+                                Source="{local:EmbeddedImage Resource=fondomerende.image.star11.png}">
+                               
+                            </Image>
+
+                            <Image
+                                Aspect="AspectFill"
+                                Scale="0.75"
+                                Source="{local:EmbeddedImage Resource=fondomerende.image.rewind_512x512.png}">
+                                
+                            </Image>
+                        </Grid>
+                        
+                    </StackLayout>
+
+                    <StackLayout 
+                        BackgroundColor="Blue"
+                        Grid.Column="1"
+                        Grid.Row="0">
+                        
+
+                    </StackLayout>
+                    
+                    <StackLayout 
+                        BackgroundColor="Brown"
+                        Grid.Column="0"
+                        Grid.Row="1">
+
+                    </StackLayout>
+                    <StackLayout BackgroundColor="Accent">
+
+                    </StackLayout>
+                    <StackLayout BackgroundColor="Accent">
+
+                    </StackLayout>
+                    <StackLayout BackgroundColor="Accent">
+
+                    </StackLayout>
+                    <StackLayout BackgroundColor="Accent">
+
+                    </StackLayout>
+                    
+                </Grid>
+            </ScrollView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -29,11 +29,6 @@ namespace fondomerende.Main.Services.RESTServices
             }
             catch (FlurlHttpException ex)
             {
-                if(ex.InnerException.Message != "Collection was modified; enumeration operation may not execute.")
-                {
-                    
-                }
-
             }
             return null;
         }

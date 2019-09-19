@@ -20,74 +20,6 @@
         <StackLayout
                 x:Name="StackSnack"
                 BackgroundColor="#FFF8EB">
-
-            <StackLayout 
-                    Orientation="Horizontal" 
-                    HeightRequest="45" 
-                    Margin="10,0,0,0">
-
-                <ImageButton 
-                        Margin="0,10,10,0"
-                        CornerRadius="5"
-                        WidthRequest="35"
-                        HeightRequest="30"
-                        HorizontalOptions="StartAndExpand" 
-                        VerticalOptions="StartAndExpand"
-                        Source="{local2:EmbeddedImage Resource=fondomerende.image.list_264x264.png}"
-                        Scale="{OnIdiom Phone=0.8, Tablet=3}"
-                        BackgroundColor="Transparent"
-                        Clicked="Swap_Clicked"
-                        x:Name="Swap">
-                </ImageButton>
-            </StackLayout>
-            <Grid
-                VerticalOptions="Start"
-                x:Name="griglia">
-                <StackLayout
-                        BackgroundColor="#FFF8EB"
-                        x:Name="Cane">
-                    <ScrollView 
-                            Grid.Column="0"
-                            Grid.Row="0"
-                            IsVisible="True" 
-                            x:Name="ScrollView"  
-                            Padding="0,0,0,10">
-
-                        <Grid HorizontalOptions="CenterAndExpand"
-                                x:Name="GridView" 
-                                ColumnSpacing="20"
-                              Margin="0,0,0,0">
-
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*" />
-                            </Grid.RowDefinitions>
-
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-
-                            <StackLayout 
-                                        Grid.Column="0" 
-                                        x:Name="Column0"
-                                        Spacing="40"
-                                        HorizontalOptions="StartAndExpand"
-                                        Margin="5,10,10,0">
-                            </StackLayout>
-
-                            <StackLayout 
-                                        Grid.Column="1" 
-                                        x:Name="Column1"
-                                        Spacing="40"
-                                        HorizontalOptions="EndAndExpand"
-                                        Margin="10,10,5,0">
-                            </StackLayout>
-
-                        </Grid>
-
-                    </ScrollView>
-                </StackLayout>
-            </Grid>
-
             <ListView
                 Margin="0,0,0,0"
                 x:Name="ListView"
@@ -96,7 +28,7 @@
                 RefreshCommand="{Binding RefreshCommand}"
                 ItemSelected="ListView_ItemSelected"
                 IsRefreshing="{Binding IsBusy, Mode=OneWay}"
-                IsVisible="False"
+                IsVisible="True"
                 BackgroundColor="#FFF8EB"
                 HasUnevenRows="True">
                 <ListView.ItemTemplate>
@@ -111,6 +43,7 @@
 
                 </ListView.ItemTemplate>
             </ListView>
+            
         </StackLayout>
-        </controls:AnimationPage.Content>
+    </controls:AnimationPage.Content>
 </controls:AnimationPage>

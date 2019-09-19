@@ -66,12 +66,14 @@
     <None Remove="image\macchinetta_minimalist.jpg" />
     <None Remove="image\pac-man.gif" />
     <None Remove="image\paint-palette.png" />
+    <None Remove="image\rewind_512x512.png" />
     <None Remove="image\roller.png" />
     <None Remove="image\settings-work-tool.png" />
     <None Remove="image\settings_icon_64x64.png" />
     <None Remove="image\shopping_bag_256x256.png" />
     <None Remove="image\shop_icon_256x256.png" />
     <None Remove="image\star.png" />
+    <None Remove="image\star11.png" />
     <None Remove="image\Star19.png" />
     <None Remove="image\star_empty.png" />
     <None Remove="image\star_fill.png" />
@@ -211,6 +213,9 @@
     <EmbeddedResource Include="image\paint-palette.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="image\rewind_512x512.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="image\roller.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -222,6 +227,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="image\shop_icon_256x256.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="image\star11.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="image\Star19.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
