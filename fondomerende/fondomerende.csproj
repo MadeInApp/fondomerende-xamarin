@@ -54,6 +54,7 @@
     <None Remove="image\imagebutton\Chrono.png" />
     <None Remove="image\imagebutton\Chronology_image_button_1024x1024.png" />
     <None Remove="image\imagebutton\Deposita_image_button_1024x1024.png" />
+    <None Remove="image\imagebutton\Eat_1024x1024.png" />
     <None Remove="image\imagebutton\Edit_snack_image_button_1024x1024.png" />
     <None Remove="image\list_256x256.png" />
     <None Remove="image\list_264x264.png" />
@@ -184,6 +185,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="image\imagebutton\Deposita_image_button_1024x1024.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="image\imagebutton\Eat_1024x1024.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="image\imagebutton\Edit_snack_image_button_1024x1024.png">

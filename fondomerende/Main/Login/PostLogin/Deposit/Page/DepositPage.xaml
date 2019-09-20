@@ -9,7 +9,8 @@
              xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
              Title="Deposita e Azioni">
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout
+            BackgroundColor="#fff0df">
             <ScrollView
                 IsVisible="True">
                 <Grid
@@ -33,6 +34,7 @@
 
 
                     <StackLayout
+                        x:Name="Deposita"
                         HeightRequest="170"
                         WidthRequest="170"
                         Grid.Column="0"
@@ -63,6 +65,8 @@
                                 x:Name="Wallet"
                                 Animation="Pig.json"
                                 Loop="False"
+                                Scale="1.2"
+                                Margin="0,0,0,10"
                                 HorizontalOptions="Center"
                                 VerticalOptions="Center"
                                 AutoPlay="True">
@@ -73,10 +77,22 @@
                     <ImageButton
                         HeightRequest="170"
                         WidthRequest="170"
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        Source="{local:EmbeddedImage Resource=fondomerende.image.imagebutton.Eat_1024x1024.png}"
+                        CornerRadius="2">
+
+                    </ImageButton>
+
+                    <ImageButton
+                        HeightRequest="170"
+                        WidthRequest="170"
                         Grid.Column="0"
                         Grid.Row="1"
-                        Source="{local:EmbeddedImage Resource=fondomerende.image.imagebutton.Chrono.png}">
-
+                        Source="{local:EmbeddedImage Resource=fondomerende.image.imagebutton.Chrono.png}"
+                        CornerRadius="2"
+                        Clicked="CronologiaCliccato">
+                        
                     </ImageButton>
 
                     <ImageButton
@@ -84,7 +100,8 @@
                         WidthRequest="170"
                         Grid.Column="1"
                         Grid.Row="1"
-                        Source="{local:EmbeddedImage Resource=fondomerende.image.imagebutton.Add_snack_image_button_1024x1204.png}">
+                        Source="{local:EmbeddedImage Resource=fondomerende.image.imagebutton.Add_snack_image_button_1024x1204.png}"
+                        Clicked="AddSnackCliccato">
 
                     </ImageButton>
 
@@ -93,7 +110,8 @@
                         WidthRequest="170"
                         Grid.Column="0"
                         Grid.Row="2"
-                        Source="{local:EmbeddedImage Resource=fondomerende.image.imagebutton.Buy_snack.png}">
+                        Source="{local:EmbeddedImage Resource=fondomerende.image.imagebutton.Buy_snack.png}"
+                        Clicked="BuySnackCliccato">
                     </ImageButton>
                     
                     <ImageButton
@@ -101,8 +119,8 @@
                         WidthRequest="170"
                         Grid.Column="1"
                         Grid.Row="2"
-                        Source="{local:EmbeddedImage Resource=fondomerende.image.imagebutton.Edit_snack_image_button_1024x1024.png}">
-
+                        Source="{local:EmbeddedImage Resource=fondomerende.image.imagebutton.Edit_snack_image_button_1024x1024.png}"
+                        Clicked="EditSnackCliccato">
                     </ImageButton>
 
                     

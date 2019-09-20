@@ -94,7 +94,6 @@ namespace fondomerende.Main.Login.PostLogin.Settings.Page
         private async void EditSnackViewCell_Tapped(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new EditSnackListPage());
-
         }
 
         private async void AddSnackCell_Tapped(object sender, EventArgs e)
