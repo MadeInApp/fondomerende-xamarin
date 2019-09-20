@@ -6,6 +6,7 @@
              mc:Ignorable="d"
              xmlns:local="clr-namespace:fondomerende.Main.Utilities"
              x:Class="fondomerende.Main.Login.PostLogin.Deposit.Page.DepositPage"
+             xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
              Title="Deposita e Azioni">
     <ContentPage.Content>
         <StackLayout>
@@ -18,71 +19,94 @@
                     ColumnSpacing="20"
                     RowSpacing="10">
 
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
 
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
+
                     <StackLayout
                         HeightRequest="170"
                         WidthRequest="170"
-                        BackgroundColor="Transparent"
                         Grid.Column="0"
                         Grid.Row="0">
 
                         <Grid>
-                            <Image
-                                BackgroundColor="Azure"
-                                Aspect="AspectFill"
-                                Scale="0.75"
-                                Source="{local:EmbeddedImage Resource=fondomerende.image.star11.png}">
-                               
-                            </Image>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
 
                             <Image
+                                Margin="0"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center"
+                                Grid.Row="0"
+                                Grid.Column="0"
                                 Aspect="AspectFill"
-                                Scale="0.75"
-                                Source="{local:EmbeddedImage Resource=fondomerende.image.rewind_512x512.png}">
-                                
+                                Source="{local:EmbeddedImage Resource=fondomerende.image.imagebutton.Deposita_image_button_1024x1024.png}">
                             </Image>
+
+                            <forms:AnimationView
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                x:Name="Wallet"
+                                Animation="Pig.json"
+                                Loop="False"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center"
+                                AutoPlay="True">
+                            </forms:AnimationView>
                         </Grid>
-                        
                     </StackLayout>
 
-                    <StackLayout 
-                        BackgroundColor="Blue"
-                        Grid.Column="1"
-                        Grid.Row="0">
-                        
-
-                    </StackLayout>
-                    
-                    <StackLayout 
-                        BackgroundColor="Brown"
+                    <ImageButton
+                        HeightRequest="170"
+                        WidthRequest="170"
                         Grid.Column="0"
-                        Grid.Row="1">
+                        Grid.Row="1"
+                        Source="{local:EmbeddedImage Resource=fondomerende.image.imagebutton.Chrono.png}">
 
-                    </StackLayout>
-                    <StackLayout BackgroundColor="Accent">
+                    </ImageButton>
 
-                    </StackLayout>
-                    <StackLayout BackgroundColor="Accent">
+                    <ImageButton
+                        HeightRequest="170"
+                        WidthRequest="170"
+                        Grid.Column="1"
+                        Grid.Row="1"
+                        Source="{local:EmbeddedImage Resource=fondomerende.image.imagebutton.Add_snack_image_button_1024x1204.png}">
 
-                    </StackLayout>
-                    <StackLayout BackgroundColor="Accent">
+                    </ImageButton>
 
-                    </StackLayout>
-                    <StackLayout BackgroundColor="Accent">
-
-                    </StackLayout>
+                    <ImageButton
+                        HeightRequest="170"
+                        WidthRequest="170"
+                        Grid.Column="0"
+                        Grid.Row="2"
+                        Source="{local:EmbeddedImage Resource=fondomerende.image.imagebutton.Buy_snack.png}">
+                    </ImageButton>
                     
+                    <ImageButton
+                        HeightRequest="170"
+                        WidthRequest="170"
+                        Grid.Column="1"
+                        Grid.Row="2"
+                        Source="{local:EmbeddedImage Resource=fondomerende.image.imagebutton.Edit_snack_image_button_1024x1024.png}">
+
+                    </ImageButton>
+
+                    
+
                 </Grid>
             </ScrollView>
         </StackLayout>

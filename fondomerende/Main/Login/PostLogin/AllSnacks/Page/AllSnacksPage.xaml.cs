@@ -223,12 +223,11 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
                     var imageSnack = new Image
                     {
-                        WidthRequest = 30,
-                        HeightRequest = 30,
                         Aspect = Aspect.AspectFill,
                         Margin = new Thickness(35),
-                        Source = ImageSource.FromUri(new Uri("https://192.168.0.191:8888/fondomerende/public/getphoto.php?name=" + result.data.snacks[i].friendly_name))
+                        Source = ImageSource.FromUri(new Uri("http://192.168.0.191:8888/fondomerende/public/getphoto.php?name=" + result.data.snacks[i].friendly_name)),
                     };
+
 
                     var stackGrid = new StackLayout
                     { 

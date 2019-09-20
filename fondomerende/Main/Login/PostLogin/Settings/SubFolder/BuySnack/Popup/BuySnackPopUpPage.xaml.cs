@@ -476,6 +476,7 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
                             {
 
                             }, "RefreshGriglia");
+                            await DisplayAlert("Fondo Merende","Lo snack è stato comprato","Ok");
                             await PopupNavigation.Instance.PopAsync();
 
                         }

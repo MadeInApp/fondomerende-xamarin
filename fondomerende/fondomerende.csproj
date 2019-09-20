@@ -49,6 +49,12 @@
     <None Remove="image\fund_256x256.png" />
     <None Remove="image\History.png" />
     <None Remove="image\history_icon_256x256.png" />
+    <None Remove="image\imagebutton\Add_snack_image_button_1024x1204.png" />
+    <None Remove="image\imagebutton\Buy_snack.png" />
+    <None Remove="image\imagebutton\Chrono.png" />
+    <None Remove="image\imagebutton\Chronology_image_button_1024x1024.png" />
+    <None Remove="image\imagebutton\Deposita_image_button_1024x1024.png" />
+    <None Remove="image\imagebutton\Edit_snack_image_button_1024x1024.png" />
     <None Remove="image\list_256x256.png" />
     <None Remove="image\list_264x264.png" />
     <None Remove="image\Livellodinamico.png" />
@@ -81,6 +87,15 @@
     <None Remove="image\vm_icon_51x51.png" />
     <None Remove="image\vm_icon_64x64.png" />
     <None Remove="image\x.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="image\imagebutton\Buy_snack.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="image\imagebutton\Chrono.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
@@ -161,6 +176,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="image\history_icon_256x256.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="image\imagebutton\Add_snack_image_button_1024x1204.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="image\imagebutton\Chronology_image_button_1024x1024.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="image\imagebutton\Deposita_image_button_1024x1024.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="image\imagebutton\Edit_snack_image_button_1024x1024.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="image\list_256x256.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -254,7 +281,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Com.Airbnb.Xamarin.Forms.Lottie" Version="2.7.1" />
+    <PackageReference Include="Com.Airbnb.Xamarin.Forms.Lottie" Version="3.0.1" />
     <PackageReference Include="Flurl" Version="2.8.2" />
     <PackageReference Include="Flurl.Http" Version="2.4.2" />
     <PackageReference Include="MR.Gestures" Version="2.1.0" />
@@ -265,9 +292,9 @@
     <PackageReference Include="SkiaSharp.Views" Version="1.68.0" />
     <PackageReference Include="SkiaSharp.Views.Forms" Version="1.68.0" />
     <PackageReference Include="Xam.Plugin.MultiGestureView" Version="1.0.2" />
-    <PackageReference Include="Xamarin.Forms" Version="4.1.0.496342-pre2" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.2.0-pre" />
-    <PackageReference Include="Xamarin.HotReload" Version="1.4.12" />
+    <PackageReference Include="Xamarin.Forms" Version="4.2.0.815419" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.3.1" />
+    <PackageReference Include="Xamarin.HotReload" Version="1.4.19" />
     <PackageReference Include="XForms.Plugin.AnimationNavigationPage" Version="1.0.7" />
     <PackageReference Include="XFControls" Version="1.0.0.6">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
