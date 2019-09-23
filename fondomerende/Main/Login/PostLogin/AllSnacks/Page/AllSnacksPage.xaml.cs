@@ -30,7 +30,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
     {
         public static double priceBinding;
         bool paoloBool = Preferences.Get("Paolo",false);
-        int eatLoading = 0;
+        bool preferiticambiati = false;
         public static bool EnablePacman;
         public static string selectedItemBinding { get; set; }
         SnackServiceManager snackServiceManager = new SnackServiceManager();
@@ -282,7 +282,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                         e = "fondomerende.image.star_fill.png";
                     }
 
-                    var star = new Image
+                    var star = new ImageButton
                     {
                         HeightRequest = 20,
                         WidthRequest = 20,
@@ -292,6 +292,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                         Source = ImageSource.FromResource(e),
                         HorizontalOptions = LayoutOptions.EndAndExpand,
                         VerticalOptions = LayoutOptions.StartAndExpand,
+                        BackgroundColor = Color.Transparent
                     };
 
                     var starAnimation = new AnimationView
@@ -375,13 +376,13 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
         public async Task refreshFavAsync(bool app)
         {
-            if (previousFavourite != Preferences.Get("Favourites", ""))
+            if (preferiticambiati)
             {
                 EmptyStackFav.FadeTo(0, 0); // nasconde la scritta aggiungi snack
                 ScrollFavourites.IsVisible = true;
                 Column0Fav.Children.Clear();
                 Column1Fav.Children.Clear();
-
+                preferiticambiati = !preferiticambiati;
                 GetSnacksMethod(false, true);
             }
             if(app) HideLabel();
@@ -405,7 +406,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             testo.Spans.Add(new Span { Text = "Aggiungi nuovi ", TextColor = Color.Black });
             testo.Spans.Add(new Span { Text = "Preferiti ", TextColor = Color.FromHex("#ffb121") });
 
-            var label = new MR.Gestures.Label
+            var label = new Label
             {
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
                 VerticalOptions = LayoutOptions.CenterAndExpand,
@@ -420,7 +421,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
         public async Task refreshSnackAsync()
         {
-            if (previousFavourite != Preferences.Get("Favourites", ""))
+            if (preferiticambiati)
             {
                 Column0.Children.Clear();
                 Column1.Children.Clear();
@@ -508,6 +509,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
         private async void Tgr2_Tapped(object sender, EventArgs e)
         {
+            preferiticambiati = true;
             SnackDataDTO index = null;
             foreach (var item in (sender as StackLayout).Children)
             {
@@ -535,7 +537,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                                 {
                                     if (ans is AnimationView)
                                     {
-                                        AnimationView ap = (AnimationView)an;
+                                        AnimationView ap = (AnimationView)ans;
                                         if (ap.Animation == "star.json")
                                         {
                                             if (Check_FavouritesAndSet(index.id))
@@ -546,24 +548,23 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                                             }
                                         }
                                     }
-                                }
-                            }
+                                     if (ans is ImageButton)
+                                    {
+                                        ImageButton image = (ImageButton)ans;
+                                        string a = "";
+                                        if (Check_Favourites(index.id))
+                                        {
+                                            a = "fondomerende.image.star_fill.png";
+                                        }
+                                        else
+                                        {
+                                            a = "fondomerende.image.star_empty.png";
+                                        }
 
-                            if (an is Image)
-                            {
-                                Image image = (Image)an;
-                                string a = "";
-                                if (Check_Favourites(index.id))
-                                {
-                                    a = "fondomerende.image.star_empty.png";
+                                        
+                                        image.Source = ImageSource.FromResource(a);
+                                    }
                                 }
-                                else
-                                {
-                                    a = "fondomerende.image.star_fill.png";
-                                }
-
-
-                                image.Source = ImageSource.FromResource(a);
                             }
                         }
                     }
@@ -616,6 +617,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                 ListView.IsVisible = false;
                 ScrollFavourites.IsVisible = false;
                 favourite.Source = ImageSource.FromResource("fondomerende.image.star_empty.png");
+                HideLabel(); 
             }
 
         }
@@ -663,31 +665,6 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
         {
             await StackSnack.FadeTo(0, 0);
             await StackSnack.FadeTo(1, 1400);
-        }
-
-        private void Swap_Clicked(object sender, EventArgs e)
-        {
-            swapped = !swapped;
-            if (swapped)
-            {
-                switchStar = false;
-                //ListToGrid.BackgroundColor = Color.FromHex("#f29e17");
-                ScrollSnackView.IsVisible = false;
-                ListView.IsVisible = true;
-                EmptyStackFav.FadeTo(0, 0);
-
-                ScrollFavourites.IsVisible = false;
-                ScrollSnackView.IsVisible = false;
-                ListView.IsVisible = true;
-                favourite.Source = ImageSource.FromResource("fondomerende.image.star_empty.png");
-            }
-            else
-            {
-                //ListToGrid.BackgroundColor = Color.Transparent;
-                ListView.IsVisible = false;
-                ScrollFavourites.IsVisible = false;
-                ScrollSnackView.IsVisible = true;
-            }
         }
 
         private async void WalletClicked(object sender, EventArgs e)

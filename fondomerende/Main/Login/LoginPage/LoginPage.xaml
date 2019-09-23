@@ -11,15 +11,18 @@
 
     <ContentPage.Content>
         <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
+            <Grid
+                Grid.Row="0"
+                Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
 
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
 
-            <Image
+                <Image
                 Source="{local:EmbeddedImage Resource=fondomerende.image.LoginBackground.png}"
                 Grid.Row="0"
                 Grid.Column="0"      
@@ -27,9 +30,9 @@
                 x:Name ="BackGradientArRos"
                 Margin="{OnPlatform iOS='0,0,0,80'}"
                 Aspect="AspectFit">
-            </Image>
+                </Image>
 
-            <Image
+                <Image
                 Source="{local:EmbeddedImage Resource=fondomerende.image.Livellodinamico.png}"
                 Grid.Row="0"
                 Grid.Column="0" 
@@ -37,14 +40,14 @@
                 x:Name ="Donut"
                 Margin="{OnPlatform iOS='0,0,0,-500', Android='0,0,0,-500'}"
                 Aspect="AspectFit">
-            </Image>
+                </Image>
 
-            <StackLayout
+                <StackLayout
                 Grid.Row="0"
                 Grid.Column="0"
                 x:Name="LoginStack">
 
-                <Grid
+                    <Grid
                 Grid.Row="0"
                 Grid.Column="0"
                 Padding="{OnPlatform iOS=25}"
@@ -52,22 +55,22 @@
                 HorizontalOptions="FillAndExpand"
                 VerticalOptions="CenterAndExpand">
 
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="0.4*" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="0.4*" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
 
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
 
-                    <Image
+                        <Image
                         Grid.Row="0"
                         Grid.Column="0"  
                         Source="{local:EmbeddedImage Resource=fondomerende.image.Donut_icon_512x512.png}"
@@ -75,11 +78,11 @@
                         x:Name ="Fondo_Merende_logo"
                         Margin="{OnPlatform iOS='0,0,0,80', Android='0,0,0,120'}"
                         Aspect="AspectFit">
-                    </Image>
-                    
-                    
+                        </Image>
 
-                    <local:LineEntry
+
+
+                        <local:LineEntry
                     Grid.Row="1"
                     Grid.Column="0"
                     x:Name="usernameEntry"
@@ -87,19 +90,19 @@
                     IsSpellCheckEnabled="False"
                     IsTextPredictionEnabled="False"
                     Keyboard="Plain">
-                    </local:LineEntry>
+                        </local:LineEntry>
 
-                    <local:LineEntry
+                        <local:LineEntry
                     Grid.Row="2"
                     Grid.Column="0"
                     x:Name="passwordEntry"
                     Placeholder="Password"
                     IsPassword="True"
                     IsTextPredictionEnabled="False">
-                    </local:LineEntry>
+                        </local:LineEntry>
 
-                    <!--Android-->
-                    <Button
+                        <!--Android-->
+                        <Button
                     HorizontalOptions="FillAndExpand"
                     Grid.Row="3"
                     Grid.Column="0"
@@ -107,9 +110,9 @@
                     Clicked="Login_ClickedAsync"
                     Text="Log in"
                     Style="{StaticResource FondomerendeButton}">
-                    </Button>
+                        </Button>
 
-                    <Button
+                        <Button
                     HorizontalOptions="FillAndExpand"
                     Grid.Row="4"
                     Grid.Column="0"
@@ -118,44 +121,44 @@
                     x:Name="Register"
                     Text="Sign up"
                     Style="{StaticResource FondomerendeButton}">
-                    </Button>
+                        </Button>
 
 
 
-                    <!--Per android-->
-                    <StackLayout
+                        <!--Per android-->
+                        <StackLayout
                     HorizontalOptions="Start"
                     Orientation="Horizontal"
                     Margin="5,0,0,0"
                     Grid.Row="5"
                     Grid.Column="0">
-                        <StackLayout
+                            <StackLayout
                         Orientation="Horizontal">
-                            <Button
+                                <Button
                             Clicked="RememberMeButton_Clicked"
                             x:Name="RememberMe_Button"
                             BackgroundColor="WhiteSmoke"
                             Text=""
                             TextColor="{StaticResource ColorBackground}"
                             Style="{StaticResource RemeberButton}">
-                            </Button>
-                            <Label
+                                </Button>
+                                <Label
                             FontSize="Default"
                             FontAttributes="Bold"
                             Text="Ricordami"
                             HorizontalOptions="Start"
                             VerticalOptions="Center"
                             TextColor="{StaticResource ColorText}">
-                            </Label>
+                                </Label>
+                            </StackLayout>
                         </StackLayout>
-                    </StackLayout>
-                </Grid>
-            </StackLayout>
+                    </Grid>
+                </StackLayout>
 
 
 
 
-            <!--Parte Register-->
+                <!--Parte Register-->
                 <StackLayout
                   Grid.Row="0"
                   Grid.Column="0"
@@ -215,7 +218,7 @@
                           IsTextPredictionEnabled="False"
                           Keyboard="Plain"
                           >
-                            
+
                         </local:LineEntry>
 
                         <local:LineEntry
@@ -308,7 +311,32 @@
                         </Button>
                     </Grid>
                 </StackLayout>
+            </Grid>
+
+            <StackLayout
+                x:Name="Loading"
+                Grid.Row="0"
+                Grid.Column="0"
+                BackgroundColor="Black"
+                Opacity="0.5"
+                IsVisible="False">
+            </StackLayout>
+
+            <lottie:AnimationView
+                Grid.Row="0"
+                Grid.Column="0"
+                HeightRequest="170"
+                WidthRequest="170"
+                x:Name="LoadingLottie"
+                Animation="Loading.json"
+                Loop="True"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                IsVisible="False">
+            </lottie:AnimationView>
+            
         </Grid>
+        
     </ContentPage.Content>
 </ContentPage>
 

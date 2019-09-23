@@ -9,7 +9,6 @@
              xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
              x:Class="fondomerende.PostLoginPages.LoadingPage">
     <ContentPage.Content>
-
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />

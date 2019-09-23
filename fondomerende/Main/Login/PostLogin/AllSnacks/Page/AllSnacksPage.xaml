@@ -177,16 +177,16 @@
                                 <StackLayout 
                                         Grid.Column="0" 
                                         x:Name="Column0Fav"
-                                        Spacing="40"
+                                        Spacing="25"
                                         HorizontalOptions="StartAndExpand"
-                                        Margin="5,10,10,0">
+                                        Margin="0,5,0,0">
                                 </StackLayout>
                                 <StackLayout 
                                         Grid.Column="1" 
                                         x:Name="Column1Fav"
-                                        Spacing="40"
+                                        Spacing="25"
                                         HorizontalOptions="EndAndExpand"
-                                        Margin="10,10,5,0">
+                                        Margin="0,5,0,0">
                                 </StackLayout>
                             </Grid>
                         </ScrollView>

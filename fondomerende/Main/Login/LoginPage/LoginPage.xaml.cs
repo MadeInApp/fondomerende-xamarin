@@ -71,8 +71,13 @@ namespace fondomerende.Main.Login.LoginPages
             wait = !wait;
                 if (!string.IsNullOrEmpty(usernameEntry.Text) && !string.IsNullOrEmpty(passwordEntry.Text))
                 {
+                    Loading.IsVisible = true;
+                    LoadingLottie.IsVisible = true;
+                    LoadingLottie.Play();
                     var response = await loginService.LoginAsync(usernameEntry.Text, passwordEntry.Text, remember);
-                    if(response == null)
+                    LoadingLottie.IsVisible = false;
+                    Loading.IsVisible = false;
+                    if (response == null)
                     {
                         await DisplayAlert("Fondo Merende", "Errore di connessione", "OK");
                     }

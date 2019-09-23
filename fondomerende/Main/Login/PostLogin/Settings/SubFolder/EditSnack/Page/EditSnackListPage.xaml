@@ -7,7 +7,7 @@
              x:Class="fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.Page.EditSnackListPage"
              xmlns:local="clr-namespace:fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.View"
              xmlns:controls="clr-namespace:FormsControls.Base;assembly=FormsControls.Base"
-             Title="{OnPlatform iOS= 'Modifica Snack'}"
+             Title="Modifica Snack"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              ios:Page.UseSafeArea="true">
     

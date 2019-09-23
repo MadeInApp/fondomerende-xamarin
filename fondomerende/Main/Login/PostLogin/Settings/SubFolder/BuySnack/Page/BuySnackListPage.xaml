@@ -8,7 +8,7 @@
              mc:Ignorable="d"
              xmlns:controls="clr-namespace:FormsControls.Base;assembly=FormsControls.Base"
              x:Class="fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page.BuySnackListPage"
-             Title="{OnPlatform iOS= 'Acquista Snack'}"
+             Title="Acquista Snack"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"             
              ios:Page.UseSafeArea="true">
     
