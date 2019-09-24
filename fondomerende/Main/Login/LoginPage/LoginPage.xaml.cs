@@ -18,6 +18,9 @@ using fondomerende.Main.Login.PostLogin.Settings.SubFolder.Settaggio.View;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.AddSnack.View;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.View;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.LogOut.View;
+using fondomerende.Main.Login.TabletMode.Tabbed;
+using fondomerende.Main.Login.TabletMode.Page;
+using fondomerende.Main.Manager;
 
 namespace fondomerende.Main.Login.LoginPages
 {
@@ -108,6 +111,43 @@ namespace fondomerende.Main.Login.LoginPages
                     await DisplayAlert("Fondo Merende", "Username o Password mancanti", "OK");
 
                 }
+        }
+
+        private async void TabletMode_ClickedAsync(object sender, EventArgs e) //Effettua il Log In
+        {
+            wait = !wait;
+            Loading.IsVisible = true;
+            LoadingLottie.IsVisible = true;
+            LoadingLottie.Play();
+            var response = await loginService.LoginAsync("@kfc", "1", false);
+            LoadingLottie.IsVisible = false;
+            Loading.IsVisible = false;
+
+            if (response == null)
+            {
+                await DisplayAlert("Fondo Merende", "Errore di connessione", "OK");
+            }
+            else if (response.message == "Invalid login: wrong credentials.")
+            {
+                await DisplayAlert("Fondo Merende", "Username o Password Errati", "OK");
+            }
+            else if (response.success == true)
+            {
+                await userService.GetUserData();
+                App.Current.MainPage = new TabbedPageTablet();
+                TabletManager.Instance.tablet = true;
+                MessagingCenter.Send(new EditUserViewCell()
+                {
+
+                }, "RefreshUF");
+
+
+                wait = true;
+            }
+            else
+            {
+                await DisplayAlert("Fondo Merende", "Errore da investigare", "OK");
+            }
         }
 
         private async void RegisterButton_ClickedAsync(object sender, EventArgs e) //Mostra il form di registrazione

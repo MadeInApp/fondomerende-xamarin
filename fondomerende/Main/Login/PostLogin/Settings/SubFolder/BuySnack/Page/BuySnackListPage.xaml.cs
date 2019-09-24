@@ -14,6 +14,7 @@ using fondomerende.Main.Utilities;
 using FormsControls.Base;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View;
 using Lottie.Forms;
+using fondomerende.Main.Manager;
 
 namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page
 {
@@ -46,17 +47,21 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page
             });
 
 
-            //switch (Device.RuntimePlatform)                                                     //
-            //{                                                                                   //                                    
-            //                                                                                    //   Se il dispositivo è Android non mostra la Top Bar della Navigation Page,
-            //    case Device.Android:                                                            //      Se è iOS invece si (perchè senza è una schifezza)
-            //        NavigationPage.SetHasNavigationBar(this, false);                            //
-            //        break;                                                                      //
-            //                                                                                    //
-            //    default:                                                                    //
-            //        NavigationPage.SetHasNavigationBar(this, true);                             //
-            //        break;                                                                      //
-            //}                                                                                   //
+
+            if (TabletManager.Instance.tablet)
+            {
+                switch (Device.RuntimePlatform)   //                                              ||\\
+                {              //                                                                 || \\                                    
+                               //                         ||  \\ Se il dispositivo è Android non mostra la Top Bar della Navigation Page,
+                    case Device.Android: //                                             \\        ||   \\   Se è iOS invece si (perchè senza è una schifezza)
+                        NavigationPage.SetHasNavigationBar(this, false);//                \\      ||    \\        \                
+                        break;     //                                                      ||||||||||||||||\/\/|    |
+                                   //      ||    //        /       
+                    default:                                                            //        ||   //
+                        NavigationPage.SetHasNavigationBar(this, true);//                         ||  //
+                        break;  //                                                                || //
+                }
+            }                                                                              //
         }
 
 

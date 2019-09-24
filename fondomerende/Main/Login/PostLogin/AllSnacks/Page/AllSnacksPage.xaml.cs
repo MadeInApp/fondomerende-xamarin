@@ -12,6 +12,7 @@ using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.View;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.LogOut.View;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.Settaggio.View;
+using fondomerende.Main.Manager;
 using fondomerende.Main.Services.Models;
 using fondomerende.Main.Services.RESTServices;
 using fondomerende.Main.Utilities;
@@ -55,7 +56,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             // GridView.RowDefinitions = DeviceDisplay.MainDisplayInfo.Width/2;
             Aspetta();
             CreateFavouritesLabel();
-
+            if(TabletManager.Instance.tablet) favourite.IsVisible = false;
 
             previousFavourite = Preferences.Get("Favourites", "");
 
@@ -75,18 +76,20 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
 
 
-
-            //switch (Device.RuntimePlatform)   //                                              ||\\
-            //{              //                                                                 || \\                                    
-            //                                                       //                         ||  \\ Se il dispositivo è Android non mostra la Top Bar della Navigation Page,
-            //    case Device.Android: //                                             \\        ||   \\   Se è iOS invece si (perchè senza è una schifezza)
-            //        NavigationPage.SetHasNavigationBar(this, false);//                \\      ||    \\        \                
-            //        break;     //                                                      ||||||||||||||||\/\/|    |
-            //                                                                          //      ||    //        /       
-            //    default:                                                            //        ||   //
-            //        NavigationPage.SetHasNavigationBar(this, true);//                         ||  //
-            //        break;  //                                                                || //
-            //}               //                                                                ||//
+            if (TabletManager.Instance.tablet)
+            {
+                switch (Device.RuntimePlatform)   //                                              ||\\
+                {              //                                                                 || \\                                    
+                               //                         ||  \\ Se il dispositivo è Android non mostra la Top Bar della Navigation Page,
+                    case Device.Android: //                                             \\        ||   \\   Se è iOS invece si (perchè senza è una schifezza)
+                        NavigationPage.SetHasNavigationBar(this, false);//                \\      ||    \\        \                
+                        break;     //                                                      ||||||||||||||||\/\/|    |
+                                   //      ||    //        /       
+                    default:                                                            //        ||   //
+                        NavigationPage.SetHasNavigationBar(this, true);//                         ||  //
+                        break;  //                                                                || //
+                }
+            }
                                                                                          
 
             Swap = new AnimationView
@@ -333,7 +336,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
 
                     griglia.Children.Add(star19);
                     griglia.Children.Add(imageSnack);
-                    griglia.Children.Add(star);
+                    if (!TabletManager.Instance.tablet) griglia.Children.Add(star);
                     griglia.Children.Add(starAnimation);
 
                     stackGrid.Children.Add(griglia);
@@ -346,10 +349,14 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                     tg1.Tapped += Tgr_Tapped;
                     app.GestureRecognizers.Add(tg1);
 
-                    TapGestureRecognizer tg2 = new TapGestureRecognizer();
-                    tg2.NumberOfTapsRequired = 2;
-                    tg2.Tapped += Tgr2_Tapped;
-                    app.GestureRecognizers.Add(tg2);
+                    if (TabletManager.Instance.tablet)
+                    {
+                        TapGestureRecognizer tg2 = new TapGestureRecognizer();
+                        tg2.NumberOfTapsRequired = 2;
+                        tg2.Tapped += Tgr2_Tapped;
+                        app.GestureRecognizers.Add(tg2);
+                    }
+                    
 
 
                     if (addfav && favourites)

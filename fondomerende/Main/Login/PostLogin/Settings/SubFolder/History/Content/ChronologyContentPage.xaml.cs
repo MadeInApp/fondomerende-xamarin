@@ -10,6 +10,7 @@ using Xamarin.Forms.Xaml;
 using System.ComponentModel;
 using Xamarin.Essentials;
 using fondomerende.Main.Utilities;
+using fondomerende.Main.Manager;
 
 namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
 {
@@ -34,16 +35,21 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content
         public ChronologyContentPage()
         {          
             InitializeComponent();
-            //switch (Device.RuntimePlatform)             //Se il dispositivo è Android non mostra la Top Bar della Navigation Page, se è iOS la mostra
-            //{
-            //    default:
-            //        NavigationPage.SetHasNavigationBar(this, true);
-            //        break;
-            //    case Device.Android:
-            //        NavigationPage.SetHasNavigationBar(this, false);
-            //        break;
 
-            //}
+            if (TabletManager.Instance.tablet)
+            {
+                switch (Device.RuntimePlatform)   //                                              ||\\
+                {              //                                                                 || \\                                    
+                               //                         ||  \\ Se il dispositivo è Android non mostra la Top Bar della Navigation Page,
+                    case Device.Android: //                                             \\        ||   \\   Se è iOS invece si (perchè senza è una schifezza)
+                        NavigationPage.SetHasNavigationBar(this, false);//                \\      ||    \\        \                
+                        break;     //                                                      ||||||||||||||||\/\/|    |
+                                   //      ||    //        /       
+                    default:                                                            //        ||   //
+                        NavigationPage.SetHasNavigationBar(this, true);//                         ||  //
+                        break;  //                                                                || //
+                }
+            }
             Aspetta();
             
         }

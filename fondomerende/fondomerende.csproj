@@ -51,6 +51,7 @@
     <None Remove="image\History.png" />
     <None Remove="image\history_icon_256x256.png" />
     <None Remove="image\imagebutton\Add_snack_image_button_1024x1204.png" />
+    <None Remove="image\imagebutton\Back.png" />
     <None Remove="image\imagebutton\Buy_snack.png" />
     <None Remove="image\imagebutton\Chrono.png" />
     <None Remove="image\imagebutton\Chronology_image_button_1024x1024.png" />
@@ -74,6 +75,7 @@
     <None Remove="image\macchinetta_minimalist.jpg" />
     <None Remove="image\pac-man.gif" />
     <None Remove="image\paint-palette.png" />
+    <None Remove="image\PioggiaSalsicce.png" />
     <None Remove="image\rewind_512x512.png" />
     <None Remove="image\roller.png" />
     <None Remove="image\settings-work-tool.png" />
@@ -93,6 +95,9 @@
 
   <ItemGroup>
     <EmbeddedResource Include="image\ActionBg.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="image\imagebutton\Back.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="image\imagebutton\Buy_snack.png">
@@ -248,6 +253,9 @@
     <EmbeddedResource Include="image\paint-palette.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="image\PioggiaSalsicce.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="image\rewind_512x512.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -293,6 +301,7 @@
     <PackageReference Include="Flurl" Version="2.8.2" />
     <PackageReference Include="Flurl.Http" Version="2.4.2" />
     <PackageReference Include="MR.Gestures" Version="2.1.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
     <PackageReference Include="Plugin.CrossPlatformTintedImage" Version="1.0.0" />
     <PackageReference Include="Plugin.ImageCropper" Version="1.0.1" />
     <PackageReference Include="Rg.Plugins.Popup" Version="1.1.5.188" />
@@ -405,6 +414,12 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Main\Login\PostLogin\Settings\SubFolder\Settaggio\View\ChangeColorViewCell.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Main\Login\TabletMode\Page\TabletPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Main\Login\TabletMode\Tabbed\TabbedPageTablet.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="SettingsTableView.xaml">
