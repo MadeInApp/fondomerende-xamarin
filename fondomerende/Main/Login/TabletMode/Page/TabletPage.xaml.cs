@@ -5,6 +5,8 @@ using fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.Page;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content;
+using fondomerende.Main.Login.TabletMode.Controlli;
+using fondomerende.Main.Login.TabletMode.Popup;
 using fondomerende.Main.Manager;
 using Rg.Plugins.Popup.Extensions;
 using System;
@@ -23,17 +25,20 @@ namespace fondomerende.Main.Login.TabletMode.Page
     {
         public TabletPage()
         {
+            ControlloCodice c = new ControlloCodice();
             InitializeComponent();
-            gesture();
-            Wallet.Play();
-            NavigationPage.SetHasNavigationBar(this, false);
-        }
-
-        private void gesture()
-        {
-            TapGestureRecognizer tg1 = new TapGestureRecognizer();
-            tg1.Tapped += DepositaCliccato;
-            Deposita.GestureRecognizers.Add(tg1);
+            switch (Device.RuntimePlatform)   //                                              ||\\
+            {              //                                                                 || \\                                    
+                           //                         ||  \\ Se il dispositivo è Android non mostra la Top Bar della Navigation Page,
+                case Device.Android: //                                             \\        ||   \\   Se è iOS invece si (perchè senza è una schifezza)
+                    NavigationPage.SetHasNavigationBar(this, false);
+                    //                \\      ||    \\        \                
+                    break;     //                                                      ||||||||||||||||\/\/|    |
+                               //                                                       ||    //        /       
+                default:                                                            //        ||   //
+                    NavigationPage.SetHasNavigationBar(this, false);//                        ||  //
+                    break;  //                                                                || //
+            }
         }
         private async void BackCliccato(object sender,EventArgs e)
         {
@@ -68,6 +73,16 @@ namespace fondomerende.Main.Login.TabletMode.Page
         private async void EditSnackCliccato(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new EditSnackListPage());
+        }
+
+        private async void AdduserCliccato(object sender, EventArgs e)
+        {
+            await Navigation.PushPopupAsync(new AddUserPopup());
+        }
+
+        private async void ChangedCliccato(object sender, EventArgs e)
+        {
+            await Navigation.PushPopupAsync(new ChangePopup());
         }
     }
 }

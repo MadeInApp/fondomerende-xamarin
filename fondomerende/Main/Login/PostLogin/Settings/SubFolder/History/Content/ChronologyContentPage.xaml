@@ -15,21 +15,34 @@
     
             
     <controls:AnimationPage.Content>
+        <Grid>
+            <Image
+                Grid.Column="0"
+                Grid.Row="0"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Aspect="Fill"
+                Source="{local:EmbeddedImage Resource=fondomerende.image.cronologiaBG.png}"
+                Opacity="0.3">
+            </Image>
 
-        <ScrollView 
-            BackgroundColor="White"
-            IsVisible="true"
-            Padding="0,0,0,10">
+            <ScrollView 
+                Grid.Row="0"
+                Grid.Column="0"
+                IsVisible="true"
+                Padding="0,0,0,10">
 
-            <StackLayout
+                <StackLayout
                 Padding="0,0,10,0"
                 x:Name="ContentLayout"
                 Spacing="0"
                 Margin="10"
                 Orientation="Vertical">
 
-            </StackLayout>
+                </StackLayout>
 
-        </ScrollView>
+            </ScrollView>
+        </Grid>
+        
     </controls:AnimationPage.Content>
 </controls:AnimationPage>

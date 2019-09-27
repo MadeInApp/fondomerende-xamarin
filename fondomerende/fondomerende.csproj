@@ -26,6 +26,7 @@
     <None Remove="Animated\pac-man.gif" />
     <None Remove="image\ActionBg.png" />
     <None Remove="image\add-snack-icon.png" />
+    <None Remove="image\adduser.png" />
     <None Remove="image\add_icon_256x256.png" />
     <None Remove="image\BackGradientArRos.jpg" />
     <None Remove="image\BackGradientRosAr.jpg" />
@@ -33,6 +34,7 @@
     <None Remove="image\CheckBox_empty_32x32.png" />
     <None Remove="image\Chronology_icon_256x256.png" />
     <None Remove="image\close_icon_32x32.png" />
+    <None Remove="image\cronologiaBG.png" />
     <None Remove="image\cup_cake_128x128.png" />
     <None Remove="image\cup_cake_24x24.png" />
     <None Remove="image\cup_cake_512x512.png" />
@@ -73,6 +75,9 @@
     <None Remove="image\macchinettaNew.png" />
     <None Remove="image\macchinetta_merende.png" />
     <None Remove="image\macchinetta_minimalist.jpg" />
+    <None Remove="image\Natale\icicles.png" />
+    <None Remove="image\Natale\sfondo1nat.png" />
+    <None Remove="image\Natale\sfondo2nat.png" />
     <None Remove="image\pac-man.gif" />
     <None Remove="image\paint-palette.png" />
     <None Remove="image\PioggiaSalsicce.png" />
@@ -80,6 +85,8 @@
     <None Remove="image\roller.png" />
     <None Remove="image\settings-work-tool.png" />
     <None Remove="image\settings_icon_64x64.png" />
+    <None Remove="image\sfondopt1.png" />
+    <None Remove="image\sfondopt2.png" />
     <None Remove="image\shopping_bag_256x256.png" />
     <None Remove="image\shop_icon_256x256.png" />
     <None Remove="image\star.png" />
@@ -94,7 +101,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="image\cronologiaBG.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
     <EmbeddedResource Include="image\ActionBg.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="image\adduser.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="image\imagebutton\Back.png">
@@ -247,6 +263,15 @@
     <EmbeddedResource Include="image\macchinetta_minimalist.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="image\Natale\icicles.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="image\Natale\sfondo1nat.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="image\Natale\sfondo2nat.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="image\pac-man.gif">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -264,6 +289,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="image\settings_icon_64x64.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="image\sfondopt1.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="image\sfondopt2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="image\shopping_bag_256x256.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -302,6 +333,7 @@
     <PackageReference Include="Flurl.Http" Version="2.4.2" />
     <PackageReference Include="MR.Gestures" Version="2.1.0" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+    <PackageReference Include="PCLStorage" Version="1.0.2" />
     <PackageReference Include="Plugin.CrossPlatformTintedImage" Version="1.0.0" />
     <PackageReference Include="Plugin.ImageCropper" Version="1.0.1" />
     <PackageReference Include="Rg.Plugins.Popup" Version="1.1.5.188" />
@@ -346,6 +378,9 @@
     </Compile>
     <Compile Update="Main\Login\PostLogin\Settings\SubFolder\History\View\ChronologyLogView.xaml.cs">
       <DependentUpon>ChronologyLogView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Main\Login\TabletMode\Popup\ChangePopup.xaml.cs">
+      <DependentUpon>ChangePopup.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
@@ -417,6 +452,15 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Main\Login\TabletMode\Page\TabletPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Main\Login\TabletMode\Popup\AddUserPopup.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Main\Login\TabletMode\Popup\CodicePopup.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Main\Login\TabletMode\Popup\ChangePopup.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Main\Login\TabletMode\Tabbed\TabbedPageTablet.xaml">

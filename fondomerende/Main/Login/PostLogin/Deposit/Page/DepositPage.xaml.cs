@@ -3,6 +3,7 @@ using fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.Page;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.Content;
+using fondomerende.Main.Manager;
 using Rg.Plugins.Popup.Extensions;
 using System;
 using System.Collections.Generic;
@@ -21,14 +22,6 @@ namespace fondomerende.Main.Login.PostLogin.Deposit.Page
         public DepositPage()
         {
             InitializeComponent();
-            gesture();
-        }
-
-        private void gesture()
-        {
-            TapGestureRecognizer tg1 = new TapGestureRecognizer();
-            tg1.Tapped += DepositaCliccato;
-            Deposita.GestureRecognizers.Add(tg1);
         }
 
         private async void DepositaCliccato(object sender, EventArgs e)
@@ -54,6 +47,10 @@ namespace fondomerende.Main.Login.PostLogin.Deposit.Page
         private async void EditSnackCliccato(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new EditSnackListPage());
+        }
+        private async void EatCliccato(object sender, EventArgs e)
+        {
+            await DisplayAlert("Fondomerende", "Non disponibile in questa modalità", "Ok");
         }
     }
 }

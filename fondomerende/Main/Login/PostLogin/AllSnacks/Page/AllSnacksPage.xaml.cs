@@ -12,6 +12,7 @@ using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.History.View;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.LogOut.View;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.Settaggio.View;
+using fondomerende.Main.Login.TabletMode.Popup;
 using fondomerende.Main.Manager;
 using fondomerende.Main.Services.Models;
 using fondomerende.Main.Services.RESTServices;
@@ -90,6 +91,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                         break;  //                                                                || //
                 }
             }
+
                                                                                          
 
             Swap = new AnimationView
@@ -228,7 +230,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                     {
                         Aspect = Aspect.AspectFill,
                         Margin = new Thickness(35),
-                        Source = ImageSource.FromUri(new Uri("http://192.168.0.191:8888/fondomerende/public/getphoto.php?name=" + result.data.snacks[i].friendly_name)),
+                        Source = ImageSource.FromUri(new Uri("http://fondomerende.madeinapp.net/api/getphoto.php?name=" + result.data.snacks[i].friendly_name)),
                     };
 
 
@@ -236,7 +238,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                     { 
                         WidthRequest = box,
                         HeightRequest = box,
-                        BackgroundColor = Color.FromHex("#ece0ce"),
+                        
                         InputTransparent = true,
                     };
 
@@ -328,16 +330,22 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                     {
                         Orientation = StackOrientation.Vertical,
                         IsVisible = visibilità,
-                        BackgroundColor = Color.AntiqueWhite,
+                    };
+
+                    var sfondo = new StackLayout
+                    {
+                        BackgroundColor = Color.FromHex("#ece0ce"),
+                        Opacity = 0.99
                     };
                     starAnimation.OnFinish -= StopAnimation;
                     starAnimation.OnFinish += StopAnimation;
 
-
+                    griglia.Children.Add(sfondo);
                     griglia.Children.Add(star19);
                     griglia.Children.Add(imageSnack);
                     if (!TabletManager.Instance.tablet) griglia.Children.Add(star);
                     griglia.Children.Add(starAnimation);
+
 
                     stackGrid.Children.Add(griglia);
                     app.Children.Add(stackGrid);
@@ -349,7 +357,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
                     tg1.Tapped += Tgr_Tapped;
                     app.GestureRecognizers.Add(tg1);
 
-                    if (TabletManager.Instance.tablet)
+                    if (!TabletManager.Instance.tablet)
                     {
                         TapGestureRecognizer tg2 = new TapGestureRecognizer();
                         tg2.NumberOfTapsRequired = 2;
@@ -582,6 +590,8 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
         private async void Tgr_Tapped(object sender, EventArgs e)
         {
             SnackDataDTO index = null;
+
+            
             foreach (var item in (sender as StackLayout).Children)
             {
                 if (item is Label)
@@ -594,8 +604,16 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
             }
             if (index != null)
             {
-                SelectedItemChangedEventArgs test = new SelectedItemChangedEventArgs(index);
-                ListView_ItemSelected(null, test);
+                if (TabletManager.Instance.tablet)
+                {
+                    await Navigation.PushPopupAsync(new CodicePopup(index, "mangia", null, null, null, null));
+
+                }else
+                {
+                    SelectedItemChangedEventArgs test = new SelectedItemChangedEventArgs(index);
+                    ListView_ItemSelected(null, test);
+                }
+                
             }
             
         }
@@ -630,7 +648,7 @@ namespace fondomerende.Main.Login.PostLogin.AllSnack.Page
         }
 
         
-        private async void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)     //quando uno snack è tappato si apre un prompt in cui viene chiesto se lo si vuole mangiare
+        public async void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)     //quando uno snack è tappato si apre un prompt in cui viene chiesto se lo si vuole mangiare
         {
             var ans = await DisplayAlert("Fondo Merende", "Vuoi davvero mangiare " + (e.SelectedItem as SnackDataDTO).friendly_name + "?", "Si", "No");
             if (ans == true)

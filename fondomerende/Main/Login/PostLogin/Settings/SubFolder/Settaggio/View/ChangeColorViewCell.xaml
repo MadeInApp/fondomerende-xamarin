@@ -9,6 +9,7 @@
              x:Class="fondomerende.Main.Login.PostLogin.Settings.SubFolder.Settaggio.View.ChangeColorViewCell">
     <ViewCell.View>
         <StackLayout Opacity="{OnPlatform iOS=0.5,Android=1}"
+             IsVisible="{OnPlatform Android=true, Default=false}"
             Orientation="Horizontal">
             <controls:TintedImage
                 x:Name="SettingIcon" 

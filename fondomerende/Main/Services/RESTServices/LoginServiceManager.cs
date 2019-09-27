@@ -29,12 +29,19 @@ namespace fondomerende.Main.Services.RESTServices
 					data.Add("name", username);
 					data.Add("password", passwordToLogin);
 				}
-                   
-                result = await Services.Concatenazione()
+                try
+                {
+                    result = await Services.Concatenazione()
                     .WithCookie("auth-key", key)
                     .WithHeader("Content-Type", "application/x-www-form-urlencoded; param=value;charset=UTF-8")
                     .PostUrlEncodedAsync(data)
                     .ReceiveJson<LoginDTO>();
+                }
+                catch (NullReferenceException)
+                {
+                    result.success = false;
+                }
+                
 
                 if (result.success == true)
                 {
@@ -56,8 +63,9 @@ namespace fondomerende.Main.Services.RESTServices
             }
             catch (FlurlHttpException ex)
             {
-                await App.Current.MainPage.DisplayAlert("Login",ex.InnerException.Message, "OK");
+              //  await App.Current.MainPage.DisplayAlert("Login",ex.InnerException.Message, "OK");
             }
+            
             return result;
         }
 

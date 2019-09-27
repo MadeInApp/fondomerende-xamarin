@@ -7,6 +7,7 @@ namespace fondomerende.Main.Manager
     public sealed class TabletManager
     {
         public bool tablet;
+        public int codicegiusto = 0;
 
         private static TabletManager _instance;
 

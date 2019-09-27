@@ -5106,6 +5106,8 @@ namespace fondomerende.Droid
 			global::Lottie.Forms.Resource.Styleable.ViewStubCompat_android_id = global::fondomerende.Droid.Resource.Styleable.ViewStubCompat_android_id;
 			global::Lottie.Forms.Resource.Styleable.ViewStubCompat_android_inflatedId = global::fondomerende.Droid.Resource.Styleable.ViewStubCompat_android_inflatedId;
 			global::Lottie.Forms.Resource.Styleable.ViewStubCompat_android_layout = global::fondomerende.Droid.Resource.Styleable.ViewStubCompat_android_layout;
+			global::PCLStorage.Resource.String.ApplicationName = global::fondomerende.Droid.Resource.String.ApplicationName;
+			global::PCLStorage.Resource.String.Hello = global::fondomerende.Droid.Resource.String.Hello;
 			global::Plugin.ImageCropper.Resource.Drawable.camera_crop_height = global::fondomerende.Droid.Resource.Drawable.camera_crop_height;
 			global::Plugin.ImageCropper.Resource.Drawable.camera_crop_width = global::fondomerende.Droid.Resource.Drawable.camera_crop_width;
 			global::Plugin.ImageCropper.Resource.Drawable.indicator_autocrop = global::fondomerende.Droid.Resource.Drawable.indicator_autocrop;
@@ -13503,6 +13505,12 @@ namespace fondomerende.Droid
 		
 		public partial class String
 		{
+			
+			// aapt resource value: 0x7f0c0058
+			public const int ApplicationName = 2131492952;
+			
+			// aapt resource value: 0x7f0c0057
+			public const int Hello = 2131492951;
 			
 			// aapt resource value: 0x7f0c0018
 			public const int abc_action_bar_home_description = 2131492888;

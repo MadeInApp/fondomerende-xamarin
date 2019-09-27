@@ -3,6 +3,8 @@ using fondomerende.Main.Login.PostLogin.Settings.Page;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Page;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditSnack.Page;
 using fondomerende.Main.Login.PostLogin.Settings.SubFolder.EditUser.View;
+using fondomerende.Main.Login.TabletMode.Popup;
+using fondomerende.Main.Manager;
 using fondomerende.Main.Services.RESTServices;
 using fondomerende.Main.Utilities;
 using Rg.Plugins.Popup.Extensions;
@@ -459,36 +461,38 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
                         int aiuto = lineAndroid.Text.IndexOf(",");
                         lineAndroid.Text = lineAndroid.Text.Substring(0, aiuto);
                     }
-                    
-                    var result = await snackService.BuySnackAsync(BuySnackListPage.SelectedSnackID, Convert.ToInt32(lineAndroid.Text));
-                    if (result != null)
+                    if (TabletManager.Instance.tablet)
                     {
-                        if (result.success)
-                        {
-                            MessagingCenter.Send(new AllSnacksPage()
-                            {
-
-                            }, "RefreshGetSnacks");
-                            Vibration.Vibrate(40);
-                            await Task.Delay(100);
-                            Vibration.Vibrate(40);
-                            MessagingCenter.Send(new AllSnacksPage()
-                            {
-
-                            }, "RefreshGriglia");
-                            await DisplayAlert("Fondo Merende","Lo snack è stato comprato","Ok");
-                            await PopupNavigation.Instance.PopAsync();
-
-                        }
-                        else
-                        {
-                            await DisplayAlert("Fondo Merende", result.message, "Ok");
-                        }
+                        await Navigation.PushPopupAsync(new CodicePopup((BuySnackListPage.SelectedSnackID), "compra", Convert.ToInt32(lineAndroid.Text),swap));
                     }
                     else
                     {
+                        var result = await snackService.BuySnackAsync(BuySnackListPage.SelectedSnackID, Convert.ToInt32(lineAndroid.Text));
+                        if (result != null)
+                        {
+                            if (result.success)
+                            {
+                                MessagingCenter.Send(new AllSnacksPage()
+                                {
 
-                    }
+                                }, "RefreshGetSnacks");
+                                Vibration.Vibrate(40);
+                                await Task.Delay(100);
+                                Vibration.Vibrate(40);
+                                MessagingCenter.Send(new AllSnacksPage()
+                                {
+
+                                }, "RefreshGriglia");
+                                await DisplayAlert("Fondo Merende", "Lo snack è stato comprato", "Ok");
+                                await PopupNavigation.Instance.PopAsync();
+
+                            }
+                            else
+                            {
+                                await DisplayAlert("Fondo Merende", result.message, "Ok");
+                            }
+                        }
+                    } 
                 }
             }
             if(swap == true )
@@ -512,29 +516,37 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
                         int aiuto = lineAndroid.Text.IndexOf(",");
                         lineAndroid.Text = lineAndroid.Text.Substring(0, aiuto);
                     }
-                    var result = await snackService.BuySnackAsync2(BuySnackListPage.SelectedSnackID, Int32.Parse(lineAndroid.Text),prezzoAndroid.Text, scadenzaAndroid.Text);
-                    if (result != null)
+                    if (TabletManager.Instance.tablet)
                     {
-                        if (result.success)
+                        await Navigation.PushPopupAsync(new CodicePopup(BuySnackListPage.SelectedSnackID, "compra", Int32.Parse(lineAndroid.Text), prezzoAndroid.Text, scadenzaAndroid.Text, true));
+                    }
+                    else
+                    {
+                        var result = await snackService.BuySnackAsync2(BuySnackListPage.SelectedSnackID, Int32.Parse(lineAndroid.Text), prezzoAndroid.Text, scadenzaAndroid.Text);
+                        if (result != null)
                         {
-                            MessagingCenter.Send(new AllSnacksPage()
+                            if (result.success)
                             {
+                                MessagingCenter.Send(new AllSnacksPage()
+                                {
 
-                            }, "RefreshGetSnacks");
-                            Vibration.Vibrate(40);
-                            await Task.Delay(100);
-                            Vibration.Vibrate(40);
-                            MessagingCenter.Send(new AllSnacksPage()
+                                }, "RefreshGetSnacks");
+                                Vibration.Vibrate(40);
+                                await Task.Delay(100);
+                                Vibration.Vibrate(40);
+                                MessagingCenter.Send(new AllSnacksPage()
+                                {
+
+                                }, "RefreshGriglia");
+                                await PopupNavigation.Instance.PopAsync();
+                            }
+                            else
                             {
-
-                            }, "RefreshGriglia");
-                            await PopupNavigation.Instance.PopAsync();
-                        }
-                        else
-                        {
-                            await DisplayAlert("Fondo Merende", result.message, "Ok");
+                                await DisplayAlert("Fondo Merende", result.message, "Ok");
+                            }
                         }
                     }
+                    
                 }
 
             }
@@ -557,30 +569,33 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
                     
                     else
                     {
-                        var result = await snackService.BuySnackAsync(BuySnackListPage.SelectedSnackID, Convert.ToInt32(lineiOs.Text));
-                        if (result != null)
+                        if (TabletManager.Instance.tablet)
                         {
-                            if (result.success)
-                            {
-                                MessagingCenter.Send(new AllSnacksPage()
-                                {
-
-                                }, "RefreshGetSnacks");
-                                DependencyService.Get<HapticFeedbackGen>().HapticFeedbackGenSuccessAsync();
-                                MessagingCenter.Send(new AllSnacksPage()
-                                {
-
-                                }, "RefreshGriglia"); 
-                                await PopupNavigation.Instance.PopAsync();
-                            }
-                            else
-                            {
-                                await DisplayAlert("Fondo Merende", result.message, "Ok");   
-                            }
+                            await Navigation.PushPopupAsync(new CodicePopup((BuySnackListPage.SelectedSnackID), "compra", Convert.ToInt32(lineiOs.Text),null,null, swap));
                         }
                         else
                         {
+                            var result = await snackService.BuySnackAsync(BuySnackListPage.SelectedSnackID, Convert.ToInt32(lineiOs.Text));
+                            if (result != null)
+                            {
+                                if (result.success)
+                                {
+                                    MessagingCenter.Send(new AllSnacksPage()
+                                    {
 
+                                    }, "RefreshGetSnacks");
+                                    DependencyService.Get<HapticFeedbackGen>().HapticFeedbackGenSuccessAsync();
+                                    MessagingCenter.Send(new AllSnacksPage()
+                                    {
+
+                                    }, "RefreshGriglia");
+                                    await PopupNavigation.Instance.PopAsync();
+                                }
+                                else
+                                {
+                                    await DisplayAlert("Fondo Merende", result.message, "Ok");
+                                }
+                            }
                         }
                     }
                 }
@@ -594,27 +609,35 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.BuySnack.Popup
                     }
                     else
                     {
-                        var result = await snackService.BuySnackAsync2(BuySnackListPage.SelectedSnackID, Int32.Parse(lineiOs.Text), prezzoiOs.Text, scadenzaiOs.Text);
-                        if (result != null)
+                        if (TabletManager.Instance.tablet)
                         {
-                            if (result.success)
+                            await Navigation.PushPopupAsync(new CodicePopup(BuySnackListPage.SelectedSnackID, "compra", Int32.Parse(lineiOs.Text), prezzoiOs.Text, scadenzaiOs.Text, true));
+                        }
+                        else
+                        {
+                            var result = await snackService.BuySnackAsync2(BuySnackListPage.SelectedSnackID, Int32.Parse(lineiOs.Text), prezzoiOs.Text, scadenzaiOs.Text);
+                            if (result != null)
                             {
-                                MessagingCenter.Send(new AllSnacksPage()
+                                if (result.success)
                                 {
+                                    MessagingCenter.Send(new AllSnacksPage()
+                                    {
 
-                                }, "RefreshGetSnacks");
-                                DependencyService.Get<HapticFeedbackGen>().HapticFeedbackGenSuccessAsync();
-                                MessagingCenter.Send(new AllSnacksPage()
+                                    }, "RefreshGetSnacks");
+                                    DependencyService.Get<HapticFeedbackGen>().HapticFeedbackGenSuccessAsync();
+                                    MessagingCenter.Send(new AllSnacksPage()
+                                    {
+
+                                    }, "RefreshGriglia");
+                                    await PopupNavigation.Instance.PopAsync();
+                                }
+                                else
                                 {
-
-                                }, "RefreshGriglia");
-                                await PopupNavigation.Instance.PopAsync();
-                            }
-                            else
-                            {
-                                await DisplayAlert("Fondo Merende", result.message, "Ok");
+                                    await DisplayAlert("Fondo Merende", result.message, "Ok");
+                                }
                             }
                         }
+                        
                     }
 
                 }

@@ -51,7 +51,7 @@ namespace fondomerende.Main.Services.RESTServices
             }
             catch (FlurlHttpException ex)
             {
-                await App.Current.MainPage.DisplayAlert("Fondo Merende", ex.InnerException.Message, "OK");
+                await App.Current.MainPage.DisplayAlert("Fondo Merende", "Connessione al server fallita", "OK");
             }
             return null;
         }

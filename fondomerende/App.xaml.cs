@@ -6,6 +6,7 @@ using fondomerende.PostLoginPages;
 using fondomerende.Main.Services.RESTServices;
 using fondomerende.Main.Login.LoginPages;
 using fondomerende.Main.Services;
+using fondomerende.Main.Utilities;
 
 namespace fondomerende
 {
@@ -13,6 +14,7 @@ namespace fondomerende
     {
         public App()
         {
+            Data d = new Data();
             InitializeComponent();
 
             if (Preferences.Get("Logged", false))

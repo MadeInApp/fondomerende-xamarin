@@ -18,22 +18,31 @@
     <ContentPage.Content>
         <Grid
             x:Name="PaoloGrid">
+            <Image
+                x:Name="sfondo"
+                Grid.Row="0"
+                Grid.Column="0"
+                Aspect="Fill"
+                Source="{local:EmbeddedImage Resource=fondomerende.image.sfondopt1.png}"
+                Opacity="0.9">
+            </Image>
+            
             <StackLayout
-                BackgroundColor="#fff0df"
                 Grid.Row="0"
                 Grid.Column="0"
                 x:Name="StackSnack">
 
                 <StackLayout 
                     Orientation="Horizontal"
-                    BackgroundColor= "#fff0df"  
-                    HeightRequest="45">
-                    
+                    HeightRequest="45"
+                    BackgroundColor="#fff0df"
+                    Opacity="0.9">
+
                     <!--"{OnPlatform Android=#f9cb2a, Default= #f9bb15}"-->
                     <!--è un bel colore"#ffb121"-->
                     
 
-                        <Label
+                    <Label
                             Grid.Row="0"
                             Grid.Column="0"
                             VerticalTextAlignment="Center"
@@ -44,29 +53,10 @@
                             FontAttributes="Bold"
                             TextColor="{OnPlatform Android=#f29e17}">
                             
-                        </Label>
+                    </Label>
 
-                        <!--<ImageButton
-                            Grid.Row="0"
-                            Grid.Column="0"
-                            HeightRequest="40"
-                            WidthRequest="40"
-                            Margin="8,10,0,12"
-                            CornerRadius="5"
-                            HorizontalOptions="StartAndExpand" 
-                            VerticalOptions="CenterAndExpand"
-                            Source="{local2:EmbeddedImage Resource=fondomerende.image.list_264x264.png}"
-                            Scale="{OnIdiom Phone=0.9, Tablet=3}"
-                            Clicked="Swap_Clicked"
-                            x:Name="ListToGrid"
-                            BackgroundColor="Transparent"
-                            IsVisible="True">
-                        </ImageButton>-->
 
-                        
-                        
-                        
-                        <ImageButton
+                    <ImageButton
                             HeightRequest="40"
                             WidthRequest="40"
                             Aspect="Fill"
@@ -74,31 +64,12 @@
                             HorizontalOptions="EndAndExpand" 
                             VerticalOptions="CenterAndExpand"
                             Source="{local2:EmbeddedImage Resource=fondomerende.image.star_empty.png}"
-                            Scale="{OnIdiom Phone=0.9, Tablet=3}"
+                            Scale="{OnIdiom Phone=0.9}"
                             Clicked="favourite_Clicked"
                             x:Name="favourite"
                             BackgroundColor="Transparent"
                             IsVisible="True">
-                        </ImageButton>
-                        
-                        <!--<forms:AnimationView
-                            Scale="2"
-                            Grid.Row="0"
-                            Grid.Column="2"
-                            MinimumHeightRequest="40"
-                            MinimumWidthRequest="40"
-                            HeightRequest="40"
-                            WidthRequest="40"
-                            Margin="0,0,10,12"
-                            x:Name="Wallet"
-                            OnClick="WalletClicked"
-                            Animation="Pig.json"
-                            Loop="False"
-                            HorizontalOptions="EndAndExpand"
-                            VerticalOptions="CenterAndExpand"
-                            AutoPlay="True">
-                        </forms:AnimationView>-->
-
+                    </ImageButton>
                 </StackLayout>
 
                 

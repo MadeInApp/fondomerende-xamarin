@@ -134,7 +134,7 @@ namespace fondomerende.Main.Login.LoginPages
             else if (response.success == true)
             {
                 await userService.GetUserData();
-                App.Current.MainPage = new TabbedPageTablet();
+                App.Current.MainPage = new NavigationPage(new TabletPage());
                 TabletManager.Instance.tablet = true;
                 MessagingCenter.Send(new EditUserViewCell()
                 {

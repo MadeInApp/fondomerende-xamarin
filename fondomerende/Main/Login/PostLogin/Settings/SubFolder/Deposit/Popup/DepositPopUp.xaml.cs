@@ -11,6 +11,8 @@ using fondomerende.Main.Utilities;
 using fondomerende.Main.Login.PostLogin.AllSnack.Page;
 using Rg.Plugins.Popup.Pages;
 using Xamarin.Essentials;
+using fondomerende.Main.Manager;
+using fondomerende.Main.Login.TabletMode.Popup;
 
 namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup
 {
@@ -335,43 +337,48 @@ namespace fondomerende.Main.Login.PostLogin.Settings.SubFolder.Deposit.Popup
             }
             else
             {
-                var resultDep = await depositService.DepositAsync(appoggio);
-                if (resultDep != null)
+                if (TabletManager.Instance.tablet)
                 {
-                    if (resultDep.success)
-                    {
-                        MessagingCenter.Send(new AllSnacksPage()
-                        {
-
-                        }, "Animation");
-                        if (Device.RuntimePlatform == Device.iOS)
-                        {
-                            DependencyService.Get<HapticFeedbackGen>().HapticFeedbackGenSuccessAsync();
-                        }
-
-                        else
-                        {
-                            Vibration.Vibrate(40);
-                            await Task.Delay(100);
-                            Vibration.Vibrate(40);
-                        }
-                        refresh = true;
-                        await Navigation.PopPopupAsync();
-                        
-                    }
-                    else if (resultDep.message == "Execution error in UPDATE users_funds SET amount=amount+? WHERE user_id=?. Out of range value for column 'amount' at row 1.")
-                    {
-                        await DisplayAlert("Fondo Merende", "Non puoi superare i €99.99 di fondo utente", "Ok");
-                    }
-                    else
-                    {
-                        await DisplayAlert("Fondo Merende", resultDep.message, "Ok");
-                    }
+                    await Navigation.PushPopupAsync(new CodicePopup(appoggio, "deposita",null,null,null,null));
                 }
                 else
                 {
-                    refresh = false;
-                    await Navigation.PopPopupAsync();
+                    var resultDep = await depositService.DepositAsync(appoggio);
+                    if (resultDep != null)
+                    {
+                        if (resultDep.success)
+                        {
+                            await DisplayAlert("Fondomerende", "Soldi depositati con successo", "Ok");
+                            MessagingCenter.Send(new AllSnacksPage()
+                            {
+
+                            }, "Animation");
+                            if (Device.RuntimePlatform == Device.iOS)
+                            {
+                                DependencyService.Get<HapticFeedbackGen>().HapticFeedbackGenSuccessAsync();
+                            }
+
+                            else
+                            {
+
+                                Vibration.Vibrate(40);
+                                await Task.Delay(100);
+                                Vibration.Vibrate(40);
+                            }
+                            refresh = true;
+                            await Navigation.PopPopupAsync();
+
+                        }
+                        else
+                        {
+                            await DisplayAlert("Fondomerende", "I soldi non sono stati depositati", "Ok");
+                        };
+                    }
+                    else
+                    {
+                        refresh = false;
+                        await Navigation.PopPopupAsync();
+                    }
                 }
             }
         }

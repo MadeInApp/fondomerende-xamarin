@@ -4,7 +4,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using Foundation;
-using System.Linq;
 using Xamarin.Forms;
 using Newtonsoft.Json;
 
@@ -12,24 +11,22 @@ namespace fondomerende.Main.Login.TabletMode.Controlli
 {
     class GestoreJson
     {
-        LetturaFile letturafile;
 
-        private string filename = "Utenti.json";
+        private static string filename = "Utenti.json";
         public GestoreJson()
         {
-            letturafile = new LetturaFile();
         }
 
-        public async void serializza(List<Utente> u)
+        public static async Task Serializza(List<Utente> u)
         {
             string json = JsonConvert.SerializeObject(u, Formatting.Indented);
-            await letturafile.SaveAsync(filename, json);
+            await LetturaFile.WriteTextAllAsync(filename,json);
         }
 
-        public async Task<Utente[]> deserializza()
+        public static async Task<List<Utente>> deserializza()
         {
-            string json = await letturafile.LoadAsync(filename);
-            Utente[] u = JsonConvert.DeserializeObject<Utente[]>(json);
+            string json = await LetturaFile.ReadAllTextAsync(filename);
+            List<Utente> u = JsonConvert.DeserializeObject<List<Utente>>(json);
             return u;
         }
 
